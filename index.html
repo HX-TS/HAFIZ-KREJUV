@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PETRONAS WEBSITE</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+:root {
+    --bg: #f4f1eb;
+    --black: #050505;
+    --border: #aaa69f;
+    --outer-margin: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: var(--black);
+    color: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FULL SCREEN PAGE
+   ========================================================= */
+
+.page {
+    position: fixed;
+
+    top: var(--outer-margin);
+    right: var(--outer-margin);
+    bottom: var(--outer-margin);
+    left: var(--outer-margin);
+
+    background: var(--bg);
+
+    display: grid;
+
+    grid-template-rows:
+        42%
+        18px
+        1fr
+        58px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px 40px;
+
+    background: var(--bg);
+}
+
+.hero-inner {
+    width: 100%;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.hero-title {
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            80px,
+            8.7vw,
+            170px
+        );
+
+    font-weight: 900;
+
+    line-height: 0.80;
+
+    letter-spacing: -0.075em;
+
+    text-transform: uppercase;
+}
+
+
+/* PETRONAS - WIDER LETTER SPACING */
+
+.petronas-title {
+    display: inline-block;
+
+    letter-spacing: 0.08em;
+
+    padding-left: 0.08em;
+}
+
+
+/* WEBSITE - TIGHTER */
+
+.website-title {
+    display: inline-block;
+
+    letter-spacing: -0.075em;
+}
+
+
+/* =========================================================
+   SMALL TECHSMITH TEXT
+   ========================================================= */
+
+.hero-subtitle {
+    margin-top: 35px;
+
+    font-size:
+        clamp(
+            13px,
+            1vw,
+            19px
+        );
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   BLACK DIVIDER
+   ========================================================= */
+
+.section-divider {
+    background: var(--black);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+    background: var(--bg);
+
+    display: grid;
+
+    grid-template-rows:
+        58px
+        1fr;
+
+    min-height: 0;
+}
+
+
+/* =========================================================
+   COLUMN HEADERS
+   ========================================================= */
+
+.content-header {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.content-header > div {
+    display: flex;
+    align-items: center;
+
+    padding:
+        0 18px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.content-header > div + div {
+    border-left:
+        1px solid var(--border);
+}
+
+
+/* =========================================================
+   THREE COLUMNS
+   ========================================================= */
+
+.columns {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    min-height: 0;
+}
+
+.column {
+    position: relative;
+
+    padding:
+        18px
+        18px
+        25px;
+
+    min-height: 0;
+}
+
+.column + .column {
+    border-left:
+        1px solid var(--border);
+}
+
+
+/* =========================================================
+   EJHA / EPTW LABEL
+   ========================================================= */
+
+.column-label {
+    margin-bottom: 15px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MAIN SITE LINKS
+   ========================================================= */
+
+.site-item {
+    display: block;
+
+    width: fit-content;
+
+    position: relative;
+
+    color: var(--black);
+
+    text-decoration: none;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            28px,
+            2.25vw,
+            45px
+        );
+
+    font-weight: 900;
+
+    line-height: 0.96;
+
+    letter-spacing: -0.055em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+
+    transition:
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+/* MAIN SITE HOVER */
+
+.site-item:hover {
+    transform:
+        translateX(10px);
+}
+
+.site-item::after {
+    content: "↗";
+
+    position: absolute;
+
+    left:
+        calc(100% + 12px);
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.34em;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+.site-item:hover::after {
+    opacity: 1;
+
+    transform:
+        translate(
+            5px,
+            -50%
+        );
+}
+
+
+/* =========================================================
+   EJHA NUMBER
+   ABOUT 50% MAIN LINK SIZE
+   ========================================================= */
+
+.ejha-item {
+    display: inline-block;
+
+    position: relative;
+
+    color: var(--black);
+
+    text-decoration: none;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            16px,
+            1.15vw,
+            23px
+        );
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    letter-spacing: -0.035em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.ejha-item:hover,
+.ejha-item:focus {
+    transform:
+        translateX(8px);
+
+    outline: none;
+}
+
+
+/* =========================================================
+   EPTW PLACEHOLDER
+   ========================================================= */
+
+.eptw-item {
+    display: inline-block;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            16px,
+            1.15vw,
+            23px
+        );
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    letter-spacing: -0.035em;
+
+    text-transform: uppercase;
+
+    color: #8a8781;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   EJHA TOOLTIP
+   ========================================================= */
+
+.tooltip {
+    position: fixed;
+
+    width:
+        min(
+            580px,
+            calc(100vw - 80px)
+        );
+
+    background: var(--black);
+
+    color: var(--bg);
+
+    padding: 22px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.55;
+
+    text-transform: uppercase;
+
+    z-index: 9999;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s ease;
+}
+
+.tooltip.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+.tooltip-number {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background: var(--bg);
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    padding:
+        0 18px;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HP VICTUS / 1920 x 1080
+   ========================================================= */
+
+@media
+(min-width: 1600px)
+and
+(min-height: 850px) {
+
+    :root {
+        --outer-margin: 30px;
+    }
+
+    .hero-title {
+        font-size: 165px;
+    }
+
+    .site-item {
+        font-size: 42px;
+    }
+
+    .ejha-item,
+    .eptw-item {
+        font-size: 21px;
+    }
+}
+
+
+/* =========================================================
+   SMALLER LAPTOP
+   ========================================================= */
+
+@media
+(max-height: 800px) {
+
+    :root {
+        --outer-margin: 20px;
+    }
+
+    .page {
+        grid-template-rows:
+            38%
+            15px
+            1fr
+            45px;
+    }
+
+    .hero-title {
+        font-size:
+            clamp(
+                65px,
+                8vw,
+                130px
+            );
+    }
+
+    .hero-subtitle {
+        margin-top: 20px;
+    }
+
+    .content {
+        grid-template-rows:
+            45px
+            1fr;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media
+(max-width: 800px) {
+
+    body {
+        overflow: auto;
+    }
+
+    :root {
+        --outer-margin: 12px;
+    }
+
+    .page {
+        position: relative;
+
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+
+        width:
+            calc(
+                100% -
+                (var(--outer-margin) * 2)
+            );
+
+        min-height:
+            calc(
+                100vh -
+                (var(--outer-margin) * 2)
+            );
+
+        margin:
+            var(--outer-margin);
+
+        display: block;
+    }
+
+    .hero {
+        min-height: 330px;
+    }
+
+    .hero-title {
+        font-size:
+            clamp(
+                48px,
+                13vw,
+                100px
+            );
+    }
+
+    .petronas-title {
+        letter-spacing: 0.04em;
+    }
+
+    .section-divider {
+        height: 14px;
+    }
+
+    .content-header {
+        display: none;
+    }
+
+    .columns {
+        display: block;
+    }
+
+    .column {
+        min-height: 190px;
+    }
+
+    .column + .column {
+        border-left: none;
+
+        border-top:
+            1px solid var(--border);
+    }
+
+    .site-item {
+        font-size:
+            clamp(
+                28px,
+                7vw,
+                45px
+            );
+    }
+
+    .ejha-item,
+    .eptw-item {
+        font-size:
+            clamp(
+                16px,
+                3.5vw,
+                23px
+            );
+    }
+
+    .footer {
+        min-height: 55px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <h1 class="hero-title">
+
+                <span class="petronas-title">
+                    PETRONAS
+                </span>
+
+                <br>
+
+                <span class="website-title">
+                    WEBSITE
+                </span>
+
+            </h1>
+
+
+            <div class="hero-subtitle">
+                TechSmith
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BLACK DIVIDER
+         ===================================================== -->
+
+    <div class="section-divider"></div>
+
+
+
+    <!-- =====================================================
+         CONTENT
+         ===================================================== -->
+
+    <main class="content">
+
+
+        <!-- =================================================
+             COLUMN TITLES
+             ================================================= -->
+
+        <div class="content-header">
+
+            <div>
+                MAIN SITE
+            </div>
+
+            <div>
+                EJHA
+            </div>
+
+            <div>
+                EPTW
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             COLUMNS
+             ================================================= -->
+
+        <div class="columns">
+
+
+            <!-- =============================================
+                 COLUMN 1 - MAIN SITE
+                 ============================================= -->
+
+            <section class="column">
+
+
+                <a
+                    class="site-item"
+
+                    href="https://acm.petronas.com/"
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+                >
+                    XPRESS PETRONAS
+                </a>
+
+
+
+                <a
+                    class="site-item"
+
+                    href="https://ace.petronas.com/home"
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+                >
+                    ACE PETRONAS
+                </a>
+
+
+
+                <a
+                    class="site-item"
+
+                    href="https://ptw.petronas.com/Home/Dashboard?isPtwAudit=False"
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+                >
+                    EPTW
+                </a>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 COLUMN 2 - EJHA
+                 ============================================= -->
+
+            <section class="column">
+
+
+                <div class="column-label">
+                    EJHA NO.
+                </div>
+
+
+                <a
+                    class="ejha-item"
+
+                    href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+
+                    data-number="EJHA 0046453"
+
+                    data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
+                >
+                    0046453
+                </a>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 COLUMN 3 - EPTW
+                 ============================================= -->
+
+            <section class="column">
+
+
+                <div class="column-label">
+                    EPTW NO.
+                </div>
+
+
+                <span class="eptw-item">
+                    AVAILABLE
+                </span>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+        FLY TECHSMITH
+    </footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     EJHA TOOLTIP
+     ========================================================= -->
+
+<div
+    id="tooltip"
+    class="tooltip"
+>
+
+    <span
+        id="tooltipNumber"
+        class="tooltip-number"
+    ></span>
+
+    <span
+        id="tooltipDescription"
+    ></span>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   EJHA HOVER TOOLTIP
+   ========================================================= */
+
+const ejhaItems =
+    document.querySelectorAll(
+        ".ejha-item"
+    );
+
+const tooltip =
+    document.getElementById(
+        "tooltip"
+    );
+
+const tooltipNumber =
+    document.getElementById(
+        "tooltipNumber"
+    );
+
+const tooltipDescription =
+    document.getElementById(
+        "tooltipDescription"
+    );
+
+
+/* SHOW */
+
+function showTooltip(item) {
+
+    tooltipNumber.textContent =
+        item.dataset.number || "";
+
+    tooltipDescription.textContent =
+        item.dataset.description || "";
+
+    tooltip.classList.add(
+        "active"
+    );
+}
+
+
+/* HIDE */
+
+function hideTooltip() {
+
+    tooltip.classList.remove(
+        "active"
+    );
+}
+
+
+/* POSITION */
+
+function positionTooltip(x, y) {
+
+    const padding = 30;
+    const offset = 22;
+
+    const tooltipWidth =
+        tooltip.offsetWidth;
+
+    const tooltipHeight =
+        tooltip.offsetHeight;
+
+    let left =
+        x + offset;
+
+    let top =
+        y + offset;
+
+
+    /* RIGHT LIMIT */
+
+    if (
+        left +
+        tooltipWidth >
+        window.innerWidth -
+        padding
+    ) {
+
+        left =
+            x -
+            tooltipWidth -
+            offset;
+    }
+
+
+    /* BOTTOM LIMIT */
+
+    if (
+        top +
+        tooltipHeight >
+        window.innerHeight -
+        padding
+    ) {
+
+        top =
+            y -
+            tooltipHeight -
+            offset;
+    }
+
+
+    /* LEFT LIMIT */
+
+    if (left < padding) {
+        left = padding;
+    }
+
+
+    /* TOP LIMIT */
+
+    if (top < padding) {
+        top = padding;
+    }
+
+
+    tooltip.style.left =
+        `${left}px`;
+
+    tooltip.style.top =
+        `${top}px`;
+}
+
+
+/* EVENTS */
+
+ejhaItems.forEach(item => {
+
+
+    item.addEventListener(
+        "mouseenter",
+        event => {
+
+            showTooltip(item);
+
+            positionTooltip(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+    );
+
+
+    item.addEventListener(
+        "mousemove",
+        event => {
+
+            positionTooltip(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+    );
+
+
+    item.addEventListener(
+        "mouseleave",
+        hideTooltip
+    );
+
+
+    item.addEventListener(
+        "focus",
+        () => {
+
+            showTooltip(item);
+
+            const rect =
+                item.getBoundingClientRect();
+
+            positionTooltip(
+                rect.left,
+                rect.bottom
+            );
+
+        }
+    );
+
+
+    item.addEventListener(
+        "blur",
+        hideTooltip
+    );
+
+});
+
+
+/* ESC KEY */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+            hideTooltip();
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
