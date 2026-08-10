@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PETRONAS WEBSITE</title>
+<title>KREJUV FEC BOOKMARK</title>
 
 <style>
 
@@ -17,6 +17,7 @@
     --bg: #f4f1eb;
     --black: #050505;
     --border: #aaa69f;
+    --muted: #8a8781;
     --outer-margin: 30px;
 }
 
@@ -29,19 +30,24 @@
 html,
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
     background: var(--black);
     color: var(--black);
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     overflow: hidden;
 }
 
 
 /* =========================================================
-   FULL SCREEN PAGE
+   MAIN PAGE
    ========================================================= */
 
 .page {
@@ -72,6 +78,7 @@ body {
 
 .hero {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -109,15 +116,16 @@ body {
 
     line-height: 0.80;
 
-    letter-spacing: -0.075em;
-
     text-transform: uppercase;
 }
 
 
-/* PETRONAS - WIDER LETTER SPACING */
+/* =========================================================
+   KREJUV FEC
+   WIDER LETTER SPACING
+   ========================================================= */
 
-.petronas-title {
+.krejuv-title {
     display: inline-block;
 
     letter-spacing: 0.08em;
@@ -126,9 +134,12 @@ body {
 }
 
 
-/* WEBSITE - TIGHTER */
+/* =========================================================
+   BOOKMARK
+   TIGHTER LETTER SPACING
+   ========================================================= */
 
-.website-title {
+.bookmark-title {
     display: inline-block;
 
     letter-spacing: -0.075em;
@@ -136,7 +147,7 @@ body {
 
 
 /* =========================================================
-   SMALL TECHSMITH TEXT
+   TECHSMITH UNDER MAIN TITLE
    ========================================================= */
 
 .hero-subtitle {
@@ -160,6 +171,8 @@ body {
    ========================================================= */
 
 .section-divider {
+    width: 100%;
+
     background: var(--black);
 }
 
@@ -182,7 +195,7 @@ body {
 
 
 /* =========================================================
-   COLUMN HEADERS
+   COLUMN TITLES
    ========================================================= */
 
 .content-header {
@@ -199,14 +212,16 @@ body {
 
 .content-header > div {
     display: flex;
+
     align-items: center;
 
-    padding:
-        0 18px;
+    padding: 0 18px;
 
     font-size: 11px;
 
     font-weight: 900;
+
+    letter-spacing: 0.02em;
 
     text-transform: uppercase;
 }
@@ -235,12 +250,13 @@ body {
 .column {
     position: relative;
 
+    min-width: 0;
+    min-height: 0;
+
     padding:
         18px
         18px
         25px;
-
-    min-height: 0;
 }
 
 .column + .column {
@@ -250,7 +266,7 @@ body {
 
 
 /* =========================================================
-   EJHA / EPTW LABEL
+   COLUMN SUBHEADING
    ========================================================= */
 
 .column-label {
@@ -259,6 +275,8 @@ body {
     font-size: 11px;
 
     font-weight: 700;
+
+    letter-spacing: 0.02em;
 
     text-transform: uppercase;
 }
@@ -308,11 +326,12 @@ body {
 }
 
 
-/* MAIN SITE HOVER */
+/* =========================================================
+   MAIN SITE HOVER
+   ========================================================= */
 
 .site-item:hover {
-    transform:
-        translateX(10px);
+    transform: translateX(10px);
 }
 
 .site-item::after {
@@ -320,13 +339,11 @@ body {
 
     position: absolute;
 
-    left:
-        calc(100% + 12px);
+    left: calc(100% + 12px);
 
     top: 50%;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
     font-family:
         Arial,
@@ -354,8 +371,17 @@ body {
 
 
 /* =========================================================
+   FADE OTHER MAIN SITE LINKS
+   ========================================================= */
+
+.columns:has(.site-item:hover)
+.site-item:not(:hover) {
+    opacity: 0.25;
+}
+
+
+/* =========================================================
    EJHA NUMBER
-   ABOUT 50% MAIN LINK SIZE
    ========================================================= */
 
 .ejha-item {
@@ -397,10 +423,49 @@ body {
 
 .ejha-item:hover,
 .ejha-item:focus {
-    transform:
-        translateX(8px);
+    transform: translateX(8px);
 
     outline: none;
+}
+
+
+/* =========================================================
+   EJHA ARROW
+   ========================================================= */
+
+.ejha-item::after {
+    content: "↗";
+
+    position: absolute;
+
+    left: calc(100% + 8px);
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.55em;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+.ejha-item:hover::after {
+    opacity: 1;
+
+    transform:
+        translate(
+            4px,
+            -50%
+        );
 }
 
 
@@ -432,7 +497,7 @@ body {
 
     text-transform: uppercase;
 
-    color: #8a8781;
+    color: var(--muted);
 
     cursor: default;
 }
@@ -473,8 +538,7 @@ body {
 
     visibility: hidden;
 
-    transform:
-        translateY(8px);
+    transform: translateY(8px);
 
     transition:
         opacity 0.15s ease,
@@ -487,8 +551,7 @@ body {
 
     visibility: visible;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 .tooltip-number {
@@ -510,9 +573,12 @@ body {
 
 /* =========================================================
    FOOTER
+   ALWAYS CENTERED
    ========================================================= */
 
 .footer {
+    width: 100%;
+
     background: var(--bg);
 
     border-top:
@@ -520,12 +586,12 @@ body {
 
     display: flex;
 
-    justify-content: flex-end;
-
     align-items: center;
+    justify-content: center;
 
-    padding:
-        0 18px;
+    padding: 0 18px;
+
+    text-align: center;
 
     font-family:
         "Arial Black",
@@ -537,14 +603,14 @@ body {
 
     font-weight: 900;
 
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
 
     text-transform: uppercase;
 }
 
 
 /* =========================================================
-   HP VICTUS / 1920 x 1080
+   HP VICTUS / LARGE SCREEN
    ========================================================= */
 
 @media
@@ -576,7 +642,9 @@ and
    ========================================================= */
 
 @media
-(max-height: 800px) {
+(max-height: 800px)
+and
+(min-width: 801px) {
 
     :root {
         --outer-margin: 20px;
@@ -612,19 +680,33 @@ and
 
 
 /* =========================================================
-   MOBILE
+   PHONE / TABLET
    ========================================================= */
 
 @media
 (max-width: 800px) {
 
-    body {
-        overflow: auto;
-    }
-
     :root {
         --outer-margin: 12px;
     }
+
+    html,
+    body {
+        min-height: 100%;
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        background: var(--black);
+    }
+
+
+    /* =====================================================
+       PAGE
+       KEEP BLACK OUTER MARGIN
+       ===================================================== */
 
     .page {
         position: relative;
@@ -646,43 +728,115 @@ and
                 (var(--outer-margin) * 2)
             );
 
+        min-height:
+            calc(
+                100svh -
+                (var(--outer-margin) * 2)
+            );
+
         margin:
             var(--outer-margin);
 
-        display: block;
+        display: flex;
+
+        flex-direction: column;
+
+        overflow: hidden;
     }
 
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
     .hero {
-        min-height: 330px;
+        min-height: 310px;
+
+        flex-shrink: 0;
+
+        padding:
+            35px
+            12px
+            30px;
     }
 
     .hero-title {
         font-size:
             clamp(
-                48px,
-                13vw,
-                100px
+                42px,
+                12vw,
+                90px
             );
+
+        line-height: 0.84;
     }
 
-    .petronas-title {
+
+    /* KREJUV FEC MOBILE SPACING */
+
+    .krejuv-title {
         letter-spacing: 0.04em;
+
+        padding-left: 0.04em;
     }
+
+    .bookmark-title {
+        letter-spacing: -0.055em;
+    }
+
+    .hero-subtitle {
+        margin-top: 25px;
+
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       DIVIDER
+       ===================================================== */
 
     .section-divider {
         height: 14px;
+
+        flex-shrink: 0;
     }
+
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .content {
+        display: block;
+
+        flex: 1;
+
+        min-height: 0;
+    }
+
+
+    /* HIDE DESKTOP COLUMN HEADER */
 
     .content-header {
         display: none;
     }
+
+
+    /* =====================================================
+       COLUMNS BECOME VERTICAL
+       ===================================================== */
 
     .columns {
         display: block;
     }
 
     .column {
-        min-height: 190px;
+        min-height: 150px;
+
+        padding:
+            18px
+            16px
+            24px;
     }
 
     .column + .column {
@@ -692,31 +846,234 @@ and
             1px solid var(--border);
     }
 
+
+    /* =====================================================
+       MOBILE COLUMN TITLES
+       ===================================================== */
+
+    .column::before {
+        display: block;
+
+        margin-bottom: 18px;
+
+        font-size: 10px;
+
+        font-weight: 900;
+
+        letter-spacing: 0.04em;
+
+        text-transform: uppercase;
+    }
+
+    .column:nth-child(1)::before {
+        content: "MAIN SITE";
+    }
+
+    .column:nth-child(2)::before {
+        content: "EJHA";
+    }
+
+    .column:nth-child(3)::before {
+        content: "EPTW";
+    }
+
+
+    /* =====================================================
+       SUBHEADINGS
+       ===================================================== */
+
+    .column-label {
+        margin-bottom: 10px;
+
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       MAIN SITE
+       ===================================================== */
+
     .site-item {
         font-size:
             clamp(
-                28px,
+                27px,
                 7vw,
                 45px
             );
+
+        margin-bottom: 7px;
     }
+
+
+    /* =====================================================
+       EJHA / EPTW
+       ===================================================== */
 
     .ejha-item,
     .eptw-item {
         font-size:
             clamp(
                 16px,
-                3.5vw,
-                23px
+                4vw,
+                22px
+            );
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ALWAYS CENTER BOTTOM
+       ===================================================== */
+
+    .footer {
+        width: 100%;
+
+        min-height: 55px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        margin-top: auto;
+
+        padding: 0 15px;
+
+        text-align: center;
+
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       TOOLTIP
+       ===================================================== */
+
+    .tooltip {
+        width:
+            calc(
+                100vw -
+                40px
+            );
+
+        max-width: none;
+
+        padding: 18px;
+
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+    .tooltip-number {
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media
+(max-width: 480px) {
+
+    :root {
+        --outer-margin: 8px;
+    }
+
+    .hero {
+        min-height: 270px;
+
+        padding:
+            25px
+            8px;
+    }
+
+    .hero-title {
+        font-size:
+            clamp(
+                36px,
+                11vw,
+                62px
+            );
+    }
+
+    .krejuv-title {
+        letter-spacing: 0.025em;
+
+        padding-left: 0.025em;
+    }
+
+    .hero-subtitle {
+        margin-top: 20px;
+
+        font-size: 10px;
+    }
+
+    .column {
+        min-height: 135px;
+
+        padding:
+            15px
+            14px
+            22px;
+    }
+
+    .site-item {
+        font-size:
+            clamp(
+                24px,
+                6.8vw,
+                35px
             );
     }
 
     .footer {
-        min-height: 55px;
+        min-height: 50px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   PHONE LANDSCAPE
+   ========================================================= */
+
+@media
+(max-width: 800px)
+and
+(max-height: 500px)
+and
+(orientation: landscape) {
+
+    .hero {
+        min-height: 220px;
+    }
+
+    .hero-title {
+        font-size:
+            clamp(
+                42px,
+                9vw,
+                72px
+            );
+    }
+
+    .hero-subtitle {
+        margin-top: 15px;
+    }
+
+    .column {
+        min-height: 120px;
     }
 }
 
 </style>
+
 </head>
 
 
@@ -734,17 +1091,22 @@ and
 
         <div class="hero-inner">
 
+
             <h1 class="hero-title">
 
-                <span class="petronas-title">
-                    PETRONAS
+
+                <span class="krejuv-title">
+                    KREJUV FEC
                 </span>
+
 
                 <br>
 
-                <span class="website-title">
-                    WEBSITE
+
+                <span class="bookmark-title">
+                    BOOKMARK
                 </span>
+
 
             </h1>
 
@@ -752,6 +1114,7 @@ and
             <div class="hero-subtitle">
                 TechSmith
             </div>
+
 
         </div>
 
@@ -775,22 +1138,26 @@ and
 
 
         <!-- =================================================
-             COLUMN TITLES
+             DESKTOP COLUMN TITLES
              ================================================= -->
 
         <div class="content-header">
+
 
             <div>
                 MAIN SITE
             </div>
 
+
             <div>
                 EJHA
             </div>
 
+
             <div>
                 EPTW
             </div>
+
 
         </div>
 
@@ -804,7 +1171,8 @@ and
 
 
             <!-- =============================================
-                 COLUMN 1 - MAIN SITE
+                 COLUMN 1
+                 MAIN SITE
                  ============================================= -->
 
             <section class="column">
@@ -856,7 +1224,8 @@ and
 
 
             <!-- =============================================
-                 COLUMN 2 - EJHA
+                 COLUMN 2
+                 EJHA
                  ============================================= -->
 
             <section class="column">
@@ -889,7 +1258,8 @@ and
 
 
             <!-- =============================================
-                 COLUMN 3 - EPTW
+                 COLUMN 3
+                 EPTW
                  ============================================= -->
 
             <section class="column">
@@ -941,6 +1311,7 @@ and
         class="tooltip-number"
     ></span>
 
+
     <span
         id="tooltipDescription"
     ></span>
@@ -952,7 +1323,7 @@ and
 <script>
 
 /* =========================================================
-   EJHA HOVER TOOLTIP
+   ELEMENTS
    ========================================================= */
 
 const ejhaItems =
@@ -976,7 +1347,9 @@ const tooltipDescription =
     );
 
 
-/* SHOW */
+/* =========================================================
+   SHOW TOOLTIP
+   ========================================================= */
 
 function showTooltip(item) {
 
@@ -992,7 +1365,9 @@ function showTooltip(item) {
 }
 
 
-/* HIDE */
+/* =========================================================
+   HIDE TOOLTIP
+   ========================================================= */
 
 function hideTooltip() {
 
@@ -1002,27 +1377,38 @@ function hideTooltip() {
 }
 
 
-/* POSITION */
+/* =========================================================
+   POSITION TOOLTIP
+   ========================================================= */
 
-function positionTooltip(x, y) {
+function positionTooltip(
+    x,
+    y
+) {
 
-    const padding = 30;
+    const padding = 20;
+
     const offset = 22;
+
 
     const tooltipWidth =
         tooltip.offsetWidth;
 
+
     const tooltipHeight =
         tooltip.offsetHeight;
 
+
     let left =
         x + offset;
+
 
     let top =
         y + offset;
 
 
-    /* RIGHT LIMIT */
+
+    /* RIGHT EDGE */
 
     if (
         left +
@@ -1038,7 +1424,8 @@ function positionTooltip(x, y) {
     }
 
 
-    /* BOTTOM LIMIT */
+
+    /* BOTTOM EDGE */
 
     if (
         top +
@@ -1054,29 +1441,45 @@ function positionTooltip(x, y) {
     }
 
 
-    /* LEFT LIMIT */
 
-    if (left < padding) {
-        left = padding;
+    /* LEFT EDGE */
+
+    if (
+        left <
+        padding
+    ) {
+
+        left =
+            padding;
     }
 
 
-    /* TOP LIMIT */
 
-    if (top < padding) {
-        top = padding;
+    /* TOP EDGE */
+
+    if (
+        top <
+        padding
+    ) {
+
+        top =
+            padding;
     }
+
 
 
     tooltip.style.left =
         `${left}px`;
+
 
     tooltip.style.top =
         `${top}px`;
 }
 
 
-/* EVENTS */
+/* =========================================================
+   EJHA EVENTS
+   ========================================================= */
 
 ejhaItems.forEach(item => {
 
@@ -1115,6 +1518,8 @@ ejhaItems.forEach(item => {
     );
 
 
+    /* KEYBOARD ACCESS */
+
     item.addEventListener(
         "focus",
         () => {
@@ -1123,6 +1528,7 @@ ejhaItems.forEach(item => {
 
             const rect =
                 item.getBoundingClientRect();
+
 
             positionTooltip(
                 rect.left,
@@ -1138,17 +1544,38 @@ ejhaItems.forEach(item => {
         hideTooltip
     );
 
+
 });
 
 
-/* ESC KEY */
+/* =========================================================
+   CLOSE TOOLTIP WHILE SCROLLING
+   ========================================================= */
+
+window.addEventListener(
+    "scroll",
+    hideTooltip,
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Escape") {
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
             hideTooltip();
+
         }
 
     }
@@ -1158,4 +1585,5 @@ document.addEventListener(
 
 
 </body>
+
 </html>
