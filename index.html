@@ -47,30 +47,42 @@
    ========================================================= */
 
 :root {
+
     --bg: #f4f1eb;
+
     --black: #050505;
+
     --border: #aaa69f;
+
     --muted: #77736d;
+
     --outer-margin: 30px;
 }
 
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
 }
 
 
 html,
 body {
+
     width: 100%;
+
     min-height: 100%;
 }
 
 
 body {
+
     background: var(--black);
+
     color: var(--black);
 
     font-family:
@@ -88,11 +100,15 @@ body {
    ========================================================= */
 
 .page {
+
     position: fixed;
 
     top: var(--outer-margin);
+
     right: var(--outer-margin);
+
     bottom: var(--outer-margin);
+
     left: var(--outer-margin);
 
     background: var(--bg);
@@ -115,19 +131,25 @@ body {
    ========================================================= */
 
 .hero {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    padding: 25px 40px;
+    padding:
+        25px
+        40px;
 
     background: var(--bg);
 }
 
 
 .hero-inner {
+
     width: 100%;
 }
 
@@ -138,6 +160,7 @@ body {
    ========================================================= */
 
 .hero-title {
+
     font-family:
         "Arial Black",
         Arial,
@@ -162,10 +185,10 @@ body {
 
 /* =========================================================
    KREJUV FEC
-   WIDER SPACING
    ========================================================= */
 
 .krejuv-title {
+
     display: inline-block;
 
     letter-spacing: 0.08em;
@@ -180,6 +203,7 @@ body {
    ========================================================= */
 
 .bookmark-title {
+
     display: inline-block;
 
     letter-spacing: -0.075em;
@@ -192,6 +216,7 @@ body {
    ========================================================= */
 
 .hero-subtitle {
+
     margin-top: 35px;
 
     font-size:
@@ -213,6 +238,7 @@ body {
    ========================================================= */
 
 .section-divider {
+
     width: 100%;
 
     background: var(--black);
@@ -225,6 +251,7 @@ body {
    ========================================================= */
 
 .content {
+
     background: var(--bg);
 
     display: grid;
@@ -243,6 +270,7 @@ body {
    ========================================================= */
 
 .content-header {
+
     display: grid;
 
     grid-template-columns:
@@ -256,12 +284,17 @@ body {
 
 
 .content-header > div {
+
     display: flex;
+
     align-items: center;
 
-    padding: 0 18px;
+    padding:
+        0
+        18px;
 
     font-size: 11px;
+
     font-weight: 900;
 
     letter-spacing: 0.02em;
@@ -271,6 +304,7 @@ body {
 
 
 .content-header > div + div {
+
     border-left:
         1px solid var(--border);
 }
@@ -278,10 +312,11 @@ body {
 
 
 /* =========================================================
-   THREE COLUMNS
+   THREE MAIN COLUMNS
    ========================================================= */
 
 .columns {
+
     display: grid;
 
     grid-template-columns:
@@ -294,9 +329,11 @@ body {
 
 
 .column {
+
     position: relative;
 
     min-width: 0;
+
     min-height: 0;
 
     padding:
@@ -307,6 +344,7 @@ body {
 
 
 .column + .column {
+
     border-left:
         1px solid var(--border);
 }
@@ -318,9 +356,11 @@ body {
    ========================================================= */
 
 .column-label {
+
     margin-bottom: 15px;
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: 0.02em;
@@ -335,6 +375,7 @@ body {
    ========================================================= */
 
 .site-item {
+
     display: block;
 
     width: fit-content;
@@ -380,12 +421,14 @@ body {
    ========================================================= */
 
 .site-item:hover {
+
     transform:
         translateX(10px);
 }
 
 
 .site-item::after {
+
     content: "↗";
 
     position: absolute;
@@ -414,6 +457,7 @@ body {
 
 
 .site-item:hover::after {
+
     opacity: 1;
 
     transform:
@@ -431,6 +475,7 @@ body {
 
 .columns:has(.site-item:hover)
 .site-item:not(:hover) {
+
     opacity: 0.25;
 }
 
@@ -441,6 +486,7 @@ body {
    ========================================================= */
 
 .ejha-item {
+
     display: inline-block;
 
     position: relative;
@@ -478,6 +524,7 @@ body {
 
 .ejha-item:hover,
 .ejha-item:focus {
+
     transform:
         translateX(7px);
 
@@ -491,6 +538,7 @@ body {
    ========================================================= */
 
 .ejha-item::after {
+
     content: "↗";
 
     position: absolute;
@@ -519,6 +567,7 @@ body {
 
 
 .ejha-item:hover::after {
+
     opacity: 1;
 
     transform:
@@ -535,73 +584,28 @@ body {
    ========================================================= */
 
 .eptw-column {
+
     padding: 18px;
 }
 
 
 
 /* =========================================================
-   MODERN EPTW TABLE
+   EPTW TABLE
    ========================================================= */
 
 .eptw-table {
+
     width: 100%;
 
     border:
         1px solid
-        rgba(5, 5, 5, 0.12);
+        rgba(5, 5, 5, 0.10);
 
     background:
-        rgba(255, 255, 255, 0.08);
+        rgba(255, 255, 255, 0.05);
 
     overflow: hidden;
-}
-
-
-
-/* =========================================================
-   EPTW TABLE ROW
-   ========================================================= */
-
-.eptw-table-row {
-    display: grid;
-
-    grid-template-columns:
-        0.75fr
-        1.25fr;
-}
-
-
-.eptw-table-row + .eptw-table-row {
-    border-top:
-        1px solid
-        rgba(5, 5, 5, 0.12);
-}
-
-
-
-/* =========================================================
-   EPTW TABLE CELL
-   ========================================================= */
-
-.eptw-cell {
-    min-width: 0;
-
-    min-height: 52px;
-
-    display: flex;
-    align-items: center;
-
-    padding:
-        12px
-        15px;
-}
-
-
-.eptw-cell + .eptw-cell {
-    border-left:
-        1px solid
-        rgba(5, 5, 5, 0.10);
 }
 
 
@@ -610,7 +614,21 @@ body {
    EPTW TABLE HEADER
    ========================================================= */
 
-.eptw-table-header {
+.eptw-header {
+
+    display: grid;
+
+    grid-template-columns:
+        0.72fr
+        1.28fr;
+
+    border-bottom:
+        1px solid
+        rgba(5, 5, 5, 0.10);
+
+    color:
+        rgba(5, 5, 5, 0.55);
+
     font-size: 9px;
 
     font-weight: 900;
@@ -618,23 +636,80 @@ body {
     letter-spacing: 0.08em;
 
     text-transform: uppercase;
-
-    color:
-        rgba(5, 5, 5, 0.60);
 }
 
 
-.eptw-table-header .eptw-cell {
+.eptw-header-cell {
+
     min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        10px
+        14px;
+}
+
+
+.eptw-header-cell + .eptw-header-cell {
+
+    border-left:
+        1px solid
+        rgba(5, 5, 5, 0.07);
 }
 
 
 
 /* =========================================================
-   EPTW LOCATION
+   LOCATION GROUP
+
+   One location group can contain MANY EPTWs.
+   The location cell automatically grows vertically.
    ========================================================= */
 
-.eptw-location {
+.eptw-location-group {
+
+    display: grid;
+
+    grid-template-columns:
+        0.72fr
+        1.28fr;
+}
+
+
+.eptw-location-group
++
+.eptw-location-group {
+
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.10);
+}
+
+
+
+/* =========================================================
+   LOCATION CELL
+   ========================================================= */
+
+.eptw-location-cell {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+
+    padding:
+        16px
+        14px;
+
+    border-right:
+        1px solid
+        rgba(5, 5, 5, 0.07);
+
     font-family:
         "Arial Black",
         Arial,
@@ -658,10 +733,50 @@ body {
 
 
 /* =========================================================
+   EPTW LIST FOR EACH LOCATION
+   ========================================================= */
+
+.eptw-list {
+
+    min-width: 0;
+}
+
+
+
+/* =========================================================
+   INDIVIDUAL EPTW ENTRY
+
+   NUMBER + DESCRIPTION ARE INSIDE SAME BOX
+   ========================================================= */
+
+.eptw-entry {
+
+    padding:
+        14px
+        15px
+        16px;
+
+    min-width: 0;
+}
+
+
+.eptw-entry
++
+.eptw-entry {
+
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.08);
+}
+
+
+
+/* =========================================================
    EPTW NUMBER
    ========================================================= */
 
 .eptw-item {
+
     display: inline-block;
 
     position: relative;
@@ -699,6 +814,7 @@ body {
 
 .eptw-item:hover,
 .eptw-item:focus {
+
     transform:
         translateX(5px);
 
@@ -710,11 +826,45 @@ body {
 
 
 /* =========================================================
-   TOOLTIP
-   EJHA + EPTW
+   EPTW DESCRIPTION
+
+   SAME BOX AS NUMBER
+   NORMAL / NON-BOLD FONT
+   ========================================================= */
+
+.eptw-description {
+
+    margin-top: 11px;
+
+    max-width: 100%;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    line-height: 1.52;
+
+    letter-spacing: 0.01em;
+
+    color:
+        rgba(5, 5, 5, 0.68);
+
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   EJHA TOOLTIP
    ========================================================= */
 
 .tooltip {
+
     position: fixed;
 
     width:
@@ -756,6 +906,7 @@ body {
 
 
 .tooltip.active {
+
     opacity: 1;
 
     visibility: visible;
@@ -766,6 +917,7 @@ body {
 
 
 .tooltip-number {
+
     display: block;
 
     margin-bottom: 12px;
@@ -788,6 +940,7 @@ body {
    ========================================================= */
 
 .footer {
+
     width: 100%;
 
     background: var(--bg);
@@ -798,9 +951,12 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 0 18px;
+    padding:
+        0
+        18px;
 
     text-align: center;
 
@@ -831,28 +987,39 @@ and
 (min-height: 850px) {
 
     :root {
+
         --outer-margin: 30px;
     }
 
 
     .hero-title {
+
         font-size: 165px;
     }
 
 
     .site-item {
+
         font-size: 42px;
     }
 
 
     .ejha-item,
     .eptw-item {
+
         font-size: 21px;
     }
 
 
-    .eptw-location {
+    .eptw-location-cell {
+
         font-size: 18px;
+    }
+
+
+    .eptw-description {
+
+        font-size: 10px;
     }
 
 }
@@ -869,11 +1036,13 @@ and
 (min-width: 801px) {
 
     :root {
+
         --outer-margin: 20px;
     }
 
 
     .page {
+
         grid-template-rows:
             38%
             15px
@@ -883,6 +1052,7 @@ and
 
 
     .hero-title {
+
         font-size:
             clamp(
                 65px,
@@ -893,11 +1063,13 @@ and
 
 
     .hero-subtitle {
+
         margin-top: 20px;
     }
 
 
     .content {
+
         grid-template-rows:
             45px
             1fr;
@@ -915,18 +1087,22 @@ and
 (max-width: 800px) {
 
     :root {
+
         --outer-margin: 12px;
     }
 
 
     html,
     body {
+
         min-height: 100%;
     }
 
 
     body {
+
         overflow-x: hidden;
+
         overflow-y: auto;
 
         background: var(--black);
@@ -935,15 +1111,19 @@ and
 
 
     /* =====================================================
-       MAIN PAGE
+       MOBILE PAGE
        ===================================================== */
 
     .page {
+
         position: relative;
 
         top: auto;
+
         right: auto;
+
         bottom: auto;
+
         left: auto;
 
         width:
@@ -977,10 +1157,11 @@ and
 
 
     /* =====================================================
-       HERO
+       MOBILE HERO
        ===================================================== */
 
     .hero {
+
         min-height: 310px;
 
         flex-shrink: 0;
@@ -993,6 +1174,7 @@ and
 
 
     .hero-title {
+
         font-size:
             clamp(
                 42px,
@@ -1005,6 +1187,7 @@ and
 
 
     .krejuv-title {
+
         letter-spacing: 0.04em;
 
         padding-left: 0.04em;
@@ -1012,11 +1195,13 @@ and
 
 
     .bookmark-title {
+
         letter-spacing: -0.055em;
     }
 
 
     .hero-subtitle {
+
         margin-top: 25px;
 
         font-size: 12px;
@@ -1025,10 +1210,11 @@ and
 
 
     /* =====================================================
-       DIVIDER
+       MOBILE DIVIDER
        ===================================================== */
 
     .section-divider {
+
         height: 14px;
 
         flex-shrink: 0;
@@ -1037,10 +1223,11 @@ and
 
 
     /* =====================================================
-       CONTENT
+       MOBILE CONTENT
        ===================================================== */
 
     .content {
+
         display: block;
 
         flex: 1;
@@ -1050,6 +1237,7 @@ and
 
 
     .content-header {
+
         display: none;
     }
 
@@ -1060,11 +1248,13 @@ and
        ===================================================== */
 
     .columns {
+
         display: block;
     }
 
 
     .column {
+
         min-height: 150px;
 
         padding:
@@ -1075,6 +1265,7 @@ and
 
 
     .column + .column {
+
         border-left: none;
 
         border-top:
@@ -1089,6 +1280,7 @@ and
        ===================================================== */
 
     .column::before {
+
         display: block;
 
         margin-bottom: 18px;
@@ -1104,16 +1296,19 @@ and
 
 
     .column:nth-child(1)::before {
+
         content: "MAIN SITE";
     }
 
 
     .column:nth-child(2)::before {
+
         content: "EJHA";
     }
 
 
     .column:nth-child(3)::before {
+
         content: "EPTW";
     }
 
@@ -1124,6 +1319,7 @@ and
        ===================================================== */
 
     .column-label {
+
         margin-bottom: 10px;
 
         font-size: 10px;
@@ -1132,10 +1328,11 @@ and
 
 
     /* =====================================================
-       MAIN SITE
+       MOBILE MAIN SITE
        ===================================================== */
 
     .site-item {
+
         font-size:
             clamp(
                 27px,
@@ -1149,10 +1346,11 @@ and
 
 
     /* =====================================================
-       EJHA
+       MOBILE EJHA
        ===================================================== */
 
     .ejha-item {
+
         font-size:
             clamp(
                 16px,
@@ -1164,10 +1362,11 @@ and
 
 
     /* =====================================================
-       EPTW MOBILE TABLE
+       MOBILE EPTW
        ===================================================== */
 
     .eptw-column {
+
         padding:
             18px
             16px
@@ -1175,20 +1374,18 @@ and
     }
 
 
-    .eptw-table {
-        width: 100%;
-    }
+    .eptw-header,
+    .eptw-location-group {
 
-
-    .eptw-table-row {
         grid-template-columns:
-            0.8fr
-            1.2fr;
+            0.72fr
+            1.28fr;
     }
 
 
-    .eptw-cell {
-        min-height: 46px;
+    .eptw-header-cell {
+
+        min-height: 36px;
 
         padding:
             9px
@@ -1196,28 +1393,48 @@ and
     }
 
 
-    .eptw-table-header .eptw-cell {
-        min-height: 36px;
-    }
+    .eptw-location-cell {
 
+        padding:
+            13px
+            10px;
 
-    .eptw-location {
         font-size: 14px;
     }
 
 
+    .eptw-entry {
+
+        padding:
+            12px
+            11px
+            14px;
+    }
+
+
     .eptw-item {
+
         font-size: 16px;
+    }
+
+
+    .eptw-description {
+
+        margin-top: 9px;
+
+        font-size: 9px;
+
+        line-height: 1.5;
     }
 
 
 
     /* =====================================================
-       FOOTER
-       ALWAYS CENTER BOTTOM
+       MOBILE FOOTER
        ===================================================== */
 
     .footer {
+
         width: 100%;
 
         min-height: 55px;
@@ -1227,11 +1444,14 @@ and
         display: flex;
 
         align-items: center;
+
         justify-content: center;
 
         margin-top: auto;
 
-        padding: 0 15px;
+        padding:
+            0
+            15px;
 
         text-align: center;
 
@@ -1245,6 +1465,7 @@ and
        ===================================================== */
 
     .tooltip {
+
         width:
             calc(
                 100vw - 40px
@@ -1261,6 +1482,7 @@ and
 
 
     .tooltip-number {
+
         font-size: 17px;
     }
 
@@ -1276,11 +1498,13 @@ and
 (max-width: 480px) {
 
     :root {
+
         --outer-margin: 8px;
     }
 
 
     .hero {
+
         min-height: 270px;
 
         padding:
@@ -1290,6 +1514,7 @@ and
 
 
     .hero-title {
+
         font-size:
             clamp(
                 36px,
@@ -1300,6 +1525,7 @@ and
 
 
     .krejuv-title {
+
         letter-spacing: 0.025em;
 
         padding-left: 0.025em;
@@ -1307,6 +1533,7 @@ and
 
 
     .hero-subtitle {
+
         margin-top: 20px;
 
         font-size: 10px;
@@ -1314,6 +1541,7 @@ and
 
 
     .column {
+
         min-height: 135px;
 
         padding:
@@ -1324,6 +1552,7 @@ and
 
 
     .site-item {
+
         font-size:
             clamp(
                 24px,
@@ -1333,31 +1562,58 @@ and
     }
 
 
-    .eptw-table-row {
+    .eptw-header,
+    .eptw-location-group {
+
         grid-template-columns:
-            0.75fr
-            1.25fr;
+            0.68fr
+            1.32fr;
     }
 
 
-    .eptw-cell {
+    .eptw-header-cell {
+
         padding:
             8px
             8px;
     }
 
 
-    .eptw-location {
+    .eptw-location-cell {
+
+        padding:
+            12px
+            8px;
+
         font-size: 13px;
     }
 
 
+    .eptw-entry {
+
+        padding:
+            11px
+            9px
+            13px;
+    }
+
+
     .eptw-item {
+
         font-size: 15px;
     }
 
 
+    .eptw-description {
+
+        font-size: 8.5px;
+
+        line-height: 1.5;
+    }
+
+
     .footer {
+
         min-height: 50px;
 
         font-size: 9px;
@@ -1379,11 +1635,13 @@ and
 (orientation: landscape) {
 
     .hero {
+
         min-height: 220px;
     }
 
 
     .hero-title {
+
         font-size:
             clamp(
                 42px,
@@ -1394,11 +1652,13 @@ and
 
 
     .hero-subtitle {
+
         margin-top: 15px;
     }
 
 
     .column {
+
         min-height: 120px;
     }
 
@@ -1422,20 +1682,25 @@ and
 
     <section class="hero">
 
+
         <div class="hero-inner">
 
 
             <h1 class="hero-title">
 
+
                 <span class="krejuv-title">
                     KREJUV FEC
                 </span>
 
+
                 <br>
+
 
                 <span class="bookmark-title">
                     BOOKMARK
                 </span>
+
 
             </h1>
 
@@ -1446,6 +1711,7 @@ and
 
 
         </div>
+
 
     </section>
 
@@ -1466,33 +1732,39 @@ and
     <main class="content">
 
 
+
         <!-- =================================================
              DESKTOP COLUMN TITLES
              ================================================= -->
 
         <div class="content-header">
 
+
             <div>
                 MAIN SITE
             </div>
+
 
             <div>
                 EJHA
             </div>
 
+
             <div>
                 EPTW
             </div>
+
 
         </div>
 
 
 
         <!-- =================================================
-             COLUMNS
+             THREE COLUMNS
              ================================================= -->
 
         <div class="columns">
+
 
 
             <!-- =============================================
@@ -1516,6 +1788,7 @@ and
                 </a>
 
 
+
                 <a
                     class="site-item"
 
@@ -1529,6 +1802,7 @@ and
                 </a>
 
 
+
                 <a
                     class="site-item"
 
@@ -1540,6 +1814,7 @@ and
                 >
                     EPTW
                 </a>
+
 
 
                 <a
@@ -1604,68 +1879,170 @@ and
                 <div class="eptw-table">
 
 
-                    <!-- TABLE HEADER -->
 
-                    <div
-                        class="
-                            eptw-table-row
-                            eptw-table-header
-                        "
-                    >
+                    <!-- =====================================
+                         TABLE HEADER
+                         ===================================== -->
 
-                        <div class="eptw-cell">
+                    <div class="eptw-header">
+
+
+                        <div class="eptw-header-cell">
                             LOCATION
                         </div>
 
-                        <div class="eptw-cell">
+
+                        <div class="eptw-header-cell">
                             EPTW NO.
                         </div>
+
 
                     </div>
 
 
 
                     <!-- =====================================
-                         EPTW ENTRY 01
+                         LOCATION GROUP 01
+                         GPP4
+
+                         ADD MORE GPP4 EPTWs INSIDE
+                         .eptw-list
+
+                         GPP4 CELL WILL AUTOMATICALLY
+                         INCREASE IN HEIGHT.
                          ===================================== -->
 
-                    <div class="eptw-table-row">
+                    <div class="eptw-location-group">
 
 
-                        <div
-                            class="
-                                eptw-cell
-                                eptw-location
-                            "
-                        >
+                        <!-- LOCATION -->
+
+                        <div class="eptw-location-cell">
+
                             GPP4
+
                         </div>
 
 
-                        <div class="eptw-cell">
+
+                        <!-- EPTW LIST FOR GPP4 -->
+
+                        <div class="eptw-list">
 
 
-                            <a
-                                class="eptw-item"
 
-                                href="https://ptw.petronas.com/Ptw/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574f"
+                            <!-- =============================
+                                 GPP4 EPTW 01
+                                 ============================= -->
 
-                                target="_blank"
+                            <div class="eptw-entry">
 
-                                rel="noopener noreferrer"
 
-                                data-number="EPTW 0149403"
+                                <a
+                                    class="eptw-item"
 
-                                data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING AT GPP4 STATION"
-                            >
-                                0149403
-                            </a>
+                                    href="https://ptw.petronas.com/Ptw/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574f"
+
+                                    target="_blank"
+
+                                    rel="noopener noreferrer"
+                                >
+                                    0149403
+                                </a>
+
+
+
+                                <div class="eptw-description">
+
+                                    KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING AT GPP4 STATION
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- =============================
+                                 FUTURE GPP4 EPTW
+
+                                 COPY THIS BLOCK WHEN NEEDED
+
+                            <div class="eptw-entry">
+
+                                <a
+                                    class="eptw-item"
+                                    href="YOUR EPTW LINK"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    NEW EPTW NO.
+                                </a>
+
+                                <div class="eptw-description">
+
+                                    NEW GPP4 EPTW DESCRIPTION
+
+                                </div>
+
+                            </div>
+
+                            ============================== -->
 
 
                         </div>
 
 
                     </div>
+
+
+
+                    <!-- =====================================
+                         FUTURE LOCATION
+                         GPS
+
+                         UNCOMMENT WHEN GPS EPTW AVAILABLE
+
+                    <div class="eptw-location-group">
+
+
+                        <div class="eptw-location-cell">
+
+                            GPS
+
+                        </div>
+
+
+                        <div class="eptw-list">
+
+
+                            <div class="eptw-entry">
+
+                                <a
+                                    class="eptw-item"
+                                    href="YOUR GPS EPTW LINK"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    GPS EPTW NO.
+                                </a>
+
+
+                                <div class="eptw-description">
+
+                                    GPS EPTW DESCRIPTION
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    ====================================== -->
 
 
                 </div>
@@ -1686,7 +2063,9 @@ and
          ===================================================== -->
 
     <footer class="footer">
+
         FLY TECHSMITH
+
     </footer>
 
 
@@ -1695,7 +2074,7 @@ and
 
 
 <!-- =========================================================
-     TOOLTIP
+     EJHA TOOLTIP
      ========================================================= -->
 
 <div
@@ -1703,14 +2082,17 @@ and
     class="tooltip"
 >
 
+
     <span
         id="tooltipNumber"
         class="tooltip-number"
     ></span>
 
+
     <span
         id="tooltipDescription"
     ></span>
+
 
 </div>
 
@@ -1719,12 +2101,12 @@ and
 <script>
 
 /* =========================================================
-   EJHA + EPTW HOVER ITEMS
+   EJHA HOVER
    ========================================================= */
 
 const hoverItems =
     document.querySelectorAll(
-        ".ejha-item, .eptw-item"
+        ".ejha-item"
     );
 
 
@@ -1753,15 +2135,19 @@ const tooltipDescription =
 
 function showTooltip(item) {
 
+
     tooltipNumber.textContent =
         item.dataset.number || "";
+
 
     tooltipDescription.textContent =
         item.dataset.description || "";
 
+
     tooltip.classList.add(
         "active"
     );
+
 
 }
 
@@ -1773,9 +2159,11 @@ function showTooltip(item) {
 
 function hideTooltip() {
 
+
     tooltip.classList.remove(
         "active"
     );
+
 
 }
 
@@ -1790,7 +2178,9 @@ function positionTooltip(
     y
 ) {
 
+
     const padding = 20;
+
 
     const offset = 22;
 
@@ -1821,10 +2211,12 @@ function positionTooltip(
         padding
     ) {
 
+
         left =
             x -
             tooltipWidth -
             offset;
+
 
     }
 
@@ -1839,10 +2231,12 @@ function positionTooltip(
         padding
     ) {
 
+
         top =
             y -
             tooltipHeight -
             offset;
+
 
     }
 
@@ -1855,8 +2249,10 @@ function positionTooltip(
         padding
     ) {
 
+
         left =
             padding;
+
 
     }
 
@@ -1869,8 +2265,10 @@ function positionTooltip(
         padding
     ) {
 
+
         top =
             padding;
+
 
     }
 
@@ -1883,12 +2281,13 @@ function positionTooltip(
     tooltip.style.top =
         `${top}px`;
 
+
 }
 
 
 
 /* =========================================================
-   HOVER EVENTS
+   EJHA EVENTS
    ========================================================= */
 
 hoverItems.forEach(item => {
@@ -1898,28 +2297,35 @@ hoverItems.forEach(item => {
         "mouseenter",
         event => {
 
+
             showTooltip(item);
+
 
             positionTooltip(
                 event.clientX,
                 event.clientY
             );
 
+
         }
     );
+
 
 
     item.addEventListener(
         "mousemove",
         event => {
 
+
             positionTooltip(
                 event.clientX,
                 event.clientY
             );
 
+
         }
     );
+
 
 
     item.addEventListener(
@@ -1928,13 +2334,11 @@ hoverItems.forEach(item => {
     );
 
 
-    /* =====================================================
-       KEYBOARD FOCUS
-       ===================================================== */
 
     item.addEventListener(
         "focus",
         () => {
+
 
             showTooltip(item);
 
@@ -1948,8 +2352,10 @@ hoverItems.forEach(item => {
                 rect.bottom
             );
 
+
         }
     );
+
 
 
     item.addEventListener(
@@ -1963,7 +2369,7 @@ hoverItems.forEach(item => {
 
 
 /* =========================================================
-   CLOSE TOOLTIP WHEN SCROLLING
+   CLOSE TOOLTIP ON SCROLL
    ========================================================= */
 
 window.addEventListener(
@@ -1984,14 +2390,18 @@ document.addEventListener(
     "keydown",
     event => {
 
+
         if (
             event.key ===
             "Escape"
         ) {
 
+
             hideTooltip();
 
+
         }
+
 
     }
 );
