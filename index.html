@@ -307,7 +307,7 @@ body {
 
 
 /* =========================================================
-   MAIN SITE
+   MAIN SITE LINKS
    ========================================================= */
 
 .site-item {
@@ -453,14 +453,13 @@ body {
 
 
 /* =========================================================
-   EJHA / VEC SUBCOLUMN TITLE
+   EJHA / VEC TITLE
    ========================================================= */
 
 .permit-panel-title {
     min-height: 40px;
 
     display: flex;
-
     align-items: center;
 
     padding:
@@ -681,7 +680,6 @@ body {
     min-height: 40px;
 
     display: flex;
-
     align-items: center;
 
     padding:
@@ -720,14 +718,13 @@ body {
 
 
 /* =========================================================
-   EPTW LOCATION
+   EPTW LOCATION CELL
    ========================================================= */
 
 .eptw-location-cell {
     display: flex;
 
     align-items: flex-start;
-
     justify-content: flex-start;
 
     padding:
@@ -915,6 +912,7 @@ body {
 
 /* =========================================================
    HOVER TOOLTIP
+   EJHA + VEC + EPTW
    ========================================================= */
 
 .tooltip {
@@ -1029,13 +1027,18 @@ body {
 
 
 /* =========================================================
-   LARGE SCREEN
+   LARGE SCREEN / HP VICTUS
    ========================================================= */
 
 @media
 (min-width: 1600px)
 and
 (min-height: 850px) {
+
+    :root {
+        --outer-margin: 30px;
+    }
+
 
     .hero-title {
         font-size: 165px;
@@ -1055,6 +1058,11 @@ and
 
     .eptw-location-cell {
         font-size: 18px;
+    }
+
+
+    .eptw-description {
+        font-size: 10px;
     }
 
 }
@@ -1128,6 +1136,8 @@ and
     body {
         overflow-x: hidden;
         overflow-y: auto;
+
+        background: var(--black);
     }
 
 
@@ -1142,6 +1152,12 @@ and
         width:
             calc(
                 100% -
+                (var(--outer-margin) * 2)
+            );
+
+        min-height:
+            calc(
+                100vh -
                 (var(--outer-margin) * 2)
             );
 
@@ -1216,6 +1232,8 @@ and
         display: block;
 
         flex: 1;
+
+        min-height: 0;
     }
 
 
@@ -1325,6 +1343,8 @@ and
 
     .permit-description {
         font-size: 8.5px;
+
+        line-height: 1.5;
     }
 
 
@@ -1371,6 +1391,8 @@ and
         margin-top: 9px;
 
         font-size: 9px;
+
+        line-height: 1.5;
     }
 
 
@@ -1388,6 +1410,12 @@ and
 
         margin-top: auto;
 
+        padding:
+            0
+            15px;
+
+        text-align: center;
+
         font-size: 10px;
     }
 
@@ -1403,6 +1431,8 @@ and
         padding: 18px;
 
         font-size: 11px;
+
+        line-height: 1.5;
     }
 
 
@@ -1478,7 +1508,7 @@ and
     }
 
 
-    /* Stack EJHA / VEC on very small phones */
+    /* STACK EJHA / VEC ON SMALL PHONE */
 
     .permit-grid {
         grid-template-columns:
@@ -1495,6 +1525,16 @@ and
     }
 
 
+    .permit-item {
+        font-size: 15px;
+    }
+
+
+    .permit-description {
+        font-size: 8.5px;
+    }
+
+
     .eptw-header,
     .eptw-location-group {
         grid-template-columns:
@@ -1505,7 +1545,6 @@ and
 
     .eptw-header-cell {
         padding:
-            8px
             8px;
     }
 
@@ -1534,6 +1573,8 @@ and
 
     .eptw-description {
         font-size: 8.5px;
+
+        line-height: 1.5;
     }
 
 
@@ -1541,6 +1582,44 @@ and
         min-height: 50px;
 
         font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE LANDSCAPE
+   ========================================================= */
+
+@media
+(max-width: 800px)
+and
+(max-height: 500px)
+and
+(orientation: landscape) {
+
+    .hero {
+        min-height: 220px;
+    }
+
+
+    .hero-title {
+        font-size:
+            clamp(
+                42px,
+                9vw,
+                72px
+            );
+    }
+
+
+    .hero-subtitle {
+        margin-top: 15px;
+    }
+
+
+    .column {
+        min-height: 120px;
     }
 
 }
@@ -1564,6 +1643,7 @@ and
 
         <div class="hero-inner">
 
+
             <h1 class="hero-title">
 
                 <span class="krejuv-title">
@@ -1583,10 +1663,15 @@ and
                 TechSmith
             </div>
 
+
         </div>
 
     </section>
 
+
+    <!-- =====================================================
+         BLACK DIVIDER
+         ===================================================== -->
 
     <div class="section-divider"></div>
 
@@ -1598,7 +1683,9 @@ and
     <main class="content">
 
 
-        <!-- MAIN COLUMN TITLES -->
+        <!-- =================================================
+             DESKTOP COLUMN TITLES
+             ================================================= -->
 
         <div class="content-header">
 
@@ -1616,6 +1703,10 @@ and
 
         </div>
 
+
+        <!-- =================================================
+             THREE MAIN COLUMNS
+             ================================================= -->
 
         <div class="columns">
 
@@ -1683,7 +1774,7 @@ and
 
 
                     <!-- =========================================
-                         EJHA SUBCOLUMN
+                         EJHA
                          ========================================= -->
 
                     <div class="permit-panel">
@@ -1728,7 +1819,7 @@ and
 
 
                     <!-- =========================================
-                         VEC SUBCOLUMN
+                         VEC
                          ========================================= -->
 
                     <div class="permit-panel">
@@ -1789,17 +1880,22 @@ and
                 <div class="eptw-table">
 
 
-                    <!-- HEADER -->
+                    <!-- =========================================
+                         EPTW HEADER
+                         ========================================= -->
 
                     <div class="eptw-header">
+
 
                         <div class="eptw-header-cell">
                             LOCATION
                         </div>
 
+
                         <div class="eptw-header-cell">
                             EPTW NO.
                         </div>
+
 
                     </div>
 
@@ -1818,6 +1914,8 @@ and
 
                         <div class="eptw-list">
 
+
+                            <!-- GPP4 EPTW 0149403 -->
 
                             <div class="eptw-entry">
 
@@ -1870,6 +1968,8 @@ and
                         <div class="eptw-list">
 
 
+                            <!-- BV10.3 EPTW 0149480 -->
+
                             <div class="eptw-entry">
 
 
@@ -1921,6 +2021,8 @@ and
                         <div class="eptw-list">
 
 
+                            <!-- BV13.1 EPTW 0149487 -->
+
                             <div class="eptw-entry">
 
 
@@ -1959,6 +2061,7 @@ and
 
                     <!-- =========================================
                          GPS
+                         MULTIPLE EPTW
                          ========================================= -->
 
                     <div class="eptw-location-group">
@@ -1971,6 +2074,10 @@ and
 
                         <div class="eptw-list">
 
+
+                            <!-- =================================
+                                 GPS EPTW 0149469
+                                 ================================= -->
 
                             <div class="eptw-entry">
 
@@ -1995,6 +2102,40 @@ and
                                 <div class="eptw-description">
 
                                     KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- =================================
+                                 GPS EPTW 0150142
+                                 ================================= -->
+
+                            <div class="eptw-entry">
+
+
+                                <a
+                                    class="eptw-item hover-detail"
+
+                                    href="https://ptw.petronas.com/Ptw/Apply?applicationId=5456cdea-24a3-4a99-8786-af5a5e50615a"
+
+                                    target="_blank"
+
+                                    rel="noopener noreferrer"
+
+                                    data-number="EPTW 0150142"
+
+                                    data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+                                >
+                                    0150142
+                                </a>
+
+
+                                <div class="eptw-description">
+
+                                    GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
 
                                 </div>
 
@@ -2034,6 +2175,7 @@ and
 
 <!-- =========================================================
      HOVER TOOLTIP
+     EJHA + VEC + EPTW
      ========================================================= -->
 
 <div
@@ -2056,11 +2198,7 @@ and
 <script>
 
 /* =========================================================
-   ALL HOVER-DETAIL ITEMS
-
-   EJHA
-   VEC
-   EPTW
+   ALL ITEMS WITH DESCRIPTION HOVER
    ========================================================= */
 
 const hoverItems =
@@ -2129,16 +2267,21 @@ function positionTooltip(
 ) {
 
     const padding = 20;
+
     const offset = 22;
+
 
     const tooltipWidth =
         tooltip.offsetWidth;
 
+
     const tooltipHeight =
         tooltip.offsetHeight;
 
+
     let left =
         x + offset;
+
 
     let top =
         y + offset;
@@ -2215,7 +2358,7 @@ function positionTooltip(
 
 
 /* =========================================================
-   EVENTS
+   HOVER + KEYBOARD EVENTS
    ========================================================= */
 
 hoverItems.forEach(item => {
@@ -2260,6 +2403,7 @@ hoverItems.forEach(item => {
         () => {
 
             showTooltip(item);
+
 
             const rect =
                 item.getBoundingClientRect();
