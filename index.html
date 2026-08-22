@@ -47,44 +47,36 @@
 ========================================================= */
 
 :root {
-
     --bg: #f4f1eb;
     --black: #050505;
     --border: #aaa69f;
     --soft-border: rgba(5, 5, 5, 0.10);
     --soft-text: rgba(5, 5, 5, 0.62);
-
     --outer-margin: 30px;
 }
 
 
 * {
-
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
 }
 
 
 html {
-
     scroll-behavior: smooth;
 }
 
 
 html,
 body {
-
     width: 100%;
     min-height: 100%;
 }
 
 
 body {
-
     background: var(--black);
-
     color: var(--black);
 
     font-family:
@@ -103,7 +95,6 @@ body {
 ========================================================= */
 
 .page {
-
     width:
         calc(
             100% -
@@ -131,7 +122,6 @@ body {
 ========================================================= */
 
 .hero {
-
     min-height: 420px;
 
     display: flex;
@@ -147,13 +137,11 @@ body {
 
 
 .hero-inner {
-
     width: 100%;
 }
 
 
 .hero-title {
-
     font-family:
         "Arial Black",
         Arial,
@@ -176,7 +164,6 @@ body {
 
 
 .krejuv-title {
-
     display: inline-block;
 
     letter-spacing: 0.08em;
@@ -186,7 +173,6 @@ body {
 
 
 .bookmark-title {
-
     display: inline-block;
 
     letter-spacing: -0.075em;
@@ -194,7 +180,6 @@ body {
 
 
 .hero-subtitle {
-
     margin-top: 35px;
 
     font-size:
@@ -216,7 +201,6 @@ body {
 ========================================================= */
 
 .section-divider {
-
     width: 100%;
     height: 18px;
 
@@ -227,11 +211,9 @@ body {
 
 /* =========================================================
    TOP SECTION
-   MAIN SITE + EJHA/VEC
 ========================================================= */
 
 .top-section-header {
-
     display: grid;
 
     grid-template-columns:
@@ -247,7 +229,6 @@ body {
 
 
 .top-section-header > div {
-
     display: flex;
     align-items: center;
 
@@ -266,7 +247,6 @@ body {
 
 
 .top-section-header > div + div {
-
     border-left:
         1px solid
         var(--border);
@@ -274,7 +254,6 @@ body {
 
 
 .top-columns {
-
     display: grid;
 
     grid-template-columns:
@@ -284,7 +263,6 @@ body {
 
 
 .top-column {
-
     min-width: 0;
 
     padding:
@@ -295,7 +273,6 @@ body {
 
 
 .top-column + .top-column {
-
     border-left:
         1px solid
         var(--border);
@@ -304,11 +281,10 @@ body {
 
 
 /* =========================================================
-   MAIN SITE
+   MAIN SITE LINKS
 ========================================================= */
 
 .site-item {
-
     display: block;
 
     width: fit-content;
@@ -349,14 +325,12 @@ body {
 
 
 .site-item:hover {
-
     transform:
         translateX(10px);
 }
 
 
 .site-item::after {
-
     content: "↗";
 
     position: absolute;
@@ -380,7 +354,6 @@ body {
 
 
 .site-item:hover::after {
-
     opacity: 1;
 
     transform:
@@ -393,18 +366,16 @@ body {
 
 .main-site-column:has(.site-item:hover)
 .site-item:not(:hover) {
-
     opacity: 0.25;
 }
 
 
 
 /* =========================================================
-   EJHA + VEC
+   EJHA / VEC
 ========================================================= */
 
 .permit-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -418,13 +389,11 @@ body {
 
 
 .permit-panel {
-
     min-width: 0;
 }
 
 
 .permit-panel + .permit-panel {
-
     border-left:
         1px solid
         var(--soft-border);
@@ -432,7 +401,6 @@ body {
 
 
 .permit-panel-title {
-
     min-height: 42px;
 
     display: flex;
@@ -460,7 +428,6 @@ body {
 
 
 .permit-entry {
-
     padding:
         16px
         15px
@@ -469,7 +436,6 @@ body {
 
 
 .permit-item {
-
     display: inline-block;
 
     position: relative;
@@ -503,7 +469,6 @@ body {
 
 .permit-item:hover,
 .permit-item:focus {
-
     transform:
         translateX(5px);
 
@@ -514,7 +479,6 @@ body {
 
 
 .permit-item::after {
-
     content: "↗";
 
     position: absolute;
@@ -530,28 +494,16 @@ body {
     font-size: 0.48em;
 
     opacity: 0;
-
-    transition:
-        opacity 0.18s ease,
-        transform 0.18s ease;
 }
 
 
 .permit-item:hover::after,
 .permit-item:focus::after {
-
     opacity: 1;
-
-    transform:
-        translate(
-            3px,
-            -50%
-        );
 }
 
 
 .permit-description {
-
     margin-top: 11px;
 
     font-size: 9.5px;
@@ -569,28 +521,26 @@ body {
 
 
 /* =========================================================
-   EPTW FULL-WIDTH SECTION
+   EPTW SECTION
 ========================================================= */
 
 .eptw-section {
-
     width: 100%;
 }
 
 
 .eptw-section-head {
+    min-height: 80px;
 
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 25px;
-
-    min-height: 76px;
+    gap: 30px;
 
     padding:
-        14px
+        16px
         22px;
 
     border-bottom:
@@ -600,7 +550,6 @@ body {
 
 
 .eptw-section-title {
-
     font-family:
         "Arial Black",
         Arial,
@@ -622,14 +571,12 @@ body {
 }
 
 
-.eptw-live-info {
-
+.eptw-live {
     text-align: right;
 }
 
 
 .live-clock {
-
     font-family:
         "Arial Black",
         Arial,
@@ -639,23 +586,20 @@ body {
     font-size: 13px;
 
     font-weight: 900;
-
-    letter-spacing: 0.03em;
 }
 
 
 .current-shift {
-
     margin-top: 3px;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    font-weight: 700;
+    font-weight: 900;
 
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
 
     color:
-        rgba(5, 5, 5, 0.58);
+        rgba(5, 5, 5, 0.52);
 
     text-transform: uppercase;
 }
@@ -667,7 +611,6 @@ body {
 ========================================================= */
 
 .shift-guide {
-
     display: grid;
 
     grid-template-columns:
@@ -682,7 +625,6 @@ body {
 
 
 .shift-guide-item {
-
     padding:
         12px
         20px;
@@ -690,7 +632,6 @@ body {
 
 
 .shift-guide-item + .shift-guide-item {
-
     border-left:
         1px solid
         var(--border);
@@ -698,10 +639,9 @@ body {
 
 
 .shift-guide-label {
-
     display: block;
 
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 
     font-size: 8px;
 
@@ -710,14 +650,13 @@ body {
     letter-spacing: 0.09em;
 
     color:
-        rgba(5, 5, 5, 0.52);
+        rgba(5, 5, 5, 0.50);
 
     text-transform: uppercase;
 }
 
 
 .shift-guide-value {
-
     font-size: 11px;
 
     font-weight: 900;
@@ -728,30 +667,172 @@ body {
 
 
 /* =========================================================
-   EPTW GROUP
+   TABLE AREA
 ========================================================= */
 
-.ptw-group {
-
+.eptw-table-container {
     padding:
-        24px
+        22px
         22px
         30px;
+
+    overflow-x: auto;
 }
 
 
-.ptw-group + .ptw-group {
+
+/* =========================================================
+   EPTW TABLE
+========================================================= */
+
+.eptw-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+    border:
+        1px solid
+        var(--soft-border);
+}
+
+
+.eptw-table col.location-col {
+    width: 9%;
+}
+
+
+.eptw-table col.number-col {
+    width: 11%;
+}
+
+
+.eptw-table col.status-col {
+    width: 15%;
+}
+
+
+.eptw-table col.validity-col {
+    width: 27%;
+}
+
+
+.eptw-table col.description-col {
+    width: 38%;
+}
+
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.eptw-table thead th {
+    padding:
+        13px
+        12px;
+
+    border-right:
+        1px solid
+        var(--soft-border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
+    text-align: left;
+
+    vertical-align: middle;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+
+    color:
+        rgba(5, 5, 5, 0.58);
+
+    text-transform: uppercase;
+}
+
+
+.eptw-table thead th:last-child {
+    border-right: none;
+}
+
+
+
+/* =========================================================
+   SECTION ROW
+========================================================= */
+
+.category-row td {
+    padding:
+        11px
+        12px;
 
     border-top:
         1px solid
         var(--border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
+    background:
+        rgba(5, 5, 5, 0.035);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
 }
 
 
-.ptw-group-title {
 
-    margin-bottom: 16px;
+/* =========================================================
+   NORMAL PTW ROW
+========================================================= */
 
+.ptw-data-row td {
+    padding:
+        14px
+        12px;
+
+    border-right:
+        1px solid
+        var(--soft-border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
+    vertical-align: top;
+}
+
+
+.ptw-data-row td:last-child {
+    border-right: none;
+}
+
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-name {
     font-family:
         "Arial Black",
         Arial,
@@ -762,156 +843,7 @@ body {
 
     font-weight: 900;
 
-    letter-spacing: 0.03em;
-
-    text-transform: uppercase;
-}
-
-
-.location-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 18px;
-}
-
-
-
-/* =========================================================
-   LOCATION BLOCK
-========================================================= */
-
-.location-block {
-
-    min-width: 0;
-
-    border:
-        1px solid
-        var(--soft-border);
-}
-
-
-.location-title {
-
-    min-height: 47px;
-
-    display: flex;
-    align-items: center;
-
-    padding:
-        10px
-        15px;
-
-    border-bottom:
-        1px solid
-        var(--soft-border);
-
-    font-family:
-        "Arial Black",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 17px;
-
-    font-weight: 900;
-
-    letter-spacing: -0.025em;
-
-    text-transform: uppercase;
-}
-
-
-
-/* =========================================================
-   EPTW PERMIT CARD
-========================================================= */
-
-.ptw-card {
-
-    position: relative;
-
-    min-width: 0;
-
-    padding:
-        17px
-        16px
-        18px;
-
-    transition:
-        opacity 0.2s ease,
-        background 0.2s ease;
-}
-
-
-.ptw-card + .ptw-card {
-
-    border-top:
-        1px solid
-        var(--soft-border);
-}
-
-
-
-/* =========================================================
-   PTW STATUS ROW
-========================================================= */
-
-.ptw-status-row {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 12px;
-
-    margin-bottom: 12px;
-}
-
-
-.ptw-status {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    min-height: 24px;
-
-    padding:
-        5px
-        8px;
-
-    border:
-        1px solid
-        rgba(5, 5, 5, 0.20);
-
-    font-size: 8px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-}
-
-
-.ptw-countdown {
-
-    font-size: 8px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.06em;
-
-    color:
-        rgba(5, 5, 5, 0.48);
-
-    text-align: right;
+    line-height: 1.1;
 
     text-transform: uppercase;
 }
@@ -923,7 +855,6 @@ body {
 ========================================================= */
 
 .ptw-number {
-
     display: inline-block;
 
     position: relative;
@@ -940,16 +871,16 @@ body {
 
     font-size:
         clamp(
-            20px,
-            1.6vw,
-            30px
+            17px,
+            1.2vw,
+            23px
         );
 
     font-weight: 900;
 
     line-height: 1;
 
-    letter-spacing: -0.045em;
+    letter-spacing: -0.035em;
 
     transition:
         transform 0.18s ease,
@@ -959,9 +890,8 @@ body {
 
 .ptw-number:hover,
 .ptw-number:focus {
-
     transform:
-        translateX(5px);
+        translateX(4px);
 
     opacity: 0.58;
 
@@ -970,13 +900,12 @@ body {
 
 
 .ptw-number::after {
-
     content: "↗";
 
     position: absolute;
 
     left:
-        calc(100% + 8px);
+        calc(100% + 6px);
 
     top: 50%;
 
@@ -988,175 +917,61 @@ body {
         Helvetica,
         sans-serif;
 
-    font-size: 0.42em;
+    font-size: 0.45em;
 
     opacity: 0;
-
-    transition:
-        opacity 0.18s ease,
-        transform 0.18s ease;
 }
 
 
 .ptw-number:hover::after,
 .ptw-number:focus::after {
-
     opacity: 1;
-
-    transform:
-        translate(
-            3px,
-            -50%
-        );
 }
 
 
 
 /* =========================================================
-   PTW DESCRIPTION
+   STATUS
 ========================================================= */
 
-.ptw-description {
+.status-badge {
+    display: inline-flex;
 
-    margin-top: 11px;
+    align-items: center;
 
-    font-size: 10px;
-
-    font-weight: 400;
-
-    line-height: 1.52;
-
-    color:
-        rgba(5, 5, 5, 0.69);
-
-    text-transform: uppercase;
-}
-
-
-
-/* =========================================================
-   VALIDITY
-========================================================= */
-
-.ptw-validity {
-
-    margin-top: 14px;
-
-    padding-top: 11px;
-
-    border-top:
-        1px solid
-        rgba(5, 5, 5, 0.08);
-}
-
-
-.ptw-meta-label {
-
-    display: block;
-
-    margin-bottom: 4px;
-
-    font-size: 8px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.09em;
-
-    color:
-        rgba(5, 5, 5, 0.47);
-
-    text-transform: uppercase;
-}
-
-
-.ptw-meta-value {
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    line-height: 1.45;
-
-    text-transform: uppercase;
-}
-
-
-
-/* =========================================================
-   LAST USABLE SHIFT
-========================================================= */
-
-.last-shift-box {
-
-    margin-top: 10px;
+    min-height: 26px;
 
     padding:
-        10px
-        11px;
+        5px
+        8px;
 
     border:
         1px solid
-        rgba(5, 5, 5, 0.12);
-
-    background:
-        rgba(255, 255, 255, 0.10);
-}
-
-
-.last-shift-label {
-
-    display: block;
-
-    margin-bottom: 4px;
+        rgba(5, 5, 5, 0.20);
 
     font-size: 8px;
 
     font-weight: 900;
 
-    letter-spacing: 0.09em;
+    line-height: 1.2;
 
-    color:
-        rgba(5, 5, 5, 0.48);
-
-    text-transform: uppercase;
-}
-
-
-.last-shift-value {
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    line-height: 1.45;
+    letter-spacing: 0.06em;
 
     text-transform: uppercase;
 }
 
 
+.status-note {
+    margin-top: 9px;
 
-/* =========================================================
-   DYNAMIC SHIFT MESSAGE
-========================================================= */
-
-.ptw-shift-message {
-
-    margin-top: 10px;
-
-    padding:
-        10px
-        11px;
-
-    font-size: 9px;
+    font-size: 8.5px;
 
     font-weight: 700;
 
-    line-height: 1.5;
+    line-height: 1.45;
 
-    letter-spacing: 0.015em;
-
-    background:
-        rgba(5, 5, 5, 0.035);
+    color:
+        rgba(5, 5, 5, 0.60);
 
     text-transform: uppercase;
 }
@@ -1167,36 +982,24 @@ body {
    ACTIVE
 ========================================================= */
 
-.ptw-card.is-active
-.ptw-status {
-
+.ptw-data-row.is-active
+.status-badge {
     background: transparent;
-
-    color: var(--black);
 }
 
 
 
 /* =========================================================
-   NEXT SHIFT IS LAST
+   NEXT SHIFT LAST
 ========================================================= */
 
-.ptw-card.is-next-last {
-
-    box-shadow:
-        inset 4px 0 0
-        var(--black);
-}
-
-
-.ptw-card.is-next-last
-.ptw-status {
-
+.ptw-data-row.is-next-last
+.status-badge {
     background: var(--black);
 
-    color: var(--bg);
-
     border-color: var(--black);
+
+    color: var(--bg);
 }
 
 
@@ -1205,30 +1008,28 @@ body {
    LAST SHIFT NOW
 ========================================================= */
 
-.ptw-card.is-last-shift {
-
-    background:
-        rgba(5, 5, 5, 0.055);
-
+.ptw-data-row.is-last-shift {
     box-shadow:
-        inset 7px 0 0
+        inset 6px 0 0
         var(--black);
 }
 
 
-.ptw-card.is-last-shift
-.ptw-status {
-
+.ptw-data-row.is-last-shift
+.status-badge {
     background: var(--black);
 
-    color: var(--bg);
-
     border-color: var(--black);
+
+    color: var(--bg);
 }
 
 
-.ptw-card.is-last-shift
-.ptw-shift-message {
+.ptw-data-row.is-last-shift
+.status-note {
+    padding:
+        8px
+        9px;
 
     background: var(--black);
 
@@ -1238,68 +1039,57 @@ body {
 }
 
 
-.ptw-card.is-last-shift
-.ptw-status::before {
 
-    content: "";
+/* =========================================================
+   EXPIRED
+========================================================= */
 
-    width: 6px;
-    height: 6px;
-
-    margin-right: 6px;
-
-    background: var(--bg);
-
-    border-radius: 50%;
-
-    animation:
-        statusBlink
-        1s
-        infinite;
+.ptw-data-row.is-expired {
+    opacity: 0.48;
 }
 
 
-@keyframes statusBlink {
+.ptw-data-row.is-expired:hover {
+    opacity: 0.78;
+}
 
-    0%,
-    45% {
 
-        opacity: 1;
-    }
-
-    50%,
-    100% {
-
-        opacity: 0.15;
-    }
+.ptw-data-row.is-expired
+.status-badge {
+    background:
+        rgba(5, 5, 5, 0.07);
 }
 
 
 
 /* =========================================================
-   EXPIRED / ARCHIVE
+   VEC EXPIRED
 ========================================================= */
 
-.ptw-card.is-expired {
+.ptw-data-row.is-vec-expired {
+    opacity: 0.70;
 
-    opacity: 0.48;
+    box-shadow:
+        inset 6px 0 0
+        var(--black);
 }
 
 
-.ptw-card.is-expired:hover {
+.ptw-data-row.is-vec-expired
+.status-badge {
+    background: var(--black);
 
-    opacity: 0.78;
+    border-color: var(--black);
+
+    color: var(--bg);
 }
 
 
-.ptw-card.is-expired
-.ptw-status {
+.ptw-data-row.is-vec-expired
+.status-note {
+    font-weight: 900;
 
-    background:
-        rgba(5, 5, 5, 0.08);
-
-    color:
-        rgba(5, 5, 5, 0.67);
+    color: var(--black);
 }
 
 
@@ -1308,10 +1098,200 @@ body {
    UPCOMING
 ========================================================= */
 
-.ptw-card.is-upcoming
-.ptw-status {
-
+.ptw-data-row.is-upcoming
+.status-badge {
     border-style: dashed;
+}
+
+
+
+/* =========================================================
+   VALIDITY COLUMN
+========================================================= */
+
+.validity-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 7.5px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+
+    color:
+        rgba(5, 5, 5, 0.45);
+
+    text-transform: uppercase;
+}
+
+
+.validity-value {
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+.last-usable {
+    margin-top: 11px;
+
+    padding-top: 9px;
+
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.08);
+}
+
+
+.last-usable-value {
+    font-size: 9px;
+
+    font-weight: 900;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   VEC DEPENDENCY
+========================================================= */
+
+.vec-dependency {
+    margin-top: 12px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid
+        rgba(5, 5, 5, 0.14);
+
+    background:
+        rgba(5, 5, 5, 0.025);
+}
+
+
+.vec-dependency-title {
+    margin-bottom: 7px;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+.vec-number {
+    display: inline-block;
+
+    position: relative;
+
+    color: var(--black);
+
+    text-decoration: none;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+.vec-number::after {
+    content: "↗";
+
+    margin-left: 5px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 8px;
+}
+
+
+.vec-description {
+    margin-top: 6px;
+
+    font-size: 8px;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+
+    color:
+        rgba(5, 5, 5, 0.66);
+
+    text-transform: uppercase;
+}
+
+
+.vec-validity {
+    margin-top: 7px;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+.effective-validity {
+    margin-top: 7px;
+
+    padding-top: 7px;
+
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.08);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description-text {
+    font-size: 9px;
+
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    color:
+        rgba(5, 5, 5, 0.69);
+
+    text-transform: uppercase;
 }
 
 
@@ -1321,7 +1301,6 @@ body {
 ========================================================= */
 
 .tooltip {
-
     position: fixed;
 
     width:
@@ -1366,7 +1345,6 @@ body {
 
 
 .tooltip.active {
-
     opacity: 1;
     visibility: visible;
 
@@ -1376,7 +1354,6 @@ body {
 
 
 .tooltip-number {
-
     display: block;
 
     margin-bottom: 11px;
@@ -1399,7 +1376,6 @@ body {
 ========================================================= */
 
 .footer {
-
     min-height: 58px;
 
     display: flex;
@@ -1437,19 +1413,16 @@ and
 (min-width: 801px) {
 
     :root {
-
         --outer-margin: 20px;
     }
 
 
     .hero {
-
         min-height: 340px;
     }
 
 
     .hero-title {
-
         font-size:
             clamp(
                 65px,
@@ -1460,7 +1433,6 @@ and
 
 
     .hero-subtitle {
-
         margin-top: 22px;
     }
 
@@ -1469,20 +1441,18 @@ and
 
 
 /* =========================================================
-   TABLET / PHONE
+   PHONE / TABLET
 ========================================================= */
 
 @media
 (max-width: 800px) {
 
     :root {
-
         --outer-margin: 12px;
     }
 
 
     .page {
-
         width:
             calc(
                 100% -
@@ -1495,7 +1465,6 @@ and
 
 
     .hero {
-
         min-height: 300px;
 
         padding:
@@ -1505,7 +1474,6 @@ and
 
 
     .hero-title {
-
         font-size:
             clamp(
                 42px,
@@ -1518,7 +1486,6 @@ and
 
 
     .krejuv-title {
-
         letter-spacing: 0.04em;
 
         padding-left: 0.04em;
@@ -1526,13 +1493,11 @@ and
 
 
     .bookmark-title {
-
         letter-spacing: -0.055em;
     }
 
 
     .hero-subtitle {
-
         margin-top: 25px;
 
         font-size: 12px;
@@ -1540,7 +1505,6 @@ and
 
 
     .section-divider {
-
         height: 14px;
     }
 
@@ -1548,19 +1512,16 @@ and
     /* TOP */
 
     .top-section-header {
-
         display: none;
     }
 
 
     .top-columns {
-
         display: block;
     }
 
 
     .top-column {
-
         padding:
             19px
             16px
@@ -1569,7 +1530,6 @@ and
 
 
     .top-column + .top-column {
-
         border-left: none;
 
         border-top:
@@ -1579,7 +1539,6 @@ and
 
 
     .top-column::before {
-
         display: block;
 
         margin-bottom: 18px;
@@ -1595,19 +1554,16 @@ and
 
 
     .top-column:nth-child(1)::before {
-
         content: "MAIN SITE";
     }
 
 
     .top-column:nth-child(2)::before {
-
         content: "EJHA / VEC";
     }
 
 
     .site-item {
-
         font-size:
             clamp(
                 27px,
@@ -1617,10 +1573,7 @@ and
     }
 
 
-    /* EPTW HEADER */
-
     .eptw-section-head {
-
         align-items: flex-start;
 
         flex-direction: column;
@@ -1631,23 +1584,18 @@ and
     }
 
 
-    .eptw-live-info {
-
+    .eptw-live {
         text-align: left;
     }
 
 
-    /* SHIFT */
-
     .shift-guide {
-
         grid-template-columns:
             1fr;
     }
 
 
     .shift-guide-item + .shift-guide-item {
-
         border-left: none;
 
         border-top:
@@ -1656,34 +1604,107 @@ and
     }
 
 
-    /* PTW */
+    .eptw-table-container {
+        padding:
+            16px;
+    }
 
-    .ptw-group {
+
+    /*
+       MOBILE TABLE BECOMES VERTICAL CARDS
+    */
+
+    .eptw-table,
+    .eptw-table tbody,
+    .eptw-table tr,
+    .eptw-table td {
+        display: block;
+
+        width: 100%;
+    }
+
+
+    .eptw-table colgroup,
+    .eptw-table thead {
+        display: none;
+    }
+
+
+    .category-row td {
+        display: block;
+
+        margin-top: 12px;
+    }
+
+
+    .ptw-data-row {
+        display: block;
+
+        margin-bottom: 14px;
+
+        border:
+            1px solid
+            var(--soft-border);
+    }
+
+
+    .ptw-data-row td {
+        display: block;
+
+        width: 100%;
 
         padding:
-            20px
-            16px
-            25px;
+            11px
+            12px;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid
+            var(--soft-border);
     }
 
 
-    .location-grid {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 15px;
+    .ptw-data-row td:last-child {
+        border-bottom: none;
     }
 
 
-    .ptw-description {
+    .ptw-data-row td::before {
+        content:
+            attr(data-label);
 
+        display: block;
+
+        margin-bottom: 7px;
+
+        font-size: 7.5px;
+
+        font-weight: 900;
+
+        letter-spacing: 0.08em;
+
+        color:
+            rgba(5, 5, 5, 0.45);
+
+        text-transform: uppercase;
+    }
+
+
+    .ptw-data-row.is-last-shift,
+    .ptw-data-row.is-vec-expired {
+        box-shadow:
+            inset 6px 0 0
+            var(--black);
+    }
+
+
+    .description-text {
         font-size: 9px;
     }
 
 
     .tooltip {
-
         width:
             calc(
                 100vw - 40px
@@ -1706,13 +1727,11 @@ and
 (max-width: 480px) {
 
     :root {
-
         --outer-margin: 8px;
     }
 
 
     .hero {
-
         min-height: 270px;
 
         padding:
@@ -1722,7 +1741,6 @@ and
 
 
     .hero-title {
-
         font-size:
             clamp(
                 36px,
@@ -1733,14 +1751,12 @@ and
 
 
     .permit-grid {
-
         grid-template-columns:
             1fr;
     }
 
 
     .permit-panel + .permit-panel {
-
         border-left: none;
 
         border-top:
@@ -1749,28 +1765,7 @@ and
     }
 
 
-    .ptw-status-row {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    .ptw-countdown {
-
-        text-align: left;
-    }
-
-
-    .ptw-number {
-
-        font-size: 20px;
-    }
-
-
     .footer {
-
         min-height: 50px;
 
         font-size: 9px;
@@ -1811,6 +1806,7 @@ and
 
             </h1>
 
+
             <div class="hero-subtitle">
                 TechSmith
             </div>
@@ -1824,7 +1820,7 @@ and
 
 
     <!-- =====================================================
-         TOP SECTION HEADER
+         TOP HEADER
     ===================================================== -->
 
     <div class="top-section-header">
@@ -1841,7 +1837,7 @@ and
 
 
     <!-- =====================================================
-         TOP SECTION
+         TOP CONTENT
     ===================================================== -->
 
     <section class="top-columns">
@@ -2005,7 +2001,7 @@ and
 
 
         <!-- =================================================
-             EPTW HEADER
+             HEADER
         ================================================= -->
 
         <div class="eptw-section-head">
@@ -2016,7 +2012,8 @@ and
             </div>
 
 
-            <div class="eptw-live-info">
+            <div class="eptw-live">
+
 
                 <div
                     id="liveClock"
@@ -2025,12 +2022,14 @@ and
                     --
                 </div>
 
+
                 <div
                     id="currentShift"
                     class="current-shift"
                 >
                     --
                 </div>
+
 
             </div>
 
@@ -2091,90 +2090,139 @@ and
 
 
         <!-- =================================================
-             PIPELINE PRE-COMMISSIONING
+             TABLE
         ================================================= -->
 
-        <div class="ptw-group">
+        <div class="eptw-table-container">
 
 
-            <div class="ptw-group-title">
-                PIPELINE PRE-COMMISSIONING
-            </div>
+            <table class="eptw-table">
 
 
-            <div class="location-grid">
+                <colgroup>
+
+                    <col class="location-col">
+
+                    <col class="number-col">
+
+                    <col class="status-col">
+
+                    <col class="validity-col">
+
+                    <col class="description-col">
+
+                </colgroup>
 
 
-                <!-- =========================================
-                     GPS
-                ========================================= -->
+                <thead>
 
-                <div class="location-block">
+                    <tr>
+
+                        <th>
+                            LOCATION
+                        </th>
+
+                        <th>
+                            EPTW NO.
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            PTW VALIDITY / LAST USABLE SHIFT
+                        </th>
+
+                        <th>
+                            DESCRIPTION
+                        </th>
+
+                    </tr>
+
+                </thead>
 
 
-                    <div class="location-title">
-                        GPS
-                    </div>
+                <tbody>
 
 
-                    <!-- =====================================
-                         GPS NEW / CURRENT PTW
+                    <!-- =================================================
+                         PIPELINE PRE-COMMISSIONING
+                    ================================================= -->
+
+                    <tr class="category-row">
+
+                        <td colspan="5">
+                            PIPELINE PRE-COMMISSIONING
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =============================================
+                         GPS CURRENT
                          151521
-                    ====================================== -->
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-20T20:56:00"
+                        data-start="2026-08-20T20:56:00+08:00"
 
-                        data-end="2026-08-27T17:59:00"
+                        data-end="2026-08-27T17:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPS
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 151521"
+
+                                data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+                            >
+                                151521
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 151521"
-
-                            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-                        >
-                            151521
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 20 AUG 2026 08:56 PM
                                 -
@@ -2182,88 +2230,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                    <!-- =====================================
-                         GPS OLD PTW
+                    <!-- =============================================
+                         GPS OLD
                          0149469
-                    ====================================== -->
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-14T10:02:00"
+                        data-start="2026-08-14T10:02:00+08:00"
 
-                        data-end="2026-08-21T05:59:00"
+                        data-end="2026-08-21T05:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPS
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0149469"
+
+                                data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+                            >
+                                0149469
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 0149469"
-
-                            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-                        >
-                            0149469
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 14 AUG 2026 10:02 AM
                                 -
@@ -2271,103 +2331,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                </div>
-
-
-                <!-- =========================================
-                     GPP4
-                ========================================= -->
-
-                <div class="location-block">
-
-
-                    <div class="location-title">
-                        GPP4
-                    </div>
-
-
-                    <!-- =====================================
-                         GPP4 NEW / CURRENT
+                    <!-- =============================================
+                         GPP4 CURRENT
                          151320
-                    ====================================== -->
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-20T20:56:00"
+                        data-start="2026-08-20T20:56:00+08:00"
 
-                        data-end="2026-08-27T17:59:00"
+                        data-end="2026-08-27T17:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPP4
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 151320"
+
+                                data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
+                            >
+                                151320
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 151320"
-
-                            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-                        >
-                            151320
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 20 AUG 2026 08:56 PM
                                 -
@@ -2375,88 +2432,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                    <!-- =====================================
+                    <!-- =============================================
                          GPP4 OLD
                          0149403
-                    ====================================== -->
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-14T10:02:00"
+                        data-start="2026-08-14T10:02:00+08:00"
 
-                        data-end="2026-08-21T05:59:00"
+                        data-end="2026-08-21T05:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPP4
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574574f"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0149403"
+
+                                data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
+                            >
+                                0149403
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574574f"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 0149403"
-
-                            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-                        >
-                            0149403
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 14 AUG 2026 10:02 AM
                                 -
@@ -2464,121 +2533,113 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                </div>
+                    <!-- =================================================
+                         TOWER LIGHT
+                    ================================================= -->
+
+                    <tr class="category-row">
+
+                        <td colspan="5">
+                            TOWER LIGHT
+                        </td>
+
+                    </tr>
 
 
-            </div>
+                    <!-- =============================================
+                         GPS NEW TOWER LIGHT
+                         0151730
+                    ============================================== -->
 
+                    <tr
+                        class="ptw-data-row"
 
-        </div>
+                        data-start="2026-08-22T19:00:00+08:00"
 
-
-        <!-- =================================================
-             TOWER LIGHT
-        ================================================= -->
-
-        <div class="ptw-group">
-
-
-            <div class="ptw-group-title">
-                TOWER LIGHT
-            </div>
-
-
-            <div class="location-grid">
-
-
-                <!-- =========================================
-                     GPS TOWER LIGHT
-                ========================================= -->
-
-                <div class="location-block">
-
-
-                    <div class="location-title">
-                        GPS
-                    </div>
-
-
-                    <!-- NEW -->
-
-                    <article
-                        class="ptw-card"
-
-                        data-start="2026-08-22T19:00:00"
-
-                        data-end="2026-08-29T05:59:00"
+                        data-end="2026-08-29T05:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPS
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/Ptw/Apply?applicationId=59983f05-01ba-49d6-8c93-d75b5981e4bd"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0151730"
+
+                                data-description="KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
+                            >
+                                0151730
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/Ptw/Apply?applicationId=59983f05-01ba-49d6-8c93-d75b5981e4bd"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 0151730"
-
-                            data-description="KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
-                        >
-                            0151730
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 22 AUG 2026 07:00 PM
                                 -
@@ -2586,85 +2647,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                    <!-- OLD / ARCHIVE -->
+                    <!-- =============================================
+                         GPS OLD TOWER LIGHT
+                         0150129
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-15T21:07:00"
+                        data-start="2026-08-15T21:07:00+08:00"
 
-                        data-end="2026-08-22T05:59:00"
+                        data-end="2026-08-22T05:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPS
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=7d6f23e6-90b8-44c3-933e-84869b02c157"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0150129"
+
+                                data-description="GPS TOWER LIGHT OLD EPTW RECORD"
+                            >
+                                0150129
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=7d6f23e6-90b8-44c3-933e-84869b02c157"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 0150129"
-
-                            data-description="GPS TOWER LIGHT — OLD EPTW RECORD"
-                        >
-                            0150129
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            TOWER LIGHT — OLD GPS EPTW RECORD
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 15 AUG 2026 09:07 PM
                                 -
@@ -2672,100 +2748,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                GPS TOWER LIGHT — OLD EPTW RECORD
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                </div>
+                    <!-- =============================================
+                         GPP4 NEW TOWER LIGHT
+                         151524
+                    ============================================== -->
 
+                    <tr
+                        class="ptw-data-row"
 
-                <!-- =========================================
-                     GPP4 TOWER LIGHT
-                ========================================= -->
+                        data-start="2026-08-21T21:31:00+08:00"
 
-                <div class="location-block">
-
-
-                    <div class="location-title">
-                        GPP4
-                    </div>
-
-
-                    <!-- NEW -->
-
-                    <article
-                        class="ptw-card"
-
-                        data-start="2026-08-21T21:31:00"
-
-                        data-end="2026-08-28T17:59:00"
+                        data-end="2026-08-28T17:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPP4
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=5652ba22-a69a-43f2-b7aa-48b3454cfb05"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 151524"
+
+                                data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
+                            >
+                                151524
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=5652ba22-a69a-43f2-b7aa-48b3454cfb05"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 151524"
-
-                            data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
-                        >
-                            151524
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 21 AUG 2026 09:31 PM
                                 -
@@ -2773,85 +2849,100 @@ and
 
                             </div>
 
-                        </div>
 
+                            <div class="last-usable">
 
-                        <div class="last-shift-box">
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
-                            </span>
+                                <div class="last-usable-value">
+                                    --
+                                </div>
 
-                            <div class="last-shift-value">
-                                --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
+
+                            </div>
+
+                        </td>
 
 
-                    </article>
+                    </tr>
 
 
-                    <!-- OLD / ARCHIVE -->
+                    <!-- =============================================
+                         GPP4 OLD TOWER LIGHT
+                         0149256
+                    ============================================== -->
 
-                    <article
-                        class="ptw-card"
+                    <tr
+                        class="ptw-data-row"
 
-                        data-start="2026-08-15T20:03:00"
+                        data-start="2026-08-15T20:03:00+08:00"
 
-                        data-end="2026-08-22T05:59:00"
+                        data-end="2026-08-22T05:59:00+08:00"
                     >
 
 
-                        <div class="ptw-status-row">
+                        <td data-label="LOCATION">
 
-                            <span class="ptw-status">
+                            <div class="location-name">
+                                GPP4
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/PTW/Apply?applicationId=889b8e36-23e9-4c8f-996e-b16ad7017200"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0149256"
+
+                                data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
+                            >
+                                0149256
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
                                 CHECKING
                             </span>
 
-                            <span class="ptw-countdown">
+                            <div class="status-note">
                                 --
-                            </span>
+                            </div>
 
-                        </div>
-
-
-                        <a
-                            class="ptw-number hover-detail"
-
-                            href="https://ptw.petronas.com/PTW/Apply?applicationId=889b8e36-23e9-4c8f-996e-b16ad7017200"
-
-                            target="_blank"
-
-                            rel="noopener noreferrer"
-
-                            data-number="EPTW 0149256"
-
-                            data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
-                        >
-                            0149256
-                        </a>
+                        </td>
 
 
-                        <div class="ptw-description">
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-                            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
-
-                        </div>
-
-
-                        <div class="ptw-validity">
-
-                            <span class="ptw-meta-label">
+                            <span class="validity-label">
                                 PTW VALIDITY
                             </span>
 
-                            <div class="ptw-meta-value">
+                            <div class="validity-value">
 
                                 15 AUG 2026 08:03 PM
                                 -
@@ -2859,34 +2950,223 @@ and
 
                             </div>
 
-                        </div>
+
+                            <div class="last-usable">
+
+                                <span class="validity-label">
+                                    LAST USABLE SHIFT
+                                </span>
+
+                                <div class="last-usable-value">
+                                    --
+                                </div>
+
+                            </div>
+
+                        </td>
 
 
-                        <div class="last-shift-box">
+                        <td data-label="DESCRIPTION">
 
-                            <span class="last-shift-label">
-                                LAST USABLE SHIFT
+                            <div class="description-text">
+
+                                KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    <!-- =================================================
+                         VEHICLE ENTRY
+                    ================================================= -->
+
+                    <tr class="category-row">
+
+                        <td colspan="5">
+                            VEHICLE ENTRY — EPTW + MANDATORY VEC
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =============================================
+                         GPS VEHICLE ENTRY
+                         EPTW 0150142
+                         VEC 0052629
+                    ============================================== -->
+
+                    <tr
+                        class="ptw-data-row vehicle-ptw"
+
+                        data-start="2026-08-17T09:27:00+08:00"
+
+                        data-end="2026-08-24T05:59:00+08:00"
+
+                        data-vec-start="2026-08-15T09:47:00+08:00"
+
+                        data-vec-end="2026-08-21T23:59:00+08:00"
+
+                        data-vec-id="0052629"
+                    >
+
+
+                        <td data-label="LOCATION">
+
+                            <div class="location-name">
+                                GPS
+                            </div>
+
+                        </td>
+
+
+                        <td data-label="EPTW NO.">
+
+                            <a
+                                class="ptw-number hover-detail"
+
+                                href="https://ptw.petronas.com/Ptw/Apply?applicationId=5456cdea-24a3-4a99-8786-af5a5e50615a"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="EPTW 0150142"
+
+                                data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+                            >
+                                0150142
+                            </a>
+
+                        </td>
+
+
+                        <td data-label="STATUS">
+
+                            <span class="status-badge">
+                                CHECKING
                             </span>
 
-                            <div class="last-shift-value">
+                            <div class="status-note">
                                 --
                             </div>
 
-                        </div>
+                        </td>
 
 
-                        <div class="ptw-shift-message">
-                            --
-                        </div>
+                        <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
 
-                    </article>
+                            <!-- EPTW VALIDITY -->
+
+                            <span class="validity-label">
+                                EPTW VALIDITY
+                            </span>
+
+                            <div class="validity-value">
+
+                                17 AUG 2026 09:27 AM
+                                -
+                                24 AUG 2026 05:59 AM
+
+                            </div>
 
 
-                </div>
+                            <!-- LAST USABLE -->
+
+                            <div class="last-usable">
+
+                                <span class="validity-label">
+                                    EFFECTIVE LAST USABLE SHIFT
+                                </span>
+
+                                <div class="last-usable-value">
+                                    --
+                                </div>
+
+                            </div>
 
 
-            </div>
+                            <!-- VEC DEPENDENCY -->
+
+                            <div class="vec-dependency">
+
+
+                                <div class="vec-dependency-title">
+                                    MANDATORY ATTACHED VEC
+                                </div>
+
+
+                                <a
+                                    class="vec-number hover-detail"
+
+                                    href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=9e68802e-9960-4638-a921-2272f3384aef"
+
+                                    target="_blank"
+
+                                    rel="noopener noreferrer"
+
+                                    data-number="VEC 0052629"
+
+                                    data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
+                                >
+                                    VEC 0052629
+                                </a>
+
+
+                                <div class="vec-description">
+
+                                    KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
+
+                                </div>
+
+
+                                <div class="vec-validity">
+
+                                    VEC VALIDITY:
+                                    15 AUG 2026 09:47 AM
+                                    -
+                                    21 AUG 2026 11:59 PM
+
+                                </div>
+
+
+                                <div class="effective-validity">
+
+                                    EFFECTIVE VEHICLE EPTW VALIDITY:
+                                    WHICHEVER EXPIRES FIRST —
+                                    EPTW OR VEC
+
+                                </div>
+
+
+                            </div>
+
+
+                        </td>
+
+
+                        <td data-label="DESCRIPTION">
+
+                            <div class="description-text">
+
+                                GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
 
 
         </div>
@@ -2908,7 +3188,7 @@ and
 
 
 <!-- =========================================================
-     HOVER TOOLTIP
+     TOOLTIP
 ========================================================= -->
 
 <div
@@ -2931,7 +3211,7 @@ and
 <script>
 
 /* =========================================================
-   GENERAL DATE HELPERS
+   DATE / TIME HELPERS
 ========================================================= */
 
 const MONTHS = [
@@ -2960,24 +3240,7 @@ function two(value) {
 }
 
 
-function formatDateTime(date) {
-
-    return (
-        two(date.getDate()) +
-        " " +
-        MONTHS[date.getMonth()] +
-        " " +
-        date.getFullYear() +
-        " " +
-        two(date.getHours()) +
-        ":" +
-        two(date.getMinutes())
-    );
-
-}
-
-
-function formatDateShort(date) {
+function formatDate(date) {
 
     return (
         two(date.getDate()) +
@@ -3001,14 +3264,25 @@ function formatTime(date) {
 }
 
 
+function formatDateTime(date) {
+
+    return (
+        formatDate(date) +
+        " " +
+        formatTime(date)
+    );
+
+}
+
+
 
 /* =========================================================
    SHIFT CALCULATION
 
-   DAY
+   DAY:
    07:00 - 18:59
 
-   NIGHT
+   NIGHT:
    19:00 - 06:59
 ========================================================= */
 
@@ -3030,12 +3304,10 @@ function getShift(dateInput) {
         new Date(date);
 
 
-    let type = "";
+    let type;
 
 
-    /* =====================================================
-       DAY SHIFT
-    ===================================================== */
+    /* DAY SHIFT */
 
     if (
         hour >= 7 &&
@@ -3064,10 +3336,7 @@ function getShift(dateInput) {
     }
 
 
-    /* =====================================================
-       NIGHT SHIFT
-       STARTING SAME DAY
-    ===================================================== */
+    /* NIGHT SHIFT - BEFORE MIDNIGHT */
 
     else if (
         hour >= 19
@@ -3100,10 +3369,7 @@ function getShift(dateInput) {
     }
 
 
-    /* =====================================================
-       NIGHT SHIFT
-       AFTER MIDNIGHT
-    ===================================================== */
+    /* NIGHT SHIFT - AFTER MIDNIGHT */
 
     else {
 
@@ -3135,11 +3401,9 @@ function getShift(dateInput) {
 
 
     return {
-
         type,
         start,
         end
-
     };
 
 }
@@ -3168,45 +3432,7 @@ function getNextShift(shift) {
 
 
 /* =========================================================
-   SHIFT LABEL
-========================================================= */
-
-function formatShiftLabel(shift) {
-
-    if (
-        shift.type ===
-        "DAY SHIFT"
-    ) {
-
-        return (
-            "DAY SHIFT · " +
-            formatDateShort(
-                shift.start
-            ) +
-            " · 07:00-18:59"
-        );
-
-    }
-
-
-    return (
-        "NIGHT SHIFT · " +
-        formatDateShort(
-            shift.start
-        ) +
-        " 19:00 - " +
-        formatDateShort(
-            shift.end
-        ) +
-        " 06:59"
-    );
-
-}
-
-
-
-/* =========================================================
-   SAME SHIFT CHECK
+   SAME SHIFT
 ========================================================= */
 
 function sameShift(
@@ -3224,7 +3450,98 @@ function sameShift(
 
 
 /* =========================================================
-   DURATION
+   LAST USABLE SHIFT
+
+   IMPORTANT:
+   IF PTW / VEC EXPIRES BEFORE NORMAL SHIFT END,
+   DISPLAY ACTUAL EXPIRY TIME.
+========================================================= */
+
+function formatLastUsableShift(
+    effectiveEnd,
+    limitedByVec,
+    vecId
+) {
+
+    const shift =
+        getShift(
+            effectiveEnd
+        );
+
+
+    let actualEnd =
+        effectiveEnd;
+
+
+    if (
+        actualEnd >
+        shift.end
+    ) {
+
+        actualEnd =
+            shift.end;
+
+    }
+
+
+    let text;
+
+
+    if (
+        shift.type ===
+        "DAY SHIFT"
+    ) {
+
+        text =
+            "DAY SHIFT · " +
+            formatDate(
+                shift.start
+            ) +
+            " · 07:00 - " +
+            formatTime(
+                actualEnd
+            );
+
+    }
+
+    else {
+
+        text =
+            "NIGHT SHIFT · " +
+            formatDate(
+                shift.start
+            ) +
+            " 19:00 - " +
+            formatDate(
+                actualEnd
+            ) +
+            " " +
+            formatTime(
+                actualEnd
+            );
+
+    }
+
+
+    if (
+        limitedByVec
+    ) {
+
+        text +=
+            " · LIMITED BY VEC " +
+            vecId;
+
+    }
+
+
+    return text;
+
+}
+
+
+
+/* =========================================================
+   REMAINING TIME
 ========================================================= */
 
 function formatRemaining(milliseconds) {
@@ -3275,7 +3592,7 @@ function formatRemaining(milliseconds) {
             days +
             "D " +
             hours +
-            "H REMAINING"
+            "H"
         );
 
     }
@@ -3285,7 +3602,7 @@ function formatRemaining(milliseconds) {
         hours +
         "H " +
         minutes +
-        "M REMAINING"
+        "M"
     );
 
 }
@@ -3293,7 +3610,7 @@ function formatRemaining(milliseconds) {
 
 
 /* =========================================================
-   UPDATE PERMIT STATUS
+   PERMIT STATUS
 ========================================================= */
 
 function updatePermitStatus() {
@@ -3312,9 +3629,9 @@ function updatePermitStatus() {
         );
 
 
-    const cards =
+    const rows =
         document.querySelectorAll(
-            ".ptw-card"
+            ".ptw-data-row"
         );
 
 
@@ -3327,66 +3644,161 @@ function updatePermitStatus() {
     let upcomingCount = 0;
 
 
-    cards.forEach(card => {
+    rows.forEach(row => {
 
 
-        const start =
+        const ptwStart =
             new Date(
-                card.dataset.start
+                row.dataset.start
             );
 
 
-        const end =
+        const ptwEnd =
             new Date(
-                card.dataset.end
+                row.dataset.end
             );
+
+
+        let effectiveStart =
+            new Date(
+                ptwStart
+            );
+
+
+        let effectiveEnd =
+            new Date(
+                ptwEnd
+            );
+
+
+        let limitedByVec =
+            false;
+
+
+        let vecExpired =
+            false;
+
+
+        const vecId =
+            row.dataset.vecId ||
+            "";
+
+
+        /* =================================================
+           VEHICLE PTW DEPENDENCY
+        ================================================= */
+
+        if (
+            row.dataset.vecStart &&
+            row.dataset.vecEnd
+        ) {
+
+            const vecStart =
+                new Date(
+                    row.dataset.vecStart
+                );
+
+
+            const vecEnd =
+                new Date(
+                    row.dataset.vecEnd
+                );
+
+
+            /*
+               VEHICLE EPTW ONLY VALID WHEN
+               BOTH EPTW AND VEC ARE ACTIVE
+            */
+
+            if (
+                vecStart >
+                effectiveStart
+            ) {
+
+                effectiveStart =
+                    vecStart;
+
+            }
+
+
+            if (
+                vecEnd <
+                effectiveEnd
+            ) {
+
+                effectiveEnd =
+                    vecEnd;
+
+                limitedByVec =
+                    true;
+
+            }
+
+
+            if (
+                now >
+                vecEnd &&
+                now <= ptwEnd
+            ) {
+
+                vecExpired =
+                    true;
+
+            }
+
+        }
 
 
         const expiryShift =
-            getShift(end);
-
-
-        const status =
-            card.querySelector(
-                ".ptw-status"
+            getShift(
+                effectiveEnd
             );
 
 
-        const countdown =
-            card.querySelector(
-                ".ptw-countdown"
+        const statusBadge =
+            row.querySelector(
+                ".status-badge"
             );
 
 
-        const lastShiftValue =
-            card.querySelector(
-                ".last-shift-value"
+        const statusNote =
+            row.querySelector(
+                ".status-note"
             );
 
 
-        const message =
-            card.querySelector(
-                ".ptw-shift-message"
+        const lastUsable =
+            row.querySelector(
+                ".last-usable-value"
             );
 
 
-        /* REMOVE OLD DYNAMIC CLASSES */
-
-        card.classList.remove(
+        row.classList.remove(
             "is-active",
-            "is-last-shift",
             "is-next-last",
+            "is-last-shift",
             "is-expired",
-            "is-upcoming"
+            "is-upcoming",
+            "is-vec-expired"
         );
 
 
-        /* ALWAYS SHOW LAST USABLE SHIFT */
+        /* =================================================
+           LAST USABLE SHIFT
+        ================================================= */
 
-        lastShiftValue.textContent =
-            formatShiftLabel(
-                expiryShift
-            );
+        if (
+            lastUsable
+        ) {
+
+            lastUsable.textContent =
+                formatLastUsableShift(
+                    effectiveEnd,
+                    limitedByVec,
+                    vecId
+                );
+
+        }
 
 
         /* =================================================
@@ -3395,34 +3807,26 @@ function updatePermitStatus() {
 
         if (
             now <
-            start
+            effectiveStart
         ) {
 
             upcomingCount++;
 
 
-            card.classList.add(
+            row.classList.add(
                 "is-upcoming"
             );
 
 
-            status.textContent =
+            statusBadge.textContent =
                 "UPCOMING";
 
 
-            countdown.textContent =
-                "STARTS " +
+            statusNote.textContent =
+                "VALID FROM " +
                 formatDateTime(
-                    start
+                    effectiveStart
                 );
-
-
-            message.textContent =
-                "PTW NOT YET ACTIVE. VALID FROM " +
-                formatDateTime(
-                    start
-                ) +
-                ".";
 
 
             return;
@@ -3431,39 +3835,78 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           EXPIRED
+           EXPIRED DUE TO VEC
         ================================================= */
 
         if (
-            now >
-            end
+            vecExpired
         ) {
 
             expiredCount++;
 
 
-            card.classList.add(
+            row.classList.add(
+                "is-vec-expired"
+            );
+
+
+            statusBadge.textContent =
+                "EXPIRED · VEC EXPIRED";
+
+
+            statusNote.textContent =
+                "EPTW CANNOT BE USED. ATTACHED VEC " +
+                vecId +
+                " EXPIRED " +
+                formatDateTime(
+                    effectiveEnd
+                ) +
+                ". NEW / VALID VEC REQUIRED.";
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           NORMAL EXPIRED
+        ================================================= */
+
+        if (
+            now >
+            effectiveEnd
+        ) {
+
+            expiredCount++;
+
+
+            row.classList.add(
                 "is-expired"
             );
 
 
-            status.textContent =
+            statusBadge.textContent =
                 "EXPIRED · ARCHIVE";
 
 
-            countdown.textContent =
-                "EXPIRED " +
-                formatDateTime(
-                    end
-                );
+            if (
+                limitedByVec
+            ) {
 
+                statusNote.textContent =
+                    "RECORD RETAINED. EFFECTIVE VALIDITY ENDED WHEN VEC " +
+                    vecId +
+                    " EXPIRED.";
 
-            message.textContent =
-                "OLD PTW RETAINED FOR RECORD / SAFEKEEPING. LAST USABLE SHIFT WAS " +
-                formatShiftLabel(
-                    expiryShift
-                ) +
-                ".";
+            }
+
+            else {
+
+                statusNote.textContent =
+                    "OLD PTW RETAINED FOR SAFEKEEPING.";
+
+            }
 
 
             return;
@@ -3478,15 +3921,8 @@ function updatePermitStatus() {
         activeCount++;
 
 
-        countdown.textContent =
-            formatRemaining(
-                end.getTime() -
-                now.getTime()
-            );
-
-
         /* =================================================
-           CURRENT SHIFT IS LAST SHIFT
+           THIS SHIFT IS LAST
         ================================================= */
 
         if (
@@ -3499,25 +3935,21 @@ function updatePermitStatus() {
             lastShiftCount++;
 
 
-            card.classList.add(
+            row.classList.add(
                 "is-last-shift"
             );
 
 
-            status.textContent =
+            statusBadge.textContent =
                 "LAST SHIFT NOW";
 
 
-            message.textContent =
-                "THIS IS THE LAST SHIFT TO USE THIS PTW. PTW EXPIRES " +
+            statusNote.textContent =
+                "THIS IS THE LAST USABLE SHIFT. CREATE / ACTIVATE NEW PERMIT BEFORE " +
                 formatDateTime(
-                    end
+                    effectiveEnd
                 ) +
-                ", BEFORE THE SHIFT ENDS AT " +
-                formatTime(
-                    expiryShift.end
-                ) +
-                ". CREATE / ACTIVATE THE NEW PTW BEFORE THIS PERMIT EXPIRES.";
+                ".";
 
 
             return;
@@ -3536,25 +3968,17 @@ function updatePermitStatus() {
             )
         ) {
 
-            card.classList.add(
+            row.classList.add(
                 "is-next-last"
             );
 
 
-            status.textContent =
+            statusBadge.textContent =
                 "NEXT SHIFT = LAST";
 
 
-            message.textContent =
-                "NEXT " +
-                formatShiftLabel(
-                    expiryShift
-                ) +
-                " IS THE LAST SHIFT FOR THIS PTW. PREPARE / CREATE THE NEW PERMIT BEFORE " +
-                formatDateTime(
-                    end
-                ) +
-                ".";
+            statusNote.textContent =
+                "PREPARE NEW PERMIT. NEXT SHIFT IS THE LAST USABLE SHIFT.";
 
 
             return;
@@ -3566,33 +3990,28 @@ function updatePermitStatus() {
            NORMAL ACTIVE
         ================================================= */
 
-        card.classList.add(
+        row.classList.add(
             "is-active"
         );
 
 
-        status.textContent =
+        statusBadge.textContent =
             "ACTIVE";
 
 
-        message.textContent =
-            "ACTIVE PTW. LAST USABLE SHIFT: " +
-            formatShiftLabel(
-                expiryShift
+        statusNote.textContent =
+            formatRemaining(
+                effectiveEnd.getTime() -
+                now.getTime()
             ) +
-            ". RENEWAL / NEW PTW REQUIRED BEFORE " +
-            formatDateTime(
-                end
-            ) +
-            ".";
-
+            " REMAINING";
 
     });
 
 
 
     /* =====================================================
-       TOP SUMMARY
+       SUMMARY
     ===================================================== */
 
     const summary =
@@ -3607,15 +4026,15 @@ function updatePermitStatus() {
         lastShiftCount +
         " LAST SHIFT · " +
         expiredCount +
-        " ARCHIVED" +
+        " EXPIRED" +
         (
             upcomingCount > 0
-            ?
-            " · " +
-            upcomingCount +
-            " UPCOMING"
-            :
-            ""
+                ?
+                " · " +
+                upcomingCount +
+                " UPCOMING"
+                :
+                ""
         );
 
 }
@@ -3623,7 +4042,7 @@ function updatePermitStatus() {
 
 
 /* =========================================================
-   LIVE CLOCK + CURRENT SHIFT
+   LIVE CLOCK
 ========================================================= */
 
 function updateClock() {
@@ -3639,23 +4058,43 @@ function updateClock() {
     document.getElementById(
         "liveClock"
     ).textContent =
-        formatDateTime(now);
+        formatDateTime(
+            now
+        );
+
+
+    let shiftText;
+
+
+    if (
+        shift.type ===
+        "DAY SHIFT"
+    ) {
+
+        shiftText =
+            "CURRENT SHIFT: DAY · 07:00 - 18:59";
+
+    }
+
+    else {
+
+        shiftText =
+            "CURRENT SHIFT: NIGHT · 19:00 - 06:59";
+
+    }
 
 
     document.getElementById(
         "currentShift"
     ).textContent =
-        "CURRENT: " +
-        formatShiftLabel(
-            shift
-        );
+        shiftText;
 
 }
 
 
 
 /* =========================================================
-   TOOLTIP
+   HOVER TOOLTIP
 ========================================================= */
 
 const hoverItems =
@@ -3815,6 +4254,7 @@ hoverItems.forEach(item => {
 
             showTooltip(item);
 
+
             positionTooltip(
                 event.clientX,
                 event.clientY
@@ -3915,7 +4355,9 @@ function updateDashboard() {
 updateDashboard();
 
 
-/* UPDATE EVERY 1 MINUTE */
+/* =========================================================
+   AUTO UPDATE EVERY 1 MINUTE
+========================================================= */
 
 setInterval(
     updateDashboard,
