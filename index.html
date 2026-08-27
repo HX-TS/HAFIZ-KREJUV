@@ -52,7 +52,9 @@
     --black: #050505;
     --border: #aaa69f;
     --soft-border: rgba(5, 5, 5, 0.10);
-    --soft-text: rgba(5, 5, 5, 0.62);
+
+    --red: #c90000;
+    --red-dark: #8d0000;
 
     --outer-margin: 30px;
 }
@@ -223,7 +225,8 @@ body {
     width: 100%;
     height: 18px;
 
-    background: var(--black);
+    background:
+        var(--black);
 }
 
 
@@ -405,16 +408,12 @@ body {
 
 
 /* =========================================================
-   EJHA / VEC
+   EJHA
 ========================================================= */
 
-.permit-grid {
+.ejha-box {
 
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
+    width: 100%;
 
     border:
         1px solid
@@ -422,21 +421,7 @@ body {
 }
 
 
-.permit-panel {
-
-    min-width: 0;
-}
-
-
-.permit-panel + .permit-panel {
-
-    border-left:
-        1px solid
-        var(--soft-border);
-}
-
-
-.permit-panel-title {
+.ejha-box-title {
 
     min-height: 42px;
 
@@ -465,7 +450,7 @@ body {
 }
 
 
-.permit-entry {
+.ejha-entry {
 
     padding:
         16px
@@ -724,6 +709,43 @@ body {
 
 
 /* =========================================================
+   AUDIO STATUS
+========================================================= */
+
+.audio-status {
+
+    padding:
+        8px
+        22px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.07em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(5, 5, 5, 0.50);
+}
+
+
+.audio-status.warning {
+
+    color:
+        var(--red);
+
+    font-weight: 900;
+}
+
+
+
+/* =========================================================
    TABLE AREA
 ========================================================= */
 
@@ -833,7 +855,7 @@ body {
 
 
 /* =========================================================
-   CATEGORY ROW
+   CATEGORY
 ========================================================= */
 
 .category-row td {
@@ -871,7 +893,7 @@ body {
 
 
 /* =========================================================
-   NORMAL PTW ROW
+   PTW ROW
 ========================================================= */
 
 .ptw-data-row td {
@@ -900,7 +922,7 @@ body {
 
 
 /* =========================================================
-   MERGED LOCATION CELL
+   MERGED LOCATION
 ========================================================= */
 
 .location-merged {
@@ -1091,33 +1113,101 @@ body {
 
 
 /* =========================================================
-   NEXT SHIFT LAST
+   UPCOMING
 ========================================================= */
 
-.ptw-data-row.is-next-last
+.ptw-data-row.is-upcoming
 .status-badge {
 
-    background:
-        var(--black);
-
-    border-color:
-        var(--black);
-
-    color:
-        var(--bg);
+    border-style:
+        dashed;
 }
 
 
 
 /* =========================================================
-   LAST SHIFT NOW
+   BEFORE FINAL SHIFT
+   FLASHING RED + BEEP
+========================================================= */
+
+.ptw-data-row.is-next-last {
+
+    box-shadow:
+        inset 7px 0 0
+        var(--red);
+}
+
+
+.ptw-data-row.is-next-last
+.status-badge {
+
+    background:
+        var(--red);
+
+    border-color:
+        var(--red);
+
+    color:
+        #ffffff;
+
+    animation:
+        redWarningFlash
+        0.85s
+        infinite;
+}
+
+
+.ptw-data-row.is-next-last
+.status-note {
+
+    color:
+        var(--red);
+
+    font-weight: 900;
+}
+
+
+@keyframes redWarningFlash {
+
+    0%,
+    45% {
+
+        background:
+            var(--red);
+
+        color:
+            #ffffff;
+
+        opacity: 1;
+    }
+
+
+    50%,
+    100% {
+
+        background:
+            transparent;
+
+        color:
+            var(--red);
+
+        opacity: 0.45;
+    }
+
+}
+
+
+
+/* =========================================================
+   FINAL SHIFT
+   SOLID RED + BEEP
 ========================================================= */
 
 .ptw-data-row.is-last-shift {
 
     box-shadow:
-        inset 6px 0 0
-        var(--black);
+        inset 8px 0 0
+        var(--red);
 }
 
 
@@ -1125,28 +1215,30 @@ body {
 .status-badge {
 
     background:
-        var(--black);
+        var(--red);
 
     border-color:
-        var(--black);
+        var(--red);
 
     color:
-        var(--bg);
+        #ffffff;
 }
 
 
 .ptw-data-row.is-last-shift
 .status-note {
 
+    margin-top: 10px;
+
     padding:
-        8px
-        9px;
+        9px
+        10px;
 
     background:
-        var(--black);
+        var(--red);
 
     color:
-        var(--bg);
+        #ffffff;
 
     font-weight: 900;
 }
@@ -1159,13 +1251,13 @@ body {
 
 .ptw-data-row.is-expired {
 
-    opacity: 0.48;
+    opacity: 0.46;
 }
 
 
 .ptw-data-row.is-expired:hover {
 
-    opacity: 0.78;
+    opacity: 0.76;
 }
 
 
@@ -1184,7 +1276,7 @@ body {
 
 .ptw-data-row.is-vec-expired {
 
-    opacity: 0.70;
+    opacity: 0.65;
 }
 
 
@@ -1202,32 +1294,9 @@ body {
 }
 
 
-.ptw-data-row.is-vec-expired
-.status-note {
-
-    font-weight: 900;
-
-    color:
-        var(--black);
-}
-
-
 
 /* =========================================================
-   UPCOMING
-========================================================= */
-
-.ptw-data-row.is-upcoming
-.status-badge {
-
-    border-style:
-        dashed;
-}
-
-
-
-/* =========================================================
-   VALIDITY COLUMN
+   VALIDITY
 ========================================================= */
 
 .validity-label {
@@ -1287,18 +1356,38 @@ body {
 
 
 /* =========================================================
-   VEC DEPENDENCY
+   DESCRIPTION
+========================================================= */
+
+.description-text {
+
+    font-size: 9px;
+
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    color:
+        rgba(5, 5, 5, 0.69);
+
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   VEHICLE VEC BOX
 ========================================================= */
 
 .vec-dependency {
 
     margin-top: 12px;
 
-    padding: 10px;
+    padding: 11px;
 
     border:
         1px solid
-        rgba(5, 5, 5, 0.14);
+        rgba(5, 5, 5, 0.15);
 
     background:
         rgba(5, 5, 5, 0.025);
@@ -1307,7 +1396,7 @@ body {
 
 .vec-dependency-title {
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 
     font-size: 8px;
 
@@ -1335,7 +1424,7 @@ body {
         Helvetica,
         sans-serif;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 900;
 }
@@ -1358,7 +1447,7 @@ body {
 
 .vec-description {
 
-    margin-top: 6px;
+    margin-top: 7px;
 
     font-size: 8px;
 
@@ -1375,27 +1464,7 @@ body {
 
 .vec-validity {
 
-    margin-top: 7px;
-
-    font-size: 8px;
-
-    font-weight: 900;
-
-    line-height: 1.45;
-
-    text-transform: uppercase;
-}
-
-
-.effective-validity {
-
-    margin-top: 7px;
-
-    padding-top: 7px;
-
-    border-top:
-        1px solid
-        rgba(5, 5, 5, 0.08);
+    margin-top: 8px;
 
     font-size: 8px;
 
@@ -1409,19 +1478,161 @@ body {
 
 
 /* =========================================================
-   DESCRIPTION
+   VEC STATUS
 ========================================================= */
 
-.description-text {
+.vec-status-line {
 
-    font-size: 9px;
+    margin-top: 10px;
 
-    font-weight: 400;
+    padding-top: 9px;
 
-    line-height: 1.55;
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.09);
+}
+
+
+.vec-status-badge {
+
+    display: inline-flex;
+
+    padding:
+        4px
+        7px;
+
+    border:
+        1px solid
+        rgba(5, 5, 5, 0.20);
+
+    font-size: 7.5px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+}
+
+
+.vec-status-note {
+
+    margin-top: 6px;
+
+    font-size: 7.5px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+.vec-dependency.vec-next-last {
+
+    border:
+        2px solid
+        var(--red);
+}
+
+
+.vec-dependency.vec-next-last
+.vec-status-badge {
+
+    background:
+        var(--red);
 
     color:
-        rgba(5, 5, 5, 0.69);
+        #ffffff;
+
+    border-color:
+        var(--red);
+
+    animation:
+        redWarningFlash
+        0.85s
+        infinite;
+}
+
+
+.vec-dependency.vec-next-last
+.vec-status-note {
+
+    color:
+        var(--red);
+
+    font-weight: 900;
+}
+
+
+.vec-dependency.vec-last-shift {
+
+    border:
+        2px solid
+        var(--red);
+
+    background:
+        rgba(201, 0, 0, 0.06);
+}
+
+
+.vec-dependency.vec-last-shift
+.vec-status-badge {
+
+    background:
+        var(--red);
+
+    color:
+        #ffffff;
+
+    border-color:
+        var(--red);
+}
+
+
+.vec-dependency.vec-last-shift
+.vec-status-note {
+
+    padding:
+        7px;
+
+    background:
+        var(--red);
+
+    color:
+        #ffffff;
+
+    font-weight: 900;
+}
+
+
+.vec-dependency.vec-expired {
+
+    opacity: 0.55;
+}
+
+
+
+/* =========================================================
+   EFFECTIVE VEHICLE LIMIT
+========================================================= */
+
+.effective-validity {
+
+    margin-top: 9px;
+
+    padding-top: 8px;
+
+    border-top:
+        1px solid
+        rgba(5, 5, 5, 0.09);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    line-height: 1.5;
 
     text-transform: uppercase;
 }
@@ -1586,7 +1797,7 @@ and
 
 
 /* =========================================================
-   PHONE / TABLET
+   MOBILE
 ========================================================= */
 
 @media
@@ -1711,13 +1922,15 @@ and
 
     .top-column:nth-child(1)::before {
 
-        content: "MAIN SITE";
+        content:
+            "MAIN SITE";
     }
 
 
     .top-column:nth-child(2)::before {
 
-        content: "EJHA / VEC";
+        content:
+            "EJHA";
     }
 
 
@@ -1767,15 +1980,23 @@ and
     }
 
 
-    .eptw-table-container {
+    .audio-status {
 
-        padding: 16px;
+        padding:
+            10px
+            16px;
     }
 
 
+    .eptw-table-container {
+
+        padding:
+            16px;
+    }
+
 
     /* =====================================================
-       MOBILE TABLE BECOMES CARDS
+       TABLE -> CARDS
     ===================================================== */
 
     .eptw-table,
@@ -1804,14 +2025,10 @@ and
     }
 
 
-    /*
-       HIDE DESKTOP MERGED LOCATION CELL.
-       MOBILE WILL GENERATE LOCATION FOR EACH PTW CARD.
-    */
-
     .location-merged {
 
-        display: none !important;
+        display:
+            none !important;
     }
 
 
@@ -1830,10 +2047,6 @@ and
             var(--soft-border);
     }
 
-
-    /*
-       REPEAT LOCATION ON EACH MOBILE CARD
-    */
 
     .ptw-data-row::before {
 
@@ -1878,8 +2091,6 @@ and
 
 
     .ptw-data-row td {
-
-        display: block;
 
         width: 100%;
 
@@ -1979,23 +2190,6 @@ and
     }
 
 
-    .permit-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .permit-panel + .permit-panel {
-
-        border-left: none;
-
-        border-top:
-            1px solid
-            var(--soft-border);
-    }
-
-
     .footer {
 
         min-height: 50px;
@@ -2062,7 +2256,7 @@ and
     </div>
 
     <div>
-        EJHA / VEC
+        EJHA
     </div>
 
 </div>
@@ -2075,9 +2269,7 @@ and
 <section class="top-columns">
 
 
-    <!-- =====================================================
-         MAIN SITE
-    ====================================================== -->
+    <!-- MAIN SITE -->
 
     <div class="top-column main-site-column">
 
@@ -2125,95 +2317,51 @@ and
     </div>
 
 
-    <!-- =====================================================
-         EJHA / VEC
-    ====================================================== -->
+    <!-- EJHA -->
 
     <div class="top-column">
 
 
-        <div class="permit-grid">
+        <div class="ejha-box">
 
 
-            <!-- EJHA -->
-
-            <div class="permit-panel">
-
-                <div class="permit-panel-title">
-                    EJHA
-                </div>
-
-
-                <div class="permit-entry">
-
-                    <a
-                        class="permit-item hover-detail"
-
-                        href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
-
-                        target="_blank"
-
-                        rel="noopener noreferrer"
-
-                        data-number="EJHA 0046453"
-
-                        data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
-                    >
-                        0046453
-                    </a>
-
-
-                    <div class="permit-description">
-
-                        KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)
-
-                    </div>
-
-                </div>
-
+            <div class="ejha-box-title">
+                EJHA NO.
             </div>
 
 
-            <!-- VEC -->
-
-            <div class="permit-panel">
-
-                <div class="permit-panel-title">
-                    VEC
-                </div>
+            <div class="ejha-entry">
 
 
-                <div class="permit-entry">
+                <a
+                    class="permit-item hover-detail"
 
-                    <a
-                        class="permit-item hover-detail"
+                    href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
 
-                        href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=9e68802e-9960-4638-a921-2272f3384aef"
+                    target="_blank"
 
-                        target="_blank"
+                    rel="noopener noreferrer"
 
-                        rel="noopener noreferrer"
+                    data-number="EJHA 0046453"
 
-                        data-number="VEC 0052629"
-
-                        data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-                    >
-                        0052629
-                    </a>
+                    data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
+                >
+                    0046453
+                </a>
 
 
-                    <div class="permit-description">
+                <div class="permit-description">
 
-                        KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
-
-                    </div>
+                    KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)
 
                 </div>
+
 
             </div>
 
 
         </div>
+
 
     </div>
 
@@ -2231,10 +2379,6 @@ and
 <section class="eptw-section">
 
 
-    <!-- =====================================================
-         EPTW HEADER
-    ====================================================== -->
-
     <div class="eptw-section-head">
 
 
@@ -2244,6 +2388,7 @@ and
 
 
         <div class="eptw-live">
+
 
             <div
                 id="liveClock"
@@ -2260,15 +2405,14 @@ and
                 --
             </div>
 
+
         </div>
 
 
     </div>
 
 
-    <!-- =====================================================
-         SHIFT GUIDE
-    ====================================================== -->
+    <!-- SHIFT GUIDE -->
 
     <div class="shift-guide">
 
@@ -2315,6 +2459,14 @@ and
         </div>
 
 
+    </div>
+
+
+    <div
+        id="audioStatus"
+        class="audio-status"
+    >
+        WARNING AUDIO ARMS AFTER FIRST CLICK / TAP / KEY PRESS
     </div>
 
 
@@ -2389,8 +2541,7 @@ and
 
 
                 <!-- =================================================
-                     GPS
-                     MERGED 3 ROWS
+                     GPS - 3 PERMITS
                 ================================================== -->
 
 
@@ -2406,8 +2557,6 @@ and
                     data-end="2026-09-03T05:59:00+08:00"
                 >
 
-
-                    <!-- MERGED LOCATION -->
 
                     <td
                         class="location-merged"
@@ -2462,11 +2611,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            27 AUG 2026 08:00 AM
-                            -
+                            27 AUG 2026 08:00 AM -
                             03 SEP 2026 05:59 AM
-
                         </div>
 
 
@@ -2553,11 +2699,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            20 AUG 2026 08:56 PM
-                            -
+                            20 AUG 2026 08:56 PM -
                             27 AUG 2026 05:59 PM
-
                         </div>
 
 
@@ -2644,11 +2787,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            14 AUG 2026 10:02 AM
-                            -
+                            14 AUG 2026 10:02 AM -
                             21 AUG 2026 05:59 AM
-
                         </div>
 
 
@@ -2683,8 +2823,7 @@ and
 
 
                 <!-- =================================================
-                     GPP4
-                     MERGED 3 ROWS
+                     GPP4 - 3 PERMITS
                 ================================================== -->
 
 
@@ -2754,11 +2893,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            27 AUG 2026 08:00 AM
-                            -
+                            27 AUG 2026 08:00 AM -
                             03 SEP 2026 05:59 AM
-
                         </div>
 
 
@@ -2845,11 +2981,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            20 AUG 2026 08:56 PM
-                            -
+                            20 AUG 2026 08:56 PM -
                             27 AUG 2026 05:59 PM
-
                         </div>
 
 
@@ -2936,11 +3069,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            14 AUG 2026 10:02 AM
-                            -
+                            14 AUG 2026 10:02 AM -
                             21 AUG 2026 05:59 AM
-
                         </div>
 
 
@@ -2989,7 +3119,6 @@ and
 
                 <!-- =================================================
                      GPS TOWER LIGHT
-                     MERGED 2 ROWS
                 ================================================== -->
 
                 <tr
@@ -3056,11 +3185,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            22 AUG 2026 07:00 PM
-                            -
+                            22 AUG 2026 07:00 PM -
                             29 AUG 2026 05:59 AM
-
                         </div>
 
 
@@ -3145,11 +3271,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            15 AUG 2026 09:07 PM
-                            -
+                            15 AUG 2026 09:07 PM -
                             22 AUG 2026 05:59 AM
-
                         </div>
 
 
@@ -3171,9 +3294,7 @@ and
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
-
                             GPS TOWER LIGHT — OLD EPTW RECORD
-
                         </div>
 
                     </td>
@@ -3185,7 +3306,6 @@ and
 
                 <!-- =================================================
                      GPP4 TOWER LIGHT
-                     MERGED 2 ROWS
                 ================================================== -->
 
                 <tr
@@ -3252,11 +3372,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            21 AUG 2026 09:31 PM
-                            -
+                            21 AUG 2026 09:31 PM -
                             28 AUG 2026 05:59 PM
-
                         </div>
 
 
@@ -3278,9 +3395,7 @@ and
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
-
                             KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
-
                         </div>
 
                     </td>
@@ -3341,11 +3456,8 @@ and
                         </span>
 
                         <div class="validity-value">
-
-                            15 AUG 2026 08:03 PM
-                            -
+                            15 AUG 2026 08:03 PM -
                             22 AUG 2026 05:59 AM
-
                         </div>
 
 
@@ -3367,9 +3479,7 @@ and
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
-
                             KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
-
                         </div>
 
                     </td>
@@ -3392,6 +3502,201 @@ and
                 </tr>
 
 
+                <!-- =================================================
+                     GPS VEHICLE ENTRY
+                     NEW + OLD
+                     MERGED LOCATION
+                ================================================== -->
+
+
+                <!-- =================================================
+                     NEW VEHICLE EPTW 0152051
+                     VEC 0053238
+                ================================================== -->
+
+                <tr
+                    class="ptw-data-row vehicle-ptw"
+
+                    data-location="GPS"
+
+                    data-start="2026-08-24T10:12:00+08:00"
+
+                    data-end="2026-08-31T05:59:00+08:00"
+
+                    data-vec-start="2026-08-23T09:29:00+08:00"
+
+                    data-vec-end="2026-08-29T23:59:00+08:00"
+
+                    data-vec-id="0053238"
+                >
+
+
+                    <td
+                        class="location-merged"
+                        rowspan="2"
+                    >
+
+                        <div class="location-name">
+                            GPS
+                        </div>
+
+                    </td>
+
+
+                    <td data-label="EPTW NO.">
+
+                        <a
+                            class="ptw-number hover-detail"
+
+                            href="https://ptw.petronas.com/Ptw/Apply?applicationId=2f80462f-952d-4831-975a-8c24e72eb856"
+
+                            target="_blank"
+
+                            rel="noopener noreferrer"
+
+                            data-number="EPTW 0152051"
+
+                            data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+                        >
+                            0152051
+                        </a>
+
+                    </td>
+
+
+                    <td data-label="STATUS">
+
+                        <span class="status-badge">
+                            CHECKING
+                        </span>
+
+                        <div class="status-note">
+                            --
+                        </div>
+
+                    </td>
+
+
+                    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+
+                        <span class="validity-label">
+                            EPTW VALIDITY
+                        </span>
+
+
+                        <div class="validity-value">
+
+                            24 AUG 2026 10:12 AM -
+                            31 AUG 2026 05:59 AM
+
+                        </div>
+
+
+                        <div class="last-usable">
+
+                            <span class="validity-label">
+                                EFFECTIVE LAST USABLE SHIFT
+                            </span>
+
+                            <div class="last-usable-value">
+                                --
+                            </div>
+
+                        </div>
+
+
+                        <!-- VEC 0053238 -->
+
+                        <div class="vec-dependency">
+
+
+                            <div class="vec-dependency-title">
+                                MANDATORY ATTACHED VEC
+                            </div>
+
+
+                            <a
+                                class="vec-number hover-detail"
+
+                                href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=3bf4ffe3-bb02-484b-ac52-3904e5fedf10"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                data-number="VEC 0053238"
+
+                                data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
+                            >
+                                VEC 0053238
+                            </a>
+
+
+                            <div class="vec-description">
+
+                                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
+
+                            </div>
+
+
+                            <div class="vec-validity">
+
+                                VEC VALIDITY:
+                                23 AUG 2026 09:29 AM -
+                                29 AUG 2026 11:59 PM
+
+                            </div>
+
+
+                            <div class="vec-status-line">
+
+                                <span class="vec-status-badge">
+                                    CHECKING
+                                </span>
+
+                                <div class="vec-status-note">
+                                    --
+                                </div>
+
+                            </div>
+
+
+                            <div class="effective-validity">
+
+                                VEHICLE EPTW IS ONLY VALID WHILE BOTH
+                                EPTW 0152051 AND VEC 0053238 ARE VALID.
+                                EFFECTIVE EXPIRY = WHICHEVER EXPIRES FIRST.
+
+                            </div>
+
+
+                        </div>
+
+
+                    </td>
+
+
+                    <td data-label="DESCRIPTION">
+
+                        <div class="description-text">
+
+                            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
+
+                        </div>
+
+                    </td>
+
+
+                </tr>
+
+
+
+                <!-- =================================================
+                     OLD VEHICLE ENTRY
+                     0150142 + 0052629
+                ================================================== -->
+
                 <tr
                     class="ptw-data-row vehicle-ptw"
 
@@ -3407,15 +3712,6 @@ and
 
                     data-vec-id="0052629"
                 >
-
-
-                    <td class="location-merged">
-
-                        <div class="location-name">
-                            GPS
-                        </div>
-
-                    </td>
 
 
                     <td data-label="EPTW NO.">
@@ -3462,8 +3758,7 @@ and
 
                         <div class="validity-value">
 
-                            17 AUG 2026 09:27 AM
-                            -
+                            17 AUG 2026 09:27 AM -
                             24 AUG 2026 05:59 AM
 
                         </div>
@@ -3481,6 +3776,8 @@ and
 
                         </div>
 
+
+                        <!-- OLD VEC -->
 
                         <div class="vec-dependency">
 
@@ -3517,18 +3814,28 @@ and
                             <div class="vec-validity">
 
                                 VEC VALIDITY:
-                                15 AUG 2026 09:47 AM
-                                -
+                                15 AUG 2026 09:47 AM -
                                 21 AUG 2026 11:59 PM
+
+                            </div>
+
+
+                            <div class="vec-status-line">
+
+                                <span class="vec-status-badge">
+                                    CHECKING
+                                </span>
+
+                                <div class="vec-status-note">
+                                    --
+                                </div>
 
                             </div>
 
 
                             <div class="effective-validity">
 
-                                EFFECTIVE VEHICLE EPTW VALIDITY:
-                                WHICHEVER EXPIRES FIRST —
-                                EPTW OR VEC
+                                OLD VEHICLE EPTW / VEC RETAINED FOR SAFEKEEPING.
 
                             </div>
 
@@ -3671,8 +3978,8 @@ function formatDateTime(date) {
 /* =========================================================
    SHIFT
 
-   DAY   07:00 - 18:59
-   NIGHT 19:00 - 06:59
+   DAY   = 07:00 - 18:59
+   NIGHT = 19:00 - 06:59
 ========================================================= */
 
 function getShift(dateInput) {
@@ -3801,15 +4108,11 @@ function getShift(dateInput) {
 
 function getNextShift(shift) {
 
-    const nextMoment =
+    return getShift(
         new Date(
             shift.end.getTime() +
             1000
-        );
-
-
-    return getShift(
-        nextMoment
+        )
     );
 
 }
@@ -3923,7 +4226,7 @@ function formatLastUsableShift(
 
 
 /* =========================================================
-   REMAINING TIME
+   REMAINING
 ========================================================= */
 
 function formatRemaining(milliseconds) {
@@ -3992,7 +4295,409 @@ function formatRemaining(milliseconds) {
 
 
 /* =========================================================
-   UPDATE PTW STATUS
+   AUDIO WARNING
+========================================================= */
+
+let audioContext =
+    null;
+
+
+let audioArmed =
+    false;
+
+
+let warningActive =
+    false;
+
+
+let lastBeepTime =
+    0;
+
+
+/* Browser normally requires interaction before audio */
+
+function armAudio() {
+
+    if (
+        audioArmed
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+
+        audioContext.resume();
+
+
+        audioArmed =
+            true;
+
+
+        document.getElementById(
+            "audioStatus"
+        ).textContent =
+            "WARNING AUDIO ARMED";
+
+
+        /* Remove once armed */
+
+        document.removeEventListener(
+            "pointerdown",
+            armAudio
+        );
+
+
+        document.removeEventListener(
+            "keydown",
+            armAudio
+        );
+
+
+        updateDashboard();
+
+    }
+
+
+    catch(error) {
+
+        console.log(
+            "Audio warning unavailable",
+            error
+        );
+
+    }
+
+}
+
+
+document.addEventListener(
+    "pointerdown",
+    armAudio,
+    {
+        once: true
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    armAudio,
+    {
+        once: true
+    }
+);
+
+
+
+/* =========================================================
+   BEEP
+========================================================= */
+
+function playWarningBeep() {
+
+    if (
+        !audioArmed ||
+        !audioContext
+    ) {
+
+        return;
+
+    }
+
+
+    const now =
+        audioContext.currentTime;
+
+
+    const oscillator =
+        audioContext.createOscillator();
+
+
+    const gain =
+        audioContext.createGain();
+
+
+    oscillator.type =
+        "square";
+
+
+    oscillator.frequency.setValueAtTime(
+        880,
+        now
+    );
+
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        now
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.15,
+        now + 0.02
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + 0.20
+    );
+
+
+    oscillator.connect(
+        gain
+    );
+
+
+    gain.connect(
+        audioContext.destination
+    );
+
+
+    oscillator.start(
+        now
+    );
+
+
+    oscillator.stop(
+        now + 0.22
+    );
+
+}
+
+
+
+/* =========================================================
+   VEC STATUS
+========================================================= */
+
+function updateVecStatus(
+    row,
+    now,
+    currentShift,
+    nextShift
+) {
+
+    const vecBox =
+        row.querySelector(
+            ".vec-dependency"
+        );
+
+
+    if (
+        !vecBox ||
+        !row.dataset.vecStart ||
+        !row.dataset.vecEnd
+    ) {
+
+        return {
+            warning: false
+        };
+
+    }
+
+
+    const start =
+        new Date(
+            row.dataset.vecStart
+        );
+
+
+    const end =
+        new Date(
+            row.dataset.vecEnd
+        );
+
+
+    const badge =
+        vecBox.querySelector(
+            ".vec-status-badge"
+        );
+
+
+    const note =
+        vecBox.querySelector(
+            ".vec-status-note"
+        );
+
+
+    const expiryShift =
+        getShift(
+            end
+        );
+
+
+    vecBox.classList.remove(
+        "vec-active",
+        "vec-next-last",
+        "vec-last-shift",
+        "vec-expired",
+        "vec-upcoming"
+    );
+
+
+    /* UPCOMING */
+
+    if (
+        now <
+        start
+    ) {
+
+        vecBox.classList.add(
+            "vec-upcoming"
+        );
+
+
+        badge.textContent =
+            "VEC UPCOMING";
+
+
+        note.textContent =
+            "VALID FROM " +
+            formatDateTime(
+                start
+            );
+
+
+        return {
+            warning: false
+        };
+
+    }
+
+
+    /* EXPIRED */
+
+    if (
+        now >
+        end
+    ) {
+
+        vecBox.classList.add(
+            "vec-expired"
+        );
+
+
+        badge.textContent =
+            "VEC EXPIRED";
+
+
+        note.textContent =
+            "EXPIRED " +
+            formatDateTime(
+                end
+            );
+
+
+        return {
+            warning: false
+        };
+
+    }
+
+
+    /* FINAL SHIFT */
+
+    if (
+        sameShift(
+            currentShift,
+            expiryShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-last-shift"
+        );
+
+
+        badge.textContent =
+            "VEC · LAST SHIFT NOW";
+
+
+        note.textContent =
+            "VEC EXPIRES " +
+            formatDateTime(
+                end
+            ) +
+            ". RENEW VEC BEFORE EXPIRY.";
+
+
+        return {
+            warning: true
+        };
+
+    }
+
+
+    /* BEFORE FINAL SHIFT */
+
+    if (
+        sameShift(
+            nextShift,
+            expiryShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-next-last"
+        );
+
+
+        badge.textContent =
+            "VEC · NEXT SHIFT = LAST";
+
+
+        note.textContent =
+            "PREPARE NEW VEC. NEXT SHIFT IS THE FINAL USABLE SHIFT.";
+
+
+        return {
+            warning: true
+        };
+
+    }
+
+
+    /* NORMAL ACTIVE */
+
+    vecBox.classList.add(
+        "vec-active"
+    );
+
+
+    badge.textContent =
+        "VEC ACTIVE";
+
+
+    note.textContent =
+        formatRemaining(
+            end.getTime() -
+            now.getTime()
+        ) +
+        " REMAINING";
+
+
+    return {
+        warning: false
+    };
+
+}
+
+
+
+/* =========================================================
+   UPDATE EPTW STATUS
 ========================================================= */
 
 function updatePermitStatus() {
@@ -4002,7 +4707,9 @@ function updatePermitStatus() {
 
 
     const currentShift =
-        getShift(now);
+        getShift(
+            now
+        );
 
 
     const nextShift =
@@ -4024,6 +4731,9 @@ function updatePermitStatus() {
     let expiredCount = 0;
 
     let upcomingCount = 0;
+
+    let anyWarning =
+        false;
 
 
     rows.forEach(row => {
@@ -4057,17 +4767,13 @@ function updatePermitStatus() {
             false;
 
 
-        let vecExpired =
-            false;
-
-
         const vecId =
             row.dataset.vecId ||
             "";
 
 
         /* =================================================
-           VEHICLE EPTW / VEC
+           VEHICLE EPTW DEPENDS ON VEC
         ================================================= */
 
         if (
@@ -4113,14 +4819,20 @@ function updatePermitStatus() {
             }
 
 
+            const vecResult =
+                updateVecStatus(
+                    row,
+                    now,
+                    currentShift,
+                    nextShift
+                );
+
+
             if (
-                now >
-                vecEnd &&
-                now <=
-                ptwEnd
+                vecResult.warning
             ) {
 
-                vecExpired =
+                anyWarning =
                     true;
 
             }
@@ -4162,9 +4874,7 @@ function updatePermitStatus() {
         );
 
 
-        /* =================================================
-           LAST USABLE SHIFT
-        ================================================= */
+        /* LAST USABLE */
 
         if (
             lastUsable
@@ -4180,9 +4890,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           UPCOMING
-        ================================================= */
+        /* UPCOMING */
 
         if (
             now <
@@ -4213,44 +4921,55 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           VEC EXPIRED
-        ================================================= */
+        /* VEHICLE INVALID DUE TO VEC */
 
         if (
-            vecExpired
+            row.dataset.vecEnd
         ) {
 
-            expiredCount++;
+            const vecEnd =
+                new Date(
+                    row.dataset.vecEnd
+                );
 
 
-            row.classList.add(
-                "is-vec-expired"
-            );
+            if (
+                now >
+                vecEnd &&
+                now <=
+                ptwEnd
+            ) {
+
+                expiredCount++;
 
 
-            statusBadge.textContent =
-                "EXPIRED · VEC EXPIRED";
+                row.classList.add(
+                    "is-vec-expired"
+                );
 
 
-            statusNote.textContent =
-                "EPTW CANNOT BE USED. VEC " +
-                vecId +
-                " EXPIRED " +
-                formatDateTime(
-                    effectiveEnd
-                ) +
-                ".";
+                statusBadge.textContent =
+                    "INVALID · VEC EXPIRED";
 
 
-            return;
+                statusNote.textContent =
+                    "EPTW CANNOT BE USED. MANDATORY VEC " +
+                    vecId +
+                    " EXPIRED " +
+                    formatDateTime(
+                        vecEnd
+                    ) +
+                    ".";
+
+
+                return;
+
+            }
 
         }
 
 
-        /* =================================================
-           EXPIRED
-        ================================================= */
+        /* EXPIRED */
 
         if (
             now >
@@ -4274,9 +4993,9 @@ function updatePermitStatus() {
             ) {
 
                 statusNote.textContent =
-                    "RECORD RETAINED. EFFECTIVE VALIDITY ENDED WHEN VEC " +
+                    "RETAINED FOR SAFEKEEPING. EFFECTIVE VALIDITY ENDED WITH VEC " +
                     vecId +
-                    " EXPIRED.";
+                    ".";
 
             }
 
@@ -4293,15 +5012,12 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           ACTIVE
-        ================================================= */
-
         activeCount++;
 
 
         /* =================================================
-           LAST SHIFT NOW
+           FINAL SHIFT
+           SOLID RED
         ================================================= */
 
         if (
@@ -4314,6 +5030,10 @@ function updatePermitStatus() {
             lastShiftCount++;
 
 
+            anyWarning =
+                true;
+
+
             row.classList.add(
                 "is-last-shift"
             );
@@ -4324,7 +5044,7 @@ function updatePermitStatus() {
 
 
             statusNote.textContent =
-                "THIS IS THE LAST USABLE SHIFT. CREATE / ACTIVATE NEW PERMIT BEFORE " +
+                "FINAL USABLE SHIFT. CREATE / ACTIVATE NEW PERMIT BEFORE " +
                 formatDateTime(
                     effectiveEnd
                 ) +
@@ -4337,7 +5057,8 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           NEXT SHIFT LAST
+           BEFORE FINAL SHIFT
+           FLASHING RED
         ================================================= */
 
         if (
@@ -4346,6 +5067,10 @@ function updatePermitStatus() {
                 expiryShift
             )
         ) {
+
+            anyWarning =
+                true;
+
 
             row.classList.add(
                 "is-next-last"
@@ -4357,7 +5082,7 @@ function updatePermitStatus() {
 
 
             statusNote.textContent =
-                "PREPARE NEW PERMIT. NEXT SHIFT IS THE LAST USABLE SHIFT.";
+                "WARNING: NEXT SHIFT IS THE FINAL USABLE SHIFT. PREPARE NEW PERMIT NOW.";
 
 
             return;
@@ -4365,9 +5090,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           NORMAL ACTIVE
-        ================================================= */
+        /* ACTIVE */
 
         row.classList.add(
             "is-active"
@@ -4385,6 +5108,7 @@ function updatePermitStatus() {
             ) +
             " REMAINING";
 
+
     });
 
 
@@ -4393,13 +5117,9 @@ function updatePermitStatus() {
        SUMMARY
     ===================================================== */
 
-    const summary =
-        document.getElementById(
-            "permitSummary"
-        );
-
-
-    summary.textContent =
+    document.getElementById(
+        "permitSummary"
+    ).textContent =
         activeCount +
         " ACTIVE · " +
         lastShiftCount +
@@ -4416,6 +5136,60 @@ function updatePermitStatus() {
                 ""
         );
 
+
+    warningActive =
+        anyWarning;
+
+
+    const audioStatus =
+        document.getElementById(
+            "audioStatus"
+        );
+
+
+    if (
+        warningActive
+    ) {
+
+        audioStatus.classList.add(
+            "warning"
+        );
+
+
+        if (
+            audioArmed
+        ) {
+
+            audioStatus.textContent =
+                "⚠ EXPIRY WARNING ACTIVE · AUDIO BEEP ENABLED";
+
+        }
+
+        else {
+
+            audioStatus.textContent =
+                "⚠ EXPIRY WARNING ACTIVE · CLICK / TAP PAGE ONCE TO ENABLE AUDIO";
+
+        }
+
+    }
+
+    else {
+
+        audioStatus.classList.remove(
+            "warning"
+        );
+
+
+        audioStatus.textContent =
+            audioArmed
+                ?
+                "WARNING AUDIO ARMED · NO CURRENT EXPIRY ALERT"
+                :
+                "WARNING AUDIO ARMS AFTER FIRST CLICK / TAP / KEY PRESS";
+
+    }
+
 }
 
 
@@ -4431,7 +5205,9 @@ function updateClock() {
 
 
     const shift =
-        getShift(now);
+        getShift(
+            now
+        );
 
 
     document.getElementById(
@@ -4442,33 +5218,77 @@ function updateClock() {
         );
 
 
-    if (
+    document.getElementById(
+        "currentShift"
+    ).textContent =
         shift.type ===
         "DAY SHIFT"
-    ) {
-
-        document.getElementById(
-            "currentShift"
-        ).textContent =
-            "CURRENT SHIFT: DAY · 07:00 - 18:59";
-
-    }
-
-    else {
-
-        document.getElementById(
-            "currentShift"
-        ).textContent =
+            ?
+            "CURRENT SHIFT: DAY · 07:00 - 18:59"
+            :
             "CURRENT SHIFT: NIGHT · 19:00 - 06:59";
-
-    }
 
 }
 
 
 
 /* =========================================================
-   HOVER TOOLTIP
+   BEEP LOOP
+========================================================= */
+
+function beepLoop() {
+
+    const now =
+        Date.now();
+
+
+    /*
+       BEEP EVERY 8 SECONDS
+       WHEN WARNING EXISTS
+    */
+
+    if (
+        warningActive &&
+        audioArmed &&
+        now -
+        lastBeepTime >=
+        8000
+    ) {
+
+        playWarningBeep();
+
+
+        /*
+           SECOND SHORT BEEP
+        */
+
+        setTimeout(
+            playWarningBeep,
+            320
+        );
+
+
+        lastBeepTime =
+            now;
+
+    }
+
+
+    requestAnimationFrame(
+        beepLoop
+    );
+
+}
+
+
+requestAnimationFrame(
+    beepLoop
+);
+
+
+
+/* =========================================================
+   TOOLTIP
 ========================================================= */
 
 const hoverItems =
@@ -4626,7 +5446,9 @@ hoverItems.forEach(item => {
         "mouseenter",
         event => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
 
 
             positionTooltip(
@@ -4661,7 +5483,9 @@ hoverItems.forEach(item => {
         "focus",
         () => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
 
 
             const rect =
@@ -4731,12 +5555,12 @@ updateDashboard();
 
 
 /* =========================================================
-   REFRESH STATUS EVERY 1 MINUTE
+   REFRESH EVERY 30 SECONDS
 ========================================================= */
 
 setInterval(
     updateDashboard,
-    60000
+    30000
 );
 
 </script>
