@@ -53,8 +53,12 @@
     --border: #aaa69f;
     --soft-border: rgba(5, 5, 5, 0.10);
 
-    --red: #c90000;
-    --red-dark: #8d0000;
+    --green: #7fd66f;
+    --green-soft: #b8e8ad;
+
+    --red: #d00000;
+    --red-dark: #9a0000;
+    --red-soft: rgba(208, 0, 0, 0.07);
 
     --outer-margin: 30px;
 }
@@ -709,38 +713,58 @@ body {
 
 
 /* =========================================================
-   AUDIO STATUS
+   PTW SYSTEM RULE
 ========================================================= */
 
-.audio-status {
+.ptw-rule-box {
 
     padding:
-        8px
+        13px
         22px;
 
     border-bottom:
         1px solid
         var(--border);
 
-    font-size: 8px;
+    background:
+        rgba(5, 5, 5, 0.025);
+}
+
+
+.ptw-rule-title {
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
 
     font-weight: 900;
 
     letter-spacing: 0.07em;
 
     text-transform: uppercase;
-
-    color:
-        rgba(5, 5, 5, 0.50);
 }
 
 
-.audio-status.warning {
+.ptw-rule-text {
+
+    margin-top: 5px;
+
+    max-width: 1100px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
 
     color:
-        var(--red);
+        rgba(5, 5, 5, 0.65);
 
-    font-weight: 900;
+    text-transform: uppercase;
 }
 
 
@@ -1059,11 +1083,11 @@ body {
 
     align-items: center;
 
-    min-height: 26px;
+    min-height: 28px;
 
     padding:
-        5px
-        8px;
+        6px
+        9px;
 
     border:
         1px solid
@@ -1101,13 +1125,20 @@ body {
 
 /* =========================================================
    ACTIVE
+   GREEN BOX + BLACK FONT
 ========================================================= */
 
 .ptw-data-row.is-active
 .status-badge {
 
     background:
-        transparent;
+        var(--green);
+
+    border-color:
+        rgba(5, 5, 5, 0.35);
+
+    color:
+        var(--black);
 }
 
 
@@ -1121,19 +1152,25 @@ body {
 
     border-style:
         dashed;
+
+    background:
+        transparent;
+
+    color:
+        var(--black);
 }
 
 
 
 /* =========================================================
-   BEFORE FINAL SHIFT
-   FLASHING RED + BEEP
+   NEXT FULL USABLE SHIFT IS FINAL
+   FLASHING RED
 ========================================================= */
 
 .ptw-data-row.is-next-last {
 
     box-shadow:
-        inset 7px 0 0
+        inset 6px 0 0
         var(--red);
 }
 
@@ -1151,8 +1188,8 @@ body {
         #ffffff;
 
     animation:
-        redWarningFlash
-        0.85s
+        redFlash
+        0.9s
         infinite;
 }
 
@@ -1167,40 +1204,10 @@ body {
 }
 
 
-@keyframes redWarningFlash {
-
-    0%,
-    45% {
-
-        background:
-            var(--red);
-
-        color:
-            #ffffff;
-
-        opacity: 1;
-    }
-
-
-    50%,
-    100% {
-
-        background:
-            transparent;
-
-        color:
-            var(--red);
-
-        opacity: 0.45;
-    }
-
-}
-
-
 
 /* =========================================================
-   FINAL SHIFT
-   SOLID RED + BEEP
+   FINAL FULLY USABLE SHIFT
+   FLASHING RED
 ========================================================= */
 
 .ptw-data-row.is-last-shift {
@@ -1222,20 +1229,80 @@ body {
 
     color:
         #ffffff;
+
+    animation:
+        redFlash
+        0.75s
+        infinite;
 }
 
 
 .ptw-data-row.is-last-shift
 .status-note {
 
-    margin-top: 10px;
+    margin-top: 9px;
 
     padding:
-        9px
-        10px;
+        8px
+        9px;
 
     background:
         var(--red);
+
+    color:
+        #ffffff;
+
+    font-weight: 900;
+
+    animation:
+        redBlockFlash
+        0.75s
+        infinite;
+}
+
+
+
+/* =========================================================
+   PERMIT EXPIRES DURING CURRENT SHIFT
+   NOT VALID FOR FULL SHIFT
+========================================================= */
+
+.ptw-data-row.is-shift-invalid {
+
+    box-shadow:
+        inset 8px 0 0
+        var(--red-dark);
+
+    background:
+        var(--red-soft);
+}
+
+
+.ptw-data-row.is-shift-invalid
+.status-badge {
+
+    background:
+        var(--red-dark);
+
+    border-color:
+        var(--red-dark);
+
+    color:
+        #ffffff;
+}
+
+
+.ptw-data-row.is-shift-invalid
+.status-note {
+
+    margin-top: 9px;
+
+    padding:
+        8px
+        9px;
+
+    background:
+        var(--red-dark);
 
     color:
         #ffffff;
@@ -1266,17 +1333,24 @@ body {
 
     background:
         rgba(5, 5, 5, 0.07);
+
+    color:
+        var(--black);
 }
 
 
 
 /* =========================================================
-   VEC EXPIRED
+   VEC EXPIRED / INVALID
 ========================================================= */
 
 .ptw-data-row.is-vec-expired {
 
-    opacity: 0.65;
+    opacity: 0.68;
+
+    box-shadow:
+        inset 6px 0 0
+        var(--black);
 }
 
 
@@ -1291,6 +1365,67 @@ body {
 
     color:
         var(--bg);
+}
+
+
+
+/* =========================================================
+   RED FLASH
+========================================================= */
+
+@keyframes redFlash {
+
+    0%,
+    45% {
+
+        background:
+            var(--red);
+
+        color:
+            #ffffff;
+
+        opacity: 1;
+    }
+
+
+    50%,
+    100% {
+
+        background:
+            transparent;
+
+        color:
+            var(--red);
+
+        opacity: 0.38;
+    }
+
+}
+
+
+@keyframes redBlockFlash {
+
+    0%,
+    45% {
+
+        background:
+            var(--red);
+
+        color:
+            #ffffff;
+    }
+
+
+    50%,
+    100% {
+
+        background:
+            rgba(208, 0, 0, 0.08);
+
+        color:
+            var(--red);
+    }
+
 }
 
 
@@ -1349,6 +1484,23 @@ body {
     font-weight: 900;
 
     line-height: 1.45;
+
+    text-transform: uppercase;
+}
+
+
+.expiry-rule-note {
+
+    margin-top: 7px;
+
+    font-size: 7.5px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    color:
+        rgba(5, 5, 5, 0.55);
 
     text-transform: uppercase;
 }
@@ -1498,8 +1650,8 @@ body {
     display: inline-flex;
 
     padding:
-        4px
-        7px;
+        5px
+        8px;
 
     border:
         1px solid
@@ -1529,6 +1681,30 @@ body {
 }
 
 
+
+/* =========================================================
+   VEC ACTIVE
+========================================================= */
+
+.vec-dependency.vec-active
+.vec-status-badge {
+
+    background:
+        var(--green);
+
+    border-color:
+        rgba(5, 5, 5, 0.35);
+
+    color:
+        var(--black);
+}
+
+
+
+/* =========================================================
+   VEC NEXT / FINAL SHIFT WARNING
+========================================================= */
+
 .vec-dependency.vec-next-last {
 
     border:
@@ -1543,15 +1719,15 @@ body {
     background:
         var(--red);
 
-    color:
-        #ffffff;
-
     border-color:
         var(--red);
 
+    color:
+        #ffffff;
+
     animation:
-        redWarningFlash
-        0.85s
+        redFlash
+        0.9s
         infinite;
 }
 
@@ -1573,7 +1749,7 @@ body {
         var(--red);
 
     background:
-        rgba(201, 0, 0, 0.06);
+        var(--red-soft);
 }
 
 
@@ -1583,11 +1759,16 @@ body {
     background:
         var(--red);
 
+    border-color:
+        var(--red);
+
     color:
         #ffffff;
 
-    border-color:
-        var(--red);
+    animation:
+        redFlash
+        0.75s
+        infinite;
 }
 
 
@@ -1604,6 +1785,57 @@ body {
         #ffffff;
 
     font-weight: 900;
+
+    animation:
+        redBlockFlash
+        0.75s
+        infinite;
+}
+
+
+
+/* =========================================================
+   VEC NOT VALID FOR FULL SHIFT
+========================================================= */
+
+.vec-dependency.vec-shift-invalid {
+
+    border:
+        2px solid
+        var(--red-dark);
+
+    background:
+        var(--red-soft);
+}
+
+
+.vec-dependency.vec-shift-invalid
+.vec-status-badge {
+
+    background:
+        var(--red-dark);
+
+    border-color:
+        var(--red-dark);
+
+    color:
+        #ffffff;
+}
+
+
+.vec-dependency.vec-shift-invalid
+.vec-status-note {
+
+    padding:
+        7px;
+
+    background:
+        var(--red-dark);
+
+    color:
+        #ffffff;
+
+    font-weight: 900;
 }
 
 
@@ -1615,7 +1847,7 @@ body {
 
 
 /* =========================================================
-   EFFECTIVE VEHICLE LIMIT
+   EFFECTIVE VEHICLE VALIDITY
 ========================================================= */
 
 .effective-validity {
@@ -1980,10 +2212,10 @@ and
     }
 
 
-    .audio-status {
+    .ptw-rule-box {
 
         padding:
-            10px
+            12px
             16px;
     }
 
@@ -1996,7 +2228,7 @@ and
 
 
     /* =====================================================
-       TABLE -> CARDS
+       TABLE -> MOBILE CARDS
     ===================================================== */
 
     .eptw-table,
@@ -2269,7 +2501,9 @@ and
 <section class="top-columns">
 
 
-    <!-- MAIN SITE -->
+    <!-- =====================================================
+         MAIN SITE
+    ====================================================== -->
 
     <div class="top-column main-site-column">
 
@@ -2317,7 +2551,9 @@ and
     </div>
 
 
-    <!-- EJHA -->
+    <!-- =====================================================
+         EJHA
+    ====================================================== -->
 
     <div class="top-column">
 
@@ -2379,6 +2615,10 @@ and
 <section class="eptw-section">
 
 
+    <!-- =====================================================
+         EPTW HEADER
+    ====================================================== -->
+
     <div class="eptw-section-head">
 
 
@@ -2412,7 +2652,9 @@ and
     </div>
 
 
-    <!-- SHIFT GUIDE -->
+    <!-- =====================================================
+         SHIFT GUIDE
+    ====================================================== -->
 
     <div class="shift-guide">
 
@@ -2462,11 +2704,26 @@ and
     </div>
 
 
-    <div
-        id="audioStatus"
-        class="audio-status"
-    >
-        WARNING AUDIO ARMS AFTER FIRST CLICK / TAP / KEY PRESS
+    <!-- =====================================================
+         PTW SYSTEM RULE
+    ====================================================== -->
+
+    <div class="ptw-rule-box">
+
+        <div class="ptw-rule-title">
+            PTW SHIFT VALIDITY RULE
+        </div>
+
+        <div class="ptw-rule-text">
+
+            A PTW OR VEC MUST REMAIN VALID UNTIL THE END OF THE APPLICABLE SHIFT.
+            IF THE PERMIT EXPIRES BEFORE 18:59 FOR DAY SHIFT OR BEFORE 06:59 FOR NIGHT SHIFT,
+            IT IS NOT TREATED AS VALID FOR THAT FULL SHIFT.
+            THE NEW PERMIT SHOULD BE ACTIVATED FOR THAT SHIFT.
+            THE PREVIOUS FULLY USABLE SHIFT WILL FLASH RED AS THE RENEWAL WARNING.
+
+        </div>
+
     </div>
 
 
@@ -2541,7 +2798,7 @@ and
 
 
                 <!-- =================================================
-                     GPS - 3 PERMITS
+                     GPS
                 ================================================== -->
 
 
@@ -2611,21 +2868,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             27 AUG 2026 08:00 AM -
                             03 SEP 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -2699,21 +2963,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             20 AUG 2026 08:56 PM -
                             27 AUG 2026 05:59 PM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -2787,21 +3058,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             14 AUG 2026 10:02 AM -
                             21 AUG 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -2823,7 +3101,7 @@ and
 
 
                 <!-- =================================================
-                     GPP4 - 3 PERMITS
+                     GPP4
                 ================================================== -->
 
 
@@ -2893,21 +3171,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             27 AUG 2026 08:00 AM -
                             03 SEP 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -2981,21 +3266,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             20 AUG 2026 08:56 PM -
                             27 AUG 2026 05:59 PM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -3069,21 +3361,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             14 AUG 2026 10:02 AM -
                             21 AUG 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -3117,9 +3416,7 @@ and
                 </tr>
 
 
-                <!-- =================================================
-                     GPS TOWER LIGHT
-                ================================================== -->
+                <!-- GPS TOWER LIGHT -->
 
                 <tr
                     class="ptw-data-row"
@@ -3185,21 +3482,28 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             22 AUG 2026 07:00 PM -
                             29 AUG 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
                                 --
                             </div>
 
+                        </div>
+
+
+                        <div class="expiry-rule-note">
+                            --
                         </div>
 
                     </td>
@@ -3271,15 +3575,17 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             15 AUG 2026 09:07 PM -
                             22 AUG 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
@@ -3288,13 +3594,20 @@ and
 
                         </div>
 
+
+                        <div class="expiry-rule-note">
+                            --
+                        </div>
+
                     </td>
 
 
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
+
                             GPS TOWER LIGHT — OLD EPTW RECORD
+
                         </div>
 
                     </td>
@@ -3304,9 +3617,7 @@ and
 
 
 
-                <!-- =================================================
-                     GPP4 TOWER LIGHT
-                ================================================== -->
+                <!-- GPP4 TOWER LIGHT -->
 
                 <tr
                     class="ptw-data-row"
@@ -3372,15 +3683,17 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             21 AUG 2026 09:31 PM -
                             28 AUG 2026 05:59 PM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
@@ -3389,13 +3702,20 @@ and
 
                         </div>
 
+
+                        <div class="expiry-rule-note">
+                            --
+                        </div>
+
                     </td>
 
 
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
+
                             KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
+
                         </div>
 
                     </td>
@@ -3456,15 +3776,17 @@ and
                         </span>
 
                         <div class="validity-value">
+
                             15 AUG 2026 08:03 PM -
                             22 AUG 2026 05:59 AM
+
                         </div>
 
 
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                LAST USABLE SHIFT
+                                LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
@@ -3473,13 +3795,20 @@ and
 
                         </div>
 
+
+                        <div class="expiry-rule-note">
+                            --
+                        </div>
+
                     </td>
 
 
                     <td data-label="DESCRIPTION">
 
                         <div class="description-text">
+
                             KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
+
                         </div>
 
                     </td>
@@ -3503,14 +3832,8 @@ and
 
 
                 <!-- =================================================
-                     GPS VEHICLE ENTRY
-                     NEW + OLD
-                     MERGED LOCATION
-                ================================================== -->
-
-
-                <!-- =================================================
-                     NEW VEHICLE EPTW 0152051
+                     NEW VEHICLE EPTW
+                     0152051
                      VEC 0053238
                 ================================================== -->
 
@@ -3596,7 +3919,7 @@ and
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                EFFECTIVE LAST USABLE SHIFT
+                                EFFECTIVE LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
@@ -3606,7 +3929,14 @@ and
                         </div>
 
 
-                        <!-- VEC 0053238 -->
+                        <div class="expiry-rule-note">
+                            --
+                        </div>
+
+
+                        <!-- =====================================
+                             ATTACHED VEC 0053238
+                        ====================================== -->
 
                         <div class="vec-dependency">
 
@@ -3664,9 +3994,9 @@ and
 
                             <div class="effective-validity">
 
-                                VEHICLE EPTW IS ONLY VALID WHILE BOTH
-                                EPTW 0152051 AND VEC 0053238 ARE VALID.
-                                EFFECTIVE EXPIRY = WHICHEVER EXPIRES FIRST.
+                                VEHICLE EPTW CAN ONLY BE USED WHILE BOTH EPTW 0152051 AND VEC 0053238 ARE VALID.
+                                IF EITHER DOCUMENT EXPIRES BEFORE THE END OF A SHIFT,
+                                A NEW VALID DOCUMENT IS REQUIRED FOR THAT SHIFT.
 
                             </div>
 
@@ -3694,7 +4024,8 @@ and
 
                 <!-- =================================================
                      OLD VEHICLE ENTRY
-                     0150142 + 0052629
+                     0150142
+                     VEC 0052629
                 ================================================== -->
 
                 <tr
@@ -3767,7 +4098,7 @@ and
                         <div class="last-usable">
 
                             <span class="validity-label">
-                                EFFECTIVE LAST USABLE SHIFT
+                                EFFECTIVE LAST FULLY USABLE SHIFT
                             </span>
 
                             <div class="last-usable-value">
@@ -3777,7 +4108,10 @@ and
                         </div>
 
 
-                        <!-- OLD VEC -->
+                        <div class="expiry-rule-note">
+                            --
+                        </div>
+
 
                         <div class="vec-dependency">
 
@@ -3914,6 +4248,7 @@ and
 ========================================================= */
 
 const MONTHS = [
+
     "JAN",
     "FEB",
     "MAR",
@@ -3926,6 +4261,7 @@ const MONTHS = [
     "OCT",
     "NOV",
     "DEC"
+
 ];
 
 
@@ -3978,8 +4314,11 @@ function formatDateTime(date) {
 /* =========================================================
    SHIFT
 
-   DAY   = 07:00 - 18:59
-   NIGHT = 19:00 - 06:59
+   DAY:
+   07:00 - 18:59
+
+   NIGHT:
+   19:00 - 06:59
 ========================================================= */
 
 function getShift(dateInput) {
@@ -4003,6 +4342,10 @@ function getShift(dateInput) {
     let type;
 
 
+    /* =====================================================
+       DAY SHIFT
+    ===================================================== */
+
     if (
         hour >= 7 &&
         hour < 19
@@ -4020,15 +4363,25 @@ function getShift(dateInput) {
         );
 
 
+        /*
+           NOMINAL SHIFT END
+           18:59
+        */
+
         end.setHours(
             18,
             59,
-            59,
-            999
+            0,
+            0
         );
 
     }
 
+
+    /* =====================================================
+       NIGHT SHIFT
+       19:00 - 06:59 NEXT DAY
+    ===================================================== */
 
     else if (
         hour >= 19
@@ -4054,12 +4407,16 @@ function getShift(dateInput) {
         end.setHours(
             6,
             59,
-            59,
-            999
+            0,
+            0
         );
 
     }
 
+
+    /* =====================================================
+       NIGHT SHIFT AFTER MIDNIGHT
+    ===================================================== */
 
     else {
 
@@ -4083,8 +4440,8 @@ function getShift(dateInput) {
         end.setHours(
             6,
             59,
-            59,
-            999
+            0,
+            0
         );
 
     }
@@ -4108,11 +4465,36 @@ function getShift(dateInput) {
 
 function getNextShift(shift) {
 
-    return getShift(
+    const nextMoment =
         new Date(
             shift.end.getTime() +
-            1000
-        )
+            61000
+        );
+
+
+    return getShift(
+        nextMoment
+    );
+
+}
+
+
+
+/* =========================================================
+   PREVIOUS SHIFT
+========================================================= */
+
+function getPreviousShift(shift) {
+
+    const previousMoment =
+        new Date(
+            shift.start.getTime() -
+            61000
+        );
+
+
+    return getShift(
+        previousMoment
     );
 
 }
@@ -4138,98 +4520,178 @@ function sameShift(
 
 
 /* =========================================================
-   LAST USABLE SHIFT
+   DOES PERMIT COVER ENTIRE EXPIRY SHIFT?
 ========================================================= */
 
-function formatLastUsableShift(
-    effectiveEnd,
-    limitedByVec,
-    vecId
+function permitCoversFullExpiryShift(
+    permitEnd
 ) {
 
-    const shift =
+    const expiryShift =
         getShift(
-            effectiveEnd
+            permitEnd
         );
 
 
-    let actualEnd =
-        effectiveEnd;
-
-
-    if (
-        actualEnd >
-        shift.end
-    ) {
-
-        actualEnd =
-            shift.end;
-
-    }
-
-
-    let text;
-
-
-    if (
-        shift.type ===
-        "DAY SHIFT"
-    ) {
-
-        text =
-            "DAY SHIFT · " +
-            formatDate(
-                shift.start
-            ) +
-            " · 07:00 - " +
-            formatTime(
-                actualEnd
-            );
-
-    }
-
-
-    else {
-
-        text =
-            "NIGHT SHIFT · " +
-            formatDate(
-                shift.start
-            ) +
-            " 19:00 - " +
-            formatDate(
-                actualEnd
-            ) +
-            " " +
-            formatTime(
-                actualEnd
-            );
-
-    }
-
-
-    if (
-        limitedByVec
-    ) {
-
-        text +=
-            " · LIMITED BY VEC " +
-            vecId;
-
-    }
-
-
-    return text;
+    return (
+        permitEnd.getTime() >=
+        expiryShift.end.getTime()
+    );
 
 }
 
 
 
 /* =========================================================
-   REMAINING
+   LAST FULLY USABLE SHIFT
+
+   RULE:
+   IF EXPIRY IS BEFORE 18:59 OR 06:59,
+   THAT EXPIRY SHIFT IS NOT USABLE.
+
+   THEREFORE LAST USABLE SHIFT =
+   PREVIOUS SHIFT.
 ========================================================= */
 
-function formatRemaining(milliseconds) {
+function getLastFullyUsableShift(
+    permitEnd
+) {
+
+    const expiryShift =
+        getShift(
+            permitEnd
+        );
+
+
+    if (
+        permitCoversFullExpiryShift(
+            permitEnd
+        )
+    ) {
+
+        return expiryShift;
+
+    }
+
+
+    return getPreviousShift(
+        expiryShift
+    );
+
+}
+
+
+
+/* =========================================================
+   SHIFT WHERE PERMIT EXPIRES
+========================================================= */
+
+function getExpiryShift(
+    permitEnd
+) {
+
+    return getShift(
+        permitEnd
+    );
+
+}
+
+
+
+/* =========================================================
+   FORMAT SHIFT LABEL
+========================================================= */
+
+function formatShiftLabel(
+    shift
+) {
+
+    if (
+        shift.type ===
+        "DAY SHIFT"
+    ) {
+
+        return (
+            "DAY SHIFT · " +
+            formatDate(
+                shift.start
+            ) +
+            " · 07:00 - 18:59"
+        );
+
+    }
+
+
+    return (
+        "NIGHT SHIFT · " +
+        formatDate(
+            shift.start
+        ) +
+        " 19:00 - " +
+        formatDate(
+            shift.end
+        ) +
+        " 06:59"
+    );
+
+}
+
+
+
+/* =========================================================
+   EXPIRY RULE NOTE
+========================================================= */
+
+function buildExpiryRuleNote(
+    permitEnd
+) {
+
+    const expiryShift =
+        getExpiryShift(
+            permitEnd
+        );
+
+
+    const coversFullShift =
+        permitCoversFullExpiryShift(
+            permitEnd
+        );
+
+
+    if (
+        coversFullShift
+    ) {
+
+        return (
+            "PERMIT COVERS THE FULL " +
+            expiryShift.type +
+            "."
+        );
+
+    }
+
+
+    return (
+        "EXPIRES AT " +
+        formatTime(
+            permitEnd
+        ) +
+        " DURING " +
+        expiryShift.type +
+        ". NEW PERMIT REQUIRED FOR THAT SHIFT."
+    );
+
+}
+
+
+
+/* =========================================================
+   REMAINING TIME
+========================================================= */
+
+function formatRemaining(
+    milliseconds
+) {
 
     if (
         milliseconds <= 0
@@ -4295,190 +4757,6 @@ function formatRemaining(milliseconds) {
 
 
 /* =========================================================
-   AUDIO WARNING
-========================================================= */
-
-let audioContext =
-    null;
-
-
-let audioArmed =
-    false;
-
-
-let warningActive =
-    false;
-
-
-let lastBeepTime =
-    0;
-
-
-/* Browser normally requires interaction before audio */
-
-function armAudio() {
-
-    if (
-        audioArmed
-    ) {
-
-        return;
-
-    }
-
-
-    try {
-
-        audioContext =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
-
-
-        audioContext.resume();
-
-
-        audioArmed =
-            true;
-
-
-        document.getElementById(
-            "audioStatus"
-        ).textContent =
-            "WARNING AUDIO ARMED";
-
-
-        /* Remove once armed */
-
-        document.removeEventListener(
-            "pointerdown",
-            armAudio
-        );
-
-
-        document.removeEventListener(
-            "keydown",
-            armAudio
-        );
-
-
-        updateDashboard();
-
-    }
-
-
-    catch(error) {
-
-        console.log(
-            "Audio warning unavailable",
-            error
-        );
-
-    }
-
-}
-
-
-document.addEventListener(
-    "pointerdown",
-    armAudio,
-    {
-        once: true
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    armAudio,
-    {
-        once: true
-    }
-);
-
-
-
-/* =========================================================
-   BEEP
-========================================================= */
-
-function playWarningBeep() {
-
-    if (
-        !audioArmed ||
-        !audioContext
-    ) {
-
-        return;
-
-    }
-
-
-    const now =
-        audioContext.currentTime;
-
-
-    const oscillator =
-        audioContext.createOscillator();
-
-
-    const gain =
-        audioContext.createGain();
-
-
-    oscillator.type =
-        "square";
-
-
-    oscillator.frequency.setValueAtTime(
-        880,
-        now
-    );
-
-
-    gain.gain.setValueAtTime(
-        0.0001,
-        now
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.15,
-        now + 0.02
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        now + 0.20
-    );
-
-
-    oscillator.connect(
-        gain
-    );
-
-
-    gain.connect(
-        audioContext.destination
-    );
-
-
-    oscillator.start(
-        now
-    );
-
-
-    oscillator.stop(
-        now + 0.22
-    );
-
-}
-
-
-
-/* =========================================================
    VEC STATUS
 ========================================================= */
 
@@ -4501,20 +4779,18 @@ function updateVecStatus(
         !row.dataset.vecEnd
     ) {
 
-        return {
-            warning: false
-        };
+        return;
 
     }
 
 
-    const start =
+    const vecStart =
         new Date(
             row.dataset.vecStart
         );
 
 
-    const end =
+    const vecEnd =
         new Date(
             row.dataset.vecEnd
         );
@@ -4532,9 +4808,21 @@ function updateVecStatus(
         );
 
 
+    const lastFullShift =
+        getLastFullyUsableShift(
+            vecEnd
+        );
+
+
     const expiryShift =
-        getShift(
-            end
+        getExpiryShift(
+            vecEnd
+        );
+
+
+    const coversExpiryShift =
+        permitCoversFullExpiryShift(
+            vecEnd
         );
 
 
@@ -4542,16 +4830,19 @@ function updateVecStatus(
         "vec-active",
         "vec-next-last",
         "vec-last-shift",
+        "vec-shift-invalid",
         "vec-expired",
         "vec-upcoming"
     );
 
 
-    /* UPCOMING */
+    /* =====================================================
+       UPCOMING
+    ===================================================== */
 
     if (
         now <
-        start
+        vecStart
     ) {
 
         vecBox.classList.add(
@@ -4566,22 +4857,22 @@ function updateVecStatus(
         note.textContent =
             "VALID FROM " +
             formatDateTime(
-                start
+                vecStart
             );
 
 
-        return {
-            warning: false
-        };
+        return;
 
     }
 
 
-    /* EXPIRED */
+    /* =====================================================
+       EXPIRED
+    ===================================================== */
 
     if (
         now >
-        end
+        vecEnd
     ) {
 
         vecBox.classList.add(
@@ -4596,23 +4887,60 @@ function updateVecStatus(
         note.textContent =
             "EXPIRED " +
             formatDateTime(
-                end
+                vecEnd
             );
 
 
-        return {
-            warning: false
-        };
+        return;
 
     }
 
 
-    /* FINAL SHIFT */
+    /* =====================================================
+       EXPIRY SHIFT IS NOT FULLY COVERED
+       VEC CANNOT BE USED FOR THIS SHIFT
+    ===================================================== */
+
+    if (
+        !coversExpiryShift &&
+        sameShift(
+            currentShift,
+            expiryShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-shift-invalid"
+        );
+
+
+        badge.textContent =
+            "VEC NOT VALID FOR FULL SHIFT";
+
+
+        note.textContent =
+            "VEC EXPIRES AT " +
+            formatTime(
+                vecEnd
+            ) +
+            ". NEW VEC REQUIRED FOR THIS " +
+            expiryShift.type +
+            ".";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       FINAL FULLY USABLE SHIFT
+    ===================================================== */
 
     if (
         sameShift(
             currentShift,
-            expiryShift
+            lastFullShift
         )
     ) {
 
@@ -4622,30 +4950,26 @@ function updateVecStatus(
 
 
         badge.textContent =
-            "VEC · LAST SHIFT NOW";
+            "VEC · FINAL USABLE SHIFT";
 
 
         note.textContent =
-            "VEC EXPIRES " +
-            formatDateTime(
-                end
-            ) +
-            ". RENEW VEC BEFORE EXPIRY.";
+            "RENEW VEC NOW. THIS IS THE LAST FULL SHIFT COVERED BY THE CURRENT VEC.";
 
 
-        return {
-            warning: true
-        };
+        return;
 
     }
 
 
-    /* BEFORE FINAL SHIFT */
+    /* =====================================================
+       NEXT SHIFT IS LAST FULLY USABLE SHIFT
+    ===================================================== */
 
     if (
         sameShift(
             nextShift,
-            expiryShift
+            lastFullShift
         )
     ) {
 
@@ -4655,21 +4979,21 @@ function updateVecStatus(
 
 
         badge.textContent =
-            "VEC · NEXT SHIFT = LAST";
+            "VEC · NEXT SHIFT = FINAL";
 
 
         note.textContent =
-            "PREPARE NEW VEC. NEXT SHIFT IS THE FINAL USABLE SHIFT.";
+            "PREPARE NEW VEC. NEXT SHIFT IS THE LAST FULLY COVERED SHIFT.";
 
 
-        return {
-            warning: true
-        };
+        return;
 
     }
 
 
-    /* NORMAL ACTIVE */
+    /* =====================================================
+       ACTIVE
+    ===================================================== */
 
     vecBox.classList.add(
         "vec-active"
@@ -4682,22 +5006,17 @@ function updateVecStatus(
 
     note.textContent =
         formatRemaining(
-            end.getTime() -
+            vecEnd.getTime() -
             now.getTime()
         ) +
         " REMAINING";
-
-
-    return {
-        warning: false
-    };
 
 }
 
 
 
 /* =========================================================
-   UPDATE EPTW STATUS
+   UPDATE PTW STATUS
 ========================================================= */
 
 function updatePermitStatus() {
@@ -4726,14 +5045,13 @@ function updatePermitStatus() {
 
     let activeCount = 0;
 
-    let lastShiftCount = 0;
+    let warningCount = 0;
+
+    let invalidCount = 0;
 
     let expiredCount = 0;
 
     let upcomingCount = 0;
-
-    let anyWarning =
-        false;
 
 
     rows.forEach(row => {
@@ -4773,7 +5091,8 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           VEHICLE EPTW DEPENDS ON VEC
+           VEHICLE EPTW
+           EFFECTIVE PERIOD REQUIRES BOTH EPTW + VEC
         ================================================= */
 
         if (
@@ -4819,29 +5138,30 @@ function updatePermitStatus() {
             }
 
 
-            const vecResult =
-                updateVecStatus(
-                    row,
-                    now,
-                    currentShift,
-                    nextShift
-                );
-
-
-            if (
-                vecResult.warning
-            ) {
-
-                anyWarning =
-                    true;
-
-            }
+            updateVecStatus(
+                row,
+                now,
+                currentShift,
+                nextShift
+            );
 
         }
 
 
+        const lastFullShift =
+            getLastFullyUsableShift(
+                effectiveEnd
+            );
+
+
         const expiryShift =
-            getShift(
+            getExpiryShift(
+                effectiveEnd
+            );
+
+
+        const coversExpiryShift =
+            permitCoversFullExpiryShift(
                 effectiveEnd
             );
 
@@ -4864,33 +5184,81 @@ function updatePermitStatus() {
             );
 
 
+        const expiryRuleNote =
+            row.querySelector(
+                ".expiry-rule-note"
+            );
+
+
         row.classList.remove(
             "is-active",
             "is-next-last",
             "is-last-shift",
+            "is-shift-invalid",
             "is-expired",
             "is-upcoming",
             "is-vec-expired"
         );
 
 
-        /* LAST USABLE */
+        /* =================================================
+           LAST FULLY USABLE SHIFT
+        ================================================= */
 
         if (
             lastUsable
         ) {
 
             lastUsable.textContent =
-                formatLastUsableShift(
-                    effectiveEnd,
-                    limitedByVec,
-                    vecId
+                formatShiftLabel(
+                    lastFullShift
                 );
+
+
+            if (
+                limitedByVec
+            ) {
+
+                lastUsable.textContent +=
+                    " · LIMITED BY VEC " +
+                    vecId;
+
+            }
 
         }
 
 
-        /* UPCOMING */
+        /* =================================================
+           EXPIRY NOTE
+        ================================================= */
+
+        if (
+            expiryRuleNote
+        ) {
+
+            expiryRuleNote.textContent =
+                buildExpiryRuleNote(
+                    effectiveEnd
+                );
+
+
+            if (
+                limitedByVec
+            ) {
+
+                expiryRuleNote.textContent +=
+                    " EFFECTIVE EXPIRY CONTROLLED BY VEC " +
+                    vecId +
+                    ".";
+
+            }
+
+        }
+
+
+        /* =================================================
+           UPCOMING
+        ================================================= */
 
         if (
             now <
@@ -4921,7 +5289,9 @@ function updatePermitStatus() {
         }
 
 
-        /* VEHICLE INVALID DUE TO VEC */
+        /* =================================================
+           VEHICLE EPTW INVALID BECAUSE VEC EXPIRED
+        ================================================= */
 
         if (
             row.dataset.vecEnd
@@ -4940,7 +5310,7 @@ function updatePermitStatus() {
                 ptwEnd
             ) {
 
-                expiredCount++;
+                invalidCount++;
 
 
                 row.classList.add(
@@ -4953,7 +5323,7 @@ function updatePermitStatus() {
 
 
                 statusNote.textContent =
-                    "EPTW CANNOT BE USED. MANDATORY VEC " +
+                    "VEHICLE EPTW CANNOT BE USED. MANDATORY VEC " +
                     vecId +
                     " EXPIRED " +
                     formatDateTime(
@@ -4969,7 +5339,9 @@ function updatePermitStatus() {
         }
 
 
-        /* EXPIRED */
+        /* =================================================
+           ACTUAL TIME EXPIRED
+        ================================================= */
 
         if (
             now >
@@ -4993,7 +5365,7 @@ function updatePermitStatus() {
             ) {
 
                 statusNote.textContent =
-                    "RETAINED FOR SAFEKEEPING. EFFECTIVE VALIDITY ENDED WITH VEC " +
+                    "RETAINED FOR SAFEKEEPING. EFFECTIVE VEHICLE VALIDITY ENDED WITH VEC " +
                     vecId +
                     ".";
 
@@ -5012,26 +5384,62 @@ function updatePermitStatus() {
         }
 
 
-        activeCount++;
-
-
         /* =================================================
-           FINAL SHIFT
-           SOLID RED
+           CURRENT SHIFT IS EXPIRY SHIFT
+           BUT PERMIT ENDS BEFORE SHIFT END
+
+           OPERATIONAL RULE:
+           CANNOT USE FOR THIS FULL SHIFT.
         ================================================= */
 
         if (
+            !coversExpiryShift &&
             sameShift(
                 currentShift,
                 expiryShift
             )
         ) {
 
-            lastShiftCount++;
+            invalidCount++;
 
 
-            anyWarning =
-                true;
+            row.classList.add(
+                "is-shift-invalid"
+            );
+
+
+            statusBadge.textContent =
+                "NOT VALID FOR FULL SHIFT";
+
+
+            statusNote.textContent =
+                "PERMIT EXPIRES AT " +
+                formatTime(
+                    effectiveEnd
+                ) +
+                " BEFORE THIS " +
+                expiryShift.type +
+                " ENDS. NEW PERMIT SHOULD BE ACTIVE FOR THIS SHIFT.";
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           FINAL FULLY USABLE SHIFT
+           FLASH RED
+        ================================================= */
+
+        if (
+            sameShift(
+                currentShift,
+                lastFullShift
+            )
+        ) {
+
+            warningCount++;
 
 
             row.classList.add(
@@ -5040,15 +5448,11 @@ function updatePermitStatus() {
 
 
             statusBadge.textContent =
-                "LAST SHIFT NOW";
+                "FINAL USABLE SHIFT";
 
 
             statusNote.textContent =
-                "FINAL USABLE SHIFT. CREATE / ACTIVATE NEW PERMIT BEFORE " +
-                formatDateTime(
-                    effectiveEnd
-                ) +
-                ".";
+                "FLASHING RENEWAL WARNING. THIS IS THE LAST FULL SHIFT COVERED BY THIS PERMIT. ACTIVATE THE NEW PERMIT FOR THE NEXT SHIFT.";
 
 
             return;
@@ -5057,19 +5461,18 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           BEFORE FINAL SHIFT
-           FLASHING RED
+           NEXT SHIFT IS FINAL FULLY USABLE SHIFT
+           FLASH RED
         ================================================= */
 
         if (
             sameShift(
                 nextShift,
-                expiryShift
+                lastFullShift
             )
         ) {
 
-            anyWarning =
-                true;
+            warningCount++;
 
 
             row.classList.add(
@@ -5078,11 +5481,11 @@ function updatePermitStatus() {
 
 
             statusBadge.textContent =
-                "NEXT SHIFT = LAST";
+                "NEXT SHIFT = FINAL";
 
 
             statusNote.textContent =
-                "WARNING: NEXT SHIFT IS THE FINAL USABLE SHIFT. PREPARE NEW PERMIT NOW.";
+                "RENEWAL WARNING. NEXT SHIFT IS THE LAST FULLY USABLE SHIFT. PREPARE NEW PERMIT.";
 
 
             return;
@@ -5090,7 +5493,12 @@ function updatePermitStatus() {
         }
 
 
-        /* ACTIVE */
+        /* =================================================
+           ACTIVE
+        ================================================= */
+
+        activeCount++;
+
 
         row.classList.add(
             "is-active"
@@ -5108,7 +5516,6 @@ function updatePermitStatus() {
             ) +
             " REMAINING";
 
-
     });
 
 
@@ -5122,8 +5529,10 @@ function updatePermitStatus() {
     ).textContent =
         activeCount +
         " ACTIVE · " +
-        lastShiftCount +
-        " LAST SHIFT · " +
+        warningCount +
+        " WARNING · " +
+        invalidCount +
+        " INVALID · " +
         expiredCount +
         " EXPIRED" +
         (
@@ -5135,60 +5544,6 @@ function updatePermitStatus() {
                 :
                 ""
         );
-
-
-    warningActive =
-        anyWarning;
-
-
-    const audioStatus =
-        document.getElementById(
-            "audioStatus"
-        );
-
-
-    if (
-        warningActive
-    ) {
-
-        audioStatus.classList.add(
-            "warning"
-        );
-
-
-        if (
-            audioArmed
-        ) {
-
-            audioStatus.textContent =
-                "⚠ EXPIRY WARNING ACTIVE · AUDIO BEEP ENABLED";
-
-        }
-
-        else {
-
-            audioStatus.textContent =
-                "⚠ EXPIRY WARNING ACTIVE · CLICK / TAP PAGE ONCE TO ENABLE AUDIO";
-
-        }
-
-    }
-
-    else {
-
-        audioStatus.classList.remove(
-            "warning"
-        );
-
-
-        audioStatus.textContent =
-            audioArmed
-                ?
-                "WARNING AUDIO ARMED · NO CURRENT EXPIRY ALERT"
-                :
-                "WARNING AUDIO ARMS AFTER FIRST CLICK / TAP / KEY PRESS";
-
-    }
 
 }
 
@@ -5233,61 +5588,6 @@ function updateClock() {
 
 
 /* =========================================================
-   BEEP LOOP
-========================================================= */
-
-function beepLoop() {
-
-    const now =
-        Date.now();
-
-
-    /*
-       BEEP EVERY 8 SECONDS
-       WHEN WARNING EXISTS
-    */
-
-    if (
-        warningActive &&
-        audioArmed &&
-        now -
-        lastBeepTime >=
-        8000
-    ) {
-
-        playWarningBeep();
-
-
-        /*
-           SECOND SHORT BEEP
-        */
-
-        setTimeout(
-            playWarningBeep,
-            320
-        );
-
-
-        lastBeepTime =
-            now;
-
-    }
-
-
-    requestAnimationFrame(
-        beepLoop
-    );
-
-}
-
-
-requestAnimationFrame(
-    beepLoop
-);
-
-
-
-/* =========================================================
    TOOLTIP
 ========================================================= */
 
@@ -5315,7 +5615,9 @@ const tooltipDescription =
     );
 
 
-function showTooltip(item) {
+function showTooltip(
+    item
+) {
 
     tooltipNumber.textContent =
         item.dataset.number ||
@@ -5555,7 +5857,7 @@ updateDashboard();
 
 
 /* =========================================================
-   REFRESH EVERY 30 SECONDS
+   REFRESH STATUS EVERY 30 SECONDS
 ========================================================= */
 
 setInterval(
