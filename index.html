@@ -156,7 +156,6 @@ body {
         );
 
     font-weight: 900;
-
     line-height: .80;
 
     text-transform: uppercase;
@@ -167,7 +166,6 @@ body {
     display: inline-block;
 
     letter-spacing: .08em;
-
     padding-left: .08em;
 }
 
@@ -190,7 +188,6 @@ body {
         );
 
     font-weight: 700;
-
     letter-spacing: .16em;
 }
 
@@ -289,7 +286,6 @@ body {
     position: relative;
 
     color: var(--black);
-
     text-decoration: none;
 
     font-family:
@@ -306,9 +302,7 @@ body {
         );
 
     font-weight: 900;
-
     line-height: .97;
-
     letter-spacing: -.055em;
 
     text-transform: uppercase;
@@ -408,10 +402,7 @@ body {
 .permit-item {
     display: inline-block;
 
-    position: relative;
-
     color: var(--black);
-
     text-decoration: none;
 
     font-family:
@@ -430,29 +421,12 @@ body {
     font-weight: 900;
 
     letter-spacing: -.035em;
-
-    transition:
-        transform .18s ease,
-        opacity .18s ease;
-}
-
-
-.permit-item:hover,
-.permit-item:focus {
-    transform:
-        translateX(5px);
-
-    opacity: .58;
-
-    outline: none;
 }
 
 
 .permit-item::after {
     content: "↗";
-
     margin-left: 7px;
-
     font-size: .48em;
 }
 
@@ -474,7 +448,7 @@ body {
 
 
 /* =========================================================
-   EPTW SECTION
+   EPTW HEADER
 ========================================================= */
 
 .eptw-section {
@@ -685,7 +659,6 @@ body {
     width: 100%;
 
     border-collapse: collapse;
-
     table-layout: fixed;
 
     border:
@@ -733,7 +706,6 @@ body {
         var(--soft-border);
 
     text-align: left;
-
     vertical-align: middle;
 
     font-size: 9px;
@@ -791,7 +763,7 @@ body {
 
 
 /* =========================================================
-   ROW
+   DATA ROW
 ========================================================= */
 
 .ptw-data-row td {
@@ -836,7 +808,6 @@ body {
 
 .location-name {
     position: sticky;
-
     top: 15px;
 
     font-family:
@@ -858,16 +829,13 @@ body {
 
 
 /* =========================================================
-   NUMBER
+   PTW NUMBER
 ========================================================= */
 
 .ptw-number {
     display: inline-block;
 
-    position: relative;
-
     color: var(--black);
-
     text-decoration: none;
 
     font-family:
@@ -994,6 +962,43 @@ body {
 
 
 /* =========================================================
+   DRAFT
+========================================================= */
+
+.ptw-data-row.is-draft {
+    box-shadow:
+        inset 6px 0 0
+        var(--black);
+
+    background:
+        rgba(5,5,5,.025);
+}
+
+
+.ptw-data-row.is-draft
+.status-badge {
+    background:
+        var(--black);
+
+    border-color:
+        var(--black);
+
+    color:
+        var(--bg);
+}
+
+
+.ptw-data-row.is-draft
+.status-note {
+    color:
+        var(--black);
+
+    font-weight: 900;
+}
+
+
+
+/* =========================================================
    NOT SUBMITTED
 ========================================================= */
 
@@ -1031,7 +1036,7 @@ body {
 
 
 /* =========================================================
-   NEXT FINAL SHIFT
+   WARNING
 ========================================================= */
 
 .ptw-data-row.is-next-last {
@@ -1066,11 +1071,6 @@ body {
     font-weight: 900;
 }
 
-
-
-/* =========================================================
-   FINAL FULL SHIFT
-========================================================= */
 
 .ptw-data-row.is-last-shift {
     box-shadow:
@@ -1118,7 +1118,7 @@ body {
 
 
 /* =========================================================
-   INVALID FOR FULL SHIFT
+   INVALID
 ========================================================= */
 
 .ptw-data-row.is-shift-invalid {
@@ -1182,11 +1182,6 @@ body {
         var(--black);
 }
 
-
-
-/* =========================================================
-   VEC EXPIRED
-========================================================= */
 
 .ptw-data-row.is-vec-expired {
     opacity: .68;
@@ -1437,7 +1432,6 @@ body {
 
 .tower-equipment-expiry {
     display: flex;
-
     align-items: center;
 
     padding:
@@ -1494,12 +1488,11 @@ body {
 }
 
 
-.vec-number {
+.vec-number,
+.vec-number-static {
     display: inline-block;
 
     color: var(--black);
-
-    text-decoration: none;
 
     font-family:
         "Arial Black",
@@ -1509,6 +1502,11 @@ body {
 
     font-size: 14px;
     font-weight: 900;
+}
+
+
+.vec-number {
+    text-decoration: none;
 }
 
 
@@ -1673,6 +1671,31 @@ body {
 }
 
 
+
+/* =========================================================
+   VEC PENDING / NO VALIDITY PROVIDED
+========================================================= */
+
+.vec-dependency.vec-pending {
+    border:
+        2px dashed
+        var(--black);
+}
+
+
+.vec-dependency.vec-pending
+.vec-status-badge {
+    background:
+        var(--black);
+
+    color:
+        var(--bg);
+
+    border-color:
+        var(--black);
+}
+
+
 .effective-validity {
     margin-top: 9px;
 
@@ -1770,7 +1793,6 @@ body {
     min-height: 58px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1873,7 +1895,6 @@ and
 
     .krejuv-title {
         letter-spacing: .04em;
-
         padding-left: .04em;
     }
 
@@ -2053,7 +2074,6 @@ and
         min-height: 42px;
 
         display: flex;
-
         align-items: center;
 
         padding:
@@ -2463,13 +2483,9 @@ and
             <colgroup>
 
                 <col class="location-col">
-
                 <col class="number-col">
-
                 <col class="status-col">
-
                 <col class="validity-col">
-
                 <col class="description-col">
 
             </colgroup>
@@ -2480,9 +2496,7 @@ and
                 <tr>
 
                     <th>LOCATION</th>
-
                     <th>EPTW NO.</th>
-
                     <th>STATUS</th>
 
                     <th>
@@ -2504,11 +2518,9 @@ and
 ========================================================= -->
 
 <tr class="category-row">
-
     <td colspan="5">
         PIPELINE PRE-COMMISSIONING
     </td>
-
 </tr>
 
 
@@ -2540,7 +2552,9 @@ and
             href="https://ptw.petronas.com/Ptw/Apply?applicationId=373fa5e6-3f00-487a-a1a0-791455ee08f9"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 0152730"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
         >
             0152730
@@ -2598,13 +2612,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            PIGGING ACTIVITIES
-            (FOR CLEANING, GAUGING, WATER FILLING,
-            DEWATERING AND SWABBING),
-            HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPS GAS STATION
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
         </div>
 
@@ -2629,7 +2637,9 @@ and
             href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 151521"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
         >
             151521
@@ -2687,13 +2697,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            PIGGING ACTIVITIES
-            (FOR CLEANING, GAUGING, WATER FILLING,
-            DEWATERING AND SWABBING),
-            HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPS GAS STATION
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
         </div>
 
@@ -2718,7 +2722,9 @@ and
             href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 0149469"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
         >
             0149469
@@ -2776,13 +2782,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            PIGGING ACTIVITIES
-            (FOR CLEANING, GAUGING, WATER FILLING,
-            DEWATERING AND SWABBING),
-            HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPS GAS STATION
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
         </div>
 
@@ -2820,7 +2820,9 @@ and
             href="https://ptw.petronas.com/Ptw/Apply?applicationId=3f656b9a-2bfb-4c3c-92fa-46675cbc4a47"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 0152731"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
         >
             0152731
@@ -2878,12 +2880,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            CLEANING, GAUGING, WATER FILLING,
-            HYDROTEST, DEWATERING AND SWABBING
-            AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPP4 STATION, BV10.3 AND BV13.1
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
 
         </div>
 
@@ -2908,7 +2905,9 @@ and
             href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 151320"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
         >
             151320
@@ -2966,12 +2965,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            CLEANING, GAUGING, WATER FILLING,
-            HYDROTEST, DEWATERING AND SWABBING
-            AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
 
         </div>
 
@@ -2996,7 +2990,9 @@ and
             href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574574f"
             target="_blank"
             rel="noopener noreferrer"
+
             data-number="EPTW 0149403"
+
             data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
         >
             0149403
@@ -3054,12 +3050,7 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
-            INCLUDING MOB DEMOB, SET UP PREPARATION,
-            CLEANING, GAUGING, WATER FILLING,
-            HYDROTEST, DEWATERING AND SWABBING
-            AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE
-            AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
+            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
 
         </div>
 
@@ -3082,10 +3073,7 @@ and
 </tr>
 
 
-<!-- =========================================================
-     GPS NEW TOWER LIGHT
-     NOT SUBMITTED
-========================================================= -->
+<!-- GPS 0153035 NOT SUBMITTED -->
 
 <tr
     class="ptw-data-row"
@@ -3096,7 +3084,7 @@ and
 
     data-end="2026-09-05T05:59:00+08:00"
 
-    data-submitted="false"
+    data-status="not-submitted"
 >
 
     <td
@@ -3139,7 +3127,7 @@ and
         </span>
 
         <div class="status-note">
-            NEW TOWER LIGHT PTW — NOT SUBMITTED
+            TOWER LIGHT PTW NOT SUBMITTED
         </div>
 
     </td>
@@ -3152,10 +3140,8 @@ and
         </span>
 
         <div class="validity-value">
-
             29 AUG 2026 07:00 PM -
             05 SEP 2026 05:59 AM
-
         </div>
 
 
@@ -3183,15 +3169,10 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT
-            AT GPS GAS STATION
+            KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
 
         </div>
 
-
-        <!-- ================================================
-             GPS TOWER LIGHT / EXPIRY DATE
-        ================================================= -->
 
         <div class="tower-equipment-box">
 
@@ -3276,16 +3257,12 @@ and
 
         </div>
 
-
     </td>
-
 
 </tr>
 
 
-<!-- =========================================================
-     GPS PREVIOUS TOWER LIGHT
-========================================================= -->
+<!-- GPS 0151730 -->
 
 <tr
     class="ptw-data-row"
@@ -3338,10 +3315,8 @@ and
         </span>
 
         <div class="validity-value">
-
             22 AUG 2026 07:00 PM -
             29 AUG 2026 05:59 AM
-
         </div>
 
 
@@ -3369,19 +3344,16 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC:
-            TO PERFORM RUNNING TOWER LIGHT
-            AT GPS GAS STATION
+            KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
 
         </div>
 
     </td>
 
-
 </tr>
 
 
-<!-- GPS OLD -->
+<!-- GPS 0150129 -->
 
 <tr
     class="ptw-data-row"
@@ -3434,10 +3406,8 @@ and
         </span>
 
         <div class="validity-value">
-
             15 AUG 2026 09:07 PM -
             22 AUG 2026 05:59 AM
-
         </div>
 
 
@@ -3469,15 +3439,11 @@ and
 
     </td>
 
-
 </tr>
 
 
 
-<!-- =========================================================
-     GPP4 NEW TOWER LIGHT
-     NOT SUBMITTED
-========================================================= -->
+<!-- GPP4 0153036 NOT SUBMITTED -->
 
 <tr
     class="ptw-data-row"
@@ -3488,7 +3454,7 @@ and
 
     data-end="2026-09-05T05:59:00+08:00"
 
-    data-submitted="false"
+    data-status="not-submitted"
 >
 
     <td
@@ -3531,7 +3497,7 @@ and
         </span>
 
         <div class="status-note">
-            NEW TOWER LIGHT PTW — NOT SUBMITTED
+            TOWER LIGHT PTW NOT SUBMITTED
         </div>
 
     </td>
@@ -3544,10 +3510,8 @@ and
         </span>
 
         <div class="validity-value">
-
             29 AUG 2026 07:00 PM -
             05 SEP 2026 05:59 AM
-
         </div>
 
 
@@ -3575,19 +3539,16 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC :
-            TO PERFORM RUNNING TOWER LIGHT
-            AT GPP4 STATION
+            KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION
 
         </div>
 
     </td>
 
-
 </tr>
 
 
-<!-- GPP4 PREVIOUS -->
+<!-- GPP4 151524 -->
 
 <tr
     class="ptw-data-row"
@@ -3640,10 +3601,8 @@ and
         </span>
 
         <div class="validity-value">
-
             21 AUG 2026 09:31 PM -
             28 AUG 2026 05:59 PM
-
         </div>
 
 
@@ -3671,19 +3630,16 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC:
-            TO PERFORM RUN TOWER LIGHT
-            AT GPP4 STATION.
+            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
 
         </div>
 
     </td>
 
-
 </tr>
 
 
-<!-- GPP4 OLD -->
+<!-- GPP4 0149256 -->
 
 <tr
     class="ptw-data-row"
@@ -3736,10 +3692,8 @@ and
         </span>
 
         <div class="validity-value">
-
             15 AUG 2026 08:03 PM -
             22 AUG 2026 05:59 AM
-
         </div>
 
 
@@ -3767,14 +3721,11 @@ and
 
         <div class="description-text">
 
-            KREJUV-FEC:
-            TO PERFORM RUN TOWER LIGHT
-            AT GPP4 STATION.
+            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
 
         </div>
 
     </td>
-
 
 </tr>
 
@@ -3793,7 +3744,188 @@ and
 </tr>
 
 
-<!-- CURRENT VEHICLE -->
+<!-- =========================================================
+     NEW DRAFT
+     EPTW 0153038
+     VEC 0053721
+========================================================= -->
+
+<tr
+    class="ptw-data-row vehicle-ptw"
+
+    data-location="GPS"
+
+    data-start="2026-08-29T19:16:00+08:00"
+
+    data-end="2026-09-05T05:59:00+08:00"
+
+    data-status="draft"
+>
+
+    <td
+        class="location-merged"
+        rowspan="3"
+    >
+
+        <div class="location-name">
+            GPS
+        </div>
+
+    </td>
+
+
+    <td data-label="EPTW NO.">
+
+        <a
+            class="ptw-number hover-detail"
+
+            href="https://ptw.petronas.com/Ptw/Apply?applicationId=b8906839-2d26-4ce5-9377-f9273c090e71"
+
+            target="_blank"
+
+            rel="noopener noreferrer"
+
+            data-number="EPTW 0153038 · DRAFT"
+
+            data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+        >
+            0153038
+        </a>
+
+    </td>
+
+
+    <td data-label="STATUS">
+
+        <span class="status-badge">
+            DRAFT
+        </span>
+
+        <div class="status-note">
+            PTW IS STILL DRAFT
+        </div>
+
+    </td>
+
+
+    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+
+        <span class="validity-label">
+            DRAFT PTW VALIDITY
+        </span>
+
+
+        <div class="validity-value">
+
+            29 AUG 2026 07:16 PM -
+            05 SEP 2026 05:59 AM
+
+        </div>
+
+
+        <div class="last-usable">
+
+            <span class="validity-label">
+                PTW LAST FULLY USABLE SHIFT
+            </span>
+
+            <div class="last-usable-value">
+                --
+            </div>
+
+        </div>
+
+
+        <div class="expiry-rule-note">
+            --
+        </div>
+
+
+        <!-- =============================================
+             VEC 0053721
+             VALIDITY / LINK NOT PROVIDED YET
+        ============================================== -->
+
+        <div class="vec-dependency vec-pending">
+
+
+            <div class="vec-dependency-title">
+                MANDATORY ATTACHED VEC
+            </div>
+
+
+            <span class="vec-number-static">
+                VEC 0053721
+            </span>
+
+
+            <div class="vec-description">
+
+                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
+
+            </div>
+
+
+            <div class="vec-validity">
+
+                VEC VALIDITY:
+                NOT PROVIDED
+
+            </div>
+
+
+            <div class="vec-status-line">
+
+                <span class="vec-status-badge">
+                    VEC VALIDITY PENDING
+                </span>
+
+                <div class="vec-status-note">
+
+                    VEC 0053721 HAS BEEN RECORDED,
+                    BUT THE VEC VALIDITY PERIOD HAS NOT YET BEEN PROVIDED.
+                    EFFECTIVE VEHICLE PTW VALIDITY CANNOT BE CALCULATED UNTIL VEC VALIDITY IS ADDED.
+
+                </div>
+
+            </div>
+
+
+            <div class="effective-validity">
+
+                VEHICLE ENTRY REQUIRES BOTH EPTW 0153038 AND VEC 0053721 TO BE VALID.
+                EFFECTIVE VEHICLE ENTRY VALIDITY WILL BE CONTROLLED BY WHICHEVER DOCUMENT EXPIRES FIRST.
+
+            </div>
+
+
+        </div>
+
+
+    </td>
+
+
+    <td data-label="DESCRIPTION">
+
+        <div class="description-text">
+
+            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
+
+        </div>
+
+    </td>
+
+
+</tr>
+
+
+
+<!-- =========================================================
+     CURRENT VEHICLE ENTRY
+     EPTW 0152051
+     VEC 0053238
+========================================================= -->
 
 <tr
     class="ptw-data-row vehicle-ptw"
@@ -3810,18 +3942,6 @@ and
 
     data-vec-id="0053238"
 >
-
-
-    <td
-        class="location-merged"
-        rowspan="2"
-    >
-
-        <div class="location-name">
-            GPS
-        </div>
-
-    </td>
 
 
     <td data-label="EPTW NO.">
@@ -3919,9 +4039,7 @@ and
 
             <div class="vec-description">
 
-                KREJUV-FEC:
-                TO PERFORM MOBILIZATION / DEMOBILZIATION
-                EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
+                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
 
             </div>
 
@@ -3950,8 +4068,7 @@ and
 
             <div class="effective-validity">
 
-                VEHICLE EPTW CAN ONLY BE USED WHILE
-                BOTH EPTW 0152051 AND VEC 0053238 ARE VALID.
+                VEHICLE EPTW CAN ONLY BE USED WHILE BOTH EPTW 0152051 AND VEC 0053238 ARE VALID.
                 IF EITHER DOCUMENT EXPIRES BEFORE THE END OF A SHIFT,
                 A NEW VALID DOCUMENT IS REQUIRED FOR THAT SHIFT.
 
@@ -3968,10 +4085,7 @@ and
 
         <div class="description-text">
 
-            GPS KREJUV-FEC:
-            TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION
-            AND LOADING / UNLOADING EQUIPMENT
-            USING PICKUP (VJN 2339)
+            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
 
         </div>
 
@@ -3981,7 +4095,12 @@ and
 </tr>
 
 
-<!-- OLD VEHICLE -->
+
+<!-- =========================================================
+     OLD VEHICLE ENTRY
+     EPTW 0150142
+     VEC 0052629
+========================================================= -->
 
 <tr
     class="ptw-data-row vehicle-ptw"
@@ -4095,9 +4214,7 @@ and
 
             <div class="vec-description">
 
-                KREJUV-FEC:
-                TO PERFORM MOBILIZATION / DEMOBILZIATION
-                EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
+                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
 
             </div>
 
@@ -4126,8 +4243,7 @@ and
 
             <div class="effective-validity">
 
-                OLD VEHICLE EPTW / VEC
-                RETAINED FOR SAFEKEEPING.
+                OLD VEHICLE EPTW / VEC RETAINED FOR SAFEKEEPING.
 
             </div>
 
@@ -4142,10 +4258,7 @@ and
 
         <div class="description-text">
 
-            GPS KREJUV-FEC:
-            TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION
-            AND LOADING / UNLOADING EQUIPMENT
-            USING PICKUP (VJN 2339)
+            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
 
         </div>
 
@@ -4200,13 +4313,28 @@ and
 ========================================================= */
 
 const MONTHS = [
-    "JAN","FEB","MAR","APR","MAY","JUN",
-    "JUL","AUG","SEP","OCT","NOV","DEC"
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC"
 ];
 
 
 function two(value) {
-    return String(value).padStart(2,"0");
+
+    return String(value).padStart(
+        2,
+        "0"
+    );
+
 }
 
 
@@ -4249,8 +4377,8 @@ function formatDateTime(date) {
 /* =========================================================
    SHIFT
 
-   DAY   07:00 - 18:59
-   NIGHT 19:00 - 06:59
+   DAY   = 07:00 - 18:59
+   NIGHT = 19:00 - 06:59
 ========================================================= */
 
 function getShift(dateInput) {
@@ -4378,10 +4506,12 @@ function getShift(dateInput) {
 function getNextShift(shift) {
 
     return getShift(
+
         new Date(
             shift.end.getTime() +
             61000
         )
+
     );
 
 }
@@ -4390,10 +4520,12 @@ function getNextShift(shift) {
 function getPreviousShift(shift) {
 
     return getShift(
+
         new Date(
             shift.start.getTime() -
             61000
         )
+
     );
 
 }
@@ -4414,7 +4546,7 @@ function sameShift(
 
 
 /* =========================================================
-   FULL SHIFT RULE
+   FULL SHIFT COVERAGE
 ========================================================= */
 
 function permitCoversFullExpiryShift(
@@ -4510,7 +4642,7 @@ function formatShiftLabel(
 
 
 /* =========================================================
-   EXPIRY RULE NOTE
+   EXPIRY RULE
 ========================================================= */
 
 function buildExpiryRuleNote(
@@ -4890,6 +5022,7 @@ function updatePermitStatus() {
     let invalidCount = 0;
     let expiredCount = 0;
     let upcomingCount = 0;
+    let draftCount = 0;
     let notSubmittedCount = 0;
 
 
@@ -4906,6 +5039,11 @@ function updatePermitStatus() {
             new Date(
                 row.dataset.end
             );
+
+
+        const manualStatus =
+            row.dataset.status ||
+            "";
 
 
         let effectiveStart =
@@ -4927,11 +5065,6 @@ function updatePermitStatus() {
         const vecId =
             row.dataset.vecId ||
             "";
-
-
-        const submitted =
-            row.dataset.submitted !==
-            "false";
 
 
         if (
@@ -4969,7 +5102,6 @@ function updatePermitStatus() {
 
                 effectiveEnd =
                     vecEnd;
-
 
                 limitedByVec =
                     true;
@@ -5032,6 +5164,7 @@ function updatePermitStatus() {
         row.classList.remove(
             "is-active",
             "is-upcoming",
+            "is-draft",
             "is-not-submitted",
             "is-next-last",
             "is-last-shift",
@@ -5089,13 +5222,60 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           NOT SUBMITTED
-
-           THIS OVERRIDES UPCOMING / ACTIVE
+           DRAFT
         ================================================= */
 
         if (
-            !submitted
+            manualStatus ===
+            "draft"
+        ) {
+
+            draftCount++;
+
+
+            row.classList.add(
+                "is-draft"
+            );
+
+
+            statusBadge.textContent =
+                "DRAFT";
+
+
+            if (
+                now <
+                ptwStart
+            ) {
+
+                statusNote.textContent =
+                    "PTW IS STILL DRAFT. PROPOSED VALIDITY STARTS " +
+                    formatDateTime(
+                        ptwStart
+                    ) +
+                    ".";
+
+            }
+
+            else {
+
+                statusNote.textContent =
+                    "PTW IS STILL DRAFT AND CANNOT BE USED UNTIL SUBMITTED / ACTIVATED.";
+
+            }
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           NOT SUBMITTED
+        ================================================= */
+
+        if (
+            manualStatus ===
+            "not-submitted"
         ) {
 
             notSubmittedCount++;
@@ -5127,7 +5307,7 @@ function updatePermitStatus() {
             else {
 
                 statusNote.textContent =
-                    "PTW TARGET VALIDITY HAS STARTED BUT PERMIT IS MARKED NOT SUBMITTED. SUBMIT / ACTIVATE BEFORE USE.";
+                    "PTW TARGET VALIDITY HAS STARTED BUT PERMIT IS NOT SUBMITTED. SUBMIT / ACTIVATE BEFORE USE.";
 
             }
 
@@ -5395,6 +5575,8 @@ function updatePermitStatus() {
         " WARNING · " +
         invalidCount +
         " INVALID · " +
+        draftCount +
+        " DRAFT · " +
         notSubmittedCount +
         " NOT SUBMITTED · " +
         expiredCount +
@@ -5701,7 +5883,7 @@ updateDashboard();
 
 
 /* =========================================================
-   AUTO REFRESH STATUS
+   REFRESH EVERY 30 SECONDS
 ========================================================= */
 
 setInterval(
