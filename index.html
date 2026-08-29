@@ -1602,6 +1602,16 @@ body {
 }
 
 
+.vec-dependency.vec-upcoming
+.vec-status-badge {
+    border-style: dashed;
+
+    background: transparent;
+
+    color: var(--black);
+}
+
+
 .vec-dependency.vec-next-last {
     border:
         2px solid
@@ -1620,6 +1630,15 @@ body {
         redFlash
         .9s
         infinite;
+}
+
+
+.vec-dependency.vec-next-last
+.vec-status-note {
+    color:
+        var(--red);
+
+    font-weight: 900;
 }
 
 
@@ -1647,6 +1666,24 @@ body {
 }
 
 
+.vec-dependency.vec-last-shift
+.vec-status-note {
+    padding: 7px;
+
+    background:
+        var(--red);
+
+    color: #fff;
+
+    font-weight: 900;
+
+    animation:
+        redBlockFlash
+        .75s
+        infinite;
+}
+
+
 .vec-dependency.vec-shift-invalid {
     border:
         2px solid
@@ -1666,33 +1703,21 @@ body {
 }
 
 
+.vec-dependency.vec-shift-invalid
+.vec-status-note {
+    padding: 7px;
+
+    background:
+        var(--red-dark);
+
+    color: #fff;
+
+    font-weight: 900;
+}
+
+
 .vec-dependency.vec-expired {
     opacity: .55;
-}
-
-
-
-/* =========================================================
-   VEC PENDING / NO VALIDITY PROVIDED
-========================================================= */
-
-.vec-dependency.vec-pending {
-    border:
-        2px dashed
-        var(--black);
-}
-
-
-.vec-dependency.vec-pending
-.vec-status-badge {
-    background:
-        var(--black);
-
-    color:
-        var(--bg);
-
-    border-color:
-        var(--black);
 }
 
 
@@ -3759,6 +3784,12 @@ and
 
     data-end="2026-09-05T05:59:00+08:00"
 
+    data-vec-start="2026-08-29T10:43:00+08:00"
+
+    data-vec-end="2026-09-04T23:59:00+08:00"
+
+    data-vec-id="0053721"
+
     data-status="draft"
 >
 
@@ -3827,7 +3858,7 @@ and
         <div class="last-usable">
 
             <span class="validity-label">
-                PTW LAST FULLY USABLE SHIFT
+                EFFECTIVE LAST FULLY USABLE SHIFT
             </span>
 
             <div class="last-usable-value">
@@ -3844,10 +3875,9 @@ and
 
         <!-- =============================================
              VEC 0053721
-             VALIDITY / LINK NOT PROVIDED YET
         ============================================== -->
 
-        <div class="vec-dependency vec-pending">
+        <div class="vec-dependency">
 
 
             <div class="vec-dependency-title">
@@ -3855,9 +3885,21 @@ and
             </div>
 
 
-            <span class="vec-number-static">
+            <a
+                class="vec-number hover-detail"
+
+                href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=938dde8f-6a6f-484f-b903-bd86af88804b"
+
+                target="_blank"
+
+                rel="noopener noreferrer"
+
+                data-number="VEC 0053721"
+
+                data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
+            >
                 VEC 0053721
-            </span>
+            </a>
 
 
             <div class="vec-description">
@@ -3870,7 +3912,8 @@ and
             <div class="vec-validity">
 
                 VEC VALIDITY:
-                NOT PROVIDED
+                29 AUG 2026 10:43 AM -
+                04 SEP 2026 11:59 PM
 
             </div>
 
@@ -3878,15 +3921,11 @@ and
             <div class="vec-status-line">
 
                 <span class="vec-status-badge">
-                    VEC VALIDITY PENDING
+                    CHECKING
                 </span>
 
                 <div class="vec-status-note">
-
-                    VEC 0053721 HAS BEEN RECORDED,
-                    BUT THE VEC VALIDITY PERIOD HAS NOT YET BEEN PROVIDED.
-                    EFFECTIVE VEHICLE PTW VALIDITY CANNOT BE CALCULATED UNTIL VEC VALIDITY IS ADDED.
-
+                    --
                 </div>
 
             </div>
@@ -3895,7 +3934,8 @@ and
             <div class="effective-validity">
 
                 VEHICLE ENTRY REQUIRES BOTH EPTW 0153038 AND VEC 0053721 TO BE VALID.
-                EFFECTIVE VEHICLE ENTRY VALIDITY WILL BE CONTROLLED BY WHICHEVER DOCUMENT EXPIRES FIRST.
+                VEC 0053721 EXPIRES EARLIER THAN EPTW 0153038.
+                EFFECTIVE VEHICLE ENTRY EXPIRY IS THEREFORE CONTROLLED BY VEC 0053721.
 
             </div>
 
