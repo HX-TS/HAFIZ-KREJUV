@@ -164,7 +164,6 @@ body {
 
 .krejuv-title {
     display: inline-block;
-
     letter-spacing: .08em;
     padding-left: .08em;
 }
@@ -172,7 +171,6 @@ body {
 
 .bookmark-title {
     display: inline-block;
-
     letter-spacing: -.075em;
 }
 
@@ -200,7 +198,6 @@ body {
 .section-divider {
     width: 100%;
     height: 18px;
-
     background: var(--black);
 }
 
@@ -212,10 +209,7 @@ body {
 
 .top-section-header {
     display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
+    grid-template-columns: 1fr 1fr;
 
     min-height: 58px;
 
@@ -233,7 +227,6 @@ body {
 
     font-size: 11px;
     font-weight: 900;
-
     letter-spacing: .04em;
 
     text-transform: uppercase;
@@ -249,10 +242,7 @@ body {
 
 .top-columns {
     display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 
@@ -381,7 +371,6 @@ body {
 
     font-size: 9px;
     font-weight: 900;
-
     letter-spacing: .09em;
 
     color:
@@ -419,7 +408,6 @@ body {
         );
 
     font-weight: 900;
-
     letter-spacing: -.035em;
 }
 
@@ -436,7 +424,6 @@ body {
 
     font-size: 9.5px;
     font-weight: 400;
-
     line-height: 1.52;
 
     color:
@@ -491,7 +478,6 @@ body {
         );
 
     font-weight: 900;
-
     letter-spacing: -.045em;
 
     text-transform: uppercase;
@@ -520,7 +506,6 @@ body {
 
     font-size: 9px;
     font-weight: 900;
-
     letter-spacing: .07em;
 
     color:
@@ -537,7 +522,6 @@ body {
 
 .shift-guide {
     display: grid;
-
     grid-template-columns:
         1fr
         1fr
@@ -570,7 +554,6 @@ body {
 
     font-size: 8px;
     font-weight: 900;
-
     letter-spacing: .09em;
 
     color:
@@ -616,7 +599,6 @@ body {
 
     font-size: 9px;
     font-weight: 900;
-
     letter-spacing: .07em;
 
     text-transform: uppercase;
@@ -630,7 +612,6 @@ body {
 
     font-size: 9px;
     font-weight: 700;
-
     line-height: 1.5;
 
     color:
@@ -710,7 +691,6 @@ body {
 
     font-size: 9px;
     font-weight: 900;
-
     letter-spacing: .08em;
 
     color:
@@ -754,7 +734,6 @@ body {
 
     font-size: 11px;
     font-weight: 900;
-
     letter-spacing: .04em;
 
     text-transform: uppercase;
@@ -818,9 +797,7 @@ body {
 
     font-size: 16px;
     font-weight: 900;
-
     line-height: 1.1;
-
     letter-spacing: -.025em;
 
     text-transform: uppercase;
@@ -852,9 +829,7 @@ body {
         );
 
     font-weight: 900;
-
     line-height: 1;
-
     letter-spacing: -.035em;
 }
 
@@ -903,9 +878,7 @@ body {
 
     font-size: 8px;
     font-weight: 900;
-
     line-height: 1.2;
-
     letter-spacing: .06em;
 
     text-transform: uppercase;
@@ -917,7 +890,6 @@ body {
 
     font-size: 8.5px;
     font-weight: 700;
-
     line-height: 1.45;
 
     color:
@@ -962,81 +934,7 @@ body {
 
 
 /* =========================================================
-   DRAFT
-========================================================= */
-
-.ptw-data-row.is-draft {
-    box-shadow:
-        inset 6px 0 0
-        var(--black);
-
-    background:
-        rgba(5,5,5,.025);
-}
-
-
-.ptw-data-row.is-draft
-.status-badge {
-    background:
-        var(--black);
-
-    border-color:
-        var(--black);
-
-    color:
-        var(--bg);
-}
-
-
-.ptw-data-row.is-draft
-.status-note {
-    color:
-        var(--black);
-
-    font-weight: 900;
-}
-
-
-
-/* =========================================================
-   NOT SUBMITTED
-========================================================= */
-
-.ptw-data-row.is-not-submitted {
-    box-shadow:
-        inset 6px 0 0
-        var(--black);
-
-    background:
-        rgba(5,5,5,.025);
-}
-
-
-.ptw-data-row.is-not-submitted
-.status-badge {
-    background:
-        var(--black);
-
-    border-color:
-        var(--black);
-
-    color:
-        var(--bg);
-}
-
-
-.ptw-data-row.is-not-submitted
-.status-note {
-    color:
-        var(--black);
-
-    font-weight: 900;
-}
-
-
-
-/* =========================================================
-   WARNING
+   NEXT SHIFT FINAL
 ========================================================= */
 
 .ptw-data-row.is-next-last {
@@ -1071,6 +969,11 @@ body {
     font-weight: 900;
 }
 
+
+
+/* =========================================================
+   FINAL FULL SHIFT
+========================================================= */
 
 .ptw-data-row.is-last-shift {
     box-shadow:
@@ -1218,7 +1121,6 @@ body {
             var(--red);
 
         color: #fff;
-
         opacity: 1;
     }
 
@@ -1272,7 +1174,6 @@ body {
 
     font-size: 7.5px;
     font-weight: 900;
-
     letter-spacing: .08em;
 
     color:
@@ -1285,7 +1186,6 @@ body {
 .validity-value {
     font-size: 9px;
     font-weight: 700;
-
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1306,7 +1206,6 @@ body {
 .last-usable-value {
     font-size: 9px;
     font-weight: 900;
-
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1318,7 +1217,6 @@ body {
 
     font-size: 7.5px;
     font-weight: 700;
-
     line-height: 1.45;
 
     color:
@@ -1336,7 +1234,6 @@ body {
 .description-text {
     font-size: 9px;
     font-weight: 400;
-
     line-height: 1.55;
 
     color:
@@ -1365,7 +1262,6 @@ body {
 
 .tower-equipment-title {
     display: grid;
-
     grid-template-columns:
         1fr
         110px;
@@ -1386,7 +1282,6 @@ body {
 
     font-size: 7.5px;
     font-weight: 900;
-
     letter-spacing: .07em;
 
     text-transform: uppercase;
@@ -1402,7 +1297,6 @@ body {
 
 .tower-equipment-row {
     display: grid;
-
     grid-template-columns:
         1fr
         110px;
@@ -1423,7 +1317,6 @@ body {
 
     font-size: 8px;
     font-weight: 800;
-
     line-height: 1.35;
 
     text-transform: uppercase;
@@ -1481,18 +1374,17 @@ body {
 
     font-size: 8px;
     font-weight: 900;
-
     letter-spacing: .08em;
 
     text-transform: uppercase;
 }
 
 
-.vec-number,
-.vec-number-static {
+.vec-number {
     display: inline-block;
 
     color: var(--black);
+    text-decoration: none;
 
     font-family:
         "Arial Black",
@@ -1502,11 +1394,6 @@ body {
 
     font-size: 14px;
     font-weight: 900;
-}
-
-
-.vec-number {
-    text-decoration: none;
 }
 
 
@@ -1524,7 +1411,6 @@ body {
 
     font-size: 8px;
     font-weight: 400;
-
     line-height: 1.45;
 
     color:
@@ -1539,7 +1425,6 @@ body {
 
     font-size: 8px;
     font-weight: 900;
-
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1570,7 +1455,6 @@ body {
 
     font-size: 7.5px;
     font-weight: 900;
-
     letter-spacing: .06em;
 
     text-transform: uppercase;
@@ -1582,7 +1466,6 @@ body {
 
     font-size: 7.5px;
     font-weight: 700;
-
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1732,7 +1615,6 @@ body {
 
     font-size: 8px;
     font-weight: 900;
-
     line-height: 1.5;
 
     text-transform: uppercase;
@@ -1763,7 +1645,6 @@ body {
 
     font-size: 12px;
     font-weight: 700;
-
     line-height: 1.55;
 
     text-transform: uppercase;
@@ -1833,7 +1714,6 @@ body {
 
     font-size: 10px;
     font-weight: 900;
-
     letter-spacing: .09em;
 
     text-transform: uppercase;
@@ -1931,7 +1811,6 @@ and
 
     .hero-subtitle {
         margin-top: 25px;
-
         font-size: 12px;
     }
 
@@ -2217,7 +2096,6 @@ and
 
     .footer {
         min-height: 50px;
-
         font-size: 9px;
     }
 
@@ -2562,11 +2440,9 @@ and
         class="location-merged"
         rowspan="3"
     >
-
         <div class="location-name">
             GPS
         </div>
-
     </td>
 
 
@@ -2574,8 +2450,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/Ptw/Apply?applicationId=373fa5e6-3f00-487a-a1a0-791455ee08f9"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 0152730"
@@ -2608,8 +2487,10 @@ and
         </span>
 
         <div class="validity-value">
+
             27 AUG 2026 08:00 AM -
             03 SEP 2026 05:59 AM
+
         </div>
 
 
@@ -2659,8 +2540,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 151521"
@@ -2693,8 +2577,10 @@ and
         </span>
 
         <div class="validity-value">
+
             20 AUG 2026 08:56 PM -
             27 AUG 2026 05:59 PM
+
         </div>
 
 
@@ -2744,8 +2630,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 0149469"
@@ -2778,8 +2667,10 @@ and
         </span>
 
         <div class="validity-value">
+
             14 AUG 2026 10:02 AM -
             21 AUG 2026 05:59 AM
+
         </div>
 
 
@@ -2830,11 +2721,9 @@ and
         class="location-merged"
         rowspan="3"
     >
-
         <div class="location-name">
             GPP4
         </div>
-
     </td>
 
 
@@ -2842,8 +2731,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/Ptw/Apply?applicationId=3f656b9a-2bfb-4c3c-92fa-46675cbc4a47"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 0152731"
@@ -2876,8 +2768,10 @@ and
         </span>
 
         <div class="validity-value">
+
             27 AUG 2026 08:00 AM -
             03 SEP 2026 05:59 AM
+
         </div>
 
 
@@ -2927,8 +2821,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 151320"
@@ -2961,8 +2858,10 @@ and
         </span>
 
         <div class="validity-value">
+
             20 AUG 2026 08:56 PM -
             27 AUG 2026 05:59 PM
+
         </div>
 
 
@@ -3012,8 +2911,11 @@ and
 
         <a
             class="ptw-number hover-detail"
+
             href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574574f"
+
             target="_blank"
+
             rel="noopener noreferrer"
 
             data-number="EPTW 0149403"
@@ -3046,8 +2948,10 @@ and
         </span>
 
         <div class="validity-value">
+
             14 AUG 2026 10:02 AM -
             21 AUG 2026 05:59 AM
+
         </div>
 
 
@@ -3098,7 +3002,10 @@ and
 </tr>
 
 
-<!-- GPS 0153035 NOT SUBMITTED -->
+<!-- =========================================================
+     GPS 0153035
+     SUBMITTED
+========================================================= -->
 
 <tr
     class="ptw-data-row"
@@ -3108,8 +3015,6 @@ and
     data-start="2026-08-29T19:00:00+08:00"
 
     data-end="2026-09-05T05:59:00+08:00"
-
-    data-status="not-submitted"
 >
 
     <td
@@ -3148,11 +3053,11 @@ and
     <td data-label="STATUS">
 
         <span class="status-badge">
-            NOT SUBMITTED
+            CHECKING
         </span>
 
         <div class="status-note">
-            TOWER LIGHT PTW NOT SUBMITTED
+            --
         </div>
 
     </td>
@@ -3161,12 +3066,14 @@ and
     <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
         <span class="validity-label">
-            PROPOSED PTW VALIDITY
+            PTW VALIDITY
         </span>
 
         <div class="validity-value">
+
             29 AUG 2026 07:00 PM -
             05 SEP 2026 05:59 AM
+
         </div>
 
 
@@ -3198,6 +3105,10 @@ and
 
         </div>
 
+
+        <!-- =================================================
+             GPS TOWER LIGHT / EXPIRY DATE
+        ================================================== -->
 
         <div class="tower-equipment-box">
 
@@ -3340,8 +3251,10 @@ and
         </span>
 
         <div class="validity-value">
+
             22 AUG 2026 07:00 PM -
             29 AUG 2026 05:59 AM
+
         </div>
 
 
@@ -3431,8 +3344,10 @@ and
         </span>
 
         <div class="validity-value">
+
             15 AUG 2026 09:07 PM -
             22 AUG 2026 05:59 AM
+
         </div>
 
 
@@ -3459,7 +3374,9 @@ and
     <td data-label="DESCRIPTION">
 
         <div class="description-text">
+
             GPS TOWER LIGHT — OLD EPTW RECORD
+
         </div>
 
     </td>
@@ -3468,7 +3385,10 @@ and
 
 
 
-<!-- GPP4 0153036 NOT SUBMITTED -->
+<!-- =========================================================
+     GPP4 0153036
+     SUBMITTED
+========================================================= -->
 
 <tr
     class="ptw-data-row"
@@ -3478,8 +3398,6 @@ and
     data-start="2026-08-29T19:00:00+08:00"
 
     data-end="2026-09-05T05:59:00+08:00"
-
-    data-status="not-submitted"
 >
 
     <td
@@ -3518,11 +3436,11 @@ and
     <td data-label="STATUS">
 
         <span class="status-badge">
-            NOT SUBMITTED
+            CHECKING
         </span>
 
         <div class="status-note">
-            TOWER LIGHT PTW NOT SUBMITTED
+            --
         </div>
 
     </td>
@@ -3531,12 +3449,14 @@ and
     <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
         <span class="validity-label">
-            PROPOSED PTW VALIDITY
+            PTW VALIDITY
         </span>
 
         <div class="validity-value">
+
             29 AUG 2026 07:00 PM -
             05 SEP 2026 05:59 AM
+
         </div>
 
 
@@ -3626,8 +3546,10 @@ and
         </span>
 
         <div class="validity-value">
+
             21 AUG 2026 09:31 PM -
             28 AUG 2026 05:59 PM
+
         </div>
 
 
@@ -3717,8 +3639,10 @@ and
         </span>
 
         <div class="validity-value">
+
             15 AUG 2026 08:03 PM -
             22 AUG 2026 05:59 AM
+
         </div>
 
 
@@ -3770,8 +3694,8 @@ and
 
 
 <!-- =========================================================
-     NEW DRAFT
      EPTW 0153038
+     SUBMITTED
      VEC 0053721
 ========================================================= -->
 
@@ -3789,8 +3713,6 @@ and
     data-vec-end="2026-09-04T23:59:00+08:00"
 
     data-vec-id="0053721"
-
-    data-status="draft"
 >
 
     <td
@@ -3816,7 +3738,7 @@ and
 
             rel="noopener noreferrer"
 
-            data-number="EPTW 0153038 · DRAFT"
+            data-number="EPTW 0153038"
 
             data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
         >
@@ -3829,11 +3751,11 @@ and
     <td data-label="STATUS">
 
         <span class="status-badge">
-            DRAFT
+            CHECKING
         </span>
 
         <div class="status-note">
-            PTW IS STILL DRAFT
+            --
         </div>
 
     </td>
@@ -3843,7 +3765,7 @@ and
 
 
         <span class="validity-label">
-            DRAFT PTW VALIDITY
+            EPTW VALIDITY
         </span>
 
 
@@ -3872,10 +3794,6 @@ and
             --
         </div>
 
-
-        <!-- =============================================
-             VEC 0053721
-        ============================================== -->
 
         <div class="vec-dependency">
 
@@ -3935,7 +3853,7 @@ and
 
                 VEHICLE ENTRY REQUIRES BOTH EPTW 0153038 AND VEC 0053721 TO BE VALID.
                 VEC 0053721 EXPIRES EARLIER THAN EPTW 0153038.
-                EFFECTIVE VEHICLE ENTRY EXPIRY IS THEREFORE CONTROLLED BY VEC 0053721.
+                EFFECTIVE VEHICLE ENTRY EXPIRY IS CONTROLLED BY VEC 0053721.
 
             </div>
 
@@ -3962,7 +3880,6 @@ and
 
 
 <!-- =========================================================
-     CURRENT VEHICLE ENTRY
      EPTW 0152051
      VEC 0053238
 ========================================================= -->
@@ -5062,8 +4979,6 @@ function updatePermitStatus() {
     let invalidCount = 0;
     let expiredCount = 0;
     let upcomingCount = 0;
-    let draftCount = 0;
-    let notSubmittedCount = 0;
 
 
     rows.forEach(row => {
@@ -5079,11 +4994,6 @@ function updatePermitStatus() {
             new Date(
                 row.dataset.end
             );
-
-
-        const manualStatus =
-            row.dataset.status ||
-            "";
 
 
         let effectiveStart =
@@ -5106,6 +5016,11 @@ function updatePermitStatus() {
             row.dataset.vecId ||
             "";
 
+
+        /* =================================================
+           VEHICLE ENTRY
+           BOTH EPTW + VEC MUST BE VALID
+        ================================================= */
 
         if (
             row.dataset.vecStart &&
@@ -5204,8 +5119,6 @@ function updatePermitStatus() {
         row.classList.remove(
             "is-active",
             "is-upcoming",
-            "is-draft",
-            "is-not-submitted",
             "is-next-last",
             "is-last-shift",
             "is-shift-invalid",
@@ -5213,6 +5126,10 @@ function updatePermitStatus() {
             "is-vec-expired"
         );
 
+
+        /* =================================================
+           LAST USABLE SHIFT
+        ================================================= */
 
         if (
             lastUsable
@@ -5237,6 +5154,10 @@ function updatePermitStatus() {
         }
 
 
+        /* =================================================
+           EXPIRY NOTE
+        ================================================= */
+
         if (
             expiryRuleNote
         ) {
@@ -5257,102 +5178,6 @@ function updatePermitStatus() {
                     ".";
 
             }
-
-        }
-
-
-        /* =================================================
-           DRAFT
-        ================================================= */
-
-        if (
-            manualStatus ===
-            "draft"
-        ) {
-
-            draftCount++;
-
-
-            row.classList.add(
-                "is-draft"
-            );
-
-
-            statusBadge.textContent =
-                "DRAFT";
-
-
-            if (
-                now <
-                ptwStart
-            ) {
-
-                statusNote.textContent =
-                    "PTW IS STILL DRAFT. PROPOSED VALIDITY STARTS " +
-                    formatDateTime(
-                        ptwStart
-                    ) +
-                    ".";
-
-            }
-
-            else {
-
-                statusNote.textContent =
-                    "PTW IS STILL DRAFT AND CANNOT BE USED UNTIL SUBMITTED / ACTIVATED.";
-
-            }
-
-
-            return;
-
-        }
-
-
-        /* =================================================
-           NOT SUBMITTED
-        ================================================= */
-
-        if (
-            manualStatus ===
-            "not-submitted"
-        ) {
-
-            notSubmittedCount++;
-
-
-            row.classList.add(
-                "is-not-submitted"
-            );
-
-
-            statusBadge.textContent =
-                "NOT SUBMITTED";
-
-
-            if (
-                now <
-                ptwStart
-            ) {
-
-                statusNote.textContent =
-                    "NEW PTW NOT YET SUBMITTED. TARGET START " +
-                    formatDateTime(
-                        ptwStart
-                    ) +
-                    ".";
-
-            }
-
-            else {
-
-                statusNote.textContent =
-                    "PTW TARGET VALIDITY HAS STARTED BUT PERMIT IS NOT SUBMITTED. SUBMIT / ACTIVATE BEFORE USE.";
-
-            }
-
-
-            return;
 
         }
 
@@ -5391,7 +5216,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           VEC EXPIRED
+           VEHICLE EPTW INVALID BECAUSE VEC EXPIRED
         ================================================= */
 
         if (
@@ -5516,7 +5341,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           FINAL FULL SHIFT
+           FINAL FULLY USABLE SHIFT
         ================================================= */
 
         if (
@@ -5548,7 +5373,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           NEXT SHIFT FINAL
+           NEXT SHIFT IS FINAL
         ================================================= */
 
         if (
@@ -5615,10 +5440,6 @@ function updatePermitStatus() {
         " WARNING · " +
         invalidCount +
         " INVALID · " +
-        draftCount +
-        " DRAFT · " +
-        notSubmittedCount +
-        " NOT SUBMITTED · " +
         expiredCount +
         " EXPIRED" +
         (
