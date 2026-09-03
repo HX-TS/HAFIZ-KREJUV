@@ -14,11 +14,6 @@
 
 <title>KREJUV FEC BOOKMARK</title>
 
-
-<!-- =========================================================
-     FAVICON
-========================================================= -->
-
 <link
     rel="icon"
     type="image/png"
@@ -38,10 +33,6 @@
 
 
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 :root {
     --bg: #f4f1eb;
@@ -82,10 +73,7 @@ body {
     background: var(--black);
     color: var(--black);
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     overflow-x: hidden;
     overflow-y: auto;
@@ -98,11 +86,7 @@ body {
 ========================================================= */
 
 .page {
-    width:
-        calc(
-            100% -
-            (var(--outer-margin) * 2)
-        );
+    width: calc(100% - (var(--outer-margin) * 2));
 
     min-height:
         calc(
@@ -156,6 +140,7 @@ body {
         );
 
     font-weight: 900;
+
     line-height: .80;
 
     text-transform: uppercase;
@@ -164,13 +149,16 @@ body {
 
 .krejuv-title {
     display: inline-block;
+
     letter-spacing: .08em;
+
     padding-left: .08em;
 }
 
 
 .bookmark-title {
     display: inline-block;
+
     letter-spacing: -.075em;
 }
 
@@ -186,17 +174,19 @@ body {
         );
 
     font-weight: 700;
+
     letter-spacing: .16em;
 }
 
 
 
 /* =========================================================
-   DIVIDER
+   BLACK DIVIDER
 ========================================================= */
 
 .section-divider {
     width: 100%;
+
     height: 18px;
 
     background: var(--black);
@@ -210,7 +200,10 @@ body {
 
 .top-section-header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
 
     min-height: 58px;
 
@@ -224,10 +217,14 @@ body {
     display: flex;
     align-items: center;
 
-    padding: 0 20px;
+    padding:
+        0
+        20px;
 
     font-size: 11px;
+
     font-weight: 900;
+
     letter-spacing: .04em;
 
     text-transform: uppercase;
@@ -243,7 +240,10 @@ body {
 
 .top-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
 }
 
 
@@ -276,7 +276,10 @@ body {
 
     position: relative;
 
+    margin-bottom: 7px;
+
     color: var(--black);
+
     text-decoration: none;
 
     font-family:
@@ -293,12 +296,12 @@ body {
         );
 
     font-weight: 900;
+
     line-height: .97;
+
     letter-spacing: -.055em;
 
     text-transform: uppercase;
-
-    margin-bottom: 7px;
 
     transition:
         transform .18s ease,
@@ -344,11 +347,220 @@ body {
 
 
 /* =========================================================
+   ACTIVE PTW SUMMARY
+========================================================= */
+
+.active-summary-box {
+    width: 100%;
+
+    border:
+        1px solid
+        var(--soft-border);
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.active-summary-head {
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        10px
+        14px;
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+}
+
+
+.active-summary-title {
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: .07em;
+
+    text-transform: uppercase;
+}
+
+
+.active-summary-count {
+    min-width: 25px;
+
+    min-height: 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        3px
+        7px;
+
+    background: var(--green);
+
+    color: var(--black);
+
+    border:
+        1px solid
+        rgba(5,5,5,.25);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 900;
+}
+
+
+.active-summary-list {
+    width: 100%;
+}
+
+
+.active-summary-item {
+    display: grid;
+
+    grid-template-columns:
+        60px
+        92px
+        minmax(0,1fr);
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 45px;
+
+    padding:
+        9px
+        12px;
+
+    color: var(--black);
+
+    text-decoration: none;
+
+    border-bottom:
+        1px solid
+        rgba(5,5,5,.08);
+
+    transition:
+        background .15s ease,
+        transform .15s ease;
+}
+
+
+.active-summary-item:last-child {
+    border-bottom: none;
+}
+
+
+.active-summary-item:hover {
+    background:
+        rgba(5,5,5,.045);
+}
+
+
+.active-summary-location {
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+.active-summary-number {
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: -.025em;
+}
+
+
+.active-summary-number::after {
+    content: "↗";
+
+    margin-left: 4px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 7px;
+}
+
+
+.active-summary-activity {
+    min-width: 0;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color:
+        rgba(5,5,5,.63);
+
+    text-transform: uppercase;
+}
+
+
+.active-summary-empty {
+    padding:
+        16px
+        14px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    color:
+        rgba(5,5,5,.45);
+
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
    EJHA
 ========================================================= */
 
 .ejha-box {
     width: 100%;
+
+    margin-top: 18px;
 
     border:
         1px solid
@@ -371,7 +583,9 @@ body {
         var(--soft-border);
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: .09em;
 
     color:
@@ -393,6 +607,7 @@ body {
     display: inline-block;
 
     color: var(--black);
+
     text-decoration: none;
 
     font-family:
@@ -409,13 +624,16 @@ body {
         );
 
     font-weight: 900;
+
     letter-spacing: -.035em;
 }
 
 
 .permit-item::after {
     content: "↗";
+
     margin-left: 7px;
+
     font-size: .48em;
 }
 
@@ -424,7 +642,9 @@ body {
     margin-top: 11px;
 
     font-size: 9.5px;
+
     font-weight: 400;
+
     line-height: 1.52;
 
     color:
@@ -450,6 +670,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 30px;
@@ -479,6 +700,7 @@ body {
         );
 
     font-weight: 900;
+
     letter-spacing: -.045em;
 
     text-transform: uppercase;
@@ -498,6 +720,7 @@ body {
         sans-serif;
 
     font-size: 13px;
+
     font-weight: 900;
 }
 
@@ -506,7 +729,9 @@ body {
     margin-top: 3px;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: .07em;
 
     color:
@@ -523,6 +748,7 @@ body {
 
 .shift-guide {
     display: grid;
+
     grid-template-columns:
         1fr
         1fr
@@ -554,7 +780,9 @@ body {
     margin-bottom: 4px;
 
     font-size: 8px;
+
     font-weight: 900;
+
     letter-spacing: .09em;
 
     color:
@@ -566,6 +794,7 @@ body {
 
 .shift-guide-value {
     font-size: 11px;
+
     font-weight: 900;
 
     text-transform: uppercase;
@@ -599,7 +828,9 @@ body {
         sans-serif;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: .07em;
 
     text-transform: uppercase;
@@ -612,7 +843,9 @@ body {
     max-width: 1150px;
 
     font-size: 9px;
+
     font-weight: 700;
+
     line-height: 1.5;
 
     color:
@@ -641,6 +874,7 @@ body {
     width: 100%;
 
     border-collapse: collapse;
+
     table-layout: fixed;
 
     border:
@@ -688,10 +922,13 @@ body {
         var(--soft-border);
 
     text-align: left;
+
     vertical-align: middle;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: .08em;
 
     color:
@@ -734,7 +971,9 @@ body {
         sans-serif;
 
     font-size: 11px;
+
     font-weight: 900;
+
     letter-spacing: .04em;
 
     text-transform: uppercase;
@@ -788,6 +1027,7 @@ body {
 
 .location-name {
     position: sticky;
+
     top: 15px;
 
     font-family:
@@ -797,8 +1037,11 @@ body {
         sans-serif;
 
     font-size: 16px;
+
     font-weight: 900;
+
     line-height: 1.1;
+
     letter-spacing: -.025em;
 
     text-transform: uppercase;
@@ -814,6 +1057,7 @@ body {
     display: inline-block;
 
     color: var(--black);
+
     text-decoration: none;
 
     font-family:
@@ -830,7 +1074,9 @@ body {
         );
 
     font-weight: 900;
+
     line-height: 1;
+
     letter-spacing: -.035em;
 }
 
@@ -878,8 +1124,11 @@ body {
         rgba(5,5,5,.20);
 
     font-size: 8px;
+
     font-weight: 900;
+
     line-height: 1.2;
+
     letter-spacing: .06em;
 
     text-transform: uppercase;
@@ -890,7 +1139,9 @@ body {
     margin-top: 9px;
 
     font-size: 8.5px;
+
     font-weight: 700;
+
     line-height: 1.45;
 
     color:
@@ -907,14 +1158,12 @@ body {
 
 .ptw-data-row.is-active
 .status-badge {
-    background:
-        var(--green);
+    background: var(--green);
 
     border-color:
         rgba(5,5,5,.35);
 
-    color:
-        var(--black);
+    color: var(--black);
 }
 
 
@@ -935,23 +1184,24 @@ body {
 
 
 /* =========================================================
-   NEXT SHIFT FINAL
+   WARNING
 ========================================================= */
 
 .ptw-data-row.is-next-last {
     box-shadow:
-        inset 6px 0 0
+        inset
+        6px
+        0
+        0
         var(--red);
 }
 
 
 .ptw-data-row.is-next-last
 .status-badge {
-    background:
-        var(--red);
+    background: var(--red);
 
-    border-color:
-        var(--red);
+    border-color: var(--red);
 
     color: #fff;
 
@@ -964,32 +1214,27 @@ body {
 
 .ptw-data-row.is-next-last
 .status-note {
-    color:
-        var(--red);
+    color: var(--red);
 
     font-weight: 900;
 }
 
 
-
-/* =========================================================
-   FINAL FULL SHIFT
-========================================================= */
-
 .ptw-data-row.is-last-shift {
     box-shadow:
-        inset 8px 0 0
+        inset
+        8px
+        0
+        0
         var(--red);
 }
 
 
 .ptw-data-row.is-last-shift
 .status-badge {
-    background:
-        var(--red);
+    background: var(--red);
 
-    border-color:
-        var(--red);
+    border-color: var(--red);
 
     color: #fff;
 
@@ -1006,8 +1251,7 @@ body {
         8px
         9px;
 
-    background:
-        var(--red);
+    background: var(--red);
 
     color: #fff;
 
@@ -1027,7 +1271,10 @@ body {
 
 .ptw-data-row.is-shift-invalid {
     box-shadow:
-        inset 8px 0 0
+        inset
+        8px
+        0
+        0
         var(--red-dark);
 
     background:
@@ -1037,11 +1284,9 @@ body {
 
 .ptw-data-row.is-shift-invalid
 .status-badge {
-    background:
-        var(--red-dark);
+    background: var(--red-dark);
 
-    border-color:
-        var(--red-dark);
+    border-color: var(--red-dark);
 
     color: #fff;
 }
@@ -1082,8 +1327,7 @@ body {
     background:
         rgba(5,5,5,.07);
 
-    color:
-        var(--black);
+    color: var(--black);
 }
 
 
@@ -1091,21 +1335,21 @@ body {
     opacity: .68;
 
     box-shadow:
-        inset 6px 0 0
+        inset
+        6px
+        0
+        0
         var(--black);
 }
 
 
 .ptw-data-row.is-vec-expired
 .status-badge {
-    background:
-        var(--black);
+    background: var(--black);
 
-    border-color:
-        var(--black);
+    border-color: var(--black);
 
-    color:
-        var(--bg);
+    color: var(--bg);
 }
 
 
@@ -1118,21 +1362,19 @@ body {
 
     0%,
     45% {
-        background:
-            var(--red);
+        background: var(--red);
 
         color: #fff;
+
         opacity: 1;
     }
 
 
     50%,
     100% {
-        background:
-            transparent;
+        background: transparent;
 
-        color:
-            var(--red);
+        color: var(--red);
 
         opacity: .38;
     }
@@ -1144,8 +1386,7 @@ body {
 
     0%,
     45% {
-        background:
-            var(--red);
+        background: var(--red);
 
         color: #fff;
     }
@@ -1156,8 +1397,7 @@ body {
         background:
             rgba(208,0,0,.08);
 
-        color:
-            var(--red);
+        color: var(--red);
     }
 
 }
@@ -1174,7 +1414,9 @@ body {
     margin-bottom: 3px;
 
     font-size: 7.5px;
+
     font-weight: 900;
+
     letter-spacing: .08em;
 
     color:
@@ -1186,7 +1428,9 @@ body {
 
 .validity-value {
     font-size: 9px;
+
     font-weight: 700;
+
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1206,7 +1450,9 @@ body {
 
 .last-usable-value {
     font-size: 9px;
+
     font-weight: 900;
+
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1217,7 +1463,9 @@ body {
     margin-top: 7px;
 
     font-size: 7.5px;
+
     font-weight: 700;
+
     line-height: 1.45;
 
     color:
@@ -1234,7 +1482,9 @@ body {
 
 .description-text {
     font-size: 9px;
+
     font-weight: 400;
+
     line-height: 1.55;
 
     color:
@@ -1283,7 +1533,9 @@ body {
         9px;
 
     font-size: 7.5px;
+
     font-weight: 900;
+
     letter-spacing: .07em;
 
     text-transform: uppercase;
@@ -1319,7 +1571,9 @@ body {
         9px;
 
     font-size: 8px;
+
     font-weight: 800;
+
     line-height: 1.35;
 
     text-transform: uppercase;
@@ -1328,6 +1582,7 @@ body {
 
 .tower-equipment-expiry {
     display: flex;
+
     align-items: center;
 
     padding:
@@ -1345,6 +1600,7 @@ body {
         sans-serif;
 
     font-size: 8px;
+
     font-weight: 900;
 
     white-space: nowrap;
@@ -1376,7 +1632,9 @@ body {
     margin-bottom: 8px;
 
     font-size: 8px;
+
     font-weight: 900;
+
     letter-spacing: .08em;
 
     text-transform: uppercase;
@@ -1387,6 +1645,7 @@ body {
     display: inline-block;
 
     color: var(--black);
+
     text-decoration: none;
 
     font-family:
@@ -1396,6 +1655,7 @@ body {
         sans-serif;
 
     font-size: 14px;
+
     font-weight: 900;
 }
 
@@ -1413,7 +1673,9 @@ body {
     margin-top: 7px;
 
     font-size: 8px;
+
     font-weight: 400;
+
     line-height: 1.45;
 
     color:
@@ -1427,7 +1689,9 @@ body {
     margin-top: 8px;
 
     font-size: 8px;
+
     font-weight: 900;
+
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1457,7 +1721,9 @@ body {
         rgba(5,5,5,.20);
 
     font-size: 7.5px;
+
     font-weight: 900;
+
     letter-spacing: .06em;
 
     text-transform: uppercase;
@@ -1468,7 +1734,9 @@ body {
     margin-top: 6px;
 
     font-size: 7.5px;
+
     font-weight: 700;
+
     line-height: 1.45;
 
     text-transform: uppercase;
@@ -1477,14 +1745,12 @@ body {
 
 .vec-dependency.vec-active
 .vec-status-badge {
-    background:
-        var(--green);
+    background: var(--green);
 
     border-color:
         rgba(5,5,5,.35);
 
-    color:
-        var(--black);
+    color: var(--black);
 }
 
 
@@ -1494,8 +1760,7 @@ body {
 
     background: transparent;
 
-    color:
-        var(--black);
+    color: var(--black);
 }
 
 
@@ -1508,8 +1773,7 @@ body {
 
 .vec-dependency.vec-next-last
 .vec-status-badge {
-    background:
-        var(--red);
+    background: var(--red);
 
     color: #fff;
 
@@ -1522,8 +1786,7 @@ body {
 
 .vec-dependency.vec-next-last
 .vec-status-note {
-    color:
-        var(--red);
+    color: var(--red);
 
     font-weight: 900;
 }
@@ -1541,8 +1804,7 @@ body {
 
 .vec-dependency.vec-last-shift
 .vec-status-badge {
-    background:
-        var(--red);
+    background: var(--red);
 
     color: #fff;
 
@@ -1557,8 +1819,7 @@ body {
 .vec-status-note {
     padding: 7px;
 
-    background:
-        var(--red);
+    background: var(--red);
 
     color: #fff;
 
@@ -1618,7 +1879,9 @@ body {
         rgba(5,5,5,.09);
 
     font-size: 8px;
+
     font-weight: 900;
+
     line-height: 1.5;
 
     text-transform: uppercase;
@@ -1641,14 +1904,14 @@ body {
 
     padding: 22px;
 
-    background:
-        var(--black);
+    background: var(--black);
 
-    color:
-        var(--bg);
+    color: var(--bg);
 
     font-size: 12px;
+
     font-weight: 700;
+
     line-height: 1.55;
 
     text-transform: uppercase;
@@ -1658,19 +1921,23 @@ body {
     pointer-events: none;
 
     opacity: 0;
+
     visibility: hidden;
 
     transform:
         translateY(8px);
 
     box-shadow:
-        0 16px 40px
+        0
+        16px
+        40px
         rgba(0,0,0,.22);
 }
 
 
 .tooltip.active {
     opacity: 1;
+
     visibility: visible;
 
     transform:
@@ -1690,6 +1957,7 @@ body {
         sans-serif;
 
     font-size: 20px;
+
     font-weight: 900;
 }
 
@@ -1703,7 +1971,9 @@ body {
     min-height: 58px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-top:
@@ -1717,7 +1987,9 @@ body {
         sans-serif;
 
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: .09em;
 
     text-transform: uppercase;
@@ -1804,6 +2076,7 @@ and
 
     .krejuv-title {
         letter-spacing: .04em;
+
         padding-left: .04em;
     }
 
@@ -1815,6 +2088,7 @@ and
 
     .hero-subtitle {
         margin-top: 25px;
+
         font-size: 12px;
     }
 
@@ -1857,6 +2131,7 @@ and
         margin-bottom: 18px;
 
         font-size: 10px;
+
         font-weight: 900;
 
         text-transform: uppercase;
@@ -1869,7 +2144,7 @@ and
 
 
     .top-column:nth-child(2)::before {
-        content: "EJHA";
+        content: "ACTIVE PTW / EJHA";
     }
 
 
@@ -1880,6 +2155,34 @@ and
                 7vw,
                 44px
             );
+    }
+
+
+    .active-summary-item {
+        grid-template-columns:
+            55px
+            88px
+            minmax(0,1fr);
+
+        gap: 6px;
+
+        padding:
+            10px;
+    }
+
+
+    .active-summary-location {
+        font-size: 10px;
+    }
+
+
+    .active-summary-number {
+        font-size: 12px;
+    }
+
+
+    .active-summary-activity {
+        font-size: 7.5px;
     }
 
 
@@ -1982,6 +2285,7 @@ and
         min-height: 42px;
 
         display: flex;
+
         align-items: center;
 
         padding:
@@ -2002,6 +2306,7 @@ and
             sans-serif;
 
         font-size: 14px;
+
         font-weight: 900;
 
         text-transform: uppercase;
@@ -2037,6 +2342,7 @@ and
         margin-bottom: 7px;
 
         font-size: 7.5px;
+
         font-weight: 900;
 
         color:
@@ -2098,8 +2404,32 @@ and
     }
 
 
+    .active-summary-item {
+        grid-template-columns:
+            48px
+            78px
+            minmax(0,1fr);
+    }
+
+
+    .active-summary-location {
+        font-size: 9px;
+    }
+
+
+    .active-summary-number {
+        font-size: 11px;
+    }
+
+
+    .active-summary-activity {
+        font-size: 7px;
+    }
+
+
     .footer {
         min-height: 50px;
+
         font-size: 9px;
     }
 
@@ -2151,8 +2481,9 @@ and
 <div class="section-divider"></div>
 
 
+
 <!-- =========================================================
-     TOP
+     TOP HEADER
 ========================================================= -->
 
 <div class="top-section-header">
@@ -2162,102 +2493,158 @@ and
     </div>
 
     <div>
-        EJHA
+        ACTIVE PTW / EJHA
     </div>
 
 </div>
 
 
+
+<!-- =========================================================
+     TOP CONTENT
+========================================================= -->
+
 <section class="top-columns">
 
 
-    <div class="top-column main-site-column">
+<!-- =========================================================
+     MAIN SITE
+========================================================= -->
+
+<div class="top-column main-site-column">
 
 
-        <a
-            class="site-item"
-            href="https://acm.petronas.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+    <a
+        class="site-item"
+        href="https://acm.petronas.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        XPRESS PETRONAS
+    </a>
+
+
+    <a
+        class="site-item"
+        href="https://ace.petronas.com/home"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        ACE PETRONAS
+    </a>
+
+
+    <a
+        class="site-item"
+        href="https://ptw.petronas.com/Home/Dashboard?isPtwAudit=False"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        EPTW
+    </a>
+
+
+    <a
+        class="site-item"
+        href="https://hx-ts.github.io/LOKASI-FEC/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        LOCATION
+    </a>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ACTIVE PTW + EJHA
+========================================================= -->
+
+<div class="top-column">
+
+
+    <!-- =====================================================
+         ACTIVE PTW SUMMARY
+    ====================================================== -->
+
+    <div class="active-summary-box">
+
+
+        <div class="active-summary-head">
+
+            <div class="active-summary-title">
+                ACTIVE PTW
+            </div>
+
+            <div
+                id="activePtwCount"
+                class="active-summary-count"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div
+            id="activePtwList"
+            class="active-summary-list"
         >
-            XPRESS PETRONAS
-        </a>
 
+            <div class="active-summary-empty">
+                CHECKING ACTIVE PTW...
+            </div>
 
-        <a
-            class="site-item"
-            href="https://ace.petronas.com/home"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ACE PETRONAS
-        </a>
-
-
-        <a
-            class="site-item"
-            href="https://ptw.petronas.com/Home/Dashboard?isPtwAudit=False"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            EPTW
-        </a>
-
-
-        <a
-            class="site-item"
-            href="https://hx-ts.github.io/LOKASI-FEC/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            LOCATION
-        </a>
+        </div>
 
 
     </div>
 
 
-    <div class="top-column">
+
+    <!-- =====================================================
+         EJHA NOW AT BOTTOM
+    ====================================================== -->
+
+    <div class="ejha-box">
 
 
-        <div class="ejha-box">
+        <div class="ejha-box-title">
+            EJHA NO.
+        </div>
 
 
-            <div class="ejha-box-title">
-                EJHA NO.
-            </div>
+        <div class="ejha-entry">
 
 
-            <div class="ejha-entry">
+            <a
+                class="permit-item hover-detail"
+
+                href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
+
+                target="_blank"
+
+                rel="noopener noreferrer"
+
+                data-number="EJHA 0046453"
+
+                data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
+            >
+                0046453
+            </a>
 
 
-                <a
-                    class="permit-item hover-detail"
+            <div class="permit-description">
 
-                    href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
-
-                    target="_blank"
-
-                    rel="noopener noreferrer"
-
-                    data-number="EJHA 0046453"
-
-                    data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
-                >
-                    0046453
-                </a>
-
-
-                <div class="permit-description">
-
-                    KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES
-                    (CLEANING, GAUGING, WATER FILLING, HYDROTEST,
-                    DEWATERING, SWABBING AND AIR DRYING)
-                    FOR NEW NPS10 PIPELINE
-                    (GPP4 TO GPS GAS STATION)
-
-                </div>
-
+                KREJUV FEC:
+                TO PERFORM PRE-COMMISSIONING ACTIVITIES
+                (CLEANING, GAUGING, WATER FILLING,
+                HYDROTEST, DEWATERING, SWABBING
+                AND AIR DRYING)
+                FOR NEW NPS10 PIPELINE
+                (GPP4 TO GPS GAS STATION)
 
             </div>
 
@@ -2268,10 +2655,14 @@ and
     </div>
 
 
+</div>
+
+
 </section>
 
 
 <div class="section-divider"></div>
+
 
 
 <!-- =========================================================
@@ -2281,143 +2672,163 @@ and
 <section class="eptw-section">
 
 
-    <div class="eptw-section-head">
+<div class="eptw-section-head">
 
 
-        <div class="eptw-section-title">
-            EPTW PERMIT CONTROL
-        </div>
-
-
-        <div class="eptw-live">
-
-
-            <div
-                id="liveClock"
-                class="live-clock"
-            >
-                --
-            </div>
-
-
-            <div
-                id="currentShift"
-                class="current-shift"
-            >
-                --
-            </div>
-
-
-        </div>
-
-
+    <div class="eptw-section-title">
+        EPTW PERMIT CONTROL
     </div>
 
 
-    <div class="shift-guide">
+    <div class="eptw-live">
 
-
-        <div class="shift-guide-item">
-
-            <span class="shift-guide-label">
-                DAY SHIFT
-            </span>
-
-            <span class="shift-guide-value">
-                07:00 - 18:59
-            </span>
-
+        <div
+            id="liveClock"
+            class="live-clock"
+        >
+            --
         </div>
 
-
-        <div class="shift-guide-item">
-
-            <span class="shift-guide-label">
-                NIGHT SHIFT
-            </span>
-
-            <span class="shift-guide-value">
-                19:00 - 06:59
-            </span>
-
-        </div>
-
-
-        <div class="shift-guide-item">
-
-            <span class="shift-guide-label">
-                PERMIT STATUS
-            </span>
-
-            <span
-                id="permitSummary"
-                class="shift-guide-value"
-            >
-                CHECKING...
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="ptw-rule-box">
-
-        <div class="ptw-rule-title">
-            PTW SHIFT VALIDITY RULE
-        </div>
-
-        <div class="ptw-rule-text">
-
-            A PTW OR VEC MUST REMAIN VALID UNTIL THE END OF THE APPLICABLE SHIFT.
-            IF THE PERMIT EXPIRES BEFORE 18:59 FOR DAY SHIFT OR BEFORE 06:59 FOR NIGHT SHIFT,
-            IT CANNOT BE USED FOR THAT SHIFT.
-            A NEW PERMIT SHOULD BE ACTIVATED FOR THAT SHIFT.
-            THE PREVIOUS FULLY USABLE SHIFT WILL FLASH RED AS THE RENEWAL WARNING.
-
+        <div
+            id="currentShift"
+            class="current-shift"
+        >
+            --
         </div>
 
     </div>
 
 
-    <div class="eptw-table-container">
+</div>
 
 
-        <table class="eptw-table">
+
+<!-- =========================================================
+     SHIFT INFORMATION
+========================================================= -->
+
+<div class="shift-guide">
 
 
-            <colgroup>
+    <div class="shift-guide-item">
 
-                <col class="location-col">
-                <col class="number-col">
-                <col class="status-col">
-                <col class="validity-col">
-                <col class="description-col">
+        <span class="shift-guide-label">
+            DAY SHIFT
+        </span>
 
-            </colgroup>
+        <span class="shift-guide-value">
+            07:00 - 18:59
+        </span>
 
-
-            <thead>
-
-                <tr>
-
-                    <th>LOCATION</th>
-                    <th>EPTW NO.</th>
-                    <th>STATUS</th>
-
-                    <th>
-                        PTW VALIDITY / LAST USABLE SHIFT
-                    </th>
-
-                    <th>DESCRIPTION</th>
-
-                </tr>
-
-            </thead>
+    </div>
 
 
-            <tbody>
+    <div class="shift-guide-item">
+
+        <span class="shift-guide-label">
+            NIGHT SHIFT
+        </span>
+
+        <span class="shift-guide-value">
+            19:00 - 06:59
+        </span>
+
+    </div>
+
+
+    <div class="shift-guide-item">
+
+        <span class="shift-guide-label">
+            PERMIT STATUS
+        </span>
+
+        <span
+            id="permitSummary"
+            class="shift-guide-value"
+        >
+            CHECKING...
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     PTW RULE
+========================================================= -->
+
+<div class="ptw-rule-box">
+
+    <div class="ptw-rule-title">
+        PTW SHIFT VALIDITY RULE
+    </div>
+
+    <div class="ptw-rule-text">
+
+        A PTW OR VEC MUST REMAIN VALID UNTIL THE END OF THE APPLICABLE SHIFT.
+        IF THE PERMIT EXPIRES BEFORE 18:59 FOR DAY SHIFT OR BEFORE 06:59 FOR NIGHT SHIFT,
+        IT CANNOT BE USED FOR THAT SHIFT.
+        A NEW PERMIT SHOULD BE ACTIVATED FOR THAT SHIFT.
+        THE PREVIOUS FULLY USABLE SHIFT WILL FLASH RED AS THE RENEWAL WARNING.
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TABLE
+========================================================= -->
+
+<div class="eptw-table-container">
+
+
+<table class="eptw-table">
+
+
+<colgroup>
+
+    <col class="location-col">
+
+    <col class="number-col">
+
+    <col class="status-col">
+
+    <col class="validity-col">
+
+    <col class="description-col">
+
+</colgroup>
+
+
+<thead>
+
+<tr>
+
+    <th>LOCATION</th>
+
+    <th>EPTW NO.</th>
+
+    <th>STATUS</th>
+
+    <th>
+        PTW VALIDITY / LAST USABLE SHIFT
+    </th>
+
+    <th>
+        DESCRIPTION
+    </th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
 
 
 <!-- =========================================================
@@ -2433,8 +2844,9 @@ and
 </tr>
 
 
+
 <!-- =========================================================
-     GPS 0153937 - CURRENT ACTIVE
+     GPS 0153937
 ========================================================= -->
 
 <tr
@@ -2442,102 +2854,114 @@ and
 
     data-location="GPS"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-09-03T07:00:00+08:00"
 
     data-end="2026-09-09T23:59:00+08:00"
 >
 
-    <td
-        class="location-merged"
-        rowspan="4"
+<td
+    class="location-merged"
+    rowspan="4"
+>
+
+    <div class="location-name">
+        GPS
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=93f67d57-34e0-4594-ab61-f006a3ab2be9"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0153937"
+
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
     >
+        0153937
+    </a>
 
-        <div class="location-name">
-            GPS
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="EPTW NO.">
+<td data-label="STATUS">
 
-        <a
-            class="ptw-number hover-detail"
+    <span class="status-badge">
+        CHECKING
+    </span>
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=93f67d57-34e0-4594-ab61-f006a3ab2be9"
+    <div class="status-note">
+        --
+    </div>
 
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-            data-number="EPTW 0153937"
-
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-        >
-            0153937
-        </a>
-
-    </td>
+</td>
 
 
-    <td data-label="STATUS">
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-        <span class="status-badge">
-            CHECKING
-        </span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
-        <div class="status-note">
-            --
-        </div>
+    <div class="validity-value">
 
-    </td>
+        03 SEP 2026 07:00 AM -
+        09 SEP 2026 11:59 PM
+
+    </div>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            03 SEP 2026 07:00 AM -
-            09 SEP 2026 11:59 PM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        PIGGING ACTIVITIES
+        (FOR CLEANING, GAUGING, WATER FILLING,
+        DEWATERING AND SWABBING),
+        HYDROTEST AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPS GAS STATION
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -2549,90 +2973,102 @@ and
 
     data-location="GPS"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-27T08:00:00+08:00"
 
     data-end="2026-09-03T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=373fa5e6-3f00-487a-a1a0-791455ee08f9"
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=373fa5e6-3f00-487a-a1a0-791455ee08f9"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0152730"
+        data-number="EPTW 0152730"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-        >
-            0152730
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+    >
+        0152730
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        27 AUG 2026 08:00 AM -
+        03 SEP 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            27 AUG 2026 08:00 AM -
-            03 SEP 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        PIGGING ACTIVITIES
+        (FOR CLEANING, GAUGING, WATER FILLING,
+        DEWATERING AND SWABBING),
+        HYDROTEST AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPS GAS STATION
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -2644,90 +3080,102 @@ and
 
     data-location="GPS"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-20T20:56:00+08:00"
 
     data-end="2026-08-27T17:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 151521"
+        data-number="EPTW 151521"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-        >
-            151521
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+    >
+        151521
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        20 AUG 2026 08:56 PM -
+        27 AUG 2026 05:59 PM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            20 AUG 2026 08:56 PM -
-            27 AUG 2026 05:59 PM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        PIGGING ACTIVITIES
+        (FOR CLEANING, GAUGING, WATER FILLING,
+        DEWATERING AND SWABBING),
+        HYDROTEST AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPS GAS STATION
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -2739,95 +3187,106 @@ and
 
     data-location="GPS"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-14T10:02:00+08:00"
 
     data-end="2026-08-21T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0149469"
+        data-number="EPTW 0149469"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-        >
-            0149469
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+    >
+        0149469
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        14 AUG 2026 10:02 AM -
+        21 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            14 AUG 2026 10:02 AM -
-            21 AUG 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        PIGGING ACTIVITIES
+        (FOR CLEANING, GAUGING, WATER FILLING,
+        DEWATERING AND SWABBING),
+        HYDROTEST AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPS GAS STATION
+
+    </div>
+
+</td>
 
 </tr>
 
 
 
 <!-- =========================================================
-     GPP4 0153935 - CURRENT ACTIVE
+     GPP4 0153935
 ========================================================= -->
 
 <tr
@@ -2835,102 +3294,117 @@ and
 
     data-location="GPP4"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-09-03T07:00:00+08:00"
 
     data-end="2026-09-09T23:59:00+08:00"
 >
 
-    <td
-        class="location-merged"
-        rowspan="4"
+<td
+    class="location-merged"
+    rowspan="4"
+>
+
+    <div class="location-name">
+        GPP4
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=0b553018-9371-44d0-8bcc-5336554a6286"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0153935"
+
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
     >
+        0153935
+    </a>
 
-        <div class="location-name">
-            GPP4
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="EPTW NO.">
+<td data-label="STATUS">
 
-        <a
-            class="ptw-number hover-detail"
+    <span class="status-badge">
+        CHECKING
+    </span>
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=0b553018-9371-44d0-8bcc-5336554a6286"
+    <div class="status-note">
+        --
+    </div>
 
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-            data-number="EPTW 0153935"
-
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
-        >
-            0153935
-        </a>
-
-    </td>
+</td>
 
 
-    <td data-label="STATUS">
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-        <span class="status-badge">
-            CHECKING
-        </span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
-        <div class="status-note">
-            --
-        </div>
+    <div class="validity-value">
 
-    </td>
+        03 SEP 2026 07:00 AM -
+        09 SEP 2026 11:59 PM
+
+    </div>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            03 SEP 2026 07:00 AM -
-            09 SEP 2026 11:59 PM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        CLEANING,
+        GAUGING,
+        WATER FILLING,
+        HYDROTEST,
+        DEWATERING AND SWABBING
+        AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPP4 STATION,
+        BV10.3 AND BV13.1
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -2942,90 +3416,105 @@ and
 
     data-location="GPP4"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-27T08:00:00+08:00"
 
     data-end="2026-09-03T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=3f656b9a-2bfb-4c3c-92fa-46675cbc4a47"
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=3f656b9a-2bfb-4c3c-92fa-46675cbc4a47"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0152731"
+        data-number="EPTW 0152731"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
-        >
-            0152731
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
+    >
+        0152731
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        27 AUG 2026 08:00 AM -
+        03 SEP 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            27 AUG 2026 08:00 AM -
-            03 SEP 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        CLEANING,
+        GAUGING,
+        WATER FILLING,
+        HYDROTEST,
+        DEWATERING AND SWABBING
+        AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPP4 STATION,
+        BV10.3 AND BV13.1
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -3037,90 +3526,105 @@ and
 
     data-location="GPP4"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-20T20:56:00+08:00"
 
     data-end="2026-08-27T17:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 151320"
+        data-number="EPTW 151320"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-        >
-            151320
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
+    >
+        151320
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        20 AUG 2026 08:56 PM -
+        27 AUG 2026 05:59 PM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            20 AUG 2026 08:56 PM -
-            27 AUG 2026 05:59 PM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        CLEANING,
+        GAUGING,
+        WATER FILLING,
+        HYDROTEST,
+        DEWATERING AND SWABBING
+        AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPP4 STATION (RECEIVER),
+        BV10.3 AND BV13.1
+
+    </div>
+
+</td>
 
 </tr>
+
 
 
 <!-- =========================================================
@@ -3132,88 +3636,102 @@ and
 
     data-location="GPP4"
 
+    data-activity="PIPELINE PRE-COMMISSIONING"
+
     data-start="2026-08-14T10:02:00+08:00"
 
     data-end="2026-08-21T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574574f"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574f"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0149403"
+        data-number="EPTW 0149403"
 
-            data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-        >
-            0149403
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
+    >
+        0149403
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        14 AUG 2026 10:02 AM -
+        21 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            14 AUG 2026 10:02 AM -
-            21 AUG 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES
+        INCLUDING MOB DEMOB,
+        SET UP PREPARATION,
+        CLEANING,
+        GAUGING,
+        WATER FILLING,
+        HYDROTEST,
+        DEWATERING AND SWABBING
+        AND AIR DRYING
+        FOR NEW NPS 10 FEC PIPELINE
+        AT GPP4 STATION (RECEIVER),
+        BV10.3 AND BV13.1
+
+    </div>
+
+</td>
 
 </tr>
 
@@ -3232,6 +3750,7 @@ and
 </tr>
 
 
+
 <!-- =========================================================
      GPS 0153035
 ========================================================= -->
@@ -3241,368 +3760,387 @@ and
 
     data-location="GPS"
 
+    data-activity="TOWER LIGHT"
+
     data-start="2026-08-29T19:00:00+08:00"
 
     data-end="2026-09-05T05:59:00+08:00"
 >
 
-    <td
-        class="location-merged"
-        rowspan="3"
+<td
+    class="location-merged"
+    rowspan="3"
+>
+
+    <div class="location-name">
+        GPS
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=21b46898-323a-4c83-942e-ec833533752c"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0153035"
+
+        data-description="KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
     >
+        0153035
+    </a>
 
-        <div class="location-name">
-            GPS
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="EPTW NO.">
+<td data-label="STATUS">
 
-        <a
-            class="ptw-number hover-detail"
+    <span class="status-badge">
+        CHECKING
+    </span>
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=21b46898-323a-4c83-942e-ec833533752c"
+    <div class="status-note">
+        --
+    </div>
 
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-            data-number="EPTW 0153035"
-
-            data-description="KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
-        >
-            0153035
-        </a>
-
-    </td>
+</td>
 
 
-    <td data-label="STATUS">
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-        <span class="status-badge">
-            CHECKING
-        </span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
-        <div class="status-note">
-            --
-        </div>
+    <div class="validity-value">
 
-    </td>
+        29 AUG 2026 07:00 PM -
+        05 SEP 2026 05:59 AM
+
+    </div>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            29 AUG 2026 07:00 PM -
-            05 SEP 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
+
+<td data-label="DESCRIPTION">
+
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM RUNNING TOWER LIGHT
+        AT GPS GAS STATION
+
+    </div>
+
+
+    <div class="tower-equipment-box">
+
+
+        <div class="tower-equipment-title">
+
+            <div>
+                GPS TOWER LIGHT
+            </div>
+
+            <div>
+                EXPIRY DATE
+            </div>
 
         </div>
 
 
-        <div class="tower-equipment-box">
+        <div class="tower-equipment-row">
 
-
-            <div class="tower-equipment-title">
-
-                <div>
-                    GPS TOWER LIGHT
-                </div>
-
-                <div>
-                    EXPIRY DATE
-                </div>
-
+            <div class="tower-equipment-name">
+                MCWELL 2666
             </div>
 
-
-            <div class="tower-equipment-row">
-
-                <div class="tower-equipment-name">
-                    MCWELL 2666
-                </div>
-
-                <div class="tower-equipment-expiry">
-                    04 SEP 2026
-                </div>
-
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
             </div>
-
-
-            <div class="tower-equipment-row">
-
-                <div class="tower-equipment-name">
-                    ATLAS COPCO PL100114
-                </div>
-
-                <div class="tower-equipment-expiry">
-                    04 SEP 2026
-                </div>
-
-            </div>
-
-
-            <div class="tower-equipment-row">
-
-                <div class="tower-equipment-name">
-                    ATLAS COPCO PL100108
-                </div>
-
-                <div class="tower-equipment-expiry">
-                    04 SEP 2026
-                </div>
-
-            </div>
-
-
-            <div class="tower-equipment-row">
-
-                <div class="tower-equipment-name">
-                    ATLAS COPCO PL100254
-                </div>
-
-                <div class="tower-equipment-expiry">
-                    04 SEP 2026
-                </div>
-
-            </div>
-
-
-            <div class="tower-equipment-row">
-
-                <div class="tower-equipment-name">
-                    ATLAS COPCO PL100158
-                </div>
-
-                <div class="tower-equipment-expiry">
-                    04 SEP 2026
-                </div>
-
-            </div>
-
 
         </div>
 
-    </td>
+
+        <div class="tower-equipment-row">
+
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100114
+            </div>
+
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+
+        </div>
+
+
+        <div class="tower-equipment-row">
+
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100108
+            </div>
+
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+
+        </div>
+
+
+        <div class="tower-equipment-row">
+
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100254
+            </div>
+
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+
+        </div>
+
+
+        <div class="tower-equipment-row">
+
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100158
+            </div>
+
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+
+        </div>
+
+
+    </div>
+
+</td>
 
 </tr>
 
 
-<!-- GPS 0151730 -->
+
+<!-- =========================================================
+     GPS 0151730
+========================================================= -->
 
 <tr
     class="ptw-data-row"
 
     data-location="GPS"
+
+    data-activity="TOWER LIGHT"
 
     data-start="2026-08-22T19:00:00+08:00"
 
     data-end="2026-08-29T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=59983f05-01ba-49d6-8c93-d75b5981e4bd"
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=59983f05-01ba-49d6-8c93-d75b5981e4bd"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0151730"
+        data-number="EPTW 0151730"
 
-            data-description="KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
-        >
-            0151730
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
+    >
+        0151730
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        22 AUG 2026 07:00 PM -
+        29 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            22 AUG 2026 07:00 PM -
-            29 AUG 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM RUNNING TOWER LIGHT
+        AT GPS GAS STATION
+
+    </div>
+
+</td>
 
 </tr>
 
 
-<!-- GPS 0150129 -->
+
+<!-- =========================================================
+     GPS 0150129
+========================================================= -->
 
 <tr
     class="ptw-data-row"
 
     data-location="GPS"
 
+    data-activity="TOWER LIGHT"
+
     data-start="2026-08-15T21:07:00+08:00"
 
     data-end="2026-08-22T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=7d6f23e6-90b8-44c3-933e-84869b02c157"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=7d6f23e6-90b8-44c3-933e-84869b02c157"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0150129"
+        data-number="EPTW 0150129"
 
-            data-description="GPS TOWER LIGHT OLD EPTW RECORD"
-        >
-            0150129
-        </a>
+        data-description="GPS TOWER LIGHT OLD EPTW RECORD"
+    >
+        0150129
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        15 AUG 2026 09:07 PM -
+        22 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            15 AUG 2026 09:07 PM -
-            22 AUG 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
-            GPS TOWER LIGHT — OLD EPTW RECORD
-        </div>
+</td>
 
-    </td>
+
+<td data-label="DESCRIPTION">
+
+    <div class="description-text">
+
+        GPS TOWER LIGHT —
+        OLD EPTW RECORD
+
+    </div>
+
+</td>
 
 </tr>
 
@@ -3617,286 +4155,304 @@ and
 
     data-location="GPP4"
 
+    data-activity="TOWER LIGHT"
+
     data-start="2026-08-29T19:00:00+08:00"
 
     data-end="2026-09-05T05:59:00+08:00"
 >
 
-    <td
-        class="location-merged"
-        rowspan="3"
+<td
+    class="location-merged"
+    rowspan="3"
+>
+
+    <div class="location-name">
+        GPP4
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=62ffdacf-1fc9-437c-b602-d06ef67835f7"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0153036"
+
+        data-description="KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION"
     >
+        0153036
+    </a>
 
-        <div class="location-name">
-            GPP4
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="EPTW NO.">
+<td data-label="STATUS">
 
-        <a
-            class="ptw-number hover-detail"
+    <span class="status-badge">
+        CHECKING
+    </span>
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=62ffdacf-1fc9-437c-b602-d06ef67835f7"
+    <div class="status-note">
+        --
+    </div>
 
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-            data-number="EPTW 0153036"
-
-            data-description="KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION"
-        >
-            0153036
-        </a>
-
-    </td>
+</td>
 
 
-    <td data-label="STATUS">
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-        <span class="status-badge">
-            CHECKING
-        </span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
-        <div class="status-note">
-            --
-        </div>
+    <div class="validity-value">
 
-    </td>
+        29 AUG 2026 07:00 PM -
+        05 SEP 2026 05:59 AM
+
+    </div>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            29 AUG 2026 07:00 PM -
-            05 SEP 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM RUNNING TOWER LIGHT
+        AT GPP4 STATION
+
+    </div>
+
+</td>
 
 </tr>
 
 
-<!-- GPP4 151524 -->
+
+<!-- =========================================================
+     GPP4 151524
+========================================================= -->
 
 <tr
     class="ptw-data-row"
 
     data-location="GPP4"
+
+    data-activity="TOWER LIGHT"
 
     data-start="2026-08-21T21:31:00+08:00"
 
     data-end="2026-08-28T17:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=5652ba22-a69a-43f2-b7aa-48b3454cfb05"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=5652ba22-a69a-43f2-b7aa-48b3454cfb05"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 151524"
+        data-number="EPTW 151524"
 
-            data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
-        >
-            151524
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
+    >
+        151524
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        21 AUG 2026 09:31 PM -
+        28 AUG 2026 05:59 PM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            21 AUG 2026 09:31 PM -
-            28 AUG 2026 05:59 PM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM RUN TOWER LIGHT
+        AT GPP4 STATION
+
+    </div>
+
+</td>
 
 </tr>
 
 
-<!-- GPP4 0149256 -->
+
+<!-- =========================================================
+     GPP4 0149256
+========================================================= -->
 
 <tr
     class="ptw-data-row"
 
     data-location="GPP4"
 
+    data-activity="TOWER LIGHT"
+
     data-start="2026-08-15T20:03:00+08:00"
 
     data-end="2026-08-22T05:59:00+08:00"
 >
 
-    <td data-label="EPTW NO.">
+<td data-label="EPTW NO.">
 
-        <a
-            class="ptw-number hover-detail"
+    <a
+        class="ptw-number hover-detail"
 
-            href="https://ptw.petronas.com/PTW/Apply?applicationId=889b8e36-23e9-4c8f-996e-b16ad7017200"
+        href="https://ptw.petronas.com/PTW/Apply?applicationId=889b8e36-23e9-4c8f-996e-b16ad7017200"
 
-            target="_blank"
+        target="_blank"
 
-            rel="noopener noreferrer"
+        rel="noopener noreferrer"
 
-            data-number="EPTW 0149256"
+        data-number="EPTW 0149256"
 
-            data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
-        >
-            0149256
-        </a>
+        data-description="KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION"
+    >
+        0149256
+    </a>
 
-    </td>
-
-
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
+</td>
 
 
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+
+        15 AUG 2026 08:03 PM -
+        22 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
 
         <span class="validity-label">
-            PTW VALIDITY
+            LAST FULLY USABLE SHIFT
         </span>
 
-        <div class="validity-value">
-
-            15 AUG 2026 08:03 PM -
-            22 AUG 2026 05:59 AM
-
-        </div>
-
-
-        <div class="last-usable">
-
-            <span class="validity-label">
-                LAST FULLY USABLE SHIFT
-            </span>
-
-            <div class="last-usable-value">
-                --
-            </div>
-
-        </div>
-
-
-        <div class="expiry-rule-note">
+        <div class="last-usable-value">
             --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+    <div class="expiry-rule-note">
+        --
+    </div>
 
-        <div class="description-text">
+</td>
 
-            KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
 
-        </div>
+<td data-label="DESCRIPTION">
 
-    </td>
+    <div class="description-text">
+
+        KREJUV-FEC:
+        TO PERFORM RUN TOWER LIGHT
+        AT GPP4 STATION
+
+    </div>
+
+</td>
 
 </tr>
 
@@ -3915,15 +4471,17 @@ and
 </tr>
 
 
+
 <!-- =========================================================
-     EPTW 0153038
-     VEC 0053721
+     GPS 0153038 + VEC 0053721
 ========================================================= -->
 
 <tr
     class="ptw-data-row vehicle-ptw"
 
     data-location="GPS"
+
+    data-activity="VEHICLE ENTRY"
 
     data-start="2026-08-29T19:16:00+08:00"
 
@@ -3936,179 +4494,189 @@ and
     data-vec-id="0053721"
 >
 
-    <td
-        class="location-merged"
-        rowspan="3"
-    >
+<td
+    class="location-merged"
+    rowspan="3"
+>
 
-        <div class="location-name">
-            GPS
+    <div class="location-name">
+        GPS
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=b8906839-2d26-4ce5-9377-f9273c090e71"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0153038"
+
+        data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+    >
+        0153038
+    </a>
+
+</td>
+
+
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+
+    <span class="validity-label">
+        EPTW VALIDITY
+    </span>
+
+
+    <div class="validity-value">
+
+        29 AUG 2026 07:16 PM -
+        05 SEP 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
+
+        <span class="validity-label">
+            EFFECTIVE LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
         </div>
 
-    </td>
+    </div>
 
 
-    <td data-label="EPTW NO.">
+    <div class="expiry-rule-note">
+        --
+    </div>
+
+
+
+    <div class="vec-dependency">
+
+
+        <div class="vec-dependency-title">
+            MANDATORY ATTACHED VEC
+        </div>
+
 
         <a
-            class="ptw-number hover-detail"
+            class="vec-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=b8906839-2d26-4ce5-9377-f9273c090e71"
+            href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=938dde8f-6a6f-484f-b903-bd86af88804b"
 
             target="_blank"
 
             rel="noopener noreferrer"
 
-            data-number="EPTW 0153038"
+            data-number="VEC 0053721"
 
-            data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+            data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
         >
-            0153038
+            VEC 0053721
         </a>
 
-    </td>
 
+        <div class="vec-description">
 
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
-
-
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
-
-
-        <span class="validity-label">
-            EPTW VALIDITY
-        </span>
-
-
-        <div class="validity-value">
-
-            29 AUG 2026 07:16 PM -
-            05 SEP 2026 05:59 AM
+            KREJUV-FEC:
+            TO PERFORM MOBILIZATION / DEMOBILZIATION
+            EQUIPMENT AND TOOLS
+            USING PICKUP (VJN 2339)
 
         </div>
 
 
-        <div class="last-usable">
+        <div class="vec-validity">
 
-            <span class="validity-label">
-                EFFECTIVE LAST FULLY USABLE SHIFT
+            VEC VALIDITY:
+            29 AUG 2026 10:43 AM -
+            04 SEP 2026 11:59 PM
+
+        </div>
+
+
+        <div class="vec-status-line">
+
+            <span class="vec-status-badge">
+                CHECKING
             </span>
 
-            <div class="last-usable-value">
+            <div class="vec-status-note">
                 --
             </div>
 
         </div>
 
 
-        <div class="expiry-rule-note">
-            --
-        </div>
+        <div class="effective-validity">
 
-
-        <div class="vec-dependency">
-
-
-            <div class="vec-dependency-title">
-                MANDATORY ATTACHED VEC
-            </div>
-
-
-            <a
-                class="vec-number hover-detail"
-
-                href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=938dde8f-6a6f-484f-b903-bd86af88804b"
-
-                target="_blank"
-
-                rel="noopener noreferrer"
-
-                data-number="VEC 0053721"
-
-                data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-            >
-                VEC 0053721
-            </a>
-
-
-            <div class="vec-description">
-
-                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
-
-            </div>
-
-
-            <div class="vec-validity">
-
-                VEC VALIDITY:
-                29 AUG 2026 10:43 AM -
-                04 SEP 2026 11:59 PM
-
-            </div>
-
-
-            <div class="vec-status-line">
-
-                <span class="vec-status-badge">
-                    CHECKING
-                </span>
-
-                <div class="vec-status-note">
-                    --
-                </div>
-
-            </div>
-
-
-            <div class="effective-validity">
-
-                VEHICLE ENTRY REQUIRES BOTH EPTW 0153038 AND VEC 0053721 TO BE VALID.
-                VEC 0053721 EXPIRES EARLIER THAN EPTW 0153038.
-                EFFECTIVE VEHICLE ENTRY EXPIRY IS CONTROLLED BY VEC 0053721.
-
-            </div>
-
+            VEHICLE ENTRY REQUIRES BOTH
+            EPTW 0153038 AND VEC 0053721
+            TO BE VALID.
+            EFFECTIVE VEHICLE ENTRY EXPIRY
+            IS CONTROLLED BY VEC 0053721.
 
         </div>
 
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+</td>
 
-        <div class="description-text">
 
-            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
+<td data-label="DESCRIPTION">
 
-        </div>
+    <div class="description-text">
 
-    </td>
+        GPS KREJUV-FEC:
+        TO PERFORM VEHICLE ENTRY
+        FOR TRANSPORTATION AND
+        LOADING / UNLOADING EQUIPMENT
+        USING PICKUP (VJN 2339)
 
+    </div>
+
+</td>
 
 </tr>
 
 
 
 <!-- =========================================================
-     EPTW 0152051
-     VEC 0053238
+     GPS 0152051 + VEC 0053238
 ========================================================= -->
 
 <tr
     class="ptw-data-row vehicle-ptw"
 
     data-location="GPS"
+
+    data-activity="VEHICLE ENTRY"
 
     data-start="2026-08-24T10:12:00+08:00"
 
@@ -4121,168 +4689,175 @@ and
     data-vec-id="0053238"
 >
 
+<td data-label="EPTW NO.">
 
-    <td data-label="EPTW NO.">
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=2f80462f-952d-4831-975a-8c24e72eb856"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0152051"
+
+        data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+    >
+        0152051
+    </a>
+
+</td>
+
+
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+
+    <span class="validity-label">
+        EPTW VALIDITY
+    </span>
+
+
+    <div class="validity-value">
+
+        24 AUG 2026 10:12 AM -
+        31 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
+
+        <span class="validity-label">
+            EFFECTIVE LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
+    </div>
+
+
+    <div class="expiry-rule-note">
+        --
+    </div>
+
+
+
+    <div class="vec-dependency">
+
+
+        <div class="vec-dependency-title">
+            MANDATORY ATTACHED VEC
+        </div>
+
 
         <a
-            class="ptw-number hover-detail"
+            class="vec-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=2f80462f-952d-4831-975a-8c24e72eb856"
+            href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=3bf4ffe3-bb02-484b-ac52-3904e5fedf10"
 
             target="_blank"
 
             rel="noopener noreferrer"
 
-            data-number="EPTW 0152051"
+            data-number="VEC 0053238"
 
-            data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+            data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
         >
-            0152051
+            VEC 0053238
         </a>
 
-    </td>
 
+        <div class="vec-description">
 
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
-
-
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
-
-
-        <span class="validity-label">
-            EPTW VALIDITY
-        </span>
-
-
-        <div class="validity-value">
-
-            24 AUG 2026 10:12 AM -
-            31 AUG 2026 05:59 AM
+            KREJUV-FEC:
+            TO PERFORM MOBILIZATION / DEMOBILZIATION
+            EQUIPMENT AND TOOLS
+            USING PICKUP (VJN 2339)
 
         </div>
 
 
-        <div class="last-usable">
+        <div class="vec-validity">
 
-            <span class="validity-label">
-                EFFECTIVE LAST FULLY USABLE SHIFT
+            VEC VALIDITY:
+            23 AUG 2026 09:29 AM -
+            29 AUG 2026 11:59 PM
+
+        </div>
+
+
+        <div class="vec-status-line">
+
+            <span class="vec-status-badge">
+                CHECKING
             </span>
 
-            <div class="last-usable-value">
+            <div class="vec-status-note">
                 --
             </div>
 
         </div>
 
 
-        <div class="expiry-rule-note">
-            --
-        </div>
+        <div class="effective-validity">
 
-
-        <div class="vec-dependency">
-
-
-            <div class="vec-dependency-title">
-                MANDATORY ATTACHED VEC
-            </div>
-
-
-            <a
-                class="vec-number hover-detail"
-
-                href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=3bf4ffe3-bb02-484b-ac52-3904e5fedf10"
-
-                target="_blank"
-
-                rel="noopener noreferrer"
-
-                data-number="VEC 0053238"
-
-                data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-            >
-                VEC 0053238
-            </a>
-
-
-            <div class="vec-description">
-
-                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
-
-            </div>
-
-
-            <div class="vec-validity">
-
-                VEC VALIDITY:
-                23 AUG 2026 09:29 AM -
-                29 AUG 2026 11:59 PM
-
-            </div>
-
-
-            <div class="vec-status-line">
-
-                <span class="vec-status-badge">
-                    CHECKING
-                </span>
-
-                <div class="vec-status-note">
-                    --
-                </div>
-
-            </div>
-
-
-            <div class="effective-validity">
-
-                VEHICLE EPTW CAN ONLY BE USED WHILE BOTH EPTW 0152051 AND VEC 0053238 ARE VALID.
-                IF EITHER DOCUMENT EXPIRES BEFORE THE END OF A SHIFT,
-                A NEW VALID DOCUMENT IS REQUIRED FOR THAT SHIFT.
-
-            </div>
-
+            VEHICLE EPTW CAN ONLY BE USED
+            WHILE BOTH EPTW 0152051
+            AND VEC 0053238 ARE VALID.
 
         </div>
 
 
-    </td>
+    </div>
 
 
-    <td data-label="DESCRIPTION">
+</td>
 
-        <div class="description-text">
 
-            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
+<td data-label="DESCRIPTION">
 
-        </div>
+    <div class="description-text">
 
-    </td>
+        GPS KREJUV-FEC:
+        TO PERFORM VEHICLE ENTRY
+        FOR TRANSPORTATION AND
+        LOADING / UNLOADING EQUIPMENT
+        USING PICKUP (VJN 2339)
 
+    </div>
+
+</td>
 
 </tr>
 
 
 
 <!-- =========================================================
-     EPTW 0150142
-     VEC 0052629
+     GPS 0150142 + VEC 0052629
 ========================================================= -->
 
 <tr
     class="ptw-data-row vehicle-ptw"
 
     data-location="GPS"
+
+    data-activity="VEHICLE ENTRY"
 
     data-start="2026-08-17T09:27:00+08:00"
 
@@ -4295,165 +4870,173 @@ and
     data-vec-id="0052629"
 >
 
+<td data-label="EPTW NO.">
 
-    <td data-label="EPTW NO.">
+    <a
+        class="ptw-number hover-detail"
+
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=5456cdea-24a3-4a99-8786-af5a5e50615a"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
+        data-number="EPTW 0150142"
+
+        data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+    >
+        0150142
+    </a>
+
+</td>
+
+
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+
+    <span class="validity-label">
+        EPTW VALIDITY
+    </span>
+
+
+    <div class="validity-value">
+
+        17 AUG 2026 09:27 AM -
+        24 AUG 2026 05:59 AM
+
+    </div>
+
+
+    <div class="last-usable">
+
+        <span class="validity-label">
+            EFFECTIVE LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
+    </div>
+
+
+    <div class="expiry-rule-note">
+        --
+    </div>
+
+
+
+    <div class="vec-dependency">
+
+
+        <div class="vec-dependency-title">
+            MANDATORY ATTACHED VEC
+        </div>
+
 
         <a
-            class="ptw-number hover-detail"
+            class="vec-number hover-detail"
 
-            href="https://ptw.petronas.com/Ptw/Apply?applicationId=5456cdea-24a3-4a99-8786-af5a5e50615a"
+            href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=9e68802e-9960-4638-a921-2272f3384aef"
 
             target="_blank"
 
             rel="noopener noreferrer"
 
-            data-number="EPTW 0150142"
+            data-number="VEC 0052629"
 
-            data-description="GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)"
+            data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
         >
-            0150142
+            VEC 0052629
         </a>
 
-    </td>
 
+        <div class="vec-description">
 
-    <td data-label="STATUS">
-
-        <span class="status-badge">
-            CHECKING
-        </span>
-
-        <div class="status-note">
-            --
-        </div>
-
-    </td>
-
-
-    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
-
-
-        <span class="validity-label">
-            EPTW VALIDITY
-        </span>
-
-
-        <div class="validity-value">
-
-            17 AUG 2026 09:27 AM -
-            24 AUG 2026 05:59 AM
+            KREJUV-FEC:
+            TO PERFORM MOBILIZATION / DEMOBILZIATION
+            EQUIPMENT AND TOOLS
+            USING PICKUP (VJN 2339)
 
         </div>
 
 
-        <div class="last-usable">
+        <div class="vec-validity">
 
-            <span class="validity-label">
-                EFFECTIVE LAST FULLY USABLE SHIFT
+            VEC VALIDITY:
+            15 AUG 2026 09:47 AM -
+            21 AUG 2026 11:59 PM
+
+        </div>
+
+
+        <div class="vec-status-line">
+
+            <span class="vec-status-badge">
+                CHECKING
             </span>
 
-            <div class="last-usable-value">
+            <div class="vec-status-note">
                 --
             </div>
 
         </div>
 
 
-        <div class="expiry-rule-note">
-            --
-        </div>
+        <div class="effective-validity">
 
-
-        <div class="vec-dependency">
-
-
-            <div class="vec-dependency-title">
-                MANDATORY ATTACHED VEC
-            </div>
-
-
-            <a
-                class="vec-number hover-detail"
-
-                href="https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=9e68802e-9960-4638-a921-2272f3384aef"
-
-                target="_blank"
-
-                rel="noopener noreferrer"
-
-                data-number="VEC 0052629"
-
-                data-description="KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-            >
-                VEC 0052629
-            </a>
-
-
-            <div class="vec-description">
-
-                KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)
-
-            </div>
-
-
-            <div class="vec-validity">
-
-                VEC VALIDITY:
-                15 AUG 2026 09:47 AM -
-                21 AUG 2026 11:59 PM
-
-            </div>
-
-
-            <div class="vec-status-line">
-
-                <span class="vec-status-badge">
-                    CHECKING
-                </span>
-
-                <div class="vec-status-note">
-                    --
-                </div>
-
-            </div>
-
-
-            <div class="effective-validity">
-
-                OLD VEHICLE EPTW / VEC RETAINED FOR SAFEKEEPING.
-
-            </div>
-
+            OLD VEHICLE EPTW / VEC
+            RETAINED FOR SAFEKEEPING.
 
         </div>
-
-
-    </td>
-
-
-    <td data-label="DESCRIPTION">
-
-        <div class="description-text">
-
-            GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)
-
-        </div>
-
-    </td>
-
-
-</tr>
-
-
-            </tbody>
-
-        </table>
 
 
     </div>
 
 
+</td>
+
+
+<td data-label="DESCRIPTION">
+
+    <div class="description-text">
+
+        GPS KREJUV-FEC:
+        TO PERFORM VEHICLE ENTRY
+        FOR TRANSPORTATION AND
+        LOADING / UNLOADING EQUIPMENT
+        USING PICKUP (VJN 2339)
+
+    </div>
+
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+</div>
+
+
 </section>
+
 
 
 <footer class="footer">
@@ -4555,7 +5138,6 @@ function formatDateTime(date) {
 
 /* =========================================================
    SHIFT
-
    DAY   = 07:00 - 18:59
    NIGHT = 19:00 - 06:59
 ========================================================= */
@@ -4586,8 +5168,7 @@ function getShift(dateInput) {
         hour < 19
     ) {
 
-        type =
-            "DAY SHIFT";
+        type = "DAY SHIFT";
 
 
         start.setHours(
@@ -4612,8 +5193,7 @@ function getShift(dateInput) {
         hour >= 19
     ) {
 
-        type =
-            "NIGHT SHIFT";
+        type = "NIGHT SHIFT";
 
 
         start.setHours(
@@ -4641,8 +5221,7 @@ function getShift(dateInput) {
 
     else {
 
-        type =
-            "NIGHT SHIFT";
+        type = "NIGHT SHIFT";
 
 
         start.setDate(
@@ -5169,7 +5748,7 @@ function updateVecStatus(
 
 
 /* =========================================================
-   PTW STATUS
+   UPDATE PERMIT STATUS
 ========================================================= */
 
 function updatePermitStatus() {
@@ -5197,9 +5776,13 @@ function updatePermitStatus() {
 
 
     let activeCount = 0;
+
     let warningCount = 0;
+
     let invalidCount = 0;
+
     let expiredCount = 0;
+
     let upcomingCount = 0;
 
 
@@ -5241,7 +5824,6 @@ function updatePermitStatus() {
 
         /* =================================================
            VEHICLE ENTRY
-           BOTH EPTW + VEC MUST BE VALID
         ================================================= */
 
         if (
@@ -5279,6 +5861,7 @@ function updatePermitStatus() {
 
                 effectiveEnd =
                     vecEnd;
+
 
                 limitedByVec =
                     true;
@@ -5438,7 +6021,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           VEHICLE EPTW INVALID BECAUSE VEC EXPIRED
+           VEC EXPIRED
         ================================================= */
 
         if (
@@ -5524,7 +6107,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           EXPIRY SHIFT NOT FULLY COVERED
+           CURRENT SHIFT NOT FULLY COVERED
         ================================================= */
 
         if (
@@ -5563,7 +6146,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           FINAL FULLY USABLE SHIFT
+           FINAL USABLE SHIFT
         ================================================= */
 
         if (
@@ -5595,7 +6178,7 @@ function updatePermitStatus() {
 
 
         /* =================================================
-           NEXT SHIFT IS FINAL
+           NEXT SHIFT FINAL
         ================================================= */
 
         if (
@@ -5673,6 +6256,174 @@ function updatePermitStatus() {
             :
             ""
         );
+
+
+    updateActivePtwSummary();
+
+}
+
+
+
+/* =========================================================
+   ACTIVE PTW SUMMARY
+========================================================= */
+
+function updateActivePtwSummary() {
+
+    const list =
+        document.getElementById(
+            "activePtwList"
+        );
+
+
+    const count =
+        document.getElementById(
+            "activePtwCount"
+        );
+
+
+    const rows =
+        Array.from(
+            document.querySelectorAll(
+                ".ptw-data-row"
+            )
+        );
+
+
+    /*
+        Include PTW that is currently usable:
+
+        ACTIVE
+        NEXT SHIFT = FINAL
+        FINAL USABLE SHIFT
+
+        Do not include expired / invalid / upcoming.
+    */
+
+    const activeRows =
+        rows.filter(row => {
+
+            return (
+                row.classList.contains(
+                    "is-active"
+                ) ||
+                row.classList.contains(
+                    "is-next-last"
+                ) ||
+                row.classList.contains(
+                    "is-last-shift"
+                )
+            );
+
+        });
+
+
+    count.textContent =
+        activeRows.length;
+
+
+    list.innerHTML =
+        "";
+
+
+    if (
+        activeRows.length === 0
+    ) {
+
+        list.innerHTML =
+            `
+            <div class="active-summary-empty">
+                NO ACTIVE PTW
+            </div>
+            `;
+
+
+        return;
+
+    }
+
+
+    activeRows.forEach(row => {
+
+
+        const location =
+            row.dataset.location ||
+            "";
+
+
+        const activity =
+            row.dataset.activity ||
+            "EPTW";
+
+
+        const link =
+            row.querySelector(
+                ".ptw-number"
+            );
+
+
+        if (
+            !link
+        ) {
+
+            return;
+
+        }
+
+
+        const number =
+            link.textContent.trim();
+
+
+        const href =
+            link.getAttribute(
+                "href"
+            );
+
+
+        const summaryItem =
+            document.createElement(
+                "a"
+            );
+
+
+        summaryItem.className =
+            "active-summary-item";
+
+
+        summaryItem.href =
+            href;
+
+
+        summaryItem.target =
+            "_blank";
+
+
+        summaryItem.rel =
+            "noopener noreferrer";
+
+
+        summaryItem.innerHTML =
+            `
+            <span class="active-summary-location">
+                ${location}
+            </span>
+
+            <span class="active-summary-number">
+                ${number}
+            </span>
+
+            <span class="active-summary-activity">
+                ${activity}
+            </span>
+            `;
+
+
+        list.appendChild(
+            summaryItem
+        );
+
+    });
 
 }
 
@@ -5778,6 +6529,7 @@ function positionTooltip(
 ) {
 
     const padding = 20;
+
     const offset = 22;
 
 
@@ -5799,7 +6551,8 @@ function positionTooltip(
 
     if (
         left + width >
-        window.innerWidth - padding
+        window.innerWidth -
+        padding
     ) {
 
         left =
@@ -5812,7 +6565,8 @@ function positionTooltip(
 
     if (
         top + height >
-        window.innerHeight - padding
+        window.innerHeight -
+        padding
     ) {
 
         top =
@@ -5862,7 +6616,10 @@ hoverItems.forEach(item => {
         "mouseenter",
         event => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
+
 
             positionTooltip(
                 event.clientX,
@@ -5896,7 +6653,9 @@ hoverItems.forEach(item => {
         "focus",
         () => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
 
 
             const rect =
@@ -5949,7 +6708,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIALIZE
+   UPDATE DASHBOARD
 ========================================================= */
 
 function updateDashboard() {
@@ -5961,12 +6720,17 @@ function updateDashboard() {
 }
 
 
+
+/* =========================================================
+   INITIAL RUN
+========================================================= */
+
 updateDashboard();
 
 
 
 /* =========================================================
-   REFRESH EVERY 30 SECONDS
+   AUTO REFRESH EVERY 30 SEC
 ========================================================= */
 
 setInterval(
