@@ -28,29 +28,21 @@
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050505'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='900' fill='%23f2efe9'%3EFEC%3C/text%3E%3C/svg%3E"
   >
 
-  <link
-    rel="shortcut icon"
-    type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050505'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='900' fill='%23f2efe9'%3EFEC%3C/text%3E%3C/svg%3E"
-  >
+
+  <!-- =========================================================
+       SOUNDCLOUD API
+  ========================================================= -->
+
+  <script src="https://w.soundcloud.com/player/api.js"></script>
 
 
   <style>
 
-    /* =========================================================
-       GLOBAL
-    ========================================================= */
-
     :root {
-
       --black: #050505;
-
       --cream: #f2efe9;
-
       --cream-2: #ebe8e2;
-
       --line: #cbc7bf;
-
       --grey: #5b5751;
 
       --date-1: #f2efe9;
@@ -59,77 +51,59 @@
       --date-4: #dde5ed;
       --date-5: #eadfe6;
       --date-6: #e3e8d7;
-
-      --before: #2878ad;
-      --after: #ff7600;
-      --gain: #75117e;
-      --trend: #e31b23;
-
-      --gps-adu: #1f77b4;
-      --gps-tpl: #18b5c8;
-      --bv13: #2ca02c;
-      --bv103: #ff7600;
-      --gpp4-tpr: #d62728;
-
     }
 
 
     * {
-
       margin: 0;
-
       padding: 0;
-
       box-sizing: border-box;
-
     }
 
 
     html {
-
       width: 100%;
-
       min-height: 100%;
 
-      background:
-        var(--black);
+      background: var(--black);
 
       -webkit-text-size-adjust: 100%;
-
       text-size-adjust: 100%;
-
     }
 
 
     body {
-
       width: 100%;
-
       min-height: 100%;
 
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
 
-      background:
-        var(--black);
-
-      color:
-        var(--black);
+      background: var(--black);
+      color: var(--black);
 
       overflow: hidden;
-
     }
 
 
-    a {
+    /* =========================================================
+       HIDDEN SOUNDCLOUD
+    ========================================================= */
 
-      -webkit-tap-highlight-color:
-        transparent;
+    .soundcloud-background {
+      position: fixed !important;
 
+      left: -10000px !important;
+      top: -10000px !important;
+
+      width: 1px !important;
+      height: 1px !important;
+
+      opacity: 0 !important;
+
+      border: 0 !important;
+
+      pointer-events: none !important;
     }
-
 
 
     /* =========================================================
@@ -137,26 +111,20 @@
     ========================================================= */
 
     .page {
-
       width: 100%;
 
       height: 100dvh;
-
       min-height: 100dvh;
 
       display: flex;
-
       flex-direction: column;
 
       gap: 7px;
 
       padding: 7px;
 
-      background:
-        var(--black);
-
+      background: var(--black);
     }
-
 
 
     /* =========================================================
@@ -164,12 +132,10 @@
     ========================================================= */
 
     .hero {
-
       flex-shrink: 0;
 
-      min-height: 118px;
-
       height: 118px;
+      min-height: 118px;
 
       display: grid;
 
@@ -178,43 +144,28 @@
         minmax(330px, 390px)
         minmax(190px, 220px);
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border:
-        1px solid
-        var(--black);
+      border: 1px solid var(--black);
 
       overflow: hidden;
-
     }
 
 
     .hero-left {
-
       min-width: 0;
 
       display: flex;
-
       flex-direction: column;
 
       justify-content: center;
 
-      padding:
-        18px
-        28px;
-
+      padding: 18px 28px;
     }
 
 
     .hero-title {
-
-      font-size:
-        clamp(
-          36px,
-          4vw,
-          64px
-        );
+      font-size: clamp(36px, 4vw, 64px);
 
       line-height: 0.90;
 
@@ -225,70 +176,44 @@
       text-transform: uppercase;
 
       white-space: nowrap;
-
     }
 
 
     .hero-subtitle {
-
       margin-top: 10px;
 
-      color:
-        var(--grey);
+      color: var(--grey);
 
-      font-size:
-        clamp(
-          9px,
-          0.7vw,
-          12px
-        );
+      font-size: clamp(9px, 0.7vw, 12px);
 
       font-weight: 900;
 
       letter-spacing: 0.30em;
 
       text-transform: uppercase;
-
     }
 
 
-
     /* =========================================================
-       CURRENT TIME
+       CLOCK
     ========================================================= */
 
     .current-status {
-
-      min-width: 0;
-
       display: flex;
-
       flex-direction: column;
 
       justify-content: center;
 
-      padding:
-        18px
-        22px;
+      padding: 18px 22px;
 
-      border-left:
-        1px solid
-        var(--black);
+      border-left: 1px solid var(--black);
 
-      background:
-        var(--cream);
-
+      background: var(--cream);
     }
 
 
     .current-datetime {
-
-      font-size:
-        clamp(
-          19px,
-          1.5vw,
-          25px
-        );
+      font-size: clamp(19px, 1.5vw, 25px);
 
       line-height: 1;
 
@@ -296,116 +221,74 @@
 
       white-space: nowrap;
 
-      font-variant-numeric:
-        tabular-nums;
-
+      font-variant-numeric: tabular-nums;
     }
 
 
     .current-shift {
-
       margin-top: 12px;
 
-      color:
-        var(--grey);
+      color: var(--grey);
 
-      font-size:
-        clamp(
-          11px,
-          0.8vw,
-          14px
-        );
-
-      line-height: 1.25;
+      font-size: clamp(11px, 0.8vw, 14px);
 
       font-weight: 900;
 
-      text-transform: uppercase;
-
       white-space: nowrap;
 
+      text-transform: uppercase;
     }
 
 
     .current-shift strong {
-
-      color:
-        var(--black);
-
+      color: var(--black);
     }
 
 
-
     /* =========================================================
-       MAIN BOOKMARK
+       BOOKMARK
     ========================================================= */
 
     .main-bookmark {
-
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       gap: 8px;
 
-      padding:
-        16px
-        20px;
+      padding: 16px 20px;
 
-      border-left:
-        1px solid
-        var(--black);
+      border-left: 1px solid var(--black);
 
-      background:
-        var(--cream);
-
-      color:
-        var(--black);
+      background: var(--cream);
+      color: var(--black);
 
       text-decoration: none;
 
       text-align: center;
 
-      font-size:
-        clamp(
-          12px,
-          0.95vw,
-          15px
-        );
+      font-size: clamp(12px, 0.95vw, 15px);
 
       font-weight: 900;
 
-      letter-spacing: 0.04em;
-
       text-transform: uppercase;
-
     }
 
 
     .main-bookmark:hover,
     .main-bookmark:focus-visible {
-
-      background:
-        var(--black);
-
-      color:
-        #ffffff;
+      background: var(--black);
+      color: #ffffff;
 
       outline: none;
-
     }
 
 
     .bookmark-arrow {
-
       font-size: 21px;
-
       font-weight: 900;
-
     }
-
 
 
     /* =========================================================
@@ -413,44 +296,20 @@
     ========================================================= */
 
     .dashboard {
-
       flex: 1;
 
       min-height: 0;
 
       display: flex;
-
       flex-direction: column;
 
       gap: 7px;
 
       overflow-y: auto;
-
       overflow-x: hidden;
 
       scrollbar-width: thin;
-
-      scrollbar-color:
-        #777
-        var(--black);
-
     }
-
-
-    .dashboard::-webkit-scrollbar {
-
-      width: 9px;
-
-    }
-
-
-    .dashboard::-webkit-scrollbar-thumb {
-
-      background:
-        #777;
-
-    }
-
 
 
     /* =========================================================
@@ -458,70 +317,48 @@
     ========================================================= */
 
     .reading-panel {
-
       flex-shrink: 0;
 
-      height:
-        clamp(
-          310px,
-          36vh,
-          440px
-        );
-
+      height: clamp(310px, 36vh, 440px);
       min-height: 310px;
 
       display: flex;
-
       flex-direction: column;
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border:
-        1px solid
-        var(--black);
+      border: 1px solid var(--black);
 
       overflow: hidden;
-
     }
 
 
     .graph-panel {
-
       flex-shrink: 0;
 
       min-height: 525px;
 
       display: flex;
-
       flex-direction: column;
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border:
-        1px solid
-        var(--black);
+      border: 1px solid var(--black);
 
       overflow: hidden;
-
     }
 
 
     .dew-graph-panel {
-
-      min-height: 650px;
-
+      min-height: 700px;
     }
 
 
-
     /* =========================================================
-       PANEL HEADER
+       PANEL TITLE
     ========================================================= */
 
     .panel-title {
-
       flex-shrink: 0;
 
       min-height: 50px;
@@ -529,60 +366,39 @@
       display: flex;
 
       align-items: center;
-
       justify-content: space-between;
 
       gap: 14px;
 
-      padding:
-        0
-        18px;
+      padding: 0 18px;
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border-bottom:
-        1px solid
-        var(--line);
+      border-bottom: 1px solid var(--line);
 
-      font-size:
-        clamp(
-          14px,
-          1vw,
-          17px
-        );
+      font-size: clamp(14px, 1vw, 17px);
 
       font-weight: 900;
 
       letter-spacing: 0.035em;
 
       text-transform: uppercase;
-
     }
 
 
     .panel-note {
-
       flex-shrink: 0;
 
-      color:
-        var(--grey);
+      color: var(--grey);
 
-      font-size:
-        clamp(
-          8px,
-          0.6vw,
-          11px
-        );
+      font-size: clamp(8px, 0.6vw, 11px);
 
       font-weight: 900;
 
       text-align: right;
 
       text-transform: uppercase;
-
     }
-
 
 
     /* =========================================================
@@ -590,292 +406,139 @@
     ========================================================= */
 
     .table-wrapper {
-
-      position: relative;
-
       flex: 1;
 
       min-height: 0;
 
-      overflow-x: auto;
+      overflow: auto;
 
-      overflow-y: auto;
+      background: var(--cream);
 
-      background:
-        var(--cream);
-
-      overscroll-behavior:
-        contain;
-
-      -webkit-overflow-scrolling:
-        touch;
-
-      scrollbar-width: thin;
-
-      scrollbar-color:
-        #777
-        var(--cream-2);
-
-    }
-
-
-    .table-wrapper::-webkit-scrollbar {
-
-      width: 9px;
-
-      height: 9px;
-
-    }
-
-
-    .table-wrapper::-webkit-scrollbar-track {
-
-      background:
-        var(--cream-2);
-
-    }
-
-
-    .table-wrapper::-webkit-scrollbar-thumb {
-
-      background:
-        #777;
-
+      -webkit-overflow-scrolling: touch;
     }
 
 
     table {
-
       width: 100%;
 
       min-width: max-content;
 
       border-collapse: collapse;
 
-      background:
-        var(--cream);
-
+      background: var(--cream);
     }
 
 
     thead {
-
       position: sticky;
 
       top: 0;
 
       z-index: 30;
-
     }
 
 
     th {
-
       min-width: 145px;
 
       height: 57px;
 
-      padding:
-        10px
-        15px;
+      padding: 10px 15px;
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border-right:
-        1px solid
-        var(--line);
-
-      border-bottom:
-        2px solid
-        var(--black);
+      border-right: 1px solid var(--line);
+      border-bottom: 2px solid var(--black);
 
       text-align: center;
 
-      vertical-align: middle;
-
       white-space: nowrap;
 
-      font-size:
-        clamp(
-          12px,
-          0.9vw,
-          15px
-        );
+      font-size: clamp(12px, 0.9vw, 15px);
 
       font-weight: 900;
 
       text-transform: uppercase;
-
     }
 
 
     td {
-
       min-width: 145px;
 
       height: 45px;
 
-      padding:
-        9px
-        15px;
+      padding: 9px 15px;
 
-      background:
-        var(--cream);
-
-      border-right:
-        1px solid
-        var(--line);
-
-      border-bottom:
-        1px solid
-        var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
 
       text-align: center;
 
-      vertical-align: middle;
-
       white-space: nowrap;
 
-      font-size:
-        clamp(
-          13px,
-          0.95vw,
-          16px
-        );
+      font-size: clamp(13px, 0.95vw, 16px);
 
       font-weight: 600;
 
-      font-variant-numeric:
-        tabular-nums;
-
+      font-variant-numeric: tabular-nums;
     }
-
-
-    th:last-child,
-    td:last-child {
-
-      border-right: none;
-
-    }
-
 
 
     /* =========================================================
-       DEW POINT TABLE DATE COLOURS
+       DEW TABLE DATE GROUP
     ========================================================= */
 
-    #dewPointContainer
-    tbody
-    tr.date-group-0
-    td {
+    #dewPointContainer tbody tr.date-group-0 td {
+      background: var(--date-1);
+    }
 
-      background:
-        var(--date-1);
+    #dewPointContainer tbody tr.date-group-1 td {
+      background: var(--date-2);
+    }
 
+    #dewPointContainer tbody tr.date-group-2 td {
+      background: var(--date-3);
+    }
+
+    #dewPointContainer tbody tr.date-group-3 td {
+      background: var(--date-4);
+    }
+
+    #dewPointContainer tbody tr.date-group-4 td {
+      background: var(--date-5);
+    }
+
+    #dewPointContainer tbody tr.date-group-5 td {
+      background: var(--date-6);
     }
 
 
-    #dewPointContainer
-    tbody
-    tr.date-group-1
-    td {
-
-      background:
-        var(--date-2);
-
+    #dewPointContainer tbody tr.new-date-group td {
+      border-top: 3px solid var(--black);
     }
 
 
-    #dewPointContainer
-    tbody
-    tr.date-group-2
-    td {
-
-      background:
-        var(--date-3);
-
-    }
-
-
-    #dewPointContainer
-    tbody
-    tr.date-group-3
-    td {
-
-      background:
-        var(--date-4);
-
-    }
-
-
-    #dewPointContainer
-    tbody
-    tr.date-group-4
-    td {
-
-      background:
-        var(--date-5);
-
-    }
-
-
-    #dewPointContainer
-    tbody
-    tr.date-group-5
-    td {
-
-      background:
-        var(--date-6);
-
-    }
-
-
-    #dewPointContainer
-    tbody
-    tr.new-date-group
-    td {
-
-      border-top:
-        3px solid
-        var(--black);
-
-    }
-
-
-    #dewPointContainer
-    tbody
-    tr.latest-date
-    td {
-
+    #dewPointContainer tbody tr.latest-date td {
       font-weight: 900;
-
     }
 
 
     td.lowest-value {
-
       font-weight: 900 !important;
 
-      text-decoration:
-        underline;
+      text-decoration: underline;
 
-      text-decoration-thickness:
-        2px;
+      text-decoration-thickness: 2px;
 
-      text-underline-offset:
-        4px;
-
+      text-underline-offset: 4px;
     }
 
 
-
     /* =========================================================
-       GRAPH INFORMATION
+       GRAPH INFO
     ========================================================= */
 
     .graph-info-bar {
-
       flex-shrink: 0;
 
       min-height: 44px;
@@ -883,60 +546,45 @@
       display: flex;
 
       align-items: center;
-
       justify-content: space-between;
 
       gap: 16px;
 
-      padding:
-        8px
-        16px;
+      padding: 8px 16px;
 
-      border-bottom:
-        1px solid
-        var(--line);
+      background: #ffffff;
 
-      background:
-        #ffffff;
-
+      border-bottom: 1px solid var(--line);
     }
 
 
     .graph-count {
-
-      color:
-        var(--grey);
+      color: var(--grey);
 
       font-size: 11px;
 
       font-weight: 900;
 
       text-transform: uppercase;
-
     }
 
 
     .graph-legend {
-
       display: flex;
 
       align-items: center;
 
       flex-wrap: wrap;
 
-      gap:
-        8px
-        15px;
+      gap: 8px 15px;
 
       font-size: 11px;
 
       font-weight: 800;
-
     }
 
 
     .legend-item {
-
       display: flex;
 
       align-items: center;
@@ -944,46 +592,26 @@
       gap: 6px;
 
       white-space: nowrap;
-
     }
 
 
     .legend-box {
-
       width: 18px;
-
       height: 10px;
-
-      flex-shrink: 0;
-
     }
 
 
     .legend-line {
-
       width: 22px;
-
       height: 3px;
-
-      flex-shrink: 0;
-
     }
 
 
     .legend-dashed {
-
       width: 22px;
 
-      height: 0;
-
-      flex-shrink: 0;
-
-      border-top:
-        2px dashed
-        #111111;
-
+      border-top: 2px dashed #111;
     }
-
 
 
     /* =========================================================
@@ -991,7 +619,6 @@
     ========================================================= */
 
     .graph-wrapper {
-
       position: relative;
 
       flex: 1;
@@ -999,319 +626,144 @@
       min-height: 0;
 
       overflow-x: auto;
-
       overflow-y: hidden;
 
-      background:
-        #ffffff;
+      background: #ffffff;
 
-      -webkit-overflow-scrolling:
-        touch;
-
-      scrollbar-width: thin;
-
-      scrollbar-color:
-        #777
-        var(--cream-2);
-
-    }
-
-
-    .graph-wrapper::-webkit-scrollbar {
-
-      height: 10px;
-
-    }
-
-
-    .graph-wrapper::-webkit-scrollbar-track {
-
-      background:
-        var(--cream-2);
-
-    }
-
-
-    .graph-wrapper::-webkit-scrollbar-thumb {
-
-      background:
-        #777;
-
+      -webkit-overflow-scrolling: touch;
     }
 
 
     .swabbing-chart {
-
       display: block;
 
       height: 445px;
-
-      background:
-        #ffffff;
-
     }
 
 
     .dew-chart {
-
       display: block;
 
-      height: 555px;
-
-      background:
-        #ffffff;
-
+      height: 600px;
     }
 
 
-
     /* =========================================================
-       DEW POINT INTERACTIVE MARKERS
+       DEW INTERACTIVE POINT
     ========================================================= */
 
     .dew-point-hit {
-
       cursor: pointer;
 
       pointer-events: all;
 
       outline: none;
-
     }
 
 
     .dew-point-visible {
-
       pointer-events: none;
-
     }
 
 
-    .dew-point-hit:hover
-    + .dew-point-visible {
-
-      stroke:
-        #050505;
-
-      stroke-width:
-        2.5;
-
+    .dew-point-hit:hover + .dew-point-visible {
+      stroke: #050505;
+      stroke-width: 3;
     }
-
 
 
     /* =========================================================
-       DEW POINT TOOLTIP
+       DEW TOOLTIP
     ========================================================= */
 
     .dew-tooltip {
-
       position: fixed;
 
       z-index: 99999;
 
-      min-width: 205px;
-
-      max-width: 270px;
+      min-width: 210px;
 
       display: none;
 
-      padding:
-        11px
-        13px;
+      padding: 12px 14px;
 
-      background:
-        rgba(
-          5,
-          5,
-          5,
-          0.96
-        );
+      background: rgba(5, 5, 5, 0.96);
 
-      color:
-        #ffffff;
+      color: #ffffff;
 
-      border:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.35
-        );
+      border: 1px solid rgba(255,255,255,0.35);
 
-      border-radius:
-        5px;
+      border-radius: 5px;
 
-      box-shadow:
-        0
-        6px
-        20px
-        rgba(
-          0,
-          0,
-          0,
-          0.28
-        );
+      box-shadow: 0 7px 22px rgba(0,0,0,0.30);
 
-      pointer-events:
-        none;
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      pointer-events: none;
 
       font-size: 12px;
 
       line-height: 1.45;
-
-      text-align: left;
-
-      text-transform:
-        none;
-
     }
 
 
     .dew-tooltip.show {
-
-      display:
-        block;
-
+      display: block;
     }
 
 
     .dew-tooltip-location {
+      margin-bottom: 7px;
 
-      margin-bottom:
-        7px;
+      padding-bottom: 6px;
 
-      padding-bottom:
-        6px;
-
-      border-bottom:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          0.24
-        );
-
-      font-size:
-        14px;
-
-      line-height:
-        1.1;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .dew-tooltip-row {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        78px
-        1fr;
-
-      gap:
-        8px;
-
-      margin-top:
-        3px;
-
-    }
-
-
-    .dew-tooltip-label {
-
-      color:
-        #bdbdbd;
-
-      font-size:
-        10px;
-
-      font-weight:
-        900;
-
-      letter-spacing:
-        0.04em;
-
-      text-transform:
-        uppercase;
-
-    }
-
-
-    .dew-tooltip-value {
-
-      color:
-        #ffffff;
-
-      font-size:
-        11px;
-
-      font-weight:
-        900;
-
-      white-space:
-        nowrap;
-
-      font-variant-numeric:
-        tabular-nums;
-
-    }
-
-
-    .chart-message {
-
-      width: 100%;
-
-      min-height: 400px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 25px;
-
-      background:
-        #ffffff;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
 
       font-size: 14px;
 
       font-weight: 900;
-
-      text-align: center;
-
-      text-transform: uppercase;
-
     }
 
 
+    .dew-tooltip-row {
+      display: grid;
 
-    /* =========================================================
-       MESSAGE
-    ========================================================= */
+      grid-template-columns: 78px 1fr;
 
-    .message {
+      gap: 8px;
 
+      margin-top: 3px;
+    }
+
+
+    .dew-tooltip-label {
+      color: #bdbdbd;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+
+    .dew-tooltip-value {
+      font-size: 11px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+
+      font-variant-numeric: tabular-nums;
+    }
+
+
+    .message,
+    .chart-message {
       width: 100%;
-
       height: 100%;
 
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       padding: 24px;
@@ -1323,9 +775,7 @@
       font-weight: 900;
 
       text-transform: uppercase;
-
     }
-
 
 
     /* =========================================================
@@ -1333,7 +783,6 @@
     ========================================================= */
 
     .footer {
-
       flex-shrink: 0;
 
       min-height: 38px;
@@ -1341,87 +790,20 @@
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
-      padding:
-        7px
-        10px
-        max(
-          7px,
-          env(safe-area-inset-bottom)
-        );
+      padding: 7px 10px;
 
-      background:
-        var(--cream);
+      background: var(--cream);
 
-      border:
-        1px solid
-        var(--black);
+      border: 1px solid var(--black);
 
       font-size: 10px;
 
       font-weight: 900;
 
-      letter-spacing: 0.09em;
-
       text-transform: uppercase;
-
     }
-
-
-
-    /* =========================================================
-       LAPTOP
-    ========================================================= */
-
-    @media (max-width: 1250px) {
-
-      .hero {
-
-        grid-template-columns:
-          minmax(0, 1fr)
-          290px
-          165px;
-
-      }
-
-
-      .hero-title {
-
-        font-size:
-          clamp(
-            31px,
-            3.8vw,
-            48px
-          );
-
-      }
-
-
-      .current-datetime {
-
-        font-size: 17px;
-
-      }
-
-
-      .current-shift {
-
-        font-size: 10px;
-
-      }
-
-
-      th,
-      td {
-
-        min-width: 130px;
-
-      }
-
-    }
-
 
 
     /* =========================================================
@@ -1431,27 +813,14 @@
     @media (max-width: 700px) {
 
       .page {
-
         gap: 3px;
 
-        padding:
-          max(
-            3px,
-            env(safe-area-inset-top)
-          )
-          3px
-          max(
-            3px,
-            env(safe-area-inset-bottom)
-          );
-
+        padding: 3px;
       }
 
 
       .hero {
-
         min-height: 138px;
-
         height: 138px;
 
         grid-template-columns:
@@ -1461,274 +830,153 @@
         grid-template-rows:
           74px
           64px;
-
       }
 
 
       .hero-left {
+        grid-column: 1 / -1;
+        grid-row: 1;
 
-        grid-column:
-          1 / -1;
+        padding: 9px 12px;
 
-        grid-row:
-          1;
-
-        padding:
-          9px
-          12px;
-
-        border-bottom:
-          1px solid
-          var(--black);
-
+        border-bottom: 1px solid var(--black);
       }
 
 
       .hero-title {
+        font-size: clamp(26px, 7.6vw, 36px);
 
-        font-size:
-          clamp(
-            26px,
-            7.6vw,
-            36px
-          );
-
-        white-space:
-          normal;
-
+        white-space: normal;
       }
 
 
       .hero-subtitle {
+        margin-top: 5px;
 
-        margin-top:
-          5px;
-
-        font-size:
-          7px;
-
+        font-size: 7px;
       }
 
 
       .current-status {
+        grid-column: 1;
+        grid-row: 2;
 
-        grid-column:
-          1;
+        padding: 8px 11px;
 
-        grid-row:
-          2;
-
-        padding:
-          8px
-          11px;
-
-        border-left:
-          none;
-
+        border-left: none;
       }
 
 
       .current-datetime {
-
-        font-size:
-          15px;
-
+        font-size: 15px;
       }
 
 
       .current-shift {
+        margin-top: 7px;
 
-        margin-top:
-          7px;
+        font-size: 8px;
 
-        font-size:
-          8px;
-
-        white-space:
-          normal;
-
+        white-space: normal;
       }
 
 
       .main-bookmark {
+        grid-column: 2;
+        grid-row: 2;
 
-        grid-column:
-          2;
+        padding: 7px;
 
-        grid-row:
-          2;
-
-        padding:
-          7px;
-
-        font-size:
-          9px;
-
+        font-size: 9px;
       }
 
 
       .reading-panel {
+        height: 340px;
 
-        height:
-          340px;
-
-        min-height:
-          340px;
-
+        min-height: 340px;
       }
 
 
       .graph-panel {
-
-        min-height:
-          525px;
-
+        min-height: 525px;
       }
 
 
       .dew-graph-panel {
-
-        min-height:
-          655px;
-
+        min-height: 700px;
       }
 
 
       .panel-title {
+        min-height: 42px;
 
-        min-height:
-          42px;
+        padding: 0 9px;
 
-        padding:
-          0
-          9px;
-
-        font-size:
-          12px;
-
+        font-size: 12px;
       }
 
 
       .panel-note {
+        max-width: 47%;
 
-        max-width:
-          46%;
-
-        font-size:
-          7px;
-
+        font-size: 7px;
       }
 
 
       th {
+        min-width: 118px;
 
-        min-width:
-          118px;
+        height: 49px;
 
-        height:
-          49px;
+        padding: 8px 9px;
 
-        padding:
-          8px
-          9px;
-
-        font-size:
-          11px;
-
+        font-size: 11px;
       }
 
 
       td {
+        min-width: 118px;
 
-        min-width:
-          118px;
+        height: 40px;
 
-        height:
-          40px;
+        padding: 7px 9px;
 
-        padding:
-          7px
-          9px;
-
-        font-size:
-          12px;
-
+        font-size: 12px;
       }
 
 
       .graph-info-bar {
+        align-items: flex-start;
 
-        align-items:
-          flex-start;
+        flex-direction: column;
 
-        flex-direction:
-          column;
+        gap: 7px;
 
-        gap:
-          7px;
-
-        padding:
-          8px
-          10px;
-
+        padding: 8px 10px;
       }
 
 
-      .graph-count {
-
-        font-size:
-          9px;
-
-      }
-
-
+      .graph-count,
       .graph-legend {
-
-        font-size:
-          9px;
-
-      }
-
-
-      .swabbing-chart {
-
-        height:
-          430px;
-
+        font-size: 9px;
       }
 
 
       .dew-chart {
-
-        height:
-          555px;
-
+        height: 600px;
       }
 
 
       .dew-tooltip {
-
-        min-width:
-          190px;
-
-        max-width:
-          calc(100vw - 20px);
-
-        padding:
-          10px
-          11px;
-
+        max-width: calc(100vw - 20px);
       }
 
 
       .footer {
+        min-height: 28px;
 
-        min-height:
-          28px;
-
-        font-size:
-          8px;
-
+        font-size: 8px;
       }
 
     }
@@ -1741,33 +989,39 @@
 <body>
 
 
+  <!-- =========================================================
+       HIDDEN BACKGROUND MUSIC
+  ========================================================= -->
+
+  <iframe
+    id="backgroundMusic"
+    class="soundcloud-background"
+    title="Background Music"
+    width="1"
+    height="1"
+    scrolling="no"
+    frameborder="no"
+    allow="autoplay; encrypted-media"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A669354587&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+  ></iframe>
+
+
   <div class="page">
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-
     <header class="hero">
-
 
       <div class="hero-left">
 
         <div class="hero-title">
-
           FEC SWABBING DATA
-
         </div>
 
-
         <div class="hero-subtitle">
-
           TECHSMITH
-
         </div>
 
       </div>
-
 
 
       <div class="current-status">
@@ -1776,56 +1030,37 @@
           class="current-datetime"
           id="currentDateTime"
         >
-
           -- --- ---- --:--:--
-
         </div>
-
 
         <div
           class="current-shift"
           id="currentShift"
         >
-
           CURRENT SHIFT: --
-
         </div>
 
       </div>
-
 
 
       <a
         class="main-bookmark"
         href="https://hx-ts.github.io/HAFIZ-KREJUV/"
       >
-
         MAIN BOOKMARK
-
-        <span class="bookmark-arrow">
-          ↗
-        </span>
-
+        <span class="bookmark-arrow">↗</span>
       </a>
-
 
     </header>
 
 
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
     <main class="dashboard">
 
 
-      <!-- ===================================================
-           SWABBING TABLE
-      ==================================================== -->
+      <!-- SWABBING TABLE -->
 
       <section class="reading-panel">
-
 
         <div class="panel-title">
 
@@ -1851,17 +1086,13 @@
 
         </div>
 
-
       </section>
 
 
 
-      <!-- ===================================================
-           SWABBING GRAPH
-      ==================================================== -->
+      <!-- SWABBING GRAPH -->
 
       <section class="graph-panel">
-
 
         <div class="panel-title">
 
@@ -1878,74 +1109,49 @@
 
         <div class="graph-info-bar">
 
-
           <div
             class="graph-count"
             id="swabbingGraphCount"
           >
-
             WAITING FOR DATA
-
           </div>
 
 
           <div class="graph-legend">
 
-
             <div class="legend-item">
-
               <span
                 class="legend-box"
                 style="background:#2878ad"
               ></span>
-
               Weight Before
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-box"
                 style="background:#ff7600"
               ></span>
-
               Weight After
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#75117e"
               ></span>
-
               Weight Gain
-
             </div>
-
 
             <div class="legend-item">
-
               <span
                 class="legend-line"
-                style="
-                  height:0;
-                  background:none;
-                  border-top:2px dashed #e31b23;
-                "
+                style="height:0;border-top:2px dashed #e31b23"
               ></span>
-
               Gain Trend
-
             </div>
 
-
           </div>
-
 
         </div>
 
@@ -1961,17 +1167,13 @@
 
         </div>
 
-
       </section>
 
 
 
-      <!-- ===================================================
-           DEW POINT TABLE
-      ==================================================== -->
+      <!-- DEW POINT TABLE -->
 
       <section class="reading-panel">
-
 
         <div class="panel-title">
 
@@ -1997,17 +1199,13 @@
 
         </div>
 
-
       </section>
 
 
 
-      <!-- ===================================================
-           DEW POINT GRAPH
-      ==================================================== -->
+      <!-- DEW POINT GRAPH -->
 
       <section class="graph-panel dew-graph-panel">
-
 
         <div class="panel-title">
 
@@ -2016,7 +1214,7 @@
           </div>
 
           <div class="panel-note">
-            POINT / TAP DATA FOR DETAILS
+            3-HOUR GRID · POINT / TAP DATA FOR DETAILS
           </div>
 
         </div>
@@ -2024,91 +1222,62 @@
 
         <div class="graph-info-bar">
 
-
           <div
             class="graph-count"
             id="dewGraphInfo"
           >
-
             WAITING FOR DATA
-
           </div>
 
 
           <div class="graph-legend">
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#1f77b4"
               ></span>
-
               GPS ADU
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#18b5c8"
               ></span>
-
               GPS TPL
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#2ca02c"
               ></span>
-
               BV13
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#ff7600"
               ></span>
-
               BV10.3
-
             </div>
 
-
             <div class="legend-item">
-
               <span
                 class="legend-line"
                 style="background:#d62728"
               ></span>
-
               GPP4 TPR
-
             </div>
-
 
             <div class="legend-item">
-
               <span class="legend-dashed"></span>
-
               Acceptance ≤ −10°Cdp
-
             </div>
 
-
           </div>
-
 
         </div>
 
@@ -2124,7 +1293,6 @@
 
         </div>
 
-
       </section>
 
 
@@ -2132,9 +1300,7 @@
 
 
     <footer class="footer">
-
       Fly TechSmith
-
     </footer>
 
 
@@ -2143,14 +1309,12 @@
 
 
   <!-- =========================================================
-       DEW POINT HOVER / TAP TOOLTIP
+       TOOLTIP
   ========================================================= -->
 
   <div
     class="dew-tooltip"
     id="dewTooltip"
-    role="status"
-    aria-live="polite"
   >
 
     <div
@@ -2162,50 +1326,29 @@
 
 
     <div class="dew-tooltip-row">
-
-      <div class="dew-tooltip-label">
-        Date
-      </div>
-
+      <div class="dew-tooltip-label">Date</div>
       <div
         class="dew-tooltip-value"
         id="dewTooltipDate"
-      >
-        -
-      </div>
-
+      >-</div>
     </div>
 
 
     <div class="dew-tooltip-row">
-
-      <div class="dew-tooltip-label">
-        Time
-      </div>
-
+      <div class="dew-tooltip-label">Time</div>
       <div
         class="dew-tooltip-value"
         id="dewTooltipTime"
-      >
-        -
-      </div>
-
+      >-</div>
     </div>
 
 
     <div class="dew-tooltip-row">
-
-      <div class="dew-tooltip-label">
-        Dew Point
-      </div>
-
+      <div class="dew-tooltip-label">Dew Point</div>
       <div
         class="dew-tooltip-value"
         id="dewTooltipReading"
-      >
-        -
-      </div>
-
+      >-</div>
     </div>
 
   </div>
@@ -2216,32 +1359,138 @@
 
 
     /* =========================================================
-       SETTINGS
+       BACKGROUND MUSIC
     ========================================================= */
 
-    const TABLE_REFRESH_TIME =
-      60000;
+    const BACKGROUND_MUSIC_VOLUME = 10;
+
+    let backgroundMusicWidget = null;
+    let backgroundMusicReady = false;
 
 
-    const CLOCK_REFRESH_TIME =
-      1000;
+    function initialiseBackgroundMusic() {
+
+      const iframe =
+        document.getElementById(
+          "backgroundMusic"
+        );
 
 
-    const MALAYSIA_TIME_ZONE =
-      "Asia/Kuala_Lumpur";
+      if (
+        !iframe
+        ||
+        !window.SC
+        ||
+        !SC.Widget
+      ) {
+        return;
+      }
 
 
-    const DATE_GROUP_COLOUR_COUNT =
-      6;
+      backgroundMusicWidget =
+        SC.Widget(
+          iframe
+        );
 
 
-    const DEW_ACCEPTANCE =
-      -10;
+      backgroundMusicWidget.bind(
+
+        SC.Widget.Events.READY,
+
+        function () {
+
+          backgroundMusicReady = true;
+
+          backgroundMusicWidget.setVolume(
+            BACKGROUND_MUSIC_VOLUME
+          );
+
+          backgroundMusicWidget.play();
+
+        }
+
+      );
+
+
+      backgroundMusicWidget.bind(
+
+        SC.Widget.Events.PLAY,
+
+        function () {
+
+          backgroundMusicWidget.setVolume(
+            BACKGROUND_MUSIC_VOLUME
+          );
+
+        }
+
+      );
+
+    }
+
+
+    function unlockBackgroundMusic() {
+
+      if (
+        !backgroundMusicWidget
+        ||
+        !backgroundMusicReady
+      ) {
+        return;
+      }
+
+
+      backgroundMusicWidget.setVolume(
+        BACKGROUND_MUSIC_VOLUME
+      );
+
+      backgroundMusicWidget.play();
+
+    }
+
+
+    window.addEventListener(
+      "load",
+      initialiseBackgroundMusic
+    );
+
+
+    document.addEventListener(
+      "pointerdown",
+      unlockBackgroundMusic,
+      {
+        once: true,
+        passive: true
+      }
+    );
 
 
 
     /* =========================================================
-       GOOGLE SHEETS
+       SETTINGS
+    ========================================================= */
+
+    const TABLE_REFRESH_TIME = 60000;
+
+    const CLOCK_REFRESH_TIME = 1000;
+
+    const MALAYSIA_TIME_ZONE =
+      "Asia/Kuala_Lumpur";
+
+    const DATE_GROUP_COLOUR_COUNT = 6;
+
+    const DEW_ACCEPTANCE = -10;
+
+    const THREE_HOURS =
+      3 * 60 * 60 * 1000;
+
+    const ONE_DAY =
+      24 * 60 * 60 * 1000;
+
+
+
+    /* =========================================================
+       SHEETS
     ========================================================= */
 
     const SWABBING = {
@@ -2249,11 +1498,9 @@
       spreadsheetId:
         "1dPQfygx00SWQLDKmLbK1zyKX5by40ub6xZqm1VAUaDs",
 
-      gid:
-        "0",
+      gid: "0",
 
-      range:
-        "A:Z",
+      range: "A:Z",
 
       container:
         "swabbingContainer",
@@ -2265,17 +1512,13 @@
         "TIMESTAMP"
       ],
 
-      sortByDateTime:
-        true,
+      sortByDateTime: true,
 
-      highlightLowest:
-        false,
+      highlightLowest: false,
 
-      groupByDate:
-        false
+      groupByDate: false
 
     };
-
 
 
     const DEW_POINT = {
@@ -2283,11 +1526,9 @@
       spreadsheetId:
         "1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM",
 
-      gid:
-        "0",
+      gid: "0",
 
-      range:
-        "A:Z",
+      range: "A:Z",
 
       container:
         "dewPointContainer",
@@ -2299,33 +1540,20 @@
         "TIMESTAMP"
       ],
 
-      sortByDateTime:
-        true,
+      sortByDateTime: true,
 
-      highlightLowest:
-        true,
+      highlightLowest: true,
 
-      groupByDate:
-        true
+      groupByDate: true
 
     };
 
 
+    let lastSwabbingColumns = [];
+    let lastSwabbingRows = [];
 
-    let lastSwabbingColumns =
-      [];
-
-
-    let lastSwabbingRows =
-      [];
-
-
-    let lastDewColumns =
-      [];
-
-
-    let lastDewRows =
-      [];
+    let lastDewColumns = [];
+    let lastDewRows = [];
 
 
 
@@ -2333,8 +1561,7 @@
        CLOCK
     ========================================================= */
 
-    function getMalaysiaParts() {
-
+    function updateCurrentTime() {
 
       const formatter =
         new Intl.DateTimeFormat(
@@ -2342,38 +1569,24 @@
           "en-GB",
 
           {
-
             timeZone:
               MALAYSIA_TIME_ZONE,
 
-            year:
-              "numeric",
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
 
-            month:
-              "short",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
 
-            day:
-              "2-digit",
-
-            hour:
-              "2-digit",
-
-            minute:
-              "2-digit",
-
-            second:
-              "2-digit",
-
-            hourCycle:
-              "h23"
-
+            hourCycle: "h23"
           }
 
         );
 
 
-      const result =
-        {};
+      const result = {};
 
 
       formatter
@@ -2401,26 +1614,13 @@
         );
 
 
-      return result;
-
-    }
-
-
-
-    function updateCurrentTime() {
-
-
-      const parts =
-        getMalaysiaParts();
-
-
       document
         .getElementById(
           "currentDateTime"
         )
         .textContent =
 
-          parts.day
+          result.day
 
           +
 
@@ -2429,9 +1629,8 @@
           +
 
           String(
-            parts.month || ""
-          )
-          .toUpperCase()
+            result.month
+          ).toUpperCase()
 
           +
 
@@ -2439,7 +1638,7 @@
 
           +
 
-          parts.year
+          result.year
 
           +
 
@@ -2447,7 +1646,7 @@
 
           +
 
-          parts.hour
+          result.hour
 
           +
 
@@ -2455,7 +1654,7 @@
 
           +
 
-          parts.minute
+          result.minute
 
           +
 
@@ -2463,68 +1662,47 @@
 
           +
 
-          parts.second;
+          result.second;
 
 
       const hour =
         Number(
-          parts.hour
+          result.hour
         );
 
 
-      const shift =
-        document.getElementById(
+      document
+        .getElementById(
           "currentShift"
-        );
+        )
+        .innerHTML =
 
+          hour >= 7
+          &&
+          hour <= 18
 
-      if (
-        hour >= 7
-        &&
-        hour <= 18
-      ) {
+            ?
 
-        shift.innerHTML =
+            "CURRENT SHIFT: <strong>DAY</strong> · 07:00 - 18:59"
 
-          "CURRENT SHIFT: " +
+            :
 
-          "<strong>DAY</strong>" +
-
-          " · 07:00 - 18:59";
-
-      }
-
-      else {
-
-        shift.innerHTML =
-
-          "CURRENT SHIFT: " +
-
-          "<strong>NIGHT</strong>" +
-
-          " · 19:00 - 06:59";
-
-      }
+            "CURRENT SHIFT: <strong>NIGHT</strong> · 19:00 - 06:59";
 
     }
 
 
-
     updateCurrentTime();
 
-
     setInterval(
-
       updateCurrentTime,
-
       CLOCK_REFRESH_TIME
-
     );
 
 
 
     /* =========================================================
-       HELPERS
+       GENERAL HELPERS
     ========================================================= */
 
     function normalizeText(value) {
@@ -2538,49 +1716,23 @@
     }
 
 
-
     function escapeHtml(value) {
 
       return String(
         value ?? ""
       )
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-      .replace(
-        /</g,
-        "&lt;"
-      )
-      .replace(
-        />/g,
-        "&gt;"
-      )
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-      .replace(
-        /'/g,
-        "&#039;"
-      );
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
     }
-
 
 
     function escapeAttribute(value) {
-
-      return escapeHtml(
-        value
-      )
-      .replace(
-        /`/g,
-        "&#096;"
-      );
-
+      return escapeHtml(value);
     }
-
 
 
     function cellHasValue(cell) {
@@ -2598,13 +1750,10 @@
     }
 
 
-
     function getCellDisplayValue(cell) {
 
       if (!cell) {
-
         return "";
-
       }
 
 
@@ -2637,7 +1786,6 @@
     }
 
 
-
     function extractNumber(value) {
 
       if (
@@ -2654,7 +1802,8 @@
 
 
       if (
-        typeof value === "number"
+        typeof value ===
+        "number"
       ) {
 
         return Number.isFinite(
@@ -2667,28 +1816,16 @@
 
 
       const match =
-
         String(value)
-
-        .replace(
-          /,/g,
-          ""
-        )
-
-        .replace(
-          /−/g,
-          "-"
-        )
-
+        .replace(/,/g, "")
+        .replace(/−/g, "-")
         .match(
           /[-+]?\d+(?:\.\d+)?/
         );
 
 
       if (!match) {
-
         return null;
-
       }
 
 
@@ -2709,7 +1846,7 @@
 
 
     /* =========================================================
-       COLUMN TYPES
+       COLUMN TYPE
     ========================================================= */
 
     function isTimestampColumn(name) {
@@ -2724,7 +1861,6 @@
     }
 
 
-
     function isDateColumn(name) {
 
       const n =
@@ -2734,35 +1870,18 @@
 
 
       return (
-
         n === "DATE"
-
         ||
-
         n === "TARIKH"
-
         ||
-
-        n.startsWith(
-          "DATE "
-        )
-
+        n.startsWith("DATE ")
         ||
-
-        n.startsWith(
-          "TARIKH "
-        )
-
+        n.startsWith("TARIKH ")
         ||
-
-        n.endsWith(
-          " DATE"
-        )
-
+        n.endsWith(" DATE")
       );
 
     }
-
 
 
     function isTimeColumn(name) {
@@ -2778,42 +1897,23 @@
           n
         )
       ) {
-
         return false;
-
       }
 
 
       return (
-
         n === "TIME"
-
         ||
-
         n === "SAMPLING TIME"
-
         ||
-
-        n.includes(
-          "MASA"
-        )
-
+        n.includes("MASA")
         ||
-
-        n.includes(
-          "HRS"
-        )
-
+        n.includes("HRS")
         ||
-
-        n.endsWith(
-          " TIME"
-        )
-
+        n.endsWith(" TIME")
       );
 
     }
-
 
 
     function getDisplayHeaderName(name) {
@@ -2837,68 +1937,14 @@
 
 
 
-    function shouldHideColumn(
-      label,
-      config
-    ) {
-
-      const name =
-        normalizeText(
-          label
-        );
-
-
-      if (
-        isTimestampColumn(
-          name
-        )
-      ) {
-
-        return true;
-
-      }
-
-
-      return (
-        config.hiddenColumns || []
-      )
-      .map(
-        normalizeText
-      )
-      .some(
-
-        function (hidden) {
-
-          return (
-
-            name === hidden
-
-            ||
-
-            name.includes(
-              hidden
-            )
-
-          );
-
-        }
-
-      );
-
-    }
-
-
-
     /* =========================================================
-       DATE PARSER
+       DATE / TIME PARSER
     ========================================================= */
 
     function parseDateCell(cell) {
 
       if (!cell) {
-
         return null;
-
       }
 
 
@@ -2920,24 +1966,19 @@
           ||
           value === ""
         ) {
-
           continue;
-
         }
 
 
         const text =
           String(
             value
-          )
-          .trim();
+          ).trim();
 
 
         let match =
           text.match(
-
             /Date\(\s*(\d{4})\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})/
-
           );
 
 
@@ -2945,17 +1986,11 @@
 
           return Date.UTC(
 
-            Number(
-              match[1]
-            ),
+            Number(match[1]),
 
-            Number(
-              match[2]
-            ),
+            Number(match[2]),
 
-            Number(
-              match[3]
-            )
+            Number(match[3])
 
           );
 
@@ -2964,9 +1999,7 @@
 
         match =
           text.match(
-
             /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/
-
           );
 
 
@@ -2974,17 +2007,11 @@
 
           return Date.UTC(
 
-            Number(
-              match[3]
-            ),
+            Number(match[3]),
 
-            Number(
-              match[2]
-            ) - 1,
+            Number(match[2]) - 1,
 
-            Number(
-              match[1]
-            )
+            Number(match[1])
 
           );
 
@@ -2993,9 +2020,7 @@
 
         match =
           text.match(
-
             /^(\d{4})-(\d{1,2})-(\d{1,2})$/
-
           );
 
 
@@ -3003,48 +2028,11 @@
 
           return Date.UTC(
 
-            Number(
-              match[1]
-            ),
+            Number(match[1]),
 
-            Number(
-              match[2]
-            ) - 1,
+            Number(match[2]) - 1,
 
-            Number(
-              match[3]
-            )
-
-          );
-
-        }
-
-
-        const parsed =
-          Date.parse(
-            text
-          );
-
-
-        if (
-          Number.isFinite(
-            parsed
-          )
-        ) {
-
-          const date =
-            new Date(
-              parsed
-            );
-
-
-          return Date.UTC(
-
-            date.getFullYear(),
-
-            date.getMonth(),
-
-            date.getDate()
+            Number(match[3])
 
           );
 
@@ -3059,21 +2047,16 @@
 
 
 
-    /* =========================================================
-       TIME PARSER
-    ========================================================= */
-
     function parseTimeCell(cell) {
 
       if (!cell) {
-
         return 0;
-
       }
 
 
       if (
-        typeof cell.v === "number"
+        typeof cell.v ===
+        "number"
         &&
         cell.v >= 0
         &&
@@ -3081,11 +2064,8 @@
       ) {
 
         return Math.round(
-
-          cell.v
-          *
-          86400000
-
+          cell.v *
+          ONE_DAY
         );
 
       }
@@ -3099,22 +2079,14 @@
             : cell.v || ""
 
         )
-
         .trim()
-
         .toUpperCase()
-
-        .replace(
-          /\./g,
-          ":"
-        );
+        .replace(/\./g, ":");
 
 
       let match =
         value.match(
-
           /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
-
         );
 
 
@@ -3122,26 +2094,17 @@
 
         return (
 
-          Number(
-            match[1]
-          )
-          *
+          Number(match[1]) *
           3600000
 
           +
 
-          Number(
-            match[2]
-          )
-          *
+          Number(match[2]) *
           60000
 
           +
 
-          Number(
-            match[3] || 0
-          )
-          *
+          Number(match[3] || 0) *
           1000
 
         );
@@ -3151,9 +2114,7 @@
 
       match =
         value.match(
-
           /^(\d{3,4})\s*(?:HRS?)?$/
-
         );
 
 
@@ -3170,10 +2131,7 @@
         return (
 
           Number(
-            digits.slice(
-              0,
-              2
-            )
+            digits.slice(0,2)
           )
           *
           3600000
@@ -3181,10 +2139,7 @@
           +
 
           Number(
-            digits.slice(
-              2,
-              4
-            )
+            digits.slice(2,4)
           )
           *
           60000
@@ -3202,12 +2157,8 @@
 
     function findDateTimeColumns(columns) {
 
-      let dateIndex =
-        -1;
-
-
-      let timeIndex =
-        -1;
+      let dateIndex = -1;
+      let timeIndex = -1;
 
 
       columns.forEach(
@@ -3275,11 +2226,9 @@
 
 
       return parseDateCell(
-
         row.c[
           dateIndex
         ]
-
       );
 
     }
@@ -3302,9 +2251,7 @@
       if (
         date === null
       ) {
-
         return null;
-
       }
 
 
@@ -3320,17 +2267,14 @@
             ?
 
             parseTimeCell(
-
               row.c[
                 timeIndex
               ]
-
             )
 
             :
 
             0
-
         )
 
       );
@@ -3338,10 +2282,6 @@
     }
 
 
-
-    /* =========================================================
-       SORT
-    ========================================================= */
 
     function sortRowsByDateTime(
       rows,
@@ -3357,14 +2297,11 @@
       if (
         indexes.dateIndex < 0
       ) {
-
         return rows;
-
       }
 
 
       return rows
-
       .map(
 
         function (
@@ -3373,9 +2310,7 @@
         ) {
 
           return {
-
             row,
-
             index,
 
             dateTime:
@@ -3388,63 +2323,52 @@
                 indexes.timeIndex
 
               )
-
           };
 
         }
 
       )
-
       .sort(
 
-        function (
-          a,
-          b
-        ) {
+        function (a,b) {
 
-          const av =
+          const aValid =
             Number.isFinite(
               a.dateTime
             );
 
-
-          const bv =
+          const bValid =
             Number.isFinite(
               b.dateTime
             );
 
 
           if (
-            !av
+            !aValid
             &&
-            bv
+            bValid
           ) {
-
             return -1;
-
           }
 
 
           if (
-            av
+            aValid
             &&
-            !bv
+            !bValid
           ) {
-
             return 1;
-
           }
 
 
           if (
-            !av
+            !aValid
             &&
-            !bv
+            !bValid
           ) {
 
             return (
-              a.index
-              -
+              a.index -
               b.index
             );
 
@@ -3453,14 +2377,12 @@
 
           return (
 
-            a.dateTime
-            -
+            a.dateTime -
             b.dateTime
 
             ||
 
-            a.index
-            -
+            a.index -
             b.index
 
           );
@@ -3468,15 +2390,9 @@
         }
 
       )
-
       .map(
-
-        function (item) {
-
-          return item.row;
-
-        }
-
+        item =>
+          item.row
       );
 
     }
@@ -3484,8 +2400,48 @@
 
 
     /* =========================================================
-       TABLE HELPERS
+       TABLE
     ========================================================= */
+
+    function shouldHideColumn(
+      label,
+      config
+    ) {
+
+      const name =
+        normalizeText(
+          label
+        );
+
+
+      if (
+        isTimestampColumn(
+          name
+        )
+      ) {
+        return true;
+      }
+
+
+      return (
+        config.hiddenColumns || []
+      )
+      .map(
+        normalizeText
+      )
+      .some(
+
+        hidden =>
+          name === hidden
+          ||
+          name.includes(
+            hidden
+          )
+
+      );
+
+    }
+
 
     function getVisibleColumns(
       columns,
@@ -3493,8 +2449,7 @@
       config
     ) {
 
-      const visible =
-        [];
+      const visible = [];
 
 
       columns.forEach(
@@ -3510,34 +2465,19 @@
               config
             )
           ) {
-
             return;
-
           }
 
 
           const hasData =
             rows.some(
 
-              function (row) {
-
-                return (
-
-                  row.c
-
-                  &&
-
-                  cellHasValue(
-
-                    row.c[
-                      index
-                    ]
-
-                  )
-
-                );
-
-              }
+              row =>
+                row.c
+                &&
+                cellHasValue(
+                  row.c[index]
+                )
 
             );
 
@@ -3569,53 +2509,12 @@
 
 
 
-    function getNonEmptyRows(
-      rows,
-      visibleColumns
-    ) {
-
-      return rows.filter(
-
-        function (row) {
-
-          return visibleColumns.some(
-
-            function (item) {
-
-              return (
-
-                row.c
-
-                &&
-
-                cellHasValue(
-
-                  row.c[
-                    item.index
-                  ]
-
-                )
-
-              );
-
-            }
-
-          );
-
-        }
-
-      );
-
-    }
-
-
-
     function findLowestValues(
       rows,
       visibleColumns
     ) {
 
-      const result =
+      const map =
         new Map();
 
 
@@ -3628,33 +2527,22 @@
 
 
           if (
-            isDateColumn(
-              label
-            )
+            isDateColumn(label)
             ||
-            isTimeColumn(
-              label
-            )
-            ||
-            isTimestampColumn(
-              label
-            )
+            isTimeColumn(label)
           ) {
-
             return;
-
           }
 
 
-          let minimum =
-            null;
+          let minimum = null;
 
 
           rows.forEach(
 
             function (row) {
 
-              const number =
+              const value =
                 extractNumber(
 
                   getCellDisplayValue(
@@ -3673,22 +2561,20 @@
 
 
               if (
-                number === null
+                value === null
               ) {
-
                 return;
-
               }
 
 
               if (
                 minimum === null
                 ||
-                number < minimum
+                value < minimum
               ) {
 
                 minimum =
-                  number;
+                  value;
 
               }
 
@@ -3701,7 +2587,7 @@
             minimum !== null
           ) {
 
-            result.set(
+            map.set(
               item.index,
               minimum
             );
@@ -3713,21 +2599,13 @@
       );
 
 
-      return result;
+      return map;
 
     }
 
 
 
-    /* =========================================================
-       GOOGLE SHEET LOADER
-    ========================================================= */
-
     function loadSheet(config) {
-
-      const query =
-        "select *";
-
 
       const tqx =
         `out:json;responseHandler:${config.callback}`;
@@ -3784,7 +2662,7 @@
         +
 
         encodeURIComponent(
-          query
+          "select *"
         )
 
         +
@@ -3796,65 +2674,20 @@
         Date.now();
 
 
-      const oldScript =
-        document.querySelector(
-
-          'script[data-sheet-callback="' +
-
-          config.callback +
-
-          '"]'
-
-        );
-
-
-      if (oldScript) {
-
-        oldScript.remove();
-
-      }
-
-
       const script =
         document.createElement(
           "script"
         );
 
 
-      script.src =
-        url;
+      script.src = url;
+
+      script.async = true;
 
 
-      script.async =
-        true;
-
-
-      script.dataset.sheetCallback =
-        config.callback;
-
-
-      script.onerror =
-        function () {
-
-          const container =
-            document.getElementById(
-              config.container
-            );
-
-
-          if (container) {
-
-            container.innerHTML =
-
-              '<div class="message">' +
-
-              'Unable to Load Google Sheet Data' +
-
-              '</div>';
-
-          }
-
-        };
+      document.head.appendChild(
+        script
+      );
 
 
       script.onload =
@@ -3880,50 +2713,9 @@
 
         };
 
-
-      document.head.appendChild(
-        script
-      );
-
     }
 
 
-
-    function scrollTableToBottom(
-      container
-    ) {
-
-      requestAnimationFrame(
-
-        function () {
-
-          requestAnimationFrame(
-
-            function () {
-
-              container.scrollTop =
-
-                container.scrollHeight
-
-                -
-
-                container.clientHeight;
-
-            }
-
-          );
-
-        }
-
-      );
-
-    }
-
-
-
-    /* =========================================================
-       TABLE RENDER
-    ========================================================= */
 
     function renderTable(
       response,
@@ -3941,18 +2733,7 @@
         ||
         !response.table
       ) {
-
-        container.innerHTML =
-
-          '<div class="message">' +
-
-          'No Data Available' +
-
-          '</div>';
-
-
         return;
-
       }
 
 
@@ -3968,56 +2749,37 @@
         getVisibleColumns(
 
           columns,
-
           originalRows,
-
           config
 
         );
 
 
       let rows =
-        getNonEmptyRows(
+        originalRows.filter(
 
-          originalRows,
+          row =>
+            visibleColumns.some(
 
-          visibleColumns
+              item =>
+                row.c
+                &&
+                cellHasValue(
+                  row.c[
+                    item.index
+                  ]
+                )
+
+            )
 
         );
 
 
-      if (
-        rows.length === 0
-      ) {
-
-        container.innerHTML =
-
-          '<div class="message">' +
-
-          'No Readings Available' +
-
-          '</div>';
-
-
-        return;
-
-      }
-
-
-      if (
-        config.sortByDateTime
-      ) {
-
-        rows =
-          sortRowsByDateTime(
-
-            rows,
-
-            columns
-
-          );
-
-      }
+      rows =
+        sortRowsByDateTime(
+          rows,
+          columns
+        );
 
 
       const indexes =
@@ -4045,9 +2807,7 @@
 
 
           if (
-            Number.isFinite(
-              date
-            )
+            Number.isFinite(date)
             &&
             (
               latestDate === null
@@ -4056,8 +2816,7 @@
             )
           ) {
 
-            latestDate =
-              date;
+            latestDate = date;
 
           }
 
@@ -4066,18 +2825,14 @@
       );
 
 
-      const lowestValues =
-
+      const lowest =
         config.highlightLowest
 
           ?
 
           findLowestValues(
-
             rows,
-
             visibleColumns
-
           )
 
           :
@@ -4097,7 +2852,7 @@
         );
 
 
-      const headerRow =
+      const header =
         document.createElement(
           "tr"
         );
@@ -4119,7 +2874,7 @@
             );
 
 
-          headerRow.appendChild(
+          header.appendChild(
             th
           );
 
@@ -4129,7 +2884,7 @@
 
 
       thead.appendChild(
-        headerRow
+        header
       );
 
 
@@ -4148,12 +2903,9 @@
         new Map();
 
 
-      let colour =
-        0;
+      let colourIndex = 0;
 
-
-      let previousDate =
-        null;
+      let previousDate = null;
 
 
       rows.forEach(
@@ -4184,30 +2936,23 @@
             )
           ) {
 
-            const key =
-              String(
-                rowDate
-              );
-
-
             if (
               !colourMap.has(
-                key
+                rowDate
               )
             ) {
 
               colourMap.set(
 
-                key,
+                rowDate,
 
-                colour
-                %
+                colourIndex %
                 DATE_GROUP_COLOUR_COUNT
 
               );
 
 
-              colour++;
+              colourIndex++;
 
             }
 
@@ -4219,7 +2964,7 @@
               +
 
               colourMap.get(
-                key
+                rowDate
               )
 
             );
@@ -4288,30 +3033,25 @@
               if (
                 config.highlightLowest
                 &&
-                lowestValues.has(
+                lowest.has(
                   item.index
                 )
               ) {
 
-                const number =
+                const numeric =
                   extractNumber(
                     value
                   );
 
 
                 if (
-                  number !== null
+                  numeric !== null
                   &&
                   Math.abs(
-
-                    number
-
-                    -
-
-                    lowestValues.get(
+                    numeric -
+                    lowest.get(
                       item.index
                     )
-
                   )
                   <
                   0.000001
@@ -4349,63 +3089,58 @@
       );
 
 
-      container.innerHTML =
-        "";
-
+      container.innerHTML = "";
 
       container.appendChild(
         table
       );
 
 
-      scrollTableToBottom(
-        container
+      requestAnimationFrame(
+
+        function () {
+
+          container.scrollTop =
+            container.scrollHeight;
+
+        }
+
       );
 
 
       if (
-        config.container ===
-        "swabbingContainer"
+        config === SWABBING
       ) {
 
         lastSwabbingColumns =
           columns;
-
 
         lastSwabbingRows =
           rows;
 
 
         renderSwabbingGraph(
-
           columns,
-
           rows
-
         );
 
       }
 
 
       if (
-        config.container ===
-        "dewPointContainer"
+        config === DEW_POINT
       ) {
 
         lastDewColumns =
           columns;
-
 
         lastDewRows =
           rows;
 
 
         renderDewPointGraph(
-
           columns,
-
           rows
-
         );
 
       }
@@ -4415,7 +3150,7 @@
 
 
     /* =========================================================
-       COLUMN SEARCH
+       COLUMN FIND
     ========================================================= */
 
     function findAnyColumn(
@@ -4457,41 +3192,6 @@
       }
 
 
-      for (
-        const alias
-        of aliases
-      ) {
-
-        const target =
-          normalizeText(
-            alias
-          );
-
-
-        for (
-          let i = 0;
-          i < columns.length;
-          i++
-        ) {
-
-          if (
-            normalizeText(
-              columns[i].label
-            )
-            .includes(
-              target
-            )
-          ) {
-
-            return i;
-
-          }
-
-        }
-
-      }
-
-
       return -1;
 
     }
@@ -4515,25 +3215,18 @@
           );
 
 
-        const matches =
+        if (
           words.every(
 
-            function (word) {
-
-              return label.includes(
-
+            word =>
+              label.includes(
                 normalizeText(
                   word
                 )
+              )
 
-              );
-
-            }
-
-          );
-
-
-        if (matches) {
+          )
+        ) {
 
           return i;
 
@@ -4549,12 +3242,7 @@
 
 
     /* =========================================================
-       SHORT PIG TYPE
-
-       BF   = BARE FOAM
-       BF14 = BARE FOAM 14" OVERSIZE
-       BD HS = BI-DI HIGH SEAL
-       CCF = CRISS CROSS FOAM
+       PIG SHORT NAME
     ========================================================= */
 
     function getShortPigType(value) {
@@ -4562,47 +3250,21 @@
       const raw =
         String(
           value || ""
-        )
-        .trim();
-
-
-      if (!raw) {
-
-        return "";
-
-      }
+        ).trim();
 
 
       const text =
         normalizeText(
           raw
-        )
-
-        .replace(
-          /["']/g,
-          ""
-        )
-
-        .replace(
-          /\s+/g,
-          " "
         );
 
 
       if (
-        text.includes(
-          "CRISS CROSS"
-        )
+        text.includes("CRISS CROSS")
         ||
-        text.includes(
-          "CRISS-CROSS"
-        )
+        text.includes("CRISS-CROSS")
         ||
-        text.includes(
-          "CRISSCROSS"
-        )
-        ||
-        text === "CCF"
+        text.includes("CRISSCROSS")
       ) {
 
         return "CCF";
@@ -4612,27 +3274,17 @@
 
       if (
         (
-          text.includes(
-            "BARE FOAM"
-          )
+          text.includes("BARE FOAM")
           ||
-          text.includes(
-            "BAREFOAM"
-          )
+          text.includes("BAREFOAM")
         )
         &&
         (
-          text.includes(
-            "14"
-          )
+          text.includes("14")
           ||
-          text.includes(
-            "OVERSIZE"
-          )
+          text.includes("OVERSIZE")
           ||
-          text.includes(
-            "OVER SIZE"
-          )
+          text.includes("OVER SIZE")
         )
       ) {
 
@@ -4642,13 +3294,9 @@
 
 
       if (
-        text.includes(
-          "BARE FOAM"
-        )
+        text.includes("BARE FOAM")
         ||
-        text.includes(
-          "BAREFOAM"
-        )
+        text.includes("BAREFOAM")
       ) {
 
         return "BF";
@@ -4656,67 +3304,20 @@
       }
 
 
-      const bidi =
-
-        text.includes(
-          "BI-DI"
-        )
-
-        ||
-
-        text.includes(
-          "BIDI"
-        )
-
-        ||
-
-        text.includes(
-          "BI DI"
-        );
-
-
-      const highSeal =
-
-        text.includes(
-          "HS"
-        )
-
-        ||
-
-        text.includes(
-          "HIGH SEAL"
-        )
-
-        ||
-
-        text.includes(
-          "HIGH-SEAL"
-        )
-
-        ||
-
-        text.includes(
-          "HIGH SEALING"
-        );
-
-
       if (
-        bidi
+        (
+          text.includes("BIDI")
+          ||
+          text.includes("BI-DI")
+          ||
+          text.includes("BI DI")
+        )
         &&
-        highSeal
-      ) {
-
-        return "BD HS";
-
-      }
-
-
-      if (
-        text ===
-        "HIGH SEAL"
-        ||
-        text ===
-        "HIGH SEALING"
+        (
+          text.includes("HS")
+          ||
+          text.includes("HIGH SEAL")
+        )
       ) {
 
         return "BD HS";
@@ -4725,637 +3326,6 @@
 
 
       return raw;
-
-    }
-
-
-
-    /* =========================================================
-       SWABBING GRAPH DATA
-    ========================================================= */
-
-    function extractSwabbingGraphData(
-      columns,
-      rows
-    ) {
-
-      const beforeIndex =
-        findColumnAllWords(
-          columns,
-          [
-            "BEFORE"
-          ]
-        );
-
-
-      const afterIndex =
-        findColumnAllWords(
-          columns,
-          [
-            "AFTER"
-          ]
-        );
-
-
-      const gainIndex =
-        findColumnAllWords(
-          columns,
-          [
-            "GAIN"
-          ]
-        );
-
-
-      const pigIndex =
-        findAnyColumn(
-
-          columns,
-
-          [
-            "PIG NO.",
-            "PIG NO",
-            "PIG NUMBER",
-            "PIG SEQUENCE",
-            "SEQUENCE"
-          ]
-
-        );
-
-
-      const runIndex =
-        findAnyColumn(
-
-          columns,
-
-          [
-            "SWABBING RUN",
-            "RUN NO.",
-            "RUN NO",
-            "RUN"
-          ]
-
-        );
-
-
-      const typeIndex =
-        findAnyColumn(
-
-          columns,
-
-          [
-            "PIG TYPE",
-            "TYPE",
-            "PIG DESCRIPTION",
-            "DESCRIPTION"
-          ]
-
-        );
-
-
-      const result =
-        [];
-
-
-      rows.forEach(
-
-        function (
-          row,
-          rowIndex
-        ) {
-
-          const before =
-
-            beforeIndex >= 0
-
-              ?
-
-              extractNumber(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      beforeIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-
-              :
-
-              null;
-
-
-          const after =
-
-            afterIndex >= 0
-
-              ?
-
-              extractNumber(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      afterIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-
-              :
-
-              null;
-
-
-          let gain =
-
-            gainIndex >= 0
-
-              ?
-
-              extractNumber(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      gainIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-
-              :
-
-              null;
-
-
-          if (
-            gain === null
-            &&
-            before !== null
-            &&
-            after !== null
-          ) {
-
-            gain =
-              after
-              -
-              before;
-
-          }
-
-
-          const pigNumber =
-
-            pigIndex >= 0
-
-              ?
-
-              String(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      pigIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-              .trim()
-
-              :
-
-              "";
-
-
-          const run =
-
-            runIndex >= 0
-
-              ?
-
-              String(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      runIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-              .trim()
-
-              :
-
-              "";
-
-
-          const rawType =
-
-            typeIndex >= 0
-
-              ?
-
-              String(
-
-                getCellDisplayValue(
-
-                  row.c
-                    ?
-                    row.c[
-                      typeIndex
-                    ]
-                    :
-                    null
-
-                )
-
-              )
-              .trim()
-
-              :
-
-              "";
-
-
-          const shortType =
-            getShortPigType(
-              rawType
-            );
-
-
-          const meaningful =
-
-            pigNumber !== ""
-
-            ||
-
-            shortType !== ""
-
-            ||
-
-            before !== null
-
-            ||
-
-            after !== null
-
-            ||
-
-            gain !== null;
-
-
-          if (!meaningful) {
-
-            return;
-
-          }
-
-
-          let xLabel =
-            pigNumber;
-
-
-          if (
-            !xLabel
-            &&
-            shortType
-          ) {
-
-            xLabel =
-              shortType;
-
-          }
-
-
-          if (!xLabel) {
-
-            xLabel =
-              String(
-                rowIndex + 1
-              );
-
-          }
-
-
-          result.push({
-
-            pigNumber,
-
-            xLabel,
-
-            rawType,
-
-            shortType,
-
-            run,
-
-            before,
-
-            after,
-
-            gain
-
-          });
-
-        }
-
-      );
-
-
-      return result;
-
-    }
-
-
-
-    /* =========================================================
-       SWABBING TREND
-    ========================================================= */
-
-    function calculateLinearTrend(
-      data
-    ) {
-
-      const points =
-        [];
-
-
-      data.forEach(
-
-        function (
-          item,
-          index
-        ) {
-
-          if (
-            Number.isFinite(
-              item.gain
-            )
-          ) {
-
-            points.push({
-
-              x:
-                index,
-
-              y:
-                item.gain
-
-            });
-
-          }
-
-        }
-
-      );
-
-
-      if (
-        points.length < 2
-      ) {
-
-        return null;
-
-      }
-
-
-      let sumX =
-        0;
-
-
-      let sumY =
-        0;
-
-
-      let sumXY =
-        0;
-
-
-      let sumXX =
-        0;
-
-
-      points.forEach(
-
-        function (point) {
-
-          sumX +=
-            point.x;
-
-          sumY +=
-            point.y;
-
-          sumXY +=
-            point.x
-            *
-            point.y;
-
-          sumXX +=
-            point.x
-            *
-            point.x;
-
-        }
-
-      );
-
-
-      const n =
-        points.length;
-
-
-      const denominator =
-
-        n
-        *
-        sumXX
-
-        -
-
-        sumX
-        *
-        sumX;
-
-
-      if (
-        denominator === 0
-      ) {
-
-        return null;
-
-      }
-
-
-      const slope =
-
-        (
-
-          n
-          *
-          sumXY
-
-          -
-
-          sumX
-          *
-          sumY
-
-        )
-
-        /
-
-        denominator;
-
-
-      const intercept =
-
-        (
-
-          sumY
-
-          -
-
-          slope
-          *
-          sumX
-
-        )
-
-        /
-
-        n;
-
-
-      return {
-        slope,
-        intercept
-      };
-
-    }
-
-
-
-    function formatGraphNumber(value) {
-
-      return Number.isFinite(
-        value
-      )
-
-        ?
-
-        value.toFixed(
-          2
-        )
-
-        :
-
-        "-";
-
-    }
-
-
-
-    function findLatestRun(data) {
-
-      let latest =
-        null;
-
-
-      data.forEach(
-
-        function (item) {
-
-          const value =
-            extractNumber(
-              item.run
-            );
-
-
-          if (
-            value !== null
-            &&
-            (
-              latest === null
-              ||
-              value > latest
-            )
-          ) {
-
-            latest =
-              value;
-
-          }
-
-        }
-
-      );
-
-
-      return latest;
-
-    }
-
-
-
-    function formatRunLabel(run) {
-
-      const text =
-        String(
-          run || ""
-        )
-        .trim();
-
-
-      if (!text) {
-
-        return "";
-
-      }
-
-
-      if (
-        /^\d+$/.test(
-          text
-        )
-      ) {
-
-        return (
-          "Swabbing Run "
-          +
-          text
-        );
-
-      }
-
-
-      return text;
 
     }
 
@@ -5376,858 +3346,196 @@
         );
 
 
-      const title =
-        document.getElementById(
-          "swabbingGraphTitle"
-        );
-
-
-      const info =
-        document.getElementById(
-          "swabbingGraphCount"
-        );
-
-
-      const data =
-        extractSwabbingGraphData(
-
+      const pigIndex =
+        findAnyColumn(
           columns,
-
-          rows
-
-        );
-
-
-      if (
-        data.length === 0
-      ) {
-
-        wrapper.innerHTML =
-
-          '<div class="chart-message">' +
-
-          'No Swabbing Pig Data Available' +
-
-          '</div>';
-
-
-        return;
-
-      }
-
-
-      const latestRun =
-        findLatestRun(
-          data
-        );
-
-
-      title.textContent =
-
-        latestRun !== null
-
-          ?
-
-          "SWABBING PIG WEIGHT COMPARISON — LATEST DATA THROUGH RUN "
-
-          +
-
-          latestRun
-
-          :
-
-          "SWABBING PIG WEIGHT COMPARISON — LATEST DATA";
-
-
-      info.textContent =
-
-        data.length
-
-        +
-
-        " PIG / ITEMS"
-
-        +
-
-        " · ALL PIG TYPES INCLUDED"
-
-        +
-
-        " · AUTO REFRESH 60 SEC";
-
-
-      const wrapperWidth =
-        Math.max(
-
-          wrapper.clientWidth,
-
-          320
-
-        );
-
-
-      const stepX =
-
-        window.innerWidth <= 700
-
-          ?
-
-          78
-
-          :
-
-          86;
-
-
-      const left =
-        68;
-
-
-      const right =
-        40;
-
-
-      const width =
-
-        Math.max(
-
-          wrapperWidth,
-
-          left
-
-          +
-
-          right
-
-          +
-
-          data.length
-
-          *
-
-          stepX
-
-        );
-
-
-      const height =
-        445;
-
-
-      const top =
-        30;
-
-
-      const plotBottom =
-        305;
-
-
-      const plotHeight =
-
-        plotBottom
-
-        -
-
-        top;
-
-
-      let maximum =
-        0;
-
-
-      data.forEach(
-
-        function (item) {
-
           [
-            item.before,
-            item.after,
-            item.gain
+            "PIG NO.",
+            "PIG NO",
+            "PIG NUMBER"
           ]
-          .forEach(
-
-            function (value) {
-
-              if (
-                Number.isFinite(
-                  value
-                )
-                &&
-                value > maximum
-              ) {
-
-                maximum =
-                  value;
-
-              }
-
-            }
-
-          );
-
-        }
-
-      );
-
-
-      let yMax =
-        Math.ceil(
-
-          maximum
-
-          +
-
-          1
-
         );
 
 
-      if (
-        yMax < 5
-      ) {
-
-        yMax =
-          5;
-
-      }
-
-
-      const yStep =
-
-        yMax <= 12
-
-          ?
-
-          1
-
-          :
-
-          2;
-
-
-      function xPos(index) {
-
-        return (
-
-          left
-
-          +
-
-          index
-          *
-          stepX
-
-          +
-
-          stepX
-          /
-          2
-
-        );
-
-      }
-
-
-      function yPos(value) {
-
-        return (
-
-          plotBottom
-
-          -
-
-          (
-            value
-            /
-            yMax
-          )
-          *
-          plotHeight
-
-        );
-
-      }
-
-
-      let svg =
-
-        '<svg' +
-
-        ' class="swabbing-chart"' +
-
-        ' xmlns="http://www.w3.org/2000/svg"' +
-
-        ' width="' + width + '"' +
-
-        ' height="' + height + '"' +
-
-        ' viewBox="0 0 ' + width + ' ' + height + '"' +
-
-        '>';
-
-
-      svg +=
-
-        '<rect' +
-
-        ' width="' + width + '"' +
-
-        ' height="' + height + '"' +
-
-        ' fill="#ffffff"' +
-
-        '/>';
-
-
-      for (
-        let value = 0;
-        value <= yMax;
-        value += yStep
-      ) {
-
-        const y =
-          yPos(
-            value
-          );
-
-
-        svg +=
-
-          '<line' +
-
-          ' x1="' + left + '"' +
-
-          ' y1="' + y + '"' +
-
-          ' x2="' + (width - right) + '"' +
-
-          ' y2="' + y + '"' +
-
-          ' stroke="#dddddd"' +
-
-          ' stroke-dasharray="4 3"' +
-
-          '/>';
-
-
-        svg +=
-
-          '<text' +
-
-          ' x="' + (left - 12) + '"' +
-
-          ' y="' + (y + 4) + '"' +
-
-          ' text-anchor="end"' +
-
-          ' font-family="Arial"' +
-
-          ' font-size="12"' +
-
-          ' font-weight="700"' +
-
-          '>' +
-
-          value +
-
-          '</text>';
-
-      }
-
-
-      svg +=
-
-        '<line' +
-
-        ' x1="' + left + '"' +
-
-        ' y1="' + top + '"' +
-
-        ' x2="' + left + '"' +
-
-        ' y2="' + plotBottom + '"' +
-
-        ' stroke="#111"' +
-
-        '/>';
-
-
-      svg +=
-
-        '<line' +
-
-        ' x1="' + left + '"' +
-
-        ' y1="' + plotBottom + '"' +
-
-        ' x2="' + (width - right) + '"' +
-
-        ' y2="' + plotBottom + '"' +
-
-        ' stroke="#111"' +
-
-        '/>';
-
-
-      svg +=
-
-        '<text' +
-
-        ' x="18"' +
-
-        ' y="' + ((top + plotBottom) / 2) + '"' +
-
-        ' transform="rotate(-90 18 ' + ((top + plotBottom) / 2) + ')"' +
-
-        ' text-anchor="middle"' +
-
-        ' font-family="Arial"' +
-
-        ' font-size="14"' +
-
-        ' font-weight="900"' +
-
-        '>' +
-
-        'WEIGHT (KG)' +
-
-        '</text>';
-
-
-      const barWidth =
-        16;
-
-
-      data.forEach(
-
-        function (
-          item,
-          index
-        ) {
-
-          const x =
-            xPos(
-              index
-            );
-
-
-          if (
-            Number.isFinite(
-              item.before
-            )
-          ) {
-
-            const y =
-              yPos(
-                item.before
-              );
-
-
-            svg +=
-
-              '<rect' +
-
-              ' x="' + (x - barWidth - 2) + '"' +
-
-              ' y="' + y + '"' +
-
-              ' width="' + barWidth + '"' +
-
-              ' height="' + (plotBottom - y) + '"' +
-
-              ' fill="#2878ad"' +
-
-              '/>';
-
-
-            svg +=
-
-              '<text' +
-
-              ' x="' + (x - 10) + '"' +
-
-              ' y="' + Math.max(15, y - 7) + '"' +
-
-              ' text-anchor="middle"' +
-
-              ' font-family="Arial"' +
-
-              ' font-size="10"' +
-
-              ' font-weight="900"' +
-
-              ' fill="#14598a"' +
-
-              '>' +
-
-              formatGraphNumber(
-                item.before
-              ) +
-
-              '</text>';
-
-          }
-
-
-          if (
-            Number.isFinite(
-              item.after
-            )
-          ) {
-
-            const y =
-              yPos(
-                item.after
-              );
-
-
-            svg +=
-
-              '<rect' +
-
-              ' x="' + (x + 2) + '"' +
-
-              ' y="' + y + '"' +
-
-              ' width="' + barWidth + '"' +
-
-              ' height="' + (plotBottom - y) + '"' +
-
-              ' fill="#ff7600"' +
-
-              '/>';
-
-
-            svg +=
-
-              '<text' +
-
-              ' x="' + (x + 10) + '"' +
-
-              ' y="' + Math.max(15, y - 7) + '"' +
-
-              ' text-anchor="middle"' +
-
-              ' font-family="Arial"' +
-
-              ' font-size="10"' +
-
-              ' font-weight="900"' +
-
-              ' fill="#e55f00"' +
-
-              '>' +
-
-              formatGraphNumber(
-                item.after
-              ) +
-
-              '</text>';
-
-          }
-
-        }
-
-      );
-
-
-      const gainPoints =
-        [];
-
-
-      data.forEach(
-
-        function (
-          item,
-          index
-        ) {
-
-          if (
-            Number.isFinite(
-              item.gain
-            )
-          ) {
-
-            gainPoints.push(
-
-              xPos(
-                index
-              )
-
-              +
-
-              ","
-
-              +
-
-              yPos(
-                item.gain
-              )
-
-            );
-
-          }
-
-        }
-
-      );
-
-
-      if (
-        gainPoints.length >= 2
-      ) {
-
-        svg +=
-
-          '<polyline' +
-
-          ' points="' + gainPoints.join(" ") + '"' +
-
-          ' fill="none"' +
-
-          ' stroke="#75117e"' +
-
-          ' stroke-width="3"' +
-
-          '/>';
-
-      }
-
-
-      data.forEach(
-
-        function (
-          item,
-          index
-        ) {
-
-          if (
-            !Number.isFinite(
-              item.gain
-            )
-          ) {
-
-            return;
-
-          }
-
-
-          const x =
-            xPos(
-              index
-            );
-
-
-          const y =
-            yPos(
-              item.gain
-            );
-
-
-          svg +=
-
-            '<circle' +
-
-            ' cx="' + x + '"' +
-
-            ' cy="' + y + '"' +
-
-            ' r="4.5"' +
-
-            ' fill="#75117e"' +
-
-            '/>';
-
-
-          svg +=
-
-            '<text' +
-
-            ' x="' + x + '"' +
-
-            ' y="' + Math.max(16, y - 9) + '"' +
-
-            ' text-anchor="middle"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="10"' +
-
-            ' font-weight="900"' +
-
-            ' fill="#75117e"' +
-
-            '>' +
-
-            formatGraphNumber(
-              item.gain
-            ) +
-
-            '</text>';
-
-        }
-
-      );
-
-
-      const trend =
-        calculateLinearTrend(
-          data
+      const typeIndex =
+        findAnyColumn(
+          columns,
+          [
+            "PIG TYPE",
+            "TYPE"
+          ]
         );
 
 
-      if (
-        trend
-        &&
-        data.length >= 2
-      ) {
-
-        const first =
-          Math.max(
-            0,
-            trend.intercept
-          );
+      const runIndex =
+        findAnyColumn(
+          columns,
+          [
+            "SWABBING RUN",
+            "RUN"
+          ]
+        );
 
 
-        const last =
-          Math.max(
-
-            0,
-
-            trend.intercept
-
-            +
-
-            trend.slope
-
-            *
-
-            (
-              data.length - 1
-            )
-
-          );
+      const beforeIndex =
+        findColumnAllWords(
+          columns,
+          ["BEFORE"]
+        );
 
 
-        svg +=
-
-          '<line' +
-
-          ' x1="' + xPos(0) + '"' +
-
-          ' y1="' + yPos(first) + '"' +
-
-          ' x2="' + xPos(data.length - 1) + '"' +
-
-          ' y2="' + yPos(last) + '"' +
-
-          ' stroke="#e31b23"' +
-
-          ' stroke-width="2"' +
-
-          ' stroke-dasharray="8 5"' +
-
-          '/>';
-
-      }
+      const afterIndex =
+        findColumnAllWords(
+          columns,
+          ["AFTER"]
+        );
 
 
-      data.forEach(
+      const data = [];
+
+
+      rows.forEach(
 
         function (
-          item,
+          row,
           index
         ) {
 
-          const x =
-            xPos(
-              index
-            );
-
-
-          const mainLabel =
-            item.xLabel;
-
-
-          const subLabel =
-
-            item.shortType
-
-            &&
-
-            normalizeText(
-              item.shortType
-            )
-
-            !==
-
-            normalizeText(
-              mainLabel
-            )
+          const before =
+            beforeIndex >= 0
 
               ?
 
-              item.shortType
+              extractNumber(
+
+                getCellDisplayValue(
+                  row.c[
+                    beforeIndex
+                  ]
+                )
+
+              )
+
+              :
+
+              null;
+
+
+          const after =
+            afterIndex >= 0
+
+              ?
+
+              extractNumber(
+
+                getCellDisplayValue(
+                  row.c[
+                    afterIndex
+                  ]
+                )
+
+              )
+
+              :
+
+              null;
+
+
+          const pig =
+            pigIndex >= 0
+
+              ?
+
+              String(
+
+                getCellDisplayValue(
+                  row.c[
+                    pigIndex
+                  ]
+                )
+
+              ).trim()
+
+              :
+
+              String(
+                index + 1
+              );
+
+
+          const type =
+            typeIndex >= 0
+
+              ?
+
+              getShortPigType(
+
+                getCellDisplayValue(
+                  row.c[
+                    typeIndex
+                  ]
+                )
+
+              )
 
               :
 
               "";
 
 
-          svg +=
+          const run =
+            runIndex >= 0
 
-            '<text' +
+              ?
 
-            ' x="' + x + '"' +
+              String(
 
-            ' y="326"' +
+                getCellDisplayValue(
+                  row.c[
+                    runIndex
+                  ]
+                )
 
-            ' text-anchor="middle"' +
+              ).trim()
 
-            ' font-family="Arial"' +
+              :
 
-            ' font-size="11"' +
-
-            ' font-weight="900"' +
-
-            '>' +
-
-            escapeHtml(
-              mainLabel
-            ) +
-
-            '</text>';
+              "";
 
 
           if (
-            subLabel
+            pig !== ""
+            ||
+            type !== ""
           ) {
 
-            svg +=
+            data.push({
 
-              '<text' +
+              pig:
+                pig || type,
 
-              ' x="' + x + '"' +
+              type,
 
-              ' y="345"' +
+              run,
 
-              ' text-anchor="middle"' +
+              before,
 
-              ' font-family="Arial"' +
+              after,
 
-              ' font-size="10"' +
+              gain:
+                before !== null
+                &&
+                after !== null
 
-              ' font-weight="900"' +
+                  ?
 
-              ' fill="#555"' +
+                  after - before
 
-              '>' +
+                  :
 
-              escapeHtml(
-                subLabel
-              ) +
+                  null
 
-              '</text>';
+            });
 
           }
 
@@ -6236,169 +3544,411 @@
       );
 
 
-      let groupStart =
-        0;
-
-
-      for (
-        let i = 0;
-        i <= data.length;
-        i++
+      if (
+        !data.length
       ) {
 
-        const currentRun =
+        wrapper.innerHTML =
+          '<div class="chart-message">No Swabbing Data</div>';
 
-          i < data.length
-
-            ?
-
-            data[i].run
-
-            :
-
-            null;
-
-
-        const run =
-
-          data[
-            groupStart
-          ]
-
-            ?
-
-            data[
-              groupStart
-            ].run
-
-            :
-
-            "";
-
-
-        const endGroup =
-
-          i === data.length
-
-          ||
-
-          currentRun !== run;
-
-
-        if (!endGroup) {
-
-          continue;
-
-        }
-
-
-        if (
-          run
-        ) {
-
-          const x1 =
-            xPos(
-              groupStart
-            )
-            -
-            30;
-
-
-          const x2 =
-            xPos(
-              i - 1
-            )
-            +
-            30;
-
-
-          const bracketY =
-            370;
-
-
-          svg +=
-
-            '<line' +
-
-            ' x1="' + x1 + '"' +
-
-            ' y1="' + bracketY + '"' +
-
-            ' x2="' + x2 + '"' +
-
-            ' y2="' + bracketY + '"' +
-
-            ' stroke="#333"' +
-
-            '/>';
-
-
-          svg +=
-
-            '<text' +
-
-            ' x="' + ((x1 + x2) / 2) + '"' +
-
-            ' y="391"' +
-
-            ' text-anchor="middle"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="10"' +
-
-            ' font-weight="900"' +
-
-            '>' +
-
-            escapeHtml(
-
-              formatRunLabel(
-                run
-              )
-
-            ) +
-
-            '</text>';
-
-        }
-
-
-        groupStart =
-          i;
+        return;
 
       }
 
 
+      let latestRun = null;
+
+
+      data.forEach(
+
+        function (item) {
+
+          const value =
+            extractNumber(
+              item.run
+            );
+
+
+          if (
+            value !== null
+            &&
+            (
+              latestRun === null
+              ||
+              value > latestRun
+            )
+          ) {
+
+            latestRun = value;
+
+          }
+
+        }
+
+      );
+
+
+      document
+        .getElementById(
+          "swabbingGraphTitle"
+        )
+        .textContent =
+
+          latestRun !== null
+
+            ?
+
+            "SWABBING PIG WEIGHT COMPARISON — LATEST DATA THROUGH RUN "
+            +
+            latestRun
+
+            :
+
+            "SWABBING PIG WEIGHT COMPARISON";
+
+
+      const width =
+        Math.max(
+
+          wrapper.clientWidth,
+
+          data.length * 85 + 100
+
+        );
+
+
+      const height = 445;
+
+      const left = 65;
+
+      const right = 35;
+
+      const top = 30;
+
+      const bottom = 305;
+
+
+      const maximum =
+        Math.max(
+
+          5,
+
+          ...data.flatMap(
+
+            item => [
+              item.before || 0,
+              item.after || 0,
+              item.gain || 0
+            ]
+
+          )
+
+        );
+
+
+      const yMax =
+        Math.ceil(
+          maximum + 1
+        );
+
+
+      const step =
+        (
+          width -
+          left -
+          right
+        )
+        /
+        Math.max(
+          data.length,
+          1
+        );
+
+
+      function x(index) {
+
+        return (
+          left
+          +
+          step * index
+          +
+          step / 2
+        );
+
+      }
+
+
+      function y(value) {
+
+        return (
+          bottom
+          -
+          value /
+          yMax *
+          (
+            bottom -
+            top
+          )
+        );
+
+      }
+
+
+      let svg =
+        `<svg
+          class="swabbing-chart"
+          xmlns="http://www.w3.org/2000/svg"
+          width="${width}"
+          height="${height}"
+          viewBox="0 0 ${width} ${height}"
+        >`;
+
+
       svg +=
+        `<rect width="${width}" height="${height}" fill="#fff"/>`;
 
-        '<text' +
 
-        ' x="' + (width / 2) + '"' +
+      for (
+        let value = 0;
+        value <= yMax;
+        value++
+      ) {
 
-        ' y="430"' +
+        svg +=
+          `<line
+            x1="${left}"
+            y1="${y(value)}"
+            x2="${width-right}"
+            y2="${y(value)}"
+            stroke="#ddd"
+            stroke-dasharray="4 3"
+          />`;
 
-        ' text-anchor="middle"' +
 
-        ' font-family="Arial"' +
+        svg +=
+          `<text
+            x="${left-12}"
+            y="${y(value)+4}"
+            text-anchor="end"
+            font-family="Arial"
+            font-size="11"
+          >${value}</text>`;
 
-        ' font-size="13"' +
+      }
 
-        ' font-weight="900"' +
 
-        '>' +
+      data.forEach(
 
-        'PIG SEQUENCE / TYPE' +
+        function (
+          item,
+          index
+        ) {
 
-        '</text>';
+          const px =
+            x(index);
+
+
+          if (
+            item.before !== null
+          ) {
+
+            svg +=
+              `<rect
+                x="${px-18}"
+                y="${y(item.before)}"
+                width="15"
+                height="${bottom-y(item.before)}"
+                fill="#2878ad"
+              />`;
+
+
+            svg +=
+              `<text
+                x="${px-10}"
+                y="${y(item.before)-6}"
+                text-anchor="middle"
+                font-family="Arial"
+                font-size="10"
+                font-weight="900"
+                fill="#14598a"
+              >${item.before.toFixed(2)}</text>`;
+
+          }
+
+
+          if (
+            item.after !== null
+          ) {
+
+            svg +=
+              `<rect
+                x="${px+3}"
+                y="${y(item.after)}"
+                width="15"
+                height="${bottom-y(item.after)}"
+                fill="#ff7600"
+              />`;
+
+
+            svg +=
+              `<text
+                x="${px+10}"
+                y="${y(item.after)-6}"
+                text-anchor="middle"
+                font-family="Arial"
+                font-size="10"
+                font-weight="900"
+                fill="#e55f00"
+              >${item.after.toFixed(2)}</text>`;
+
+          }
+
+
+          svg +=
+            `<text
+              x="${px}"
+              y="328"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="11"
+              font-weight="900"
+            >${escapeHtml(item.pig)}</text>`;
+
+
+          if (
+            item.type
+            &&
+            normalizeText(item.type)
+            !==
+            normalizeText(item.pig)
+          ) {
+
+            svg +=
+              `<text
+                x="${px}"
+                y="346"
+                text-anchor="middle"
+                font-family="Arial"
+                font-size="10"
+                font-weight="900"
+                fill="#555"
+              >${escapeHtml(item.type)}</text>`;
+
+          }
+
+        }
+
+      );
+
+
+      const gains =
+        data
+        .map(
+
+          (item,index) => ({
+            index,
+            gain: item.gain
+          })
+
+        )
+        .filter(
+          item =>
+            Number.isFinite(
+              item.gain
+            )
+        );
+
+
+      if (
+        gains.length > 1
+      ) {
+
+        svg +=
+          `<polyline
+            points="${gains.map(
+              item =>
+                `${x(item.index)},${y(item.gain)}`
+            ).join(" ")}"
+            fill="none"
+            stroke="#75117e"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />`;
+
+      }
+
+
+      gains.forEach(
+
+        function (item) {
+
+          svg +=
+            `<circle
+              cx="${x(item.index)}"
+              cy="${y(item.gain)}"
+              r="4.5"
+              fill="#75117e"
+            />`;
+
+
+          svg +=
+            `<text
+              x="${x(item.index)}"
+              y="${y(item.gain)-8}"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="10"
+              font-weight="900"
+              fill="#75117e"
+            >${item.gain.toFixed(2)}</text>`;
+
+        }
+
+      );
 
 
       svg +=
-        '</svg>';
+        `<text
+          x="18"
+          y="${(top+bottom)/2}"
+          transform="rotate(-90 18 ${(top+bottom)/2})"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="14"
+          font-weight="900"
+        >WEIGHT (KG)</text>`;
 
 
-      wrapper.innerHTML =
-        svg;
+      svg +=
+        `<text
+          x="${width/2}"
+          y="430"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="13"
+          font-weight="900"
+        >PIG SEQUENCE / TYPE</text>`;
+
+
+      svg +=
+        `</svg>`;
+
+
+      wrapper.innerHTML = svg;
+
+
+      document
+        .getElementById(
+          "swabbingGraphCount"
+        )
+        .textContent =
+
+          data.length
+
+          +
+
+          " PIG / ITEMS · AUTO REFRESH 60 SEC";
 
 
       requestAnimationFrame(
@@ -6406,12 +3956,7 @@
         function () {
 
           wrapper.scrollLeft =
-
-            wrapper.scrollWidth
-
-            -
-
-            wrapper.clientWidth;
+            wrapper.scrollWidth;
 
         }
 
@@ -6422,92 +3967,368 @@
 
 
     /* =========================================================
-       DEW POINT SERIES
+       DEW POINT DEFINITIONS
     ========================================================= */
 
     const DEW_SERIES = [
 
       {
-
-        name:
-          "GPS ADU",
-
-        words: [
-          "GPS",
-          "ADU"
-        ],
-
-        color:
-          "#1f77b4"
-
+        name: "GPS ADU",
+        words: ["GPS","ADU"],
+        color: "#1f77b4"
       },
 
       {
-
-        name:
-          "GPS TPL",
-
-        words: [
-          "GPS",
-          "TPL"
-        ],
-
-        color:
-          "#18b5c8"
-
+        name: "GPS TPL",
+        words: ["GPS","TPL"],
+        color: "#18b5c8"
       },
 
       {
-
-        name:
-          "BV13",
-
-        words: [
-          "BV13"
-        ],
-
-        color:
-          "#2ca02c"
-
+        name: "BV13",
+        words: ["BV13"],
+        color: "#2ca02c"
       },
 
       {
-
-        name:
-          "BV10.3",
-
-        words: [
-          "BV10.3"
-        ],
-
-        color:
-          "#ff7600"
-
+        name: "BV10.3",
+        words: ["BV10.3"],
+        color: "#ff7600"
       },
 
       {
-
-        name:
-          "GPP4 TPR",
-
-        words: [
-          "GPP4",
-          "TPR"
-        ],
-
-        color:
-          "#d62728"
-
+        name: "GPP4 TPR",
+        words: ["GPP4","TPR"],
+        color: "#d62728"
       }
 
     ];
 
 
+    const MONTHS = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC"
+    ];
 
-    function extractDewPointGraphData(
+
+
+    function dateText(timestamp) {
+
+      const d =
+        new Date(
+          timestamp
+        );
+
+
+      return (
+
+        String(
+          d.getUTCDate()
+        )
+        .padStart(
+          2,
+          "0"
+        )
+
+        +
+
+        " "
+
+        +
+
+        MONTHS[
+          d.getUTCMonth()
+        ]
+
+        +
+
+        " "
+
+        +
+
+        d.getUTCFullYear()
+
+      );
+
+    }
+
+
+
+    function shortDateText(timestamp) {
+
+      const d =
+        new Date(
+          timestamp
+        );
+
+
+      return (
+
+        String(
+          d.getUTCDate()
+        )
+        .padStart(
+          2,
+          "0"
+        )
+
+        +
+
+        " "
+
+        +
+
+        MONTHS[
+          d.getUTCMonth()
+        ]
+
+      );
+
+    }
+
+
+
+    function timeText(timestamp) {
+
+      const d =
+        new Date(
+          timestamp
+        );
+
+
+      return (
+
+        String(
+          d.getUTCHours()
+        )
+        .padStart(
+          2,
+          "0"
+        )
+
+        +
+
+        ":"
+
+        +
+
+        String(
+          d.getUTCMinutes()
+        )
+        .padStart(
+          2,
+          "0"
+        )
+
+      );
+
+    }
+
+
+
+    function minorTimeText(timestamp) {
+
+      const d =
+        new Date(
+          timestamp
+        );
+
+
+      return (
+
+        String(
+          d.getUTCHours()
+        )
+        .padStart(
+          2,
+          "0"
+        )
+
+        +
+
+        "00"
+
+      );
+
+    }
+
+
+
+    /* =========================================================
+       LATEST BOX ANTI-OVERLAP
+    ========================================================= */
+
+    function arrangeLabels(
+      labels,
+      top,
+      bottom
+    ) {
+
+      if (
+        !labels.length
+      ) {
+
+        return labels;
+
+      }
+
+
+      const boxHeight = 52;
+
+      const gap = 7;
+
+      const requiredGap =
+        boxHeight + gap;
+
+
+      labels.sort(
+
+        (a,b) =>
+          a.targetY -
+          b.targetY
+
+      );
+
+
+      const minY =
+        top + 29;
+
+      const maxY =
+        bottom - 29;
+
+
+      labels[0].labelY =
+        Math.max(
+
+          minY,
+
+          Math.min(
+            maxY,
+            labels[0].targetY
+          )
+
+        );
+
+
+      for (
+        let i=1;
+        i<labels.length;
+        i++
+      ) {
+
+        labels[i].labelY =
+          Math.max(
+
+            labels[i].targetY,
+
+            labels[i-1].labelY
+            +
+            requiredGap
+
+          );
+
+      }
+
+
+      const overflow =
+        labels[
+          labels.length - 1
+        ].labelY
+        -
+        maxY;
+
+
+      if (
+        overflow > 0
+      ) {
+
+        labels.forEach(
+
+          label =>
+            label.labelY -=
+              overflow
+
+        );
+
+      }
+
+
+      for (
+        let i=labels.length-2;
+        i>=0;
+        i--
+      ) {
+
+        const limit =
+          labels[i+1].labelY
+          -
+          requiredGap;
+
+
+        if (
+          labels[i].labelY
+          >
+          limit
+        ) {
+
+          labels[i].labelY =
+            limit;
+
+        }
+
+      }
+
+
+      const underflow =
+        minY -
+        labels[0].labelY;
+
+
+      if (
+        underflow > 0
+      ) {
+
+        labels.forEach(
+
+          label =>
+            label.labelY +=
+              underflow
+
+        );
+
+      }
+
+
+      return labels;
+
+    }
+
+
+
+    /* =========================================================
+       DEW POINT GRAPH
+    ========================================================= */
+
+    function renderDewPointGraph(
       columns,
       rows
     ) {
+
+      const wrapper =
+        document.getElementById(
+          "dewGraphWrapper"
+        );
+
 
       const indexes =
         findDateTimeColumns(
@@ -6518,31 +4339,22 @@
       const series =
         DEW_SERIES.map(
 
-          function (definition) {
+          definition => ({
 
-            return {
+            ...definition,
 
-              name:
-                definition.name,
+            index:
+              findColumnAllWords(
 
-              color:
-                definition.color,
+                columns,
 
-              columnIndex:
-                findColumnAllWords(
+                definition.words
 
-                  columns,
+              ),
 
-                  definition.words
+            points: []
 
-                ),
-
-              points:
-                []
-
-            };
-
-          }
+          })
 
         );
 
@@ -6568,9 +4380,7 @@
               timestamp
             )
           ) {
-
             return;
-
           }
 
 
@@ -6579,11 +4389,9 @@
             function (item) {
 
               if (
-                item.columnIndex < 0
+                item.index < 0
               ) {
-
                 return;
-
               }
 
 
@@ -6592,13 +4400,9 @@
 
                   getCellDisplayValue(
 
-                    row.c
-                      ?
-                      row.c[
-                        item.columnIndex
-                      ]
-                      :
-                      null
+                    row.c[
+                      item.index
+                    ]
 
                   )
 
@@ -6610,11 +4414,8 @@
               ) {
 
                 item.points.push({
-
                   timestamp,
-
                   value
-
                 });
 
               }
@@ -6630,879 +4431,33 @@
 
       series.forEach(
 
-        function (item) {
-
+        item =>
           item.points.sort(
 
-            function (
-              a,
-              b
-            ) {
+            (a,b) =>
+              a.timestamp -
+              b.timestamp
 
-              return (
-                a.timestamp
-                -
-                b.timestamp
-              );
-
-            }
-
-          );
-
-        }
-
-      );
-
-
-      return series.filter(
-
-        function (item) {
-
-          return (
-            item.points.length > 0
-          );
-
-        }
-
-      );
-
-    }
-
-
-
-    /* =========================================================
-       DATE / TIME FORMAT
-    ========================================================= */
-
-    const MONTHS = [
-
-      "JAN",
-      "FEB",
-      "MAR",
-      "APR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AUG",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DEC"
-
-    ];
-
-
-
-    function graphDateLabel(
-      timestamp
-    ) {
-
-      const date =
-        new Date(
-          timestamp
-        );
-
-
-      return (
-
-        String(
-          date.getUTCDate()
-        )
-        .padStart(
-          2,
-          "0"
-        )
-
-        +
-
-        " "
-
-        +
-
-        MONTHS[
-          date.getUTCMonth()
-        ]
-
-      );
-
-    }
-
-
-
-    function graphDateOnlyLabel(
-      timestamp
-    ) {
-
-      const date =
-        new Date(
-          timestamp
-        );
-
-
-      return (
-
-        String(
-          date.getUTCDate()
-        )
-        .padStart(
-          2,
-          "0"
-        )
-
-        +
-
-        " "
-
-        +
-
-        MONTHS[
-          date.getUTCMonth()
-        ]
-
-        +
-
-        " "
-
-        +
-
-        date.getUTCFullYear()
-
-      );
-
-    }
-
-
-
-    function graphTimeOnlyLabel(
-      timestamp
-    ) {
-
-      const date =
-        new Date(
-          timestamp
-        );
-
-
-      return (
-
-        String(
-          date.getUTCHours()
-        )
-        .padStart(
-          2,
-          "0"
-        )
-
-        +
-
-        ":"
-
-        +
-
-        String(
-          date.getUTCMinutes()
-        )
-        .padStart(
-          2,
-          "0"
-        )
-
-      );
-
-    }
-
-
-
-    function graphDateTimeLabel(
-      timestamp
-    ) {
-
-      return (
-
-        graphDateOnlyLabel(
-          timestamp
-        )
-
-        +
-
-        " · "
-
-        +
-
-        graphTimeOnlyLabel(
-          timestamp
-        )
-
-      );
-
-    }
-
-
-
-    /* =========================================================
-       LATEST READING BOX COLLISION SOLVER
-    ========================================================= */
-
-    function arrangeDewPointLabels(
-      labels,
-      top,
-      bottom
-    ) {
-
-      if (
-        labels.length === 0
-      ) {
-
-        return labels;
-
-      }
-
-
-      const minGap =
-        59;
-
-
-      const halfBox =
-        26;
-
-
-      const minY =
-        top
-        +
-        halfBox
-        +
-        3;
-
-
-      const maxY =
-        bottom
-        -
-        halfBox
-        -
-        3;
-
-
-      labels.sort(
-
-        function (
-          a,
-          b
-        ) {
-
-          return (
-            a.targetY
-            -
-            b.targetY
-          );
-
-        }
-
-      );
-
-
-      labels.forEach(
-
-        function (label) {
-
-          label.labelY =
-            Math.max(
-
-              minY,
-
-              Math.min(
-
-                maxY,
-
-                label.targetY
-
-              )
-
-            );
-
-        }
-
-      );
-
-
-      for (
-        let i = 1;
-        i < labels.length;
-        i++
-      ) {
-
-        const minimumAllowed =
-
-          labels[
-            i - 1
-          ].labelY
-
-          +
-
-          minGap;
-
-
-        if (
-          labels[i].labelY
-          <
-          minimumAllowed
-        ) {
-
-          labels[i].labelY =
-            minimumAllowed;
-
-        }
-
-      }
-
-
-      const overflow =
-
-        labels[
-          labels.length - 1
-        ].labelY
-
-        -
-
-        maxY;
-
-
-      if (
-        overflow > 0
-      ) {
-
-        labels.forEach(
-
-          function (label) {
-
-            label.labelY -=
-              overflow;
-
-          }
-
-        );
-
-      }
-
-
-      for (
-        let i = labels.length - 2;
-        i >= 0;
-        i--
-      ) {
-
-        const maximumAllowed =
-
-          labels[
-            i + 1
-          ].labelY
-
-          -
-
-          minGap;
-
-
-        if (
-          labels[i].labelY
-          >
-          maximumAllowed
-        ) {
-
-          labels[i].labelY =
-            maximumAllowed;
-
-        }
-
-      }
-
-
-      const underflow =
-
-        minY
-
-        -
-
-        labels[0].labelY;
-
-
-      if (
-        underflow > 0
-      ) {
-
-        labels.forEach(
-
-          function (label) {
-
-            label.labelY +=
-              underflow;
-
-          }
-
-        );
-
-      }
-
-
-      return labels;
-
-    }
-
-
-
-    /* =========================================================
-       TOOLTIP
-    ========================================================= */
-
-    function showDewTooltip(
-      target,
-      clientX,
-      clientY
-    ) {
-
-      const tooltip =
-        document.getElementById(
-          "dewTooltip"
-        );
-
-
-      const location =
-        target.dataset.location || "-";
-
-
-      const date =
-        target.dataset.date || "-";
-
-
-      const time =
-        target.dataset.time || "-";
-
-
-      const reading =
-        target.dataset.reading || "-";
-
-
-      document
-        .getElementById(
-          "dewTooltipLocation"
-        )
-        .textContent =
-          location;
-
-
-      document
-        .getElementById(
-          "dewTooltipDate"
-        )
-        .textContent =
-          date;
-
-
-      document
-        .getElementById(
-          "dewTooltipTime"
-        )
-        .textContent =
-          time;
-
-
-      document
-        .getElementById(
-          "dewTooltipReading"
-        )
-        .textContent =
-          reading;
-
-
-      tooltip.classList.add(
-        "show"
-      );
-
-
-      positionDewTooltip(
-
-        tooltip,
-
-        clientX,
-
-        clientY
-
-      );
-
-    }
-
-
-
-    function positionDewTooltip(
-      tooltip,
-      clientX,
-      clientY
-    ) {
-
-      const margin =
-        12;
-
-
-      const offsetX =
-        16;
-
-
-      const offsetY =
-        16;
-
-
-      const box =
-        tooltip.getBoundingClientRect();
-
-
-      let left =
-        clientX
-        +
-        offsetX;
-
-
-      let top =
-        clientY
-        +
-        offsetY;
-
-
-      if (
-        left
-        +
-        box.width
-        >
-        window.innerWidth
-        -
-        margin
-      ) {
-
-        left =
-          clientX
-          -
-          box.width
-          -
-          offsetX;
-
-      }
-
-
-      if (
-        top
-        +
-        box.height
-        >
-        window.innerHeight
-        -
-        margin
-      ) {
-
-        top =
-          clientY
-          -
-          box.height
-          -
-          offsetY;
-
-      }
-
-
-      left =
-        Math.max(
-          margin,
-          left
-        );
-
-
-      top =
-        Math.max(
-          margin,
-          top
-        );
-
-
-      tooltip.style.left =
-        left
-        +
-        "px";
-
-
-      tooltip.style.top =
-        top
-        +
-        "px";
-
-    }
-
-
-
-    function hideDewTooltip() {
-
-      const tooltip =
-        document.getElementById(
-          "dewTooltip"
-        );
-
-
-      tooltip.classList.remove(
-        "show"
-      );
-
-    }
-
-
-
-    function bindDewPointTooltips(
-      wrapper
-    ) {
-
-      const markers =
-        wrapper.querySelectorAll(
-          ".dew-point-hit"
-        );
-
-
-      markers.forEach(
-
-        function (marker) {
-
-
-          marker.addEventListener(
-
-            "mouseenter",
-
-            function (event) {
-
-              showDewTooltip(
-
-                marker,
-
-                event.clientX,
-
-                event.clientY
-
-              );
-
-            }
-
-          );
-
-
-          marker.addEventListener(
-
-            "mousemove",
-
-            function (event) {
-
-              const tooltip =
-                document.getElementById(
-                  "dewTooltip"
-                );
-
-
-              if (
-                tooltip.classList.contains(
-                  "show"
-                )
-              ) {
-
-                positionDewTooltip(
-
-                  tooltip,
-
-                  event.clientX,
-
-                  event.clientY
-
-                );
-
-              }
-
-            }
-
-          );
-
-
-          marker.addEventListener(
-
-            "mouseleave",
-
-            function () {
-
-              hideDewTooltip();
-
-            }
-
-          );
-
-
-          marker.addEventListener(
-
-            "focus",
-
-            function () {
-
-              const rect =
-                marker.getBoundingClientRect();
-
-
-              showDewTooltip(
-
-                marker,
-
-                rect.left
-                +
-                rect.width / 2,
-
-                rect.top
-                +
-                rect.height / 2
-
-              );
-
-            }
-
-          );
-
-
-          marker.addEventListener(
-
-            "blur",
-
-            function () {
-
-              hideDewTooltip();
-
-            }
-
-          );
-
-
-          /*
-             MOBILE / TOUCH
-
-             TAP POINT = SHOW DETAILS
-          */
-
-          marker.addEventListener(
-
-            "pointerdown",
-
-            function (event) {
-
-              if (
-                event.pointerType ===
-                "touch"
-              ) {
-
-                const rect =
-                  marker.getBoundingClientRect();
-
-
-                showDewTooltip(
-
-                  marker,
-
-                  rect.left
-                  +
-                  rect.width / 2,
-
-                  rect.top
-                  +
-                  rect.height / 2
-
-                );
-
-              }
-
-            }
-
-          );
-
-
-        }
-
-      );
-
-    }
-
-
-
-    /*
-       TAP / CLICK OUTSIDE THE GRAPH
-       CLOSES TOOLTIP
-    */
-
-    document.addEventListener(
-
-      "pointerdown",
-
-      function (event) {
-
-        if (
-          !event.target.closest(
-            ".dew-point-hit"
           )
-        ) {
 
-          hideDewTooltip();
-
-        }
-
-      }
-
-    );
+      );
 
 
+      const active =
+        series.filter(
 
-    /* =========================================================
-       DEW POINT GRAPH
-    ========================================================= */
-
-    function renderDewPointGraph(
-      columns,
-      rows
-    ) {
-
-      const wrapper =
-        document.getElementById(
-          "dewGraphWrapper"
-        );
-
-
-      const info =
-        document.getElementById(
-          "dewGraphInfo"
-        );
-
-
-      hideDewTooltip();
-
-
-      const series =
-        extractDewPointGraphData(
-
-          columns,
-
-          rows
+          item =>
+            item.points.length > 0
 
         );
 
 
       if (
-        series.length === 0
+        !active.length
       ) {
 
         wrapper.innerHTML =
-
-          '<div class="chart-message">' +
-
-          'No Dew Point Graph Data' +
-
-          '</div>';
-
-
-        info.textContent =
-          "NO GRAPH DATA";
-
+          '<div class="chart-message">No Dew Point Data</div>';
 
         return;
 
@@ -7510,155 +4465,125 @@
 
 
       const allPoints =
-        [];
+        active.flatMap(
+          item =>
+            item.points
+        );
 
 
-      series.forEach(
-
-        function (item) {
-
-          item.points.forEach(
-
-            function (point) {
-
-              allPoints.push(
-                point
-              );
-
-            }
-
-          );
-
-        }
-
-      );
+      const minReadingTime =
+        Math.min(
+          ...allPoints.map(
+            item =>
+              item.timestamp
+          )
+        );
 
 
-      const minTime =
-        Math.min.apply(
+      const maxReadingTime =
+        Math.max(
+          ...allPoints.map(
+            item =>
+              item.timestamp
+          )
+        );
 
-          null,
 
-          allPoints.map(
+      /*
+         GRAPH STARTS AT 0000 OF FIRST DAY
 
-            function (item) {
+         GRAPH ENDS AT 0000 AFTER LAST DAY
 
-              return item.timestamp;
+         THIS ALLOWS EXACT 3-HOUR GRID POSITIONS.
+      */
 
-            }
+      const minDate =
+        new Date(
+          minReadingTime
+        );
 
+
+      const maxDate =
+        new Date(
+          maxReadingTime
+        );
+
+
+      const timelineStart =
+        Date.UTC(
+
+          minDate.getUTCFullYear(),
+
+          minDate.getUTCMonth(),
+
+          minDate.getUTCDate()
+
+        );
+
+
+      const timelineEnd =
+        Date.UTC(
+
+          maxDate.getUTCFullYear(),
+
+          maxDate.getUTCMonth(),
+
+          maxDate.getUTCDate() + 1
+
+        );
+
+
+      const minValue =
+        Math.min(
+
+          DEW_ACCEPTANCE,
+
+          ...allPoints.map(
+            item =>
+              item.value
           )
 
         );
 
 
-      const maxTime =
-        Math.max.apply(
+      const maxValue =
+        Math.max(
 
-          null,
+          DEW_ACCEPTANCE,
 
-          allPoints.map(
-
-            function (item) {
-
-              return item.timestamp;
-
-            }
-
-          )
-
-        );
-
-
-      const minimum =
-        Math.min.apply(
-
-          null,
-
-          allPoints.map(
-
-            function (item) {
-
-              return item.value;
-
-            }
-
-          )
-
-        );
-
-
-      const maximum =
-        Math.max.apply(
-
-          null,
-
-          allPoints.map(
-
-            function (item) {
-
-              return item.value;
-
-            }
-
+          ...allPoints.map(
+            item =>
+              item.value
           )
 
         );
 
 
       let yMin =
-
         Math.floor(
 
           (
-
-            Math.min(
-              minimum,
-              DEW_ACCEPTANCE
-            )
-
-            -
-
-            2
-
+            minValue - 3
           )
-
           /
-
           5
 
         )
-
         *
-
         5;
 
 
       let yMax =
-
         Math.ceil(
 
           (
-
-            Math.max(
-              maximum,
-              DEW_ACCEPTANCE
-            )
-
-            +
-
-            2
-
+            maxValue + 3
           )
-
           /
-
           5
 
         )
-
         *
-
         5;
 
 
@@ -7666,156 +4591,74 @@
         yMax - yMin < 20
       ) {
 
-        yMin -=
-          5;
-
-
-        yMax +=
-          5;
+        yMin -= 5;
+        yMax += 5;
 
       }
 
 
-      const wrapperWidth =
-        Math.max(
-
-          wrapper.clientWidth,
-
-          320
-
-        );
-
-
-      const oneDay =
-        86400000;
-
-
-      const daySpan =
-
+      const totalDays =
         Math.max(
 
           1,
 
           (
-            maxTime
-            -
-            minTime
+            timelineEnd -
+            timelineStart
           )
-
           /
-
-          oneDay
+          ONE_DAY
 
         );
 
 
-      const width =
+      const wrapperWidth =
+        Math.max(
+          wrapper.clientWidth,
+          320
+        );
 
+
+      /*
+         165 PX / DAY GIVES ENOUGH SPACE
+         FOR 0300/0600/... LABELS.
+      */
+
+      const width =
         Math.max(
 
           wrapperWidth,
 
-          1100,
+          1150,
 
-          daySpan
-          *
-          145
+          totalDays * 165 + 280
 
         );
 
 
-      const height =
-        555;
+      const height = 600;
 
+      const left = 70;
 
-      const left =
-        70;
+      const right = 195;
 
+      const top = 25;
 
-      const right =
-        190;
-
-
-      const top =
-        28;
-
-
-      const bottom =
-        440;
+      const bottom = 410;
 
 
       const plotWidth =
-
-        width
-
-        -
-
-        left
-
-        -
-
+        width -
+        left -
         right;
 
 
       const plotHeight =
-
-        bottom
-
-        -
-
+        bottom -
         top;
 
 
-      const pad =
-
-        Math.max(
-
-          (
-            maxTime
-            -
-            minTime
-          )
-
-          *
-
-          0.01,
-
-          1800000
-
-        );
-
-
-      function xPos(time) {
-
-        const denominator =
-
-          (
-            maxTime
-            +
-            pad
-          )
-
-          -
-
-          (
-            minTime
-            -
-            pad
-          );
-
-
-        if (
-          denominator === 0
-        ) {
-
-          return (
-            left
-            +
-            plotWidth / 2
-          );
-
-        }
-
+      function x(timestamp) {
 
         return (
 
@@ -7824,21 +4667,15 @@
           +
 
           (
-
             (
-              time
-              -
-              (
-                minTime
-                -
-                pad
-              )
+              timestamp -
+              timelineStart
             )
-
             /
-
-            denominator
-
+            (
+              timelineEnd -
+              timelineStart
+            )
           )
 
           *
@@ -7850,8 +4687,7 @@
       }
 
 
-
-      function yPos(value) {
+      function y(value) {
 
         return (
 
@@ -7860,21 +4696,15 @@
           -
 
           (
-
             (
-              value
-              -
+              value -
               yMin
             )
-
             /
-
             (
-              yMax
-              -
+              yMax -
               yMin
             )
-
           )
 
           *
@@ -7886,43 +4716,26 @@
       }
 
 
-
       let svg =
-
-        '<svg' +
-
-        ' class="dew-chart"' +
-
-        ' xmlns="http://www.w3.org/2000/svg"' +
-
-        ' width="' + width + '"' +
-
-        ' height="' + height + '"' +
-
-        ' viewBox="0 0 ' + width + ' ' + height + '"' +
-
-        ' role="img"' +
-
-        ' aria-label="Pipeline drying dew point trend"' +
-
-        '>';
+        `<svg
+          class="dew-chart"
+          xmlns="http://www.w3.org/2000/svg"
+          width="${width}"
+          height="${height}"
+          viewBox="0 0 ${width} ${height}"
+        >`;
 
 
       svg +=
-
-        '<rect' +
-
-        ' width="' + width + '"' +
-
-        ' height="' + height + '"' +
-
-        ' fill="#ffffff"' +
-
-        '/>';
+        `<rect
+          width="${width}"
+          height="${height}"
+          fill="#ffffff"
+        />`;
 
 
       const acceptanceY =
-        yPos(
+        y(
           DEW_ACCEPTANCE
         );
 
@@ -7930,39 +4743,224 @@
       /* RED ZONE */
 
       svg +=
-
-        '<rect' +
-
-        ' x="' + left + '"' +
-
-        ' y="' + top + '"' +
-
-        ' width="' + plotWidth + '"' +
-
-        ' height="' + Math.max(0, acceptanceY - top) + '"' +
-
-        ' fill="#fff1f1"' +
-
-        '/>';
+        `<rect
+          x="${left}"
+          y="${top}"
+          width="${plotWidth}"
+          height="${Math.max(
+            0,
+            acceptanceY - top
+          )}"
+          fill="#fff1f1"
+        />`;
 
 
       /* GREEN ZONE */
 
       svg +=
+        `<rect
+          x="${left}"
+          y="${acceptanceY}"
+          width="${plotWidth}"
+          height="${Math.max(
+            0,
+            bottom - acceptanceY
+          )}"
+          fill="#eef8ef"
+        />`;
 
-        '<rect' +
 
-        ' x="' + left + '"' +
 
-        ' y="' + acceptanceY + '"' +
+      /* =======================================================
+         3-HOUR MINOR GRID
 
-        ' width="' + plotWidth + '"' +
+         0300
+         0600
+         0900
+         1200
+         1500
+         1800
+         2100
 
-        ' height="' + Math.max(0, bottom - acceptanceY) + '"' +
+         0000 IS A MAJOR DAY GRID,
+         SO IT IS NOT DUPLICATED HERE.
+      ======================================================= */
 
-        ' fill="#eef8ef"' +
+      for (
+        let tick =
+          timelineStart +
+          THREE_HOURS;
 
-        '/>';
+        tick <
+          timelineEnd;
+
+        tick +=
+          THREE_HOURS
+      ) {
+
+        const date =
+          new Date(
+            tick
+          );
+
+
+        const hour =
+          date.getUTCHours();
+
+
+        /*
+           SKIP 0000
+
+           IT IS DRAWN AS MAJOR DAILY LINE.
+        */
+
+        if (
+          hour === 0
+        ) {
+          continue;
+        }
+
+
+        const px =
+          x(
+            tick
+          );
+
+
+        /*
+           DASHED VERTICAL LINE
+           THROUGH GRAPH BODY
+        */
+
+        svg +=
+          `<line
+            x1="${px}"
+            y1="${top}"
+            x2="${px}"
+            y2="${bottom}"
+            stroke="#c6c6c6"
+            stroke-width="0.8"
+            stroke-dasharray="4 5"
+            opacity="0.75"
+          />`;
+
+
+        /*
+           SMALL X-AXIS TICK
+        */
+
+        svg +=
+          `<line
+            x1="${px}"
+            y1="${bottom}"
+            x2="${px}"
+            y2="${bottom+6}"
+            stroke="#555"
+            stroke-width="1"
+          />`;
+
+
+        /*
+           VERTICAL TIME TEXT
+
+           0300
+           0600
+           0900
+           ...
+        */
+
+        const labelY =
+          bottom + 13;
+
+
+        svg +=
+          `<text
+            x="${px}"
+            y="${labelY}"
+            transform="rotate(-90 ${px} ${labelY})"
+            text-anchor="end"
+            font-family="Arial"
+            font-size="9"
+            font-weight="800"
+            fill="#666666"
+          >${minorTimeText(tick)}</text>`;
+
+      }
+
+
+
+      /* =======================================================
+         DAILY MAJOR GRID
+
+         27 AUG
+         28 AUG
+         29 AUG
+         ...
+      ======================================================= */
+
+      for (
+        let day =
+          timelineStart;
+
+        day <=
+          timelineEnd;
+
+        day +=
+          ONE_DAY
+      ) {
+
+        const px =
+          x(
+            day
+          );
+
+
+        svg +=
+          `<line
+            x1="${px}"
+            y1="${top}"
+            x2="${px}"
+            y2="${bottom}"
+            stroke="#8e8e8e"
+            stroke-width="1"
+            opacity="0.55"
+          />`;
+
+
+        /*
+           DATE LABEL
+
+           DO NOT SHOW END-DATE LABEL
+           IF IT IS ONLY THE GRAPH BOUNDARY.
+        */
+
+        if (
+          day <
+          timelineEnd
+        ) {
+
+          const centreOfDay =
+            x(
+              day +
+              ONE_DAY / 2
+            );
+
+
+          svg +=
+            `<text
+              x="${centreOfDay}"
+              y="${bottom+58}"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="11"
+              font-weight="800"
+              fill="#111111"
+            >${shortDateText(day)}</text>`;
+
+        }
+
+      }
+
 
 
       /* =======================================================
@@ -7975,159 +4973,60 @@
         value += 5
       ) {
 
-        const y =
-          yPos(
+        const py =
+          y(
             value
           );
 
 
         svg +=
-
-          '<line' +
-
-          ' x1="' + left + '"' +
-
-          ' y1="' + y + '"' +
-
-          ' x2="' + (left + plotWidth) + '"' +
-
-          ' y2="' + y + '"' +
-
-          ' stroke="#dddddd"' +
-
-          '/>';
+          `<line
+            x1="${left}"
+            y1="${py}"
+            x2="${left+plotWidth}"
+            y2="${py}"
+            stroke="#d6d6d6"
+            stroke-width="1"
+          />`;
 
 
         svg +=
-
-          '<text' +
-
-          ' x="' + (left - 10) + '"' +
-
-          ' y="' + (y + 4) + '"' +
-
-          ' text-anchor="end"' +
-
-          ' font-family="Arial"' +
-
-          ' font-size="12"' +
-
-          '>' +
-
-          value +
-
-          '</text>';
+          `<text
+            x="${left-10}"
+            y="${py+4}"
+            text-anchor="end"
+            font-family="Arial"
+            font-size="11"
+          >${value}</text>`;
 
       }
 
 
 
       /* =======================================================
-         DATE GRID
+         ACCEPTANCE
       ======================================================= */
 
-      const firstDate =
-        new Date(
-          minTime
-        );
+      svg +=
+        `<line
+          x1="${left}"
+          y1="${acceptanceY}"
+          x2="${left+plotWidth}"
+          y2="${acceptanceY}"
+          stroke="#111111"
+          stroke-width="2.5"
+          stroke-dasharray="8 5"
+        />`;
 
 
-      let day =
-
-        Date.UTC(
-
-          firstDate.getUTCFullYear(),
-
-          firstDate.getUTCMonth(),
-
-          firstDate.getUTCDate()
-
-        );
-
-
-      const lastDate =
-        new Date(
-          maxTime
-        );
-
-
-      const lastDay =
-
-        Date.UTC(
-
-          lastDate.getUTCFullYear(),
-
-          lastDate.getUTCMonth(),
-
-          lastDate.getUTCDate()
-
-        );
-
-
-      while (
-        day
-        <=
-        lastDay + oneDay
-      ) {
-
-        const x =
-          xPos(
-            day
-          );
-
-
-        if (
-          x >= left
-          &&
-          x <= left + plotWidth
-        ) {
-
-          svg +=
-
-            '<line' +
-
-            ' x1="' + x + '"' +
-
-            ' y1="' + top + '"' +
-
-            ' x2="' + x + '"' +
-
-            ' y2="' + bottom + '"' +
-
-            ' stroke="#bbbbbb"' +
-
-            '/>';
-
-
-          svg +=
-
-            '<text' +
-
-            ' x="' + x + '"' +
-
-            ' y="' + (bottom + 24) + '"' +
-
-            ' text-anchor="middle"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="11"' +
-
-            '>' +
-
-            graphDateLabel(
-              day
-            ) +
-
-            '</text>';
-
-        }
-
-
-        day +=
-          oneDay;
-
-      }
+      svg +=
+        `<text
+          x="${left+35}"
+          y="${acceptanceY-9}"
+          font-family="Arial"
+          font-size="12"
+          font-weight="900"
+        >ACCEPTANCE LIMIT ≤ −10°Cdp</text>`;
 
 
 
@@ -8136,327 +5035,137 @@
       ======================================================= */
 
       svg +=
-
-        '<line' +
-
-        ' x1="' + left + '"' +
-
-        ' y1="' + top + '"' +
-
-        ' x2="' + left + '"' +
-
-        ' y2="' + bottom + '"' +
-
-        ' stroke="#111"' +
-
-        '/>';
+        `<line
+          x1="${left}"
+          y1="${top}"
+          x2="${left}"
+          y2="${bottom}"
+          stroke="#111"
+          stroke-width="1.2"
+        />`;
 
 
       svg +=
-
-        '<line' +
-
-        ' x1="' + left + '"' +
-
-        ' y1="' + bottom + '"' +
-
-        ' x2="' + (left + plotWidth) + '"' +
-
-        ' y2="' + bottom + '"' +
-
-        ' stroke="#111"' +
-
-        '/>';
+        `<line
+          x1="${left}"
+          y1="${bottom}"
+          x2="${left+plotWidth}"
+          y2="${bottom}"
+          stroke="#111"
+          stroke-width="1.2"
+        />`;
 
 
 
       /* =======================================================
-         ACCEPTANCE LINE
+         SERIES LINE
       ======================================================= */
 
-      svg +=
-
-        '<line' +
-
-        ' x1="' + left + '"' +
-
-        ' y1="' + acceptanceY + '"' +
-
-        ' x2="' + (left + plotWidth) + '"' +
-
-        ' y2="' + acceptanceY + '"' +
-
-        ' stroke="#111"' +
-
-        ' stroke-width="2.5"' +
-
-        ' stroke-dasharray="8 5"' +
-
-        '/>';
-
-
-      svg +=
-
-        '<text' +
-
-        ' x="' + (left + 35) + '"' +
-
-        ' y="' + (acceptanceY - 9) + '"' +
-
-        ' font-family="Arial"' +
-
-        ' font-size="12"' +
-
-        ' font-weight="900"' +
-
-        '>' +
-
-        'ACCEPTANCE LIMIT ≤ −10°Cdp' +
-
-        '</text>';
-
-
-
-      /* =======================================================
-         Y TITLE
-      ======================================================= */
-
-      svg +=
-
-        '<text' +
-
-        ' x="18"' +
-
-        ' y="' + ((top + bottom) / 2) + '"' +
-
-        ' transform="rotate(-90 18 ' + ((top + bottom) / 2) + ')"' +
-
-        ' text-anchor="middle"' +
-
-        ' font-family="Arial"' +
-
-        ' font-size="14"' +
-
-        ' font-weight="900"' +
-
-        '>' +
-
-        'DEW POINT (°Cdp)' +
-
-        '</text>';
-
-
-
-      /* =======================================================
-         SERIES LINES
-      ======================================================= */
-
-      series.forEach(
+      active.forEach(
 
         function (item) {
 
-          const points =
-
-            item.points.map(
-
-              function (point) {
-
-                return (
-
-                  xPos(
-                    point.timestamp
-                  )
-
-                  +
-
-                  ","
-
-                  +
-
-                  yPos(
-                    point.value
-                  )
-
-                );
-
-              }
-
-            );
-
-
           if (
-            points.length >= 2
+            item.points.length > 1
           ) {
 
             svg +=
+              `<polyline
+                points="${item.points.map(
 
-              '<polyline' +
+                  point =>
+                    `${x(point.timestamp)},${y(point.value)}`
 
-              ' points="' + points.join(" ") + '"' +
-
-              ' fill="none"' +
-
-              ' stroke="' + item.color + '"' +
-
-              ' stroke-width="3"' +
-
-              ' stroke-linejoin="round"' +
-
-              ' stroke-linecap="round"' +
-
-              '/>';
+                ).join(" ")}"
+                fill="none"
+                stroke="${item.color}"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />`;
 
           }
 
-        }
-
-      );
-
-
-
-      /* =======================================================
-         INTERACTIVE DEW POINT MARKERS
-
-         INVISIBLE 12PX HIT AREA
-         +
-         VISIBLE 5PX DOT
-      ======================================================= */
-
-      series.forEach(
-
-        function (item) {
 
           item.points.forEach(
 
             function (point) {
 
-              const x =
-                xPos(
+              const cx =
+                x(
                   point.timestamp
                 );
 
 
-              const y =
-                yPos(
+              const cy =
+                y(
                   point.value
                 );
 
 
-              const dateText =
-                graphDateOnlyLabel(
-                  point.timestamp
+              const location =
+                escapeAttribute(
+                  item.name
                 );
 
 
-              const timeText =
-                graphTimeOnlyLabel(
-                  point.timestamp
+              const date =
+                escapeAttribute(
+                  dateText(
+                    point.timestamp
+                  )
                 );
 
 
-              const readingText =
-
-                formatGraphNumber(
-                  point.value
-                )
-
-                +
-
-                " °Cdp";
+              const time =
+                escapeAttribute(
+                  timeText(
+                    point.timestamp
+                  )
+                );
 
 
-              const ariaText =
-
-                item.name
-
-                +
-
-                ", "
-
-                +
-
-                dateText
-
-                +
-
-                ", "
-
-                +
-
-                timeText
-
-                +
-
-                ", dew point "
-
-                +
-
-                readingText;
-
+              const reading =
+                escapeAttribute(
+                  point.value.toFixed(2)
+                  +
+                  " °Cdp"
+                );
 
 
               /*
-                 LARGE INVISIBLE TARGET
-
-                 THIS MAKES HOVER / TAP
-                 MUCH EASIER.
+                 LARGE INVISIBLE HOVER/TAP AREA
               */
 
               svg +=
-
-                '<circle' +
-
-                ' class="dew-point-hit"' +
-
-                ' cx="' + x + '"' +
-
-                ' cy="' + y + '"' +
-
-                ' r="12"' +
-
-                ' fill="transparent"' +
-
-                ' tabindex="0"' +
-
-                ' role="button"' +
-
-                ' aria-label="' + escapeAttribute(ariaText) + '"' +
-
-                ' data-location="' + escapeAttribute(item.name) + '"' +
-
-                ' data-date="' + escapeAttribute(dateText) + '"' +
-
-                ' data-time="' + escapeAttribute(timeText) + '"' +
-
-                ' data-reading="' + escapeAttribute(readingText) + '"' +
-
-                '/>';
-
+                `<circle
+                  class="dew-point-hit"
+                  cx="${cx}"
+                  cy="${cy}"
+                  r="12"
+                  fill="transparent"
+                  tabindex="0"
+                  data-location="${location}"
+                  data-date="${date}"
+                  data-time="${time}"
+                  data-reading="${reading}"
+                />`;
 
 
               /*
-                 ACTUAL VISIBLE DATA DOT
+                 VISIBLE DOT
               */
 
               svg +=
-
-                '<circle' +
-
-                ' class="dew-point-visible"' +
-
-                ' cx="' + x + '"' +
-
-                ' cy="' + y + '"' +
-
-                ' r="5"' +
-
-                ' fill="' + item.color + '"' +
-
-                ' stroke="#ffffff"' +
-
-                ' stroke-width="1.4"' +
-
-                '/>';
+                `<circle
+                  class="dew-point-visible"
+                  cx="${cx}"
+                  cy="${cy}"
+                  r="5"
+                  fill="${item.color}"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                />`;
 
             }
 
@@ -8473,13 +5182,11 @@
       ======================================================= */
 
       let latestLabels =
-
-        series.map(
+        active.map(
 
           function (item) {
 
-            const latest =
-
+            const point =
               item.points[
                 item.points.length - 1
               ];
@@ -8487,23 +5194,18 @@
 
             return {
 
-              name:
-                item.name,
+              item,
 
-              color:
-                item.color,
-
-              point:
-                latest,
+              point,
 
               targetY:
-                yPos(
-                  latest.value
+                y(
+                  point.value
                 ),
 
               labelY:
-                yPos(
-                  latest.value
+                y(
+                  point.value
                 )
 
             };
@@ -8514,8 +5216,7 @@
 
 
       latestLabels =
-
-        arrangeDewPointLabels(
+        arrangeLabels(
 
           latestLabels,
 
@@ -8527,222 +5228,120 @@
 
 
       const boxX =
-
-        left
-
-        +
-
-        plotWidth
-
-        +
-
+        left +
+        plotWidth +
         12;
 
 
-      const boxWidth =
-        168;
+      const boxWidth = 172;
 
-
-      const boxHeight =
-        52;
+      const boxHeight = 52;
 
 
       latestLabels.forEach(
 
-        function (item) {
+        function (label) {
 
           const pointX =
-            xPos(
-              item.point.timestamp
+            x(
+              label.point.timestamp
             );
 
 
           const pointY =
-            yPos(
-              item.point.value
+            y(
+              label.point.value
             );
 
 
           const boxY =
+            label.labelY -
+            boxHeight / 2;
 
-            item.labelY
 
-            -
+          /*
+             CONNECTOR LINE
+          */
 
-            boxHeight
-            /
-            2;
+          svg +=
+            `<polyline
+              points="
+                ${pointX+6},${pointY}
+                ${boxX-8},${pointY}
+                ${boxX},${label.labelY}
+              "
+              fill="none"
+              stroke="${label.item.color}"
+              stroke-width="1.2"
+              opacity="0.75"
+            />`;
 
 
           svg +=
-
-            '<polyline' +
-
-            ' points="' +
-
-            (pointX + 5)
-
-            +
-
-            ','
-
-            +
-
-            pointY
-
-            +
-
-            ' '
-
-            +
-
-            (boxX - 8)
-
-            +
-
-            ','
-
-            +
-
-            pointY
-
-            +
-
-            ' '
-
-            +
-
-            boxX
-
-            +
-
-            ','
-
-            +
-
-            item.labelY
-
-            +
-
-            '"' +
-
-            ' fill="none"' +
-
-            ' stroke="' + item.color + '"' +
-
-            ' stroke-width="1.3"' +
-
-            ' opacity="0.75"' +
-
-            '/>';
+            `<rect
+              x="${boxX}"
+              y="${boxY}"
+              width="${boxWidth}"
+              height="${boxHeight}"
+              rx="4"
+              fill="#ffffff"
+              stroke="${label.item.color}"
+              stroke-width="1.5"
+            />`;
 
 
           svg +=
-
-            '<rect' +
-
-            ' x="' + boxX + '"' +
-
-            ' y="' + boxY + '"' +
-
-            ' width="' + boxWidth + '"' +
-
-            ' height="' + boxHeight + '"' +
-
-            ' rx="4"' +
-
-            ' fill="#ffffff"' +
-
-            ' stroke="' + item.color + '"' +
-
-            ' stroke-width="1.5"' +
-
-            '/>';
+            `<text
+              x="${boxX+7}"
+              y="${boxY+14}"
+              font-family="Arial"
+              font-size="11"
+              font-weight="900"
+              fill="${label.item.color}"
+            >${escapeHtml(label.item.name)}</text>`;
 
 
           svg +=
-
-            '<text' +
-
-            ' x="' + (boxX + 7) + '"' +
-
-            ' y="' + (boxY + 14) + '"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="11"' +
-
-            ' font-weight="900"' +
-
-            ' fill="' + item.color + '"' +
-
-            '>' +
-
-            escapeHtml(
-              item.name
-            ) +
-
-            '</text>';
+            `<text
+              x="${boxX+7}"
+              y="${boxY+29}"
+              font-family="Arial"
+              font-size="12"
+              font-weight="900"
+              fill="${label.item.color}"
+            >${label.point.value.toFixed(2)}°Cdp</text>`;
 
 
           svg +=
-
-            '<text' +
-
-            ' x="' + (boxX + 7) + '"' +
-
-            ' y="' + (boxY + 29) + '"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="12"' +
-
-            ' font-weight="900"' +
-
-            ' fill="' + item.color + '"' +
-
-            '>' +
-
-            formatGraphNumber(
-              item.point.value
-            ) +
-
-            '°Cdp' +
-
-            '</text>';
-
-
-          svg +=
-
-            '<text' +
-
-            ' x="' + (boxX + 7) + '"' +
-
-            ' y="' + (boxY + 44) + '"' +
-
-            ' font-family="Arial"' +
-
-            ' font-size="9"' +
-
-            ' font-weight="700"' +
-
-            ' fill="#555555"' +
-
-            '>' +
-
-            escapeHtml(
-
-              graphDateTimeLabel(
-                item.point.timestamp
-              )
-
-            ) +
-
-            '</text>';
+            `<text
+              x="${boxX+7}"
+              y="${boxY+44}"
+              font-family="Arial"
+              font-size="9"
+              font-weight="700"
+              fill="#555555"
+            >${dateText(label.point.timestamp)} · ${timeText(label.point.timestamp)}</text>`;
 
         }
 
       );
+
+
+
+      /* =======================================================
+         Y TITLE
+      ======================================================= */
+
+      svg +=
+        `<text
+          x="18"
+          y="${(top+bottom)/2}"
+          transform="rotate(-90 18 ${(top+bottom)/2})"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="14"
+          font-weight="900"
+        >DEW POINT (°Cdp)</text>`;
 
 
 
@@ -8751,81 +5350,58 @@
       ======================================================= */
 
       svg +=
+        `<text
+          x="${left+plotWidth/2}"
+          y="${bottom+92}"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="13"
+          font-weight="900"
+        >DATE / SAMPLING TIME</text>`;
 
-        '<text' +
 
-        ' x="' + (left + plotWidth / 2) + '"' +
 
-        ' y="490"' +
+      /* =======================================================
+         FOOTNOTE
+      ======================================================= */
 
-        ' text-anchor="middle"' +
-
-        ' font-family="Arial"' +
-
-        ' font-size="13"' +
-
-        ' font-weight="900"' +
-
-        '>' +
-
-        'DATE / SAMPLING TIME' +
-
-        '</text>';
-
+      svg +=
+        `<text
+          x="${left+plotWidth/2}"
+          y="${bottom+123}"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="9"
+          fill="#444444"
+        >3-hour dashed grid · Point / tap any plotted reading for date, time, location and dew point details</text>`;
 
 
       svg +=
-
-        '<text' +
-
-        ' x="' + (left + plotWidth / 2) + '"' +
-
-        ' y="525"' +
-
-        ' text-anchor="middle"' +
-
-        ' font-family="Arial"' +
-
-        ' font-size="10"' +
-
-        ' fill="#333333"' +
-
-        '>' +
-
-        'Point or tap any plotted reading to view date, time, location and dew point value' +
-
-        '</text>';
-
-
-      svg +=
-        '</svg>';
+        `</svg>`;
 
 
       wrapper.innerHTML =
         svg;
 
 
-
-      /* =======================================================
-         ACTIVATE HOVER / TAP TOOLTIP
-      ======================================================= */
-
-      bindDewPointTooltips(
-        wrapper
-      );
+      bindDewTooltips();
 
 
-      info.textContent =
+      document
+        .getElementById(
+          "dewGraphInfo"
+        )
+        .textContent =
 
-        "POINT / TAP ANY READING FOR DETAILS"
+          "3-HOUR TIME GRID"
 
-        +
+          +
 
-        " · LATEST READING + SAMPLING TIME"
+          " · POINT / TAP ANY READING FOR DETAILS"
 
-        +
+          +
 
-        " · AUTO REFRESH 60 SEC";
+          " · AUTO REFRESH 60 SEC";
 
 
       requestAnimationFrame(
@@ -8833,16 +5409,203 @@
         function () {
 
           wrapper.scrollLeft =
-
-            wrapper.scrollWidth
-
-            -
-
-            wrapper.clientWidth;
+            wrapper.scrollWidth;
 
         }
 
       );
+
+    }
+
+
+
+    /* =========================================================
+       TOOLTIP
+    ========================================================= */
+
+    function bindDewTooltips() {
+
+      const tooltip =
+        document.getElementById(
+          "dewTooltip"
+        );
+
+
+      document
+        .querySelectorAll(
+          ".dew-point-hit"
+        )
+        .forEach(
+
+          function (point) {
+
+            function show(
+              clientX,
+              clientY
+            ) {
+
+              document
+                .getElementById(
+                  "dewTooltipLocation"
+                )
+                .textContent =
+                  point.dataset.location;
+
+
+              document
+                .getElementById(
+                  "dewTooltipDate"
+                )
+                .textContent =
+                  point.dataset.date;
+
+
+              document
+                .getElementById(
+                  "dewTooltipTime"
+                )
+                .textContent =
+                  point.dataset.time;
+
+
+              document
+                .getElementById(
+                  "dewTooltipReading"
+                )
+                .textContent =
+                  point.dataset.reading;
+
+
+              tooltip.classList.add(
+                "show"
+              );
+
+
+              const box =
+                tooltip.getBoundingClientRect();
+
+
+              let left =
+                clientX + 15;
+
+
+              let top =
+                clientY + 15;
+
+
+              if (
+                left + box.width
+                >
+                window.innerWidth - 10
+              ) {
+
+                left =
+                  clientX -
+                  box.width -
+                  15;
+
+              }
+
+
+              if (
+                top + box.height
+                >
+                window.innerHeight - 10
+              ) {
+
+                top =
+                  clientY -
+                  box.height -
+                  15;
+
+              }
+
+
+              tooltip.style.left =
+                Math.max(
+                  10,
+                  left
+                )
+                +
+                "px";
+
+
+              tooltip.style.top =
+                Math.max(
+                  10,
+                  top
+                )
+                +
+                "px";
+
+            }
+
+
+            point.addEventListener(
+
+              "mouseenter",
+
+              function (event) {
+
+                show(
+                  event.clientX,
+                  event.clientY
+                );
+
+              }
+
+            );
+
+
+            point.addEventListener(
+
+              "mousemove",
+
+              function (event) {
+
+                show(
+                  event.clientX,
+                  event.clientY
+                );
+
+              }
+
+            );
+
+
+            point.addEventListener(
+
+              "mouseleave",
+
+              function () {
+
+                tooltip.classList.remove(
+                  "show"
+                );
+
+              }
+
+            );
+
+
+            point.addEventListener(
+
+              "pointerdown",
+
+              function (event) {
+
+                show(
+                  event.clientX,
+                  event.clientY
+                );
+
+              }
+
+            );
+
+          }
+
+        );
 
     }
 
@@ -8876,7 +5639,7 @@
 
 
     /* =========================================================
-       LOAD ALL
+       LOAD
     ========================================================= */
 
     function loadAllTables() {
@@ -8893,23 +5656,8 @@
     }
 
 
-
-    /* =========================================================
-       INITIAL LOAD
-    ========================================================= */
-
     loadAllTables();
 
-
-
-    /* =========================================================
-       AUTO REFRESH EVERY 60 SECONDS
-
-       1. SWABBING TABLE
-       2. SWABBING GRAPH
-       3. DEW POINT TABLE
-       4. DEW POINT GRAPH
-    ========================================================= */
 
     setInterval(
 
@@ -8922,11 +5670,10 @@
 
 
     /* =========================================================
-       RESPONSIVE GRAPH REDRAW
+       RESPONSIVE REDRAW
     ========================================================= */
 
-    let resizeTimer =
-      null;
+    let resizeTimer = null;
 
 
     window.addEventListener(
@@ -8934,9 +5681,6 @@
       "resize",
 
       function () {
-
-        hideDewTooltip();
-
 
         clearTimeout(
           resizeTimer
