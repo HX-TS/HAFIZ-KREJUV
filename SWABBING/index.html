@@ -53,6 +53,18 @@
 
       --grey: #5b5751;
 
+      /*
+         DEW POINT DATE GROUP COLOURS
+         MUTED / PROFESSIONAL
+      */
+
+      --date-1: #f2efe9;
+      --date-2: #e3e8e4;
+      --date-3: #ece6dc;
+      --date-4: #e1e5e9;
+      --date-5: #e8e2e6;
+      --date-6: #e4e7dc;
+
     }
 
 
@@ -129,15 +141,16 @@
 
       flex-shrink: 0;
 
-      height: 95px;
+      height: 102px;
 
-      min-height: 95px;
+      min-height: 102px;
 
       display: grid;
 
       grid-template-columns:
         minmax(0, 1fr)
-        auto;
+        minmax(285px, 330px)
+        190px;
 
       background:
         var(--cream);
@@ -151,6 +164,11 @@
     }
 
 
+
+    /* =========================================================
+       HEADER TITLE
+    ========================================================= */
+
     .hero-left {
 
       min-width: 0;
@@ -158,8 +176,6 @@
       display: flex;
 
       flex-direction: column;
-
-      align-items: flex-start;
 
       justify-content: center;
 
@@ -194,16 +210,98 @@
 
       margin-top: 8px;
 
+      color:
+        var(--grey);
+
       font-size: 9px;
 
       font-weight: 800;
 
       letter-spacing: 0.28em;
 
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* =========================================================
+       CURRENT DATE / TIME / SHIFT
+    ========================================================= */
+
+    .current-status {
+
+      min-width: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding:
+        14px
+        20px;
+
+      border-left:
+        1px solid
+        var(--black);
+
+      background:
+        var(--cream);
+
+    }
+
+
+    .current-datetime {
+
+      font-size:
+        clamp(
+          16px,
+          1.25vw,
+          20px
+        );
+
+      line-height: 1;
+
+      font-weight: 900;
+
+      letter-spacing: 0.025em;
+
+      font-variant-numeric:
+        tabular-nums;
+
+      white-space: nowrap;
+
+    }
+
+
+    .current-shift {
+
+      margin-top: 10px;
+
       color:
         var(--grey);
 
+      font-size: 10px;
+
+      line-height: 1.25;
+
+      font-weight: 900;
+
+      letter-spacing: 0.04em;
+
       text-transform: uppercase;
+
+      white-space: nowrap;
+
+    }
+
+
+    .current-shift strong {
+
+      color:
+        var(--black);
 
     }
 
@@ -215,7 +313,7 @@
 
     .main-bookmark {
 
-      min-width: 190px;
+      min-width: 0;
 
       display: flex;
 
@@ -225,7 +323,7 @@
 
       padding:
         15px
-        24px;
+        20px;
 
       border-left:
         1px solid
@@ -242,6 +340,8 @@
       text-align: center;
 
       font-size: 12px;
+
+      line-height: 1.2;
 
       font-weight: 900;
 
@@ -272,7 +372,7 @@
 
     .bookmark-arrow {
 
-      margin-left: 10px;
+      margin-left: 9px;
 
       font-size: 18px;
 
@@ -553,10 +653,111 @@
     }
 
 
-    tbody tr:hover td {
+
+    /* =========================================================
+       DEW POINT - DIFFERENT COLOUR FOR EACH DATE
+
+       SAME DATE = SAME COLOUR
+
+       NEXT DATE = NEXT COLOUR
+    ========================================================= */
+
+    #dewPointContainer
+    tbody
+    tr.date-group-0
+    td {
 
       background:
-        #e9e5de;
+        var(--date-1);
+
+    }
+
+
+    #dewPointContainer
+    tbody
+    tr.date-group-1
+    td {
+
+      background:
+        var(--date-2);
+
+    }
+
+
+    #dewPointContainer
+    tbody
+    tr.date-group-2
+    td {
+
+      background:
+        var(--date-3);
+
+    }
+
+
+    #dewPointContainer
+    tbody
+    tr.date-group-3
+    td {
+
+      background:
+        var(--date-4);
+
+    }
+
+
+    #dewPointContainer
+    tbody
+    tr.date-group-4
+    td {
+
+      background:
+        var(--date-5);
+
+    }
+
+
+    #dewPointContainer
+    tbody
+    tr.date-group-5
+    td {
+
+      background:
+        var(--date-6);
+
+    }
+
+
+
+    /* =========================================================
+       CLEAR LINE WHEN DATE CHANGES
+    ========================================================= */
+
+    #dewPointContainer
+    tbody
+    tr.new-date-group
+    td {
+
+      border-top:
+        2px solid
+        var(--black);
+
+    }
+
+
+
+    /* =========================================================
+       LATEST DATE
+
+       ALL DATA FOR LATEST CALENDAR DATE IS BOLD
+    ========================================================= */
+
+    #dewPointContainer
+    tbody
+    tr.latest-date
+    td {
+
+      font-weight: 900;
 
     }
 
@@ -564,11 +765,35 @@
 
     /* =========================================================
        LOWEST VALUE
+
+       EXTRA BOLD
     ========================================================= */
 
     td.lowest-value {
 
       font-weight: 900;
+
+      text-decoration:
+        underline;
+
+      text-decoration-thickness:
+        2px;
+
+      text-underline-offset:
+        3px;
+
+    }
+
+
+
+    /* =========================================================
+       HOVER
+    ========================================================= */
+
+    tbody tr:hover td {
+
+      filter:
+        brightness(0.95);
 
     }
 
@@ -659,9 +884,10 @@
 
       .hero {
 
-        height: 88px;
-
-        min-height: 88px;
+        grid-template-columns:
+          minmax(0, 1fr)
+          270px
+          165px;
 
       }
 
@@ -679,23 +905,44 @@
 
         font-size:
           clamp(
-            26px,
-            3.8vw,
-            42px
+            25px,
+            3.5vw,
+            40px
           );
+
+      }
+
+
+      .current-status {
+
+        padding:
+          12px
+          14px;
+
+      }
+
+
+      .current-datetime {
+
+        font-size: 15px;
+
+      }
+
+
+      .current-shift {
+
+        font-size: 9px;
 
       }
 
 
       .main-bookmark {
 
-        min-width: 165px;
-
         padding:
           12px
-          18px;
+          14px;
 
-        font-size: 11px;
+        font-size: 10px;
 
       }
 
@@ -729,22 +976,36 @@
 
       .hero {
 
-        height: 70px;
+        height: 116px;
 
-        min-height: 70px;
+        min-height: 116px;
 
         grid-template-columns:
           minmax(0, 1fr)
-          116px;
+          110px;
+
+        grid-template-rows:
+          60px
+          56px;
 
       }
 
 
       .hero-left {
 
+        grid-column:
+          1 / -1;
+
+        grid-row:
+          1;
+
         padding:
-          8px
+          7px
           10px;
+
+        border-bottom:
+          1px solid
+          var(--black);
 
       }
 
@@ -755,7 +1016,7 @@
           clamp(
             20px,
             6vw,
-            28px
+            27px
           );
 
       }
@@ -767,29 +1028,69 @@
 
         font-size: 6px;
 
-        letter-spacing: 0.20em;
+      }
+
+
+      .current-status {
+
+        grid-column:
+          1;
+
+        grid-row:
+          2;
+
+        padding:
+          7px
+          10px;
+
+        border-left:
+          none;
+
+      }
+
+
+      .current-datetime {
+
+        font-size:
+          clamp(
+            12px,
+            3.7vw,
+            15px
+          );
+
+      }
+
+
+      .current-shift {
+
+        margin-top: 5px;
+
+        font-size: 6.5px;
 
       }
 
 
       .main-bookmark {
 
-        min-width: 0;
+        grid-column:
+          2;
+
+        grid-row:
+          2;
 
         padding:
-          7px
-          8px;
+          6px;
 
-        font-size: 8px;
+        font-size: 7.5px;
 
       }
 
 
       .bookmark-arrow {
 
-        margin-left: 5px;
+        margin-left: 4px;
 
-        font-size: 13px;
+        font-size: 12px;
 
       }
 
@@ -809,7 +1110,7 @@
           0
           8px;
 
-        gap: 6px;
+        gap: 5px;
 
         font-size: 9px;
 
@@ -820,7 +1121,7 @@
 
         font-size: 5.5px;
 
-        letter-spacing: 0.03em;
+        letter-spacing: 0.02em;
 
       }
 
@@ -884,7 +1185,10 @@
     <header class="hero">
 
 
+      <!-- TITLE -->
+
       <div class="hero-left">
+
 
         <div class="hero-title">
 
@@ -899,8 +1203,45 @@
 
         </div>
 
+
       </div>
 
+
+
+      <!-- ===================================================
+           CURRENT TIME / SHIFT
+      ==================================================== -->
+
+      <div class="current-status">
+
+
+        <div
+          class="current-datetime"
+          id="currentDateTime"
+        >
+
+          -- --- ---- --:--:--
+
+        </div>
+
+
+        <div
+          class="current-shift"
+          id="currentShift"
+        >
+
+          CURRENT SHIFT: --
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- ===================================================
+           MAIN BOOKMARK
+      ==================================================== -->
 
       <a
         class="main-bookmark"
@@ -910,7 +1251,9 @@
         MAIN BOOKMARK
 
         <span class="bookmark-arrow">
+
           ↗
+
         </span>
 
       </a>
@@ -921,7 +1264,7 @@
 
 
     <!-- =====================================================
-         DATA TABLES
+         DATA
     ====================================================== -->
 
     <main class="dashboard">
@@ -936,6 +1279,7 @@
 
         <div class="panel-title">
 
+
           <div>
 
             SWABBING PIG RUN
@@ -949,6 +1293,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -957,11 +1302,13 @@
           id="swabbingContainer"
         >
 
+
           <div class="message">
 
             Loading Swabbing Pig Run Data...
 
           </div>
+
 
         </div>
 
@@ -971,13 +1318,14 @@
 
 
       <!-- ===================================================
-           DEW POINT DATA
+           DEW POINT
       ==================================================== -->
 
       <section class="reading-panel">
 
 
         <div class="panel-title">
+
 
           <div>
 
@@ -988,9 +1336,10 @@
 
           <div class="panel-note">
 
-            LOWEST READING = BOLD
+            DATE GROUPED · LATEST DATE BOLD · LOWEST UNDERLINED
 
           </div>
+
 
         </div>
 
@@ -1000,11 +1349,13 @@
           id="dewPointContainer"
         >
 
+
           <div class="message">
 
             Loading Dew Point Data...
 
           </div>
+
 
         </div>
 
@@ -1035,13 +1386,19 @@
 
 
     /* =========================================================
-       REFRESH RATE
-
-       60 SECONDS
+       SETTINGS
     ========================================================= */
 
     const TABLE_REFRESH_TIME =
       60000;
+
+
+    const MALAYSIA_TIME_ZONE =
+      "Asia/Kuala_Lumpur";
+
+
+    const DATE_GROUP_COLOUR_COUNT =
+      6;
 
 
 
@@ -1051,25 +1408,31 @@
 
     const SWABBING = {
 
+
       spreadsheetId:
 
         "1dPQfygx00SWQLDKmLbK1zyKX5by40ub6xZqm1VAUaDs",
+
 
       gid:
 
         "0",
 
+
       range:
 
         "A:Z",
+
 
       container:
 
         "swabbingContainer",
 
+
       callback:
 
         "swabbingResponse",
+
 
       hiddenColumns: [
 
@@ -1077,13 +1440,21 @@
 
       ],
 
+
       sortByDateTime:
 
         true,
 
+
       highlightLowest:
 
+        false,
+
+
+      groupByDate:
+
         false
+
 
     };
 
@@ -1091,25 +1462,31 @@
 
     const DEW_POINT = {
 
+
       spreadsheetId:
 
         "1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM",
+
 
       gid:
 
         "0",
 
+
       range:
 
         "A:Z",
+
 
       container:
 
         "dewPointContainer",
 
+
       callback:
 
         "dewPointResponse",
+
 
       hiddenColumns: [
 
@@ -1117,20 +1494,252 @@
 
       ],
 
+
       sortByDateTime:
 
         true,
 
+
       highlightLowest:
 
+        true,
+
+
+      groupByDate:
+
         true
+
 
     };
 
 
 
     /* =========================================================
-       NORMALIZE TEXT
+       CURRENT MALAYSIA TIME
+    ========================================================= */
+
+    function getMalaysiaParts() {
+
+
+      const formatter =
+
+        new Intl.DateTimeFormat(
+
+          "en-GB",
+
+          {
+
+            timeZone:
+              MALAYSIA_TIME_ZONE,
+
+            year:
+              "numeric",
+
+            month:
+              "short",
+
+            day:
+              "2-digit",
+
+            hour:
+              "2-digit",
+
+            minute:
+              "2-digit",
+
+            second:
+              "2-digit",
+
+            hourCycle:
+              "h23"
+
+          }
+
+        );
+
+
+      const parts =
+
+        formatter.formatToParts(
+          new Date()
+        );
+
+
+      const result =
+        {};
+
+
+      parts.forEach(
+
+        function (part) {
+
+
+          if (
+            part.type !== "literal"
+          ) {
+
+
+            result[
+              part.type
+            ] =
+              part.value;
+
+
+          }
+
+
+        }
+
+      );
+
+
+      return result;
+
+    }
+
+
+
+    /* =========================================================
+       UPDATE HEADER CLOCK
+
+       DAY:
+       07:00 - 18:59
+
+       NIGHT:
+       19:00 - 06:59
+    ========================================================= */
+
+    function updateCurrentTime() {
+
+
+      const parts =
+        getMalaysiaParts();
+
+
+      const month =
+        String(
+          parts.month || ""
+        )
+        .toUpperCase();
+
+
+      const dateText =
+
+        parts.day
+
+        +
+
+        " "
+
+        +
+
+        month
+
+        +
+
+        " "
+
+        +
+
+        parts.year
+
+        +
+
+        " "
+
+        +
+
+        parts.hour
+
+        +
+
+        ":"
+
+        +
+
+        parts.minute
+
+        +
+
+        ":"
+
+        +
+
+        parts.second;
+
+
+      document
+        .getElementById(
+          "currentDateTime"
+        )
+        .textContent =
+          dateText;
+
+
+      const hour =
+
+        Number(
+          parts.hour
+        );
+
+
+      const isDayShift =
+
+        hour >= 7
+
+        &&
+
+        hour <= 18;
+
+
+      const shiftElement =
+
+        document.getElementById(
+          "currentShift"
+        );
+
+
+      if (isDayShift) {
+
+
+        shiftElement.innerHTML =
+
+          "CURRENT SHIFT: <strong>DAY</strong> · 07:00 - 18:59";
+
+
+      }
+
+
+      else {
+
+
+        shiftElement.innerHTML =
+
+          "CURRENT SHIFT: <strong>NIGHT</strong> · 19:00 - 06:59";
+
+
+      }
+
+
+    }
+
+
+
+    updateCurrentTime();
+
+
+    setInterval(
+
+      updateCurrentTime,
+
+      1000
+
+    );
+
+
+
+    /* =========================================================
+       TEXT NORMALIZATION
     ========================================================= */
 
     function normalizeText(value) {
@@ -1149,7 +1758,7 @@
 
 
     /* =========================================================
-       CELL HAS VALUE
+       CELL VALUE
     ========================================================= */
 
     function cellHasValue(cell) {
@@ -1181,10 +1790,6 @@
 
 
 
-    /* =========================================================
-       DISPLAY VALUE
-    ========================================================= */
-
     function getCellDisplayValue(cell) {
 
 
@@ -1209,7 +1814,9 @@
 
       ) {
 
+
         return cell.f;
+
 
       }
 
@@ -1224,7 +1831,9 @@
 
       ) {
 
+
         return cell.v;
+
 
       }
 
@@ -1236,7 +1845,7 @@
 
 
     /* =========================================================
-       EXTRACT NUMBER
+       NUMBER
     ========================================================= */
 
     function extractNumber(value) {
@@ -1256,7 +1865,9 @@
 
       ) {
 
+
         return null;
+
 
       }
 
@@ -1265,9 +1876,13 @@
         typeof value === "number"
       ) {
 
-        return Number.isFinite(value)
+
+        return Number.isFinite(
+          value
+        )
           ? value
           : null;
+
 
       }
 
@@ -1308,9 +1923,7 @@
       return Number.isFinite(
         number
       )
-
         ? number
-
         : null;
 
     }
@@ -1318,29 +1931,20 @@
 
 
     /* =========================================================
-       COLUMN IDENTIFICATION
+       COLUMN TYPES
     ========================================================= */
 
     function isTimestampColumn(name) {
 
 
       const n =
-
         normalizeText(
           name
         );
 
 
-      return (
-
-        n === "TIMESTAMP"
-
-        ||
-
-        n.includes(
-          "TIMESTAMP"
-        )
-
+      return n.includes(
+        "TIMESTAMP"
       );
 
     }
@@ -1351,7 +1955,6 @@
 
 
       const n =
-
         normalizeText(
           name
         );
@@ -1363,24 +1966,24 @@
 
         ||
 
+        n === "TARIKH"
+
+        ||
+
         n.startsWith(
           "DATE "
         )
 
         ||
 
-        n.endsWith(
-          " DATE"
+        n.startsWith(
+          "TARIKH "
         )
 
         ||
 
-        n === "TARIKH"
-
-        ||
-
-        n.startsWith(
-          "TARIKH "
+        n.endsWith(
+          " DATE"
         )
 
       );
@@ -1393,7 +1996,6 @@
 
 
       const n =
-
         normalizeText(
           name
         );
@@ -1414,15 +2016,7 @@
 
         ||
 
-        n.startsWith(
-          "TIME "
-        )
-
-        ||
-
-        n.endsWith(
-          " TIME"
-        )
+        n === "SAMPLING TIME"
 
         ||
 
@@ -1436,6 +2030,18 @@
           "HRS"
         )
 
+        ||
+
+        n.startsWith(
+          "TIME "
+        )
+
+        ||
+
+        n.endsWith(
+          " TIME"
+        )
+
       );
 
     }
@@ -1443,19 +2049,57 @@
 
 
     /* =========================================================
-       HIDE COLUMN
+       HEADER DISPLAY NAME
+
+       GOOGLE SHEET:
+       MASA AMBIL GAMBARAJAH
+
+       WEBPAGE:
+       SAMPLING TIME
+    ========================================================= */
+
+    function getDisplayHeaderName(name) {
+
+
+      const normalized =
+        normalizeText(
+          name
+        );
+
+
+      if (
+
+        normalized ===
+        "MASA AMBIL GAMBARAJAH"
+
+      ) {
+
+
+        return "SAMPLING TIME";
+
+
+      }
+
+
+      return name || "";
+
+    }
+
+
+
+    /* =========================================================
+       HIDDEN COLUMN
     ========================================================= */
 
     function shouldHideColumn(
-      columnLabel,
+      label,
       config
     ) {
 
 
       const name =
-
         normalizeText(
-          columnLabel
+          label
         );
 
 
@@ -1470,38 +2114,27 @@
       }
 
 
-      const hiddenColumns =
+      return (
 
-        (
-          config.hiddenColumns || []
-        )
+        config.hiddenColumns || []
 
-        .map(
+      )
+      .map(
+        normalizeText
+      )
+      .some(
 
-          function (item) {
-
-            return normalizeText(
-              item
-            );
-
-          }
-
-        );
-
-
-      return hiddenColumns.some(
-
-        function (hiddenName) {
+        function (hidden) {
 
 
           return (
 
-            name === hiddenName
+            name === hidden
 
             ||
 
             name.includes(
-              hiddenName
+              hidden
             )
 
           );
@@ -1525,6 +2158,26 @@
       if (!cell) {
 
         return null;
+
+      }
+
+
+      if (
+        cell.v instanceof Date
+      ) {
+
+
+        return new Date(
+
+          cell.v.getFullYear(),
+
+          cell.v.getMonth(),
+
+          cell.v.getDate()
+
+        )
+        .getTime();
+
 
       }
 
@@ -1569,12 +2222,6 @@
           .trim();
 
 
-        /*
-           GOOGLE GVIZ DATE
-
-           Date(2026,8,4)
-        */
-
         let match =
 
           text.match(
@@ -1593,24 +2240,15 @@
 
             Number(match[2]),
 
-            Number(match[3]),
-
-            0,
-            0,
-            0,
-            0
+            Number(match[3])
 
           )
           .getTime();
 
+
         }
 
 
-
-        /*
-           DD/MM/YYYY
-           DD-MM-YYYY
-        */
 
         match =
 
@@ -1630,23 +2268,15 @@
 
             Number(match[2]) - 1,
 
-            Number(match[1]),
-
-            0,
-            0,
-            0,
-            0
+            Number(match[1])
 
           )
           .getTime();
 
+
         }
 
 
-
-        /*
-           YYYY-MM-DD
-        */
 
         match =
 
@@ -1666,15 +2296,11 @@
 
             Number(match[2]) - 1,
 
-            Number(match[3]),
-
-            0,
-            0,
-            0,
-            0
+            Number(match[3])
 
           )
           .getTime();
+
 
         }
 
@@ -1695,7 +2321,6 @@
 
 
           const date =
-
             new Date(
               parsed
             );
@@ -1707,15 +2332,11 @@
 
             date.getMonth(),
 
-            date.getDate(),
-
-            0,
-            0,
-            0,
-            0
+            date.getDate()
 
           )
           .getTime();
+
 
         }
 
@@ -1730,7 +2351,7 @@
 
 
     /* =========================================================
-       PARSE TIME
+       TIME
     ========================================================= */
 
     function parseTimeCell(cell) {
@@ -1742,6 +2363,28 @@
 
       }
 
+
+      if (
+        cell.v instanceof Date
+      ) {
+
+
+        return (
+
+          cell.v.getHours() * 3600000
+
+          +
+
+          cell.v.getMinutes() * 60000
+
+          +
+
+          cell.v.getSeconds() * 1000
+
+        );
+
+
+      }
 
 
       if (
@@ -1761,345 +2404,114 @@
 
         return Math.round(
 
-          cell.v
-
-          *
-
-          86400000
+          cell.v * 86400000
 
         );
+
 
       }
 
 
+      const value =
 
-      const candidates = [
+        String(
 
-        cell.f,
+          cell.f !== undefined
 
-        cell.v
+          ?
 
-      ];
+          cell.f
 
+          :
 
-      for (
-        const candidate
-        of candidates
-      ) {
+          cell.v || ""
 
+        )
 
-        if (
+        .trim()
 
-          candidate === null
+        .toUpperCase()
 
-          ||
-
-          candidate === undefined
-
-          ||
-
-          candidate === ""
-
-        ) {
-
-          continue;
-
-        }
+        .replace(
+          /\./g,
+          ":"
+        );
 
 
-        let text =
+      let match =
 
-          String(candidate)
+        value.match(
 
-          .trim()
+          /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
 
-          .toUpperCase()
+        );
 
-          .replace(
-            /\./g,
-            ":"
+
+      if (match) {
+
+
+        return (
+
+          Number(match[1]) * 3600000
+
+          +
+
+          Number(match[2]) * 60000
+
+          +
+
+          Number(match[3] || 0) * 1000
+
+        );
+
+
+      }
+
+
+      match =
+
+        value.match(
+
+          /^(\d{3,4})\s*(?:HRS?)?$/
+
+        );
+
+
+      if (match) {
+
+
+        const digits =
+
+          match[1]
+          .padStart(
+            4,
+            "0"
+          );
+
+
+        return (
+
+          Number(
+            digits.slice(
+              0,
+              2
+            )
           )
-
-          .replace(
-            /\s+/g,
-            " "
-          );
-
-
-
-        /*
-           GOOGLE GVIZ DATETIME
-        */
-
-        let match =
-
-          text.match(
-
-            /DATE\(\s*\d{4}\s*,\s*\d{1,2}\s*,\s*\d{1,2}\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})(?:\s*,\s*(\d{1,2}))?/
-
-          );
-
-
-        if (match) {
-
-
-          return (
-
-            Number(match[1]) * 3600000
-
-            +
-
-            Number(match[2]) * 60000
-
-            +
-
-            Number(match[3] || 0) * 1000
-
-          );
-
-        }
-
-
-
-        /*
-           09:04
-           11:05
-           11:05:30
-        */
-
-        match =
-
-          text.match(
-
-            /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
-
-          );
-
-
-        if (match) {
-
-
-          const hour =
-
-            Number(
-              match[1]
-            );
-
-
-          const minute =
-
-            Number(
-              match[2]
-            );
-
-
-          const second =
-
-            Number(
-              match[3] || 0
-            );
-
-
-          if (
-
-            hour >= 0
-
-            &&
-
-            hour <= 23
-
-            &&
-
-            minute >= 0
-
-            &&
-
-            minute <= 59
-
-          ) {
-
-
-            return (
-
-              hour * 3600000
-
-              +
-
-              minute * 60000
-
-              +
-
-              second * 1000
-
-            );
-
-          }
-
-
-        }
-
-
-
-        /*
-           0904
-           1105
-           905
-           1105HRS
-        */
-
-        match =
-
-          text.match(
-
-            /^(\d{3,4})\s*(?:HRS?)?$/
-
-          );
-
-
-        if (match) {
-
-
-          const digits =
-
-            match[1]
-            .padStart(
-              4,
-              "0"
-            );
-
-
-          const hour =
-
-            Number(
-              digits.substring(
-                0,
-                2
-              )
-            );
-
-
-          const minute =
-
-            Number(
-              digits.substring(
-                2,
-                4
-              )
-            );
-
-
-          if (
-
-            hour >= 0
-
-            &&
-
-            hour <= 23
-
-            &&
-
-            minute >= 0
-
-            &&
-
-            minute <= 59
-
-          ) {
-
-
-            return (
-
-              hour * 3600000
-
-              +
-
-              minute * 60000
-
-            );
-
-          }
-
-
-        }
-
-
-
-        /*
-           AM / PM
-        */
-
-        match =
-
-          text.match(
-
-            /^(\d{1,2}):(\d{2})\s*(AM|PM)$/
-
-          );
-
-
-        if (match) {
-
-
-          let hour =
-
-            Number(
-              match[1]
-            );
-
-
-          const minute =
-
-            Number(
-              match[2]
-            );
-
-
-          const period =
-
-            match[3];
-
-
-          if (
-
-            period === "PM"
-
-            &&
-
-            hour !== 12
-
-          ) {
-
-            hour += 12;
-
-          }
-
-
-          if (
-
-            period === "AM"
-
-            &&
-
-            hour === 12
-
-          ) {
-
-            hour = 0;
-
-          }
-
-
-          return (
-
-            hour * 3600000
-
-            +
-
-            minute * 60000
-
-          );
-
-        }
+          *
+          3600000
+
+          +
+
+          Number(
+            digits.slice(
+              2,
+              4
+            )
+          )
+          *
+          60000
+
+        );
 
 
       }
@@ -2112,7 +2524,7 @@
 
 
     /* =========================================================
-       FIND DATE + TIME COLUMNS
+       DATE / TIME COLUMN INDEX
     ========================================================= */
 
     function findDateTimeColumns(columns) {
@@ -2135,7 +2547,6 @@
 
 
           const label =
-
             column.label || "";
 
 
@@ -2151,8 +2562,10 @@
 
           ) {
 
+
             dateIndex =
               index;
+
 
           }
 
@@ -2169,8 +2582,10 @@
 
           ) {
 
+
             timeIndex =
               index;
+
 
           }
 
@@ -2182,11 +2597,9 @@
 
       return {
 
-        dateIndex:
-          dateIndex,
+        dateIndex,
 
-        timeIndex:
-          timeIndex
+        timeIndex
 
       };
 
@@ -2195,7 +2608,46 @@
 
 
     /* =========================================================
-       GET ROW DATE/TIME
+       DATE ONLY VALUE
+    ========================================================= */
+
+    function getRowDateValue(
+      row,
+      dateIndex
+    ) {
+
+
+      if (
+
+        dateIndex < 0
+
+        ||
+
+        !row.c
+
+      ) {
+
+
+        return null;
+
+
+      }
+
+
+      return parseDateCell(
+
+        row.c[
+          dateIndex
+        ]
+
+      );
+
+    }
+
+
+
+    /* =========================================================
+       DATE + TIME VALUE
     ========================================================= */
 
     function getRowDateTimeValue(
@@ -2205,33 +2657,11 @@
     ) {
 
 
-      if (
-
-        !row
-
-        ||
-
-        !row.c
-
-        ||
-
-        dateIndex < 0
-
-      ) {
-
-        return null;
-
-      }
-
-
       const dateValue =
 
-        parseDateCell(
-
-          row.c[
-            dateIndex
-          ]
-
+        getRowDateValue(
+          row,
+          dateIndex
         );
 
 
@@ -2239,7 +2669,9 @@
         dateValue === null
       ) {
 
+
         return null;
+
 
       }
 
@@ -2248,15 +2680,19 @@
 
         timeIndex >= 0
 
-          ? parseTimeCell(
+          ?
 
-              row.c[
-                timeIndex
-              ]
+          parseTimeCell(
 
-            )
+            row.c[
+              timeIndex
+            ]
 
-          : 0;
+          )
+
+          :
+
+          0;
 
 
       return (
@@ -2274,11 +2710,7 @@
 
 
     /* =========================================================
-       SORT ROWS
-
-       OLDEST -> NEWEST
-
-       LATEST DATA ALWAYS AT BOTTOM
+       SORT OLDEST -> NEWEST
     ========================================================= */
 
     function sortRowsByDateTime(
@@ -2298,50 +2730,49 @@
         indexes.dateIndex < 0
       ) {
 
+
         return rows;
+
 
       }
 
 
-      const sortable =
+      return rows
 
-        rows.map(
+      .map(
 
-          function (
+        function (
+          row,
+          index
+        ) {
+
+
+          return {
+
             row,
-            index
-          ) {
 
+            index,
 
-            return {
+            dateTime:
 
-              row:
+              getRowDateTimeValue(
+
                 row,
 
-              originalIndex:
-                index,
+                indexes.dateIndex,
 
-              dateTime:
+                indexes.timeIndex
 
-                getRowDateTimeValue(
+              )
 
-                  row,
-
-                  indexes.dateIndex,
-
-                  indexes.timeIndex
-
-                )
-
-            };
+          };
 
 
-          }
+        }
 
-        );
+      )
 
-
-      sortable.sort(
+      .sort(
 
         function (
           a,
@@ -2364,9 +2795,7 @@
 
 
           if (
-            !aValid
-            &&
-            bValid
+            !aValid && bValid
           ) {
 
             return -1;
@@ -2375,9 +2804,7 @@
 
 
           if (
-            aValid
-            &&
-            !bValid
+            aValid && !bValid
           ) {
 
             return 1;
@@ -2386,21 +2813,12 @@
 
 
           if (
-            !aValid
-            &&
-            !bValid
+            !aValid && !bValid
           ) {
 
 
-            return (
+            return a.index - b.index;
 
-              a.originalIndex
-
-              -
-
-              b.originalIndex
-
-            );
 
           }
 
@@ -2410,36 +2828,20 @@
           ) {
 
 
-            return (
+            return a.dateTime - b.dateTime;
 
-              a.dateTime
-
-              -
-
-              b.dateTime
-
-            );
 
           }
 
 
-          return (
-
-            a.originalIndex
-
-            -
-
-            b.originalIndex
-
-          );
+          return a.index - b.index;
 
 
         }
 
-      );
+      )
 
-
-      return sortable.map(
+      .map(
 
         function (item) {
 
@@ -2454,7 +2856,7 @@
 
 
     /* =========================================================
-       FIND VISIBLE COLUMNS
+       VISIBLE COLUMNS
     ========================================================= */
 
     function getVisibleColumns(
@@ -2464,7 +2866,7 @@
     ) {
 
 
-      const visibleColumns =
+      const visible =
         [];
 
 
@@ -2476,23 +2878,18 @@
         ) {
 
 
-          const name =
-
-            normalizeText(
-              column.label
-            );
-
-
           if (
 
             shouldHideColumn(
-              name,
+              column.label,
               config
             )
 
           ) {
 
+
             return;
+
 
           }
 
@@ -2528,7 +2925,9 @@
 
           if (
 
-            name !== ""
+            normalizeText(
+              column.label
+            ) !== ""
 
             ||
 
@@ -2537,13 +2936,11 @@
           ) {
 
 
-            visibleColumns.push({
+            visible.push({
 
-              column:
-                column,
+              column,
 
-              index:
-                index
+              index
 
             });
 
@@ -2556,14 +2953,14 @@
       );
 
 
-      return visibleColumns;
+      return visible;
 
     }
 
 
 
     /* =========================================================
-       FILTER EMPTY ROWS
+       EMPTY ROW FILTER
     ========================================================= */
 
     function getNonEmptyRows(
@@ -2613,10 +3010,7 @@
 
 
     /* =========================================================
-       FIND LOWEST VALUES
-
-       EACH DEW POINT LOCATION COLUMN
-       IS CALCULATED SEPARATELY
+       LOWEST VALUES
     ========================================================= */
 
     function findLowestValues(
@@ -2625,8 +3019,7 @@
     ) {
 
 
-      const lowestValues =
-
+      const result =
         new Map();
 
 
@@ -2635,37 +3028,33 @@
         function (item) {
 
 
-          const columnName =
-
+          const label =
             item.column.label || "";
 
-
-          /*
-             DO NOT CALCULATE LOWEST FOR
-             DATE OR TIME COLUMNS
-          */
 
           if (
 
             isDateColumn(
-              columnName
+              label
             )
 
             ||
 
             isTimeColumn(
-              columnName
+              label
             )
 
             ||
 
             isTimestampColumn(
-              columnName
+              label
             )
 
           ) {
 
+
             return;
+
 
           }
 
@@ -2683,14 +3072,18 @@
 
                 row.c
 
-                  ? row.c[
-                      item.index
-                    ]
+                ?
 
-                  : null;
+                row.c[
+                  item.index
+                ]
+
+                :
+
+                null;
 
 
-              const value =
+              const number =
 
                 extractNumber(
 
@@ -2702,10 +3095,12 @@
 
 
               if (
-                value === null
+                number === null
               ) {
 
+
                 return;
+
 
               }
 
@@ -2716,12 +3111,14 @@
 
                 ||
 
-                value < minimum
+                number < minimum
 
               ) {
 
+
                 minimum =
-                  value;
+                  number;
+
 
               }
 
@@ -2736,7 +3133,7 @@
           ) {
 
 
-            lowestValues.set(
+            result.set(
 
               item.index,
 
@@ -2753,7 +3150,7 @@
       );
 
 
-      return lowestValues;
+      return result;
 
     }
 
@@ -2762,22 +3159,15 @@
     /* =========================================================
        LOAD GOOGLE SHEET
 
-       IMPORTANT:
-
        SELECT *
 
-       NOT:
-
-       WHERE A IS NOT NULL
-
-       THIS ALLOWS MANUAL DATA WITH NO FORM TIMESTAMP.
+       SO MANUAL ROWS WITH BLANK TIMESTAMP ARE INCLUDED.
     ========================================================= */
 
     function loadSheet(config) {
 
 
       const query =
-
         "select *";
 
 
@@ -2849,7 +3239,6 @@
         Date.now();
 
 
-
       const script =
 
         document.createElement(
@@ -2877,23 +3266,17 @@
             );
 
 
-          if (container) {
+          container.innerHTML =
 
+            '<div class="message">' +
 
-            container.innerHTML =
+            'Unable to Load Google Sheet Data' +
 
-              '<div class="message">' +
+            '<br>' +
 
-              'Unable to Load Google Sheet Data' +
+            'Check Google Sheet Sharing Permission' +
 
-              '<br>' +
-
-              'Check Google Sheet Sharing Permission' +
-
-              '</div>';
-
-
-          }
+            '</div>';
 
 
         };
@@ -2913,7 +3296,9 @@
                 script.parentNode
               ) {
 
+
                 script.remove();
+
 
               }
 
@@ -3005,17 +3390,13 @@
 
         container.innerHTML =
 
-          '<div class="message">' +
-
-          'No Data Available' +
-
-          '</div>';
+          '<div class="message">No Data Available</div>';
 
 
         return;
 
-      }
 
+      }
 
 
       const columns =
@@ -3027,11 +3408,6 @@
 
         response.table.rows || [];
 
-
-
-      /* =======================================================
-         VISIBLE COLUMNS
-      ======================================================= */
 
       const visibleColumns =
 
@@ -3045,30 +3421,6 @@
 
         );
 
-
-      if (
-        visibleColumns.length === 0
-      ) {
-
-
-        container.innerHTML =
-
-          '<div class="message">' +
-
-          'No Data Available' +
-
-          '</div>';
-
-
-        return;
-
-      }
-
-
-
-      /* =======================================================
-         REMOVE EMPTY ROWS
-      ======================================================= */
 
       let rows =
 
@@ -3088,23 +3440,18 @@
 
         container.innerHTML =
 
-          '<div class="message">' +
-
-          'No Readings Available' +
-
-          '</div>';
+          '<div class="message">No Readings Available</div>';
 
 
         return;
+
 
       }
 
 
 
       /* =======================================================
-         SORT BY USER KEYED DATE + TIME
-
-         NOT FORM TIMESTAMP
+         SORT DATE + SAMPLING TIME
       ======================================================= */
 
       if (
@@ -3127,28 +3474,106 @@
 
 
 
+      const dateTimeColumns =
+
+        findDateTimeColumns(
+          columns
+        );
+
+
+
       /* =======================================================
-         LOWEST VALUE
+         FIND LATEST CALENDAR DATE
+
+         NOT LATEST TIMESTAMP.
+      ======================================================= */
+
+      let latestDateValue =
+        null;
+
+
+      if (
+        dateTimeColumns.dateIndex >= 0
+      ) {
+
+
+        rows.forEach(
+
+          function (row) {
+
+
+            const value =
+
+              getRowDateValue(
+
+                row,
+
+                dateTimeColumns.dateIndex
+
+              );
+
+
+            if (
+
+              Number.isFinite(
+                value
+              )
+
+              &&
+
+              (
+                latestDateValue === null
+
+                ||
+
+                value > latestDateValue
+              )
+
+            ) {
+
+
+              latestDateValue =
+                value;
+
+
+            }
+
+
+          }
+
+        );
+
+
+      }
+
+
+
+      /* =======================================================
+         LOWEST VALUES
       ======================================================= */
 
       const lowestValues =
 
         config.highlightLowest
 
-          ? findLowestValues(
+          ?
 
-              rows,
+          findLowestValues(
 
-              visibleColumns
+            rows,
 
-            )
+            visibleColumns
 
-          : new Map();
+          )
+
+          :
+
+          new Map();
 
 
 
       /* =======================================================
-         CREATE TABLE
+         TABLE
       ======================================================= */
 
       const table =
@@ -3172,7 +3597,6 @@
         );
 
 
-
       visibleColumns.forEach(
 
         function (item) {
@@ -3187,7 +3611,11 @@
 
           th.textContent =
 
-            item.column.label || "";
+            getDisplayHeaderName(
+
+              item.column.label || ""
+
+            );
 
 
           headerRow.appendChild(
@@ -3210,16 +3638,29 @@
       );
 
 
-
-      /* =======================================================
-         BODY
-      ======================================================= */
-
       const tbody =
 
         document.createElement(
           "tbody"
         );
+
+
+
+      /* =======================================================
+         DATE GROUPING
+      ======================================================= */
+
+      const dateColourMap =
+        new Map();
+
+
+      let nextColourIndex =
+        0;
+
+
+      let previousDate =
+        null;
+
 
 
       rows.forEach(
@@ -3232,6 +3673,143 @@
             document.createElement(
               "tr"
             );
+
+
+          const rowDate =
+
+            dateTimeColumns.dateIndex >= 0
+
+              ?
+
+              getRowDateValue(
+
+                row,
+
+                dateTimeColumns.dateIndex
+
+              )
+
+              :
+
+              null;
+
+
+
+          /* =================================================
+             DIFFERENT COLOUR BY DATE
+          ================================================= */
+
+          if (
+
+            config.groupByDate
+
+            &&
+
+            Number.isFinite(
+              rowDate
+            )
+
+          ) {
+
+
+            const dateKey =
+
+              String(
+                rowDate
+              );
+
+
+            if (
+              !dateColourMap.has(
+                dateKey
+              )
+            ) {
+
+
+              dateColourMap.set(
+
+                dateKey,
+
+                nextColourIndex %
+                DATE_GROUP_COLOUR_COUNT
+
+              );
+
+
+              nextColourIndex++;
+
+
+            }
+
+
+            const colourIndex =
+
+              dateColourMap.get(
+                dateKey
+              );
+
+
+            tr.classList.add(
+
+              "date-group-" +
+              colourIndex
+
+            );
+
+
+            if (
+
+              previousDate !== null
+
+              &&
+
+              rowDate !== previousDate
+
+            ) {
+
+
+              tr.classList.add(
+                "new-date-group"
+              );
+
+
+            }
+
+
+            previousDate =
+              rowDate;
+
+
+          }
+
+
+
+          /* =================================================
+             ALL DATA ON LATEST DATE = BOLD
+          ================================================= */
+
+          if (
+
+            config.groupByDate
+
+            &&
+
+            latestDateValue !== null
+
+            &&
+
+            rowDate === latestDateValue
+
+          ) {
+
+
+            tr.classList.add(
+              "latest-date"
+            );
+
+
+          }
+
 
 
           visibleColumns.forEach(
@@ -3250,11 +3828,15 @@
 
                 row.c
 
-                  ? row.c[
-                      item.index
-                    ]
+                  ?
 
-                  : null;
+                  row.c[
+                    item.index
+                  ]
+
+                  :
+
+                  null;
 
 
               const displayValue =
@@ -3269,9 +3851,9 @@
 
 
 
-              /* =================================================
-                 LOWEST VALUE = BOLD
-              ================================================= */
+              /* =============================================
+                 LOWEST READING
+              ============================================= */
 
               if (
 
@@ -3362,10 +3944,6 @@
       );
 
 
-      /*
-         SHOW LATEST DATA
-      */
-
       scrollTableToBottom(
         container
       );
@@ -3375,7 +3953,7 @@
 
 
     /* =========================================================
-       GOOGLE CALLBACKS
+       CALLBACKS
     ========================================================= */
 
     window.swabbingResponse =
@@ -3415,7 +3993,7 @@
 
 
     /* =========================================================
-       LOAD ALL
+       LOAD
     ========================================================= */
 
     function loadAllTables() {
@@ -3435,17 +4013,8 @@
 
 
 
-    /* =========================================================
-       INITIAL LOAD
-    ========================================================= */
-
     loadAllTables();
 
-
-
-    /* =========================================================
-       AUTO REFRESH
-    ========================================================= */
 
     setInterval(
 
