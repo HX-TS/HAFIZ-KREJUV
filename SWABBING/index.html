@@ -10,6 +10,11 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
+  <meta
+    name="theme-color"
+    content="#050505"
+  >
+
   <title>FEC Swabbing Data</title>
 
 
@@ -53,17 +58,17 @@
 
       --grey: #5b5751;
 
-      /*
-         DEW POINT DATE GROUP COLOURS
-         MUTED / PROFESSIONAL
-      */
-
       --date-1: #f2efe9;
-      --date-2: #e3e8e4;
-      --date-3: #ece6dc;
-      --date-4: #e1e5e9;
-      --date-5: #e8e2e6;
-      --date-6: #e4e7dc;
+
+      --date-2: #dfe8e2;
+
+      --date-3: #eee3d4;
+
+      --date-4: #dde5ed;
+
+      --date-5: #eadfe6;
+
+      --date-6: #e3e8d7;
 
     }
 
@@ -79,17 +84,27 @@
     }
 
 
-    html,
-    body {
+    html {
 
       width: 100%;
 
-      height: 100%;
+      min-height: 100%;
+
+      -webkit-text-size-adjust: 100%;
+
+      text-size-adjust: 100%;
+
+      background:
+        var(--black);
 
     }
 
 
     body {
+
+      width: 100%;
+
+      min-height: 100%;
 
       font-family:
         Arial,
@@ -107,6 +122,14 @@
     }
 
 
+    a {
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+    }
+
+
 
     /* =========================================================
        PAGE
@@ -118,13 +141,15 @@
 
       height: 100dvh;
 
+      min-height: 100dvh;
+
       display: flex;
 
       flex-direction: column;
 
-      padding: 7px;
-
       gap: 7px;
+
+      padding: 7px;
 
       background:
         var(--black);
@@ -141,16 +166,16 @@
 
       flex-shrink: 0;
 
-      height: 102px;
+      min-height: 118px;
 
-      min-height: 102px;
+      height: 118px;
 
       display: grid;
 
       grid-template-columns:
         minmax(0, 1fr)
-        minmax(285px, 330px)
-        190px;
+        minmax(330px, 390px)
+        minmax(190px, 220px);
 
       background:
         var(--cream);
@@ -180,8 +205,8 @@
       justify-content: center;
 
       padding:
-        14px
-        24px;
+        18px
+        28px;
 
     }
 
@@ -190,34 +215,41 @@
 
       font-size:
         clamp(
-          28px,
-          3.1vw,
-          48px
+          36px,
+          4vw,
+          64px
         );
 
       font-weight: 900;
 
-      line-height: 0.92;
+      line-height: 0.90;
 
-      letter-spacing: -0.045em;
+      letter-spacing: -0.05em;
 
       text-transform: uppercase;
+
+      white-space: nowrap;
 
     }
 
 
     .hero-subtitle {
 
-      margin-top: 8px;
+      margin-top: 10px;
 
       color:
         var(--grey);
 
-      font-size: 9px;
+      font-size:
+        clamp(
+          9px,
+          0.7vw,
+          12px
+        );
 
-      font-weight: 800;
+      font-weight: 900;
 
-      letter-spacing: 0.28em;
+      letter-spacing: 0.30em;
 
       text-transform: uppercase;
 
@@ -240,8 +272,8 @@
       justify-content: center;
 
       padding:
-        14px
-        20px;
+        18px
+        22px;
 
       border-left:
         1px solid
@@ -257,39 +289,44 @@
 
       font-size:
         clamp(
-          16px,
-          1.25vw,
-          20px
+          19px,
+          1.5vw,
+          25px
         );
 
       line-height: 1;
 
       font-weight: 900;
 
-      letter-spacing: 0.025em;
+      letter-spacing: 0.01em;
+
+      white-space: nowrap;
 
       font-variant-numeric:
         tabular-nums;
-
-      white-space: nowrap;
 
     }
 
 
     .current-shift {
 
-      margin-top: 10px;
+      margin-top: 12px;
 
       color:
         var(--grey);
 
-      font-size: 10px;
+      font-size:
+        clamp(
+          11px,
+          0.8vw,
+          14px
+        );
 
       line-height: 1.25;
 
       font-weight: 900;
 
-      letter-spacing: 0.04em;
+      letter-spacing: 0.025em;
 
       text-transform: uppercase;
 
@@ -302,6 +339,8 @@
 
       color:
         var(--black);
+
+      font-weight: 900;
 
     }
 
@@ -321,8 +360,10 @@
 
       justify-content: center;
 
+      gap: 8px;
+
       padding:
-        15px
+        16px
         20px;
 
       border-left:
@@ -339,13 +380,18 @@
 
       text-align: center;
 
-      font-size: 12px;
+      font-size:
+        clamp(
+          12px,
+          0.95vw,
+          15px
+        );
 
-      line-height: 1.2;
+      line-height: 1.15;
 
       font-weight: 900;
 
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
 
       text-transform: uppercase;
 
@@ -372,9 +418,9 @@
 
     .bookmark-arrow {
 
-      margin-left: 9px;
+      font-size: 21px;
 
-      font-size: 18px;
+      line-height: 1;
 
       font-weight: 900;
 
@@ -432,7 +478,7 @@
 
       flex-shrink: 0;
 
-      min-height: 42px;
+      min-height: 50px;
 
       display: flex;
 
@@ -440,11 +486,11 @@
 
       justify-content: space-between;
 
-      gap: 12px;
+      gap: 14px;
 
       padding:
         0
-        16px;
+        18px;
 
       background:
         var(--cream);
@@ -453,11 +499,16 @@
         1px solid
         var(--line);
 
-      font-size: 13px;
+      font-size:
+        clamp(
+          14px,
+          1vw,
+          17px
+        );
 
       font-weight: 900;
 
-      letter-spacing: 0.03em;
+      letter-spacing: 0.035em;
 
       text-transform: uppercase;
 
@@ -471,11 +522,18 @@
       color:
         var(--grey);
 
-      font-size: 8px;
+      font-size:
+        clamp(
+          8px,
+          0.6vw,
+          11px
+        );
 
-      font-weight: 800;
+      line-height: 1.2;
 
-      letter-spacing: 0.08em;
+      font-weight: 900;
+
+      letter-spacing: 0.055em;
 
       text-align: right;
 
@@ -491,6 +549,8 @@
 
     .table-wrapper {
 
+      position: relative;
+
       flex: 1;
 
       min-height: 0;
@@ -502,10 +562,16 @@
       background:
         var(--cream);
 
+      overscroll-behavior:
+        contain;
+
+      -webkit-overflow-scrolling:
+        touch;
+
       scrollbar-width: thin;
 
       scrollbar-color:
-        #888
+        #777
         var(--cream-2);
 
     }
@@ -513,9 +579,9 @@
 
     .table-wrapper::-webkit-scrollbar {
 
-      width: 8px;
+      width: 9px;
 
-      height: 8px;
+      height: 9px;
 
     }
 
@@ -531,7 +597,7 @@
     .table-wrapper::-webkit-scrollbar-thumb {
 
       background:
-        #888;
+        #777;
 
     }
 
@@ -563,20 +629,20 @@
 
       top: 0;
 
-      z-index: 20;
+      z-index: 30;
 
     }
 
 
     th {
 
-      min-width: 125px;
+      min-width: 145px;
 
-      height: 48px;
+      height: 57px;
 
       padding:
-        8px
-        12px;
+        10px
+        15px;
 
       background:
         var(--cream);
@@ -586,7 +652,7 @@
         var(--line);
 
       border-bottom:
-        1px solid
+        2px solid
         var(--black);
 
       text-align: center;
@@ -595,11 +661,18 @@
 
       white-space: nowrap;
 
-      font-size: 11px;
+      font-size:
+        clamp(
+          12px,
+          0.9vw,
+          15px
+        );
 
       line-height: 1.15;
 
       font-weight: 900;
+
+      letter-spacing: 0.015em;
 
       text-transform: uppercase;
 
@@ -608,13 +681,13 @@
 
     td {
 
-      min-width: 125px;
+      min-width: 145px;
 
-      height: 37px;
+      height: 45px;
 
       padding:
-        7px
-        12px;
+        9px
+        15px;
 
       background:
         var(--cream);
@@ -633,7 +706,12 @@
 
       white-space: nowrap;
 
-      font-size: 12px;
+      font-size:
+        clamp(
+          13px,
+          0.95vw,
+          16px
+        );
 
       line-height: 1.15;
 
@@ -655,11 +733,7 @@
 
 
     /* =========================================================
-       DEW POINT - DIFFERENT COLOUR FOR EACH DATE
-
-       SAME DATE = SAME COLOUR
-
-       NEXT DATE = NEXT COLOUR
+       DEW POINT DATE GROUP COLOURS
     ========================================================= */
 
     #dewPointContainer
@@ -730,7 +804,7 @@
 
 
     /* =========================================================
-       CLEAR LINE WHEN DATE CHANGES
+       NEW DATE SEPARATOR
     ========================================================= */
 
     #dewPointContainer
@@ -739,7 +813,7 @@
     td {
 
       border-top:
-        2px solid
+        3px solid
         var(--black);
 
     }
@@ -749,7 +823,7 @@
     /* =========================================================
        LATEST DATE
 
-       ALL DATA FOR LATEST CALENDAR DATE IS BOLD
+       ALL DATA ON LATEST DATE = BOLD
     ========================================================= */
 
     #dewPointContainer
@@ -764,14 +838,12 @@
 
 
     /* =========================================================
-       LOWEST VALUE
-
-       EXTRA BOLD
+       LOWEST READING
     ========================================================= */
 
     td.lowest-value {
 
-      font-weight: 900;
+      font-weight: 900 !important;
 
       text-decoration:
         underline;
@@ -780,7 +852,7 @@
         2px;
 
       text-underline-offset:
-        3px;
+        4px;
 
     }
 
@@ -790,10 +862,14 @@
        HOVER
     ========================================================= */
 
-    tbody tr:hover td {
+    @media (hover: hover) {
 
-      filter:
-        brightness(0.95);
+      tbody tr:hover td {
+
+        filter:
+          brightness(0.94);
+
+      }
 
     }
 
@@ -809,7 +885,7 @@
 
       height: 100%;
 
-      min-height: 90px;
+      min-height: 100px;
 
       display: flex;
 
@@ -817,15 +893,20 @@
 
       justify-content: center;
 
-      padding: 20px;
+      padding: 24px;
 
       text-align: center;
 
-      font-size: 11px;
+      font-size:
+        clamp(
+          12px,
+          1vw,
+          16px
+        );
 
       line-height: 1.5;
 
-      font-weight: 800;
+      font-weight: 900;
 
       text-transform: uppercase;
 
@@ -841,7 +922,7 @@
 
       flex-shrink: 0;
 
-      min-height: 34px;
+      min-height: 38px;
 
       display: flex;
 
@@ -850,10 +931,10 @@
       justify-content: center;
 
       padding:
-        6px
+        7px
         10px
         max(
-          6px,
+          7px,
           env(safe-area-inset-bottom)
         );
 
@@ -864,11 +945,11 @@
         1px solid
         var(--black);
 
-      font-size: 9px;
+      font-size: 10px;
 
       font-weight: 900;
 
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
 
       text-transform: uppercase;
 
@@ -877,16 +958,16 @@
 
 
     /* =========================================================
-       SMALL LAPTOP
+       MEDIUM DESKTOP / SMALL LAPTOP
     ========================================================= */
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1250px) {
 
       .hero {
 
         grid-template-columns:
           minmax(0, 1fr)
-          270px
+          290px
           165px;
 
       }
@@ -895,8 +976,8 @@
       .hero-left {
 
         padding:
-          12px
-          18px;
+          15px
+          20px;
 
       }
 
@@ -905,9 +986,9 @@
 
         font-size:
           clamp(
-            25px,
-            3.5vw,
-            40px
+            31px,
+            3.8vw,
+            48px
           );
 
       }
@@ -916,8 +997,88 @@
       .current-status {
 
         padding:
+          14px
+          16px;
+
+      }
+
+
+      .current-datetime {
+
+        font-size: 17px;
+
+      }
+
+
+      .current-shift {
+
+        margin-top: 9px;
+
+        font-size: 10px;
+
+      }
+
+
+      .main-bookmark {
+
+        padding:
           12px
-          14px;
+          13px;
+
+        font-size: 11px;
+
+      }
+
+
+      th {
+
+        min-width: 130px;
+
+        font-size: 12px;
+
+      }
+
+
+      td {
+
+        min-width: 130px;
+
+        font-size: 13px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .hero {
+
+        min-height: 105px;
+
+        height: 105px;
+
+        grid-template-columns:
+          minmax(0, 1fr)
+          250px
+          135px;
+
+      }
+
+
+      .hero-title {
+
+        font-size:
+          clamp(
+            27px,
+            4.3vw,
+            40px
+          );
 
       }
 
@@ -931,18 +1092,53 @@
 
       .current-shift {
 
-        font-size: 9px;
+        font-size: 8.5px;
 
       }
 
 
       .main-bookmark {
 
-        padding:
-          12px
-          14px;
+        font-size: 9px;
 
-        font-size: 10px;
+      }
+
+
+      .panel-title {
+
+        min-height: 45px;
+
+        font-size: 13px;
+
+      }
+
+
+      th {
+
+        min-width: 120px;
+
+        height: 50px;
+
+        padding:
+          8px
+          10px;
+
+        font-size: 11px;
+
+      }
+
+
+      td {
+
+        min-width: 120px;
+
+        height: 40px;
+
+        padding:
+          7px
+          10px;
+
+        font-size: 12px;
 
       }
 
@@ -956,7 +1152,16 @@
 
     @media (max-width: 700px) {
 
+      body {
+
+        overflow: hidden;
+
+      }
+
+
       .page {
+
+        gap: 3px;
 
         padding:
           max(
@@ -969,24 +1174,27 @@
             env(safe-area-inset-bottom)
           );
 
-        gap: 3px;
-
       }
 
 
+
+      /* =======================================================
+         MOBILE HEADER
+      ======================================================= */
+
       .hero {
 
-        height: 116px;
+        min-height: 138px;
 
-        min-height: 116px;
+        height: 138px;
 
         grid-template-columns:
           minmax(0, 1fr)
-          110px;
+          112px;
 
         grid-template-rows:
-          60px
-          56px;
+          74px
+          64px;
 
       }
 
@@ -999,9 +1207,11 @@
         grid-row:
           1;
 
+        justify-content: center;
+
         padding:
-          7px
-          10px;
+          9px
+          12px;
 
         border-bottom:
           1px solid
@@ -1014,22 +1224,33 @@
 
         font-size:
           clamp(
-            20px,
-            6vw,
-            27px
+            26px,
+            7.6vw,
+            36px
           );
+
+        line-height: 0.92;
+
+        white-space: normal;
 
       }
 
 
       .hero-subtitle {
 
-        margin-top: 4px;
+        margin-top: 5px;
 
-        font-size: 6px;
+        font-size: 7px;
+
+        letter-spacing: 0.24em;
 
       }
 
+
+
+      /* =======================================================
+         MOBILE TIME
+      ======================================================= */
 
       .current-status {
 
@@ -1039,12 +1260,13 @@
         grid-row:
           2;
 
-        padding:
-          7px
-          10px;
+        justify-content: center;
 
-        border-left:
-          none;
+        padding:
+          8px
+          11px;
+
+        border-left: none;
 
       }
 
@@ -1053,22 +1275,36 @@
 
         font-size:
           clamp(
-            12px,
-            3.7vw,
-            15px
+            14px,
+            4vw,
+            18px
           );
+
+        line-height: 1;
 
       }
 
 
       .current-shift {
 
-        margin-top: 5px;
+        margin-top: 7px;
 
-        font-size: 6.5px;
+        font-size:
+          clamp(
+            7.5px,
+            2.4vw,
+            10px
+          );
+
+        white-space: normal;
 
       }
 
+
+
+      /* =======================================================
+         MOBILE BOOKMARK
+      ======================================================= */
 
       .main-bookmark {
 
@@ -1078,22 +1314,35 @@
         grid-row:
           2;
 
-        padding:
-          6px;
+        min-height: 64px;
 
-        font-size: 7.5px;
+        padding:
+          7px
+          8px;
+
+        font-size:
+          clamp(
+            8px,
+            2.5vw,
+            10px
+          );
+
+        line-height: 1.2;
 
       }
 
 
       .bookmark-arrow {
 
-        margin-left: 4px;
-
-        font-size: 12px;
+        font-size: 14px;
 
       }
 
+
+
+      /* =======================================================
+         MOBILE PANELS
+      ======================================================= */
 
       .dashboard {
 
@@ -1104,63 +1353,180 @@
 
       .panel-title {
 
-        min-height: 31px;
+        min-height: 40px;
 
         padding:
           0
-          8px;
+          9px;
 
-        gap: 5px;
+        gap: 6px;
 
-        font-size: 9px;
+        font-size:
+          clamp(
+            11px,
+            3.3vw,
+            14px
+          );
 
       }
 
 
       .panel-note {
 
-        font-size: 5.5px;
+        max-width: 47%;
 
-        letter-spacing: 0.02em;
+        font-size:
+          clamp(
+            6px,
+            1.8vw,
+            8px
+          );
+
+        white-space: normal;
 
       }
 
 
+
+      /* =======================================================
+         MOBILE TABLE
+
+         DON'T COMPRESS.
+         USER CAN SWIPE LEFT / RIGHT.
+      ======================================================= */
+
       th {
 
-        min-width: 100px;
+        min-width: 118px;
 
-        height: 38px;
+        height: 49px;
 
         padding:
-          6px
-          7px;
+          8px
+          9px;
 
-        font-size: 8px;
+        font-size:
+          clamp(
+            10px,
+            3vw,
+            12px
+          );
 
       }
 
 
       td {
 
-        min-width: 100px;
+        min-width: 118px;
 
-        height: 30px;
+        height: 40px;
 
         padding:
-          5px
-          7px;
+          7px
+          9px;
 
-        font-size: 9px;
+        font-size:
+          clamp(
+            11px,
+            3.2vw,
+            13px
+          );
 
       }
 
 
       .footer {
 
-        min-height: 25px;
+        min-height: 28px;
+
+        font-size: 8px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       VERY SMALL PHONE
+    ========================================================= */
+
+    @media (max-width: 390px) {
+
+      .hero {
+
+        grid-template-columns:
+          minmax(0, 1fr)
+          100px;
+
+      }
+
+
+      .hero-title {
+
+        font-size:
+          clamp(
+            24px,
+            7.3vw,
+            30px
+          );
+
+      }
+
+
+      .current-status {
+
+        padding:
+          7px
+          8px;
+
+      }
+
+
+      .current-datetime {
+
+        font-size: 13px;
+
+      }
+
+
+      .current-shift {
 
         font-size: 7px;
+
+      }
+
+
+      .main-bookmark {
+
+        font-size: 8px;
+
+      }
+
+
+      .panel-title {
+
+        padding:
+          0
+          7px;
+
+      }
+
+
+      th {
+
+        min-width: 112px;
+
+        font-size: 10px;
+
+      }
+
+
+      td {
+
+        min-width: 112px;
+
+        font-size: 11px;
 
       }
 
@@ -1185,7 +1551,9 @@
     <header class="hero">
 
 
-      <!-- TITLE -->
+      <!-- ===================================================
+           TITLE
+      ==================================================== -->
 
       <div class="hero-left">
 
@@ -1318,7 +1686,7 @@
 
 
       <!-- ===================================================
-           DEW POINT
+           DEW POINT DATA
       ==================================================== -->
 
       <section class="reading-panel">
@@ -1389,8 +1757,24 @@
        SETTINGS
     ========================================================= */
 
+    /*
+       GOOGLE SHEETS AUTO REFRESH
+
+       60000 MS = 60 SECONDS
+    */
+
     const TABLE_REFRESH_TIME =
       60000;
+
+
+    /*
+       HEADER CLOCK UPDATE
+
+       1000 MS = 1 SECOND
+    */
+
+    const CLOCK_REFRESH_TIME =
+      1000;
 
 
     const MALAYSIA_TIME_ZONE =
@@ -1515,7 +1899,7 @@
 
 
     /* =========================================================
-       CURRENT MALAYSIA TIME
+       MALAYSIA DATE / TIME
     ========================================================= */
 
     function getMalaysiaParts() {
@@ -1600,13 +1984,7 @@
 
 
     /* =========================================================
-       UPDATE HEADER CLOCK
-
-       DAY:
-       07:00 - 18:59
-
-       NIGHT:
-       19:00 - 06:59
+       UPDATE CURRENT TIME / SHIFT
     ========================================================= */
 
     function updateCurrentTime() {
@@ -1617,6 +1995,7 @@
 
 
       const month =
+
         String(
           parts.month || ""
         )
@@ -1668,13 +2047,27 @@
         parts.second;
 
 
-      document
-        .getElementById(
-          "currentDateTime"
-        )
-        .textContent =
-          dateText;
+      const dateTimeElement =
 
+        document.getElementById(
+          "currentDateTime"
+        );
+
+
+      dateTimeElement.textContent =
+        dateText;
+
+
+
+      /* =======================================================
+         SHIFT
+
+         DAY:
+         07:00 - 18:59
+
+         NIGHT:
+         19:00 - 06:59
+      ======================================================= */
 
       const hour =
 
@@ -1704,7 +2097,11 @@
 
         shiftElement.innerHTML =
 
-          "CURRENT SHIFT: <strong>DAY</strong> · 07:00 - 18:59";
+          "CURRENT SHIFT: " +
+
+          "<strong>DAY</strong>" +
+
+          " · 07:00 - 18:59";
 
 
       }
@@ -1715,7 +2112,11 @@
 
         shiftElement.innerHTML =
 
-          "CURRENT SHIFT: <strong>NIGHT</strong> · 19:00 - 06:59";
+          "CURRENT SHIFT: " +
+
+          "<strong>NIGHT</strong>" +
+
+          " · 19:00 - 06:59";
 
 
       }
@@ -1725,6 +2126,10 @@
 
 
 
+    /* =========================================================
+       START CLOCK
+    ========================================================= */
+
     updateCurrentTime();
 
 
@@ -1732,14 +2137,14 @@
 
       updateCurrentTime,
 
-      1000
+      CLOCK_REFRESH_TIME
 
     );
 
 
 
     /* =========================================================
-       TEXT NORMALIZATION
+       NORMALIZE TEXT
     ========================================================= */
 
     function normalizeText(value) {
@@ -1758,7 +2163,7 @@
 
 
     /* =========================================================
-       CELL VALUE
+       CELL HAS VALUE
     ========================================================= */
 
     function cellHasValue(cell) {
@@ -1785,10 +2190,13 @@
 
       );
 
-
     }
 
 
+
+    /* =========================================================
+       GET CELL DISPLAY VALUE
+    ========================================================= */
 
     function getCellDisplayValue(cell) {
 
@@ -1845,7 +2253,7 @@
 
 
     /* =========================================================
-       NUMBER
+       EXTRACT NUMBER
     ========================================================= */
 
     function extractNumber(value) {
@@ -1880,7 +2288,9 @@
         return Number.isFinite(
           value
         )
+
           ? value
+
           : null;
 
 
@@ -1923,7 +2333,9 @@
       return Number.isFinite(
         number
       )
+
         ? number
+
         : null;
 
     }
@@ -1931,13 +2343,14 @@
 
 
     /* =========================================================
-       COLUMN TYPES
+       COLUMN TYPE
     ========================================================= */
 
     function isTimestampColumn(name) {
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -1955,6 +2368,7 @@
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -1996,6 +2410,7 @@
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -2049,12 +2464,10 @@
 
 
     /* =========================================================
-       HEADER DISPLAY NAME
+       CHANGE GOOGLE SHEET HEADER DISPLAY
 
-       GOOGLE SHEET:
        MASA AMBIL GAMBARAJAH
-
-       WEBPAGE:
+       ->
        SAMPLING TIME
     ========================================================= */
 
@@ -2062,6 +2475,7 @@
 
 
       const normalized =
+
         normalizeText(
           name
         );
@@ -2098,6 +2512,7 @@
 
 
       const name =
+
         normalizeText(
           label
         );
@@ -2119,9 +2534,11 @@
         config.hiddenColumns || []
 
       )
+
       .map(
         normalizeText
       )
+
       .some(
 
         function (hidden) {
@@ -2222,6 +2639,15 @@
           .trim();
 
 
+
+        /* =====================================================
+           GOOGLE GVIZ DATE
+
+           Date(2026,8,4)
+
+           MONTH STARTS AT ZERO
+        ===================================================== */
+
         let match =
 
           text.match(
@@ -2249,6 +2675,11 @@
         }
 
 
+
+        /* =====================================================
+           DD/MM/YYYY
+           DD-MM-YYYY
+        ===================================================== */
 
         match =
 
@@ -2278,6 +2709,10 @@
 
 
 
+        /* =====================================================
+           YYYY-MM-DD
+        ===================================================== */
+
         match =
 
           text.match(
@@ -2306,6 +2741,10 @@
 
 
 
+        /* =====================================================
+           FALLBACK
+        ===================================================== */
+
         const parsed =
 
           Date.parse(
@@ -2321,6 +2760,7 @@
 
 
           const date =
+
             new Date(
               parsed
             );
@@ -2351,7 +2791,7 @@
 
 
     /* =========================================================
-       TIME
+       PARSE TIME
     ========================================================= */
 
     function parseTimeCell(cell) {
@@ -2371,21 +2811,38 @@
 
         return (
 
-          cell.v.getHours() * 3600000
+          cell.v.getHours()
+
+          *
+
+          3600000
 
           +
 
-          cell.v.getMinutes() * 60000
+          cell.v.getMinutes()
+
+          *
+
+          60000
 
           +
 
-          cell.v.getSeconds() * 1000
+          cell.v.getSeconds()
+
+          *
+
+          1000
 
         );
 
 
       }
 
+
+
+      /* =======================================================
+         GOOGLE SHEET TIME FRACTION
+      ======================================================= */
 
       if (
 
@@ -2404,12 +2861,17 @@
 
         return Math.round(
 
-          cell.v * 86400000
+          cell.v
+
+          *
+
+          86400000
 
         );
 
 
       }
+
 
 
       const value =
@@ -2438,6 +2900,13 @@
         );
 
 
+
+      /* =======================================================
+         09:04
+         11:05
+         11:05:30
+      ======================================================= */
+
       let match =
 
         value.match(
@@ -2452,21 +2921,41 @@
 
         return (
 
-          Number(match[1]) * 3600000
+          Number(match[1])
+
+          *
+
+          3600000
 
           +
 
-          Number(match[2]) * 60000
+          Number(match[2])
+
+          *
+
+          60000
 
           +
 
-          Number(match[3] || 0) * 1000
+          Number(match[3] || 0)
+
+          *
+
+          1000
 
         );
 
 
       }
 
+
+
+      /* =======================================================
+         0904
+         1105
+         905
+         1105HRS
+      ======================================================= */
 
       match =
 
@@ -2492,23 +2981,31 @@
         return (
 
           Number(
+
             digits.slice(
               0,
               2
             )
+
           )
+
           *
+
           3600000
 
           +
 
           Number(
+
             digits.slice(
               2,
               4
             )
+
           )
+
           *
+
           60000
 
         );
@@ -2524,7 +3021,7 @@
 
 
     /* =========================================================
-       DATE / TIME COLUMN INDEX
+       FIND DATE / TIME COLUMNS
     ========================================================= */
 
     function findDateTimeColumns(columns) {
@@ -2547,6 +3044,7 @@
 
 
           const label =
+
             column.label || "";
 
 
@@ -2608,7 +3106,7 @@
 
 
     /* =========================================================
-       DATE ONLY VALUE
+       GET DATE ONLY
     ========================================================= */
 
     function getRowDateValue(
@@ -2647,7 +3145,7 @@
 
 
     /* =========================================================
-       DATE + TIME VALUE
+       GET DATE + TIME
     ========================================================= */
 
     function getRowDateTimeValue(
@@ -2710,7 +3208,11 @@
 
 
     /* =========================================================
-       SORT OLDEST -> NEWEST
+       SORT
+
+       OLDEST
+       ↓
+       NEWEST
     ========================================================= */
 
     function sortRowsByDateTime(
@@ -2798,7 +3300,9 @@
             !aValid && bValid
           ) {
 
+
             return -1;
+
 
           }
 
@@ -2807,7 +3311,9 @@
             aValid && !bValid
           ) {
 
+
             return 1;
+
 
           }
 
@@ -2817,7 +3323,15 @@
           ) {
 
 
-            return a.index - b.index;
+            return (
+
+              a.index
+
+              -
+
+              b.index
+
+            );
 
 
           }
@@ -2828,13 +3342,29 @@
           ) {
 
 
-            return a.dateTime - b.dateTime;
+            return (
+
+              a.dateTime
+
+              -
+
+              b.dateTime
+
+            );
 
 
           }
 
 
-          return a.index - b.index;
+          return (
+
+            a.index
+
+            -
+
+            b.index
+
+          );
 
 
         }
@@ -2845,7 +3375,9 @@
 
         function (item) {
 
+
           return item.row;
+
 
         }
 
@@ -2881,8 +3413,11 @@
           if (
 
             shouldHideColumn(
+
               column.label,
+
               config
+
             )
 
           ) {
@@ -2960,7 +3495,7 @@
 
 
     /* =========================================================
-       EMPTY ROW FILTER
+       REMOVE EMPTY ROW
     ========================================================= */
 
     function getNonEmptyRows(
@@ -3029,6 +3564,7 @@
 
 
           const label =
+
             item.column.label || "";
 
 
@@ -3158,14 +3694,23 @@
 
     /* =========================================================
        LOAD GOOGLE SHEET
-
-       SELECT *
-
-       SO MANUAL ROWS WITH BLANK TIMESTAMP ARE INCLUDED.
     ========================================================= */
 
     function loadSheet(config) {
 
+
+      /*
+         SELECT *
+
+         THIS IS IMPORTANT.
+
+         DO NOT USE:
+
+         WHERE A IS NOT NULL
+
+         BECAUSE MANUAL DATA MAY HAVE
+         NO GOOGLE FORM TIMESTAMP.
+      */
 
       const query =
         "select *";
@@ -3239,6 +3784,30 @@
         Date.now();
 
 
+
+      const oldScript =
+
+        document.querySelector(
+
+          'script[data-sheet-callback="' +
+
+          config.callback +
+
+          '"]'
+
+        );
+
+
+      if (oldScript) {
+
+
+        oldScript.remove();
+
+
+      }
+
+
+
       const script =
 
         document.createElement(
@@ -3254,6 +3823,10 @@
         true;
 
 
+      script.dataset.sheetCallback =
+        config.callback;
+
+
       script.onerror =
 
         function () {
@@ -3266,17 +3839,23 @@
             );
 
 
-          container.innerHTML =
+          if (container) {
 
-            '<div class="message">' +
 
-            'Unable to Load Google Sheet Data' +
+            container.innerHTML =
 
-            '<br>' +
+              '<div class="message">' +
 
-            'Check Google Sheet Sharing Permission' +
+              'Unable to Load Google Sheet Data' +
 
-            '</div>';
+              '<br>' +
+
+              'Check Google Sheet Sharing Permission' +
+
+              '</div>';
+
+
+          }
 
 
         };
@@ -3322,10 +3901,12 @@
 
 
     /* =========================================================
-       SCROLL TO LATEST
+       SCROLL TO LATEST DATA
     ========================================================= */
 
-    function scrollTableToBottom(container) {
+    function scrollTableToBottom(
+      container
+    ) {
 
 
       requestAnimationFrame(
@@ -3390,13 +3971,18 @@
 
         container.innerHTML =
 
-          '<div class="message">No Data Available</div>';
+          '<div class="message">' +
+
+          'No Data Available' +
+
+          '</div>';
 
 
         return;
 
 
       }
+
 
 
       const columns =
@@ -3408,6 +3994,11 @@
 
         response.table.rows || [];
 
+
+
+      /* =======================================================
+         VISIBLE COLUMNS
+      ======================================================= */
 
       const visibleColumns =
 
@@ -3421,6 +4012,31 @@
 
         );
 
+
+      if (
+        visibleColumns.length === 0
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Data Available' +
+
+          '</div>';
+
+
+        return;
+
+
+      }
+
+
+
+      /* =======================================================
+         REMOVE EMPTY ROWS
+      ======================================================= */
 
       let rows =
 
@@ -3440,7 +4056,11 @@
 
         container.innerHTML =
 
-          '<div class="message">No Readings Available</div>';
+          '<div class="message">' +
+
+          'No Readings Available' +
+
+          '</div>';
 
 
         return;
@@ -3451,7 +4071,9 @@
 
 
       /* =======================================================
-         SORT DATE + SAMPLING TIME
+         SORT USING KEYED DATE + SAMPLING TIME
+
+         NOT GOOGLE FORM TIMESTAMP
       ======================================================= */
 
       if (
@@ -3483,9 +4105,7 @@
 
 
       /* =======================================================
-         FIND LATEST CALENDAR DATE
-
-         NOT LATEST TIMESTAMP.
+         FIND LATEST DATE
       ======================================================= */
 
       let latestDateValue =
@@ -3522,11 +4142,13 @@
               &&
 
               (
+
                 latestDateValue === null
 
                 ||
 
                 value > latestDateValue
+
               )
 
             ) {
@@ -3573,7 +4195,7 @@
 
 
       /* =======================================================
-         TABLE
+         CREATE TABLE
       ======================================================= */
 
       const table =
@@ -3596,6 +4218,11 @@
           "tr"
         );
 
+
+
+      /* =======================================================
+         HEADERS
+      ======================================================= */
 
       visibleColumns.forEach(
 
@@ -3638,17 +4265,17 @@
       );
 
 
+
+      /* =======================================================
+         TABLE BODY
+      ======================================================= */
+
       const tbody =
 
         document.createElement(
           "tbody"
         );
 
-
-
-      /* =======================================================
-         DATE GROUPING
-      ======================================================= */
 
       const dateColourMap =
         new Map();
@@ -3675,6 +4302,11 @@
             );
 
 
+
+          /* =================================================
+             DATE FOR THIS ROW
+          ================================================= */
+
           const rowDate =
 
             dateTimeColumns.dateIndex >= 0
@@ -3696,7 +4328,7 @@
 
 
           /* =================================================
-             DIFFERENT COLOUR BY DATE
+             DEW POINT DATE GROUP COLOUR
           ================================================= */
 
           if (
@@ -3720,9 +4352,11 @@
 
 
             if (
+
               !dateColourMap.has(
                 dateKey
               )
+
             ) {
 
 
@@ -3730,7 +4364,10 @@
 
                 dateKey,
 
-                nextColourIndex %
+                nextColourIndex
+
+                %
+
                 DATE_GROUP_COLOUR_COUNT
 
               );
@@ -3752,10 +4389,16 @@
             tr.classList.add(
 
               "date-group-" +
+
               colourIndex
 
             );
 
+
+
+            /* ===============================================
+               NEW DATE = THICK LINE
+            =============================================== */
 
             if (
 
@@ -3785,7 +4428,7 @@
 
 
           /* =================================================
-             ALL DATA ON LATEST DATE = BOLD
+             ALL ROWS ON LATEST DATE = BOLD
           ================================================= */
 
           if (
@@ -3811,6 +4454,10 @@
           }
 
 
+
+          /* =================================================
+             CELLS
+          ================================================= */
 
           visibleColumns.forEach(
 
@@ -3890,7 +4537,11 @@
 
                   Math.abs(
 
-                    number - minimum
+                    number
+
+                    -
+
+                    minimum
 
                   )
 
@@ -3944,6 +4595,11 @@
       );
 
 
+      /*
+         AUTOMATICALLY DISPLAY
+         THE LATEST DATA
+      */
+
       scrollTableToBottom(
         container
       );
@@ -3953,7 +4609,7 @@
 
 
     /* =========================================================
-       CALLBACKS
+       GOOGLE SHEET CALLBACKS
     ========================================================= */
 
     window.swabbingResponse =
@@ -3993,7 +4649,7 @@
 
 
     /* =========================================================
-       LOAD
+       LOAD BOTH TABLES
     ========================================================= */
 
     function loadAllTables() {
@@ -4013,8 +4669,19 @@
 
 
 
+    /* =========================================================
+       INITIAL LOAD
+    ========================================================= */
+
     loadAllTables();
 
+
+
+    /* =========================================================
+       AUTO REFRESH GOOGLE SHEETS
+
+       EVERY 60 SECONDS
+    ========================================================= */
 
     setInterval(
 
