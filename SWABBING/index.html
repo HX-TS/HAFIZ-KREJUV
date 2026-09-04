@@ -53,10 +53,6 @@
 
       --grey: #5b5751;
 
-      --light-grey: #dedad3;
-
-      --datetime-width: 145px;
-
     }
 
 
@@ -133,17 +129,15 @@
 
       flex-shrink: 0;
 
-      min-height: 95px;
-
       height: 95px;
+
+      min-height: 95px;
 
       display: grid;
 
       grid-template-columns:
         minmax(0, 1fr)
         auto;
-
-      align-items: stretch;
 
       background:
         var(--cream);
@@ -185,9 +179,9 @@
           48px
         );
 
-      line-height: 0.92;
-
       font-weight: 900;
+
+      line-height: 0.92;
 
       letter-spacing: -0.045em;
 
@@ -206,10 +200,10 @@
 
       letter-spacing: 0.28em;
 
-      text-transform: uppercase;
-
       color:
         var(--grey);
+
+      text-transform: uppercase;
 
     }
 
@@ -221,7 +215,7 @@
 
     .main-bookmark {
 
-      min-width: 185px;
+      min-width: 190px;
 
       display: flex;
 
@@ -237,19 +231,17 @@
         1px solid
         var(--black);
 
-      text-decoration: none;
+      background:
+        var(--cream);
 
       color:
         var(--black);
 
-      background:
-        var(--cream);
+      text-decoration: none;
 
       text-align: center;
 
       font-size: 12px;
-
-      line-height: 1.15;
 
       font-weight: 900;
 
@@ -284,8 +276,6 @@
 
       font-size: 18px;
 
-      line-height: 1;
-
       font-weight: 900;
 
     }
@@ -293,7 +283,7 @@
 
 
     /* =========================================================
-       MAIN DATA AREA
+       DASHBOARD
     ========================================================= */
 
     .dashboard {
@@ -374,25 +364,18 @@
     }
 
 
-    .panel-title-text {
-
-      min-width: 0;
-
-    }
-
-
     .panel-note {
 
       flex-shrink: 0;
+
+      color:
+        var(--grey);
 
       font-size: 8px;
 
       font-weight: 800;
 
       letter-spacing: 0.08em;
-
-      color:
-        var(--grey);
 
       text-align: right;
 
@@ -580,10 +563,7 @@
 
 
     /* =========================================================
-       LOWEST DEW POINT VALUE
-
-       ONLY THE LOWEST VALUE IS MADE BOLD.
-       NO COLOUR HIGHLIGHT.
+       LOWEST VALUE
     ========================================================= */
 
     td.lowest-value {
@@ -623,13 +603,6 @@
       font-weight: 800;
 
       text-transform: uppercase;
-
-    }
-
-
-    .message strong {
-
-      font-weight: 900;
 
     }
 
@@ -679,17 +652,10 @@
 
 
     /* =========================================================
-       SMALL LAPTOP / TABLET
+       SMALL LAPTOP
     ========================================================= */
 
     @media (max-width: 1200px) {
-
-      :root {
-
-        --datetime-width: 130px;
-
-      }
-
 
       .hero {
 
@@ -763,9 +729,9 @@
 
       .hero {
 
-        min-height: 70px;
-
         height: 70px;
+
+        min-height: 70px;
 
         grid-template-columns:
           minmax(0, 1fr)
@@ -815,8 +781,6 @@
           8px;
 
         font-size: 8px;
-
-        line-height: 1.25;
 
       }
 
@@ -928,6 +892,7 @@
 
         </div>
 
+
         <div class="hero-subtitle">
 
           TECHSMITH
@@ -940,7 +905,6 @@
       <a
         class="main-bookmark"
         href="https://hx-ts.github.io/HAFIZ-KREJUV/"
-        target="_self"
       >
 
         MAIN BOOKMARK
@@ -957,7 +921,7 @@
 
 
     <!-- =====================================================
-         TABLES
+         DATA TABLES
     ====================================================== -->
 
     <main class="dashboard">
@@ -972,11 +936,12 @@
 
         <div class="panel-title">
 
-          <div class="panel-title-text">
+          <div>
 
             SWABBING PIG RUN
 
           </div>
+
 
           <div class="panel-note">
 
@@ -1014,11 +979,12 @@
 
         <div class="panel-title">
 
-          <div class="panel-title-text">
+          <div>
 
             DEW POINT DATA
 
           </div>
+
 
           <div class="panel-note">
 
@@ -1069,7 +1035,9 @@
 
 
     /* =========================================================
-       SETTINGS
+       REFRESH RATE
+
+       60 SECONDS
     ========================================================= */
 
     const TABLE_REFRESH_TIME =
@@ -1078,194 +1046,86 @@
 
 
     /* =========================================================
-       GOOGLE SHEET LINKS
-
-       IMPORTANT:
-
-       YOU DID NOT INCLUDE THE SWABBING PIG RUN GOOGLE SHEET
-       LINK IN YOUR MESSAGE.
-
-       PASTE THE FULL GOOGLE SHEET LINK BELOW.
+       GOOGLE SHEETS
     ========================================================= */
 
-    const SWABBING_SHEET_URL =
+    const SWABBING = {
 
-      "PASTE_SWABBING_PIG_RUN_GOOGLE_SHEET_LINK_HERE";
+      spreadsheetId:
 
+        "1dPQfygx00SWQLDKmLbK1zyKX5by40ub6xZqm1VAUaDs",
 
+      gid:
 
-    const DEW_POINT_SHEET_URL =
+        "0",
 
-      "https://docs.google.com/spreadsheets/d/1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM/edit?usp=sharing";
+      range:
 
+        "A:Z",
 
-
-    /* =========================================================
-       EXTRACT GOOGLE SHEET ID + GID FROM FULL URL
-    ========================================================= */
-
-    function parseGoogleSheetUrl(url) {
-
-
-      const text =
-        String(
-          url || ""
-        )
-        .trim();
-
-
-      const idMatch =
-        text.match(
-          /\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/
-        );
-
-
-      const gidMatch =
-        text.match(
-          /[?&#]gid=(\d+)/
-        );
-
-
-      return {
-
-        spreadsheetId:
-          idMatch
-            ? idMatch[1]
-            : "",
-
-        gid:
-          gidMatch
-            ? gidMatch[1]
-            : "0"
-
-      };
-
-
-    }
-
-
-
-    /* =========================================================
-       CREATE SHEET CONFIG
-    ========================================================= */
-
-    function createSheetConfig(
-      url,
-      container,
-      callback,
-      options = {}
-    ) {
-
-
-      const sheet =
-        parseGoogleSheetUrl(
-          url
-        );
-
-
-      return {
-
-        spreadsheetId:
-          sheet.spreadsheetId,
-
-        gid:
-          sheet.gid,
-
-        range:
-          options.range || "A:Z",
-
-        container:
-          container,
-
-        callback:
-          callback,
-
-        hiddenColumns:
-          options.hiddenColumns || [],
-
-        sortByDateTime:
-          options.sortByDateTime !== false,
-
-        highlightLowest:
-          options.highlightLowest === true,
-
-        missingMessage:
-          options.missingMessage ||
-          "Google Sheet Link Not Configured"
-
-      };
-
-
-    }
-
-
-
-    /* =========================================================
-       SHEET CONFIGURATION
-    ========================================================= */
-
-    const SWABBING =
-
-      createSheetConfig(
-
-        SWABBING_SHEET_URL,
+      container:
 
         "swabbingContainer",
 
+      callback:
+
         "swabbingResponse",
 
-        {
+      hiddenColumns: [
 
-          range:
-            "A:Z",
+        "TIMESTAMP"
 
-          hiddenColumns: [
-            "TIMESTAMP"
-          ],
+      ],
 
-          sortByDateTime:
-            true,
+      sortByDateTime:
 
-          highlightLowest:
-            false,
+        true,
 
-          missingMessage:
-            "ADD SWABBING PIG RUN GOOGLE SHEET LINK IN SWABBING_SHEET_URL"
+      highlightLowest:
 
-        }
+        false
 
-      );
+    };
 
 
 
-    const DEW_POINT =
+    const DEW_POINT = {
 
-      createSheetConfig(
+      spreadsheetId:
 
-        DEW_POINT_SHEET_URL,
+        "1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM",
+
+      gid:
+
+        "0",
+
+      range:
+
+        "A:Z",
+
+      container:
 
         "dewPointContainer",
 
+      callback:
+
         "dewPointResponse",
 
-        {
+      hiddenColumns: [
 
-          range:
-            "A:Z",
+        "TIMESTAMP"
 
-          hiddenColumns: [
-            "TIMESTAMP"
-          ],
+      ],
 
-          sortByDateTime:
-            true,
+      sortByDateTime:
 
-          highlightLowest:
-            true
+        true,
 
-        }
+      highlightLowest:
 
-      );
+        true
+
+    };
 
 
 
@@ -1377,14 +1237,6 @@
 
     /* =========================================================
        EXTRACT NUMBER
-
-       SUPPORTS:
-
-       -32.6
-       +12
-       -32.6 °Cdp
-       12 °C
-       Unicode minus sign
     ========================================================= */
 
     function extractNumber(value) {
@@ -1447,6 +1299,7 @@
 
 
       const number =
+
         parseFloat(
           match[0]
         );
@@ -1460,19 +1313,19 @@
 
         : null;
 
-
     }
 
 
 
     /* =========================================================
-       COLUMN NAME CHECKS
+       COLUMN IDENTIFICATION
     ========================================================= */
 
     function isTimestampColumn(name) {
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -1490,7 +1343,6 @@
 
       );
 
-
     }
 
 
@@ -1499,6 +1351,7 @@
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -1532,7 +1385,6 @@
 
       );
 
-
     }
 
 
@@ -1541,6 +1393,7 @@
 
 
       const n =
+
         normalizeText(
           name
         );
@@ -1585,7 +1438,6 @@
 
       );
 
-
     }
 
 
@@ -1601,14 +1453,11 @@
 
 
       const name =
+
         normalizeText(
           columnLabel
         );
 
-
-      /*
-         ALWAYS HIDE GOOGLE FORM TIMESTAMP
-      */
 
       if (
         isTimestampColumn(
@@ -1622,10 +1471,13 @@
 
 
       const hiddenColumns =
+
         (
           config.hiddenColumns || []
         )
+
         .map(
+
           function (item) {
 
             return normalizeText(
@@ -1633,6 +1485,7 @@
             );
 
           }
+
         );
 
 
@@ -1658,13 +1511,12 @@
 
       );
 
-
     }
 
 
 
     /* =========================================================
-       DATE PARSER
+       PARSE DATE
     ========================================================= */
 
     function parseDateCell(cell) {
@@ -1675,34 +1527,6 @@
         return null;
 
       }
-
-
-      /*
-         JAVASCRIPT DATE OBJECT
-      */
-
-      if (
-        cell.v instanceof Date
-      ) {
-
-        return new Date(
-
-          cell.v.getFullYear(),
-
-          cell.v.getMonth(),
-
-          cell.v.getDate(),
-
-          0,
-          0,
-          0,
-          0
-
-        )
-        .getTime();
-
-      }
-
 
 
       const candidates = [
@@ -1740,19 +1564,19 @@
 
 
         const text =
+
           String(candidate)
           .trim();
 
 
         /*
-           GOOGLE VISUALIZATION DATE
+           GOOGLE GVIZ DATE
 
            Date(2026,8,4)
-
-           MONTH IS ZERO BASED
         */
 
         let match =
+
           text.match(
 
             /Date\(\s*(\d{4})\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})/
@@ -1779,18 +1603,17 @@
           )
           .getTime();
 
-
         }
 
 
 
         /*
            DD/MM/YYYY
-
            DD-MM-YYYY
         */
 
         match =
+
           text.match(
 
             /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/
@@ -1817,7 +1640,6 @@
           )
           .getTime();
 
-
         }
 
 
@@ -1827,6 +1649,7 @@
         */
 
         match =
+
           text.match(
 
             /^(\d{4})-(\d{1,2})-(\d{1,2})$/
@@ -1853,20 +1676,12 @@
           )
           .getTime();
 
-
         }
 
 
 
-        /*
-           FALLBACK FOR:
-
-           4 Sep 2026
-           Sep 4 2026
-           ETC.
-        */
-
         const parsed =
+
           Date.parse(
             text
           );
@@ -1880,6 +1695,7 @@
 
 
           const date =
+
             new Date(
               parsed
             );
@@ -1901,7 +1717,6 @@
           )
           .getTime();
 
-
         }
 
 
@@ -1915,7 +1730,7 @@
 
 
     /* =========================================================
-       TIME PARSER
+       PARSE TIME
     ========================================================= */
 
     function parseTimeCell(cell) {
@@ -1928,44 +1743,6 @@
       }
 
 
-      /*
-         JAVASCRIPT DATE OBJECT
-      */
-
-      if (
-        cell.v instanceof Date
-      ) {
-
-
-        return (
-
-          cell.v.getHours()
-          *
-          3600000
-
-          +
-
-          cell.v.getMinutes()
-          *
-          60000
-
-          +
-
-          cell.v.getSeconds()
-          *
-          1000
-
-        );
-
-
-      }
-
-
-
-      /*
-         GOOGLE SHEET TIME MAY APPEAR AS
-         FRACTION OF ONE DAY
-      */
 
       if (
 
@@ -1985,17 +1762,12 @@
         return Math.round(
 
           cell.v
+
           *
-          24
-          *
-          60
-          *
-          60
-          *
-          1000
+
+          86400000
 
         );
-
 
       }
 
@@ -2036,6 +1808,7 @@
 
 
         let text =
+
           String(candidate)
 
           .trim()
@@ -2055,12 +1828,11 @@
 
 
         /*
-           GOOGLE DATE WITH TIME
-
-           Date(2026,8,4,11,5,0)
+           GOOGLE GVIZ DATETIME
         */
 
         let match =
+
           text.match(
 
             /DATE\(\s*\d{4}\s*,\s*\d{1,2}\s*,\s*\d{1,2}\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})(?:\s*,\s*(\d{1,2}))?/
@@ -2071,56 +1843,32 @@
         if (match) {
 
 
-          const hour =
-            Number(
-              match[1]
-            );
-
-
-          const minute =
-            Number(
-              match[2]
-            );
-
-
-          const second =
-            Number(
-              match[3] || 0
-            );
-
-
           return (
 
-            hour
-            *
-            3600000
+            Number(match[1]) * 3600000
 
             +
 
-            minute
-            *
-            60000
+            Number(match[2]) * 60000
 
             +
 
-            second
-            *
-            1000
+            Number(match[3] || 0) * 1000
 
           );
-
 
         }
 
 
 
         /*
+           09:04
            11:05
            11:05:30
-           11:05 HRS
         */
 
         match =
+
           text.match(
 
             /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
@@ -2132,18 +1880,21 @@
 
 
           const hour =
+
             Number(
               match[1]
             );
 
 
           const minute =
+
             Number(
               match[2]
             );
 
 
           const second =
+
             Number(
               match[3] || 0
             );
@@ -2170,24 +1921,17 @@
 
             return (
 
-              hour
-              *
-              3600000
+              hour * 3600000
 
               +
 
-              minute
-              *
-              60000
+              minute * 60000
 
               +
 
-              second
-              *
-              1000
+              second * 1000
 
             );
-
 
           }
 
@@ -2197,13 +1941,14 @@
 
 
         /*
+           0904
            1105
            905
            1105HRS
-           0904 HRS
         */
 
         match =
+
           text.match(
 
             /^(\d{3,4})\s*(?:HRS?)?$/
@@ -2215,6 +1960,7 @@
 
 
           const digits =
+
             match[1]
             .padStart(
               4,
@@ -2223,8 +1969,9 @@
 
 
           const hour =
+
             Number(
-              digits.slice(
+              digits.substring(
                 0,
                 2
               )
@@ -2232,8 +1979,9 @@
 
 
           const minute =
+
             Number(
-              digits.slice(
+              digits.substring(
                 2,
                 4
               )
@@ -2261,18 +2009,13 @@
 
             return (
 
-              hour
-              *
-              3600000
+              hour * 3600000
 
               +
 
-              minute
-              *
-              60000
+              minute * 60000
 
             );
-
 
           }
 
@@ -2282,11 +2025,11 @@
 
 
         /*
-           11:05 AM
-           1:05 PM
+           AM / PM
         */
 
         match =
+
           text.match(
 
             /^(\d{1,2}):(\d{2})\s*(AM|PM)$/
@@ -2298,25 +2041,32 @@
 
 
           let hour =
+
             Number(
               match[1]
             );
 
 
           const minute =
+
             Number(
               match[2]
             );
 
 
           const period =
+
             match[3];
 
 
           if (
+
             period === "PM"
+
             &&
+
             hour !== 12
+
           ) {
 
             hour += 12;
@@ -2325,9 +2075,13 @@
 
 
           if (
+
             period === "AM"
+
             &&
+
             hour === 12
+
           ) {
 
             hour = 0;
@@ -2337,18 +2091,13 @@
 
           return (
 
-            hour
-            *
-            3600000
+            hour * 3600000
 
             +
 
-            minute
-            *
-            60000
+            minute * 60000
 
           );
-
 
         }
 
@@ -2364,18 +2113,9 @@
 
     /* =========================================================
        FIND DATE + TIME COLUMNS
-
-       IMPORTANT:
-
-       SORTING DOES NOT USE TIMESTAMP.
-
-       IT USES THE DATE AND TIME/MASA THAT YOU KEY INTO
-       THE TABLE.
     ========================================================= */
 
-    function findDateTimeColumns(
-      columns
-    ) {
+    function findDateTimeColumns(columns) {
 
 
       let dateIndex =
@@ -2395,6 +2135,7 @@
 
 
           const label =
+
             column.label || "";
 
 
@@ -2449,13 +2190,12 @@
 
       };
 
-
     }
 
 
 
     /* =========================================================
-       ROW SORT VALUE
+       GET ROW DATE/TIME
     ========================================================= */
 
     function getRowDateTimeValue(
@@ -2485,6 +2225,7 @@
 
 
       const dateValue =
+
         parseDateCell(
 
           row.c[
@@ -2528,255 +2269,167 @@
 
       );
 
-
     }
 
 
 
     /* =========================================================
-       LOAD GOOGLE SHEET
+       SORT ROWS
 
-       USE "SELECT *"
+       OLDEST -> NEWEST
 
-       DO NOT USE:
-       "WHERE A IS NOT NULL"
-
-       REASON:
-
-       GOOGLE FORM ROWS MAY HAVE TIMESTAMP IN COLUMN A,
-       BUT MANUAL ROWS MAY HAVE BLANK TIMESTAMP.
-
-       MANUAL DATA MUST STILL APPEAR.
+       LATEST DATA ALWAYS AT BOTTOM
     ========================================================= */
 
-    function loadSheet(config) {
+    function sortRowsByDateTime(
+      rows,
+      columns
+    ) {
 
 
-      const container =
+      const indexes =
 
-        document.getElementById(
-          config.container
+        findDateTimeColumns(
+          columns
         );
 
 
       if (
-        !config.spreadsheetId
+        indexes.dateIndex < 0
       ) {
 
-
-        container.innerHTML =
-
-          '<div class="message">' +
-
-          config.missingMessage +
-
-          '</div>';
-
-
-        return;
+        return rows;
 
       }
 
 
-      const query =
-        "select *";
+      const sortable =
+
+        rows.map(
+
+          function (
+            row,
+            index
+          ) {
 
 
-      const tqx =
+            return {
 
-        `out:json;responseHandler:${config.callback}`;
+              row:
+                row,
 
+              originalIndex:
+                index,
 
-      const url =
+              dateTime:
 
-        "https://docs.google.com/spreadsheets/d/"
+                getRowDateTimeValue(
 
-        +
+                  row,
 
-        config.spreadsheetId
+                  indexes.dateIndex,
 
-        +
+                  indexes.timeIndex
 
-        "/gviz/tq"
+                )
 
-        +
-
-        "?gid="
-
-        +
-
-        config.gid
-
-        +
-
-        "&range="
-
-        +
-
-        encodeURIComponent(
-          config.range
-        )
-
-        +
-
-        "&headers=1"
-
-        +
-
-        "&tqx="
-
-        +
-
-        encodeURIComponent(
-          tqx
-        )
-
-        +
-
-        "&tq="
-
-        +
-
-        encodeURIComponent(
-          query
-        )
-
-        +
-
-        "&_="
-
-        +
-
-        Date.now();
+            };
 
 
-
-      const oldScript =
-
-        document.querySelector(
-
-          'script[data-sheet-callback="' +
-
-          config.callback +
-
-          '"]'
+          }
 
         );
 
 
-      if (oldScript) {
+      sortable.sort(
 
-        oldScript.remove();
-
-      }
-
-
-
-      const script =
-
-        document.createElement(
-          "script"
-        );
+        function (
+          a,
+          b
+        ) {
 
 
-      script.src =
-        url;
+          const aValid =
+
+            Number.isFinite(
+              a.dateTime
+            );
 
 
-      script.async =
-        true;
+          const bValid =
+
+            Number.isFinite(
+              b.dateTime
+            );
 
 
-      script.dataset.sheetCallback =
-        config.callback;
+          if (
+            !aValid
+            &&
+            bValid
+          ) {
+
+            return -1;
+
+          }
 
 
-      script.onerror =
-        function () {
+          if (
+            aValid
+            &&
+            !bValid
+          ) {
+
+            return 1;
+
+          }
 
 
-          container.innerHTML =
-
-            '<div class="message">' +
-
-            'Unable to Load Google Sheet Data' +
-
-            '<br>' +
-
-            'Check Sheet Sharing Permission' +
-
-            '</div>';
+          if (
+            !aValid
+            &&
+            !bValid
+          ) {
 
 
-        };
+            return (
+
+              a.originalIndex
+
+              -
+
+              b.originalIndex
+
+            );
+
+          }
 
 
-      script.onload =
-        function () {
+          if (
+            a.dateTime !== b.dateTime
+          ) {
 
 
-          setTimeout(
+            return (
 
-            function () {
+              a.dateTime
 
+              -
 
-              if (
-                script.parentNode
-              ) {
+              b.dateTime
 
-                script.remove();
+            );
 
-              }
-
-
-            },
-
-            1000
-
-          );
+          }
 
 
-        };
+          return (
 
+            a.originalIndex
 
-      document.head.appendChild(
-        script
-      );
+            -
 
-
-    }
-
-
-
-    /* =========================================================
-       SCROLL TABLE TO LATEST DATA
-    ========================================================= */
-
-    function scrollTableToBottom(
-      container
-    ) {
-
-
-      requestAnimationFrame(
-
-        function () {
-
-
-          requestAnimationFrame(
-
-            function () {
-
-
-              container.scrollTop =
-
-                container.scrollHeight
-
-                -
-
-                container.clientHeight;
-
-
-            }
+            b.originalIndex
 
           );
 
@@ -2786,12 +2439,22 @@
       );
 
 
+      return sortable.map(
+
+        function (item) {
+
+          return item.row;
+
+        }
+
+      );
+
     }
 
 
 
     /* =========================================================
-       VISIBLE COLUMNS
+       FIND VISIBLE COLUMNS
     ========================================================= */
 
     function getVisibleColumns(
@@ -2814,16 +2477,19 @@
 
 
           const name =
+
             normalizeText(
               column.label
             );
 
 
           if (
+
             shouldHideColumn(
               name,
               config
             )
+
           ) {
 
             return;
@@ -2845,7 +2511,11 @@
                   &&
 
                   cellHasValue(
-                    row.c[index]
+
+                    row.c[
+                      index
+                    ]
+
                   )
 
                 );
@@ -2938,199 +2608,6 @@
 
       );
 
-
-    }
-
-
-
-    /* =========================================================
-       SORT BY KEYED DATE + TIME
-
-       ASCENDING:
-
-       OLDEST
-       ↓
-       NEWEST
-
-       THEREFORE LATEST DATA IS ALWAYS AT BOTTOM.
-    ========================================================= */
-
-    function sortRowsByDateTime(
-      rows,
-      columns
-    ) {
-
-
-      const dateTimeColumns =
-
-        findDateTimeColumns(
-          columns
-        );
-
-
-      if (
-        dateTimeColumns.dateIndex < 0
-      ) {
-
-        return rows;
-
-      }
-
-
-      const sortableRows =
-
-        rows.map(
-
-          function (
-            row,
-            index
-          ) {
-
-
-            return {
-
-              row:
-                row,
-
-              originalIndex:
-                index,
-
-              dateTime:
-
-                getRowDateTimeValue(
-
-                  row,
-
-                  dateTimeColumns.dateIndex,
-
-                  dateTimeColumns.timeIndex
-
-                )
-
-            };
-
-
-          }
-
-        );
-
-
-      sortableRows.sort(
-
-        function (
-          a,
-          b
-        ) {
-
-
-          const aValid =
-            Number.isFinite(
-              a.dateTime
-            );
-
-
-          const bValid =
-            Number.isFinite(
-              b.dateTime
-            );
-
-
-          /*
-             ROW WITHOUT VALID DATE/TIME
-             GOES ABOVE THE DATED RECORDS.
-          */
-
-          if (
-            !aValid
-            &&
-            bValid
-          ) {
-
-            return -1;
-
-          }
-
-
-          if (
-            aValid
-            &&
-            !bValid
-          ) {
-
-            return 1;
-
-          }
-
-
-          if (
-            !aValid
-            &&
-            !bValid
-          ) {
-
-            return (
-
-              a.originalIndex
-
-              -
-
-              b.originalIndex
-
-            );
-
-          }
-
-
-          if (
-            a.dateTime !==
-            b.dateTime
-          ) {
-
-            return (
-
-              a.dateTime
-
-              -
-
-              b.dateTime
-
-            );
-
-          }
-
-
-          /*
-             SAME DATE AND TIME:
-             KEEP ORIGINAL SHEET ORDER.
-          */
-
-          return (
-
-            a.originalIndex
-
-            -
-
-            b.originalIndex
-
-          );
-
-
-        }
-
-      );
-
-
-      return sortableRows.map(
-
-        function (item) {
-
-          return item.row;
-
-        }
-
-      );
-
-
     }
 
 
@@ -3138,18 +2615,8 @@
     /* =========================================================
        FIND LOWEST VALUES
 
-       FOR DEW POINT TABLE ONLY.
-
-       LOWEST VALUE IS CALCULATED SEPARATELY FOR EACH
-       MEASUREMENT COLUMN.
-
-       EXAMPLE:
-
-       GPP4 TPR -> LOWEST GPP4 TPR
-       BV10.3   -> LOWEST BV10.3
-       BV13     -> LOWEST BV13
-       GPS ADU  -> LOWEST GPS ADU
-       GPS TPL  -> LOWEST GPS TPL
+       EACH DEW POINT LOCATION COLUMN
+       IS CALCULATED SEPARATELY
     ========================================================= */
 
     function findLowestValues(
@@ -3159,6 +2626,7 @@
 
 
       const lowestValues =
+
         new Map();
 
 
@@ -3168,15 +2636,13 @@
 
 
           const columnName =
+
             item.column.label || "";
 
 
           /*
-             DO NOT FIND "LOWEST" FOR:
-
-             DATE
-             TIME / MASA
-             TIMESTAMP
+             DO NOT CALCULATE LOWEST FOR
+             DATE OR TIME COLUMNS
           */
 
           if (
@@ -3224,20 +2690,19 @@
                   : null;
 
 
-              const displayValue =
-                getCellDisplayValue(
-                  cell
-                );
+              const value =
 
-
-              const number =
                 extractNumber(
-                  displayValue
+
+                  getCellDisplayValue(
+                    cell
+                  )
+
                 );
 
 
               if (
-                number === null
+                value === null
               ) {
 
                 return;
@@ -3251,12 +2716,12 @@
 
                 ||
 
-                number < minimum
+                value < minimum
 
               ) {
 
                 minimum =
-                  number;
+                  value;
 
               }
 
@@ -3289,6 +2754,222 @@
 
 
       return lowestValues;
+
+    }
+
+
+
+    /* =========================================================
+       LOAD GOOGLE SHEET
+
+       IMPORTANT:
+
+       SELECT *
+
+       NOT:
+
+       WHERE A IS NOT NULL
+
+       THIS ALLOWS MANUAL DATA WITH NO FORM TIMESTAMP.
+    ========================================================= */
+
+    function loadSheet(config) {
+
+
+      const query =
+
+        "select *";
+
+
+      const tqx =
+
+        `out:json;responseHandler:${config.callback}`;
+
+
+      const url =
+
+        "https://docs.google.com/spreadsheets/d/"
+
+        +
+
+        config.spreadsheetId
+
+        +
+
+        "/gviz/tq"
+
+        +
+
+        "?gid="
+
+        +
+
+        config.gid
+
+        +
+
+        "&range="
+
+        +
+
+        encodeURIComponent(
+          config.range
+        )
+
+        +
+
+        "&headers=1"
+
+        +
+
+        "&tqx="
+
+        +
+
+        encodeURIComponent(
+          tqx
+        )
+
+        +
+
+        "&tq="
+
+        +
+
+        encodeURIComponent(
+          query
+        )
+
+        +
+
+        "&_="
+
+        +
+
+        Date.now();
+
+
+
+      const script =
+
+        document.createElement(
+          "script"
+        );
+
+
+      script.src =
+        url;
+
+
+      script.async =
+        true;
+
+
+      script.onerror =
+
+        function () {
+
+
+          const container =
+
+            document.getElementById(
+              config.container
+            );
+
+
+          if (container) {
+
+
+            container.innerHTML =
+
+              '<div class="message">' +
+
+              'Unable to Load Google Sheet Data' +
+
+              '<br>' +
+
+              'Check Google Sheet Sharing Permission' +
+
+              '</div>';
+
+
+          }
+
+
+        };
+
+
+      script.onload =
+
+        function () {
+
+
+          setTimeout(
+
+            function () {
+
+
+              if (
+                script.parentNode
+              ) {
+
+                script.remove();
+
+              }
+
+
+            },
+
+            1000
+
+          );
+
+
+        };
+
+
+      document.head.appendChild(
+        script
+      );
+
+    }
+
+
+
+    /* =========================================================
+       SCROLL TO LATEST
+    ========================================================= */
+
+    function scrollTableToBottom(container) {
+
+
+      requestAnimationFrame(
+
+        function () {
+
+
+          requestAnimationFrame(
+
+            function () {
+
+
+              container.scrollTop =
+
+                container.scrollHeight
+
+                -
+
+                container.clientHeight;
+
+
+            }
+
+          );
+
+
+        }
+
+      );
 
     }
 
@@ -3386,7 +3067,7 @@
 
 
       /* =======================================================
-         REMOVE COMPLETELY EMPTY ROWS
+         REMOVE EMPTY ROWS
       ======================================================= */
 
       let rows =
@@ -3398,7 +3079,6 @@
           visibleColumns
 
         );
-
 
 
       if (
@@ -3422,9 +3102,9 @@
 
 
       /* =======================================================
-         SORT BY DATE + TIME ENTERED IN TABLE
+         SORT BY USER KEYED DATE + TIME
 
-         NOT GOOGLE FORM TIMESTAMP.
+         NOT FORM TIMESTAMP
       ======================================================= */
 
       if (
@@ -3448,7 +3128,7 @@
 
 
       /* =======================================================
-         FIND LOWEST DEW POINT VALUE
+         LOWEST VALUE
       ======================================================= */
 
       const lowestValues =
@@ -3493,10 +3173,6 @@
 
 
 
-      /* =======================================================
-         TABLE HEADERS
-      ======================================================= */
-
       visibleColumns.forEach(
 
         function (item) {
@@ -3536,7 +3212,7 @@
 
 
       /* =======================================================
-         TABLE BODY
+         BODY
       ======================================================= */
 
       const tbody =
@@ -3632,11 +3308,7 @@
 
                   Math.abs(
 
-                    number
-
-                    -
-
-                    minimum
+                    number - minimum
 
                   )
 
@@ -3681,11 +3353,6 @@
       );
 
 
-
-      /* =======================================================
-         DISPLAY TABLE
-      ======================================================= */
-
       container.innerHTML =
         "";
 
@@ -3695,25 +3362,24 @@
       );
 
 
-
-      /* =======================================================
-         AUTOMATICALLY SHOW LATEST ROW AT BOTTOM
-      ======================================================= */
+      /*
+         SHOW LATEST DATA
+      */
 
       scrollTableToBottom(
         container
       );
-
 
     }
 
 
 
     /* =========================================================
-       GOOGLE RESPONSE CALLBACKS
+       GOOGLE CALLBACKS
     ========================================================= */
 
     window.swabbingResponse =
+
       function (response) {
 
 
@@ -3731,6 +3397,7 @@
 
 
     window.dewPointResponse =
+
       function (response) {
 
 
@@ -3748,7 +3415,7 @@
 
 
     /* =========================================================
-       LOAD ALL TABLES
+       LOAD ALL
     ========================================================= */
 
     function loadAllTables() {
@@ -3777,7 +3444,7 @@
 
 
     /* =========================================================
-       AUTO REFRESH EVERY 60 SECONDS
+       AUTO REFRESH
     ========================================================= */
 
     setInterval(
