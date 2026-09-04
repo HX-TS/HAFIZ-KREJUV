@@ -500,7 +500,7 @@
 
     .dew-graph-panel {
 
-      min-height: 620px;
+      min-height: 650px;
 
     }
 
@@ -547,13 +547,6 @@
       letter-spacing: 0.035em;
 
       text-transform: uppercase;
-
-    }
-
-
-    .panel-title-main {
-
-      min-width: 0;
 
     }
 
@@ -713,7 +706,7 @@
 
 
     /* =========================================================
-       DEW POINT TABLE GROUPS
+       DEW POINT TABLE
     ========================================================= */
 
     #dewPointContainer
@@ -968,7 +961,7 @@
 
       display: block;
 
-      height: 530px;
+      height: 555px;
 
       background:
         #ffffff;
@@ -1147,8 +1140,7 @@
           8px
           11px;
 
-        border-left:
-          none;
+        border-left: none;
 
       }
 
@@ -1204,7 +1196,7 @@
 
       .dew-graph-panel {
 
-        min-height: 610px;
+        min-height: 655px;
 
       }
 
@@ -1297,6 +1289,13 @@
       }
 
 
+      .dew-chart {
+
+        height: 555px;
+
+      }
+
+
       .footer {
 
         min-height: 28px;
@@ -1353,6 +1352,7 @@
 
         </div>
 
+
         <div
           class="current-shift"
           id="currentShift"
@@ -1373,7 +1373,9 @@
         MAIN BOOKMARK
 
         <span class="bookmark-arrow">
+
           ↗
+
         </span>
 
       </a>
@@ -1390,9 +1392,12 @@
     <main class="dashboard">
 
 
-      <!-- SWABBING TABLE -->
+      <!-- ===================================================
+           SWABBING TABLE
+      ==================================================== -->
 
       <section class="reading-panel">
+
 
         <div class="panel-title">
 
@@ -1424,13 +1429,17 @@
 
         </div>
 
+
       </section>
 
 
 
-      <!-- SWABBING GRAPH -->
+      <!-- ===================================================
+           SWABBING GRAPH
+      ==================================================== -->
 
       <section class="graph-panel">
+
 
         <div class="panel-title">
 
@@ -1453,6 +1462,7 @@
 
         <div class="graph-info-bar">
 
+
           <div
             class="graph-count"
             id="swabbingGraphCount"
@@ -1464,6 +1474,7 @@
 
 
           <div class="graph-legend">
+
 
             <div class="legend-item">
 
@@ -1515,7 +1526,9 @@
 
             </div>
 
+
           </div>
+
 
         </div>
 
@@ -1533,13 +1546,17 @@
 
         </div>
 
+
       </section>
 
 
 
-      <!-- DEW POINT TABLE -->
+      <!-- ===================================================
+           DEW POINT TABLE
+      ==================================================== -->
 
       <section class="reading-panel">
+
 
         <div class="panel-title">
 
@@ -1571,13 +1588,17 @@
 
         </div>
 
+
       </section>
 
 
 
-      <!-- DEW POINT GRAPH -->
+      <!-- ===================================================
+           DEW POINT GRAPH
+      ==================================================== -->
 
       <section class="graph-panel dew-graph-panel">
+
 
         <div class="panel-title">
 
@@ -1598,6 +1619,7 @@
 
         <div class="graph-info-bar">
 
+
           <div
             class="graph-count"
             id="dewGraphInfo"
@@ -1609,6 +1631,7 @@
 
 
           <div class="graph-legend">
+
 
             <div class="legend-item">
 
@@ -1678,7 +1701,9 @@
 
             </div>
 
+
           </div>
+
 
         </div>
 
@@ -1695,6 +1720,7 @@
           </div>
 
         </div>
+
 
       </section>
 
@@ -2375,7 +2401,7 @@
 
 
     /* =========================================================
-       DATE / TIME
+       DATE
     ========================================================= */
 
     function parseDateCell(cell) {
@@ -2543,6 +2569,10 @@
     }
 
 
+
+    /* =========================================================
+       TIME
+    ========================================================= */
 
     function parseTimeCell(cell) {
 
@@ -2818,6 +2848,7 @@
             :
 
             0
+
         )
 
       );
@@ -2885,10 +2916,22 @@
           b
         ) {
 
-          if (
-            !Number.isFinite(
+          const av =
+            Number.isFinite(
               a.dateTime
-            )
+            );
+
+
+          const bv =
+            Number.isFinite(
+              b.dateTime
+            );
+
+
+          if (
+            !av
+            &&
+            bv
           ) {
 
             return -1;
@@ -2897,12 +2940,27 @@
 
 
           if (
-            !Number.isFinite(
-              b.dateTime
-            )
+            av
+            &&
+            !bv
           ) {
 
             return 1;
+
+          }
+
+
+          if (
+            !av
+            &&
+            !bv
+          ) {
+
+            return (
+              a.index
+              -
+              b.index
+            );
 
           }
 
@@ -3250,6 +3308,7 @@
         Date.now();
 
 
+
       const oldScript =
         document.querySelector(
 
@@ -3267,6 +3326,7 @@
         oldScript.remove();
 
       }
+
 
 
       const script =
@@ -3353,6 +3413,15 @@
         ||
         !response.table
       ) {
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Data Available' +
+
+          '</div>';
+
 
         return;
 
@@ -3468,6 +3537,7 @@
           :
 
           new Map();
+
 
 
       const table =
@@ -3930,13 +4000,7 @@
 
 
     /* =========================================================
-       PIG TYPE DISPLAY
-
-       BIDI HS -> BD HS
-
-       BARE FOAM -> BF
-
-       BARE FOAM 14" OVERSIZE -> BF14
+       SHORT PIG TYPE
     ========================================================= */
 
     function getShortPigType(
@@ -3973,10 +4037,46 @@
         );
 
 
-      /*
-         BF14 MUST BE CHECKED
-         BEFORE NORMAL BARE FOAM
-      */
+
+      /* =======================================================
+         CRISS CROSS FOAM
+         -> CCF
+      ======================================================= */
+
+      if (
+
+        text.includes(
+          "CRISS CROSS"
+        )
+
+        ||
+
+        text.includes(
+          "CRISS-CROSS"
+        )
+
+        ||
+
+        text.includes(
+          "CRISSCROSS"
+        )
+
+        ||
+
+        text === "CCF"
+
+      ) {
+
+        return "CCF";
+
+      }
+
+
+
+      /* =======================================================
+         BARE FOAM 14" OVERSIZE
+         -> BF14
+      ======================================================= */
 
       if (
 
@@ -4014,9 +4114,10 @@
 
 
 
-      /*
+      /* =======================================================
          BARE FOAM
-      */
+         -> BF
+      ======================================================= */
 
       if (
 
@@ -4038,9 +4139,10 @@
 
 
 
-      /*
-         BI-DI HIGH SEALING
-      */
+      /* =======================================================
+         BI-DI HS
+         -> BD HS
+      ======================================================= */
 
       const bidi =
 
@@ -4097,22 +4199,15 @@
       }
 
 
-
-      /*
-         DIRECT HIGH SEAL WORDING
-      */
-
       if (
 
-        text === "HIGH SEAL"
+        text ===
+        "HIGH SEAL"
 
         ||
 
-        text === "HIGH SEALING"
-
-        ||
-
-        text === "BIDI HIGH SEAL"
+        text ===
+        "HIGH SEALING"
 
       ) {
 
@@ -4121,12 +4216,6 @@
       }
 
 
-
-      /*
-         OTHER TYPES:
-         KEEP ORIGINAL DESCRIPTION
-      */
-
       return raw;
 
     }
@@ -4134,14 +4223,7 @@
 
 
     /* =========================================================
-       SWABBING DATA EXTRACTION
-
-       IMPORTANT:
-       DO NOT REMOVE A PIG JUST BECAUSE
-       WEIGHT DATA IS BLANK.
-
-       THIS ALLOWS BD HS TO REMAIN
-       ON THE X-AXIS.
+       SWABBING DATA
     ========================================================= */
 
     function extractSwabbingGraphData(
@@ -4314,7 +4396,6 @@
               null;
 
 
-
           if (
             gain === null
             &&
@@ -4329,7 +4410,6 @@
               before;
 
           }
-
 
 
           const pigNumber =
@@ -4422,15 +4502,6 @@
             );
 
 
-
-          /*
-             INCLUDE THE ROW IF THERE IS ANY
-             MEANINGFUL PIG INFORMATION.
-
-             THIS KEEPS BD HS EVEN WHEN
-             BEFORE / AFTER WEIGHT IS BLANK.
-          */
-
           const meaningful =
 
             pigNumber !== ""
@@ -4459,14 +4530,6 @@
           }
 
 
-
-          /*
-             X AXIS MAIN LABEL
-
-             IF BD HS DOES NOT HAVE A PIG NUMBER,
-             DISPLAY BD HS DIRECTLY ON THE X AXIS.
-          */
-
           let xLabel =
             pigNumber;
 
@@ -4491,7 +4554,6 @@
               );
 
           }
-
 
 
           result.push({
@@ -4526,7 +4588,7 @@
 
 
     /* =========================================================
-       TREND
+       SWABBING TREND
     ========================================================= */
 
     function calculateLinearTrend(
@@ -4633,49 +4695,68 @@
       }
 
 
-      const slope =
+      return {
 
-        (
+        slope:
+
+          (
+
+            n
+            *
+            sumXY
+
+            -
+
+            sumX
+            *
+            sumY
+
+          )
+
+          /
+
+          denominator,
+
+
+        intercept:
+
+          (
+
+            sumY
+
+            -
+
+            (
+
+              (
+
+                n
+                *
+                sumXY
+
+                -
+
+                sumX
+                *
+                sumY
+
+              )
+
+              /
+
+              denominator
+
+            )
+
+            *
+            sumX
+
+          )
+
+          /
 
           n
-          *
-          sumXY
 
-          -
-
-          sumX
-          *
-          sumY
-
-        )
-
-        /
-
-        denominator;
-
-
-      const intercept =
-
-        (
-
-          sumY
-
-          -
-
-          slope
-          *
-          sumX
-
-        )
-
-        /
-
-        n;
-
-
-      return {
-        slope,
-        intercept
       };
 
     }
@@ -4687,11 +4768,15 @@
       return Number.isFinite(
         value
       )
+
         ?
+
         value.toFixed(
           2
         )
+
         :
+
         "-";
 
     }
@@ -4832,7 +4917,6 @@
       }
 
 
-
       const latestRun =
         findLatestRun(
           data
@@ -4856,32 +4940,15 @@
           "SWABBING PIG WEIGHT COMPARISON — LATEST DATA";
 
 
-
       info.textContent =
 
         data.length
 
         +
 
-        " PIG / ITEM"
-
-        +
-
-        (
-          data.length === 1
-            ? ""
-            : "S"
-        )
-
-        +
-
-        " · ALL PIG TYPES INCLUDED · AUTO REFRESH 60 SEC";
+        " PIG / ITEMS · ALL PIG TYPES INCLUDED · AUTO REFRESH 60 SEC";
 
 
-
-      /* =======================================================
-         SIZE
-      ======================================================= */
 
       const wrapperWidth =
         Math.max(
@@ -4889,11 +4956,6 @@
           320
         );
 
-
-      /*
-         EXTRA SPACE PER PIG FOR
-         BETTER PRESENTATION
-      */
 
       const stepX =
 
@@ -4954,11 +5016,6 @@
         -
         top;
 
-
-
-      /* =======================================================
-         Y MAX
-      ======================================================= */
 
       let maximum =
         0;
@@ -5083,23 +5140,13 @@
 
         ' viewBox="0 0 ' + width + ' ' + height + '"' +
 
-        ' role="img"' +
-
-        ' aria-label="Swabbing pig weight comparison"' +
-
         '>';
 
 
 
-      /* BACKGROUND */
-
       svg +=
 
         '<rect' +
-
-        ' x="0"' +
-
-        ' y="0"' +
 
         ' width="' + width + '"' +
 
@@ -5110,10 +5157,6 @@
         '/>';
 
 
-
-      /* =======================================================
-         Y GRID
-      ======================================================= */
 
       for (
         let value = 0;
@@ -5172,8 +5215,6 @@
 
 
 
-      /* AXES */
-
       svg +=
 
         '<line' +
@@ -5187,8 +5228,6 @@
         ' y2="' + plotBottom + '"' +
 
         ' stroke="#111"' +
-
-        ' stroke-width="1.4"' +
 
         '/>';
 
@@ -5207,13 +5246,9 @@
 
         ' stroke="#111"' +
 
-        ' stroke-width="1.4"' +
-
         '/>';
 
 
-
-      /* Y TITLE */
 
       svg +=
 
@@ -5240,71 +5275,6 @@
         '</text>';
 
 
-
-      /* =======================================================
-         RUN SEPARATOR BACKGROUND
-      ======================================================= */
-
-      for (
-        let i = 1;
-        i < data.length;
-        i++
-      ) {
-
-        if (
-          data[i].run
-          &&
-          data[i - 1].run
-          &&
-          data[i].run
-          !==
-          data[i - 1].run
-        ) {
-
-          const separatorX =
-
-            (
-              xPos(
-                i - 1
-              )
-              +
-              xPos(
-                i
-              )
-            )
-            /
-            2;
-
-
-          svg +=
-
-            '<line' +
-
-            ' x1="' + separatorX + '"' +
-
-            ' y1="' + top + '"' +
-
-            ' x2="' + separatorX + '"' +
-
-            ' y2="' + (plotBottom + 65) + '"' +
-
-            ' stroke="#aaaaaa"' +
-
-            ' stroke-width="1"' +
-
-            ' stroke-dasharray="3 5"' +
-
-            '/>';
-
-        }
-
-      }
-
-
-
-      /* =======================================================
-         BARS
-      ======================================================= */
 
       const barWidth =
         16;
@@ -5346,8 +5316,6 @@
               ' width="' + barWidth + '"' +
 
               ' height="' + (plotBottom - y) + '"' +
-
-              ' rx="1"' +
 
               ' fill="#2878ad"' +
 
@@ -5407,8 +5375,6 @@
 
               ' height="' + (plotBottom - y) + '"' +
 
-              ' rx="1"' +
-
               ' fill="#ff7600"' +
 
               '/>';
@@ -5447,13 +5413,6 @@
       );
 
 
-
-      /* =======================================================
-         GAIN LINE
-
-         ONLY REAL GAIN POINTS ARE DRAWN.
-         BD HS WITH NO WEIGHT REMAINS ON X AXIS.
-      ======================================================= */
 
       const gainPoints =
         [];
@@ -5513,17 +5472,11 @@
 
           ' stroke-width="3"' +
 
-          ' stroke-linejoin="round"' +
-
-          ' stroke-linecap="round"' +
-
           '/>';
 
       }
 
 
-
-      /* GAIN DOTS */
 
       data.forEach(
 
@@ -5602,10 +5555,6 @@
 
 
 
-      /* =======================================================
-         TREND
-      ======================================================= */
-
       const trend =
         calculateLinearTrend(
           data
@@ -5670,13 +5619,10 @@
       /* =======================================================
          X SCALE
 
-         LINE 1 = PIG NUMBER / BD HS WHEN NO NUMBER
-
-         LINE 2 = SHORT PIG TYPE
-
          BF
          BF14
          BD HS
+         CCF
       ======================================================= */
 
       data.forEach(
@@ -5719,7 +5665,6 @@
               "";
 
 
-
           svg +=
 
             '<text' +
@@ -5736,8 +5681,6 @@
 
             ' font-weight="900"' +
 
-            ' fill="#111"' +
-
             '>' +
 
             escapeHtml(
@@ -5745,7 +5688,6 @@
             ) +
 
             '</text>';
-
 
 
           if (
@@ -5890,8 +5832,6 @@
 
             ' stroke="#333"' +
 
-            ' stroke-width="1.4"' +
-
             '/>';
 
 
@@ -5945,8 +5885,6 @@
 
             ' font-weight="900"' +
 
-            ' fill="#111"' +
-
             '>' +
 
             escapeHtml(
@@ -5968,8 +5906,6 @@
       }
 
 
-
-      /* X TITLE */
 
       svg +=
 
@@ -6001,10 +5937,6 @@
       wrapper.innerHTML =
         svg;
 
-
-      /*
-         LOAD GRAPH AT LATEST DATA
-      */
 
       requestAnimationFrame(
 
@@ -6117,7 +6049,14 @@
 
             return {
 
-              ...definition,
+              name:
+                definition.name,
+
+              words:
+                definition.words,
+
+              color:
+                definition.color,
 
               columnIndex:
                 findColumnAllWords(
@@ -6262,20 +6201,24 @@
 
 
 
+    /* =========================================================
+       DATE FORMATTING
+    ========================================================= */
+
     const MONTHS = [
 
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC"
 
     ];
 
@@ -6312,6 +6255,363 @@
         ]
 
       );
+
+    }
+
+
+
+    /* =========================================================
+       LATEST READING DATE + TIME
+
+       EXAMPLE:
+       04 SEP 2026 · 11:05
+    ========================================================= */
+
+    function graphDateTimeLabel(
+      timestamp
+    ) {
+
+      const date =
+        new Date(
+          timestamp
+        );
+
+
+      const day =
+        String(
+          date.getUTCDate()
+        )
+        .padStart(
+          2,
+          "0"
+        );
+
+
+      const month =
+        MONTHS[
+          date.getUTCMonth()
+        ];
+
+
+      const year =
+        date.getUTCFullYear();
+
+
+      const hour =
+        String(
+          date.getUTCHours()
+        )
+        .padStart(
+          2,
+          "0"
+        );
+
+
+      const minute =
+        String(
+          date.getUTCMinutes()
+        )
+        .padStart(
+          2,
+          "0"
+        );
+
+
+      return (
+
+        day
+
+        +
+
+        " "
+
+        +
+
+        month
+
+        +
+
+        " "
+
+        +
+
+        year
+
+        +
+
+        " · "
+
+        +
+
+        hour
+
+        +
+
+        ":"
+
+        +
+
+        minute
+
+      );
+
+    }
+
+
+
+    /* =========================================================
+       DEW POINT LABEL COLLISION SOLVER
+
+       AUTOMATICALLY SEPARATES ALL
+       LATEST READING BOXES
+    ========================================================= */
+
+    function arrangeDewPointLabels(
+      labels,
+      top,
+      bottom
+    ) {
+
+      if (
+        labels.length === 0
+      ) {
+
+        return labels;
+
+      }
+
+
+      /*
+         BOX HEIGHT = 52 PX
+         MINIMUM VISUAL GAP = 7 PX
+
+         CENTRE TO CENTRE:
+         52 + 7 = 59 PX
+      */
+
+      const minGap =
+        59;
+
+
+      const halfBox =
+        26;
+
+
+      const minY =
+        top
+        +
+        halfBox
+        +
+        3;
+
+
+      const maxY =
+        bottom
+        -
+        halfBox
+        -
+        3;
+
+
+
+      /*
+         SORT FROM TOP TO BOTTOM
+      */
+
+      labels.sort(
+
+        function (
+          a,
+          b
+        ) {
+
+          return (
+            a.targetY
+            -
+            b.targetY
+          );
+
+        }
+
+      );
+
+
+
+      /*
+         INITIAL POSITION
+      */
+
+      labels.forEach(
+
+        function (label) {
+
+          label.labelY =
+
+            Math.max(
+
+              minY,
+
+              Math.min(
+
+                maxY,
+
+                label.targetY
+
+              )
+
+            );
+
+        }
+
+      );
+
+
+
+      /*
+         FORWARD PASS
+
+         PUSH LOWER BOXES DOWN
+      */
+
+      for (
+        let i = 1;
+        i < labels.length;
+        i++
+      ) {
+
+        const minimumAllowed =
+
+          labels[
+            i - 1
+          ].labelY
+
+          +
+
+          minGap;
+
+
+        if (
+          labels[i].labelY
+          <
+          minimumAllowed
+        ) {
+
+          labels[i].labelY =
+            minimumAllowed;
+
+        }
+
+      }
+
+
+
+      /*
+         IF BOTTOM BOX GOES OUTSIDE,
+         SHIFT COMPLETE STACK UP
+      */
+
+      const overflow =
+
+        labels[
+          labels.length - 1
+        ].labelY
+
+        -
+
+        maxY;
+
+
+      if (
+        overflow > 0
+      ) {
+
+        labels.forEach(
+
+          function (label) {
+
+            label.labelY -=
+              overflow;
+
+          }
+
+        );
+
+      }
+
+
+
+      /*
+         BACKWARD PASS
+
+         ENSURE TOP SIDE STILL HAS
+         ENOUGH SPACING AFTER SHIFT
+      */
+
+      for (
+        let i = labels.length - 2;
+        i >= 0;
+        i--
+      ) {
+
+        const maximumAllowed =
+
+          labels[
+            i + 1
+          ].labelY
+
+          -
+
+          minGap;
+
+
+        if (
+          labels[i].labelY
+          >
+          maximumAllowed
+        ) {
+
+          labels[i].labelY =
+            maximumAllowed;
+
+        }
+
+      }
+
+
+
+      /*
+         IF TOP BOX GOES OUTSIDE,
+         SHIFT ENTIRE STACK DOWN
+      */
+
+      const underflow =
+
+        minY
+
+        -
+
+        labels[0].labelY;
+
+
+      if (
+        underflow > 0
+      ) {
+
+        labels.forEach(
+
+          function (label) {
+
+            label.labelY +=
+              underflow;
+
+          }
+
+        );
+
+      }
+
+
+      return labels;
 
     }
 
@@ -6366,22 +6666,39 @@
       }
 
 
+
       const allPoints =
-        series.flatMap(
+        [];
 
-          function (item) {
 
-            return item.points;
+      series.forEach(
 
-          }
+        function (item) {
 
-        );
+          item.points.forEach(
+
+            function (point) {
+
+              allPoints.push(
+                point
+              );
+
+            }
+
+          );
+
+        }
+
+      );
+
 
 
       const minTime =
-        Math.min(
+        Math.min.apply(
 
-          ...allPoints.map(
+          null,
+
+          allPoints.map(
 
             function (item) {
 
@@ -6395,9 +6712,11 @@
 
 
       const maxTime =
-        Math.max(
+        Math.max.apply(
 
-          ...allPoints.map(
+          null,
+
+          allPoints.map(
 
             function (item) {
 
@@ -6411,9 +6730,11 @@
 
 
       const minimum =
-        Math.min(
+        Math.min.apply(
 
-          ...allPoints.map(
+          null,
+
+          allPoints.map(
 
             function (item) {
 
@@ -6427,9 +6748,11 @@
 
 
       const maximum =
-        Math.max(
+        Math.max.apply(
 
-          ...allPoints.map(
+          null,
+
+          allPoints.map(
 
             function (item) {
 
@@ -6442,23 +6765,32 @@
         );
 
 
+
       let yMin =
 
         Math.floor(
 
           (
+
             Math.min(
               minimum,
               DEW_ACCEPTANCE
             )
+
             -
+
             2
+
           )
+
           /
+
           5
 
         )
+
         *
+
         5;
 
 
@@ -6467,41 +6799,103 @@
         Math.ceil(
 
           (
+
             Math.max(
               maximum,
               DEW_ACCEPTANCE
             )
+
             +
+
             2
+
           )
+
           /
+
           5
 
         )
+
         *
+
         5;
 
 
-      const width =
+      if (
+        yMax - yMin < 20
+      ) {
+
+        yMin -=
+          5;
+
+        yMax +=
+          5;
+
+      }
+
+
+
+      const wrapperWidth =
+        Math.max(
+          wrapper.clientWidth,
+          320
+        );
+
+
+      const oneDay =
+        86400000;
+
+
+      const daySpan =
+
         Math.max(
 
-          wrapper.clientWidth,
+          1,
 
-          1100
+          (
+            maxTime
+            -
+            minTime
+          )
+
+          /
+
+          oneDay
+
+        );
+
+
+      const width =
+
+        Math.max(
+
+          wrapperWidth,
+
+          1100,
+
+          daySpan
+          *
+          145
 
         );
 
 
       const height =
-        530;
+        555;
 
 
       const left =
         70;
 
 
+      /*
+         EXTRA RIGHT SPACE FOR
+         3-LINE LATEST READING BOX
+      */
+
       const right =
-        125;
+        190;
 
 
       const top =
@@ -6509,7 +6903,7 @@
 
 
       const bottom =
-        430;
+        440;
 
 
       const plotWidth =
@@ -6542,6 +6936,7 @@
         );
 
 
+
       function xPos(time) {
 
         return (
@@ -6551,25 +6946,39 @@
           +
 
           (
+
             (
               time
               -
               (
-                minTime - pad
+                minTime
+                -
+                pad
               )
             )
+
             /
+
             (
               (
-                maxTime + pad
+                maxTime
+                +
+                pad
               )
+
               -
+
               (
-                minTime - pad
+                minTime
+                -
+                pad
               )
             )
+
           )
+
           *
+
           plotWidth
 
         );
@@ -6587,19 +6996,25 @@
           -
 
           (
+
             (
               value
               -
               yMin
             )
+
             /
+
             (
               yMax
               -
               yMin
             )
+
           )
+
           *
+
           plotHeight
 
         );
@@ -6625,6 +7040,11 @@
         '>';
 
 
+
+      /* =======================================================
+         BACKGROUND
+      ======================================================= */
+
       svg +=
 
         '<rect' +
@@ -6633,11 +7053,15 @@
 
         ' height="' + height + '"' +
 
-        ' fill="#fff"' +
+        ' fill="#ffffff"' +
 
         '/>';
 
 
+
+      /* =======================================================
+         ACCEPTANCE ZONES
+      ======================================================= */
 
       const acceptanceY =
         yPos(
@@ -6680,6 +7104,10 @@
 
 
 
+      /* =======================================================
+         Y GRID
+      ======================================================= */
+
       for (
         let value = yMin;
         value <= yMax;
@@ -6704,7 +7132,7 @@
 
           ' y2="' + y + '"' +
 
-          ' stroke="#ddd"' +
+          ' stroke="#dddddd"' +
 
           '/>';
 
@@ -6733,22 +7161,51 @@
 
 
 
-      const oneDay =
-        86400000;
+      /* =======================================================
+         DATE GRID
+      ======================================================= */
+
+      const firstDate =
+        new Date(
+          minTime
+        );
 
 
       let day =
-        minTime
-        -
-        (
-          minTime
-          %
-          oneDay
+
+        Date.UTC(
+
+          firstDate.getUTCFullYear(),
+
+          firstDate.getUTCMonth(),
+
+          firstDate.getUTCDate()
+
+        );
+
+
+      const lastDate =
+        new Date(
+          maxTime
+        );
+
+
+      const lastDay =
+
+        Date.UTC(
+
+          lastDate.getUTCFullYear(),
+
+          lastDate.getUTCMonth(),
+
+          lastDate.getUTCDate()
+
         );
 
 
       while (
-        day <= maxTime + oneDay
+        day <=
+        lastDay + oneDay
       ) {
 
         const x =
@@ -6775,7 +7232,7 @@
 
             ' y2="' + bottom + '"' +
 
-            ' stroke="#bbb"' +
+            ' stroke="#bbbbbb"' +
 
             '/>';
 
@@ -6811,6 +7268,49 @@
       }
 
 
+
+      /* =======================================================
+         AXES
+      ======================================================= */
+
+      svg +=
+
+        '<line' +
+
+        ' x1="' + left + '"' +
+
+        ' y1="' + top + '"' +
+
+        ' x2="' + left + '"' +
+
+        ' y2="' + bottom + '"' +
+
+        ' stroke="#111"' +
+
+        '/>';
+
+
+      svg +=
+
+        '<line' +
+
+        ' x1="' + left + '"' +
+
+        ' y1="' + bottom + '"' +
+
+        ' x2="' + (left + plotWidth) + '"' +
+
+        ' y2="' + bottom + '"' +
+
+        ' stroke="#111"' +
+
+        '/>';
+
+
+
+      /* =======================================================
+         ACCEPTANCE LINE
+      ======================================================= */
 
       svg +=
 
@@ -6855,11 +7355,46 @@
 
 
 
+      /* =======================================================
+         Y TITLE
+      ======================================================= */
+
+      svg +=
+
+        '<text' +
+
+        ' x="18"' +
+
+        ' y="' + ((top + bottom) / 2) + '"' +
+
+        ' transform="rotate(-90 18 ' + ((top + bottom) / 2) + ')"' +
+
+        ' text-anchor="middle"' +
+
+        ' font-family="Arial"' +
+
+        ' font-size="14"' +
+
+        ' font-weight="900"' +
+
+        '>' +
+
+        'DEW POINT (°Cdp)' +
+
+        '</text>';
+
+
+
+      /* =======================================================
+         DRAW SERIES
+      ======================================================= */
+
       series.forEach(
 
         function (item) {
 
           const points =
+
             item.points.map(
 
               function (point) {
@@ -6903,6 +7438,10 @@
 
               ' stroke-width="3"' +
 
+              ' stroke-linejoin="round"' +
+
+              ' stroke-linecap="round"' +
+
               '/>';
 
           }
@@ -6930,40 +7469,197 @@
 
           );
 
+        }
 
-          const latest =
-            item.points[
-              item.points.length - 1
-            ];
+      );
 
 
-          const boxX =
-            left
-            +
-            plotWidth
-            +
-            8;
+
+      /* =======================================================
+         PREPARE LATEST READING BOXES
+
+         EACH BOX:
+         LOCATION
+         VALUE
+         DATE + TIME
+      ======================================================= */
+
+      let latestLabels =
+
+        series.map(
+
+          function (item) {
+
+            const latest =
+
+              item.points[
+                item.points.length - 1
+              ];
 
 
-          const boxY =
-            Math.min(
+            return {
 
-              bottom - 34,
+              name:
+                item.name,
 
-              Math.max(
+              color:
+                item.color,
 
-                top,
+              point:
+                latest,
 
+              targetY:
+                yPos(
+                  latest.value
+                ),
+
+              labelY:
                 yPos(
                   latest.value
                 )
-                -
-                17
 
-              )
+            };
 
+          }
+
+        );
+
+
+
+      /*
+         RUN COLLISION AVOIDANCE
+      */
+
+      latestLabels =
+
+        arrangeDewPointLabels(
+
+          latestLabels,
+
+          top,
+
+          bottom
+
+        );
+
+
+
+      /* =======================================================
+         DRAW LATEST READING BOXES
+      ======================================================= */
+
+      const boxX =
+        left
+        +
+        plotWidth
+        +
+        12;
+
+
+      const boxWidth =
+        168;
+
+
+      const boxHeight =
+        52;
+
+
+
+      latestLabels.forEach(
+
+        function (item) {
+
+          const pointX =
+            xPos(
+              item.point.timestamp
             );
 
+
+          const pointY =
+            yPos(
+              item.point.value
+            );
+
+
+          const boxY =
+
+            item.labelY
+
+            -
+
+            boxHeight
+            /
+            2;
+
+
+
+          /* CONNECTION LINE */
+
+          svg +=
+
+            '<polyline' +
+
+            ' points="' +
+
+            (pointX + 5)
+
+            +
+
+            ','
+
+            +
+
+            pointY
+
+            +
+
+            ' '
+
+            +
+
+            (boxX - 8)
+
+            +
+
+            ','
+
+            +
+
+            pointY
+
+            +
+
+            ' '
+
+            +
+
+            boxX
+
+            +
+
+            ','
+
+            +
+
+            item.labelY
+
+            +
+
+            '"' +
+
+            ' fill="none"' +
+
+            ' stroke="' + item.color + '"' +
+
+            ' stroke-width="1.3"' +
+
+            ' opacity="0.75"' +
+
+            '/>';
+
+
+
+          /* BOX */
 
           svg +=
 
@@ -6973,26 +7669,31 @@
 
             ' y="' + boxY + '"' +
 
-            ' width="105"' +
+            ' width="' + boxWidth + '"' +
 
-            ' height="34"' +
+            ' height="' + boxHeight + '"' +
 
-            ' rx="3"' +
+            ' rx="4"' +
 
-            ' fill="#fff"' +
+            ' fill="#ffffff"' +
 
             ' stroke="' + item.color + '"' +
 
+            ' stroke-width="1.5"' +
+
             '/>';
 
+
+
+          /* LOCATION */
 
           svg +=
 
             '<text' +
 
-            ' x="' + (boxX + 6) + '"' +
+            ' x="' + (boxX + 7) + '"' +
 
-            ' y="' + (boxY + 13) + '"' +
+            ' y="' + (boxY + 14) + '"' +
 
             ' font-family="Arial"' +
 
@@ -7004,22 +7705,27 @@
 
             '>' +
 
-            item.name +
+            escapeHtml(
+              item.name
+            ) +
 
             '</text>';
 
+
+
+          /* VALUE */
 
           svg +=
 
             '<text' +
 
-            ' x="' + (boxX + 6) + '"' +
+            ' x="' + (boxX + 7) + '"' +
 
-            ' y="' + (boxY + 27) + '"' +
+            ' y="' + (boxY + 29) + '"' +
 
             ' font-family="Arial"' +
 
-            ' font-size="11"' +
+            ' font-size="12"' +
 
             ' font-weight="900"' +
 
@@ -7028,10 +7734,42 @@
             '>' +
 
             formatGraphNumber(
-              latest.value
+              item.point.value
             ) +
 
             '°Cdp' +
+
+            '</text>';
+
+
+
+          /* DATE + SAMPLING TIME */
+
+          svg +=
+
+            '<text' +
+
+            ' x="' + (boxX + 7) + '"' +
+
+            ' y="' + (boxY + 44) + '"' +
+
+            ' font-family="Arial"' +
+
+            ' font-size="9"' +
+
+            ' font-weight="700"' +
+
+            ' fill="#555555"' +
+
+            '>' +
+
+            escapeHtml(
+
+              graphDateTimeLabel(
+                item.point.timestamp
+              )
+
+            ) +
 
             '</text>';
 
@@ -7040,29 +7778,61 @@
       );
 
 
+
+      /* =======================================================
+         X TITLE
+      ======================================================= */
+
       svg +=
 
         '<text' +
 
-        ' x="18"' +
+        ' x="' + (left + plotWidth / 2) + '"' +
 
-        ' y="' + ((top + bottom) / 2) + '"' +
-
-        ' transform="rotate(-90 18 ' + ((top + bottom) / 2) + ')"' +
+        ' y="490"' +
 
         ' text-anchor="middle"' +
 
         ' font-family="Arial"' +
 
-        ' font-size="14"' +
+        ' font-size="13"' +
 
         ' font-weight="900"' +
 
         '>' +
 
-        'DEW POINT (°Cdp)' +
+        'DATE / SAMPLING TIME' +
 
         '</text>';
+
+
+
+      /* =======================================================
+         FOOTNOTE
+      ======================================================= */
+
+      svg +=
+
+        '<text' +
+
+        ' x="' + (left + plotWidth / 2) + '"' +
+
+        ' y="525"' +
+
+        ' text-anchor="middle"' +
+
+        ' font-family="Arial"' +
+
+        ' font-size="10"' +
+
+        ' fill="#333333"' +
+
+        '>' +
+
+        'Green zone: meets ≤ −10°Cdp criterion · Red zone: above acceptance limit · Latest boxes show actual sampling date and time' +
+
+        '</text>';
+
 
 
       svg +=
@@ -7076,6 +7846,10 @@
       info.textContent =
 
         "CONNECTED TREND BY MEASUREMENT LOCATION"
+
+        +
+
+        " · LATEST READING + SAMPLING TIME"
 
         +
 
@@ -7148,19 +7922,22 @@
 
 
 
+    /* INITIAL */
+
     loadAllTables();
 
 
 
     /* =========================================================
        AUTO REFRESH
-       60 SECONDS
+
+       EVERY 60 SECONDS
 
        UPDATES:
-       SWABBING TABLE
-       SWABBING GRAPH
-       DEW POINT TABLE
-       DEW POINT GRAPH
+       1. SWABBING TABLE
+       2. SWABBING GRAPH
+       3. DEW POINT TABLE
+       4. DEW POINT GRAPH
     ========================================================= */
 
     setInterval(
