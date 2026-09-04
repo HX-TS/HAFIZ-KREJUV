@@ -70,6 +70,14 @@
 
       --date-6: #e3e8d7;
 
+      --chart-before: #2878ad;
+
+      --chart-after: #ff7600;
+
+      --chart-gain: #75117e;
+
+      --chart-trend: #e31b23;
+
     }
 
 
@@ -188,11 +196,6 @@
 
     }
 
-
-
-    /* =========================================================
-       HEADER TITLE
-    ========================================================= */
 
     .hero-left {
 
@@ -429,7 +432,10 @@
 
 
     /* =========================================================
-       DASHBOARD
+       MAIN DASHBOARD AREA
+
+       THIS AREA SCROLLS VERTICALLY.
+       HEADER + FOOTER STAY VISIBLE.
     ========================================================= */
 
     .dashboard {
@@ -438,13 +444,36 @@
 
       min-height: 0;
 
-      display: grid;
+      display: flex;
 
-      grid-template-rows:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+      flex-direction: column;
 
       gap: 7px;
+
+      overflow-y: auto;
+
+      overflow-x: hidden;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        #777
+        var(--black);
+
+    }
+
+
+    .dashboard::-webkit-scrollbar {
+
+      width: 9px;
+
+    }
+
+
+    .dashboard::-webkit-scrollbar-thumb {
+
+      background:
+        #777;
 
     }
 
@@ -456,7 +485,16 @@
 
     .reading-panel {
 
-      min-height: 0;
+      flex-shrink: 0;
+
+      height:
+        clamp(
+          300px,
+          35vh,
+          430px
+        );
+
+      min-height: 300px;
 
       display: flex;
 
@@ -473,6 +511,38 @@
 
     }
 
+
+
+    /* =========================================================
+       GRAPH PANEL
+    ========================================================= */
+
+    .graph-panel {
+
+      flex-shrink: 0;
+
+      min-height: 470px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      background:
+        var(--cream);
+
+      border:
+        1px solid
+        var(--black);
+
+      overflow: hidden;
+
+    }
+
+
+
+    /* =========================================================
+       PANEL TITLE
+    ========================================================= */
 
     .panel-title {
 
@@ -511,6 +581,13 @@
       letter-spacing: 0.035em;
 
       text-transform: uppercase;
+
+    }
+
+
+    .panel-title-main {
+
+      min-width: 0;
 
     }
 
@@ -821,9 +898,7 @@
 
 
     /* =========================================================
-       LATEST DATE
-
-       ALL DATA ON LATEST DATE = BOLD
+       LATEST DATE = BOLD
     ========================================================= */
 
     #dewPointContainer
@@ -859,7 +934,7 @@
 
 
     /* =========================================================
-       HOVER
+       TABLE HOVER
     ========================================================= */
 
     @media (hover: hover) {
@@ -870,6 +945,241 @@
           brightness(0.94);
 
       }
+
+    }
+
+
+
+    /* =========================================================
+       SWABBING GRAPH
+    ========================================================= */
+
+    .graph-wrapper {
+
+      position: relative;
+
+      flex: 1;
+
+      min-height: 0;
+
+      overflow-x: auto;
+
+      overflow-y: hidden;
+
+      background:
+        #ffffff;
+
+      -webkit-overflow-scrolling:
+        touch;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        #777
+        var(--cream-2);
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar {
+
+      height: 10px;
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar-track {
+
+      background:
+        var(--cream-2);
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar-thumb {
+
+      background:
+        #777;
+
+    }
+
+
+    .swabbing-chart {
+
+      display: block;
+
+      height: 410px;
+
+      max-height: 410px;
+
+      background:
+        #ffffff;
+
+    }
+
+
+    .chart-message {
+
+      width: 100%;
+
+      height: 410px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 25px;
+
+      background:
+        #ffffff;
+
+      color:
+        var(--black);
+
+      text-align: center;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* =========================================================
+       GRAPH LEGEND ABOVE GRAPH
+    ========================================================= */
+
+    .graph-info-bar {
+
+      flex-shrink: 0;
+
+      min-height: 42px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding:
+        8px
+        16px;
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      background:
+        #ffffff;
+
+    }
+
+
+    .graph-count {
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      color:
+        var(--grey);
+
+      text-transform: uppercase;
+
+    }
+
+
+    .graph-legend {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      flex-wrap: wrap;
+
+      gap:
+        8px
+        16px;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+    }
+
+
+    .legend-item {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      white-space: nowrap;
+
+    }
+
+
+    .legend-box {
+
+      width: 17px;
+
+      height: 9px;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .legend-before {
+
+      background:
+        var(--chart-before);
+
+    }
+
+
+    .legend-after {
+
+      background:
+        var(--chart-after);
+
+    }
+
+
+    .legend-gain {
+
+      width: 18px;
+
+      height: 3px;
+
+      background:
+        var(--chart-gain);
+
+    }
+
+
+    .legend-trend {
+
+      width: 18px;
+
+      height: 0;
+
+      border-top:
+        2px dashed
+        var(--chart-trend);
 
     }
 
@@ -958,7 +1268,7 @@
 
 
     /* =========================================================
-       MEDIUM DESKTOP / SMALL LAPTOP
+       MEDIUM DESKTOP
     ========================================================= */
 
     @media (max-width: 1250px) {
@@ -1152,13 +1462,6 @@
 
     @media (max-width: 700px) {
 
-      body {
-
-        overflow: hidden;
-
-      }
-
-
       .page {
 
         gap: 3px;
@@ -1176,11 +1479,6 @@
 
       }
 
-
-
-      /* =======================================================
-         MOBILE HEADER
-      ======================================================= */
 
       .hero {
 
@@ -1207,8 +1505,6 @@
         grid-row:
           1;
 
-        justify-content: center;
-
         padding:
           9px
           12px;
@@ -1229,8 +1525,6 @@
             36px
           );
 
-        line-height: 0.92;
-
         white-space: normal;
 
       }
@@ -1242,15 +1536,8 @@
 
         font-size: 7px;
 
-        letter-spacing: 0.24em;
-
       }
 
-
-
-      /* =======================================================
-         MOBILE TIME
-      ======================================================= */
 
       .current-status {
 
@@ -1259,8 +1546,6 @@
 
         grid-row:
           2;
-
-        justify-content: center;
 
         padding:
           8px
@@ -1280,8 +1565,6 @@
             18px
           );
 
-        line-height: 1;
-
       }
 
 
@@ -1300,11 +1583,6 @@
 
       }
 
-
-
-      /* =======================================================
-         MOBILE BOOKMARK
-      ======================================================= */
 
       .main-bookmark {
 
@@ -1327,8 +1605,6 @@
             10px
           );
 
-        line-height: 1.2;
-
       }
 
 
@@ -1339,11 +1615,6 @@
       }
 
 
-
-      /* =======================================================
-         MOBILE PANELS
-      ======================================================= */
-
       .dashboard {
 
         gap: 3px;
@@ -1351,9 +1622,25 @@
       }
 
 
+      .reading-panel {
+
+        height: 330px;
+
+        min-height: 330px;
+
+      }
+
+
+      .graph-panel {
+
+        min-height: 475px;
+
+      }
+
+
       .panel-title {
 
-        min-height: 40px;
+        min-height: 42px;
 
         padding:
           0
@@ -1373,7 +1660,7 @@
 
       .panel-note {
 
-        max-width: 47%;
+        max-width: 46%;
 
         font-size:
           clamp(
@@ -1386,14 +1673,6 @@
 
       }
 
-
-
-      /* =======================================================
-         MOBILE TABLE
-
-         DON'T COMPRESS.
-         USER CAN SWIPE LEFT / RIGHT.
-      ======================================================= */
 
       th {
 
@@ -1435,98 +1714,55 @@
       }
 
 
+      .graph-info-bar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+        padding:
+          8px
+          10px;
+
+      }
+
+
+      .graph-legend {
+
+        justify-content: flex-start;
+
+        gap:
+          6px
+          11px;
+
+        font-size: 9px;
+
+      }
+
+
+      .graph-count {
+
+        font-size: 9px;
+
+      }
+
+
+      .swabbing-chart {
+
+        height: 390px;
+
+        max-height: 390px;
+
+      }
+
+
       .footer {
 
         min-height: 28px;
 
         font-size: 8px;
-
-      }
-
-    }
-
-
-
-    /* =========================================================
-       VERY SMALL PHONE
-    ========================================================= */
-
-    @media (max-width: 390px) {
-
-      .hero {
-
-        grid-template-columns:
-          minmax(0, 1fr)
-          100px;
-
-      }
-
-
-      .hero-title {
-
-        font-size:
-          clamp(
-            24px,
-            7.3vw,
-            30px
-          );
-
-      }
-
-
-      .current-status {
-
-        padding:
-          7px
-          8px;
-
-      }
-
-
-      .current-datetime {
-
-        font-size: 13px;
-
-      }
-
-
-      .current-shift {
-
-        font-size: 7px;
-
-      }
-
-
-      .main-bookmark {
-
-        font-size: 8px;
-
-      }
-
-
-      .panel-title {
-
-        padding:
-          0
-          7px;
-
-      }
-
-
-      th {
-
-        min-width: 112px;
-
-        font-size: 10px;
-
-      }
-
-
-      td {
-
-        min-width: 112px;
-
-        font-size: 11px;
 
       }
 
@@ -1551,10 +1787,6 @@
     <header class="hero">
 
 
-      <!-- ===================================================
-           TITLE
-      ==================================================== -->
-
       <div class="hero-left">
 
 
@@ -1577,7 +1809,7 @@
 
 
       <!-- ===================================================
-           CURRENT TIME / SHIFT
+           CURRENT TIME
       ==================================================== -->
 
       <div class="current-status">
@@ -1632,14 +1864,14 @@
 
 
     <!-- =====================================================
-         DATA
+         MAIN
     ====================================================== -->
 
     <main class="dashboard">
 
 
       <!-- ===================================================
-           SWABBING PIG RUN
+           1. SWABBING PIG RUN TABLE
       ==================================================== -->
 
       <section class="reading-panel">
@@ -1648,7 +1880,7 @@
         <div class="panel-title">
 
 
-          <div>
+          <div class="panel-title-main">
 
             SWABBING PIG RUN
 
@@ -1686,7 +1918,125 @@
 
 
       <!-- ===================================================
-           DEW POINT DATA
+           2. SWABBING WEIGHT GRAPH
+      ==================================================== -->
+
+      <section class="graph-panel">
+
+
+        <div class="panel-title">
+
+
+          <div
+            class="panel-title-main"
+            id="graphTitle"
+          >
+
+            SWABBING PIG WEIGHT COMPARISON
+
+          </div>
+
+
+          <div class="panel-note">
+
+            AUTO UPDATED FROM SWABBING DATA
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="graph-info-bar">
+
+
+          <div
+            class="graph-count"
+            id="graphCount"
+          >
+
+            WAITING FOR DATA
+
+          </div>
+
+
+          <div class="graph-legend">
+
+
+            <div class="legend-item">
+
+              <span
+                class="legend-box legend-before"
+              ></span>
+
+              Weight Before
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <span
+                class="legend-box legend-after"
+              ></span>
+
+              Weight After
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <span
+                class="legend-gain"
+              ></span>
+
+              Weight Gain
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <span
+                class="legend-trend"
+              ></span>
+
+              Gain Trend
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div
+          class="graph-wrapper"
+          id="graphWrapper"
+        >
+
+
+          <div class="chart-message">
+
+            Loading Swabbing Graph...
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ===================================================
+           3. DEW POINT DATA
       ==================================================== -->
 
       <section class="reading-panel">
@@ -1695,7 +2045,7 @@
         <div class="panel-title">
 
 
-          <div>
+          <div class="panel-title-main">
 
             DEW POINT DATA
 
@@ -1758,9 +2108,9 @@
     ========================================================= */
 
     /*
-       GOOGLE SHEETS AUTO REFRESH
+       GOOGLE SHEETS + GRAPH AUTO REFRESH
 
-       60000 MS = 60 SECONDS
+       60,000 MS = 60 SECONDS
     */
 
     const TABLE_REFRESH_TIME =
@@ -1768,9 +2118,9 @@
 
 
     /*
-       HEADER CLOCK UPDATE
+       HEADER CLOCK
 
-       1000 MS = 1 SECOND
+       1 SECOND
     */
 
     const CLOCK_REFRESH_TIME =
@@ -1899,7 +2249,22 @@
 
 
     /* =========================================================
-       MALAYSIA DATE / TIME
+       LAST SWABBING DATA
+
+       USED TO REDRAW GRAPH WHEN SCREEN RESIZES
+    ========================================================= */
+
+    let lastSwabbingColumns =
+      [];
+
+
+    let lastSwabbingRows =
+      [];
+
+
+
+    /* =========================================================
+       MALAYSIA CLOCK
     ========================================================= */
 
     function getMalaysiaParts() {
@@ -1983,10 +2348,6 @@
 
 
 
-    /* =========================================================
-       UPDATE CURRENT TIME / SHIFT
-    ========================================================= */
-
     function updateCurrentTime() {
 
 
@@ -2002,72 +2363,55 @@
         .toUpperCase();
 
 
-      const dateText =
-
-        parts.day
-
-        +
-
-        " "
-
-        +
-
-        month
-
-        +
-
-        " "
-
-        +
-
-        parts.year
-
-        +
-
-        " "
-
-        +
-
-        parts.hour
-
-        +
-
-        ":"
-
-        +
-
-        parts.minute
-
-        +
-
-        ":"
-
-        +
-
-        parts.second;
-
-
-      const dateTimeElement =
-
-        document.getElementById(
+      document
+        .getElementById(
           "currentDateTime"
-        );
+        )
+        .textContent =
+
+          parts.day
+
+          +
+
+          " "
+
+          +
+
+          month
+
+          +
+
+          " "
+
+          +
+
+          parts.year
+
+          +
+
+          " "
+
+          +
+
+          parts.hour
+
+          +
+
+          ":"
+
+          +
+
+          parts.minute
+
+          +
+
+          ":"
+
+          +
+
+          parts.second;
 
 
-      dateTimeElement.textContent =
-        dateText;
-
-
-
-      /* =======================================================
-         SHIFT
-
-         DAY:
-         07:00 - 18:59
-
-         NIGHT:
-         19:00 - 06:59
-      ======================================================= */
 
       const hour =
 
@@ -2076,7 +2420,7 @@
         );
 
 
-      const isDayShift =
+      const dayShift =
 
         hour >= 7
 
@@ -2092,7 +2436,7 @@
         );
 
 
-      if (isDayShift) {
+      if (dayShift) {
 
 
         shiftElement.innerHTML =
@@ -2126,10 +2470,6 @@
 
 
 
-    /* =========================================================
-       START CLOCK
-    ========================================================= */
-
     updateCurrentTime();
 
 
@@ -2144,7 +2484,7 @@
 
 
     /* =========================================================
-       NORMALIZE TEXT
+       TEXT
     ========================================================= */
 
     function normalizeText(value) {
@@ -2162,8 +2502,47 @@
 
 
 
+    function escapeHtml(value) {
+
+
+      return String(
+        value === null ||
+        value === undefined
+          ? ""
+          : value
+      )
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+    }
+
+
+
     /* =========================================================
-       CELL HAS VALUE
+       CELL VALUES
     ========================================================= */
 
     function cellHasValue(cell) {
@@ -2193,10 +2572,6 @@
     }
 
 
-
-    /* =========================================================
-       GET CELL DISPLAY VALUE
-    ========================================================= */
 
     function getCellDisplayValue(cell) {
 
@@ -2251,10 +2626,6 @@
     }
 
 
-
-    /* =========================================================
-       EXTRACT NUMBER
-    ========================================================= */
 
     function extractNumber(value) {
 
@@ -2343,20 +2714,16 @@
 
 
     /* =========================================================
-       COLUMN TYPE
+       COLUMN TYPES
     ========================================================= */
 
     function isTimestampColumn(name) {
 
 
-      const n =
-
-        normalizeText(
-          name
-        );
-
-
-      return n.includes(
+      return normalizeText(
+        name
+      )
+      .includes(
         "TIMESTAMP"
       );
 
@@ -2464,11 +2831,7 @@
 
 
     /* =========================================================
-       CHANGE GOOGLE SHEET HEADER DISPLAY
-
-       MASA AMBIL GAMBARAJAH
-       ->
-       SAMPLING TIME
+       DISPLAY HEADER RENAMING
     ========================================================= */
 
     function getDisplayHeaderName(name) {
@@ -2502,7 +2865,7 @@
 
 
     /* =========================================================
-       HIDDEN COLUMN
+       HIDDEN COLUMNS
     ========================================================= */
 
     function shouldHideColumn(
@@ -2566,7 +2929,7 @@
 
 
     /* =========================================================
-       PARSE DATE
+       DATE PARSER
     ========================================================= */
 
     function parseDateCell(cell) {
@@ -2575,26 +2938,6 @@
       if (!cell) {
 
         return null;
-
-      }
-
-
-      if (
-        cell.v instanceof Date
-      ) {
-
-
-        return new Date(
-
-          cell.v.getFullYear(),
-
-          cell.v.getMonth(),
-
-          cell.v.getDate()
-
-        )
-        .getTime();
-
 
       }
 
@@ -2639,15 +2982,6 @@
           .trim();
 
 
-
-        /* =====================================================
-           GOOGLE GVIZ DATE
-
-           Date(2026,8,4)
-
-           MONTH STARTS AT ZERO
-        ===================================================== */
-
         let match =
 
           text.match(
@@ -2674,12 +3008,6 @@
 
         }
 
-
-
-        /* =====================================================
-           DD/MM/YYYY
-           DD-MM-YYYY
-        ===================================================== */
 
         match =
 
@@ -2708,11 +3036,6 @@
         }
 
 
-
-        /* =====================================================
-           YYYY-MM-DD
-        ===================================================== */
-
         match =
 
           text.match(
@@ -2739,11 +3062,6 @@
 
         }
 
-
-
-        /* =====================================================
-           FALLBACK
-        ===================================================== */
 
         const parsed =
 
@@ -2791,7 +3109,7 @@
 
 
     /* =========================================================
-       PARSE TIME
+       TIME PARSER
     ========================================================= */
 
     function parseTimeCell(cell) {
@@ -2803,46 +3121,6 @@
 
       }
 
-
-      if (
-        cell.v instanceof Date
-      ) {
-
-
-        return (
-
-          cell.v.getHours()
-
-          *
-
-          3600000
-
-          +
-
-          cell.v.getMinutes()
-
-          *
-
-          60000
-
-          +
-
-          cell.v.getSeconds()
-
-          *
-
-          1000
-
-        );
-
-
-      }
-
-
-
-      /* =======================================================
-         GOOGLE SHEET TIME FRACTION
-      ======================================================= */
 
       if (
 
@@ -2873,7 +3151,6 @@
       }
 
 
-
       const value =
 
         String(
@@ -2900,13 +3177,6 @@
         );
 
 
-
-      /* =======================================================
-         09:04
-         11:05
-         11:05:30
-      ======================================================= */
-
       let match =
 
         value.match(
@@ -2921,41 +3191,21 @@
 
         return (
 
-          Number(match[1])
-
-          *
-
-          3600000
+          Number(match[1]) * 3600000
 
           +
 
-          Number(match[2])
-
-          *
-
-          60000
+          Number(match[2]) * 60000
 
           +
 
-          Number(match[3] || 0)
-
-          *
-
-          1000
+          Number(match[3] || 0) * 1000
 
         );
 
 
       }
 
-
-
-      /* =======================================================
-         0904
-         1105
-         905
-         1105HRS
-      ======================================================= */
 
       match =
 
@@ -2981,31 +3231,23 @@
         return (
 
           Number(
-
             digits.slice(
               0,
               2
             )
-
           )
-
           *
-
           3600000
 
           +
 
           Number(
-
             digits.slice(
               2,
               4
             )
-
           )
-
           *
-
           60000
 
         );
@@ -3021,7 +3263,7 @@
 
 
     /* =========================================================
-       FIND DATE / TIME COLUMNS
+       FIND DATE + TIME COLUMNS
     ========================================================= */
 
     function findDateTimeColumns(columns) {
@@ -3105,10 +3347,6 @@
 
 
 
-    /* =========================================================
-       GET DATE ONLY
-    ========================================================= */
-
     function getRowDateValue(
       row,
       dateIndex
@@ -3143,10 +3381,6 @@
     }
 
 
-
-    /* =========================================================
-       GET DATE + TIME
-    ========================================================= */
 
     function getRowDateTimeValue(
       row,
@@ -3193,26 +3427,16 @@
           0;
 
 
-      return (
-
-        dateValue
-
-        +
-
-        timeValue
-
-      );
+      return dateValue + timeValue;
 
     }
 
 
 
     /* =========================================================
-       SORT
+       SORT TABLE DATA
 
-       OLDEST
-       ↓
-       NEWEST
+       OLDEST -> NEWEST
     ========================================================= */
 
     function sortRowsByDateTime(
@@ -3300,9 +3524,7 @@
             !aValid && bValid
           ) {
 
-
             return -1;
-
 
           }
 
@@ -3311,9 +3533,7 @@
             aValid && !bValid
           ) {
 
-
             return 1;
-
 
           }
 
@@ -3322,17 +3542,7 @@
             !aValid && !bValid
           ) {
 
-
-            return (
-
-              a.index
-
-              -
-
-              b.index
-
-            );
-
+            return a.index - b.index;
 
           }
 
@@ -3341,30 +3551,12 @@
             a.dateTime !== b.dateTime
           ) {
 
-
-            return (
-
-              a.dateTime
-
-              -
-
-              b.dateTime
-
-            );
-
+            return a.dateTime - b.dateTime;
 
           }
 
 
-          return (
-
-            a.index
-
-            -
-
-            b.index
-
-          );
+          return a.index - b.index;
 
 
         }
@@ -3375,9 +3567,7 @@
 
         function (item) {
 
-
           return item.row;
-
 
         }
 
@@ -3413,11 +3603,8 @@
           if (
 
             shouldHideColumn(
-
               column.label,
-
               config
-
             )
 
           ) {
@@ -3494,10 +3681,6 @@
 
 
 
-    /* =========================================================
-       REMOVE EMPTY ROW
-    ========================================================= */
-
     function getNonEmptyRows(
       rows,
       visibleColumns
@@ -3545,7 +3728,7 @@
 
 
     /* =========================================================
-       LOWEST VALUES
+       LOWEST DEW POINT VALUES
     ========================================================= */
 
     function findLowestValues(
@@ -3702,14 +3885,10 @@
       /*
          SELECT *
 
-         THIS IS IMPORTANT.
+         IMPORTANT:
 
-         DO NOT USE:
-
-         WHERE A IS NOT NULL
-
-         BECAUSE MANUAL DATA MAY HAVE
-         NO GOOGLE FORM TIMESTAMP.
+         MANUAL DATA IS INCLUDED EVEN IF
+         GOOGLE FORM TIMESTAMP IS BLANK.
       */
 
       const query =
@@ -3800,9 +3979,7 @@
 
       if (oldScript) {
 
-
         oldScript.remove();
-
 
       }
 
@@ -3901,7 +4078,7 @@
 
 
     /* =========================================================
-       SCROLL TO LATEST DATA
+       SCROLL TABLE TO LATEST DATA
     ========================================================= */
 
     function scrollTableToBottom(
@@ -3942,7 +4119,7 @@
 
 
     /* =========================================================
-       RENDER TABLE
+       RENDER DATA TABLE
     ========================================================= */
 
     function renderTable(
@@ -3995,11 +4172,6 @@
         response.table.rows || [];
 
 
-
-      /* =======================================================
-         VISIBLE COLUMNS
-      ======================================================= */
-
       const visibleColumns =
 
         getVisibleColumns(
@@ -4034,10 +4206,6 @@
 
 
 
-      /* =======================================================
-         REMOVE EMPTY ROWS
-      ======================================================= */
-
       let rows =
 
         getNonEmptyRows(
@@ -4070,12 +4238,6 @@
 
 
 
-      /* =======================================================
-         SORT USING KEYED DATE + SAMPLING TIME
-
-         NOT GOOGLE FORM TIMESTAMP
-      ======================================================= */
-
       if (
         config.sortByDateTime
       ) {
@@ -4103,10 +4265,6 @@
         );
 
 
-
-      /* =======================================================
-         FIND LATEST DATE
-      ======================================================= */
 
       let latestDateValue =
         null;
@@ -4170,10 +4328,6 @@
 
 
 
-      /* =======================================================
-         LOWEST VALUES
-      ======================================================= */
-
       const lowestValues =
 
         config.highlightLowest
@@ -4193,10 +4347,6 @@
           new Map();
 
 
-
-      /* =======================================================
-         CREATE TABLE
-      ======================================================= */
 
       const table =
 
@@ -4218,11 +4368,6 @@
           "tr"
         );
 
-
-
-      /* =======================================================
-         HEADERS
-      ======================================================= */
 
       visibleColumns.forEach(
 
@@ -4265,11 +4410,6 @@
       );
 
 
-
-      /* =======================================================
-         TABLE BODY
-      ======================================================= */
-
       const tbody =
 
         document.createElement(
@@ -4302,11 +4442,6 @@
             );
 
 
-
-          /* =================================================
-             DATE FOR THIS ROW
-          ================================================= */
-
           const rowDate =
 
             dateTimeColumns.dateIndex >= 0
@@ -4326,10 +4461,6 @@
               null;
 
 
-
-          /* =================================================
-             DEW POINT DATE GROUP COLOUR
-          ================================================= */
 
           if (
 
@@ -4379,26 +4510,16 @@
             }
 
 
-            const colourIndex =
-
-              dateColourMap.get(
-                dateKey
-              );
-
-
             tr.classList.add(
 
               "date-group-" +
 
-              colourIndex
+              dateColourMap.get(
+                dateKey
+              )
 
             );
 
-
-
-            /* ===============================================
-               NEW DATE = THICK LINE
-            =============================================== */
 
             if (
 
@@ -4427,10 +4548,6 @@
 
 
 
-          /* =================================================
-             ALL ROWS ON LATEST DATE = BOLD
-          ================================================= */
-
           if (
 
             config.groupByDate
@@ -4454,10 +4571,6 @@
           }
 
 
-
-          /* =================================================
-             CELLS
-          ================================================= */
 
           visibleColumns.forEach(
 
@@ -4497,10 +4610,6 @@
                 displayValue;
 
 
-
-              /* =============================================
-                 LOWEST READING
-              ============================================= */
 
               if (
 
@@ -4595,13 +4704,893 @@
       );
 
 
-      /*
-         AUTOMATICALLY DISPLAY
-         THE LATEST DATA
-      */
-
       scrollTableToBottom(
         container
+      );
+
+
+
+      /* =======================================================
+         SWABBING TABLE UPDATED
+
+         SAVE THE SAME DATA AND UPDATE GRAPH IMMEDIATELY.
+      ======================================================= */
+
+      if (
+        config.container ===
+        "swabbingContainer"
+      ) {
+
+
+        lastSwabbingColumns =
+          columns;
+
+
+        lastSwabbingRows =
+          rows;
+
+
+        renderSwabbingGraph(
+
+          columns,
+
+          rows
+
+        );
+
+
+      }
+
+
+    }
+
+
+
+    /* =========================================================
+       GRAPH COLUMN SEARCH
+    ========================================================= */
+
+    function findColumnByRules(
+      columns,
+      rules
+    ) {
+
+
+      /*
+         PASS 1:
+         ALL REQUIRED WORDS
+      */
+
+      for (
+        let i = 0;
+        i < columns.length;
+        i++
+      ) {
+
+
+        const label =
+
+          normalizeText(
+
+            columns[i].label
+
+          );
+
+
+        const matches =
+
+          rules.every(
+
+            function (word) {
+
+
+              return label.includes(
+                word
+              );
+
+
+            }
+
+          );
+
+
+        if (matches) {
+
+          return i;
+
+        }
+
+
+      }
+
+
+      return -1;
+
+    }
+
+
+
+    function findAnyColumn(
+      columns,
+      aliases
+    ) {
+
+
+      /*
+         EXACT MATCH FIRST
+      */
+
+      for (
+        const alias
+        of aliases
+      ) {
+
+
+        const target =
+
+          normalizeText(
+            alias
+          );
+
+
+        for (
+          let i = 0;
+          i < columns.length;
+          i++
+        ) {
+
+
+          if (
+
+            normalizeText(
+              columns[i].label
+            )
+
+            ===
+
+            target
+
+          ) {
+
+
+            return i;
+
+
+          }
+
+
+        }
+
+
+      }
+
+
+
+      /*
+         CONTAINS MATCH
+      */
+
+      for (
+        const alias
+        of aliases
+      ) {
+
+
+        const target =
+
+          normalizeText(
+            alias
+          );
+
+
+        for (
+          let i = 0;
+          i < columns.length;
+          i++
+        ) {
+
+
+          if (
+
+            normalizeText(
+              columns[i].label
+            )
+            .includes(
+              target
+            )
+
+          ) {
+
+
+            return i;
+
+
+          }
+
+
+        }
+
+
+      }
+
+
+      return -1;
+
+    }
+
+
+
+    /* =========================================================
+       EXTRACT SWABBING GRAPH DATA
+
+       FLEXIBLE HEADER DETECTION
+    ========================================================= */
+
+    function extractSwabbingGraphData(
+      columns,
+      rows
+    ) {
+
+
+      let beforeIndex =
+
+        findColumnByRules(
+
+          columns,
+
+          [
+            "BEFORE"
+          ]
+
+        );
+
+
+      let afterIndex =
+
+        findColumnByRules(
+
+          columns,
+
+          [
+            "AFTER"
+          ]
+
+        );
+
+
+      let gainIndex =
+
+        findColumnByRules(
+
+          columns,
+
+          [
+            "GAIN"
+          ]
+
+        );
+
+
+
+      /*
+         SECONDARY ALIASES
+      */
+
+      if (
+        beforeIndex < 0
+      ) {
+
+
+        beforeIndex =
+
+          findAnyColumn(
+
+            columns,
+
+            [
+
+              "WEIGHT BEFORE",
+
+              "BEFORE WEIGHT",
+
+              "MASS BEFORE",
+
+              "BEFORE (KG)",
+
+              "BEFORE KG",
+
+              "INITIAL WEIGHT"
+
+            ]
+
+          );
+
+
+      }
+
+
+      if (
+        afterIndex < 0
+      ) {
+
+
+        afterIndex =
+
+          findAnyColumn(
+
+            columns,
+
+            [
+
+              "WEIGHT AFTER",
+
+              "AFTER WEIGHT",
+
+              "MASS AFTER",
+
+              "AFTER (KG)",
+
+              "AFTER KG",
+
+              "FINAL WEIGHT"
+
+            ]
+
+          );
+
+
+      }
+
+
+
+      const pigIndex =
+
+        findAnyColumn(
+
+          columns,
+
+          [
+
+            "PIG NO.",
+
+            "PIG NO",
+
+            "PIG NUMBER",
+
+            "PIG SEQUENCE",
+
+            "SEQUENCE",
+
+            "NO."
+
+          ]
+
+        );
+
+
+      const runIndex =
+
+        findAnyColumn(
+
+          columns,
+
+          [
+
+            "SWABBING RUN",
+
+            "RUN NO.",
+
+            "RUN NO",
+
+            "RUN"
+
+          ]
+
+        );
+
+
+      const typeIndex =
+
+        findAnyColumn(
+
+          columns,
+
+          [
+
+            "PIG TYPE",
+
+            "TYPE",
+
+            "PIG DESCRIPTION",
+
+            "DESCRIPTION"
+
+          ]
+
+        );
+
+
+
+      const result =
+        [];
+
+
+      rows.forEach(
+
+        function (
+          row,
+          rowIndex
+        ) {
+
+
+          const before =
+
+            beforeIndex >= 0
+
+              ?
+
+              extractNumber(
+
+                getCellDisplayValue(
+
+                  row.c
+                    ?
+                    row.c[
+                      beforeIndex
+                    ]
+                    :
+                    null
+
+                )
+
+              )
+
+              :
+
+              null;
+
+
+          const after =
+
+            afterIndex >= 0
+
+              ?
+
+              extractNumber(
+
+                getCellDisplayValue(
+
+                  row.c
+                    ?
+                    row.c[
+                      afterIndex
+                    ]
+                    :
+                    null
+
+                )
+
+              )
+
+              :
+
+              null;
+
+
+
+          /*
+             DON'T GRAPH ROWS WITHOUT
+             BEFORE OR AFTER WEIGHT.
+          */
+
+          if (
+
+            before === null
+
+            &&
+
+            after === null
+
+          ) {
+
+
+            return;
+
+
+          }
+
+
+
+          let gain =
+
+            gainIndex >= 0
+
+              ?
+
+              extractNumber(
+
+                getCellDisplayValue(
+
+                  row.c
+                    ?
+                    row.c[
+                      gainIndex
+                    ]
+                    :
+                    null
+
+                )
+
+              )
+
+              :
+
+              null;
+
+
+
+          /*
+             IF SHEET DOES NOT HAVE A GAIN COLUMN,
+             CALCULATE:
+
+             AFTER - BEFORE
+          */
+
+          if (
+
+            gain === null
+
+            &&
+
+            before !== null
+
+            &&
+
+            after !== null
+
+          ) {
+
+
+            gain =
+
+              after
+
+              -
+
+              before;
+
+
+          }
+
+
+
+          const pigNumber =
+
+            pigIndex >= 0
+
+              ?
+
+              getCellDisplayValue(
+
+                row.c
+                  ?
+                  row.c[
+                    pigIndex
+                  ]
+                  :
+                  null
+
+              )
+
+              :
+
+              rowIndex + 1;
+
+
+
+          const run =
+
+            runIndex >= 0
+
+              ?
+
+              getCellDisplayValue(
+
+                row.c
+                  ?
+                  row.c[
+                    runIndex
+                  ]
+                  :
+                  null
+
+              )
+
+              :
+
+              "";
+
+
+
+          const pigType =
+
+            typeIndex >= 0
+
+              ?
+
+              getCellDisplayValue(
+
+                row.c
+                  ?
+                  row.c[
+                    typeIndex
+                  ]
+                  :
+                  null
+
+              )
+
+              :
+
+              "";
+
+
+
+          result.push({
+
+            pigNumber:
+
+              pigNumber !== ""
+
+                ?
+
+                pigNumber
+
+                :
+
+                result.length + 1,
+
+            before,
+
+            after,
+
+            gain,
+
+            run:
+
+              String(
+                run || ""
+              )
+              .trim(),
+
+            pigType:
+
+              String(
+                pigType || ""
+              )
+              .trim()
+
+          });
+
+
+        }
+
+      );
+
+
+      return {
+
+        data:
+          result,
+
+        beforeIndex,
+
+        afterIndex,
+
+        gainIndex,
+
+        runIndex,
+
+        pigIndex,
+
+        typeIndex
+
+      };
+
+    }
+
+
+
+    /* =========================================================
+       LINEAR REGRESSION FOR WEIGHT GAIN TREND
+    ========================================================= */
+
+    function calculateLinearTrend(data) {
+
+
+      const points =
+        [];
+
+
+      data.forEach(
+
+        function (
+          item,
+          index
+        ) {
+
+
+          if (
+            Number.isFinite(
+              item.gain
+            )
+          ) {
+
+
+            points.push({
+
+              x:
+                index,
+
+              y:
+                item.gain
+
+            });
+
+
+          }
+
+
+        }
+
+      );
+
+
+      if (
+        points.length < 2
+      ) {
+
+
+        return null;
+
+
+      }
+
+
+      const n =
+        points.length;
+
+
+      let sumX =
+        0;
+
+
+      let sumY =
+        0;
+
+
+      let sumXY =
+        0;
+
+
+      let sumXX =
+        0;
+
+
+      points.forEach(
+
+        function (point) {
+
+
+          sumX +=
+            point.x;
+
+
+          sumY +=
+            point.y;
+
+
+          sumXY +=
+            point.x * point.y;
+
+
+          sumXX +=
+            point.x * point.x;
+
+
+        }
+
+      );
+
+
+      const denominator =
+
+        n * sumXX
+
+        -
+
+        sumX * sumX;
+
+
+      if (
+        denominator === 0
+      ) {
+
+
+        return null;
+
+
+      }
+
+
+      const slope =
+
+        (
+
+          n * sumXY
+
+          -
+
+          sumX * sumY
+
+        )
+
+        /
+
+        denominator;
+
+
+      const intercept =
+
+        (
+
+          sumY
+
+          -
+
+          slope * sumX
+
+        )
+
+        /
+
+        n;
+
+
+      return {
+
+        slope,
+
+        intercept
+
+      };
+
+    }
+
+
+
+    /* =========================================================
+       NUMBER FORMAT
+    ========================================================= */
+
+    function formatGraphNumber(value) {
+
+
+      if (
+        !Number.isFinite(
+          value
+        )
+      ) {
+
+
+        return "-";
+
+
+      }
+
+
+      return value.toFixed(
+        2
       );
 
     }
@@ -4609,7 +5598,1383 @@
 
 
     /* =========================================================
-       GOOGLE SHEET CALLBACKS
+       LATEST SWABBING RUN
+    ========================================================= */
+
+    function findLatestRun(data) {
+
+
+      let latestRun =
+        null;
+
+
+      data.forEach(
+
+        function (item) {
+
+
+          const number =
+
+            extractNumber(
+              item.run
+            );
+
+
+          if (
+
+            number !== null
+
+            &&
+
+            (
+
+              latestRun === null
+
+              ||
+
+              number > latestRun
+
+            )
+
+          ) {
+
+
+            latestRun =
+              number;
+
+
+          }
+
+
+        }
+
+      );
+
+
+      return latestRun;
+
+    }
+
+
+
+    /* =========================================================
+       RENDER SWABBING GRAPH
+
+       PURE VANILLA JAVASCRIPT + SVG
+
+       NO EXTERNAL GRAPH LIBRARY.
+    ========================================================= */
+
+    function renderSwabbingGraph(
+      columns,
+      rows
+    ) {
+
+
+      const wrapper =
+
+        document.getElementById(
+          "graphWrapper"
+        );
+
+
+      const graphTitle =
+
+        document.getElementById(
+          "graphTitle"
+        );
+
+
+      const graphCount =
+
+        document.getElementById(
+          "graphCount"
+        );
+
+
+      const extracted =
+
+        extractSwabbingGraphData(
+
+          columns,
+
+          rows
+
+        );
+
+
+      const data =
+        extracted.data;
+
+
+
+      /* =======================================================
+         NO USABLE WEIGHT DATA
+      ======================================================= */
+
+      if (
+        data.length === 0
+      ) {
+
+
+        wrapper.innerHTML =
+
+          '<div class="chart-message">' +
+
+          'Unable to Create Swabbing Weight Graph' +
+
+          '<br><br>' +
+
+          'Graph requires Weight Before and/or Weight After columns.' +
+
+          '</div>';
+
+
+        graphTitle.textContent =
+
+          "SWABBING PIG WEIGHT COMPARISON";
+
+
+        graphCount.textContent =
+
+          "NO GRAPH DATA";
+
+
+        return;
+
+
+      }
+
+
+
+      /* =======================================================
+         TITLE
+      ======================================================= */
+
+      const latestRun =
+
+        findLatestRun(
+          data
+        );
+
+
+      if (
+        latestRun !== null
+      ) {
+
+
+        graphTitle.textContent =
+
+          "SWABBING PIG WEIGHT COMPARISON — LATEST DATA THROUGH RUN "
+
+          +
+
+          latestRun;
+
+
+      }
+
+
+      else {
+
+
+        graphTitle.textContent =
+
+          "SWABBING PIG WEIGHT COMPARISON — LATEST DATA";
+
+
+      }
+
+
+      graphCount.textContent =
+
+        data.length
+
+        +
+
+        " PIG RECORD"
+
+        +
+
+        (
+          data.length === 1
+            ? ""
+            : "S"
+        )
+
+        +
+
+        " · AUTO REFRESH 60 SEC";
+
+
+
+      /* =======================================================
+         SVG SIZE
+
+         WIDER WHEN MORE PIGS ARE ADDED.
+
+         MOBILE CAN SWIPE LEFT / RIGHT.
+      ======================================================= */
+
+      const wrapperWidth =
+
+        Math.max(
+
+          wrapper.clientWidth,
+
+          320
+
+        );
+
+
+      const stepX =
+
+        window.innerWidth <= 700
+
+          ?
+
+          72
+
+          :
+
+          78;
+
+
+      const leftMargin =
+        62;
+
+
+      const rightMargin =
+        35;
+
+
+      const chartWidth =
+
+        Math.max(
+
+          wrapperWidth,
+
+          leftMargin
+
+          +
+
+          rightMargin
+
+          +
+
+          data.length * stepX
+
+        );
+
+
+      const chartHeight =
+        410;
+
+
+      const top =
+        28;
+
+
+      const plotBottom =
+        300;
+
+
+      const plotHeight =
+
+        plotBottom
+
+        -
+
+        top;
+
+
+
+      /* =======================================================
+         Y AXIS MAX
+      ======================================================= */
+
+      let maximum =
+        0;
+
+
+      data.forEach(
+
+        function (item) {
+
+
+          [
+
+            item.before,
+
+            item.after,
+
+            item.gain
+
+          ]
+
+          .forEach(
+
+            function (value) {
+
+
+              if (
+
+                Number.isFinite(
+                  value
+                )
+
+                &&
+
+                value > maximum
+
+              ) {
+
+
+                maximum =
+                  value;
+
+
+              }
+
+
+            }
+
+          );
+
+
+        }
+
+      );
+
+
+      let yMax =
+
+        Math.ceil(
+          maximum + 0.8
+        );
+
+
+      if (
+        yMax < 5
+      ) {
+
+
+        yMax =
+          5;
+
+
+      }
+
+
+      const yStep =
+
+        yMax <= 10
+
+          ?
+
+          1
+
+          :
+
+          2;
+
+
+
+      function xPosition(index) {
+
+
+        return (
+
+          leftMargin
+
+          +
+
+          stepX * index
+
+          +
+
+          stepX / 2
+
+        );
+
+
+      }
+
+
+
+      function yPosition(value) {
+
+
+        return (
+
+          plotBottom
+
+          -
+
+          (
+
+            value / yMax
+
+          )
+
+          *
+
+          plotHeight
+
+        );
+
+
+      }
+
+
+
+      const barWidth =
+        15;
+
+
+
+      /* =======================================================
+         SVG START
+      ======================================================= */
+
+      let svg =
+
+        '<svg' +
+
+        ' class="swabbing-chart"' +
+
+        ' xmlns="http://www.w3.org/2000/svg"' +
+
+        ' width="' + chartWidth + '"' +
+
+        ' height="' + chartHeight + '"' +
+
+        ' viewBox="0 0 ' + chartWidth + ' ' + chartHeight + '"' +
+
+        ' role="img"' +
+
+        ' aria-label="Swabbing pig weight comparison graph"' +
+
+        '>';
+
+
+
+      /* =======================================================
+         BACKGROUND
+      ======================================================= */
+
+      svg +=
+
+        '<rect' +
+
+        ' x="0"' +
+
+        ' y="0"' +
+
+        ' width="' + chartWidth + '"' +
+
+        ' height="' + chartHeight + '"' +
+
+        ' fill="#ffffff"' +
+
+        '/>';
+
+
+
+      /* =======================================================
+         HORIZONTAL GRID + Y AXIS LABELS
+      ======================================================= */
+
+      for (
+        let value = 0;
+        value <= yMax;
+        value += yStep
+      ) {
+
+
+        const y =
+          yPosition(
+            value
+          );
+
+
+        svg +=
+
+          '<line' +
+
+          ' x1="' + leftMargin + '"' +
+
+          ' y1="' + y + '"' +
+
+          ' x2="' + (chartWidth - rightMargin) + '"' +
+
+          ' y2="' + y + '"' +
+
+          ' stroke="#d8d8d8"' +
+
+          ' stroke-width="1"' +
+
+          ' stroke-dasharray="4 3"' +
+
+          '/>';
+
+
+        svg +=
+
+          '<text' +
+
+          ' x="' + (leftMargin - 12) + '"' +
+
+          ' y="' + (y + 4) + '"' +
+
+          ' text-anchor="end"' +
+
+          ' font-family="Arial, Helvetica, sans-serif"' +
+
+          ' font-size="12"' +
+
+          ' font-weight="700"' +
+
+          ' fill="#111111"' +
+
+          '>' +
+
+          value +
+
+          '</text>';
+
+
+      }
+
+
+
+      /* =======================================================
+         X / Y AXIS
+      ======================================================= */
+
+      svg +=
+
+        '<line' +
+
+        ' x1="' + leftMargin + '"' +
+
+        ' y1="' + top + '"' +
+
+        ' x2="' + leftMargin + '"' +
+
+        ' y2="' + plotBottom + '"' +
+
+        ' stroke="#111111"' +
+
+        ' stroke-width="1.5"' +
+
+        '/>';
+
+
+      svg +=
+
+        '<line' +
+
+        ' x1="' + leftMargin + '"' +
+
+        ' y1="' + plotBottom + '"' +
+
+        ' x2="' + (chartWidth - rightMargin) + '"' +
+
+        ' y2="' + plotBottom + '"' +
+
+        ' stroke="#111111"' +
+
+        ' stroke-width="1.5"' +
+
+        '/>';
+
+
+
+      /* =======================================================
+         Y AXIS TITLE
+      ======================================================= */
+
+      svg +=
+
+        '<text' +
+
+        ' x="16"' +
+
+        ' y="' + ((top + plotBottom) / 2) + '"' +
+
+        ' transform="rotate(-90 16 ' + ((top + plotBottom) / 2) + ')"' +
+
+        ' text-anchor="middle"' +
+
+        ' font-family="Arial, Helvetica, sans-serif"' +
+
+        ' font-size="14"' +
+
+        ' font-weight="900"' +
+
+        ' fill="#111111"' +
+
+        '>' +
+
+        'WEIGHT (KG)' +
+
+        '</text>';
+
+
+
+      /* =======================================================
+         BEFORE / AFTER BARS
+      ======================================================= */
+
+      data.forEach(
+
+        function (
+          item,
+          index
+        ) {
+
+
+          const center =
+            xPosition(
+              index
+            );
+
+
+
+          /* BEFORE */
+
+          if (
+            Number.isFinite(
+              item.before
+            )
+          ) {
+
+
+            const y =
+
+              yPosition(
+                item.before
+              );
+
+
+            const height =
+
+              plotBottom
+
+              -
+
+              y;
+
+
+            svg +=
+
+              '<rect' +
+
+              ' x="' + (center - barWidth - 2) + '"' +
+
+              ' y="' + y + '"' +
+
+              ' width="' + barWidth + '"' +
+
+              ' height="' + height + '"' +
+
+              ' fill="#2878ad"' +
+
+              '/>';
+
+
+            svg +=
+
+              '<text' +
+
+              ' x="' + (center - barWidth / 2 - 2) + '"' +
+
+              ' y="' + Math.max(15, y - 6) + '"' +
+
+              ' text-anchor="middle"' +
+
+              ' font-family="Arial, Helvetica, sans-serif"' +
+
+              ' font-size="10"' +
+
+              ' font-weight="900"' +
+
+              ' fill="#14598a"' +
+
+              '>' +
+
+              formatGraphNumber(
+                item.before
+              ) +
+
+              '</text>';
+
+
+          }
+
+
+
+          /* AFTER */
+
+          if (
+            Number.isFinite(
+              item.after
+            )
+          ) {
+
+
+            const y =
+
+              yPosition(
+                item.after
+              );
+
+
+            const height =
+
+              plotBottom
+
+              -
+
+              y;
+
+
+            svg +=
+
+              '<rect' +
+
+              ' x="' + (center + 2) + '"' +
+
+              ' y="' + y + '"' +
+
+              ' width="' + barWidth + '"' +
+
+              ' height="' + height + '"' +
+
+              ' fill="#ff7600"' +
+
+              '/>';
+
+
+            svg +=
+
+              '<text' +
+
+              ' x="' + (center + barWidth / 2 + 2) + '"' +
+
+              ' y="' + Math.max(15, y - 6) + '"' +
+
+              ' text-anchor="middle"' +
+
+              ' font-family="Arial, Helvetica, sans-serif"' +
+
+              ' font-size="10"' +
+
+              ' font-weight="900"' +
+
+              ' fill="#e95f00"' +
+
+              '>' +
+
+              formatGraphNumber(
+                item.after
+              ) +
+
+              '</text>';
+
+
+          }
+
+
+        }
+
+      );
+
+
+
+      /* =======================================================
+         WEIGHT GAIN LINE
+      ======================================================= */
+
+      const gainPoints =
+        [];
+
+
+      data.forEach(
+
+        function (
+          item,
+          index
+        ) {
+
+
+          if (
+            Number.isFinite(
+              item.gain
+            )
+          ) {
+
+
+            gainPoints.push(
+
+              xPosition(
+                index
+              )
+
+              +
+
+              ","
+
+              +
+
+              yPosition(
+                item.gain
+              )
+
+            );
+
+
+          }
+
+
+        }
+
+      );
+
+
+      if (
+        gainPoints.length >= 2
+      ) {
+
+
+        svg +=
+
+          '<polyline' +
+
+          ' points="' + gainPoints.join(" ") + '"' +
+
+          ' fill="none"' +
+
+          ' stroke="#75117e"' +
+
+          ' stroke-width="3"' +
+
+          ' stroke-linejoin="round"' +
+
+          ' stroke-linecap="round"' +
+
+          '/>';
+
+
+      }
+
+
+
+      /* =======================================================
+         GAIN DOT + VALUE
+      ======================================================= */
+
+      data.forEach(
+
+        function (
+          item,
+          index
+        ) {
+
+
+          if (
+            !Number.isFinite(
+              item.gain
+            )
+          ) {
+
+
+            return;
+
+
+          }
+
+
+          const x =
+            xPosition(
+              index
+            );
+
+
+          const y =
+            yPosition(
+              item.gain
+            );
+
+
+          svg +=
+
+            '<circle' +
+
+            ' cx="' + x + '"' +
+
+            ' cy="' + y + '"' +
+
+            ' r="4.5"' +
+
+            ' fill="#75117e"' +
+
+            '/>';
+
+
+          svg +=
+
+            '<text' +
+
+            ' x="' + x + '"' +
+
+            ' y="' + Math.max(16, y - 9) + '"' +
+
+            ' text-anchor="middle"' +
+
+            ' font-family="Arial, Helvetica, sans-serif"' +
+
+            ' font-size="10"' +
+
+            ' font-weight="900"' +
+
+            ' fill="#75117e"' +
+
+            '>' +
+
+            formatGraphNumber(
+              item.gain
+            ) +
+
+            '</text>';
+
+
+        }
+
+      );
+
+
+
+      /* =======================================================
+         LINEAR GAIN TREND
+      ======================================================= */
+
+      const trend =
+
+        calculateLinearTrend(
+          data
+        );
+
+
+      if (
+
+        trend
+
+        &&
+
+        data.length >= 2
+
+      ) {
+
+
+        const startX =
+          0;
+
+
+        const endX =
+          data.length - 1;
+
+
+        const startValue =
+
+          trend.intercept
+
+          +
+
+          trend.slope * startX;
+
+
+        const endValue =
+
+          trend.intercept
+
+          +
+
+          trend.slope * endX;
+
+
+        svg +=
+
+          '<line' +
+
+          ' x1="' + xPosition(startX) + '"' +
+
+          ' y1="' + yPosition(Math.max(0, startValue)) + '"' +
+
+          ' x2="' + xPosition(endX) + '"' +
+
+          ' y2="' + yPosition(Math.max(0, endValue)) + '"' +
+
+          ' stroke="#e31b23"' +
+
+          ' stroke-width="2"' +
+
+          ' stroke-dasharray="8 5"' +
+
+          '/>';
+
+
+      }
+
+
+
+      /* =======================================================
+         PIG SEQUENCE + PIG TYPE
+      ======================================================= */
+
+      data.forEach(
+
+        function (
+          item,
+          index
+        ) {
+
+
+          const x =
+            xPosition(
+              index
+            );
+
+
+          svg +=
+
+            '<text' +
+
+            ' x="' + x + '"' +
+
+            ' y="321"' +
+
+            ' text-anchor="middle"' +
+
+            ' font-family="Arial, Helvetica, sans-serif"' +
+
+            ' font-size="11"' +
+
+            ' font-weight="900"' +
+
+            ' fill="#111111"' +
+
+            '>' +
+
+            escapeHtml(
+              item.pigNumber
+            ) +
+
+            '</text>';
+
+
+
+          if (
+            item.pigType
+          ) {
+
+
+            svg +=
+
+              '<text' +
+
+              ' x="' + x + '"' +
+
+              ' y="340"' +
+
+              ' text-anchor="middle"' +
+
+              ' font-family="Arial, Helvetica, sans-serif"' +
+
+              ' font-size="9"' +
+
+              ' font-weight="800"' +
+
+              ' fill="#444444"' +
+
+              '>' +
+
+              escapeHtml(
+                item.pigType
+              ) +
+
+              '</text>';
+
+
+          }
+
+
+        }
+
+      );
+
+
+
+      /* =======================================================
+         SWABBING RUN GROUP BRACKETS
+      ======================================================= */
+
+      let groupStart =
+        0;
+
+
+      for (
+        let i = 0;
+        i <= data.length;
+        i++
+      ) {
+
+
+        const currentRun =
+
+          i < data.length
+
+            ?
+
+            data[i].run
+
+            :
+
+            null;
+
+
+        const startRun =
+
+          data[
+            groupStart
+          ]
+          ?
+          data[
+            groupStart
+          ].run
+          :
+          "";
+
+
+        const groupEnded =
+
+          i === data.length
+
+          ||
+
+          currentRun !== startRun;
+
+
+        if (
+          !groupEnded
+        ) {
+
+
+          continue;
+
+
+        }
+
+
+        if (
+          startRun
+        ) {
+
+
+          const startX =
+
+            xPosition(
+              groupStart
+            )
+
+            -
+
+            25;
+
+
+          const endX =
+
+            xPosition(
+              i - 1
+            )
+
+            +
+
+            25;
+
+
+          const lineY =
+            358;
+
+
+          svg +=
+
+            '<line' +
+
+            ' x1="' + startX + '"' +
+
+            ' y1="' + lineY + '"' +
+
+            ' x2="' + endX + '"' +
+
+            ' y2="' + lineY + '"' +
+
+            ' stroke="#333333"' +
+
+            ' stroke-width="1.5"' +
+
+            '/>';
+
+
+          svg +=
+
+            '<line' +
+
+            ' x1="' + startX + '"' +
+
+            ' y1="' + (lineY - 5) + '"' +
+
+            ' x2="' + startX + '"' +
+
+            ' y2="' + lineY + '"' +
+
+            ' stroke="#333333"' +
+
+            ' stroke-width="1.5"' +
+
+            '/>';
+
+
+          svg +=
+
+            '<line' +
+
+            ' x1="' + endX + '"' +
+
+            ' y1="' + (lineY - 5) + '"' +
+
+            ' x2="' + endX + '"' +
+
+            ' y2="' + lineY + '"' +
+
+            ' stroke="#333333"' +
+
+            ' stroke-width="1.5"' +
+
+            '/>';
+
+
+          svg +=
+
+            '<text' +
+
+            ' x="' + ((startX + endX) / 2) + '"' +
+
+            ' y="378"' +
+
+            ' text-anchor="middle"' +
+
+            ' font-family="Arial, Helvetica, sans-serif"' +
+
+            ' font-size="10"' +
+
+            ' font-weight="900"' +
+
+            ' fill="#111111"' +
+
+            '>' +
+
+            escapeHtml(
+              startRun
+            ) +
+
+            '</text>';
+
+
+        }
+
+
+        groupStart =
+          i;
+
+
+      }
+
+
+
+      /* =======================================================
+         X AXIS TITLE
+      ======================================================= */
+
+      svg +=
+
+        '<text' +
+
+        ' x="' + (chartWidth / 2) + '"' +
+
+        ' y="401"' +
+
+        ' text-anchor="middle"' +
+
+        ' font-family="Arial, Helvetica, sans-serif"' +
+
+        ' font-size="12"' +
+
+        ' font-weight="900"' +
+
+        ' fill="#111111"' +
+
+        '>' +
+
+        'PIG SEQUENCE' +
+
+        '</text>';
+
+
+
+      svg +=
+        '</svg>';
+
+
+
+      wrapper.innerHTML =
+        svg;
+
+
+
+      /* =======================================================
+         AFTER AUTO REFRESH:
+         SHOW LATEST PIG AT RIGHT SIDE
+
+         IF GRAPH IS WIDER THAN SCREEN.
+      ======================================================= */
+
+      requestAnimationFrame(
+
+        function () {
+
+
+          wrapper.scrollLeft =
+
+            wrapper.scrollWidth
+
+            -
+
+            wrapper.clientWidth;
+
+
+        }
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       CALLBACKS
     ========================================================= */
 
     window.swabbingResponse =
@@ -4649,7 +7014,7 @@
 
 
     /* =========================================================
-       LOAD BOTH TABLES
+       LOAD ALL DATA
     ========================================================= */
 
     function loadAllTables() {
@@ -4678,9 +7043,15 @@
 
 
     /* =========================================================
-       AUTO REFRESH GOOGLE SHEETS
+       AUTO REFRESH
 
        EVERY 60 SECONDS
+
+       THIS REFRESHES:
+
+       1. SWABBING TABLE
+       2. SWABBING GRAPH
+       3. DEW POINT TABLE
     ========================================================= */
 
     setInterval(
@@ -4688,6 +7059,69 @@
       loadAllTables,
 
       TABLE_REFRESH_TIME
+
+    );
+
+
+
+    /* =========================================================
+       REDRAW GRAPH WHEN BROWSER SIZE CHANGES
+    ========================================================= */
+
+    let resizeTimer =
+      null;
+
+
+    window.addEventListener(
+
+      "resize",
+
+      function () {
+
+
+        clearTimeout(
+          resizeTimer
+        );
+
+
+        resizeTimer =
+
+          setTimeout(
+
+            function () {
+
+
+              if (
+
+                lastSwabbingColumns.length > 0
+
+                &&
+
+                lastSwabbingRows.length > 0
+
+              ) {
+
+
+                renderSwabbingGraph(
+
+                  lastSwabbingColumns,
+
+                  lastSwabbingRows
+
+                );
+
+
+              }
+
+
+            },
+
+            180
+
+          );
+
+
+      }
 
     );
 
