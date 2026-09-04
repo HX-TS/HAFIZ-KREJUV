@@ -1,1 +1,3797 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>FEC Swabbing Data</title>
+
+
+  <!-- =========================================================
+       FAVICON
+  ========================================================= -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+  >
+
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+  >
+
+
+  <style>
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    :root {
+
+      --black: #050505;
+
+      --cream: #f2efe9;
+
+      --cream-2: #ebe8e2;
+
+      --line: #cbc7bf;
+
+      --grey: #5b5751;
+
+      --light-grey: #dedad3;
+
+      --datetime-width: 145px;
+
+    }
+
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+
+    html,
+    body {
+
+      width: 100%;
+
+      height: 100%;
+
+    }
+
+
+    body {
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        var(--black);
+
+      color:
+        var(--black);
+
+      overflow: hidden;
+
+    }
+
+
+
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .page {
+
+      width: 100%;
+
+      height: 100dvh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding: 7px;
+
+      gap: 7px;
+
+      background:
+        var(--black);
+
+    }
+
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .hero {
+
+      flex-shrink: 0;
+
+      min-height: 95px;
+
+      height: 95px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: stretch;
+
+      background:
+        var(--cream);
+
+      border:
+        1px solid
+        var(--black);
+
+      overflow: hidden;
+
+    }
+
+
+    .hero-left {
+
+      min-width: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      justify-content: center;
+
+      padding:
+        14px
+        24px;
+
+    }
+
+
+    .hero-title {
+
+      font-size:
+        clamp(
+          28px,
+          3.1vw,
+          48px
+        );
+
+      line-height: 0.92;
+
+      font-weight: 900;
+
+      letter-spacing: -0.045em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .hero-subtitle {
+
+      margin-top: 8px;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.28em;
+
+      text-transform: uppercase;
+
+      color:
+        var(--grey);
+
+    }
+
+
+
+    /* =========================================================
+       MAIN BOOKMARK
+    ========================================================= */
+
+    .main-bookmark {
+
+      min-width: 185px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        15px
+        24px;
+
+      border-left:
+        1px solid
+        var(--black);
+
+      text-decoration: none;
+
+      color:
+        var(--black);
+
+      background:
+        var(--cream);
+
+      text-align: center;
+
+      font-size: 12px;
+
+      line-height: 1.15;
+
+      font-weight: 900;
+
+      letter-spacing: 0.05em;
+
+      text-transform: uppercase;
+
+      transition:
+        background 0.15s ease,
+        color 0.15s ease;
+
+    }
+
+
+    .main-bookmark:hover,
+    .main-bookmark:focus-visible {
+
+      background:
+        var(--black);
+
+      color:
+        #ffffff;
+
+      outline: none;
+
+    }
+
+
+    .bookmark-arrow {
+
+      margin-left: 10px;
+
+      font-size: 18px;
+
+      line-height: 1;
+
+      font-weight: 900;
+
+    }
+
+
+
+    /* =========================================================
+       MAIN DATA AREA
+    ========================================================= */
+
+    .dashboard {
+
+      flex: 1;
+
+      min-height: 0;
+
+      display: grid;
+
+      grid-template-rows:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 7px;
+
+    }
+
+
+
+    /* =========================================================
+       PANEL
+    ========================================================= */
+
+    .reading-panel {
+
+      min-height: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      background:
+        var(--cream);
+
+      border:
+        1px solid
+        var(--black);
+
+      overflow: hidden;
+
+    }
+
+
+    .panel-title {
+
+      flex-shrink: 0;
+
+      min-height: 42px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding:
+        0
+        16px;
+
+      background:
+        var(--cream);
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 0.03em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .panel-title-text {
+
+      min-width: 0;
+
+    }
+
+
+    .panel-note {
+
+      flex-shrink: 0;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+
+      color:
+        var(--grey);
+
+      text-align: right;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* =========================================================
+       TABLE WRAPPER
+    ========================================================= */
+
+    .table-wrapper {
+
+      flex: 1;
+
+      min-height: 0;
+
+      overflow-x: auto;
+
+      overflow-y: auto;
+
+      background:
+        var(--cream);
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        #888
+        var(--cream-2);
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar {
+
+      width: 8px;
+
+      height: 8px;
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar-track {
+
+      background:
+        var(--cream-2);
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+
+      background:
+        #888;
+
+    }
+
+
+
+    /* =========================================================
+       TABLE
+    ========================================================= */
+
+    table {
+
+      width: 100%;
+
+      min-width: max-content;
+
+      border-collapse: collapse;
+
+      table-layout: auto;
+
+      background:
+        var(--cream);
+
+    }
+
+
+    thead {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 20;
+
+    }
+
+
+    th {
+
+      min-width: 125px;
+
+      height: 48px;
+
+      padding:
+        8px
+        12px;
+
+      background:
+        var(--cream);
+
+      border-right:
+        1px solid
+        var(--line);
+
+      border-bottom:
+        1px solid
+        var(--black);
+
+      text-align: center;
+
+      vertical-align: middle;
+
+      white-space: nowrap;
+
+      font-size: 11px;
+
+      line-height: 1.15;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+    }
+
+
+    td {
+
+      min-width: 125px;
+
+      height: 37px;
+
+      padding:
+        7px
+        12px;
+
+      background:
+        var(--cream);
+
+      border-right:
+        1px solid
+        var(--line);
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      text-align: center;
+
+      vertical-align: middle;
+
+      white-space: nowrap;
+
+      font-size: 12px;
+
+      line-height: 1.15;
+
+      font-weight: 600;
+
+      font-variant-numeric:
+        tabular-nums;
+
+    }
+
+
+    th:last-child,
+    td:last-child {
+
+      border-right: none;
+
+    }
+
+
+    tbody tr:hover td {
+
+      background:
+        #e9e5de;
+
+    }
+
+
+
+    /* =========================================================
+       LOWEST DEW POINT VALUE
+
+       ONLY THE LOWEST VALUE IS MADE BOLD.
+       NO COLOUR HIGHLIGHT.
+    ========================================================= */
+
+    td.lowest-value {
+
+      font-weight: 900;
+
+    }
+
+
+
+    /* =========================================================
+       MESSAGE
+    ========================================================= */
+
+    .message {
+
+      width: 100%;
+
+      height: 100%;
+
+      min-height: 90px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      text-align: center;
+
+      font-size: 11px;
+
+      line-height: 1.5;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .message strong {
+
+      font-weight: 900;
+
+    }
+
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .footer {
+
+      flex-shrink: 0;
+
+      min-height: 34px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        6px
+        10px
+        max(
+          6px,
+          env(safe-area-inset-bottom)
+        );
+
+      background:
+        var(--cream);
+
+      border:
+        1px solid
+        var(--black);
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* =========================================================
+       SMALL LAPTOP / TABLET
+    ========================================================= */
+
+    @media (max-width: 1200px) {
+
+      :root {
+
+        --datetime-width: 130px;
+
+      }
+
+
+      .hero {
+
+        height: 88px;
+
+        min-height: 88px;
+
+      }
+
+
+      .hero-left {
+
+        padding:
+          12px
+          18px;
+
+      }
+
+
+      .hero-title {
+
+        font-size:
+          clamp(
+            26px,
+            3.8vw,
+            42px
+          );
+
+      }
+
+
+      .main-bookmark {
+
+        min-width: 165px;
+
+        padding:
+          12px
+          18px;
+
+        font-size: 11px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .page {
+
+        padding:
+          max(
+            3px,
+            env(safe-area-inset-top)
+          )
+          3px
+          max(
+            3px,
+            env(safe-area-inset-bottom)
+          );
+
+        gap: 3px;
+
+      }
+
+
+      .hero {
+
+        min-height: 70px;
+
+        height: 70px;
+
+        grid-template-columns:
+          minmax(0, 1fr)
+          116px;
+
+      }
+
+
+      .hero-left {
+
+        padding:
+          8px
+          10px;
+
+      }
+
+
+      .hero-title {
+
+        font-size:
+          clamp(
+            20px,
+            6vw,
+            28px
+          );
+
+      }
+
+
+      .hero-subtitle {
+
+        margin-top: 4px;
+
+        font-size: 6px;
+
+        letter-spacing: 0.20em;
+
+      }
+
+
+      .main-bookmark {
+
+        min-width: 0;
+
+        padding:
+          7px
+          8px;
+
+        font-size: 8px;
+
+        line-height: 1.25;
+
+      }
+
+
+      .bookmark-arrow {
+
+        margin-left: 5px;
+
+        font-size: 13px;
+
+      }
+
+
+      .dashboard {
+
+        gap: 3px;
+
+      }
+
+
+      .panel-title {
+
+        min-height: 31px;
+
+        padding:
+          0
+          8px;
+
+        gap: 6px;
+
+        font-size: 9px;
+
+      }
+
+
+      .panel-note {
+
+        font-size: 5.5px;
+
+        letter-spacing: 0.03em;
+
+      }
+
+
+      th {
+
+        min-width: 100px;
+
+        height: 38px;
+
+        padding:
+          6px
+          7px;
+
+        font-size: 8px;
+
+      }
+
+
+      td {
+
+        min-width: 100px;
+
+        height: 30px;
+
+        padding:
+          5px
+          7px;
+
+        font-size: 9px;
+
+      }
+
+
+      .footer {
+
+        min-height: 25px;
+
+        font-size: 7px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+  <div class="page">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="hero">
+
+
+      <div class="hero-left">
+
+        <div class="hero-title">
+
+          FEC SWABBING DATA
+
+        </div>
+
+        <div class="hero-subtitle">
+
+          TECHSMITH
+
+        </div>
+
+      </div>
+
+
+      <a
+        class="main-bookmark"
+        href="https://hx-ts.github.io/HAFIZ-KREJUV/"
+        target="_self"
+      >
+
+        MAIN BOOKMARK
+
+        <span class="bookmark-arrow">
+          ↗
+        </span>
+
+      </a>
+
+
+    </header>
+
+
+
+    <!-- =====================================================
+         TABLES
+    ====================================================== -->
+
+    <main class="dashboard">
+
+
+      <!-- ===================================================
+           SWABBING PIG RUN
+      ==================================================== -->
+
+      <section class="reading-panel">
+
+
+        <div class="panel-title">
+
+          <div class="panel-title-text">
+
+            SWABBING PIG RUN
+
+          </div>
+
+          <div class="panel-note">
+
+            LATEST DATA AT BOTTOM
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="table-wrapper"
+          id="swabbingContainer"
+        >
+
+          <div class="message">
+
+            Loading Swabbing Pig Run Data...
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ===================================================
+           DEW POINT DATA
+      ==================================================== -->
+
+      <section class="reading-panel">
+
+
+        <div class="panel-title">
+
+          <div class="panel-title-text">
+
+            DEW POINT DATA
+
+          </div>
+
+          <div class="panel-note">
+
+            LOWEST READING = BOLD
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="table-wrapper"
+          id="dewPointContainer"
+        >
+
+          <div class="message">
+
+            Loading Dew Point Data...
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+      Fly TechSmith
+
+    </footer>
+
+
+  </div>
+
+
+
+  <script>
+
+
+    /* =========================================================
+       SETTINGS
+    ========================================================= */
+
+    const TABLE_REFRESH_TIME =
+      60000;
+
+
+
+    /* =========================================================
+       GOOGLE SHEET LINKS
+
+       IMPORTANT:
+
+       YOU DID NOT INCLUDE THE SWABBING PIG RUN GOOGLE SHEET
+       LINK IN YOUR MESSAGE.
+
+       PASTE THE FULL GOOGLE SHEET LINK BELOW.
+    ========================================================= */
+
+    const SWABBING_SHEET_URL =
+
+      "PASTE_SWABBING_PIG_RUN_GOOGLE_SHEET_LINK_HERE";
+
+
+
+    const DEW_POINT_SHEET_URL =
+
+      "https://docs.google.com/spreadsheets/d/1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM/edit?usp=sharing";
+
+
+
+    /* =========================================================
+       EXTRACT GOOGLE SHEET ID + GID FROM FULL URL
+    ========================================================= */
+
+    function parseGoogleSheetUrl(url) {
+
+
+      const text =
+        String(
+          url || ""
+        )
+        .trim();
+
+
+      const idMatch =
+        text.match(
+          /\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/
+        );
+
+
+      const gidMatch =
+        text.match(
+          /[?&#]gid=(\d+)/
+        );
+
+
+      return {
+
+        spreadsheetId:
+          idMatch
+            ? idMatch[1]
+            : "",
+
+        gid:
+          gidMatch
+            ? gidMatch[1]
+            : "0"
+
+      };
+
+
+    }
+
+
+
+    /* =========================================================
+       CREATE SHEET CONFIG
+    ========================================================= */
+
+    function createSheetConfig(
+      url,
+      container,
+      callback,
+      options = {}
+    ) {
+
+
+      const sheet =
+        parseGoogleSheetUrl(
+          url
+        );
+
+
+      return {
+
+        spreadsheetId:
+          sheet.spreadsheetId,
+
+        gid:
+          sheet.gid,
+
+        range:
+          options.range || "A:Z",
+
+        container:
+          container,
+
+        callback:
+          callback,
+
+        hiddenColumns:
+          options.hiddenColumns || [],
+
+        sortByDateTime:
+          options.sortByDateTime !== false,
+
+        highlightLowest:
+          options.highlightLowest === true,
+
+        missingMessage:
+          options.missingMessage ||
+          "Google Sheet Link Not Configured"
+
+      };
+
+
+    }
+
+
+
+    /* =========================================================
+       SHEET CONFIGURATION
+    ========================================================= */
+
+    const SWABBING =
+
+      createSheetConfig(
+
+        SWABBING_SHEET_URL,
+
+        "swabbingContainer",
+
+        "swabbingResponse",
+
+        {
+
+          range:
+            "A:Z",
+
+          hiddenColumns: [
+            "TIMESTAMP"
+          ],
+
+          sortByDateTime:
+            true,
+
+          highlightLowest:
+            false,
+
+          missingMessage:
+            "ADD SWABBING PIG RUN GOOGLE SHEET LINK IN SWABBING_SHEET_URL"
+
+        }
+
+      );
+
+
+
+    const DEW_POINT =
+
+      createSheetConfig(
+
+        DEW_POINT_SHEET_URL,
+
+        "dewPointContainer",
+
+        "dewPointResponse",
+
+        {
+
+          range:
+            "A:Z",
+
+          hiddenColumns: [
+            "TIMESTAMP"
+          ],
+
+          sortByDateTime:
+            true,
+
+          highlightLowest:
+            true
+
+        }
+
+      );
+
+
+
+    /* =========================================================
+       NORMALIZE TEXT
+    ========================================================= */
+
+    function normalizeText(value) {
+
+
+      return String(
+        value || ""
+      )
+
+      .trim()
+
+      .toUpperCase();
+
+    }
+
+
+
+    /* =========================================================
+       CELL HAS VALUE
+    ========================================================= */
+
+    function cellHasValue(cell) {
+
+
+      if (!cell) {
+
+        return false;
+
+      }
+
+
+      return !(
+
+        cell.v === null
+
+        ||
+
+        cell.v === undefined
+
+        ||
+
+        cell.v === ""
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       DISPLAY VALUE
+    ========================================================= */
+
+    function getCellDisplayValue(cell) {
+
+
+      if (!cell) {
+
+        return "";
+
+      }
+
+
+      if (
+
+        cell.f !== undefined
+
+        &&
+
+        cell.f !== null
+
+        &&
+
+        cell.f !== ""
+
+      ) {
+
+        return cell.f;
+
+      }
+
+
+      if (
+
+        cell.v !== undefined
+
+        &&
+
+        cell.v !== null
+
+      ) {
+
+        return cell.v;
+
+      }
+
+
+      return "";
+
+    }
+
+
+
+    /* =========================================================
+       EXTRACT NUMBER
+
+       SUPPORTS:
+
+       -32.6
+       +12
+       -32.6 °Cdp
+       12 °C
+       Unicode minus sign
+    ========================================================= */
+
+    function extractNumber(value) {
+
+
+      if (
+
+        value === null
+
+        ||
+
+        value === undefined
+
+        ||
+
+        value === ""
+
+      ) {
+
+        return null;
+
+      }
+
+
+      if (
+        typeof value === "number"
+      ) {
+
+        return Number.isFinite(value)
+          ? value
+          : null;
+
+      }
+
+
+      const match =
+
+        String(value)
+
+        .replace(
+          /,/g,
+          ""
+        )
+
+        .replace(
+          /−/g,
+          "-"
+        )
+
+        .match(
+          /[-+]?\d+(?:\.\d+)?/
+        );
+
+
+      if (!match) {
+
+        return null;
+
+      }
+
+
+      const number =
+        parseFloat(
+          match[0]
+        );
+
+
+      return Number.isFinite(
+        number
+      )
+
+        ? number
+
+        : null;
+
+
+    }
+
+
+
+    /* =========================================================
+       COLUMN NAME CHECKS
+    ========================================================= */
+
+    function isTimestampColumn(name) {
+
+
+      const n =
+        normalizeText(
+          name
+        );
+
+
+      return (
+
+        n === "TIMESTAMP"
+
+        ||
+
+        n.includes(
+          "TIMESTAMP"
+        )
+
+      );
+
+
+    }
+
+
+
+    function isDateColumn(name) {
+
+
+      const n =
+        normalizeText(
+          name
+        );
+
+
+      return (
+
+        n === "DATE"
+
+        ||
+
+        n.startsWith(
+          "DATE "
+        )
+
+        ||
+
+        n.endsWith(
+          " DATE"
+        )
+
+        ||
+
+        n === "TARIKH"
+
+        ||
+
+        n.startsWith(
+          "TARIKH "
+        )
+
+      );
+
+
+    }
+
+
+
+    function isTimeColumn(name) {
+
+
+      const n =
+        normalizeText(
+          name
+        );
+
+
+      if (
+        isTimestampColumn(n)
+      ) {
+
+        return false;
+
+      }
+
+
+      return (
+
+        n === "TIME"
+
+        ||
+
+        n.startsWith(
+          "TIME "
+        )
+
+        ||
+
+        n.endsWith(
+          " TIME"
+        )
+
+        ||
+
+        n.includes(
+          "MASA"
+        )
+
+        ||
+
+        n.includes(
+          "HRS"
+        )
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       HIDE COLUMN
+    ========================================================= */
+
+    function shouldHideColumn(
+      columnLabel,
+      config
+    ) {
+
+
+      const name =
+        normalizeText(
+          columnLabel
+        );
+
+
+      /*
+         ALWAYS HIDE GOOGLE FORM TIMESTAMP
+      */
+
+      if (
+        isTimestampColumn(
+          name
+        )
+      ) {
+
+        return true;
+
+      }
+
+
+      const hiddenColumns =
+        (
+          config.hiddenColumns || []
+        )
+        .map(
+          function (item) {
+
+            return normalizeText(
+              item
+            );
+
+          }
+        );
+
+
+      return hiddenColumns.some(
+
+        function (hiddenName) {
+
+
+          return (
+
+            name === hiddenName
+
+            ||
+
+            name.includes(
+              hiddenName
+            )
+
+          );
+
+
+        }
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       DATE PARSER
+    ========================================================= */
+
+    function parseDateCell(cell) {
+
+
+      if (!cell) {
+
+        return null;
+
+      }
+
+
+      /*
+         JAVASCRIPT DATE OBJECT
+      */
+
+      if (
+        cell.v instanceof Date
+      ) {
+
+        return new Date(
+
+          cell.v.getFullYear(),
+
+          cell.v.getMonth(),
+
+          cell.v.getDate(),
+
+          0,
+          0,
+          0,
+          0
+
+        )
+        .getTime();
+
+      }
+
+
+
+      const candidates = [
+
+        cell.f,
+
+        cell.v
+
+      ];
+
+
+      for (
+        const candidate
+        of candidates
+      ) {
+
+
+        if (
+
+          candidate === null
+
+          ||
+
+          candidate === undefined
+
+          ||
+
+          candidate === ""
+
+        ) {
+
+          continue;
+
+        }
+
+
+        const text =
+          String(candidate)
+          .trim();
+
+
+        /*
+           GOOGLE VISUALIZATION DATE
+
+           Date(2026,8,4)
+
+           MONTH IS ZERO BASED
+        */
+
+        let match =
+          text.match(
+
+            /Date\(\s*(\d{4})\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})/
+
+          );
+
+
+        if (match) {
+
+
+          return new Date(
+
+            Number(match[1]),
+
+            Number(match[2]),
+
+            Number(match[3]),
+
+            0,
+            0,
+            0,
+            0
+
+          )
+          .getTime();
+
+
+        }
+
+
+
+        /*
+           DD/MM/YYYY
+
+           DD-MM-YYYY
+        */
+
+        match =
+          text.match(
+
+            /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/
+
+          );
+
+
+        if (match) {
+
+
+          return new Date(
+
+            Number(match[3]),
+
+            Number(match[2]) - 1,
+
+            Number(match[1]),
+
+            0,
+            0,
+            0,
+            0
+
+          )
+          .getTime();
+
+
+        }
+
+
+
+        /*
+           YYYY-MM-DD
+        */
+
+        match =
+          text.match(
+
+            /^(\d{4})-(\d{1,2})-(\d{1,2})$/
+
+          );
+
+
+        if (match) {
+
+
+          return new Date(
+
+            Number(match[1]),
+
+            Number(match[2]) - 1,
+
+            Number(match[3]),
+
+            0,
+            0,
+            0,
+            0
+
+          )
+          .getTime();
+
+
+        }
+
+
+
+        /*
+           FALLBACK FOR:
+
+           4 Sep 2026
+           Sep 4 2026
+           ETC.
+        */
+
+        const parsed =
+          Date.parse(
+            text
+          );
+
+
+        if (
+          Number.isFinite(
+            parsed
+          )
+        ) {
+
+
+          const date =
+            new Date(
+              parsed
+            );
+
+
+          return new Date(
+
+            date.getFullYear(),
+
+            date.getMonth(),
+
+            date.getDate(),
+
+            0,
+            0,
+            0,
+            0
+
+          )
+          .getTime();
+
+
+        }
+
+
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* =========================================================
+       TIME PARSER
+    ========================================================= */
+
+    function parseTimeCell(cell) {
+
+
+      if (!cell) {
+
+        return 0;
+
+      }
+
+
+      /*
+         JAVASCRIPT DATE OBJECT
+      */
+
+      if (
+        cell.v instanceof Date
+      ) {
+
+
+        return (
+
+          cell.v.getHours()
+          *
+          3600000
+
+          +
+
+          cell.v.getMinutes()
+          *
+          60000
+
+          +
+
+          cell.v.getSeconds()
+          *
+          1000
+
+        );
+
+
+      }
+
+
+
+      /*
+         GOOGLE SHEET TIME MAY APPEAR AS
+         FRACTION OF ONE DAY
+      */
+
+      if (
+
+        typeof cell.v === "number"
+
+        &&
+
+        cell.v >= 0
+
+        &&
+
+        cell.v < 1
+
+      ) {
+
+
+        return Math.round(
+
+          cell.v
+          *
+          24
+          *
+          60
+          *
+          60
+          *
+          1000
+
+        );
+
+
+      }
+
+
+
+      const candidates = [
+
+        cell.f,
+
+        cell.v
+
+      ];
+
+
+      for (
+        const candidate
+        of candidates
+      ) {
+
+
+        if (
+
+          candidate === null
+
+          ||
+
+          candidate === undefined
+
+          ||
+
+          candidate === ""
+
+        ) {
+
+          continue;
+
+        }
+
+
+        let text =
+          String(candidate)
+
+          .trim()
+
+          .toUpperCase()
+
+          .replace(
+            /\./g,
+            ":"
+          )
+
+          .replace(
+            /\s+/g,
+            " "
+          );
+
+
+
+        /*
+           GOOGLE DATE WITH TIME
+
+           Date(2026,8,4,11,5,0)
+        */
+
+        let match =
+          text.match(
+
+            /DATE\(\s*\d{4}\s*,\s*\d{1,2}\s*,\s*\d{1,2}\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})(?:\s*,\s*(\d{1,2}))?/
+
+          );
+
+
+        if (match) {
+
+
+          const hour =
+            Number(
+              match[1]
+            );
+
+
+          const minute =
+            Number(
+              match[2]
+            );
+
+
+          const second =
+            Number(
+              match[3] || 0
+            );
+
+
+          return (
+
+            hour
+            *
+            3600000
+
+            +
+
+            minute
+            *
+            60000
+
+            +
+
+            second
+            *
+            1000
+
+          );
+
+
+        }
+
+
+
+        /*
+           11:05
+           11:05:30
+           11:05 HRS
+        */
+
+        match =
+          text.match(
+
+            /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
+
+          );
+
+
+        if (match) {
+
+
+          const hour =
+            Number(
+              match[1]
+            );
+
+
+          const minute =
+            Number(
+              match[2]
+            );
+
+
+          const second =
+            Number(
+              match[3] || 0
+            );
+
+
+          if (
+
+            hour >= 0
+
+            &&
+
+            hour <= 23
+
+            &&
+
+            minute >= 0
+
+            &&
+
+            minute <= 59
+
+          ) {
+
+
+            return (
+
+              hour
+              *
+              3600000
+
+              +
+
+              minute
+              *
+              60000
+
+              +
+
+              second
+              *
+              1000
+
+            );
+
+
+          }
+
+
+        }
+
+
+
+        /*
+           1105
+           905
+           1105HRS
+           0904 HRS
+        */
+
+        match =
+          text.match(
+
+            /^(\d{3,4})\s*(?:HRS?)?$/
+
+          );
+
+
+        if (match) {
+
+
+          const digits =
+            match[1]
+            .padStart(
+              4,
+              "0"
+            );
+
+
+          const hour =
+            Number(
+              digits.slice(
+                0,
+                2
+              )
+            );
+
+
+          const minute =
+            Number(
+              digits.slice(
+                2,
+                4
+              )
+            );
+
+
+          if (
+
+            hour >= 0
+
+            &&
+
+            hour <= 23
+
+            &&
+
+            minute >= 0
+
+            &&
+
+            minute <= 59
+
+          ) {
+
+
+            return (
+
+              hour
+              *
+              3600000
+
+              +
+
+              minute
+              *
+              60000
+
+            );
+
+
+          }
+
+
+        }
+
+
+
+        /*
+           11:05 AM
+           1:05 PM
+        */
+
+        match =
+          text.match(
+
+            /^(\d{1,2}):(\d{2})\s*(AM|PM)$/
+
+          );
+
+
+        if (match) {
+
+
+          let hour =
+            Number(
+              match[1]
+            );
+
+
+          const minute =
+            Number(
+              match[2]
+            );
+
+
+          const period =
+            match[3];
+
+
+          if (
+            period === "PM"
+            &&
+            hour !== 12
+          ) {
+
+            hour += 12;
+
+          }
+
+
+          if (
+            period === "AM"
+            &&
+            hour === 12
+          ) {
+
+            hour = 0;
+
+          }
+
+
+          return (
+
+            hour
+            *
+            3600000
+
+            +
+
+            minute
+            *
+            60000
+
+          );
+
+
+        }
+
+
+      }
+
+
+      return 0;
+
+    }
+
+
+
+    /* =========================================================
+       FIND DATE + TIME COLUMNS
+
+       IMPORTANT:
+
+       SORTING DOES NOT USE TIMESTAMP.
+
+       IT USES THE DATE AND TIME/MASA THAT YOU KEY INTO
+       THE TABLE.
+    ========================================================= */
+
+    function findDateTimeColumns(
+      columns
+    ) {
+
+
+      let dateIndex =
+        -1;
+
+
+      let timeIndex =
+        -1;
+
+
+      columns.forEach(
+
+        function (
+          column,
+          index
+        ) {
+
+
+          const label =
+            column.label || "";
+
+
+          if (
+
+            dateIndex === -1
+
+            &&
+
+            isDateColumn(
+              label
+            )
+
+          ) {
+
+            dateIndex =
+              index;
+
+          }
+
+
+          if (
+
+            timeIndex === -1
+
+            &&
+
+            isTimeColumn(
+              label
+            )
+
+          ) {
+
+            timeIndex =
+              index;
+
+          }
+
+
+        }
+
+      );
+
+
+      return {
+
+        dateIndex:
+          dateIndex,
+
+        timeIndex:
+          timeIndex
+
+      };
+
+
+    }
+
+
+
+    /* =========================================================
+       ROW SORT VALUE
+    ========================================================= */
+
+    function getRowDateTimeValue(
+      row,
+      dateIndex,
+      timeIndex
+    ) {
+
+
+      if (
+
+        !row
+
+        ||
+
+        !row.c
+
+        ||
+
+        dateIndex < 0
+
+      ) {
+
+        return null;
+
+      }
+
+
+      const dateValue =
+        parseDateCell(
+
+          row.c[
+            dateIndex
+          ]
+
+        );
+
+
+      if (
+        dateValue === null
+      ) {
+
+        return null;
+
+      }
+
+
+      const timeValue =
+
+        timeIndex >= 0
+
+          ? parseTimeCell(
+
+              row.c[
+                timeIndex
+              ]
+
+            )
+
+          : 0;
+
+
+      return (
+
+        dateValue
+
+        +
+
+        timeValue
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       LOAD GOOGLE SHEET
+
+       USE "SELECT *"
+
+       DO NOT USE:
+       "WHERE A IS NOT NULL"
+
+       REASON:
+
+       GOOGLE FORM ROWS MAY HAVE TIMESTAMP IN COLUMN A,
+       BUT MANUAL ROWS MAY HAVE BLANK TIMESTAMP.
+
+       MANUAL DATA MUST STILL APPEAR.
+    ========================================================= */
+
+    function loadSheet(config) {
+
+
+      const container =
+
+        document.getElementById(
+          config.container
+        );
+
+
+      if (
+        !config.spreadsheetId
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          config.missingMessage +
+
+          '</div>';
+
+
+        return;
+
+      }
+
+
+      const query =
+        "select *";
+
+
+      const tqx =
+
+        `out:json;responseHandler:${config.callback}`;
+
+
+      const url =
+
+        "https://docs.google.com/spreadsheets/d/"
+
+        +
+
+        config.spreadsheetId
+
+        +
+
+        "/gviz/tq"
+
+        +
+
+        "?gid="
+
+        +
+
+        config.gid
+
+        +
+
+        "&range="
+
+        +
+
+        encodeURIComponent(
+          config.range
+        )
+
+        +
+
+        "&headers=1"
+
+        +
+
+        "&tqx="
+
+        +
+
+        encodeURIComponent(
+          tqx
+        )
+
+        +
+
+        "&tq="
+
+        +
+
+        encodeURIComponent(
+          query
+        )
+
+        +
+
+        "&_="
+
+        +
+
+        Date.now();
+
+
+
+      const oldScript =
+
+        document.querySelector(
+
+          'script[data-sheet-callback="' +
+
+          config.callback +
+
+          '"]'
+
+        );
+
+
+      if (oldScript) {
+
+        oldScript.remove();
+
+      }
+
+
+
+      const script =
+
+        document.createElement(
+          "script"
+        );
+
+
+      script.src =
+        url;
+
+
+      script.async =
+        true;
+
+
+      script.dataset.sheetCallback =
+        config.callback;
+
+
+      script.onerror =
+        function () {
+
+
+          container.innerHTML =
+
+            '<div class="message">' +
+
+            'Unable to Load Google Sheet Data' +
+
+            '<br>' +
+
+            'Check Sheet Sharing Permission' +
+
+            '</div>';
+
+
+        };
+
+
+      script.onload =
+        function () {
+
+
+          setTimeout(
+
+            function () {
+
+
+              if (
+                script.parentNode
+              ) {
+
+                script.remove();
+
+              }
+
+
+            },
+
+            1000
+
+          );
+
+
+        };
+
+
+      document.head.appendChild(
+        script
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       SCROLL TABLE TO LATEST DATA
+    ========================================================= */
+
+    function scrollTableToBottom(
+      container
+    ) {
+
+
+      requestAnimationFrame(
+
+        function () {
+
+
+          requestAnimationFrame(
+
+            function () {
+
+
+              container.scrollTop =
+
+                container.scrollHeight
+
+                -
+
+                container.clientHeight;
+
+
+            }
+
+          );
+
+
+        }
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       VISIBLE COLUMNS
+    ========================================================= */
+
+    function getVisibleColumns(
+      columns,
+      rows,
+      config
+    ) {
+
+
+      const visibleColumns =
+        [];
+
+
+      columns.forEach(
+
+        function (
+          column,
+          index
+        ) {
+
+
+          const name =
+            normalizeText(
+              column.label
+            );
+
+
+          if (
+            shouldHideColumn(
+              name,
+              config
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          const hasData =
+
+            rows.some(
+
+              function (row) {
+
+
+                return (
+
+                  row.c
+
+                  &&
+
+                  cellHasValue(
+                    row.c[index]
+                  )
+
+                );
+
+
+              }
+
+            );
+
+
+          if (
+
+            name !== ""
+
+            ||
+
+            hasData
+
+          ) {
+
+
+            visibleColumns.push({
+
+              column:
+                column,
+
+              index:
+                index
+
+            });
+
+
+          }
+
+
+        }
+
+      );
+
+
+      return visibleColumns;
+
+    }
+
+
+
+    /* =========================================================
+       FILTER EMPTY ROWS
+    ========================================================= */
+
+    function getNonEmptyRows(
+      rows,
+      visibleColumns
+    ) {
+
+
+      return rows.filter(
+
+        function (row) {
+
+
+          return visibleColumns.some(
+
+            function (item) {
+
+
+              return (
+
+                row.c
+
+                &&
+
+                cellHasValue(
+
+                  row.c[
+                    item.index
+                  ]
+
+                )
+
+              );
+
+
+            }
+
+          );
+
+
+        }
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       SORT BY KEYED DATE + TIME
+
+       ASCENDING:
+
+       OLDEST
+       ↓
+       NEWEST
+
+       THEREFORE LATEST DATA IS ALWAYS AT BOTTOM.
+    ========================================================= */
+
+    function sortRowsByDateTime(
+      rows,
+      columns
+    ) {
+
+
+      const dateTimeColumns =
+
+        findDateTimeColumns(
+          columns
+        );
+
+
+      if (
+        dateTimeColumns.dateIndex < 0
+      ) {
+
+        return rows;
+
+      }
+
+
+      const sortableRows =
+
+        rows.map(
+
+          function (
+            row,
+            index
+          ) {
+
+
+            return {
+
+              row:
+                row,
+
+              originalIndex:
+                index,
+
+              dateTime:
+
+                getRowDateTimeValue(
+
+                  row,
+
+                  dateTimeColumns.dateIndex,
+
+                  dateTimeColumns.timeIndex
+
+                )
+
+            };
+
+
+          }
+
+        );
+
+
+      sortableRows.sort(
+
+        function (
+          a,
+          b
+        ) {
+
+
+          const aValid =
+            Number.isFinite(
+              a.dateTime
+            );
+
+
+          const bValid =
+            Number.isFinite(
+              b.dateTime
+            );
+
+
+          /*
+             ROW WITHOUT VALID DATE/TIME
+             GOES ABOVE THE DATED RECORDS.
+          */
+
+          if (
+            !aValid
+            &&
+            bValid
+          ) {
+
+            return -1;
+
+          }
+
+
+          if (
+            aValid
+            &&
+            !bValid
+          ) {
+
+            return 1;
+
+          }
+
+
+          if (
+            !aValid
+            &&
+            !bValid
+          ) {
+
+            return (
+
+              a.originalIndex
+
+              -
+
+              b.originalIndex
+
+            );
+
+          }
+
+
+          if (
+            a.dateTime !==
+            b.dateTime
+          ) {
+
+            return (
+
+              a.dateTime
+
+              -
+
+              b.dateTime
+
+            );
+
+          }
+
+
+          /*
+             SAME DATE AND TIME:
+             KEEP ORIGINAL SHEET ORDER.
+          */
+
+          return (
+
+            a.originalIndex
+
+            -
+
+            b.originalIndex
+
+          );
+
+
+        }
+
+      );
+
+
+      return sortableRows.map(
+
+        function (item) {
+
+          return item.row;
+
+        }
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       FIND LOWEST VALUES
+
+       FOR DEW POINT TABLE ONLY.
+
+       LOWEST VALUE IS CALCULATED SEPARATELY FOR EACH
+       MEASUREMENT COLUMN.
+
+       EXAMPLE:
+
+       GPP4 TPR -> LOWEST GPP4 TPR
+       BV10.3   -> LOWEST BV10.3
+       BV13     -> LOWEST BV13
+       GPS ADU  -> LOWEST GPS ADU
+       GPS TPL  -> LOWEST GPS TPL
+    ========================================================= */
+
+    function findLowestValues(
+      rows,
+      visibleColumns
+    ) {
+
+
+      const lowestValues =
+        new Map();
+
+
+      visibleColumns.forEach(
+
+        function (item) {
+
+
+          const columnName =
+            item.column.label || "";
+
+
+          /*
+             DO NOT FIND "LOWEST" FOR:
+
+             DATE
+             TIME / MASA
+             TIMESTAMP
+          */
+
+          if (
+
+            isDateColumn(
+              columnName
+            )
+
+            ||
+
+            isTimeColumn(
+              columnName
+            )
+
+            ||
+
+            isTimestampColumn(
+              columnName
+            )
+
+          ) {
+
+            return;
+
+          }
+
+
+          let minimum =
+            null;
+
+
+          rows.forEach(
+
+            function (row) {
+
+
+              const cell =
+
+                row.c
+
+                  ? row.c[
+                      item.index
+                    ]
+
+                  : null;
+
+
+              const displayValue =
+                getCellDisplayValue(
+                  cell
+                );
+
+
+              const number =
+                extractNumber(
+                  displayValue
+                );
+
+
+              if (
+                number === null
+              ) {
+
+                return;
+
+              }
+
+
+              if (
+
+                minimum === null
+
+                ||
+
+                number < minimum
+
+              ) {
+
+                minimum =
+                  number;
+
+              }
+
+
+            }
+
+          );
+
+
+          if (
+            minimum !== null
+          ) {
+
+
+            lowestValues.set(
+
+              item.index,
+
+              minimum
+
+            );
+
+
+          }
+
+
+        }
+
+      );
+
+
+      return lowestValues;
+
+    }
+
+
+
+    /* =========================================================
+       RENDER TABLE
+    ========================================================= */
+
+    function renderTable(
+      response,
+      config
+    ) {
+
+
+      const container =
+
+        document.getElementById(
+          config.container
+        );
+
+
+      if (
+
+        !response
+
+        ||
+
+        !response.table
+
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Data Available' +
+
+          '</div>';
+
+
+        return;
+
+      }
+
+
+
+      const columns =
+
+        response.table.cols || [];
+
+
+      const originalRows =
+
+        response.table.rows || [];
+
+
+
+      /* =======================================================
+         VISIBLE COLUMNS
+      ======================================================= */
+
+      const visibleColumns =
+
+        getVisibleColumns(
+
+          columns,
+
+          originalRows,
+
+          config
+
+        );
+
+
+      if (
+        visibleColumns.length === 0
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Data Available' +
+
+          '</div>';
+
+
+        return;
+
+      }
+
+
+
+      /* =======================================================
+         REMOVE COMPLETELY EMPTY ROWS
+      ======================================================= */
+
+      let rows =
+
+        getNonEmptyRows(
+
+          originalRows,
+
+          visibleColumns
+
+        );
+
+
+
+      if (
+        rows.length === 0
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Readings Available' +
+
+          '</div>';
+
+
+        return;
+
+      }
+
+
+
+      /* =======================================================
+         SORT BY DATE + TIME ENTERED IN TABLE
+
+         NOT GOOGLE FORM TIMESTAMP.
+      ======================================================= */
+
+      if (
+        config.sortByDateTime
+      ) {
+
+
+        rows =
+
+          sortRowsByDateTime(
+
+            rows,
+
+            columns
+
+          );
+
+
+      }
+
+
+
+      /* =======================================================
+         FIND LOWEST DEW POINT VALUE
+      ======================================================= */
+
+      const lowestValues =
+
+        config.highlightLowest
+
+          ? findLowestValues(
+
+              rows,
+
+              visibleColumns
+
+            )
+
+          : new Map();
+
+
+
+      /* =======================================================
+         CREATE TABLE
+      ======================================================= */
+
+      const table =
+
+        document.createElement(
+          "table"
+        );
+
+
+      const thead =
+
+        document.createElement(
+          "thead"
+        );
+
+
+      const headerRow =
+
+        document.createElement(
+          "tr"
+        );
+
+
+
+      /* =======================================================
+         TABLE HEADERS
+      ======================================================= */
+
+      visibleColumns.forEach(
+
+        function (item) {
+
+
+          const th =
+
+            document.createElement(
+              "th"
+            );
+
+
+          th.textContent =
+
+            item.column.label || "";
+
+
+          headerRow.appendChild(
+            th
+          );
+
+
+        }
+
+      );
+
+
+      thead.appendChild(
+        headerRow
+      );
+
+
+      table.appendChild(
+        thead
+      );
+
+
+
+      /* =======================================================
+         TABLE BODY
+      ======================================================= */
+
+      const tbody =
+
+        document.createElement(
+          "tbody"
+        );
+
+
+      rows.forEach(
+
+        function (row) {
+
+
+          const tr =
+
+            document.createElement(
+              "tr"
+            );
+
+
+          visibleColumns.forEach(
+
+            function (item) {
+
+
+              const td =
+
+                document.createElement(
+                  "td"
+                );
+
+
+              const cell =
+
+                row.c
+
+                  ? row.c[
+                      item.index
+                    ]
+
+                  : null;
+
+
+              const displayValue =
+
+                getCellDisplayValue(
+                  cell
+                );
+
+
+              td.textContent =
+                displayValue;
+
+
+
+              /* =================================================
+                 LOWEST VALUE = BOLD
+              ================================================= */
+
+              if (
+
+                config.highlightLowest
+
+                &&
+
+                lowestValues.has(
+                  item.index
+                )
+
+              ) {
+
+
+                const number =
+
+                  extractNumber(
+                    displayValue
+                  );
+
+
+                const minimum =
+
+                  lowestValues.get(
+                    item.index
+                  );
+
+
+                if (
+
+                  number !== null
+
+                  &&
+
+                  Math.abs(
+
+                    number
+
+                    -
+
+                    minimum
+
+                  )
+
+                  < 0.000001
+
+                ) {
+
+
+                  td.classList.add(
+                    "lowest-value"
+                  );
+
+
+                }
+
+
+              }
+
+
+              tr.appendChild(
+                td
+              );
+
+
+            }
+
+          );
+
+
+          tbody.appendChild(
+            tr
+          );
+
+
+        }
+
+      );
+
+
+      table.appendChild(
+        tbody
+      );
+
+
+
+      /* =======================================================
+         DISPLAY TABLE
+      ======================================================= */
+
+      container.innerHTML =
+        "";
+
+
+      container.appendChild(
+        table
+      );
+
+
+
+      /* =======================================================
+         AUTOMATICALLY SHOW LATEST ROW AT BOTTOM
+      ======================================================= */
+
+      scrollTableToBottom(
+        container
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       GOOGLE RESPONSE CALLBACKS
+    ========================================================= */
+
+    window.swabbingResponse =
+      function (response) {
+
+
+        renderTable(
+
+          response,
+
+          SWABBING
+
+        );
+
+
+      };
+
+
+
+    window.dewPointResponse =
+      function (response) {
+
+
+        renderTable(
+
+          response,
+
+          DEW_POINT
+
+        );
+
+
+      };
+
+
+
+    /* =========================================================
+       LOAD ALL TABLES
+    ========================================================= */
+
+    function loadAllTables() {
+
+
+      loadSheet(
+        SWABBING
+      );
+
+
+      loadSheet(
+        DEW_POINT
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       INITIAL LOAD
+    ========================================================= */
+
+    loadAllTables();
+
+
+
+    /* =========================================================
+       AUTO REFRESH EVERY 60 SECONDS
+    ========================================================= */
+
+    setInterval(
+
+      loadAllTables,
+
+      TABLE_REFRESH_TIME
+
+    );
+
+
+  </script>
+
+
+</body>
+
+</html>
