@@ -19,24 +19,19 @@
 
 
   <!-- =========================================================
-       FAVICON
+       FEC FAVICON
   ========================================================= -->
 
   <link
     rel="icon"
-    type="image/png"
-    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050505'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='900' fill='%23f2efe9'%3EFEC%3C/text%3E%3C/svg%3E"
   >
 
   <link
     rel="shortcut icon"
-    type="image/png"
-    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050505'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='900' fill='%23f2efe9'%3EFEC%3C/text%3E%3C/svg%3E"
   >
 
 
@@ -442,6 +437,21 @@
     }
 
 
+    .dashboard::-webkit-scrollbar {
+
+      width: 9px;
+
+    }
+
+
+    .dashboard::-webkit-scrollbar-thumb {
+
+      background:
+        #777;
+
+    }
+
+
 
     /* =========================================================
        PANELS
@@ -594,8 +604,42 @@
       background:
         var(--cream);
 
+      overscroll-behavior:
+        contain;
+
       -webkit-overflow-scrolling:
         touch;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        #777
+        var(--cream-2);
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar {
+
+      width: 9px;
+
+      height: 9px;
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar-track {
+
+      background:
+        var(--cream-2);
+
+    }
+
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+
+      background:
+        #777;
 
     }
 
@@ -648,6 +692,8 @@
 
       text-align: center;
 
+      vertical-align: middle;
+
       white-space: nowrap;
 
       font-size:
@@ -687,6 +733,8 @@
 
       text-align: center;
 
+      vertical-align: middle;
+
       white-space: nowrap;
 
       font-size:
@@ -704,9 +752,17 @@
     }
 
 
+    th:last-child,
+    td:last-child {
+
+      border-right: none;
+
+    }
+
+
 
     /* =========================================================
-       DEW POINT TABLE
+       DEW POINT TABLE DATE COLOURS
     ========================================================= */
 
     #dewPointContainer
@@ -815,7 +871,7 @@
 
 
     /* =========================================================
-       GRAPH INFO
+       GRAPH INFORMATION
     ========================================================= */
 
     .graph-info-bar {
@@ -898,6 +954,8 @@
 
       height: 10px;
 
+      flex-shrink: 0;
+
     }
 
 
@@ -907,12 +965,18 @@
 
       height: 3px;
 
+      flex-shrink: 0;
+
     }
 
 
     .legend-dashed {
 
       width: 22px;
+
+      height: 0;
+
+      flex-shrink: 0;
 
       border-top:
         2px dashed
@@ -928,6 +992,8 @@
 
     .graph-wrapper {
 
+      position: relative;
+
       flex: 1;
 
       min-height: 0;
@@ -941,6 +1007,35 @@
 
       -webkit-overflow-scrolling:
         touch;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        #777
+        var(--cream-2);
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar {
+
+      height: 10px;
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar-track {
+
+      background:
+        var(--cream-2);
+
+    }
+
+
+    .graph-wrapper::-webkit-scrollbar-thumb {
+
+      background:
+        #777;
 
     }
 
@@ -1044,7 +1139,13 @@
 
       justify-content: center;
 
-      padding: 7px;
+      padding:
+        7px
+        10px
+        max(
+          7px,
+          env(safe-area-inset-bottom)
+        );
 
       background:
         var(--cream);
@@ -1057,7 +1158,62 @@
 
       font-weight: 900;
 
+      letter-spacing: 0.09em;
+
       text-transform: uppercase;
+
+    }
+
+
+
+    /* =========================================================
+       LAPTOP
+    ========================================================= */
+
+    @media (max-width: 1250px) {
+
+      .hero {
+
+        grid-template-columns:
+          minmax(0, 1fr)
+          290px
+          165px;
+
+      }
+
+
+      .hero-title {
+
+        font-size:
+          clamp(
+            31px,
+            3.8vw,
+            48px
+          );
+
+      }
+
+
+      .current-datetime {
+
+        font-size: 17px;
+
+      }
+
+
+      .current-shift {
+
+        font-size: 10px;
+
+      }
+
+
+      th,
+      td {
+
+        min-width: 130px;
+
+      }
 
     }
 
@@ -1073,7 +1229,16 @@
 
         gap: 3px;
 
-        padding: 3px;
+        padding:
+          max(
+            3px,
+            env(safe-area-inset-top)
+          )
+          3px
+          max(
+            3px,
+            env(safe-area-inset-bottom)
+          );
 
       }
 
@@ -1128,6 +1293,15 @@
       }
 
 
+      .hero-subtitle {
+
+        margin-top: 5px;
+
+        font-size: 7px;
+
+      }
+
+
       .current-status {
 
         grid-column:
@@ -1140,7 +1314,8 @@
           8px
           11px;
 
-        border-left: none;
+        border-left:
+          none;
 
       }
 
@@ -1326,11 +1501,13 @@
 
       <div class="hero-left">
 
+
         <div class="hero-title">
 
           FEC SWABBING DATA
 
         </div>
+
 
         <div class="hero-subtitle">
 
@@ -1338,10 +1515,13 @@
 
         </div>
 
+
       </div>
 
 
+
       <div class="current-status">
+
 
         <div
           class="current-datetime"
@@ -1362,7 +1542,9 @@
 
         </div>
 
+
       </div>
+
 
 
       <a
@@ -1401,17 +1583,20 @@
 
         <div class="panel-title">
 
+
           <div>
 
             SWABBING PIG RUN
 
           </div>
 
+
           <div class="panel-note">
 
             LATEST DATA AT BOTTOM
 
           </div>
+
 
         </div>
 
@@ -1421,11 +1606,13 @@
           id="swabbingContainer"
         >
 
+
           <div class="message">
 
             Loading Swabbing Pig Run Data...
 
           </div>
+
 
         </div>
 
@@ -1443,6 +1630,7 @@
 
         <div class="panel-title">
 
+
           <div
             id="swabbingGraphTitle"
           >
@@ -1451,13 +1639,16 @@
 
           </div>
 
+
           <div class="panel-note">
 
             ALL PIGS · AUTO UPDATED
 
           </div>
 
+
         </div>
+
 
 
         <div class="graph-info-bar">
@@ -1518,6 +1709,7 @@
                 class="legend-line"
                 style="
                   height:0;
+                  background:none;
                   border-top:2px dashed #e31b23;
                 "
               ></span>
@@ -1531,6 +1723,7 @@
 
 
         </div>
+
 
 
         <div
@@ -1560,17 +1753,20 @@
 
         <div class="panel-title">
 
+
           <div>
 
             DEW POINT DATA
 
           </div>
 
+
           <div class="panel-note">
 
             DATE GROUPED · LATEST DATE BOLD · LOWEST UNDERLINED
 
           </div>
+
 
         </div>
 
@@ -1602,11 +1798,13 @@
 
         <div class="panel-title">
 
+
           <div>
 
             KREJUV FEC — PIPELINE DRYING DEW POINT TREND
 
           </div>
+
 
           <div class="panel-note">
 
@@ -1614,7 +1812,9 @@
 
           </div>
 
+
         </div>
+
 
 
         <div class="graph-info-bar">
@@ -1695,7 +1895,9 @@
 
             <div class="legend-item">
 
-              <span class="legend-dashed"></span>
+              <span
+                class="legend-dashed"
+              ></span>
 
               Acceptance ≤ −10°Cdp
 
@@ -1706,6 +1908,7 @@
 
 
         </div>
+
 
 
         <div
@@ -1728,6 +1931,11 @@
     </main>
 
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
     <footer class="footer">
 
       Fly TechSmith
@@ -1746,9 +1954,21 @@
        SETTINGS
     ========================================================= */
 
+    /*
+       GOOGLE SHEET + GRAPH AUTO REFRESH
+
+       60,000 MS = 60 SECONDS
+    */
+
     const TABLE_REFRESH_TIME =
       60000;
 
+
+    /*
+       HEADER CLOCK
+
+       1,000 MS = 1 SECOND
+    */
 
     const CLOCK_REFRESH_TIME =
       1000;
@@ -1773,33 +1993,53 @@
 
     const SWABBING = {
 
+
       spreadsheetId:
+
         "1dPQfygx00SWQLDKmLbK1zyKX5by40ub6xZqm1VAUaDs",
 
+
       gid:
+
         "0",
 
+
       range:
+
         "A:Z",
 
+
       container:
+
         "swabbingContainer",
 
+
       callback:
+
         "swabbingResponse",
 
+
       hiddenColumns: [
+
         "TIMESTAMP"
+
       ],
 
+
       sortByDateTime:
+
         true,
 
+
       highlightLowest:
+
         false,
 
+
       groupByDate:
+
         false
+
 
     };
 
@@ -1807,37 +2047,61 @@
 
     const DEW_POINT = {
 
+
       spreadsheetId:
+
         "1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM",
 
+
       gid:
+
         "0",
 
+
       range:
+
         "A:Z",
 
+
       container:
+
         "dewPointContainer",
 
+
       callback:
+
         "dewPointResponse",
 
+
       hiddenColumns: [
+
         "TIMESTAMP"
+
       ],
 
+
       sortByDateTime:
+
         true,
+
 
       highlightLowest:
+
         true,
 
+
       groupByDate:
+
         true
+
 
     };
 
 
+
+    /* =========================================================
+       SAVE DATA FOR GRAPH RESIZE
+    ========================================================= */
 
     let lastSwabbingColumns =
       [];
@@ -1857,12 +2121,14 @@
 
 
     /* =========================================================
-       CLOCK
+       CURRENT MALAYSIA TIME
     ========================================================= */
 
     function getMalaysiaParts() {
 
+
       const formatter =
+
         new Intl.DateTimeFormat(
 
           "en-GB",
@@ -1903,28 +2169,34 @@
 
 
       formatter
-        .formatToParts(
-          new Date()
-        )
-        .forEach(
 
-          function (part) {
+      .formatToParts(
+        new Date()
+      )
 
-            if (
-              part.type !==
-              "literal"
-            ) {
+      .forEach(
 
-              result[
-                part.type
-              ] =
-                part.value;
+        function (part) {
 
-            }
+
+          if (
+            part.type !==
+            "literal"
+          ) {
+
+
+            result[
+              part.type
+            ] =
+              part.value;
+
 
           }
 
-        );
+
+        }
+
+      );
 
 
       return result;
@@ -1934,6 +2206,7 @@
 
 
     function updateCurrentTime() {
+
 
       const parts =
         getMalaysiaParts();
@@ -1991,23 +2264,31 @@
           parts.second;
 
 
+
       const hour =
+
         Number(
           parts.hour
         );
 
 
       const shift =
+
         document.getElementById(
           "currentShift"
         );
 
 
       if (
+
         hour >= 7
+
         &&
+
         hour <= 18
+
       ) {
+
 
         shift.innerHTML =
 
@@ -2017,9 +2298,12 @@
 
           " · 07:00 - 18:59";
 
+
       }
 
+
       else {
+
 
         shift.innerHTML =
 
@@ -2029,7 +2313,9 @@
 
           " · 19:00 - 06:59";
 
+
       }
+
 
     }
 
@@ -2054,6 +2340,7 @@
 
     function normalizeText(value) {
 
+
       return String(
         value || ""
       )
@@ -2067,6 +2354,7 @@
 
 
     function escapeHtml(value) {
+
 
       return String(
         value ?? ""
@@ -2103,19 +2391,31 @@
 
     function cellHasValue(cell) {
 
-      return !!cell
+
+      return (
+
+        !!cell
+
         &&
+
         cell.v !== null
+
         &&
+
         cell.v !== undefined
+
         &&
-        cell.v !== "";
+
+        cell.v !== ""
+
+      );
 
     }
 
 
 
     function getCellDisplayValue(cell) {
+
 
       if (!cell) {
 
@@ -2125,25 +2425,39 @@
 
 
       if (
+
         cell.f !== undefined
+
         &&
+
         cell.f !== null
+
         &&
+
         cell.f !== ""
+
       ) {
 
+
         return cell.f;
+
 
       }
 
 
       if (
+
         cell.v !== undefined
+
         &&
+
         cell.v !== null
+
       ) {
 
+
         return cell.v;
+
 
       }
 
@@ -2156,15 +2470,24 @@
 
     function extractNumber(value) {
 
+
       if (
+
         value === null
+
         ||
+
         value === undefined
+
         ||
+
         value === ""
+
       ) {
 
+
         return null;
+
 
       }
 
@@ -2174,11 +2497,15 @@
         "number"
       ) {
 
+
         return Number.isFinite(
           value
         )
+
           ? value
+
           : null;
+
 
       }
 
@@ -2210,6 +2537,7 @@
 
 
       const number =
+
         parseFloat(
           match[0]
         );
@@ -2218,7 +2546,9 @@
       return Number.isFinite(
         number
       )
+
         ? number
+
         : null;
 
     }
@@ -2230,6 +2560,7 @@
     ========================================================= */
 
     function isTimestampColumn(name) {
+
 
       return normalizeText(
         name
@@ -2244,7 +2575,9 @@
 
     function isDateColumn(name) {
 
+
       const n =
+
         normalizeText(
           name
         );
@@ -2284,7 +2617,9 @@
 
     function isTimeColumn(name) {
 
+
       const n =
+
         normalizeText(
           name
         );
@@ -2296,7 +2631,9 @@
         )
       ) {
 
+
         return false;
+
 
       }
 
@@ -2321,23 +2658,41 @@
           "HRS"
         )
 
+        ||
+
+        n.endsWith(
+          " TIME"
+        )
+
       );
 
     }
 
 
 
+    /* =========================================================
+       DISPLAY GOOGLE SHEET HEADER AS
+       SAMPLING TIME
+    ========================================================= */
+
     function getDisplayHeaderName(name) {
 
+
       if (
+
         normalizeText(
           name
         )
+
         ===
+
         "MASA AMBIL GAMBARAJAH"
+
       ) {
 
+
         return "SAMPLING TIME";
+
 
       }
 
@@ -2353,7 +2708,9 @@
       config
     ) {
 
+
       const name =
+
         normalizeText(
           label
         );
@@ -2365,20 +2722,27 @@
         )
       ) {
 
+
         return true;
+
 
       }
 
 
       return (
+
         config.hiddenColumns || []
+
       )
+
       .map(
         normalizeText
       )
+
       .some(
 
         function (hidden) {
+
 
           return (
 
@@ -2392,6 +2756,7 @@
 
           );
 
+
         }
 
       );
@@ -2401,10 +2766,11 @@
 
 
     /* =========================================================
-       DATE
+       DATE PARSER
     ========================================================= */
 
     function parseDateCell(cell) {
+
 
       if (!cell) {
 
@@ -2414,8 +2780,11 @@
 
 
       const values = [
+
         cell.f,
+
         cell.v
+
       ];
 
 
@@ -2424,27 +2793,41 @@
         of values
       ) {
 
+
         if (
+
           value === null
+
           ||
+
           value === undefined
+
           ||
+
           value === ""
+
         ) {
 
+
           continue;
+
 
         }
 
 
         const text =
+
           String(
             value
           )
           .trim();
 
 
+
+        /* GOOGLE GVIZ DATE */
+
         let match =
+
           text.match(
 
             /Date\(\s*(\d{4})\s*,\s*(\d{1,2})\s*,\s*(\d{1,2})/
@@ -2454,6 +2837,7 @@
 
         if (match) {
 
+
           return Date.UTC(
 
             Number(
@@ -2470,10 +2854,15 @@
 
           );
 
+
         }
 
 
+
+        /* DD/MM/YYYY */
+
         match =
+
           text.match(
 
             /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/
@@ -2483,6 +2872,7 @@
 
         if (match) {
 
+
           return Date.UTC(
 
             Number(
@@ -2499,10 +2889,15 @@
 
           );
 
+
         }
 
 
+
+        /* YYYY-MM-DD */
+
         match =
+
           text.match(
 
             /^(\d{4})-(\d{1,2})-(\d{1,2})$/
@@ -2512,6 +2907,7 @@
 
         if (match) {
 
+
           return Date.UTC(
 
             Number(
@@ -2528,10 +2924,13 @@
 
           );
 
+
         }
 
 
+
         const parsed =
+
           Date.parse(
             text
           );
@@ -2543,7 +2942,9 @@
           )
         ) {
 
+
           const date =
+
             new Date(
               parsed
             );
@@ -2559,7 +2960,9 @@
 
           );
 
+
         }
+
 
       }
 
@@ -2571,10 +2974,11 @@
 
 
     /* =========================================================
-       TIME
+       TIME PARSER
     ========================================================= */
 
     function parseTimeCell(cell) {
+
 
       if (!cell) {
 
@@ -2583,27 +2987,40 @@
       }
 
 
+
       if (
+
         typeof cell.v ===
         "number"
+
         &&
+
         cell.v >= 0
+
         &&
+
         cell.v < 1
+
       ) {
+
 
         return Math.round(
 
           cell.v
+
           *
+
           86400000
 
         );
 
+
       }
 
 
+
       const value =
+
         String(
 
           cell.f !== undefined
@@ -2628,7 +3045,9 @@
         );
 
 
+
       let match =
+
         value.match(
 
           /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(?:HRS?)?$/
@@ -2637,6 +3056,7 @@
 
 
       if (match) {
+
 
         return (
 
@@ -2664,10 +3084,13 @@
 
         );
 
+
       }
 
 
+
       match =
+
         value.match(
 
           /^(\d{3,4})\s*(?:HRS?)?$/
@@ -2677,7 +3100,9 @@
 
       if (match) {
 
+
         const digits =
+
           match[1]
           .padStart(
             4,
@@ -2709,6 +3134,7 @@
 
         );
 
+
       }
 
 
@@ -2719,6 +3145,7 @@
 
 
     function findDateTimeColumns(columns) {
+
 
       let dateIndex =
         -1;
@@ -2735,32 +3162,46 @@
           index
         ) {
 
+
           if (
+
             dateIndex < 0
+
             &&
+
             isDateColumn(
               column.label
             )
+
           ) {
+
 
             dateIndex =
               index;
 
+
           }
 
 
           if (
+
             timeIndex < 0
+
             &&
+
             isTimeColumn(
               column.label
             )
+
           ) {
+
 
             timeIndex =
               index;
 
+
           }
+
 
         }
 
@@ -2768,8 +3209,11 @@
 
 
       return {
+
         dateIndex,
+
         timeIndex
+
       };
 
     }
@@ -2781,13 +3225,20 @@
       dateIndex
     ) {
 
+
       if (
+
         dateIndex < 0
+
         ||
+
         !row.c
+
       ) {
 
+
         return null;
+
 
       }
 
@@ -2810,10 +3261,15 @@
       timeIndex
     ) {
 
+
       const date =
+
         getRowDateValue(
+
           row,
+
           dateIndex
+
         );
 
 
@@ -2821,7 +3277,9 @@
         date === null
       ) {
 
+
         return null;
+
 
       }
 
@@ -2833,6 +3291,7 @@
         +
 
         (
+
           timeIndex >= 0
 
             ?
@@ -2857,12 +3316,18 @@
 
 
 
+    /* =========================================================
+       SORT OLDEST -> NEWEST
+    ========================================================= */
+
     function sortRowsByDateTime(
       rows,
       columns
     ) {
 
+
       const indexes =
+
         findDateTimeColumns(
           columns
         );
@@ -2872,7 +3337,9 @@
         indexes.dateIndex < 0
       ) {
 
+
         return rows;
+
 
       }
 
@@ -2886,6 +3353,7 @@
           index
         ) {
 
+
           return {
 
             row,
@@ -2893,6 +3361,7 @@
             index,
 
             dateTime:
+
               getRowDateTimeValue(
 
                 row,
@@ -2905,6 +3374,7 @@
 
           };
 
+
         }
 
       )
@@ -2916,13 +3386,16 @@
           b
         ) {
 
+
           const av =
+
             Number.isFinite(
               a.dateTime
             );
 
 
           const bv =
+
             Number.isFinite(
               b.dateTime
             );
@@ -2934,7 +3407,9 @@
             bv
           ) {
 
+
             return -1;
+
 
           }
 
@@ -2945,7 +3420,9 @@
             !bv
           ) {
 
+
             return 1;
+
 
           }
 
@@ -2956,11 +3433,15 @@
             !bv
           ) {
 
+
             return (
+
               a.index
               -
               b.index
+
             );
+
 
           }
 
@@ -2979,6 +3460,7 @@
 
           );
 
+
         }
 
       )
@@ -2987,7 +3469,9 @@
 
         function (item) {
 
+
           return item.row;
+
 
         }
 
@@ -2998,7 +3482,7 @@
 
 
     /* =========================================================
-       TABLE
+       TABLE HELPERS
     ========================================================= */
 
     function getVisibleColumns(
@@ -3006,6 +3490,7 @@
       rows,
       config
     ) {
+
 
       const visible =
         [];
@@ -3018,22 +3503,32 @@
           index
         ) {
 
+
           if (
+
             shouldHideColumn(
+
               column.label,
+
               config
+
             )
+
           ) {
 
+
             return;
+
 
           }
 
 
           const hasData =
+
             rows.some(
 
               function (row) {
+
 
                 return (
 
@@ -3051,28 +3546,37 @@
 
                 );
 
+
               }
 
             );
 
 
           if (
+
             normalizeText(
               column.label
             )
             !== ""
+
             ||
+
             hasData
+
           ) {
+
 
             visible.push({
 
               column,
+
               index
 
             });
 
+
           }
+
 
         }
 
@@ -3090,13 +3594,16 @@
       visibleColumns
     ) {
 
+
       return rows.filter(
 
         function (row) {
 
+
           return visibleColumns.some(
 
             function (item) {
+
 
               return (
 
@@ -3114,9 +3621,11 @@
 
               );
 
+
             }
 
           );
+
 
         }
 
@@ -3131,6 +3640,7 @@
       visibleColumns
     ) {
 
+
       const result =
         new Map();
 
@@ -3139,21 +3649,35 @@
 
         function (item) {
 
+
           const label =
+
             item.column.label || "";
 
 
           if (
+
             isDateColumn(
               label
             )
+
             ||
+
             isTimeColumn(
               label
             )
+
+            ||
+
+            isTimestampColumn(
+              label
+            )
+
           ) {
 
+
             return;
+
 
           }
 
@@ -3166,17 +3690,23 @@
 
             function (row) {
 
+
               const number =
+
                 extractNumber(
 
                   getCellDisplayValue(
 
                     row.c
+
                       ?
+
                       row.c[
                         item.index
                       ]
+
                       :
+
                       null
 
                   )
@@ -3188,21 +3718,30 @@
                 number === null
               ) {
 
+
                 return;
+
 
               }
 
 
               if (
+
                 minimum === null
+
                 ||
+
                 number < minimum
+
               ) {
+
 
                 minimum =
                   number;
 
+
               }
+
 
             }
 
@@ -3213,12 +3752,18 @@
             minimum !== null
           ) {
 
+
             result.set(
+
               item.index,
+
               minimum
+
             );
 
+
           }
+
 
         }
 
@@ -3232,16 +3777,18 @@
 
 
     /* =========================================================
-       LOAD GOOGLE SHEET
+       GOOGLE SHEET LOADER
     ========================================================= */
 
     function loadSheet(config) {
+
 
       const query =
         "select *";
 
 
       const tqx =
+
         `out:json;responseHandler:${config.callback}`;
 
 
@@ -3310,6 +3857,7 @@
 
 
       const oldScript =
+
         document.querySelector(
 
           'script[data-sheet-callback="' +
@@ -3323,13 +3871,16 @@
 
       if (oldScript) {
 
+
         oldScript.remove();
+
 
       }
 
 
 
       const script =
+
         document.createElement(
           "script"
         );
@@ -3348,19 +3899,62 @@
 
 
       script.onerror =
+
         function () {
 
-          document
-            .getElementById(
+
+          const container =
+
+            document.getElementById(
               config.container
-            )
-            .innerHTML =
+            );
+
+
+          if (container) {
+
+
+            container.innerHTML =
 
               '<div class="message">' +
 
               'Unable to Load Google Sheet Data' +
 
               '</div>';
+
+
+          }
+
+
+        };
+
+
+      script.onload =
+
+        function () {
+
+
+          setTimeout(
+
+            function () {
+
+
+              if (
+                script.parentNode
+              ) {
+
+
+                script.remove();
+
+
+              }
+
+
+            },
+
+            1000
+
+          );
+
 
         };
 
@@ -3377,17 +3971,30 @@
       container
     ) {
 
+
       requestAnimationFrame(
 
         function () {
 
-          container.scrollTop =
 
-            container.scrollHeight
+          requestAnimationFrame(
 
-            -
+            function () {
 
-            container.clientHeight;
+
+              container.scrollTop =
+
+                container.scrollHeight
+
+                -
+
+                container.clientHeight;
+
+
+            }
+
+          );
+
 
         }
 
@@ -3397,22 +4004,33 @@
 
 
 
+    /* =========================================================
+       RENDER TABLE
+    ========================================================= */
+
     function renderTable(
       response,
       config
     ) {
 
+
       const container =
+
         document.getElementById(
           config.container
         );
 
 
       if (
+
         !response
+
         ||
+
         !response.table
+
       ) {
+
 
         container.innerHTML =
 
@@ -3425,18 +4043,23 @@
 
         return;
 
+
       }
 
 
+
       const columns =
+
         response.table.cols || [];
 
 
       const originalRows =
+
         response.table.rows || [];
 
 
       const visibleColumns =
+
         getVisibleColumns(
 
           columns,
@@ -3449,6 +4072,7 @@
 
 
       let rows =
+
         getNonEmptyRows(
 
           originalRows,
@@ -3459,10 +4083,33 @@
 
 
       if (
+        rows.length === 0
+      ) {
+
+
+        container.innerHTML =
+
+          '<div class="message">' +
+
+          'No Readings Available' +
+
+          '</div>';
+
+
+        return;
+
+
+      }
+
+
+
+      if (
         config.sortByDateTime
       ) {
 
+
         rows =
+
           sortRowsByDateTime(
 
             rows,
@@ -3471,10 +4118,13 @@
 
           );
 
+
       }
 
 
+
       const indexes =
+
         findDateTimeColumns(
           columns
         );
@@ -3488,7 +4138,9 @@
 
         function (row) {
 
+
           const date =
+
             getRowDateValue(
 
               row,
@@ -3499,21 +4151,32 @@
 
 
           if (
+
             Number.isFinite(
               date
             )
+
             &&
+
             (
+
               latestDate === null
+
               ||
+
               date > latestDate
+
             )
+
           ) {
+
 
             latestDate =
               date;
 
+
           }
+
 
         }
 
@@ -3541,18 +4204,21 @@
 
 
       const table =
+
         document.createElement(
           "table"
         );
 
 
       const thead =
+
         document.createElement(
           "thead"
         );
 
 
       const headerRow =
+
         document.createElement(
           "tr"
         );
@@ -3562,21 +4228,27 @@
 
         function (item) {
 
+
           const th =
+
             document.createElement(
               "th"
             );
 
 
           th.textContent =
+
             getDisplayHeaderName(
+
               item.column.label
+
             );
 
 
           headerRow.appendChild(
             th
           );
+
 
         }
 
@@ -3594,6 +4266,7 @@
 
 
       const tbody =
+
         document.createElement(
           "tbody"
         );
@@ -3611,17 +4284,21 @@
         null;
 
 
+
       rows.forEach(
 
         function (row) {
 
+
           const tr =
+
             document.createElement(
               "tr"
             );
 
 
           const rowDate =
+
             getRowDateValue(
 
               row,
@@ -3631,38 +4308,51 @@
             );
 
 
+
           if (
+
             config.groupByDate
+
             &&
+
             Number.isFinite(
               rowDate
             )
+
           ) {
 
+
             const key =
+
               String(
                 rowDate
               );
 
 
             if (
+
               !colourMap.has(
                 key
               )
+
             ) {
+
 
               colourMap.set(
 
                 key,
 
                 colour
+
                 %
+
                 DATE_GROUP_COLOUR_COUNT
 
               );
 
 
               colour++;
+
 
             }
 
@@ -3681,14 +4371,20 @@
 
 
             if (
+
               previousDate !== null
+
               &&
+
               previousDate !== rowDate
+
             ) {
+
 
               tr.classList.add(
                 "new-date-group"
               );
+
 
             }
 
@@ -3696,41 +4392,57 @@
             previousDate =
               rowDate;
 
+
           }
 
 
+
           if (
+
             config.groupByDate
+
             &&
+
             rowDate === latestDate
+
           ) {
+
 
             tr.classList.add(
               "latest-date"
             );
 
+
           }
+
 
 
           visibleColumns.forEach(
 
             function (item) {
 
+
               const td =
+
                 document.createElement(
                   "td"
                 );
 
 
               const value =
+
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       item.index
                     ]
+
                     :
+
                     null
 
                 );
@@ -3740,23 +4452,33 @@
                 value;
 
 
+
               if (
+
                 config.highlightLowest
+
                 &&
+
                 lowestValues.has(
                   item.index
                 )
+
               ) {
 
+
                 const number =
+
                   extractNumber(
                     value
                   );
 
 
                 if (
+
                   number !== null
+
                   &&
+
                   Math.abs(
 
                     number
@@ -3768,15 +4490,21 @@
                     )
 
                   )
+
                   <
+
                   0.000001
+
                 ) {
+
 
                   td.classList.add(
                     "lowest-value"
                   );
 
+
                 }
+
 
               }
 
@@ -3784,6 +4512,7 @@
               tr.appendChild(
                 td
               );
+
 
             }
 
@@ -3793,6 +4522,7 @@
           tbody.appendChild(
             tr
           );
+
 
         }
 
@@ -3818,10 +4548,18 @@
       );
 
 
+
+      /* =======================================================
+         AUTO UPDATE ASSOCIATED GRAPH
+      ======================================================= */
+
       if (
+
         config.container ===
         "swabbingContainer"
+
       ) {
+
 
         lastSwabbingColumns =
           columns;
@@ -3839,13 +4577,18 @@
 
         );
 
+
       }
 
 
+
       if (
+
         config.container ===
         "dewPointContainer"
+
       ) {
+
 
         lastDewColumns =
           columns;
@@ -3863,7 +4606,9 @@
 
         );
 
+
       }
+
 
     }
 
@@ -3878,12 +4623,15 @@
       aliases
     ) {
 
+
       for (
         const alias
         of aliases
       ) {
 
+
         const target =
+
           normalizeText(
             alias
           );
@@ -3895,29 +4643,41 @@
           i++
         ) {
 
+
           if (
+
             normalizeText(
               columns[i].label
             )
+
             ===
+
             target
+
           ) {
+
 
             return i;
 
+
           }
 
+
         }
+
 
       }
 
 
+
       for (
         const alias
         of aliases
       ) {
 
+
         const target =
+
           normalizeText(
             alias
           );
@@ -3929,20 +4689,28 @@
           i++
         ) {
 
+
           if (
+
             normalizeText(
               columns[i].label
             )
+
             .includes(
               target
             )
+
           ) {
+
 
             return i;
 
+
           }
 
+
         }
+
 
       }
 
@@ -3958,37 +4726,50 @@
       words
     ) {
 
+
       for (
         let i = 0;
         i < columns.length;
         i++
       ) {
 
+
         const label =
+
           normalizeText(
             columns[i].label
           );
 
 
-        if (
+        const matches =
+
           words.every(
 
             function (word) {
 
+
               return label.includes(
+
                 normalizeText(
                   word
                 )
+
               );
+
 
             }
 
-          )
-        ) {
+          );
+
+
+        if (matches) {
+
 
           return i;
 
+
         }
+
 
       }
 
@@ -4001,13 +4782,18 @@
 
     /* =========================================================
        SHORT PIG TYPE
+
+       BARE FOAM                -> BF
+       BARE FOAM 14" OVERSIZE   -> BF14
+       BI-DI HIGH SEALING        -> BD HS
+       CRISS CROSS FOAM          -> CCF
     ========================================================= */
 
-    function getShortPigType(
-      value
-    ) {
+    function getShortPigType(value) {
+
 
       const raw =
+
         String(
           value || ""
         )
@@ -4016,12 +4802,15 @@
 
       if (!raw) {
 
+
         return "";
+
 
       }
 
 
       const text =
+
         normalizeText(
           raw
         )
@@ -4040,7 +4829,6 @@
 
       /* =======================================================
          CRISS CROSS FOAM
-         -> CCF
       ======================================================= */
 
       if (
@@ -4067,7 +4855,9 @@
 
       ) {
 
+
         return "CCF";
+
 
       }
 
@@ -4075,40 +4865,51 @@
 
       /* =======================================================
          BARE FOAM 14" OVERSIZE
-         -> BF14
       ======================================================= */
 
       if (
 
         (
+
           text.includes(
             "BARE FOAM"
           )
+
           ||
+
           text.includes(
             "BAREFOAM"
           )
+
         )
 
         &&
 
         (
+
           text.includes(
             "14"
           )
+
           ||
+
           text.includes(
             "OVERSIZE"
           )
+
           ||
+
           text.includes(
             "OVER SIZE"
           )
+
         )
 
       ) {
 
+
         return "BF14";
+
 
       }
 
@@ -4116,7 +4917,6 @@
 
       /* =======================================================
          BARE FOAM
-         -> BF
       ======================================================= */
 
       if (
@@ -4133,15 +4933,16 @@
 
       ) {
 
+
         return "BF";
+
 
       }
 
 
 
       /* =======================================================
-         BI-DI HS
-         -> BD HS
+         BI-DI HIGH SEAL
       ======================================================= */
 
       const bidi =
@@ -4189,12 +4990,18 @@
 
 
       if (
+
         bidi
+
         &&
+
         highSeal
+
       ) {
 
+
         return "BD HS";
+
 
       }
 
@@ -4211,7 +5018,9 @@
 
       ) {
 
+
         return "BD HS";
+
 
       }
 
@@ -4223,7 +5032,7 @@
 
 
     /* =========================================================
-       SWABBING DATA
+       SWABBING GRAPH DATA
     ========================================================= */
 
     function extractSwabbingGraphData(
@@ -4231,74 +5040,106 @@
       rows
     ) {
 
+
       const beforeIndex =
+
         findColumnAllWords(
+
           columns,
+
           [
             "BEFORE"
           ]
+
         );
 
 
       const afterIndex =
+
         findColumnAllWords(
+
           columns,
+
           [
             "AFTER"
           ]
+
         );
 
 
       const gainIndex =
+
         findColumnAllWords(
+
           columns,
+
           [
             "GAIN"
           ]
+
         );
 
 
       const pigIndex =
+
         findAnyColumn(
 
           columns,
 
           [
+
             "PIG NO.",
+
             "PIG NO",
+
             "PIG NUMBER",
+
             "PIG SEQUENCE",
+
             "SEQUENCE"
+
           ]
 
         );
 
 
       const runIndex =
+
         findAnyColumn(
 
           columns,
 
           [
+
             "SWABBING RUN",
+
             "RUN NO.",
+
             "RUN NO",
+
             "RUN"
+
           ]
 
         );
 
 
       const typeIndex =
+
         findAnyColumn(
 
           columns,
 
           [
+
             "PIG TYPE",
+
             "TYPE",
+
             "PIG DESCRIPTION",
+
             "DESCRIPTION"
+
           ]
 
         );
@@ -4315,6 +5156,7 @@
           rowIndex
         ) {
 
+
           const before =
 
             beforeIndex >= 0
@@ -4326,11 +5168,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       beforeIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4340,6 +5186,7 @@
               :
 
               null;
+
 
 
           const after =
@@ -4353,11 +5200,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       afterIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4367,6 +5218,7 @@
               :
 
               null;
+
 
 
           let gain =
@@ -4380,11 +5232,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       gainIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4396,20 +5252,33 @@
               null;
 
 
+
           if (
+
             gain === null
+
             &&
+
             before !== null
+
             &&
+
             after !== null
+
           ) {
 
+
             gain =
+
               after
+
               -
+
               before;
 
+
           }
+
 
 
           const pigNumber =
@@ -4423,11 +5292,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       pigIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4438,6 +5311,7 @@
               :
 
               "";
+
 
 
           const run =
@@ -4451,11 +5325,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       runIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4466,6 +5344,7 @@
               :
 
               "";
+
 
 
           const rawType =
@@ -4479,11 +5358,15 @@
                 getCellDisplayValue(
 
                   row.c
+
                     ?
+
                     row.c[
                       typeIndex
                     ]
+
                     :
+
                     null
 
                 )
@@ -4496,10 +5379,13 @@
               "";
 
 
+
           const shortType =
+
             getShortPigType(
               rawType
             );
+
 
 
           const meaningful =
@@ -4523,11 +5409,15 @@
             gain !== null;
 
 
+
           if (!meaningful) {
+
 
             return;
 
+
           }
+
 
 
           let xLabel =
@@ -4535,25 +5425,35 @@
 
 
           if (
+
             !xLabel
+
             &&
+
             shortType
+
           ) {
+
 
             xLabel =
               shortType;
+
 
           }
 
 
           if (!xLabel) {
 
+
             xLabel =
+
               String(
                 rowIndex + 1
               );
 
+
           }
+
 
 
           result.push({
@@ -4576,6 +5476,7 @@
 
           });
 
+
         }
 
       );
@@ -4588,12 +5489,11 @@
 
 
     /* =========================================================
-       SWABBING TREND
+       LINEAR TREND
     ========================================================= */
 
-    function calculateLinearTrend(
-      data
-    ) {
+    function calculateLinearTrend(data) {
+
 
       const points =
         [];
@@ -4606,11 +5506,15 @@
           index
         ) {
 
+
           if (
+
             Number.isFinite(
               item.gain
             )
+
           ) {
+
 
             points.push({
 
@@ -4622,7 +5526,9 @@
 
             });
 
+
           }
+
 
         }
 
@@ -4633,36 +5539,53 @@
         points.length < 2
       ) {
 
+
         return null;
+
 
       }
 
 
-      let sumX = 0;
-      let sumY = 0;
-      let sumXY = 0;
-      let sumXX = 0;
+      let sumX =
+        0;
+
+
+      let sumY =
+        0;
+
+
+      let sumXY =
+        0;
+
+
+      let sumXX =
+        0;
 
 
       points.forEach(
 
         function (point) {
 
+
           sumX +=
             point.x;
 
+
           sumY +=
             point.y;
+
 
           sumXY +=
             point.x
             *
             point.y;
 
+
           sumXX +=
             point.x
             *
             point.x;
+
 
         }
 
@@ -4690,72 +5613,58 @@
         denominator === 0
       ) {
 
+
         return null;
+
 
       }
 
 
-      return {
+      const slope =
 
-        slope:
-
-          (
-
-            n
-            *
-            sumXY
-
-            -
-
-            sumX
-            *
-            sumY
-
-          )
-
-          /
-
-          denominator,
-
-
-        intercept:
-
-          (
-
-            sumY
-
-            -
-
-            (
-
-              (
-
-                n
-                *
-                sumXY
-
-                -
-
-                sumX
-                *
-                sumY
-
-              )
-
-              /
-
-              denominator
-
-            )
-
-            *
-            sumX
-
-          )
-
-          /
+        (
 
           n
+          *
+          sumXY
+
+          -
+
+          sumX
+          *
+          sumY
+
+        )
+
+        /
+
+        denominator;
+
+
+      const intercept =
+
+        (
+
+          sumY
+
+          -
+
+          slope
+          *
+          sumX
+
+        )
+
+        /
+
+        n;
+
+
+      return {
+
+        slope,
+
+        intercept
 
       };
 
@@ -4764,6 +5673,7 @@
 
 
     function formatGraphNumber(value) {
+
 
       return Number.isFinite(
         value
@@ -4785,6 +5695,7 @@
 
     function findLatestRun(data) {
 
+
       let latest =
         null;
 
@@ -4793,26 +5704,39 @@
 
         function (item) {
 
+
           const value =
+
             extractNumber(
               item.run
             );
 
 
           if (
+
             value !== null
+
             &&
+
             (
+
               latest === null
+
               ||
+
               value > latest
+
             )
+
           ) {
+
 
             latest =
               value;
 
+
           }
+
 
         }
 
@@ -4827,7 +5751,9 @@
 
     function formatRunLabel(run) {
 
+
       const text =
+
         String(
           run || ""
         )
@@ -4836,7 +5762,9 @@
 
       if (!text) {
 
+
         return "";
+
 
       }
 
@@ -4847,11 +5775,17 @@
         )
       ) {
 
+
         return (
+
           "Swabbing Run "
+
           +
+
           text
+
         );
+
 
       }
 
@@ -4871,25 +5805,30 @@
       rows
     ) {
 
+
       const wrapper =
+
         document.getElementById(
           "swabbingGraphWrapper"
         );
 
 
       const title =
+
         document.getElementById(
           "swabbingGraphTitle"
         );
 
 
       const info =
+
         document.getElementById(
           "swabbingGraphCount"
         );
 
 
       const data =
+
         extractSwabbingGraphData(
 
           columns,
@@ -4903,6 +5842,7 @@
         data.length === 0
       ) {
 
+
         wrapper.innerHTML =
 
           '<div class="chart-message">' +
@@ -4914,10 +5854,13 @@
 
         return;
 
+
       }
 
 
+
       const latestRun =
+
         findLatestRun(
           data
         );
@@ -4940,20 +5883,33 @@
           "SWABBING PIG WEIGHT COMPARISON — LATEST DATA";
 
 
+
       info.textContent =
 
         data.length
 
         +
 
-        " PIG / ITEMS · ALL PIG TYPES INCLUDED · AUTO REFRESH 60 SEC";
+        " PIG / ITEMS"
+
+        +
+
+        " · ALL PIG TYPES INCLUDED"
+
+        +
+
+        " · AUTO REFRESH 60 SEC";
 
 
 
       const wrapperWidth =
+
         Math.max(
+
           wrapper.clientWidth,
+
           320
+
         );
 
 
@@ -4993,7 +5949,9 @@
           +
 
           data.length
+
           *
+
           stepX
 
         );
@@ -5012,9 +5970,13 @@
 
 
       const plotHeight =
+
         plotBottom
+
         -
+
         top;
+
 
 
       let maximum =
@@ -5025,31 +5987,46 @@
 
         function (item) {
 
+
           [
+
             item.before,
+
             item.after,
+
             item.gain
+
           ]
+
           .forEach(
 
             function (value) {
 
+
               if (
+
                 Number.isFinite(
                   value
                 )
+
                 &&
+
                 value > maximum
+
               ) {
+
 
                 maximum =
                   value;
 
+
               }
+
 
             }
 
           );
+
 
         }
 
@@ -5057,8 +6034,15 @@
 
 
       let yMax =
+
         Math.ceil(
-          maximum + 1
+
+          maximum
+
+          +
+
+          1
+
         );
 
 
@@ -5066,20 +6050,30 @@
         yMax < 5
       ) {
 
+
         yMax =
           5;
+
 
       }
 
 
       const yStep =
+
         yMax <= 12
-          ? 1
-          : 2;
+
+          ?
+
+          1
+
+          :
+
+          2;
 
 
 
       function xPos(index) {
+
 
         return (
 
@@ -5088,22 +6082,28 @@
           +
 
           index
+
           *
+
           stepX
 
           +
 
           stepX
+
           /
+
           2
 
         );
+
 
       }
 
 
 
       function yPos(value) {
+
 
         return (
 
@@ -5112,15 +6112,21 @@
           -
 
           (
+
             value
+
             /
+
             yMax
+
           )
 
           *
+
           plotHeight
 
         );
+
 
       }
 
@@ -5140,9 +6146,15 @@
 
         ' viewBox="0 0 ' + width + ' ' + height + '"' +
 
+        ' role="img"' +
+
+        ' aria-label="Swabbing pig weight comparison"' +
+
         '>';
 
 
+
+      /* BACKGROUND */
 
       svg +=
 
@@ -5158,13 +6170,19 @@
 
 
 
+      /* =======================================================
+         Y GRID
+      ======================================================= */
+
       for (
         let value = 0;
         value <= yMax;
         value += yStep
       ) {
 
+
         const y =
+
           yPos(
             value
           );
@@ -5211,9 +6229,12 @@
 
           '</text>';
 
+
       }
 
 
+
+      /* AXES */
 
       svg +=
 
@@ -5228,6 +6249,8 @@
         ' y2="' + plotBottom + '"' +
 
         ' stroke="#111"' +
+
+        ' stroke-width="1.4"' +
 
         '/>';
 
@@ -5246,9 +6269,13 @@
 
         ' stroke="#111"' +
 
+        ' stroke-width="1.4"' +
+
         '/>';
 
 
+
+      /* Y AXIS TITLE */
 
       svg +=
 
@@ -5276,6 +6303,87 @@
 
 
 
+      /* =======================================================
+         RUN SEPARATOR
+      ======================================================= */
+
+      for (
+        let i = 1;
+        i < data.length;
+        i++
+      ) {
+
+
+        if (
+
+          data[i].run
+
+          &&
+
+          data[i - 1].run
+
+          &&
+
+          data[i].run
+
+          !==
+
+          data[i - 1].run
+
+        ) {
+
+
+          const separatorX =
+
+            (
+
+              xPos(
+                i - 1
+              )
+
+              +
+
+              xPos(
+                i
+              )
+
+            )
+
+            /
+
+            2;
+
+
+          svg +=
+
+            '<line' +
+
+            ' x1="' + separatorX + '"' +
+
+            ' y1="' + top + '"' +
+
+            ' x2="' + separatorX + '"' +
+
+            ' y2="' + (plotBottom + 66) + '"' +
+
+            ' stroke="#aaaaaa"' +
+
+            ' stroke-dasharray="3 5"' +
+
+            '/>';
+
+
+        }
+
+
+      }
+
+
+
+      /* =======================================================
+         WEIGHT BARS
+      ======================================================= */
+
       const barWidth =
         16;
 
@@ -5287,19 +6395,28 @@
           index
         ) {
 
+
           const x =
+
             xPos(
               index
             );
 
 
+
+          /* BEFORE */
+
           if (
+
             Number.isFinite(
               item.before
             )
+
           ) {
 
+
             const y =
+
               yPos(
                 item.before
               );
@@ -5316,6 +6433,8 @@
               ' width="' + barWidth + '"' +
 
               ' height="' + (plotBottom - y) + '"' +
+
+              ' rx="1"' +
 
               ' fill="#2878ad"' +
 
@@ -5348,16 +6467,24 @@
 
               '</text>';
 
+
           }
 
 
+
+          /* AFTER */
+
           if (
+
             Number.isFinite(
               item.after
             )
+
           ) {
 
+
             const y =
+
               yPos(
                 item.after
               );
@@ -5374,6 +6501,8 @@
               ' width="' + barWidth + '"' +
 
               ' height="' + (plotBottom - y) + '"' +
+
+              ' rx="1"' +
 
               ' fill="#ff7600"' +
 
@@ -5406,13 +6535,19 @@
 
               '</text>';
 
+
           }
+
 
         }
 
       );
 
 
+
+      /* =======================================================
+         GAIN LINE
+      ======================================================= */
 
       const gainPoints =
         [];
@@ -5425,11 +6560,15 @@
           index
         ) {
 
+
           if (
+
             Number.isFinite(
               item.gain
             )
+
           ) {
+
 
             gainPoints.push(
 
@@ -5449,7 +6588,9 @@
 
             );
 
+
           }
+
 
         }
 
@@ -5459,6 +6600,7 @@
       if (
         gainPoints.length >= 2
       ) {
+
 
         svg +=
 
@@ -5472,11 +6614,18 @@
 
           ' stroke-width="3"' +
 
+          ' stroke-linecap="round"' +
+
+          ' stroke-linejoin="round"' +
+
           '/>';
+
 
       }
 
 
+
+      /* GAIN DOTS + LABELS */
 
       data.forEach(
 
@@ -5485,24 +6634,31 @@
           index
         ) {
 
+
           if (
+
             !Number.isFinite(
               item.gain
             )
+
           ) {
 
+
             return;
+
 
           }
 
 
           const x =
+
             xPos(
               index
             );
 
 
           const y =
+
             yPos(
               item.gain
             );
@@ -5549,32 +6705,48 @@
 
             '</text>';
 
+
         }
 
       );
 
 
 
+      /* =======================================================
+         TREND
+      ======================================================= */
+
       const trend =
+
         calculateLinearTrend(
           data
         );
 
 
       if (
+
         trend
+
         &&
+
         data.length >= 2
+
       ) {
 
+
         const first =
+
           Math.max(
+
             0,
+
             trend.intercept
+
           );
 
 
         const last =
+
           Math.max(
 
             0,
@@ -5584,7 +6756,9 @@
             +
 
             trend.slope
+
             *
+
             (
               data.length - 1
             )
@@ -5612,6 +6786,7 @@
 
           '/>';
 
+
       }
 
 
@@ -5632,7 +6807,9 @@
           index
         ) {
 
+
           const x =
+
             xPos(
               index
             );
@@ -5651,7 +6828,9 @@
             normalizeText(
               item.shortType
             )
+
             !==
+
             normalizeText(
               mainLabel
             )
@@ -5663,6 +6842,7 @@
               :
 
               "";
+
 
 
           svg +=
@@ -5681,6 +6861,8 @@
 
             ' font-weight="900"' +
 
+            ' fill="#111"' +
+
             '>' +
 
             escapeHtml(
@@ -5690,9 +6872,11 @@
             '</text>';
 
 
+
           if (
             subLabel
           ) {
+
 
             svg +=
 
@@ -5720,7 +6904,9 @@
 
               '</text>';
 
+
           }
+
 
         }
 
@@ -5741,6 +6927,7 @@
         i <= data.length;
         i++
       ) {
+
 
         const currentRun =
 
@@ -5783,7 +6970,9 @@
 
         if (!endGroup) {
 
+
           continue;
+
 
         }
 
@@ -5791,6 +6980,7 @@
         if (
           run
         ) {
+
 
           const x1 =
 
@@ -5831,6 +7021,8 @@
             ' y2="' + bracketY + '"' +
 
             ' stroke="#333"' +
+
+            ' stroke-width="1.4"' +
 
             '/>';
 
@@ -5885,6 +7077,8 @@
 
             ' font-weight="900"' +
 
+            ' fill="#111"' +
+
             '>' +
 
             escapeHtml(
@@ -5897,15 +7091,19 @@
 
             '</text>';
 
+
         }
 
 
         groupStart =
           i;
 
+
       }
 
 
+
+      /* X TITLE */
 
       svg +=
 
@@ -5934,13 +7132,18 @@
         '</svg>';
 
 
+
       wrapper.innerHTML =
         svg;
 
 
+
+      /* OPEN GRAPH AT LATEST PIG */
+
       requestAnimationFrame(
 
         function () {
+
 
           wrapper.scrollLeft =
 
@@ -5949,6 +7152,7 @@
             -
 
             wrapper.clientWidth;
+
 
         }
 
@@ -5965,6 +7169,7 @@
     const DEW_SERIES = [
 
       {
+
         name:
           "GPS ADU",
 
@@ -5975,9 +7180,11 @@
 
         color:
           "#1f77b4"
+
       },
 
       {
+
         name:
           "GPS TPL",
 
@@ -5988,9 +7195,11 @@
 
         color:
           "#18b5c8"
+
       },
 
       {
+
         name:
           "BV13",
 
@@ -6000,9 +7209,11 @@
 
         color:
           "#2ca02c"
+
       },
 
       {
+
         name:
           "BV10.3",
 
@@ -6012,9 +7223,11 @@
 
         color:
           "#ff7600"
+
       },
 
       {
+
         name:
           "GPP4 TPR",
 
@@ -6025,6 +7238,7 @@
 
         color:
           "#d62728"
+
       }
 
     ];
@@ -6036,16 +7250,20 @@
       rows
     ) {
 
+
       const indexes =
+
         findDateTimeColumns(
           columns
         );
 
 
       const series =
+
         DEW_SERIES.map(
 
           function (definition) {
+
 
             return {
 
@@ -6059,6 +7277,7 @@
                 definition.color,
 
               columnIndex:
+
                 findColumnAllWords(
 
                   columns,
@@ -6072,6 +7291,7 @@
 
             };
 
+
           }
 
         );
@@ -6081,7 +7301,9 @@
 
         function (row) {
 
+
           const timestamp =
+
             getRowDateTimeValue(
 
               row,
@@ -6094,12 +7316,16 @@
 
 
           if (
+
             !Number.isFinite(
               timestamp
             )
+
           ) {
 
+
             return;
+
 
           }
 
@@ -6108,26 +7334,36 @@
 
             function (item) {
 
+
               if (
+
                 item.columnIndex < 0
+
               ) {
 
+
                 return;
+
 
               }
 
 
               const value =
+
                 extractNumber(
 
                   getCellDisplayValue(
 
                     row.c
+
                       ?
+
                       row.c[
                         item.columnIndex
                       ]
+
                       :
+
                       null
 
                   )
@@ -6139,18 +7375,23 @@
                 value !== null
               ) {
 
+
                 item.points.push({
 
                   timestamp,
+
                   value
 
                 });
 
+
               }
+
 
             }
 
           );
+
 
         }
 
@@ -6161,6 +7402,7 @@
 
         function (item) {
 
+
           item.points.sort(
 
             function (
@@ -6168,15 +7410,22 @@
               b
             ) {
 
+
               return (
+
                 a.timestamp
+
                 -
+
                 b.timestamp
+
               );
+
 
             }
 
           );
+
 
         }
 
@@ -6187,11 +7436,13 @@
 
         function (item) {
 
+
           return (
-            item.points.length
-            >
-            0
+
+            item.points.length > 0
+
           );
+
 
         }
 
@@ -6228,7 +7479,9 @@
       timestamp
     ) {
 
+
       const date =
+
         new Date(
           timestamp
         );
@@ -6271,13 +7524,16 @@
       timestamp
     ) {
 
+
       const date =
+
         new Date(
           timestamp
         );
 
 
       const day =
+
         String(
           date.getUTCDate()
         )
@@ -6288,16 +7544,19 @@
 
 
       const month =
+
         MONTHS[
           date.getUTCMonth()
         ];
 
 
       const year =
+
         date.getUTCFullYear();
 
 
       const hour =
+
         String(
           date.getUTCHours()
         )
@@ -6308,6 +7567,7 @@
 
 
       const minute =
+
         String(
           date.getUTCMinutes()
         )
@@ -6360,10 +7620,7 @@
 
 
     /* =========================================================
-       DEW POINT LABEL COLLISION SOLVER
-
-       AUTOMATICALLY SEPARATES ALL
-       LATEST READING BOXES
+       DEW POINT LATEST BOX COLLISION SOLVER
     ========================================================= */
 
     function arrangeDewPointLabels(
@@ -6372,21 +7629,23 @@
       bottom
     ) {
 
+
       if (
         labels.length === 0
       ) {
 
+
         return labels;
+
 
       }
 
 
       /*
-         BOX HEIGHT = 52 PX
-         MINIMUM VISUAL GAP = 7 PX
+         LATEST BOX:
+         HEIGHT = 52 PX
 
-         CENTRE TO CENTRE:
-         52 + 7 = 59 PX
+         MIN GAP BETWEEN BOXES = 7 PX
       */
 
       const minGap =
@@ -6398,25 +7657,31 @@
 
 
       const minY =
+
         top
+
         +
+
         halfBox
+
         +
+
         3;
 
 
       const maxY =
+
         bottom
+
         -
+
         halfBox
+
         -
+
         3;
 
 
-
-      /*
-         SORT FROM TOP TO BOTTOM
-      */
 
       labels.sort(
 
@@ -6425,11 +7690,17 @@
           b
         ) {
 
+
           return (
+
             a.targetY
+
             -
+
             b.targetY
+
           );
+
 
         }
 
@@ -6437,13 +7708,10 @@
 
 
 
-      /*
-         INITIAL POSITION
-      */
-
       labels.forEach(
 
         function (label) {
+
 
           label.labelY =
 
@@ -6461,23 +7729,21 @@
 
             );
 
+
         }
 
       );
 
 
 
-      /*
-         FORWARD PASS
-
-         PUSH LOWER BOXES DOWN
-      */
+      /* PUSH DOWN */
 
       for (
         let i = 1;
         i < labels.length;
         i++
       ) {
+
 
         const minimumAllowed =
 
@@ -6491,24 +7757,28 @@
 
 
         if (
+
           labels[i].labelY
+
           <
+
           minimumAllowed
+
         ) {
+
 
           labels[i].labelY =
             minimumAllowed;
 
+
         }
+
 
       }
 
 
 
-      /*
-         IF BOTTOM BOX GOES OUTSIDE,
-         SHIFT COMPLETE STACK UP
-      */
+      /* SHIFT UP IF BOTTOM OVERFLOW */
 
       const overflow =
 
@@ -6525,33 +7795,33 @@
         overflow > 0
       ) {
 
+
         labels.forEach(
 
           function (label) {
 
+
             label.labelY -=
               overflow;
+
 
           }
 
         );
 
+
       }
 
 
 
-      /*
-         BACKWARD PASS
-
-         ENSURE TOP SIDE STILL HAS
-         ENOUGH SPACING AFTER SHIFT
-      */
+      /* BACKWARD PASS */
 
       for (
         let i = labels.length - 2;
         i >= 0;
         i--
       ) {
+
 
         const maximumAllowed =
 
@@ -6565,24 +7835,28 @@
 
 
         if (
+
           labels[i].labelY
+
           >
+
           maximumAllowed
+
         ) {
+
 
           labels[i].labelY =
             maximumAllowed;
 
+
         }
+
 
       }
 
 
 
-      /*
-         IF TOP BOX GOES OUTSIDE,
-         SHIFT ENTIRE STACK DOWN
-      */
+      /* SHIFT DOWN IF TOP OVERFLOW */
 
       const underflow =
 
@@ -6597,16 +7871,20 @@
         underflow > 0
       ) {
 
+
         labels.forEach(
 
           function (label) {
 
+
             label.labelY +=
               underflow;
+
 
           }
 
         );
+
 
       }
 
@@ -6626,19 +7904,23 @@
       rows
     ) {
 
+
       const wrapper =
+
         document.getElementById(
           "dewGraphWrapper"
         );
 
 
       const info =
+
         document.getElementById(
           "dewGraphInfo"
         );
 
 
       const series =
+
         extractDewPointGraphData(
 
           columns,
@@ -6652,6 +7934,7 @@
         series.length === 0
       ) {
 
+
         wrapper.innerHTML =
 
           '<div class="chart-message">' +
@@ -6661,7 +7944,13 @@
           '</div>';
 
 
+        info.textContent =
+
+          "NO GRAPH DATA";
+
+
         return;
+
 
       }
 
@@ -6675,17 +7964,21 @@
 
         function (item) {
 
+
           item.points.forEach(
 
             function (point) {
+
 
               allPoints.push(
                 point
               );
 
+
             }
 
           );
+
 
         }
 
@@ -6694,6 +7987,7 @@
 
 
       const minTime =
+
         Math.min.apply(
 
           null,
@@ -6702,7 +7996,9 @@
 
             function (item) {
 
+
               return item.timestamp;
+
 
             }
 
@@ -6712,6 +8008,7 @@
 
 
       const maxTime =
+
         Math.max.apply(
 
           null,
@@ -6720,7 +8017,9 @@
 
             function (item) {
 
+
               return item.timestamp;
+
 
             }
 
@@ -6730,6 +8029,7 @@
 
 
       const minimum =
+
         Math.min.apply(
 
           null,
@@ -6738,7 +8038,9 @@
 
             function (item) {
 
+
               return item.value;
+
 
             }
 
@@ -6748,6 +8050,7 @@
 
 
       const maximum =
+
         Math.max.apply(
 
           null,
@@ -6756,7 +8059,9 @@
 
             function (item) {
 
+
               return item.value;
+
 
             }
 
@@ -6773,8 +8078,11 @@
           (
 
             Math.min(
+
               minimum,
+
               DEW_ACCEPTANCE
+
             )
 
             -
@@ -6801,8 +8109,11 @@
           (
 
             Math.max(
+
               maximum,
+
               DEW_ACCEPTANCE
+
             )
 
             +
@@ -6823,23 +8134,32 @@
 
 
       if (
+
         yMax - yMin < 20
+
       ) {
+
 
         yMin -=
           5;
 
+
         yMax +=
           5;
+
 
       }
 
 
 
       const wrapperWidth =
+
         Math.max(
+
           wrapper.clientWidth,
+
           320
+
         );
 
 
@@ -6854,9 +8174,13 @@
           1,
 
           (
+
             maxTime
+
             -
+
             minTime
+
           )
 
           /
@@ -6875,7 +8199,9 @@
           1100,
 
           daySpan
+
           *
+
           145
 
         );
@@ -6891,7 +8217,7 @@
 
       /*
          EXTRA RIGHT SPACE FOR
-         3-LINE LATEST READING BOX
+         LATEST READING BOXES
       */
 
       const right =
@@ -6907,28 +8233,43 @@
 
 
       const plotWidth =
+
         width
+
         -
+
         left
+
         -
+
         right;
 
 
       const plotHeight =
+
         bottom
+
         -
+
         top;
 
 
       const pad =
+
         Math.max(
 
           (
+
             maxTime
+
             -
+
             minTime
+
           )
+
           *
+
           0.01,
 
           1800000
@@ -6939,6 +8280,51 @@
 
       function xPos(time) {
 
+
+        const denominator =
+
+          (
+
+            maxTime
+
+            +
+
+            pad
+
+          )
+
+          -
+
+          (
+
+            minTime
+
+            -
+
+            pad
+
+          );
+
+
+        if (
+          denominator === 0
+        ) {
+
+
+          return (
+
+            left
+
+            +
+
+            plotWidth / 2
+
+          );
+
+
+        }
+
+
         return (
 
           left
@@ -6948,32 +8334,20 @@
           (
 
             (
+
               time
+
               -
+
               (
-                minTime
-                -
-                pad
+                minTime - pad
               )
+
             )
 
             /
 
-            (
-              (
-                maxTime
-                +
-                pad
-              )
-
-              -
-
-              (
-                minTime
-                -
-                pad
-              )
-            )
+            denominator
 
           )
 
@@ -6983,11 +8357,13 @@
 
         );
 
+
       }
 
 
 
       function yPos(value) {
+
 
         return (
 
@@ -6998,17 +8374,25 @@
           (
 
             (
+
               value
+
               -
+
               yMin
+
             )
 
             /
 
             (
+
               yMax
+
               -
+
               yMin
+
             )
 
           )
@@ -7018,6 +8402,7 @@
           plotHeight
 
         );
+
 
       }
 
@@ -7037,13 +8422,15 @@
 
         ' viewBox="0 0 ' + width + ' ' + height + '"' +
 
+        ' role="img"' +
+
+        ' aria-label="Pipeline drying dew point trend"' +
+
         '>';
 
 
 
-      /* =======================================================
-         BACKGROUND
-      ======================================================= */
+      /* BACKGROUND */
 
       svg +=
 
@@ -7064,10 +8451,13 @@
       ======================================================= */
 
       const acceptanceY =
+
         yPos(
           DEW_ACCEPTANCE
         );
 
+
+      /* RED */
 
       svg +=
 
@@ -7079,12 +8469,14 @@
 
         ' width="' + plotWidth + '"' +
 
-        ' height="' + (acceptanceY - top) + '"' +
+        ' height="' + Math.max(0, acceptanceY - top) + '"' +
 
         ' fill="#fff1f1"' +
 
         '/>';
 
+
+      /* GREEN */
 
       svg +=
 
@@ -7096,7 +8488,7 @@
 
         ' width="' + plotWidth + '"' +
 
-        ' height="' + (bottom - acceptanceY) + '"' +
+        ' height="' + Math.max(0, bottom - acceptanceY) + '"' +
 
         ' fill="#eef8ef"' +
 
@@ -7114,7 +8506,9 @@
         value += 5
       ) {
 
+
         const y =
+
           yPos(
             value
           );
@@ -7157,6 +8551,7 @@
 
           '</text>';
 
+
       }
 
 
@@ -7166,6 +8561,7 @@
       ======================================================= */
 
       const firstDate =
+
         new Date(
           minTime
         );
@@ -7185,6 +8581,7 @@
 
 
       const lastDate =
+
         new Date(
           maxTime
         );
@@ -7204,21 +8601,33 @@
 
 
       while (
-        day <=
+
+        day
+
+        <=
+
         lastDay + oneDay
+
       ) {
 
+
         const x =
+
           xPos(
             day
           );
 
 
         if (
+
           x >= left
+
           &&
+
           x <= left + plotWidth
+
         ) {
+
 
           svg +=
 
@@ -7259,11 +8668,13 @@
 
             '</text>';
 
+
         }
 
 
         day +=
           oneDay;
+
 
       }
 
@@ -7287,6 +8698,8 @@
 
         ' stroke="#111"' +
 
+        ' stroke-width="1.4"' +
+
         '/>';
 
 
@@ -7303,6 +8716,8 @@
         ' y2="' + bottom + '"' +
 
         ' stroke="#111"' +
+
+        ' stroke-width="1.4"' +
 
         '/>';
 
@@ -7355,9 +8770,7 @@
 
 
 
-      /* =======================================================
-         Y TITLE
-      ======================================================= */
+      /* Y TITLE */
 
       svg +=
 
@@ -7386,18 +8799,20 @@
 
 
       /* =======================================================
-         DRAW SERIES
+         DRAW ALL SERIES
       ======================================================= */
 
       series.forEach(
 
         function (item) {
 
+
           const points =
 
             item.points.map(
 
               function (point) {
+
 
                 return (
 
@@ -7417,6 +8832,7 @@
 
                 );
 
+
               }
 
             );
@@ -7425,6 +8841,7 @@
           if (
             points.length >= 2
           ) {
+
 
             svg +=
 
@@ -7444,12 +8861,14 @@
 
               '/>';
 
+
           }
 
 
           item.points.forEach(
 
             function (point) {
+
 
               svg +=
 
@@ -7465,9 +8884,11 @@
 
                 '/>';
 
+
             }
 
           );
+
 
         }
 
@@ -7477,11 +8898,6 @@
 
       /* =======================================================
          PREPARE LATEST READING BOXES
-
-         EACH BOX:
-         LOCATION
-         VALUE
-         DATE + TIME
       ======================================================= */
 
       let latestLabels =
@@ -7489,6 +8905,7 @@
         series.map(
 
           function (item) {
+
 
             const latest =
 
@@ -7509,16 +8926,19 @@
                 latest,
 
               targetY:
+
                 yPos(
                   latest.value
                 ),
 
               labelY:
+
                 yPos(
                   latest.value
                 )
 
             };
+
 
           }
 
@@ -7526,9 +8946,7 @@
 
 
 
-      /*
-         RUN COLLISION AVOIDANCE
-      */
+      /* ANTI-OVERLAP */
 
       latestLabels =
 
@@ -7545,14 +8963,23 @@
 
 
       /* =======================================================
-         DRAW LATEST READING BOXES
+         LATEST READING BOXES
+
+         LOCATION
+         VALUE
+         DATE + SAMPLING TIME
       ======================================================= */
 
       const boxX =
+
         left
+
         +
+
         plotWidth
+
         +
+
         12;
 
 
@@ -7569,13 +8996,16 @@
 
         function (item) {
 
+
           const pointX =
+
             xPos(
               item.point.timestamp
             );
 
 
           const pointY =
+
             yPos(
               item.point.value
             );
@@ -7588,7 +9018,9 @@
             -
 
             boxHeight
+
             /
+
             2;
 
 
@@ -7773,6 +9205,7 @@
 
             '</text>';
 
+
         }
 
       );
@@ -7808,7 +9241,7 @@
 
 
       /* =======================================================
-         FOOTNOTE
+         FOOT NOTE
       ======================================================= */
 
       svg +=
@@ -7839,8 +9272,10 @@
         '</svg>';
 
 
+
       wrapper.innerHTML =
         svg;
+
 
 
       info.textContent =
@@ -7856,9 +9291,13 @@
         " · AUTO REFRESH 60 SEC";
 
 
+
+      /* OPEN AT LATEST READING */
+
       requestAnimationFrame(
 
         function () {
+
 
           wrapper.scrollLeft =
 
@@ -7867,6 +9306,7 @@
             -
 
             wrapper.clientWidth;
+
 
         }
 
@@ -7877,37 +9317,51 @@
 
 
     /* =========================================================
-       CALLBACKS
+       GOOGLE CALLBACKS
     ========================================================= */
 
     window.swabbingResponse =
+
       function (response) {
 
+
         renderTable(
+
           response,
+
           SWABBING
+
         );
+
 
       };
 
 
+
     window.dewPointResponse =
+
       function (response) {
 
+
         renderTable(
+
           response,
+
           DEW_POINT
+
         );
+
 
       };
 
 
 
     /* =========================================================
-       LOAD
+       LOAD ALL DATA
     ========================================================= */
 
     function loadAllTables() {
+
 
       loadSheet(
         SWABBING
@@ -7918,20 +9372,21 @@
         DEW_POINT
       );
 
+
     }
 
 
 
-    /* INITIAL */
+    /* =========================================================
+       INITIAL LOAD
+    ========================================================= */
 
     loadAllTables();
 
 
 
     /* =========================================================
-       AUTO REFRESH
-
-       EVERY 60 SECONDS
+       AUTO REFRESH EVERY 60 SECONDS
 
        UPDATES:
        1. SWABBING TABLE
@@ -7954,7 +9409,8 @@
        RESPONSIVE GRAPH REDRAW
     ========================================================= */
 
-    let resizeTimer;
+    let resizeTimer =
+      null;
 
 
     window.addEventListener(
@@ -7963,19 +9419,23 @@
 
       function () {
 
+
         clearTimeout(
           resizeTimer
         );
 
 
         resizeTimer =
+
           setTimeout(
 
             function () {
 
+
               if (
                 lastSwabbingRows.length
               ) {
+
 
                 renderSwabbingGraph(
 
@@ -7985,12 +9445,14 @@
 
                 );
 
+
               }
 
 
               if (
                 lastDewRows.length
               ) {
+
 
                 renderDewPointGraph(
 
@@ -8000,13 +9462,16 @@
 
                 );
 
+
               }
+
 
             },
 
             200
 
           );
+
 
       }
 
