@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#07140f" />
-  <title>Summary of Pipeline Pre-Commissioning Activities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071b1a" />
+  <title>FEC Activity Timeline</title>
 
   <style>
     :root {
-      --bg: #06110d;
-      --bg-2: #0a1913;
-      --panel: rgba(11, 31, 23, 0.94);
-      --panel-2: rgba(13, 38, 28, 0.95);
-      --line: rgba(159, 203, 182, 0.15);
-      --line-strong: rgba(159, 203, 182, 0.28);
-      --text: #eef7f2;
-      --muted: #98aa9f;
-      --accent: #4ee3a2;
-      --accent-2: #82ffd0;
-      --warning: #ffd166;
-      --danger: #ff6b78;
-      --activity-width: 310px;
+      --bg: #071310;
+      --bg-2: #0b1d19;
+      --panel: rgba(13, 34, 29, 0.92);
+      --panel-2: #102721;
+      --panel-3: #16332b;
+      --line: rgba(214, 255, 242, 0.11);
+      --line-strong: rgba(214, 255, 242, 0.18);
+      --text: #eefbf7;
+      --muted: #9eb7ae;
+      --brand: #36d7a2;
+      --brand-2: #77efd0;
+      --accent: #1cc8ff;
+      --warning: #ffbd5a;
+      --danger: #ff6f74;
+      --completed: #2fd19c;
+      --ongoing: #ffb84d;
+      --future: #6e8790;
+      --meta-width: 980px;
       --day-width: 46px;
-      --row-height: 54px;
+      --row-min-h: 64px;
+      --header-h: 86px;
       --radius: 18px;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.30);
     }
 
     * {
@@ -32,19 +38,19 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      color-scheme: dark;
+      background: var(--bg);
     }
 
     body {
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      background:
-        radial-gradient(circle at 10% -10%, rgba(78, 227, 162, 0.11), transparent 34%),
-        radial-gradient(circle at 100% 0%, rgba(63, 170, 255, 0.07), transparent 30%),
-        linear-gradient(180deg, #06100c 0%, #07140f 40%, #06100c 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% -10%, rgba(54, 215, 162, 0.14), transparent 38%),
+        radial-gradient(circle at 100% 10%, rgba(28, 200, 255, 0.08), transparent 32%),
+        linear-gradient(180deg, #071310 0%, #081713 48%, #071310 100%);
     }
 
     button,
@@ -53,775 +59,880 @@
     }
 
     button {
-      -webkit-tap-highlight-color: transparent;
+      color: inherit;
     }
 
     .app-shell {
-      width: min(1800px, 100%);
+      width: min(100%, 2200px);
       margin: 0 auto;
-      padding: 22px;
+      padding: 24px;
     }
 
     .topbar {
       display: flex;
-      align-items: flex-start;
+      align-items: flex-end;
       justify-content: space-between;
-      gap: 22px;
+      gap: 18px;
       margin-bottom: 18px;
     }
 
-    .brand-block {
+    .title-wrap {
       min-width: 0;
     }
 
     .eyebrow {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       margin-bottom: 8px;
-      color: var(--accent-2);
+      color: var(--brand-2);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .eyebrow::before {
-      content: "";
+    .eyebrow-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 14px rgba(78, 227, 162, 0.8);
+      background: var(--brand);
+      box-shadow: 0 0 0 6px rgba(54, 215, 162, 0.10), 0 0 20px rgba(54, 215, 162, 0.45);
     }
 
     h1 {
       margin: 0;
-      max-width: 980px;
-      font-size: clamp(22px, 3vw, 42px);
-      line-height: 1.05;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1.03;
       letter-spacing: -0.035em;
-      text-transform: uppercase;
+      font-weight: 850;
     }
 
     .subtitle {
-      margin-top: 10px;
+      margin-top: 9px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.5;
     }
 
-    .sync-card {
-      flex: 0 0 auto;
-      min-width: 205px;
-      padding: 13px 15px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(10, 28, 21, 0.82);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
-    }
-
-    .sync-row {
+    .live-panel {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(8, 25, 21, 0.72);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(14px);
     }
 
-    .sync-status {
-      display: inline-flex;
+    .sync-state {
+      display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--accent-2);
+      min-width: 0;
+    }
+
+    .sync-dot {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--completed);
+      box-shadow: 0 0 14px rgba(47, 209, 156, 0.65);
+      animation: pulse 2s infinite;
+    }
+
+    .sync-dot.error {
+      background: var(--danger);
+      box-shadow: 0 0 14px rgba(255, 111, 116, 0.55);
+      animation: none;
+    }
+
+    .sync-dot.loading {
+      background: var(--warning);
+      box-shadow: 0 0 14px rgba(255, 189, 90, 0.55);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.48; transform: scale(0.82); }
+    }
+
+    .sync-copy {
+      min-width: 0;
+    }
+
+    .sync-label {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .sync-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(78, 227, 162, 0.75);
-    }
-
-    .sync-status.loading .sync-dot {
-      animation: pulse 1s infinite;
-    }
-
-    .sync-status.error {
-      color: #ffd1d6;
-    }
-
-    .sync-status.error .sync-dot {
-      background: var(--danger);
-      box-shadow: 0 0 12px rgba(255, 107, 120, 0.75);
+      white-space: nowrap;
     }
 
     .sync-time {
-      margin-top: 8px;
+      margin-top: 2px;
       color: var(--muted);
-      font-size: 11px;
-      font-variant-numeric: tabular-nums;
+      font-size: 10px;
+      white-space: nowrap;
     }
 
-    @keyframes pulse {
-      50% { opacity: .35; transform: scale(.8); }
+    .dashboard-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16, 39, 33, 0.96), rgba(9, 27, 23, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .dashboard-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 1px;
+      z-index: 6;
+      background: linear-gradient(90deg, transparent, rgba(119, 239, 208, 0.45), transparent);
+      pointer-events: none;
     }
 
     .toolbar {
-      display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto;
-      gap: 12px;
-      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 24, 20, 0.92);
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
     }
 
     .search-wrap {
       position: relative;
+      width: min(340px, 42vw);
     }
 
-    .search-wrap input {
-      width: 100%;
-      height: 44px;
-      padding: 0 14px 0 40px;
-      color: var(--text);
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      outline: none;
-      background: rgba(8, 25, 18, 0.82);
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .search-wrap input:focus {
-      border-color: rgba(78, 227, 162, .55);
-      box-shadow: 0 0 0 3px rgba(78, 227, 162, .08);
-    }
-
-    .search-wrap::before {
-      content: "⌕";
+    .search-wrap svg {
       position: absolute;
-      left: 14px;
+      left: 11px;
       top: 50%;
-      transform: translateY(-54%);
-      color: var(--muted);
-      font-size: 22px;
+      width: 16px;
+      height: 16px;
+      color: #7e9a90;
+      transform: translateY(-50%);
       pointer-events: none;
     }
 
-    .toolbar-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .control-btn {
-      height: 44px;
-      padding: 0 14px;
+    .search-input {
+      width: 100%;
+      height: 36px;
+      padding: 0 12px 0 35px;
       border: 1px solid var(--line);
-      border-radius: 13px;
+      outline: none;
+      border-radius: 10px;
       color: var(--text);
-      background: rgba(8, 25, 18, 0.82);
-      cursor: pointer;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      background: #0a1c18;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .control-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(78, 227, 162, .45);
-      background: rgba(14, 43, 31, .92);
+    .search-input:focus {
+      border-color: rgba(54, 215, 162, 0.5);
+      box-shadow: 0 0 0 3px rgba(54, 215, 162, 0.08);
     }
 
-    .control-btn.primary {
-      color: #06110d;
-      border-color: transparent;
-      background: linear-gradient(135deg, #5cf0ae, #83ffd0);
-      font-weight: 850;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .stat-card {
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(8, 25, 18, .68);
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    .stat-value {
-      margin-top: 4px;
-      font-size: 22px;
-      line-height: 1;
-      font-weight: 850;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .legend {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 7px 12px;
-      min-height: 40px;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(8, 25, 18, .68);
-    }
-
-    .legend-title {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-right: 3px;
-    }
-
-    .legend-item {
+    .tool-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: #d7e7de;
-      font-size: 11px;
-      white-space: nowrap;
+      justify-content: center;
+      gap: 7px;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+      background: #0a1c18;
+      transition: 0.18s ease;
     }
 
-    .legend-swatch {
-      width: 12px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--legend-color);
-      box-shadow: 0 0 10px color-mix(in srgb, var(--legend-color) 45%, transparent);
+    .tool-btn:hover {
+      border-color: rgba(54, 215, 162, 0.38);
+      background: #102a23;
+      transform: translateY(-1px);
     }
 
-    .notice {
-      display: none;
-      margin-bottom: 12px;
-      padding: 12px 14px;
-      border: 1px solid rgba(255, 209, 102, .25);
-      border-radius: 14px;
-      color: #ffe7a9;
-      background: rgba(87, 61, 10, .22);
-      font-size: 12px;
-      line-height: 1.5;
+    .tool-btn.primary {
+      border-color: rgba(54, 215, 162, 0.28);
+      color: #071713;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      font-weight: 800;
     }
 
-    .notice.show {
-      display: block;
+    .tool-btn svg {
+      width: 15px;
+      height: 15px;
     }
 
-    .schedule-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(11, 31, 23, .98), rgba(7, 21, 15, .98));
-      box-shadow: var(--shadow);
-    }
-
-    .timeline-scroll {
-      width: 100%;
-      overflow: auto;
-      overscroll-behavior-x: contain;
-      scrollbar-color: rgba(78, 227, 162, .35) rgba(255,255,255,.03);
-      scrollbar-width: thin;
-    }
-
-    .timeline-scroll::-webkit-scrollbar {
-      height: 10px;
-      width: 10px;
-    }
-
-    .timeline-scroll::-webkit-scrollbar-thumb {
-      border: 2px solid transparent;
-      border-radius: 999px;
-      background-clip: padding-box;
-      background-color: rgba(78, 227, 162, .34);
-    }
-
-    .timeline-scroll::-webkit-scrollbar-track {
-      background: rgba(255,255,255,.03);
-    }
-
-    .timeline-content {
-      min-width: calc(var(--activity-width) + (var(--day-count) * var(--day-width)));
-    }
-
-    .timeline-grid {
+    .summary-strip {
       display: grid;
-      grid-template-columns: var(--activity-width) repeat(var(--day-count), var(--day-width));
-    }
-
-    .month-row {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       border-bottom: 1px solid var(--line);
-      background: #0b2018;
+      background: rgba(12, 32, 27, 0.86);
     }
 
-    .month-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 33px;
-      color: #c9dbd1;
-      border-left: 1px solid var(--line);
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .corner-title {
-      position: sticky;
-      left: 0;
-      z-index: 25;
-      display: flex;
-      align-items: center;
-      min-height: 33px;
-      padding: 0 16px;
-      color: var(--accent-2);
-      border-right: 1px solid var(--line-strong);
-      background: #0b2018;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .day-row {
-      position: sticky;
-      top: 33px;
-      z-index: 19;
-      border-bottom: 1px solid var(--line-strong);
-      background: #0a1b14;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
-    }
-
-    .day-label-left {
-      position: sticky;
-      left: 0;
-      z-index: 24;
-      display: flex;
-      align-items: center;
-      min-height: 55px;
-      padding: 0 16px;
-      color: #a5bbb0;
-      border-right: 1px solid var(--line-strong);
-      background: #0a1b14;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .day-cell {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 55px;
-      border-left: 1px solid var(--line);
-      background: rgba(255,255,255,.005);
-      user-select: none;
-    }
-
-    .day-cell.weekend,
-    .timeline-day.weekend {
-      background: rgba(255, 255, 255, .018);
-    }
-
-    .day-cell.today,
-    .timeline-day.today {
-      background: rgba(78, 227, 162, .075);
-    }
-
-    .day-cell.today::after,
-    .timeline-day.today::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(78, 227, 162, .65);
-    }
-
-    .day-number {
-      color: #f5fbf7;
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 850;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .day-name {
-      margin-top: 5px;
-      color: #71877b;
-      font-size: 8px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: .06em;
-    }
-
-    .activity-row {
-      border-bottom: 1px solid rgba(159, 203, 182, .08);
-      transition: background .16s ease;
-    }
-
-    .activity-row:hover {
-      background: rgba(78, 227, 162, .022);
-    }
-
-    .activity-row:last-child {
-      border-bottom: 0;
-    }
-
-    .activity-cell {
-      position: sticky;
-      left: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-height: var(--row-height);
-      padding: 8px 14px;
-      border-right: 1px solid var(--line-strong);
-      background: linear-gradient(90deg, #0b1f17 0%, #0b1f17 92%, rgba(11,31,23,.96) 100%);
-    }
-
-    .activity-marker {
-      flex: 0 0 auto;
-      width: 5px;
-      height: 31px;
-      border-radius: 999px;
-      background: var(--bar-color);
-      box-shadow: 0 0 15px var(--bar-glow);
-    }
-
-    .activity-copy {
+    .summary-item {
       min-width: 0;
-      flex: 1;
+      padding: 11px 14px;
+      border-right: 1px solid var(--line);
     }
 
-    .activity-name {
+    .summary-item:last-child {
+      border-right: 0;
+    }
+
+    .summary-k {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .summary-v {
+      margin-top: 3px;
       overflow: hidden;
-      color: #ecf6f0;
-      font-size: 12px;
-      line-height: 1.22;
+      font-size: 14px;
       font-weight: 780;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .activity-meta {
-      margin-top: 4px;
+    .gantt-scroll {
+      position: relative;
+      max-height: calc(100vh - 280px);
+      min-height: 430px;
+      overflow: auto;
+      scrollbar-color: #2d5c4d #081b17;
+      scrollbar-width: thin;
+      overscroll-behavior: contain;
+      background: #0a1b17;
+    }
+
+    .gantt-scroll::-webkit-scrollbar {
+      width: 11px;
+      height: 11px;
+    }
+
+    .gantt-scroll::-webkit-scrollbar-track {
+      background: #081b17;
+    }
+
+    .gantt-scroll::-webkit-scrollbar-thumb {
+      border: 3px solid #081b17;
+      border-radius: 999px;
+      background: #315e50;
+    }
+
+    .gantt-board {
+      min-width: max-content;
+      background: #0a1b17;
+    }
+
+    .gantt-header,
+    .gantt-row {
+      display: grid;
+      grid-template-columns: var(--meta-width) var(--timeline-width);
+      min-width: calc(var(--meta-width) + var(--timeline-width));
+    }
+
+    .gantt-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: var(--header-h);
+      border-bottom: 1px solid var(--line-strong);
+      background: #0c211b;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.17);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 62px 178px 238px 170px 166px 166px;
+      width: var(--meta-width);
+      min-width: var(--meta-width);
+    }
+
+    .gantt-header > .meta-grid,
+    .gantt-row > .meta-grid {
+      position: sticky;
+      left: 0;
+    }
+
+    .gantt-header > .meta-grid {
+      z-index: 40;
+      background: linear-gradient(180deg, #133028 0%, #0f2922 100%);
+    }
+
+    .gantt-row > .meta-grid {
+      z-index: 10;
+      background: #0d211c;
+    }
+
+    .head-cell,
+    .data-cell {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .head-cell {
+      justify-content: center;
+      padding: 10px 9px;
+      color: #eaf9f4;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.075em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .data-cell {
+      min-height: var(--row-min-h);
+      padding: 10px 10px;
+      color: #deeee9;
+      font-size: 11px;
+      line-height: 1.42;
+      word-break: break-word;
+    }
+
+    .data-cell.no-cell {
+      justify-content: center;
+      color: var(--brand-2);
+      font-weight: 850;
+      font-size: 12px;
+    }
+
+    .data-cell.step-cell {
+      font-weight: 760;
+      color: #effbf7;
+    }
+
+    .data-cell.step-cell.carried {
+      color: #78988d;
+      font-weight: 650;
+    }
+
+    .data-cell.pig-cell {
+      color: #b9d7ce;
+    }
+
+    .data-cell.date-cell {
+      color: #b9d7ce;
+      font-variant-numeric: tabular-nums;
+      font-size: 10px;
+    }
+
+    .timeline-head {
+      position: relative;
+      width: var(--timeline-width);
+      min-width: var(--timeline-width);
       overflow: hidden;
-      color: #788d81;
+      background: #0c211b;
+    }
+
+    .month-strip {
+      display: flex;
+      height: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .month-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-right: 1px solid var(--line-strong);
+      color: #bfe9dc;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .day-strip {
+      display: flex;
+      height: 54px;
+    }
+
+    .day-cell {
+      position: relative;
+      display: flex;
+      flex: 0 0 var(--day-width);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+      color: #c1d8d0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .day-cell.weekend {
+      background: rgba(255, 255, 255, 0.017);
+    }
+
+    .day-cell.today {
+      background: rgba(54, 215, 162, 0.11);
+    }
+
+    .day-num {
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .day-name {
+      margin-top: 3px;
+      color: #789a8f;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .gantt-row {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gantt-row:hover > .meta-grid,
+    .gantt-row:hover > .timeline-cell {
+      background-color: #102720;
+    }
+
+    .timeline-cell {
+      position: relative;
+      min-height: var(--row-min-h);
+      width: var(--timeline-width);
+      background-color: #0a1b17;
+      background-image:
+        repeating-linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(var(--day-width) - 1px),
+          var(--line) calc(var(--day-width) - 1px),
+          var(--line) var(--day-width)
+        );
+    }
+
+    .timeline-cell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: var(--weekend-overlay, none);
+    }
+
+    .bar {
+      position: absolute;
+      top: 50%;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      min-width: 5px;
+      height: 28px;
+      padding: 0 9px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 7px;
+      color: #071713;
       font-size: 9px;
-      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0.01em;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .timeline-day {
-      position: relative;
-      min-height: var(--row-height);
-      border-left: 1px solid rgba(159, 203, 182, .08);
-      background: rgba(255,255,255,.003);
-    }
-
-    .timeline-day.active::before {
-      content: "";
-      position: absolute;
-      left: -1px;
-      right: -1px;
-      top: 50%;
-      height: 18px;
       transform: translateY(-50%);
-      background: linear-gradient(180deg,
-        color-mix(in srgb, var(--bar-color) 93%, white 7%),
-        color-mix(in srgb, var(--bar-color) 82%, black 18%)
-      );
-      box-shadow: 0 4px 14px var(--bar-glow);
-      opacity: .92;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.25);
+      cursor: default;
     }
 
-    .timeline-day.active.segment-start::before {
-      left: 5px;
-      border-radius: 8px 0 0 8px;
+    .bar.completed {
+      background: linear-gradient(135deg, #2fce9a, #7aeccc);
     }
 
-    .timeline-day.active.segment-end::before {
-      right: 5px;
-      border-radius: 0 8px 8px 0;
+    .bar.ongoing {
+      background: linear-gradient(135deg, #ffae45, #ffd07d);
     }
 
-    .timeline-day.active.segment-start.segment-end::before {
-      left: 6px;
-      right: 6px;
-      border-radius: 8px;
+    .bar.future {
+      color: #eaf4f0;
+      background: linear-gradient(135deg, #667f87, #8aa0a7);
     }
 
-    .timeline-day.active::after {
+    .bar.clipped-left::before,
+    .bar.clipped-right::after {
       content: "";
       position: absolute;
-      z-index: 2;
-      left: 50%;
       top: 50%;
-      width: 3px;
-      height: 3px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: rgba(255,255,255,.72);
-      opacity: .48;
+      width: 7px;
+      height: 7px;
+      border-top: 2px solid rgba(7, 23, 19, 0.62);
+      border-right: 2px solid rgba(7, 23, 19, 0.62);
     }
 
-    .empty-state {
-      padding: 38px 24px 42px;
+    .bar.clipped-left::before {
+      left: 4px;
+      transform: translateY(-50%) rotate(-135deg);
+    }
+
+    .bar.clipped-right::after {
+      right: 4px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .today-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 7;
+      width: 2px;
+      background: rgba(255, 111, 116, 0.95);
+      box-shadow: 0 0 12px rgba(255, 111, 116, 0.38);
+      pointer-events: none;
+    }
+
+    .today-line::before {
+      content: "TODAY";
+      position: absolute;
+      top: 4px;
+      left: 5px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: #fff;
+      background: rgba(255, 88, 95, 0.92);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    .empty-state,
+    .error-state {
+      display: none;
+      padding: 58px 24px 70px;
       text-align: center;
-      color: var(--muted);
     }
 
-    .empty-title {
-      color: #e8f2ec;
+    .empty-state.show,
+    .error-state.show {
+      display: block;
+    }
+
+    .state-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 14px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--brand-2);
+      background: #0c241e;
+    }
+
+    .state-title {
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
-    .empty-text {
-      max-width: 700px;
+    .state-copy {
+      max-width: 680px;
       margin: 8px auto 0;
+      color: var(--muted);
       font-size: 12px;
       line-height: 1.6;
     }
 
-    .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 12px;
-      padding: 0 3px;
-      color: #61766a;
-      font-size: 10px;
-      letter-spacing: .04em;
-    }
-
-    .footer strong {
-      color: #8ba398;
-      font-weight: 750;
-    }
-
-    .loading-skeleton {
-      position: relative;
-      overflow: hidden;
-      min-height: 260px;
-      background:
-        repeating-linear-gradient(
-          180deg,
-          rgba(255,255,255,.018) 0,
-          rgba(255,255,255,.018) 52px,
-          rgba(255,255,255,.045) 53px,
-          rgba(255,255,255,.018) 54px
-        );
-    }
-
-    .loading-skeleton::after {
-      content: "";
+    .loading-cover {
       position: absolute;
       inset: 0;
-      transform: translateX(-100%);
-      background: linear-gradient(90deg, transparent, rgba(78,227,162,.05), transparent);
-      animation: shimmer 1.4s infinite;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 19, 16, 0.58);
+      backdrop-filter: blur(3px);
     }
 
-    @keyframes shimmer {
-      100% { transform: translateX(100%); }
+    .loading-cover.show {
+      display: flex;
     }
 
-    @media (max-width: 900px) {
+    .loader {
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(119, 239, 208, 0.15);
+      border-top-color: var(--brand-2);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 999;
+      display: none;
+      width: min(340px, calc(100vw - 28px));
+      padding: 12px;
+      border: 1px solid rgba(119, 239, 208, 0.18);
+      border-radius: 12px;
+      color: var(--text);
+      background: rgba(7, 24, 20, 0.97);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.42);
+      pointer-events: none;
+      backdrop-filter: blur(12px);
+    }
+
+    .tooltip.show {
+      display: block;
+    }
+
+    .tooltip-title {
+      margin-bottom: 8px;
+      color: var(--brand-2);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .tooltip-line {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 8px;
+      margin-top: 5px;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .tooltip-k {
+      color: #78978d;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .tooltip-v {
+      color: #d7ebe4;
+    }
+
+    .footer-note {
+      padding: 15px 6px 4px;
+      color: #607b72;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1100px) {
       :root {
-        --activity-width: 235px;
-        --day-width: 42px;
+        --meta-width: 850px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 56px 154px 205px 145px 145px 145px;
       }
 
       .app-shell {
-        padding: 14px;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --meta-width: 790px;
+        --row-min-h: 60px;
+        --header-h: 78px;
+      }
+
+      .app-shell {
+        padding: 12px;
       }
 
       .topbar {
+        align-items: stretch;
         flex-direction: column;
-        gap: 12px;
       }
 
-      .sync-card {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      :root {
-        --activity-width: 200px;
-        --day-width: 39px;
-        --row-height: 50px;
-        --radius: 15px;
-      }
-
-      .app-shell {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .subtitle {
-        font-size: 11px;
+      .live-panel {
+        align-self: flex-start;
       }
 
       .toolbar {
-        grid-template-columns: 1fr;
+        align-items: stretch;
+        flex-direction: column;
       }
 
-      .toolbar-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      .toolbar-left,
+      .toolbar-right {
+        width: 100%;
       }
 
-      .control-btn.primary {
-        grid-column: 1 / -1;
+      .search-wrap {
+        width: 100%;
       }
 
-      .stat-card {
-        padding: 10px 12px;
+      .toolbar-right {
+        justify-content: flex-end;
       }
 
-      .stat-value {
-        font-size: 18px;
+      .summary-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .legend {
-        max-height: 88px;
-        overflow: auto;
+      .summary-item:nth-child(2) {
+        border-right: 0;
       }
 
-      .activity-cell,
-      .day-label-left,
-      .corner-title {
-        padding-left: 10px;
-        padding-right: 10px;
+      .summary-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
       }
 
-      .activity-name {
-        font-size: 11px;
+      .gantt-scroll {
+        max-height: calc(100vh - 380px);
+        min-height: 390px;
       }
 
-      .footer {
-        justify-content: center;
-        text-align: center;
+      .gantt-header > .meta-grid,
+      .gantt-row > .meta-grid {
+        position: static;
       }
 
-      .footer span:first-child {
-        display: none;
+      .meta-grid {
+        grid-template-columns: 52px 140px 190px 130px 139px 139px;
+      }
+
+      .head-cell {
+        padding: 8px 6px;
+        font-size: 9px;
+      }
+
+      .data-cell {
+        padding: 8px;
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
       }
     }
   </style>
 </head>
-
 <body>
   <main class="app-shell">
     <header class="topbar">
-      <div class="brand-block">
-        <div class="eyebrow">KREJUV · FEC Pipeline</div>
-        <h1>Summary of Pipeline Pre-Commissioning Activities</h1>
-        <div class="subtitle">
-          Daily activity timeline · 10 Aug 2026 — 10 Sep 2026 · Read-only live sync from Google Sheets
-        </div>
+      <div class="title-wrap">
+        <div class="eyebrow"><span class="eyebrow-dot"></span>KREJUV · FEC · LIVE SCHEDULE</div>
+        <h1>Activity Timeline</h1>
+        <div class="subtitle">Activities, launch/arrival records and Microsoft Project-style Gantt bars — synced from Google Sheets.</div>
       </div>
 
-      <div class="sync-card" aria-live="polite">
-        <div class="sync-row">
-          <div id="syncStatus" class="sync-status loading">
-            <span class="sync-dot"></span>
-            <span id="syncStatusText">Connecting</span>
-          </div>
-          <button id="refreshBtn" class="control-btn" type="button" title="Refresh Google Sheet">↻</button>
+      <div class="live-panel" aria-live="polite">
+        <div id="syncDot" class="sync-dot loading"></div>
+        <div class="sync-copy">
+          <div id="syncLabel" class="sync-label">Connecting Sheet</div>
+          <div id="syncTime" class="sync-time">Waiting for first sync…</div>
         </div>
-        <div id="syncTime" class="sync-time">Waiting for sheet data…</div>
       </div>
     </header>
 
-    <section class="toolbar" aria-label="Timeline controls">
-      <div class="search-wrap">
-        <input id="searchInput" type="search" autocomplete="off" placeholder="Search activity…" aria-label="Search activity" />
+    <section class="dashboard-card">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+            <input id="searchInput" class="search-input" type="search" placeholder="Search step, activity, pig…" autocomplete="off" />
+          </div>
+
+          <button id="refreshBtn" class="tool-btn primary" type="button" title="Refresh Google Sheet now">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M20 6v6h-6"></path>
+              <path d="M4 18v-6h6"></path>
+              <path d="M18.5 9A7 7 0 0 0 6 6.5L4 9"></path>
+              <path d="M5.5 15A7 7 0 0 0 18 17.5l2-2.5"></path>
+            </svg>
+            Sync
+          </button>
+        </div>
+
+        <div class="toolbar-right">
+          <button id="zoomOutBtn" class="tool-btn" type="button" title="Reduce day width" aria-label="Zoom out timeline">−</button>
+          <button id="todayBtn" class="tool-btn" type="button" title="Scroll to today">Today</button>
+          <button id="zoomInBtn" class="tool-btn" type="button" title="Increase day width" aria-label="Zoom in timeline">+</button>
+        </div>
       </div>
 
-      <div class="toolbar-actions">
-        <button id="compactBtn" class="control-btn" type="button">Compact</button>
-        <button id="fitBtn" class="control-btn" type="button">Normal</button>
-        <button id="todayBtn" class="control-btn primary" type="button">Go to Today</button>
+      <div class="summary-strip">
+        <div class="summary-item">
+          <div class="summary-k">Visible Activities</div>
+          <div id="activityCount" class="summary-v">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-k">Timeline</div>
+          <div id="timelineRange" class="summary-v">10 Aug 2026 → Today</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-k">Auto Sync</div>
+          <div id="refreshRate" class="summary-v">Every 60 sec</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-k">Data Source</div>
+          <div class="summary-v">Google Sheets · Read Only</div>
+        </div>
+      </div>
+
+      <div id="ganttScroll" class="gantt-scroll">
+        <div id="ganttBoard" class="gantt-board">
+          <div id="ganttHeader" class="gantt-header"></div>
+          <div id="ganttRows"></div>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="state-icon">⌕</div>
+          <div class="state-title">No matching activities</div>
+          <div class="state-copy">Change the search text or check that the Google Sheet contains rows under the expected activity columns.</div>
+        </div>
+
+        <div id="errorState" class="error-state">
+          <div class="state-icon">!</div>
+          <div class="state-title">Google Sheet could not be read</div>
+          <div id="errorCopy" class="state-copy"></div>
+        </div>
+
+        <div id="loadingCover" class="loading-cover"><div class="loader" aria-label="Loading"></div></div>
       </div>
     </section>
 
-    <section class="stats" aria-label="Activity statistics">
-      <div class="stat-card">
-        <div class="stat-label">Activities</div>
-        <div id="statTotal" class="stat-value">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Completed</div>
-        <div id="statCompleted" class="stat-value">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">In Progress</div>
-        <div id="statOngoing" class="stat-value">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Upcoming</div>
-        <div id="statUpcoming" class="stat-value">0</div>
-      </div>
-    </section>
-
-    <section id="legend" class="legend">
-      <span class="legend-title">Activity colors</span>
-    </section>
-
-    <div id="notice" class="notice"></div>
-
-    <section class="schedule-card">
-      <div id="timelineScroll" class="timeline-scroll">
-        <div id="timelineRoot" class="loading-skeleton"></div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>Source: Google Sheets · automatic refresh every 60 seconds</span>
-      <span><strong>Fly TechSmith</strong> · Pre-Commissioning Reference</span>
-    </footer>
+    <div class="footer-note">Fly TechSmith</div>
   </main>
+
+  <div id="tooltip" class="tooltip" role="tooltip"></div>
 
   <script>
     "use strict";
@@ -830,106 +941,89 @@
        CONFIGURATION
        ========================================================= */
     const CONFIG = Object.freeze({
-      SPREADSHEET_ID: "1WxRyDXfI7RCg14E-G3beG2dNeyP5IUU9vBKt6T_C8SM",
-      SHEET_GID: "0",             // Change only if the required data is not on the first tab.
-      HEADER_ROWS: 1,              // Use 0 only when your source table truly has no header row.
-      TIMELINE_START: "2026-08-10",
-      TIMELINE_END: "2026-09-10",
-      AUTO_REFRESH_MS: 60_000,
-      GROUP_DUPLICATE_ACTIVITIES: true
+      SHEET_ID: "1WxRyDXfI7RCg14E-G3beG2dNeyP5IUU9vBKt6T_C8SM",
+      SHEET_GID: "0", // Change this only if your activity table is on another sheet tab.
+      TIMELINE_START: new Date(2026, 7, 10, 0, 0, 0, 0), // 10/08/2026
+      REFRESH_MS: 60_000,
+      MIN_DAY_WIDTH: 34,
+      MAX_DAY_WIDTH: 72,
+      DEFAULT_DAY_WIDTH: 46
     });
 
-    const CATEGORY_RULES = Object.freeze([
-      { key: "pigging",       label: "Pigging / Cleaning", color: "#ff9f43", keywords: ["pig", "pigging", "cleaning", "bidi", "bi-di", "brush", "foam"] },
-      { key: "waterfill",     label: "Water Filling",      color: "#3aa9ff", keywords: ["water fill", "water filling", "filling"] },
-      { key: "hydrotest",     label: "Hydrotest",          color: "#ff637d", keywords: ["hydrotest", "hydro test", "pressure test", "holding period", "stabilization"] },
-      { key: "dewatering",    label: "Dewatering",         color: "#34d5d2", keywords: ["dewater", "dewatering"] },
-      { key: "swabbing",      label: "Swabbing / Drying", color: "#a980ff", keywords: ["swab", "swabbing", "drying", "dew point", "dewpoint", "soaking"] },
-      { key: "nitrogen",      label: "N₂ / Purging",       color: "#55db72", keywords: ["n2", "nitrogen", "purge", "purging", "oxygen", "o2"] },
-      { key: "linepacking",   label: "Line Packing",       color: "#7be6b4", keywords: ["line pack", "line packing", "packing"] },
-      { key: "commissioning", label: "Commissioning",      color: "#d6f35a", keywords: ["commissioning", "feeding gps", "line switching", "gas in", "gas-in"] },
-      { key: "tiein",         label: "Tie-In / Welding",   color: "#ff66c4", keywords: ["tie-in", "tie in", "cold cut", "cold-cut", "welding", "weld", "spading"] },
-      { key: "leaktest",      label: "Leak Test",          color: "#ffd166", keywords: ["leak test", "leak testing", "tightness"] },
-      { key: "default",       label: "Other Activity",     color: "#8ea6b5", keywords: [] }
-    ]);
-
-    const HEADER_ALIASES = Object.freeze({
-      activity: [
-        "activity", "activities", "activity description", "pre-commissioning activity",
-        "pre commissioning activity", "description", "scope", "work", "task", "item",
-        "work activity", "activity / scope", "scope of work"
-      ],
-      start: [
-        "start", "start date", "start / launch", "start/launch", "launch", "launch date",
-        "from", "date start", "commence", "commencement", "start time"
-      ],
-      end: [
-        "end", "end date", "end / arrival", "end/arrival", "arrival", "arrival date",
-        "to", "date end", "finish", "completion", "completion date", "end time"
-      ],
-      date: ["date", "activity date", "work date"],
-      category: ["category", "type", "activity type", "phase"],
-      remarks: ["remarks", "remark", "notes", "note", "status", "comments", "comment"]
-    });
+    const DAY_MS = 24 * 60 * 60 * 1000;
 
     const state = {
+      allRows: [],
+      filteredRows: [],
+      dayWidth: CONFIG.DEFAULT_DAY_WIDTH,
       days: [],
-      activities: [],
-      filteredActivities: [],
-      lastSuccessfulSync: null,
-      refreshTimer: null,
-      loadingTimeout: null
+      timelineEnd: null,
+      isLoading: false,
+      lastSync: null,
+      lastStep: ""
     };
 
-    const el = {
-      timelineRoot: document.getElementById("timelineRoot"),
-      timelineScroll: document.getElementById("timelineScroll"),
+    const els = {
+      ganttScroll: document.getElementById("ganttScroll"),
+      ganttBoard: document.getElementById("ganttBoard"),
+      ganttHeader: document.getElementById("ganttHeader"),
+      ganttRows: document.getElementById("ganttRows"),
       searchInput: document.getElementById("searchInput"),
       refreshBtn: document.getElementById("refreshBtn"),
-      compactBtn: document.getElementById("compactBtn"),
-      fitBtn: document.getElementById("fitBtn"),
+      zoomOutBtn: document.getElementById("zoomOutBtn"),
+      zoomInBtn: document.getElementById("zoomInBtn"),
       todayBtn: document.getElementById("todayBtn"),
-      syncStatus: document.getElementById("syncStatus"),
-      syncStatusText: document.getElementById("syncStatusText"),
+      syncDot: document.getElementById("syncDot"),
+      syncLabel: document.getElementById("syncLabel"),
       syncTime: document.getElementById("syncTime"),
-      notice: document.getElementById("notice"),
-      legend: document.getElementById("legend"),
-      statTotal: document.getElementById("statTotal"),
-      statCompleted: document.getElementById("statCompleted"),
-      statOngoing: document.getElementById("statOngoing"),
-      statUpcoming: document.getElementById("statUpcoming")
+      activityCount: document.getElementById("activityCount"),
+      timelineRange: document.getElementById("timelineRange"),
+      refreshRate: document.getElementById("refreshRate"),
+      emptyState: document.getElementById("emptyState"),
+      errorState: document.getElementById("errorState"),
+      errorCopy: document.getElementById("errorCopy"),
+      loadingCover: document.getElementById("loadingCover"),
+      tooltip: document.getElementById("tooltip")
     };
 
     /* =========================================================
-       DATE HELPERS
+       DATE / TEXT HELPERS
        ========================================================= */
-    function makeLocalDate(year, month, day) {
-      return new Date(year, month - 1, day, 12, 0, 0, 0);
+    function startOfDay(date) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
     }
 
-    function parseISODateOnly(value) {
-      const match = String(value).match(/^(\d{4})-(\d{2})-(\d{2})$/);
-      return match ? makeLocalDate(+match[1], +match[2], +match[3]) : null;
+    function endOfDay(date) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59, 999);
     }
 
-    function stripTime(date) {
-      return makeLocalDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
+    function normalizeHeader(value) {
+      return String(value ?? "")
+        .replace(/^\uFEFF/, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toUpperCase()
+        .replace(/[^A-Z0-9]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
-    function addDays(date, amount) {
-      const copy = new Date(date);
-      copy.setDate(copy.getDate() + amount);
-      return stripTime(copy);
+    function safeText(value) {
+      return String(value ?? "").replace(/\s+/g, " ").trim();
     }
 
-    function dateKey(date) {
-      const y = date.getFullYear();
-      const m = String(date.getMonth() + 1).padStart(2, "0");
+    function formatDate(date, includeTime = true) {
+      if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "—";
       const d = String(date.getDate()).padStart(2, "0");
-      return `${y}-${m}-${d}`;
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const y = date.getFullYear();
+      if (!includeTime) return `${d}/${m}/${y}`;
+      const hh = String(date.getHours()).padStart(2, "0");
+      const mm = String(date.getMinutes()).padStart(2, "0");
+      return `${d}/${m}/${y} ${hh}:${mm}`;
     }
 
-    function formatDate(date) {
+    function formatShortDate(date) {
       return new Intl.DateTimeFormat("en-GB", {
         day: "2-digit",
         month: "short",
@@ -937,646 +1031,645 @@
       }).format(date);
     }
 
-    function parseAnyDate(raw, formatted = "") {
-      if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
-        return stripTime(raw);
+    function parseSheetDate(rawValue, endDate = false) {
+      const raw = safeText(rawValue);
+      if (!raw) return null;
+
+      // Google/Excel serial date fallback.
+      const numeric = Number(raw);
+      if (Number.isFinite(numeric) && numeric > 30_000 && numeric < 90_000) {
+        const wholeDays = Math.floor(numeric);
+        const dayFraction = numeric - wholeDays;
+        const baseUtc = Date.UTC(1899, 11, 30);
+        const utc = new Date(baseUtc + wholeDays * DAY_MS + Math.round(dayFraction * DAY_MS));
+        return new Date(
+          utc.getUTCFullYear(),
+          utc.getUTCMonth(),
+          utc.getUTCDate(),
+          utc.getUTCHours(),
+          utc.getUTCMinutes(),
+          utc.getUTCSeconds(),
+          0
+        );
       }
 
-      const candidates = [raw, formatted]
-        .filter(v => v !== null && v !== undefined && String(v).trim() !== "")
-        .map(v => String(v).trim());
+      // ISO yyyy-mm-dd, with optional time.
+      let match = raw.match(/\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b/);
+      if (match) {
+        const year = Number(match[1]);
+        const month = Number(match[2]);
+        const day = Number(match[3]);
+        const time = parseTimePart(raw.slice((match.index ?? 0) + match[0].length));
+        return makeLocalDate(year, month, day, time, endDate);
+      }
 
-      for (const value of candidates) {
-        // Google Visualization date format: Date(2026,7,27,1,55,0)
-        let m = value.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})(?:,.*)?\)$/i);
-        if (m) return makeLocalDate(+m[1], +m[2] + 1, +m[3]);
+      // Malaysia / UK style dd/mm/yyyy (preferred for this project).
+      match = raw.match(/\b(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})\b/);
+      if (match) {
+        let year = Number(match[3]);
+        if (year < 100) year += 2000;
+        const day = Number(match[1]);
+        const month = Number(match[2]);
+        const time = parseTimePart(raw.slice((match.index ?? 0) + match[0].length));
+        return makeLocalDate(year, month, day, time, endDate);
+      }
 
-        // dd/mm/yyyy, dd-mm-yyyy, dd.mm.yyyy, optional time / @ / HRS
-        m = value.match(/\b(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})\b/);
-        if (m) {
-          let year = +m[3];
+      // 27 Aug 2026 / 27-Aug-2026.
+      match = raw.match(/\b(\d{1,2})[\s\-]([A-Za-z]{3,9})[\s\-](\d{2,4})\b/);
+      if (match) {
+        const monthIndex = monthNameToIndex(match[2]);
+        if (monthIndex !== -1) {
+          let year = Number(match[3]);
           if (year < 100) year += 2000;
-          const parsed = makeLocalDate(year, +m[2], +m[1]);
-          if (!Number.isNaN(parsed.getTime())) return parsed;
-        }
-
-        // yyyy-mm-dd
-        m = value.match(/\b(\d{4})-(\d{1,2})-(\d{1,2})\b/);
-        if (m) {
-          const parsed = makeLocalDate(+m[1], +m[2], +m[3]);
-          if (!Number.isNaN(parsed.getTime())) return parsed;
+          const time = parseTimePart(raw.slice((match.index ?? 0) + match[0].length));
+          return makeLocalDate(year, monthIndex + 1, Number(match[1]), time, endDate);
         }
       }
 
       return null;
     }
 
-    function buildTimelineDays() {
-      const start = parseISODateOnly(CONFIG.TIMELINE_START);
-      const end = parseISODateOnly(CONFIG.TIMELINE_END);
-      const days = [];
+    function parseTimePart(text) {
+      const source = safeText(text).toUpperCase();
+      if (!source) return null;
 
-      for (let cursor = start; cursor <= end; cursor = addDays(cursor, 1)) {
-        days.push(new Date(cursor));
+      let match = source.match(/\b(\d{1,2})\s*[:.]\s*(\d{2})(?:\s*[:.]\s*(\d{2}))?\s*(AM|PM)?\b/);
+      if (match) {
+        let hour = Number(match[1]);
+        const minute = Number(match[2]);
+        const second = Number(match[3] || 0);
+        const meridiem = match[4];
+        if (meridiem === "PM" && hour < 12) hour += 12;
+        if (meridiem === "AM" && hour === 12) hour = 0;
+        return { hour, minute, second };
       }
-      return days;
+
+      // Handles "@ 0155 HRS" / "0155HRS".
+      match = source.match(/(?:@\s*)?\b(\d{3,4})\s*(?:HRS?|HOURS?)?\b/);
+      if (match) {
+        const padded = match[1].padStart(4, "0");
+        const hour = Number(padded.slice(0, 2));
+        const minute = Number(padded.slice(2, 4));
+        if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
+          return { hour, minute, second: 0 };
+        }
+      }
+
+      return null;
     }
 
-    function isSameDay(a, b) {
-      return a && b && dateKey(a) === dateKey(b);
+    function makeLocalDate(year, month, day, time, endDate) {
+      const hour = time ? time.hour : (endDate ? 23 : 0);
+      const minute = time ? time.minute : (endDate ? 59 : 0);
+      const second = time ? time.second : (endDate ? 59 : 0);
+      const ms = !time && endDate ? 999 : 0;
+      const date = new Date(year, month - 1, day, hour, minute, second, ms);
+
+      // Reject impossible dates such as 32/08/2026.
+      if (
+        date.getFullYear() !== year ||
+        date.getMonth() !== month - 1 ||
+        date.getDate() !== day
+      ) {
+        return null;
+      }
+      return date;
     }
 
-    function clampDate(date, min, max) {
-      if (date < min) return new Date(min);
-      if (date > max) return new Date(max);
-      return new Date(date);
+    function monthNameToIndex(name) {
+      const n = name.slice(0, 3).toLowerCase();
+      return ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].indexOf(n);
     }
 
     /* =========================================================
-       SHEET PARSING
+       CSV READER
        ========================================================= */
-    function normalizeHeader(value) {
-      return String(value || "")
-        .trim()
-        .toLowerCase()
-        .replace(/[–—]/g, "-")
-        .replace(/\s+/g, " ");
-    }
-
-    function cellText(cell) {
-      if (!cell) return "";
-      if (cell.f !== undefined && cell.f !== null && String(cell.f).trim() !== "") return String(cell.f).trim();
-      if (cell.v !== undefined && cell.v !== null) return String(cell.v).trim();
-      return "";
-    }
-
-    function findAliasIndex(headers, aliases) {
-      const normalizedAliases = aliases.map(normalizeHeader);
-
-      let index = headers.findIndex(h => normalizedAliases.includes(h));
-      if (index !== -1) return index;
-
-      index = headers.findIndex(h => normalizedAliases.some(alias =>
-        alias.length >= 4 && (h.includes(alias) || alias.includes(h))
-      ));
-      return index;
-    }
-
-    function inferDateColumns(rows, columnCount) {
-      const scores = [];
-
-      for (let col = 0; col < columnCount; col++) {
-        let populated = 0;
-        let dateLike = 0;
-
-        for (const row of rows.slice(0, 50)) {
-          const cell = row.c?.[col];
-          const text = cellText(cell);
-          if (!text) continue;
-          populated++;
-          if (parseAnyDate(cell?.v, cell?.f)) dateLike++;
-        }
-
-        scores.push({
-          col,
-          populated,
-          dateLike,
-          ratio: populated ? dateLike / populated : 0
-        });
-      }
-
-      return scores
-        .filter(s => s.dateLike >= 1 && s.ratio >= 0.45)
-        .sort((a, b) => (b.ratio - a.ratio) || (b.dateLike - a.dateLike));
-    }
-
-    function inferActivityColumn(rows, columnCount, excluded = new Set()) {
-      const candidates = [];
-
-      for (let col = 0; col < columnCount; col++) {
-        if (excluded.has(col)) continue;
-
-        let populated = 0;
-        let dateLike = 0;
-        let textLike = 0;
-        let avgLength = 0;
-
-        for (const row of rows.slice(0, 50)) {
-          const cell = row.c?.[col];
-          const text = cellText(cell);
-          if (!text) continue;
-          populated++;
-          avgLength += text.length;
-          if (parseAnyDate(cell?.v, cell?.f)) dateLike++;
-          if (/[A-Za-z]/.test(text)) textLike++;
-        }
-
-        if (!populated) continue;
-        avgLength /= populated;
-
-        candidates.push({
-          col,
-          score: (textLike / populated) * 2 + Math.min(avgLength / 30, 1) - (dateLike / populated) * 2
-        });
-      }
-
-      candidates.sort((a, b) => b.score - a.score);
-      return candidates[0]?.col ?? -1;
-    }
-
-    function resolveColumns(table) {
-      const headers = table.cols.map(col => normalizeHeader(col.label || col.id || ""));
-      const rows = table.rows || [];
-      const columnCount = table.cols.length;
-
-      let activity = findAliasIndex(headers, HEADER_ALIASES.activity);
-      let start = findAliasIndex(headers, HEADER_ALIASES.start);
-      let end = findAliasIndex(headers, HEADER_ALIASES.end);
-      let date = findAliasIndex(headers, HEADER_ALIASES.date);
-      const category = findAliasIndex(headers, HEADER_ALIASES.category);
-      const remarks = findAliasIndex(headers, HEADER_ALIASES.remarks);
-
-      const inferredDates = inferDateColumns(rows, columnCount);
-
-      if (start === -1 && date === -1 && inferredDates.length) start = inferredDates[0].col;
-      if (end === -1 && inferredDates.length > 1) {
-        const candidate = inferredDates.find(item => item.col !== start);
-        if (candidate) end = candidate.col;
-      }
-
-      if (date !== -1 && start === -1) start = date;
-      if (start !== -1 && end === -1) end = start;
-
-      if (activity === -1) {
-        const excluded = new Set([start, end, date, category, remarks].filter(i => i >= 0));
-        activity = inferActivityColumn(rows, columnCount, excluded);
-      }
-
-      return { activity, start, end, date, category, remarks, headers };
-    }
-
-    function inferCategory(activityName, explicitCategory = "") {
-      const haystack = `${activityName} ${explicitCategory}`.toLowerCase();
-      return CATEGORY_RULES.find(rule =>
-        rule.key !== "default" && rule.keywords.some(keyword => haystack.includes(keyword))
-      ) || CATEGORY_RULES[CATEGORY_RULES.length - 1];
-    }
-
-    function rowToActivity(row, columns, rowIndex) {
-      const activityCell = row.c?.[columns.activity];
-      const activityName = cellText(activityCell) || `Activity ${rowIndex + 1}`;
-
-      const startCell = row.c?.[columns.start];
-      const endCell = row.c?.[columns.end];
-
-      let start = parseAnyDate(startCell?.v, startCell?.f);
-      let end = parseAnyDate(endCell?.v, endCell?.f);
-
-      if (!start && end) start = new Date(end);
-      if (start && !end) end = new Date(start);
-      if (!start || !end) return null;
-
-      if (end < start) [start, end] = [end, start];
-
-      const explicitCategory = columns.category >= 0 ? cellText(row.c?.[columns.category]) : "";
-      const remarks = columns.remarks >= 0 ? cellText(row.c?.[columns.remarks]) : "";
-      const category = inferCategory(activityName, explicitCategory);
-
-      return {
-        id: `${rowIndex}-${activityName}`,
-        name: activityName,
-        explicitCategory,
-        remarks,
-        category,
-        segments: [{ start, end }]
-      };
-    }
-
-    function mergeTouchingSegments(segments) {
-      if (!segments.length) return [];
-      const sorted = [...segments].sort((a, b) => a.start - b.start);
-      const merged = [{ start: new Date(sorted[0].start), end: new Date(sorted[0].end) }];
-
-      for (const segment of sorted.slice(1)) {
-        const last = merged[merged.length - 1];
-        const nextAllowed = addDays(last.end, 1);
-
-        if (segment.start <= nextAllowed) {
-          if (segment.end > last.end) last.end = new Date(segment.end);
-        } else {
-          merged.push({ start: new Date(segment.start), end: new Date(segment.end) });
-        }
-      }
-
-      return merged;
-    }
-
-    function groupActivities(activities) {
-      if (!CONFIG.GROUP_DUPLICATE_ACTIVITIES) return activities;
-
-      const map = new Map();
-
-      for (const item of activities) {
-        const key = item.name.trim().toLowerCase().replace(/\s+/g, " ");
-
-        if (!map.has(key)) {
-          map.set(key, {
-            ...item,
-            id: key,
-            segments: [...item.segments]
-          });
-        } else {
-          const existing = map.get(key);
-          existing.segments.push(...item.segments);
-          if (!existing.remarks && item.remarks) existing.remarks = item.remarks;
-        }
-      }
-
-      return [...map.values()].map(item => ({
-        ...item,
-        segments: mergeTouchingSegments(item.segments)
-      }));
-    }
-
-    function parseSheetResponse(response) {
-      if (!response || response.status === "error" || !response.table) {
-        throw new Error(response?.errors?.[0]?.detailed_message || "Google Sheet returned no usable table.");
-      }
-
-      const table = response.table;
-      const columns = resolveColumns(table);
-
-      if (columns.activity < 0 || columns.start < 0 || columns.end < 0) {
-        throw new Error("Could not identify the Activity / Start / End columns in the sheet.");
-      }
-
-      const timelineStart = parseISODateOnly(CONFIG.TIMELINE_START);
-      const timelineEnd = parseISODateOnly(CONFIG.TIMELINE_END);
-
-      const parsed = (table.rows || [])
-        .map((row, index) => rowToActivity(row, columns, index))
-        .filter(Boolean)
-        .filter(item => item.segments.some(segment => segment.end >= timelineStart && segment.start <= timelineEnd));
-
-      return groupActivities(parsed);
-    }
-
-    /* =========================================================
-       RENDERING
-       ========================================================= */
-    function monthGroups(days) {
-      const groups = [];
-
-      days.forEach((day, index) => {
-        const label = new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" }).format(day).toUpperCase();
-        const last = groups[groups.length - 1];
-        if (last && last.label === label) {
-          last.count++;
-        } else {
-          groups.push({ label, startIndex: index, count: 1 });
-        }
-      });
-
-      return groups;
-    }
-
-    function createDiv(className, text = "") {
-      const node = document.createElement("div");
-      node.className = className;
-      if (text) node.textContent = text;
-      return node;
-    }
-
-    function getActivityBounds(activity) {
-      const starts = activity.segments.map(s => s.start.getTime());
-      const ends = activity.segments.map(s => s.end.getTime());
-      return {
-        start: new Date(Math.min(...starts)),
-        end: new Date(Math.max(...ends))
-      };
-    }
-
-    function daySegmentState(activity, day) {
-      const key = dateKey(day);
-
-      for (const segment of activity.segments) {
-        const startKey = dateKey(segment.start);
-        const endKey = dateKey(segment.end);
-        if (key >= startKey && key <= endKey) {
-          return {
-            active: true,
-            start: key === startKey,
-            end: key === endKey,
-            segment
-          };
-        }
-      }
-
-      return { active: false };
-    }
-
-    function renderLegend(activities) {
-      el.legend.replaceChildren();
-      const title = document.createElement("span");
-      title.className = "legend-title";
-      title.textContent = "Activity colors";
-      el.legend.appendChild(title);
-
-      const usedKeys = new Set(activities.map(item => item.category.key));
-      CATEGORY_RULES.filter(rule => usedKeys.has(rule.key)).forEach(rule => {
-        const item = document.createElement("span");
-        item.className = "legend-item";
-
-        const swatch = document.createElement("span");
-        swatch.className = "legend-swatch";
-        swatch.style.setProperty("--legend-color", rule.color);
-
-        const label = document.createElement("span");
-        label.textContent = rule.label;
-
-        item.append(swatch, label);
-        el.legend.appendChild(item);
-      });
-    }
-
-    function renderStats(activities) {
-      const today = stripTime(new Date());
-      let completed = 0;
-      let ongoing = 0;
-      let upcoming = 0;
-
-      for (const activity of activities) {
-        const bounds = getActivityBounds(activity);
-        if (bounds.end < today) completed++;
-        else if (bounds.start > today) upcoming++;
-        else ongoing++;
-      }
-
-      el.statTotal.textContent = activities.length;
-      el.statCompleted.textContent = completed;
-      el.statOngoing.textContent = ongoing;
-      el.statUpcoming.textContent = upcoming;
-    }
-
-    function renderTimeline() {
-      state.filteredActivities = filterActivities(state.activities, el.searchInput.value);
-      const days = state.days;
-      const activities = state.filteredActivities;
-      const today = stripTime(new Date());
-
-      document.documentElement.style.setProperty("--day-count", String(days.length));
-      el.timelineRoot.className = "timeline-content";
-      el.timelineRoot.replaceChildren();
-
-      const monthRow = createDiv("timeline-grid month-row");
-      monthRow.appendChild(createDiv("corner-title", "Activity"));
-
-      for (const group of monthGroups(days)) {
-        const month = createDiv("month-group", group.label);
-        month.style.gridColumn = `${group.startIndex + 2} / span ${group.count}`;
-        monthRow.appendChild(month);
-      }
-      el.timelineRoot.appendChild(monthRow);
-
-      const dayRow = createDiv("timeline-grid day-row");
-      dayRow.appendChild(createDiv("day-label-left", "Daily Schedule"));
-
-      for (const day of days) {
-        const cell = createDiv("day-cell");
-        if ([0, 6].includes(day.getDay())) cell.classList.add("weekend");
-        if (isSameDay(day, today)) cell.classList.add("today");
-        cell.dataset.date = dateKey(day);
-        cell.title = formatDate(day);
-
-        const number = createDiv("day-number", String(day.getDate()).padStart(2, "0"));
-        const name = createDiv("day-name", new Intl.DateTimeFormat("en-GB", { weekday: "short" }).format(day).toUpperCase());
-        cell.append(number, name);
-        dayRow.appendChild(cell);
-      }
-      el.timelineRoot.appendChild(dayRow);
-
-      if (!activities.length) {
-        const empty = createDiv("empty-state");
-        const emptyTitle = createDiv("empty-title", state.activities.length ? "No activity matches your search." : "No schedule rows found for this date range.");
-        const emptyText = createDiv(
-          "empty-text",
-          state.activities.length
-            ? "Clear the search field to show all pipeline activities."
-            : "The page is connected, but no recognizable activity rows overlap 10 Aug 2026 to 10 Sep 2026. Check the source columns and date values."
-        );
-        empty.append(emptyTitle, emptyText);
-        el.timelineRoot.appendChild(empty);
-        renderStats(state.activities);
-        renderLegend(state.activities);
-        return;
-      }
-
-      for (const activity of activities) {
-        const row = createDiv("timeline-grid activity-row");
-        row.dataset.search = `${activity.name} ${activity.category.label} ${activity.remarks}`.toLowerCase();
-        row.style.setProperty("--bar-color", activity.category.color);
-        row.style.setProperty("--bar-glow", `${activity.category.color}42`);
-
-        const activityCell = createDiv("activity-cell");
-        const marker = createDiv("activity-marker");
-        const copy = createDiv("activity-copy");
-        const name = createDiv("activity-name", activity.name);
-
-        const bounds = getActivityBounds(activity);
-        const metaParts = [activity.category.label, `${formatDate(bounds.start)} → ${formatDate(bounds.end)}`];
-        if (activity.remarks) metaParts.push(activity.remarks);
-        const meta = createDiv("activity-meta", metaParts.join(" · "));
-
-        copy.append(name, meta);
-        activityCell.append(marker, copy);
-        row.appendChild(activityCell);
-
-        for (const day of days) {
-          const cell = createDiv("timeline-day");
-          if ([0, 6].includes(day.getDay())) cell.classList.add("weekend");
-          if (isSameDay(day, today)) cell.classList.add("today");
-
-          const segmentState = daySegmentState(activity, day);
-          if (segmentState.active) {
-            cell.classList.add("active");
-            if (segmentState.start) cell.classList.add("segment-start");
-            if (segmentState.end) cell.classList.add("segment-end");
-            cell.title = `${activity.name}\n${formatDate(segmentState.segment.start)} → ${formatDate(segmentState.segment.end)}${activity.remarks ? `\n${activity.remarks}` : ""}`;
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            field += '"';
+            i += 1;
           } else {
-            cell.title = formatDate(day);
+            inQuotes = !inQuotes;
           }
-
-          row.appendChild(cell);
+        } else if (char === "," && !inQuotes) {
+          row.push(field);
+          field = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") i += 1;
+          row.push(field);
+          rows.push(row);
+          row = [];
+          field = "";
+        } else {
+          field += char;
         }
-
-        el.timelineRoot.appendChild(row);
       }
 
-      renderStats(state.activities);
-      renderLegend(state.activities);
+      if (field.length > 0 || row.length > 0) {
+        row.push(field);
+        rows.push(row);
+      }
+
+      return rows;
     }
 
-    function filterActivities(activities, query) {
-      const q = String(query || "").trim().toLowerCase();
-      if (!q) return activities;
-      return activities.filter(item =>
-        `${item.name} ${item.category.label} ${item.remarks}`.toLowerCase().includes(q)
-      );
+    function detectHeaderRow(csvRows) {
+      const expected = [
+        "NO",
+        "STEPS",
+        "PIG ARRANGEMENT ACTIVITIES",
+        "PIG",
+        "START LAUNCH",
+        "END ARRIVAL"
+      ];
+
+      let bestIndex = -1;
+      let bestScore = -1;
+
+      for (let i = 0; i < Math.min(csvRows.length, 25); i += 1) {
+        const headers = csvRows[i].map(normalizeHeader);
+        let score = 0;
+        for (const candidate of expected) {
+          const tokens = candidate.split(" ");
+          if (headers.some((header) => tokens.every((token) => header.includes(token)))) score += 1;
+        }
+        if (score > bestScore) {
+          bestScore = score;
+          bestIndex = i;
+        }
+      }
+
+      return bestScore >= 3 ? bestIndex : -1;
+    }
+
+    function findHeaderIndex(headers, predicate) {
+      for (let i = 0; i < headers.length; i += 1) {
+        if (predicate(headers[i])) return i;
+      }
+      return -1;
+    }
+
+    function mapSheetRows(csvRows) {
+      const headerRowIndex = detectHeaderRow(csvRows);
+      if (headerRowIndex < 0) {
+        throw new Error("Expected headers were not found. Required columns include NO, STEPS, PIG ARRANGEMENT / ACTIVITIES, PIG, START/LAUNCH and END/ARRIVAL.");
+      }
+
+      const headers = csvRows[headerRowIndex].map(normalizeHeader);
+      const idx = {
+        no: findHeaderIndex(headers, (h) => h === "NO" || h === "NO "),
+        steps: findHeaderIndex(headers, (h) => h === "STEPS" || h === "STEP"),
+        activity: findHeaderIndex(headers, (h) => h.includes("PIG ARRANGEMENT") || h === "ACTIVITIES" || h === "ACTIVITY"),
+        pig: findHeaderIndex(headers, (h) => h === "PIG"),
+        start: findHeaderIndex(headers, (h) => h.includes("START") || h.includes("LAUNCH")),
+        end: findHeaderIndex(headers, (h) => h.includes("END") || h.includes("ARRIVAL"))
+      };
+
+      if (idx.start < 0 || idx.end < 0) {
+        throw new Error("START/LAUNCH or END/ARRIVAL column is missing, so the Gantt bar cannot be calculated.");
+      }
+
+      let inheritedStep = "";
+      const rows = [];
+
+      for (let r = headerRowIndex + 1; r < csvRows.length; r += 1) {
+        const source = csvRows[r];
+        const get = (columnIndex) => columnIndex >= 0 ? safeText(source[columnIndex]) : "";
+
+        const rawStep = get(idx.steps);
+        if (rawStep) inheritedStep = rawStep;
+
+        const row = {
+          sourceRow: r + 1,
+          no: get(idx.no),
+          steps: rawStep || inheritedStep,
+          stepCarried: !rawStep && Boolean(inheritedStep),
+          activity: get(idx.activity),
+          pig: get(idx.pig),
+          startRaw: get(idx.start),
+          endRaw: get(idx.end)
+        };
+
+        row.start = parseSheetDate(row.startRaw, false);
+        row.end = parseSheetDate(row.endRaw, true);
+
+        const hasUsefulContent = [row.no, row.steps, row.activity, row.pig, row.startRaw, row.endRaw].some(Boolean);
+        if (!hasUsefulContent) continue;
+
+        rows.push(row);
+      }
+
+      return rows;
+    }
+
+    async function fetchSheetCSV() {
+      const cacheBust = Date.now();
+      const urls = [
+        `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&gid=${encodeURIComponent(CONFIG.SHEET_GID)}&_=${cacheBust}`,
+        `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/export?format=csv&gid=${encodeURIComponent(CONFIG.SHEET_GID)}&_=${cacheBust}`
+      ];
+
+      let lastError = null;
+
+      for (const url of urls) {
+        try {
+          const response = await fetch(url, {
+            method: "GET",
+            cache: "no-store",
+            credentials: "omit",
+            redirect: "follow"
+          });
+
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const text = await response.text();
+          if (!text || text.trim().startsWith("<!DOCTYPE html") || text.trim().startsWith("<html")) {
+            throw new Error("Google returned an HTML sign-in/share page instead of CSV data.");
+          }
+          return text;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+
+      throw lastError || new Error("Unable to connect to Google Sheets.");
     }
 
     /* =========================================================
-       SYNC STATUS
+       TIMELINE MODEL
        ========================================================= */
-    function setSyncStatus(mode, message, detail = "") {
-      el.syncStatus.classList.remove("loading", "error");
-      if (mode) el.syncStatus.classList.add(mode);
-      el.syncStatusText.textContent = message;
-      if (detail) el.syncTime.textContent = detail;
-    }
+    function buildDays() {
+      const now = new Date();
+      state.timelineEnd = endOfDay(now);
+      state.days = [];
 
-    function showNotice(message) {
-      el.notice.textContent = message;
-      el.notice.classList.toggle("show", Boolean(message));
-    }
-
-    function markSuccessfulSync() {
-      state.lastSuccessfulSync = new Date();
-      setSyncStatus(
-        "",
-        "Live Sync",
-        `Last updated ${new Intl.DateTimeFormat("en-GB", {
-          day: "2-digit",
-          month: "short",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit"
-        }).format(state.lastSuccessfulSync)}`
-      );
-      showNotice("");
-    }
-
-    function markSyncError(error) {
-      const lastSyncText = state.lastSuccessfulSync
-        ? `Last good sync: ${state.lastSuccessfulSync.toLocaleTimeString("en-GB")}. `
-        : "";
-
-      setSyncStatus("error", "Sync Issue", `${lastSyncText}Check Google Sheet access / column headers.`);
-      showNotice(
-        `Google Sheet data could not be read correctly. ${error.message} ` +
-        `For GitHub Pages, keep the sheet read-only and share it as “Anyone with the link – Viewer”. ` +
-        `Recommended columns: Activity | Start Date | End Date.`
-      );
-
-      if (!state.activities.length) {
-        renderTimeline();
+      const cursor = startOfDay(CONFIG.TIMELINE_START);
+      const end = startOfDay(state.timelineEnd);
+      while (cursor <= end) {
+        state.days.push(new Date(cursor));
+        cursor.setDate(cursor.getDate() + 1);
       }
     }
 
+    function timelineWidth() {
+      return state.days.length * state.dayWidth;
+    }
+
+    function applyTimelineCSS() {
+      document.documentElement.style.setProperty("--day-width", `${state.dayWidth}px`);
+      document.documentElement.style.setProperty("--timeline-width", `${timelineWidth()}px`);
+    }
+
+    function dateToX(date) {
+      return ((date.getTime() - CONFIG.TIMELINE_START.getTime()) / DAY_MS) * state.dayWidth;
+    }
+
+    function getRowStatus(row) {
+      const now = new Date();
+      if (row.start && row.start > now) return "future";
+      if (row.start && (!row.end || row.end > now)) return "ongoing";
+      if (row.start && row.end && row.end <= now) return "completed";
+      return "future";
+    }
+
     /* =========================================================
-       GOOGLE VISUALIZATION JSONP FEED
-       No API key and no credentials are stored in GitHub.
+       DOM BUILDERS
        ========================================================= */
-    window.__sheetFeed = function __sheetFeed(response) {
-      clearTimeout(state.loadingTimeout);
+    function createMetaGrid(isHeader, row = null, visibleIndex = 0) {
+      const grid = document.createElement("div");
+      grid.className = "meta-grid";
+
+      if (isHeader) {
+        const labels = ["NO", "STEPS", "PIG ARRANGEMENT / ACTIVITIES", "PIG", "START/LAUNCH", "END/ARRIVAL"];
+        labels.forEach((label) => {
+          const cell = document.createElement("div");
+          cell.className = "head-cell";
+          cell.textContent = label;
+          grid.appendChild(cell);
+        });
+        return grid;
+      }
+
+      const no = row.no || String(visibleIndex + 1);
+      const values = [no, row.steps, row.activity, row.pig, row.startRaw, row.endRaw];
+      const classes = ["no-cell", "step-cell", "activity-cell", "pig-cell", "date-cell", "date-cell"];
+
+      values.forEach((value, index) => {
+        const cell = document.createElement("div");
+        cell.className = `data-cell ${classes[index]}`;
+        if (index === 1 && row.stepCarried) cell.classList.add("carried");
+        cell.textContent = value || "—";
+        cell.title = value || "";
+        grid.appendChild(cell);
+      });
+
+      return grid;
+    }
+
+    function renderHeader() {
+      els.ganttHeader.replaceChildren();
+      els.ganttHeader.appendChild(createMetaGrid(true));
+
+      const timelineHead = document.createElement("div");
+      timelineHead.className = "timeline-head";
+
+      const monthStrip = document.createElement("div");
+      monthStrip.className = "month-strip";
+
+      const monthGroups = [];
+      for (const day of state.days) {
+        const key = `${day.getFullYear()}-${day.getMonth()}`;
+        const last = monthGroups[monthGroups.length - 1];
+        if (!last || last.key !== key) {
+          monthGroups.push({ key, date: day, count: 1 });
+        } else {
+          last.count += 1;
+        }
+      }
+
+      monthGroups.forEach((group) => {
+        const block = document.createElement("div");
+        block.className = "month-block";
+        block.style.width = `${group.count * state.dayWidth}px`;
+        block.textContent = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" }).format(group.date);
+        monthStrip.appendChild(block);
+      });
+
+      const dayStrip = document.createElement("div");
+      dayStrip.className = "day-strip";
+      const today = startOfDay(new Date()).getTime();
+
+      state.days.forEach((day) => {
+        const dayCell = document.createElement("div");
+        dayCell.className = "day-cell";
+        if (day.getDay() === 0 || day.getDay() === 6) dayCell.classList.add("weekend");
+        if (startOfDay(day).getTime() === today) dayCell.classList.add("today");
+
+        const num = document.createElement("div");
+        num.className = "day-num";
+        num.textContent = String(day.getDate()).padStart(2, "0");
+
+        const name = document.createElement("div");
+        name.className = "day-name";
+        name.textContent = new Intl.DateTimeFormat("en-GB", { weekday: "short" }).format(day);
+
+        dayCell.append(num, name);
+        dayStrip.appendChild(dayCell);
+      });
+
+      timelineHead.append(monthStrip, dayStrip);
+      els.ganttHeader.appendChild(timelineHead);
+    }
+
+    function createTodayLine() {
+      const now = new Date();
+      if (now < CONFIG.TIMELINE_START || now > state.timelineEnd) return null;
+
+      const line = document.createElement("div");
+      line.className = "today-line";
+      line.style.left = `${Math.min(timelineWidth() - 1, Math.max(0, dateToX(now)))}px`;
+      return line;
+    }
+
+    function makeBar(row) {
+      if (!row.start) return null;
+
+      const now = new Date();
+      const effectiveEnd = row.end || now;
+      const visibleStart = row.start < CONFIG.TIMELINE_START ? CONFIG.TIMELINE_START : row.start;
+      const visibleEnd = effectiveEnd > state.timelineEnd ? state.timelineEnd : effectiveEnd;
+
+      if (visibleEnd < CONFIG.TIMELINE_START || visibleStart > state.timelineEnd || visibleEnd < visibleStart) return null;
+
+      const x1 = Math.max(0, dateToX(visibleStart));
+      const x2 = Math.min(timelineWidth(), dateToX(visibleEnd));
+      const width = Math.max(5, x2 - x1);
+
+      const bar = document.createElement("div");
+      const status = getRowStatus(row);
+      bar.className = `bar ${status}`;
+      if (row.start < CONFIG.TIMELINE_START) bar.classList.add("clipped-left");
+      if (effectiveEnd > state.timelineEnd) bar.classList.add("clipped-right");
+      bar.style.left = `${x1}px`;
+      bar.style.width = `${width}px`;
+      bar.textContent = row.activity || row.pig || row.steps || `Activity ${row.no || ""}`;
+
+      bar.addEventListener("mouseenter", (event) => showTooltip(event, row, status));
+      bar.addEventListener("mousemove", positionTooltip);
+      bar.addEventListener("mouseleave", hideTooltip);
+
+      return bar;
+    }
+
+    function renderRows() {
+      els.ganttRows.replaceChildren();
+      els.errorState.classList.remove("show");
+      els.emptyState.classList.toggle("show", state.filteredRows.length === 0);
+
+      const fragment = document.createDocumentFragment();
+
+      state.filteredRows.forEach((row, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "gantt-row";
+
+        const meta = createMetaGrid(false, row, index);
+        const timelineCell = document.createElement("div");
+        timelineCell.className = "timeline-cell";
+
+        const bar = makeBar(row);
+        if (bar) timelineCell.appendChild(bar);
+
+        const todayLine = createTodayLine();
+        if (todayLine) timelineCell.appendChild(todayLine);
+
+        wrapper.append(meta, timelineCell);
+        fragment.appendChild(wrapper);
+      });
+
+      els.ganttRows.appendChild(fragment);
+      els.activityCount.textContent = String(state.filteredRows.length);
+    }
+
+    function renderAll() {
+      buildDays();
+      applyTimelineCSS();
+      renderHeader();
+      applyFilter(false);
+
+      const today = startOfDay(new Date());
+      els.timelineRange.textContent = `${formatShortDate(CONFIG.TIMELINE_START)} → ${formatShortDate(today)}`;
+      els.refreshRate.textContent = `Every ${Math.round(CONFIG.REFRESH_MS / 1000)} sec`;
+    }
+
+    /* =========================================================
+       SEARCH / TOOLTIP / CONTROLS
+       ========================================================= */
+    function applyFilter(keepScroll = true) {
+      const query = safeText(els.searchInput.value).toLowerCase();
+      const oldLeft = els.ganttScroll.scrollLeft;
+      const oldTop = els.ganttScroll.scrollTop;
+
+      state.filteredRows = !query
+        ? [...state.allRows]
+        : state.allRows.filter((row) => [row.no, row.steps, row.activity, row.pig, row.startRaw, row.endRaw]
+            .some((value) => String(value || "").toLowerCase().includes(query)));
+
+      renderRows();
+
+      if (keepScroll) {
+        els.ganttScroll.scrollLeft = oldLeft;
+        els.ganttScroll.scrollTop = oldTop;
+      }
+    }
+
+    function showTooltip(event, row, status) {
+      els.tooltip.replaceChildren();
+
+      const title = document.createElement("div");
+      title.className = "tooltip-title";
+      title.textContent = row.activity || row.steps || "Activity";
+      els.tooltip.appendChild(title);
+
+      const lines = [
+        ["Status", status.toUpperCase()],
+        ["Step", row.steps || "—"],
+        ["Pig", row.pig || "—"],
+        ["Start", row.start ? formatDate(row.start) : (row.startRaw || "—")],
+        ["End", row.end ? formatDate(row.end) : (row.endRaw || (row.start ? "ONGOING" : "—"))]
+      ];
+
+      lines.forEach(([key, value]) => {
+        const line = document.createElement("div");
+        line.className = "tooltip-line";
+
+        const k = document.createElement("div");
+        k.className = "tooltip-k";
+        k.textContent = key;
+
+        const v = document.createElement("div");
+        v.className = "tooltip-v";
+        v.textContent = value;
+
+        line.append(k, v);
+        els.tooltip.appendChild(line);
+      });
+
+      els.tooltip.classList.add("show");
+      positionTooltip(event);
+    }
+
+    function positionTooltip(event) {
+      if (!els.tooltip.classList.contains("show")) return;
+      const pad = 14;
+      const rect = els.tooltip.getBoundingClientRect();
+      let left = event.clientX + 14;
+      let top = event.clientY + 14;
+
+      if (left + rect.width + pad > window.innerWidth) left = event.clientX - rect.width - 14;
+      if (top + rect.height + pad > window.innerHeight) top = event.clientY - rect.height - 14;
+
+      els.tooltip.style.left = `${Math.max(pad, left)}px`;
+      els.tooltip.style.top = `${Math.max(pad, top)}px`;
+    }
+
+    function hideTooltip() {
+      els.tooltip.classList.remove("show");
+    }
+
+    function scrollToToday() {
+      const target = Math.max(0, dateToX(new Date()) - els.ganttScroll.clientWidth * 0.65 + parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--meta-width")));
+      els.ganttScroll.scrollTo({ left: target, behavior: "smooth" });
+    }
+
+    function changeZoom(delta) {
+      const oldWidth = state.dayWidth;
+      const next = Math.min(CONFIG.MAX_DAY_WIDTH, Math.max(CONFIG.MIN_DAY_WIDTH, oldWidth + delta));
+      if (next === oldWidth) return;
+
+      const scrollableTimelineX = Math.max(0, els.ganttScroll.scrollLeft);
+      const ratio = next / oldWidth;
+      state.dayWidth = next;
+      renderAll();
+      els.ganttScroll.scrollLeft = scrollableTimelineX * ratio;
+    }
+
+    /* =========================================================
+       SYNC
+       ========================================================= */
+    function setSyncUI(mode, message = "") {
+      els.syncDot.classList.remove("error", "loading");
+
+      if (mode === "loading") {
+        els.syncDot.classList.add("loading");
+        els.syncLabel.textContent = "Syncing Sheet";
+        els.syncTime.textContent = "Reading latest rows…";
+      } else if (mode === "error") {
+        els.syncDot.classList.add("error");
+        els.syncLabel.textContent = "Sync Error";
+        els.syncTime.textContent = message || "Could not read Google Sheet";
+      } else {
+        els.syncLabel.textContent = "Live Sheet Connected";
+        els.syncTime.textContent = state.lastSync
+          ? `Last sync ${state.lastSync.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
+          : "Connected";
+      }
+    }
+
+    async function loadSheet({ showCover = true } = {}) {
+      if (state.isLoading) return;
+      state.isLoading = true;
+      setSyncUI("loading");
+      if (showCover) els.loadingCover.classList.add("show");
 
       try {
-        const activities = parseSheetResponse(response);
-        state.activities = activities;
-        renderTimeline();
-        markSuccessfulSync();
+        const csv = await fetchSheetCSV();
+        const parsed = parseCSV(csv);
+        const mapped = mapSheetRows(parsed);
+
+        state.allRows = mapped;
+        state.lastSync = new Date();
+        els.errorState.classList.remove("show");
+        renderAll();
+        setSyncUI("ok");
       } catch (error) {
         console.error(error);
-        markSyncError(error);
-      }
-    };
+        setSyncUI("error", "Check Sheet sharing / GID");
 
-    function loadSheet() {
-      setSyncStatus("loading", "Refreshing", state.lastSuccessfulSync ? el.syncTime.textContent : "Reading Google Sheet…");
-
-      const previous = document.getElementById("google-sheet-feed");
-      if (previous) previous.remove();
-
-      const script = document.createElement("script");
-      script.id = "google-sheet-feed";
-
-      const tqx = encodeURIComponent("out:json;responseHandler:__sheetFeed");
-      script.src =
-        `https://docs.google.com/spreadsheets/d/${encodeURIComponent(CONFIG.SPREADSHEET_ID)}` +
-        `/gviz/tq?gid=${encodeURIComponent(CONFIG.SHEET_GID)}` +
-        `&headers=${CONFIG.HEADER_ROWS}` +
-        `&tqx=${tqx}` +
-        `&_=${Date.now()}`;
-
-      script.onerror = () => {
-        clearTimeout(state.loadingTimeout);
-        markSyncError(new Error("The Google Sheets feed was blocked or is not public."));
-      };
-
-      state.loadingTimeout = setTimeout(() => {
-        markSyncError(new Error("The Google Sheets feed did not respond."));
-      }, 12_000);
-
-      document.head.appendChild(script);
-    }
-
-    /* =========================================================
-       CONTROLS
-       ========================================================= */
-    function scrollToDate(date) {
-      const target = el.timelineRoot.querySelector(`.day-cell[data-date="${dateKey(date)}"]`);
-      if (!target) {
-        el.timelineScroll.scrollTo({ left: 0, behavior: "smooth" });
-        return;
-      }
-
-      const left = Math.max(0, target.offsetLeft - el.timelineScroll.clientWidth * 0.5);
-      el.timelineScroll.scrollTo({ left, behavior: "smooth" });
-    }
-
-    function goToToday() {
-      const today = stripTime(new Date());
-      const start = parseISODateOnly(CONFIG.TIMELINE_START);
-      const end = parseISODateOnly(CONFIG.TIMELINE_END);
-      scrollToDate(clampDate(today, start, end));
-    }
-
-    function setDensity(mode) {
-      if (mode === "compact") {
-        document.documentElement.style.setProperty("--day-width", window.innerWidth <= 640 ? "32px" : "35px");
-        document.documentElement.style.setProperty("--row-height", window.innerWidth <= 640 ? "46px" : "48px");
-      } else {
-        document.documentElement.style.removeProperty("--day-width");
-        document.documentElement.style.removeProperty("--row-height");
+        if (state.allRows.length === 0) {
+          els.ganttHeader.replaceChildren();
+          els.ganttRows.replaceChildren();
+          els.emptyState.classList.remove("show");
+          els.errorCopy.textContent =
+            "The page could not download CSV from the configured Google Sheet. For a public GitHub Pages dashboard, the source sheet must be readable without sign-in (Viewer access is enough). Also confirm that SHEET_GID points to the tab containing the table headers. No Google API key is required.";
+          els.errorState.classList.add("show");
+          els.activityCount.textContent = "0";
+        }
+      } finally {
+        state.isLoading = false;
+        els.loadingCover.classList.remove("show");
       }
     }
 
-    el.searchInput.addEventListener("input", renderTimeline);
-    el.refreshBtn.addEventListener("click", loadSheet);
-    el.todayBtn.addEventListener("click", goToToday);
-    el.compactBtn.addEventListener("click", () => setDensity("compact"));
-    el.fitBtn.addEventListener("click", () => setDensity("normal"));
+    els.searchInput.addEventListener("input", () => applyFilter());
+    els.refreshBtn.addEventListener("click", () => loadSheet({ showCover: true }));
+    els.zoomOutBtn.addEventListener("click", () => changeZoom(-6));
+    els.zoomInBtn.addEventListener("click", () => changeZoom(6));
+    els.todayBtn.addEventListener("click", scrollToToday);
+    window.addEventListener("scroll", hideTooltip, { passive: true });
+    window.addEventListener("resize", hideTooltip, { passive: true });
 
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible" && state.lastSuccessfulSync) {
-        const age = Date.now() - state.lastSuccessfulSync.getTime();
-        if (age > CONFIG.AUTO_REFRESH_MS) loadSheet();
-      }
-    });
-
-    window.addEventListener("focus", () => {
-      if (!state.lastSuccessfulSync || Date.now() - state.lastSuccessfulSync.getTime() > CONFIG.AUTO_REFRESH_MS) {
-        loadSheet();
-      }
-    });
-
-    /* =========================================================
-       START
-       ========================================================= */
-    state.days = buildTimelineDays();
-    document.documentElement.style.setProperty("--day-count", String(state.days.length));
-
-    loadSheet();
-    state.refreshTimer = setInterval(loadSheet, CONFIG.AUTO_REFRESH_MS);
+    // Initial load + automatic polling. Changes in the Google Sheet appear on the next poll.
+    loadSheet({ showCover: true });
+    window.setInterval(() => loadSheet({ showCover: false }), CONFIG.REFRESH_MS);
   </script>
 </body>
 </html>
