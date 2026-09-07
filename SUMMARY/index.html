@@ -25,10 +25,13 @@
       --completed: #2fd19c;
       --ongoing: #ffb84d;
       --future: #6e8790;
-      --meta-width: 980px;
+      --paper: #f1efe8;
+      --paper-2: #e7e4db;
+      --ink: #070908;
+      --meta-width: 1045px;
       --day-width: 46px;
-      --row-min-h: 64px;
-      --header-h: 86px;
+      --row-min-h: 52px;
+      --header-h: 80px;
       --radius: 18px;
       --shadow: 0 18px 60px rgba(0, 0, 0, 0.30);
     }
@@ -70,25 +73,33 @@
 
     .topbar {
       display: flex;
-      align-items: flex-end;
+      align-items: stretch;
       justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 0;
+      margin-bottom: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.20);
     }
 
     .title-wrap {
       min-width: 0;
+      flex: 1 1 auto;
+      padding: 18px 24px 16px;
     }
 
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 9px;
-      margin-bottom: 8px;
-      color: var(--brand-2);
+      margin-bottom: 6px;
+      color: #33423d;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      font-weight: 900;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
     }
 
@@ -96,35 +107,32 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--brand);
-      box-shadow: 0 0 0 6px rgba(54, 215, 162, 0.10), 0 0 20px rgba(54, 215, 162, 0.45);
+      background: #19b887;
+      box-shadow: 0 0 0 5px rgba(25, 184, 135, 0.10);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(24px, 3vw, 42px);
-      line-height: 1.03;
-      letter-spacing: -0.035em;
-      font-weight: 850;
-    }
-
-    .subtitle {
-      margin-top: 9px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
+      color: #050706;
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+      font-weight: 950;
+      text-transform: uppercase;
     }
 
     .live-panel {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(8, 25, 21, 0.72);
-      box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(14px);
+      min-width: 250px;
+      padding: 16px 20px;
+      border-left: 1px solid rgba(7, 9, 8, 0.28);
+      border-radius: 0;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: none;
+      backdrop-filter: none;
     }
 
     .sync-state {
@@ -165,17 +173,19 @@
     }
 
     .sync-label {
+      color: #070908;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 900;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .sync-time {
-      margin-top: 2px;
-      color: var(--muted);
+      margin-top: 3px;
+      color: #59635f;
       font-size: 10px;
+      font-weight: 650;
       white-space: nowrap;
     }
 
@@ -203,9 +213,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      padding: 13px 14px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(7, 24, 20, 0.92);
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(7, 9, 8, 0.18);
+      color: var(--ink);
+      background: var(--paper);
     }
 
     .toolbar-left,
@@ -236,11 +247,11 @@
       width: 100%;
       height: 36px;
       padding: 0 12px 0 35px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(7, 9, 8, 0.22);
       outline: none;
-      border-radius: 10px;
-      color: var(--text);
-      background: #0a1c18;
+      border-radius: 9px;
+      color: #070908;
+      background: #fbfaf6;
       transition: border-color 0.18s ease, box-shadow 0.18s ease;
     }
 
@@ -257,16 +268,17 @@
       min-width: 36px;
       height: 36px;
       padding: 0 11px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
+      border: 1px solid rgba(7, 9, 8, 0.25);
+      border-radius: 9px;
       cursor: pointer;
-      background: #0a1c18;
+      color: #070908;
+      background: #fbfaf6;
       transition: 0.18s ease;
     }
 
     .tool-btn:hover {
-      border-color: rgba(54, 215, 162, 0.38);
-      background: #102a23;
+      border-color: rgba(7, 9, 8, 0.55);
+      background: #e3e0d7;
       transform: translateY(-1px);
     }
 
@@ -284,15 +296,16 @@
 
     .summary-strip {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-bottom: 1px solid var(--line);
-      background: rgba(12, 32, 27, 0.86);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid rgba(7, 9, 8, 0.18);
+      color: var(--ink);
+      background: var(--paper-2);
     }
 
     .summary-item {
       min-width: 0;
-      padding: 11px 14px;
-      border-right: 1px solid var(--line);
+      padding: 9px 12px;
+      border-right: 1px solid rgba(7, 9, 8, 0.16);
     }
 
     .summary-item:last-child {
@@ -300,7 +313,7 @@
     }
 
     .summary-k {
-      color: var(--muted);
+      color: #5d6662;
       font-size: 9px;
       font-weight: 800;
       letter-spacing: 0.12em;
@@ -308,8 +321,9 @@
     }
 
     .summary-v {
-      margin-top: 3px;
+      margin-top: 2px;
       overflow: hidden;
+      color: #070908;
       font-size: 14px;
       font-weight: 780;
       text-overflow: ellipsis;
@@ -366,7 +380,7 @@
 
     .meta-grid {
       display: grid;
-      grid-template-columns: 62px 178px 238px 170px 166px 166px;
+      grid-template-columns: 60px 190px 255px 180px 180px 180px;
       width: var(--meta-width);
       min-width: var(--meta-width);
     }
@@ -399,19 +413,22 @@
       justify-content: center;
       padding: 10px 9px;
       color: #eaf9f4;
-      font-size: 10px;
-      font-weight: 850;
+      font-size: 11px;
+      font-weight: 900;
       letter-spacing: 0.075em;
       text-align: center;
       text-transform: uppercase;
     }
 
     .data-cell {
-      min-height: var(--row-min-h);
-      padding: 10px 10px;
-      color: #deeee9;
-      font-size: 11px;
-      line-height: 1.42;
+      height: var(--row-min-h);
+      min-height: 0;
+      padding: 7px 10px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      color: #e7f4ef;
+      font-size: 12.5px;
+      line-height: 1.28;
       word-break: break-word;
     }
 
@@ -419,7 +436,7 @@
       justify-content: center;
       color: var(--brand-2);
       font-weight: 850;
-      font-size: 12px;
+      font-size: 13.5px;
     }
 
     .data-cell.step-cell {
@@ -437,9 +454,41 @@
     }
 
     .data-cell.date-cell {
-      color: #b9d7ce;
+      color: #c9ded7;
       font-variant-numeric: tabular-nums;
-      font-size: 10px;
+      font-size: 11.5px;
+      white-space: nowrap;
+    }
+
+    .data-cell.activity-cell.merge-start {
+      position: relative;
+      overflow: visible;
+      color: transparent;
+      border-bottom-color: transparent;
+    }
+
+    .data-cell.activity-cell.merge-start::after {
+      content: attr(data-merge-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: calc(var(--row-min-h) * var(--merge-span));
+      padding: 7px 10px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: #e7f4ef;
+      background: #0d211c;
+      font-weight: 700;
+      line-height: 1.28;
+      box-sizing: border-box;
+    }
+
+    .data-cell.activity-cell.merge-child {
+      color: transparent;
     }
 
     .timeline-head {
@@ -509,7 +558,11 @@
     }
 
     .gantt-row {
-      border-bottom: 1px solid var(--line);
+      height: var(--row-min-h);
+    }
+
+    .gantt-row.has-activity-merge > .meta-grid {
+      z-index: 18;
     }
 
     .gantt-row:hover > .meta-grid,
@@ -519,7 +572,9 @@
 
     .timeline-cell {
       position: relative;
-      min-height: var(--row-min-h);
+      height: var(--row-min-h);
+      min-height: 0;
+      border-bottom: 1px solid var(--line);
       width: var(--timeline-width);
       background-color: #0a1b17;
       background-image:
@@ -547,16 +602,16 @@
       display: flex;
       align-items: center;
       min-width: 5px;
-      height: 28px;
-      padding: 0 9px;
+      height: 24px;
+      padding: 0;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 7px;
       color: #071713;
-      font-size: 9px;
+      font-size: 0;
       font-weight: 900;
-      letter-spacing: 0.01em;
-      text-overflow: ellipsis;
+      letter-spacing: 0;
+      text-overflow: clip;
       white-space: nowrap;
       transform: translateY(-50%);
       box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.25);
@@ -744,11 +799,11 @@
 
     @media (max-width: 1100px) {
       :root {
-        --meta-width: 850px;
+        --meta-width: 930px;
       }
 
       .meta-grid {
-        grid-template-columns: 56px 154px 205px 145px 145px 145px;
+        grid-template-columns: 56px 170px 225px 160px 159px 160px;
       }
 
       .app-shell {
@@ -758,9 +813,9 @@
 
     @media (max-width: 760px) {
       :root {
-        --meta-width: 790px;
-        --row-min-h: 60px;
-        --header-h: 78px;
+        --meta-width: 870px;
+        --row-min-h: 50px;
+        --header-h: 76px;
       }
 
       .app-shell {
@@ -773,7 +828,10 @@
       }
 
       .live-panel {
-        align-self: flex-start;
+        align-self: stretch;
+        min-width: 0;
+        border-top: 1px solid rgba(7, 9, 8, 0.22);
+        border-left: 0;
       }
 
       .toolbar {
@@ -795,15 +853,7 @@
       }
 
       .summary-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .summary-item:nth-child(2) {
-        border-right: 0;
-      }
-
-      .summary-item:nth-child(-n + 2) {
-        border-bottom: 1px solid var(--line);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .gantt-scroll {
@@ -817,17 +867,21 @@
       }
 
       .meta-grid {
-        grid-template-columns: 52px 140px 190px 130px 139px 139px;
+        grid-template-columns: 52px 155px 210px 145px 154px 154px;
       }
 
       .head-cell {
-        padding: 8px 6px;
-        font-size: 9px;
+        padding: 7px 6px;
+        font-size: 9.5px;
       }
 
       .data-cell {
-        padding: 8px;
-        font-size: 10px;
+        padding: 6px 8px;
+        font-size: 11px;
+      }
+
+      h1 {
+        font-size: clamp(30px, 9vw, 46px);
       }
     }
 
@@ -845,9 +899,8 @@
   <main class="app-shell">
     <header class="topbar">
       <div class="title-wrap">
-        <div class="eyebrow"><span class="eyebrow-dot"></span>KREJUV · FEC · LIVE SCHEDULE</div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span>KREJUV · FEC</div>
         <h1>Activity Timeline</h1>
-        <div class="subtitle">Activities, launch/arrival records and Microsoft Project-style Gantt bars — synced from Google Sheets.</div>
       </div>
 
       <div class="live-panel" aria-live="polite">
@@ -898,12 +951,8 @@
           <div id="timelineRange" class="summary-v">10 Aug 2026 → Today</div>
         </div>
         <div class="summary-item">
-          <div class="summary-k">Auto Sync</div>
-          <div id="refreshRate" class="summary-v">Every 60 sec</div>
-        </div>
-        <div class="summary-item">
           <div class="summary-k">Data Source</div>
-          <div class="summary-v">Google Sheets · Read Only</div>
+          <div class="summary-v">Google Sheets</div>
         </div>
       </div>
 
@@ -978,7 +1027,6 @@
       syncTime: document.getElementById("syncTime"),
       activityCount: document.getElementById("activityCount"),
       timelineRange: document.getElementById("timelineRange"),
-      refreshRate: document.getElementById("refreshRate"),
       emptyState: document.getElementById("emptyState"),
       errorState: document.getElementById("errorState"),
       errorCopy: document.getElementById("errorCopy"),
@@ -1240,6 +1288,7 @@
       }
 
       let inheritedStep = "";
+      let inheritedActivity = "";
       const rows = [];
 
       for (let r = headerRowIndex + 1; r < csvRows.length; r += 1) {
@@ -1249,12 +1298,21 @@
         const rawStep = get(idx.steps);
         if (rawStep) inheritedStep = rawStep;
 
+        const rawActivity = get(idx.activity);
+        const activityIsMergeMarker = /^[-–—]+$/.test(rawActivity);
+        if (rawActivity && !activityIsMergeMarker) inheritedActivity = rawActivity;
+
         const row = {
           sourceRow: r + 1,
           no: get(idx.no),
           steps: rawStep || inheritedStep,
           stepCarried: !rawStep && Boolean(inheritedStep),
-          activity: get(idx.activity),
+          activity: activityIsMergeMarker && inheritedActivity ? inheritedActivity : rawActivity,
+          activityDisplay: activityIsMergeMarker && inheritedActivity ? "" : rawActivity,
+          activityMergeMarker: activityIsMergeMarker && Boolean(inheritedActivity),
+          activityMergeStart: false,
+          activityMergeChild: false,
+          activityMergeSpan: 1,
           pig: get(idx.pig),
           startRaw: get(idx.start),
           endRaw: get(idx.end)
@@ -1263,10 +1321,27 @@
         row.start = parseSheetDate(row.startRaw, false);
         row.end = parseSheetDate(row.endRaw, true);
 
-        const hasUsefulContent = [row.no, row.steps, row.activity, row.pig, row.startRaw, row.endRaw].some(Boolean);
+        const hasUsefulContent = [row.no, row.steps, rawActivity, row.pig, row.startRaw, row.endRaw].some(Boolean);
         if (!hasUsefulContent) continue;
 
         rows.push(row);
+      }
+
+      // A dash (— / -) in PIG ARRANGEMENT / ACTIVITIES means "same cell as above".
+      // Consecutive dash rows are visually merged with the activity cell immediately above.
+      for (let i = 0; i < rows.length; i += 1) {
+        if (!rows[i].activityDisplay) continue;
+        let span = 1;
+        let j = i + 1;
+        while (j < rows.length && rows[j].activityMergeMarker) {
+          rows[j].activityMergeChild = true;
+          span += 1;
+          j += 1;
+        }
+        if (span > 1) {
+          rows[i].activityMergeStart = true;
+          rows[i].activityMergeSpan = span;
+        }
       }
 
       return rows;
@@ -1344,7 +1419,7 @@
     /* =========================================================
        DOM BUILDERS
        ========================================================= */
-    function createMetaGrid(isHeader, row = null, visibleIndex = 0) {
+    function createMetaGrid(isHeader, row = null, visibleIndex = 0, allowActivityMerge = true) {
       const grid = document.createElement("div");
       grid.className = "meta-grid";
 
@@ -1360,15 +1435,30 @@
       }
 
       const no = String(visibleIndex + 1);
-      const values = [no, row.steps, row.activity, row.pig, row.startRaw, row.endRaw];
+      const displayActivity = allowActivityMerge ? row.activityDisplay : row.activity;
+      const values = [no, row.steps, displayActivity, row.pig, row.startRaw, row.endRaw];
       const classes = ["no-cell", "step-cell", "activity-cell", "pig-cell", "date-cell", "date-cell"];
 
       values.forEach((value, index) => {
         const cell = document.createElement("div");
         cell.className = `data-cell ${classes[index]}`;
         if (index === 1 && row.stepCarried) cell.classList.add("carried");
-        cell.textContent = value || "—";
-        cell.title = value || "";
+
+        if (index === 2 && allowActivityMerge && row.activityMergeStart) {
+          cell.classList.add("merge-start");
+          cell.dataset.mergeLabel = row.activityDisplay || row.activity || "";
+          cell.style.setProperty("--merge-span", String(row.activityMergeSpan));
+          cell.textContent = "";
+          cell.title = row.activity || "";
+        } else if (index === 2 && allowActivityMerge && row.activityMergeChild) {
+          cell.classList.add("merge-child");
+          cell.textContent = "";
+          cell.title = row.activity || "";
+        } else {
+          cell.textContent = value || "—";
+          cell.title = value || "";
+        }
+
         grid.appendChild(cell);
       });
 
@@ -1461,7 +1551,8 @@
       if (effectiveEnd > state.timelineEnd) bar.classList.add("clipped-right");
       bar.style.left = `${x1}px`;
       bar.style.width = `${width}px`;
-      bar.textContent = row.activity || row.pig || row.steps || `Activity ${row.no || ""}`;
+      bar.textContent = "";
+      bar.setAttribute("aria-label", row.activity || row.pig || row.steps || "Activity");
 
       bar.addEventListener("mouseenter", (event) => showTooltip(event, row, status));
       bar.addEventListener("mousemove", positionTooltip);
@@ -1477,11 +1568,14 @@
 
       const fragment = document.createDocumentFragment();
 
+      const allowActivityMerge = safeText(els.searchInput.value) === "";
+
       state.filteredRows.forEach((row, index) => {
         const wrapper = document.createElement("div");
         wrapper.className = "gantt-row";
+        if (allowActivityMerge && row.activityMergeStart) wrapper.classList.add("has-activity-merge");
 
-        const meta = createMetaGrid(false, row, index);
+        const meta = createMetaGrid(false, row, index, allowActivityMerge);
         const timelineCell = document.createElement("div");
         timelineCell.className = "timeline-cell";
 
@@ -1507,7 +1601,6 @@
 
       const today = startOfDay(new Date());
       els.timelineRange.textContent = `${formatShortDate(CONFIG.TIMELINE_START)} → ${formatShortDate(today)}`;
-      els.refreshRate.textContent = `Every ${Math.round(CONFIG.REFRESH_MS / 1000)} sec`;
     }
 
     /* =========================================================
