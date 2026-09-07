@@ -1,1 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07140f" />
+  <title>Summary of Pipeline Pre-Commissioning Activities</title>
 
+  <style>
+    :root {
+      --bg: #06110d;
+      --bg-2: #0a1913;
+      --panel: rgba(11, 31, 23, 0.94);
+      --panel-2: rgba(13, 38, 28, 0.95);
+      --line: rgba(159, 203, 182, 0.15);
+      --line-strong: rgba(159, 203, 182, 0.28);
+      --text: #eef7f2;
+      --muted: #98aa9f;
+      --accent: #4ee3a2;
+      --accent-2: #82ffd0;
+      --warning: #ffd166;
+      --danger: #ff6b78;
+      --activity-width: 310px;
+      --day-width: 46px;
+      --row-height: 54px;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% -10%, rgba(78, 227, 162, 0.11), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(63, 170, 255, 0.07), transparent 30%),
+        linear-gradient(180deg, #06100c 0%, #07140f 40%, #06100c 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app-shell {
+      width: min(1800px, 100%);
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .brand-block {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(78, 227, 162, 0.8);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(22px, 3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .sync-card {
+      flex: 0 0 auto;
+      min-width: 205px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(10, 28, 21, 0.82);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .sync-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sync-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sync-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(78, 227, 162, 0.75);
+    }
+
+    .sync-status.loading .sync-dot {
+      animation: pulse 1s infinite;
+    }
+
+    .sync-status.error {
+      color: #ffd1d6;
+    }
+
+    .sync-status.error .sync-dot {
+      background: var(--danger);
+      box-shadow: 0 0 12px rgba(255, 107, 120, 0.75);
+    }
+
+    .sync-time {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .35; transform: scale(.8); }
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px 0 40px;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      outline: none;
+      background: rgba(8, 25, 18, 0.82);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .search-wrap input:focus {
+      border-color: rgba(78, 227, 162, .55);
+      box-shadow: 0 0 0 3px rgba(78, 227, 162, .08);
+    }
+
+    .search-wrap::before {
+      content: "⌕";
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-54%);
+      color: var(--muted);
+      font-size: 22px;
+      pointer-events: none;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .control-btn {
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: var(--text);
+      background: rgba(8, 25, 18, 0.82);
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .control-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(78, 227, 162, .45);
+      background: rgba(14, 43, 31, .92);
+    }
+
+    .control-btn.primary {
+      color: #06110d;
+      border-color: transparent;
+      background: linear-gradient(135deg, #5cf0ae, #83ffd0);
+      font-weight: 850;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .stat-card {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(8, 25, 18, .68);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      margin-top: 4px;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+      min-height: 40px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(8, 25, 18, .68);
+    }
+
+    .legend-title {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-right: 3px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #d7e7de;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--legend-color);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--legend-color) 45%, transparent);
+    }
+
+    .notice {
+      display: none;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 209, 102, .25);
+      border-radius: 14px;
+      color: #ffe7a9;
+      background: rgba(87, 61, 10, .22);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .notice.show {
+      display: block;
+    }
+
+    .schedule-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(11, 31, 23, .98), rgba(7, 21, 15, .98));
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-scroll {
+      width: 100%;
+      overflow: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-color: rgba(78, 227, 162, .35) rgba(255,255,255,.03);
+      scrollbar-width: thin;
+    }
+
+    .timeline-scroll::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-thumb {
+      border: 2px solid transparent;
+      border-radius: 999px;
+      background-clip: padding-box;
+      background-color: rgba(78, 227, 162, .34);
+    }
+
+    .timeline-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,.03);
+    }
+
+    .timeline-content {
+      min-width: calc(var(--activity-width) + (var(--day-count) * var(--day-width)));
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: var(--activity-width) repeat(var(--day-count), var(--day-width));
+    }
+
+    .month-row {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: #0b2018;
+    }
+
+    .month-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 33px;
+      color: #c9dbd1;
+      border-left: 1px solid var(--line);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .corner-title {
+      position: sticky;
+      left: 0;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      min-height: 33px;
+      padding: 0 16px;
+      color: var(--accent-2);
+      border-right: 1px solid var(--line-strong);
+      background: #0b2018;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .day-row {
+      position: sticky;
+      top: 33px;
+      z-index: 19;
+      border-bottom: 1px solid var(--line-strong);
+      background: #0a1b14;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+    }
+
+    .day-label-left {
+      position: sticky;
+      left: 0;
+      z-index: 24;
+      display: flex;
+      align-items: center;
+      min-height: 55px;
+      padding: 0 16px;
+      color: #a5bbb0;
+      border-right: 1px solid var(--line-strong);
+      background: #0a1b14;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .day-cell {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 55px;
+      border-left: 1px solid var(--line);
+      background: rgba(255,255,255,.005);
+      user-select: none;
+    }
+
+    .day-cell.weekend,
+    .timeline-day.weekend {
+      background: rgba(255, 255, 255, .018);
+    }
+
+    .day-cell.today,
+    .timeline-day.today {
+      background: rgba(78, 227, 162, .075);
+    }
+
+    .day-cell.today::after,
+    .timeline-day.today::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(78, 227, 162, .65);
+    }
+
+    .day-number {
+      color: #f5fbf7;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .day-name {
+      margin-top: 5px;
+      color: #71877b;
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .activity-row {
+      border-bottom: 1px solid rgba(159, 203, 182, .08);
+      transition: background .16s ease;
+    }
+
+    .activity-row:hover {
+      background: rgba(78, 227, 162, .022);
+    }
+
+    .activity-row:last-child {
+      border-bottom: 0;
+    }
+
+    .activity-cell {
+      position: sticky;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: var(--row-height);
+      padding: 8px 14px;
+      border-right: 1px solid var(--line-strong);
+      background: linear-gradient(90deg, #0b1f17 0%, #0b1f17 92%, rgba(11,31,23,.96) 100%);
+    }
+
+    .activity-marker {
+      flex: 0 0 auto;
+      width: 5px;
+      height: 31px;
+      border-radius: 999px;
+      background: var(--bar-color);
+      box-shadow: 0 0 15px var(--bar-glow);
+    }
+
+    .activity-copy {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .activity-name {
+      overflow: hidden;
+      color: #ecf6f0;
+      font-size: 12px;
+      line-height: 1.22;
+      font-weight: 780;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .activity-meta {
+      margin-top: 4px;
+      overflow: hidden;
+      color: #788d81;
+      font-size: 9px;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .timeline-day {
+      position: relative;
+      min-height: var(--row-height);
+      border-left: 1px solid rgba(159, 203, 182, .08);
+      background: rgba(255,255,255,.003);
+    }
+
+    .timeline-day.active::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: 50%;
+      height: 18px;
+      transform: translateY(-50%);
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--bar-color) 93%, white 7%),
+        color-mix(in srgb, var(--bar-color) 82%, black 18%)
+      );
+      box-shadow: 0 4px 14px var(--bar-glow);
+      opacity: .92;
+    }
+
+    .timeline-day.active.segment-start::before {
+      left: 5px;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .timeline-day.active.segment-end::before {
+      right: 5px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .timeline-day.active.segment-start.segment-end::before {
+      left: 6px;
+      right: 6px;
+      border-radius: 8px;
+    }
+
+    .timeline-day.active::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: 3px;
+      height: 3px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(255,255,255,.72);
+      opacity: .48;
+    }
+
+    .empty-state {
+      padding: 38px 24px 42px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-title {
+      color: #e8f2ec;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .empty-text {
+      max-width: 700px;
+      margin: 8px auto 0;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+      padding: 0 3px;
+      color: #61766a;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .footer strong {
+      color: #8ba398;
+      font-weight: 750;
+    }
+
+    .loading-skeleton {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,.018) 0,
+          rgba(255,255,255,.018) 52px,
+          rgba(255,255,255,.045) 53px,
+          rgba(255,255,255,.018) 54px
+        );
+    }
+
+    .loading-skeleton::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(78,227,162,.05), transparent);
+      animation: shimmer 1.4s infinite;
+    }
+
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --activity-width: 235px;
+        --day-width: 42px;
+      }
+
+      .app-shell {
+        padding: 14px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .sync-card {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --activity-width: 200px;
+        --day-width: 39px;
+        --row-height: 50px;
+        --radius: 15px;
+      }
+
+      .app-shell {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .control-btn.primary {
+        grid-column: 1 / -1;
+      }
+
+      .stat-card {
+        padding: 10px 12px;
+      }
+
+      .stat-value {
+        font-size: 18px;
+      }
+
+      .legend {
+        max-height: 88px;
+        overflow: auto;
+      }
+
+      .activity-cell,
+      .day-label-left,
+      .corner-title {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .activity-name {
+        font-size: 11px;
+      }
+
+      .footer {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .footer span:first-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="eyebrow">KREJUV · FEC Pipeline</div>
+        <h1>Summary of Pipeline Pre-Commissioning Activities</h1>
+        <div class="subtitle">
+          Daily activity timeline · 10 Aug 2026 — 10 Sep 2026 · Read-only live sync from Google Sheets
+        </div>
+      </div>
+
+      <div class="sync-card" aria-live="polite">
+        <div class="sync-row">
+          <div id="syncStatus" class="sync-status loading">
+            <span class="sync-dot"></span>
+            <span id="syncStatusText">Connecting</span>
+          </div>
+          <button id="refreshBtn" class="control-btn" type="button" title="Refresh Google Sheet">↻</button>
+        </div>
+        <div id="syncTime" class="sync-time">Waiting for sheet data…</div>
+      </div>
+    </header>
+
+    <section class="toolbar" aria-label="Timeline controls">
+      <div class="search-wrap">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search activity…" aria-label="Search activity" />
+      </div>
+
+      <div class="toolbar-actions">
+        <button id="compactBtn" class="control-btn" type="button">Compact</button>
+        <button id="fitBtn" class="control-btn" type="button">Normal</button>
+        <button id="todayBtn" class="control-btn primary" type="button">Go to Today</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Activity statistics">
+      <div class="stat-card">
+        <div class="stat-label">Activities</div>
+        <div id="statTotal" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Completed</div>
+        <div id="statCompleted" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">In Progress</div>
+        <div id="statOngoing" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Upcoming</div>
+        <div id="statUpcoming" class="stat-value">0</div>
+      </div>
+    </section>
+
+    <section id="legend" class="legend">
+      <span class="legend-title">Activity colors</span>
+    </section>
+
+    <div id="notice" class="notice"></div>
+
+    <section class="schedule-card">
+      <div id="timelineScroll" class="timeline-scroll">
+        <div id="timelineRoot" class="loading-skeleton"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Source: Google Sheets · automatic refresh every 60 seconds</span>
+      <span><strong>Fly TechSmith</strong> · Pre-Commissioning Reference</span>
+    </footer>
+  </main>
+
+  <script>
+    "use strict";
+
+    /* =========================================================
+       CONFIGURATION
+       ========================================================= */
+    const CONFIG = Object.freeze({
+      SPREADSHEET_ID: "1WxRyDXfI7RCg14E-G3beG2dNeyP5IUU9vBKt6T_C8SM",
+      SHEET_GID: "0",             // Change only if the required data is not on the first tab.
+      HEADER_ROWS: 1,              // Use 0 only when your source table truly has no header row.
+      TIMELINE_START: "2026-08-10",
+      TIMELINE_END: "2026-09-10",
+      AUTO_REFRESH_MS: 60_000,
+      GROUP_DUPLICATE_ACTIVITIES: true
+    });
+
+    const CATEGORY_RULES = Object.freeze([
+      { key: "pigging",       label: "Pigging / Cleaning", color: "#ff9f43", keywords: ["pig", "pigging", "cleaning", "bidi", "bi-di", "brush", "foam"] },
+      { key: "waterfill",     label: "Water Filling",      color: "#3aa9ff", keywords: ["water fill", "water filling", "filling"] },
+      { key: "hydrotest",     label: "Hydrotest",          color: "#ff637d", keywords: ["hydrotest", "hydro test", "pressure test", "holding period", "stabilization"] },
+      { key: "dewatering",    label: "Dewatering",         color: "#34d5d2", keywords: ["dewater", "dewatering"] },
+      { key: "swabbing",      label: "Swabbing / Drying", color: "#a980ff", keywords: ["swab", "swabbing", "drying", "dew point", "dewpoint", "soaking"] },
+      { key: "nitrogen",      label: "N₂ / Purging",       color: "#55db72", keywords: ["n2", "nitrogen", "purge", "purging", "oxygen", "o2"] },
+      { key: "linepacking",   label: "Line Packing",       color: "#7be6b4", keywords: ["line pack", "line packing", "packing"] },
+      { key: "commissioning", label: "Commissioning",      color: "#d6f35a", keywords: ["commissioning", "feeding gps", "line switching", "gas in", "gas-in"] },
+      { key: "tiein",         label: "Tie-In / Welding",   color: "#ff66c4", keywords: ["tie-in", "tie in", "cold cut", "cold-cut", "welding", "weld", "spading"] },
+      { key: "leaktest",      label: "Leak Test",          color: "#ffd166", keywords: ["leak test", "leak testing", "tightness"] },
+      { key: "default",       label: "Other Activity",     color: "#8ea6b5", keywords: [] }
+    ]);
+
+    const HEADER_ALIASES = Object.freeze({
+      activity: [
+        "activity", "activities", "activity description", "pre-commissioning activity",
+        "pre commissioning activity", "description", "scope", "work", "task", "item",
+        "work activity", "activity / scope", "scope of work"
+      ],
+      start: [
+        "start", "start date", "start / launch", "start/launch", "launch", "launch date",
+        "from", "date start", "commence", "commencement", "start time"
+      ],
+      end: [
+        "end", "end date", "end / arrival", "end/arrival", "arrival", "arrival date",
+        "to", "date end", "finish", "completion", "completion date", "end time"
+      ],
+      date: ["date", "activity date", "work date"],
+      category: ["category", "type", "activity type", "phase"],
+      remarks: ["remarks", "remark", "notes", "note", "status", "comments", "comment"]
+    });
+
+    const state = {
+      days: [],
+      activities: [],
+      filteredActivities: [],
+      lastSuccessfulSync: null,
+      refreshTimer: null,
+      loadingTimeout: null
+    };
+
+    const el = {
+      timelineRoot: document.getElementById("timelineRoot"),
+      timelineScroll: document.getElementById("timelineScroll"),
+      searchInput: document.getElementById("searchInput"),
+      refreshBtn: document.getElementById("refreshBtn"),
+      compactBtn: document.getElementById("compactBtn"),
+      fitBtn: document.getElementById("fitBtn"),
+      todayBtn: document.getElementById("todayBtn"),
+      syncStatus: document.getElementById("syncStatus"),
+      syncStatusText: document.getElementById("syncStatusText"),
+      syncTime: document.getElementById("syncTime"),
+      notice: document.getElementById("notice"),
+      legend: document.getElementById("legend"),
+      statTotal: document.getElementById("statTotal"),
+      statCompleted: document.getElementById("statCompleted"),
+      statOngoing: document.getElementById("statOngoing"),
+      statUpcoming: document.getElementById("statUpcoming")
+    };
+
+    /* =========================================================
+       DATE HELPERS
+       ========================================================= */
+    function makeLocalDate(year, month, day) {
+      return new Date(year, month - 1, day, 12, 0, 0, 0);
+    }
+
+    function parseISODateOnly(value) {
+      const match = String(value).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      return match ? makeLocalDate(+match[1], +match[2], +match[3]) : null;
+    }
+
+    function stripTime(date) {
+      return makeLocalDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
+    }
+
+    function addDays(date, amount) {
+      const copy = new Date(date);
+      copy.setDate(copy.getDate() + amount);
+      return stripTime(copy);
+    }
+
+    function dateKey(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }).format(date);
+    }
+
+    function parseAnyDate(raw, formatted = "") {
+      if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
+        return stripTime(raw);
+      }
+
+      const candidates = [raw, formatted]
+        .filter(v => v !== null && v !== undefined && String(v).trim() !== "")
+        .map(v => String(v).trim());
+
+      for (const value of candidates) {
+        // Google Visualization date format: Date(2026,7,27,1,55,0)
+        let m = value.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})(?:,.*)?\)$/i);
+        if (m) return makeLocalDate(+m[1], +m[2] + 1, +m[3]);
+
+        // dd/mm/yyyy, dd-mm-yyyy, dd.mm.yyyy, optional time / @ / HRS
+        m = value.match(/\b(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})\b/);
+        if (m) {
+          let year = +m[3];
+          if (year < 100) year += 2000;
+          const parsed = makeLocalDate(year, +m[2], +m[1]);
+          if (!Number.isNaN(parsed.getTime())) return parsed;
+        }
+
+        // yyyy-mm-dd
+        m = value.match(/\b(\d{4})-(\d{1,2})-(\d{1,2})\b/);
+        if (m) {
+          const parsed = makeLocalDate(+m[1], +m[2], +m[3]);
+          if (!Number.isNaN(parsed.getTime())) return parsed;
+        }
+      }
+
+      return null;
+    }
+
+    function buildTimelineDays() {
+      const start = parseISODateOnly(CONFIG.TIMELINE_START);
+      const end = parseISODateOnly(CONFIG.TIMELINE_END);
+      const days = [];
+
+      for (let cursor = start; cursor <= end; cursor = addDays(cursor, 1)) {
+        days.push(new Date(cursor));
+      }
+      return days;
+    }
+
+    function isSameDay(a, b) {
+      return a && b && dateKey(a) === dateKey(b);
+    }
+
+    function clampDate(date, min, max) {
+      if (date < min) return new Date(min);
+      if (date > max) return new Date(max);
+      return new Date(date);
+    }
+
+    /* =========================================================
+       SHEET PARSING
+       ========================================================= */
+    function normalizeHeader(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[–—]/g, "-")
+        .replace(/\s+/g, " ");
+    }
+
+    function cellText(cell) {
+      if (!cell) return "";
+      if (cell.f !== undefined && cell.f !== null && String(cell.f).trim() !== "") return String(cell.f).trim();
+      if (cell.v !== undefined && cell.v !== null) return String(cell.v).trim();
+      return "";
+    }
+
+    function findAliasIndex(headers, aliases) {
+      const normalizedAliases = aliases.map(normalizeHeader);
+
+      let index = headers.findIndex(h => normalizedAliases.includes(h));
+      if (index !== -1) return index;
+
+      index = headers.findIndex(h => normalizedAliases.some(alias =>
+        alias.length >= 4 && (h.includes(alias) || alias.includes(h))
+      ));
+      return index;
+    }
+
+    function inferDateColumns(rows, columnCount) {
+      const scores = [];
+
+      for (let col = 0; col < columnCount; col++) {
+        let populated = 0;
+        let dateLike = 0;
+
+        for (const row of rows.slice(0, 50)) {
+          const cell = row.c?.[col];
+          const text = cellText(cell);
+          if (!text) continue;
+          populated++;
+          if (parseAnyDate(cell?.v, cell?.f)) dateLike++;
+        }
+
+        scores.push({
+          col,
+          populated,
+          dateLike,
+          ratio: populated ? dateLike / populated : 0
+        });
+      }
+
+      return scores
+        .filter(s => s.dateLike >= 1 && s.ratio >= 0.45)
+        .sort((a, b) => (b.ratio - a.ratio) || (b.dateLike - a.dateLike));
+    }
+
+    function inferActivityColumn(rows, columnCount, excluded = new Set()) {
+      const candidates = [];
+
+      for (let col = 0; col < columnCount; col++) {
+        if (excluded.has(col)) continue;
+
+        let populated = 0;
+        let dateLike = 0;
+        let textLike = 0;
+        let avgLength = 0;
+
+        for (const row of rows.slice(0, 50)) {
+          const cell = row.c?.[col];
+          const text = cellText(cell);
+          if (!text) continue;
+          populated++;
+          avgLength += text.length;
+          if (parseAnyDate(cell?.v, cell?.f)) dateLike++;
+          if (/[A-Za-z]/.test(text)) textLike++;
+        }
+
+        if (!populated) continue;
+        avgLength /= populated;
+
+        candidates.push({
+          col,
+          score: (textLike / populated) * 2 + Math.min(avgLength / 30, 1) - (dateLike / populated) * 2
+        });
+      }
+
+      candidates.sort((a, b) => b.score - a.score);
+      return candidates[0]?.col ?? -1;
+    }
+
+    function resolveColumns(table) {
+      const headers = table.cols.map(col => normalizeHeader(col.label || col.id || ""));
+      const rows = table.rows || [];
+      const columnCount = table.cols.length;
+
+      let activity = findAliasIndex(headers, HEADER_ALIASES.activity);
+      let start = findAliasIndex(headers, HEADER_ALIASES.start);
+      let end = findAliasIndex(headers, HEADER_ALIASES.end);
+      let date = findAliasIndex(headers, HEADER_ALIASES.date);
+      const category = findAliasIndex(headers, HEADER_ALIASES.category);
+      const remarks = findAliasIndex(headers, HEADER_ALIASES.remarks);
+
+      const inferredDates = inferDateColumns(rows, columnCount);
+
+      if (start === -1 && date === -1 && inferredDates.length) start = inferredDates[0].col;
+      if (end === -1 && inferredDates.length > 1) {
+        const candidate = inferredDates.find(item => item.col !== start);
+        if (candidate) end = candidate.col;
+      }
+
+      if (date !== -1 && start === -1) start = date;
+      if (start !== -1 && end === -1) end = start;
+
+      if (activity === -1) {
+        const excluded = new Set([start, end, date, category, remarks].filter(i => i >= 0));
+        activity = inferActivityColumn(rows, columnCount, excluded);
+      }
+
+      return { activity, start, end, date, category, remarks, headers };
+    }
+
+    function inferCategory(activityName, explicitCategory = "") {
+      const haystack = `${activityName} ${explicitCategory}`.toLowerCase();
+      return CATEGORY_RULES.find(rule =>
+        rule.key !== "default" && rule.keywords.some(keyword => haystack.includes(keyword))
+      ) || CATEGORY_RULES[CATEGORY_RULES.length - 1];
+    }
+
+    function rowToActivity(row, columns, rowIndex) {
+      const activityCell = row.c?.[columns.activity];
+      const activityName = cellText(activityCell) || `Activity ${rowIndex + 1}`;
+
+      const startCell = row.c?.[columns.start];
+      const endCell = row.c?.[columns.end];
+
+      let start = parseAnyDate(startCell?.v, startCell?.f);
+      let end = parseAnyDate(endCell?.v, endCell?.f);
+
+      if (!start && end) start = new Date(end);
+      if (start && !end) end = new Date(start);
+      if (!start || !end) return null;
+
+      if (end < start) [start, end] = [end, start];
+
+      const explicitCategory = columns.category >= 0 ? cellText(row.c?.[columns.category]) : "";
+      const remarks = columns.remarks >= 0 ? cellText(row.c?.[columns.remarks]) : "";
+      const category = inferCategory(activityName, explicitCategory);
+
+      return {
+        id: `${rowIndex}-${activityName}`,
+        name: activityName,
+        explicitCategory,
+        remarks,
+        category,
+        segments: [{ start, end }]
+      };
+    }
+
+    function mergeTouchingSegments(segments) {
+      if (!segments.length) return [];
+      const sorted = [...segments].sort((a, b) => a.start - b.start);
+      const merged = [{ start: new Date(sorted[0].start), end: new Date(sorted[0].end) }];
+
+      for (const segment of sorted.slice(1)) {
+        const last = merged[merged.length - 1];
+        const nextAllowed = addDays(last.end, 1);
+
+        if (segment.start <= nextAllowed) {
+          if (segment.end > last.end) last.end = new Date(segment.end);
+        } else {
+          merged.push({ start: new Date(segment.start), end: new Date(segment.end) });
+        }
+      }
+
+      return merged;
+    }
+
+    function groupActivities(activities) {
+      if (!CONFIG.GROUP_DUPLICATE_ACTIVITIES) return activities;
+
+      const map = new Map();
+
+      for (const item of activities) {
+        const key = item.name.trim().toLowerCase().replace(/\s+/g, " ");
+
+        if (!map.has(key)) {
+          map.set(key, {
+            ...item,
+            id: key,
+            segments: [...item.segments]
+          });
+        } else {
+          const existing = map.get(key);
+          existing.segments.push(...item.segments);
+          if (!existing.remarks && item.remarks) existing.remarks = item.remarks;
+        }
+      }
+
+      return [...map.values()].map(item => ({
+        ...item,
+        segments: mergeTouchingSegments(item.segments)
+      }));
+    }
+
+    function parseSheetResponse(response) {
+      if (!response || response.status === "error" || !response.table) {
+        throw new Error(response?.errors?.[0]?.detailed_message || "Google Sheet returned no usable table.");
+      }
+
+      const table = response.table;
+      const columns = resolveColumns(table);
+
+      if (columns.activity < 0 || columns.start < 0 || columns.end < 0) {
+        throw new Error("Could not identify the Activity / Start / End columns in the sheet.");
+      }
+
+      const timelineStart = parseISODateOnly(CONFIG.TIMELINE_START);
+      const timelineEnd = parseISODateOnly(CONFIG.TIMELINE_END);
+
+      const parsed = (table.rows || [])
+        .map((row, index) => rowToActivity(row, columns, index))
+        .filter(Boolean)
+        .filter(item => item.segments.some(segment => segment.end >= timelineStart && segment.start <= timelineEnd));
+
+      return groupActivities(parsed);
+    }
+
+    /* =========================================================
+       RENDERING
+       ========================================================= */
+    function monthGroups(days) {
+      const groups = [];
+
+      days.forEach((day, index) => {
+        const label = new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" }).format(day).toUpperCase();
+        const last = groups[groups.length - 1];
+        if (last && last.label === label) {
+          last.count++;
+        } else {
+          groups.push({ label, startIndex: index, count: 1 });
+        }
+      });
+
+      return groups;
+    }
+
+    function createDiv(className, text = "") {
+      const node = document.createElement("div");
+      node.className = className;
+      if (text) node.textContent = text;
+      return node;
+    }
+
+    function getActivityBounds(activity) {
+      const starts = activity.segments.map(s => s.start.getTime());
+      const ends = activity.segments.map(s => s.end.getTime());
+      return {
+        start: new Date(Math.min(...starts)),
+        end: new Date(Math.max(...ends))
+      };
+    }
+
+    function daySegmentState(activity, day) {
+      const key = dateKey(day);
+
+      for (const segment of activity.segments) {
+        const startKey = dateKey(segment.start);
+        const endKey = dateKey(segment.end);
+        if (key >= startKey && key <= endKey) {
+          return {
+            active: true,
+            start: key === startKey,
+            end: key === endKey,
+            segment
+          };
+        }
+      }
+
+      return { active: false };
+    }
+
+    function renderLegend(activities) {
+      el.legend.replaceChildren();
+      const title = document.createElement("span");
+      title.className = "legend-title";
+      title.textContent = "Activity colors";
+      el.legend.appendChild(title);
+
+      const usedKeys = new Set(activities.map(item => item.category.key));
+      CATEGORY_RULES.filter(rule => usedKeys.has(rule.key)).forEach(rule => {
+        const item = document.createElement("span");
+        item.className = "legend-item";
+
+        const swatch = document.createElement("span");
+        swatch.className = "legend-swatch";
+        swatch.style.setProperty("--legend-color", rule.color);
+
+        const label = document.createElement("span");
+        label.textContent = rule.label;
+
+        item.append(swatch, label);
+        el.legend.appendChild(item);
+      });
+    }
+
+    function renderStats(activities) {
+      const today = stripTime(new Date());
+      let completed = 0;
+      let ongoing = 0;
+      let upcoming = 0;
+
+      for (const activity of activities) {
+        const bounds = getActivityBounds(activity);
+        if (bounds.end < today) completed++;
+        else if (bounds.start > today) upcoming++;
+        else ongoing++;
+      }
+
+      el.statTotal.textContent = activities.length;
+      el.statCompleted.textContent = completed;
+      el.statOngoing.textContent = ongoing;
+      el.statUpcoming.textContent = upcoming;
+    }
+
+    function renderTimeline() {
+      state.filteredActivities = filterActivities(state.activities, el.searchInput.value);
+      const days = state.days;
+      const activities = state.filteredActivities;
+      const today = stripTime(new Date());
+
+      document.documentElement.style.setProperty("--day-count", String(days.length));
+      el.timelineRoot.className = "timeline-content";
+      el.timelineRoot.replaceChildren();
+
+      const monthRow = createDiv("timeline-grid month-row");
+      monthRow.appendChild(createDiv("corner-title", "Activity"));
+
+      for (const group of monthGroups(days)) {
+        const month = createDiv("month-group", group.label);
+        month.style.gridColumn = `${group.startIndex + 2} / span ${group.count}`;
+        monthRow.appendChild(month);
+      }
+      el.timelineRoot.appendChild(monthRow);
+
+      const dayRow = createDiv("timeline-grid day-row");
+      dayRow.appendChild(createDiv("day-label-left", "Daily Schedule"));
+
+      for (const day of days) {
+        const cell = createDiv("day-cell");
+        if ([0, 6].includes(day.getDay())) cell.classList.add("weekend");
+        if (isSameDay(day, today)) cell.classList.add("today");
+        cell.dataset.date = dateKey(day);
+        cell.title = formatDate(day);
+
+        const number = createDiv("day-number", String(day.getDate()).padStart(2, "0"));
+        const name = createDiv("day-name", new Intl.DateTimeFormat("en-GB", { weekday: "short" }).format(day).toUpperCase());
+        cell.append(number, name);
+        dayRow.appendChild(cell);
+      }
+      el.timelineRoot.appendChild(dayRow);
+
+      if (!activities.length) {
+        const empty = createDiv("empty-state");
+        const emptyTitle = createDiv("empty-title", state.activities.length ? "No activity matches your search." : "No schedule rows found for this date range.");
+        const emptyText = createDiv(
+          "empty-text",
+          state.activities.length
+            ? "Clear the search field to show all pipeline activities."
+            : "The page is connected, but no recognizable activity rows overlap 10 Aug 2026 to 10 Sep 2026. Check the source columns and date values."
+        );
+        empty.append(emptyTitle, emptyText);
+        el.timelineRoot.appendChild(empty);
+        renderStats(state.activities);
+        renderLegend(state.activities);
+        return;
+      }
+
+      for (const activity of activities) {
+        const row = createDiv("timeline-grid activity-row");
+        row.dataset.search = `${activity.name} ${activity.category.label} ${activity.remarks}`.toLowerCase();
+        row.style.setProperty("--bar-color", activity.category.color);
+        row.style.setProperty("--bar-glow", `${activity.category.color}42`);
+
+        const activityCell = createDiv("activity-cell");
+        const marker = createDiv("activity-marker");
+        const copy = createDiv("activity-copy");
+        const name = createDiv("activity-name", activity.name);
+
+        const bounds = getActivityBounds(activity);
+        const metaParts = [activity.category.label, `${formatDate(bounds.start)} → ${formatDate(bounds.end)}`];
+        if (activity.remarks) metaParts.push(activity.remarks);
+        const meta = createDiv("activity-meta", metaParts.join(" · "));
+
+        copy.append(name, meta);
+        activityCell.append(marker, copy);
+        row.appendChild(activityCell);
+
+        for (const day of days) {
+          const cell = createDiv("timeline-day");
+          if ([0, 6].includes(day.getDay())) cell.classList.add("weekend");
+          if (isSameDay(day, today)) cell.classList.add("today");
+
+          const segmentState = daySegmentState(activity, day);
+          if (segmentState.active) {
+            cell.classList.add("active");
+            if (segmentState.start) cell.classList.add("segment-start");
+            if (segmentState.end) cell.classList.add("segment-end");
+            cell.title = `${activity.name}\n${formatDate(segmentState.segment.start)} → ${formatDate(segmentState.segment.end)}${activity.remarks ? `\n${activity.remarks}` : ""}`;
+          } else {
+            cell.title = formatDate(day);
+          }
+
+          row.appendChild(cell);
+        }
+
+        el.timelineRoot.appendChild(row);
+      }
+
+      renderStats(state.activities);
+      renderLegend(state.activities);
+    }
+
+    function filterActivities(activities, query) {
+      const q = String(query || "").trim().toLowerCase();
+      if (!q) return activities;
+      return activities.filter(item =>
+        `${item.name} ${item.category.label} ${item.remarks}`.toLowerCase().includes(q)
+      );
+    }
+
+    /* =========================================================
+       SYNC STATUS
+       ========================================================= */
+    function setSyncStatus(mode, message, detail = "") {
+      el.syncStatus.classList.remove("loading", "error");
+      if (mode) el.syncStatus.classList.add(mode);
+      el.syncStatusText.textContent = message;
+      if (detail) el.syncTime.textContent = detail;
+    }
+
+    function showNotice(message) {
+      el.notice.textContent = message;
+      el.notice.classList.toggle("show", Boolean(message));
+    }
+
+    function markSuccessfulSync() {
+      state.lastSuccessfulSync = new Date();
+      setSyncStatus(
+        "",
+        "Live Sync",
+        `Last updated ${new Intl.DateTimeFormat("en-GB", {
+          day: "2-digit",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        }).format(state.lastSuccessfulSync)}`
+      );
+      showNotice("");
+    }
+
+    function markSyncError(error) {
+      const lastSyncText = state.lastSuccessfulSync
+        ? `Last good sync: ${state.lastSuccessfulSync.toLocaleTimeString("en-GB")}. `
+        : "";
+
+      setSyncStatus("error", "Sync Issue", `${lastSyncText}Check Google Sheet access / column headers.`);
+      showNotice(
+        `Google Sheet data could not be read correctly. ${error.message} ` +
+        `For GitHub Pages, keep the sheet read-only and share it as “Anyone with the link – Viewer”. ` +
+        `Recommended columns: Activity | Start Date | End Date.`
+      );
+
+      if (!state.activities.length) {
+        renderTimeline();
+      }
+    }
+
+    /* =========================================================
+       GOOGLE VISUALIZATION JSONP FEED
+       No API key and no credentials are stored in GitHub.
+       ========================================================= */
+    window.__sheetFeed = function __sheetFeed(response) {
+      clearTimeout(state.loadingTimeout);
+
+      try {
+        const activities = parseSheetResponse(response);
+        state.activities = activities;
+        renderTimeline();
+        markSuccessfulSync();
+      } catch (error) {
+        console.error(error);
+        markSyncError(error);
+      }
+    };
+
+    function loadSheet() {
+      setSyncStatus("loading", "Refreshing", state.lastSuccessfulSync ? el.syncTime.textContent : "Reading Google Sheet…");
+
+      const previous = document.getElementById("google-sheet-feed");
+      if (previous) previous.remove();
+
+      const script = document.createElement("script");
+      script.id = "google-sheet-feed";
+
+      const tqx = encodeURIComponent("out:json;responseHandler:__sheetFeed");
+      script.src =
+        `https://docs.google.com/spreadsheets/d/${encodeURIComponent(CONFIG.SPREADSHEET_ID)}` +
+        `/gviz/tq?gid=${encodeURIComponent(CONFIG.SHEET_GID)}` +
+        `&headers=${CONFIG.HEADER_ROWS}` +
+        `&tqx=${tqx}` +
+        `&_=${Date.now()}`;
+
+      script.onerror = () => {
+        clearTimeout(state.loadingTimeout);
+        markSyncError(new Error("The Google Sheets feed was blocked or is not public."));
+      };
+
+      state.loadingTimeout = setTimeout(() => {
+        markSyncError(new Error("The Google Sheets feed did not respond."));
+      }, 12_000);
+
+      document.head.appendChild(script);
+    }
+
+    /* =========================================================
+       CONTROLS
+       ========================================================= */
+    function scrollToDate(date) {
+      const target = el.timelineRoot.querySelector(`.day-cell[data-date="${dateKey(date)}"]`);
+      if (!target) {
+        el.timelineScroll.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      const left = Math.max(0, target.offsetLeft - el.timelineScroll.clientWidth * 0.5);
+      el.timelineScroll.scrollTo({ left, behavior: "smooth" });
+    }
+
+    function goToToday() {
+      const today = stripTime(new Date());
+      const start = parseISODateOnly(CONFIG.TIMELINE_START);
+      const end = parseISODateOnly(CONFIG.TIMELINE_END);
+      scrollToDate(clampDate(today, start, end));
+    }
+
+    function setDensity(mode) {
+      if (mode === "compact") {
+        document.documentElement.style.setProperty("--day-width", window.innerWidth <= 640 ? "32px" : "35px");
+        document.documentElement.style.setProperty("--row-height", window.innerWidth <= 640 ? "46px" : "48px");
+      } else {
+        document.documentElement.style.removeProperty("--day-width");
+        document.documentElement.style.removeProperty("--row-height");
+      }
+    }
+
+    el.searchInput.addEventListener("input", renderTimeline);
+    el.refreshBtn.addEventListener("click", loadSheet);
+    el.todayBtn.addEventListener("click", goToToday);
+    el.compactBtn.addEventListener("click", () => setDensity("compact"));
+    el.fitBtn.addEventListener("click", () => setDensity("normal"));
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && state.lastSuccessfulSync) {
+        const age = Date.now() - state.lastSuccessfulSync.getTime();
+        if (age > CONFIG.AUTO_REFRESH_MS) loadSheet();
+      }
+    });
+
+    window.addEventListener("focus", () => {
+      if (!state.lastSuccessfulSync || Date.now() - state.lastSuccessfulSync.getTime() > CONFIG.AUTO_REFRESH_MS) {
+        loadSheet();
+      }
+    });
+
+    /* =========================================================
+       START
+       ========================================================= */
+    state.days = buildTimelineDays();
+    document.documentElement.style.setProperty("--day-count", String(state.days.length));
+
+    loadSheet();
+    state.refreshTimer = setInterval(loadSheet, CONFIG.AUTO_REFRESH_MS);
+  </script>
+</body>
+</html>
