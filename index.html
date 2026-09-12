@@ -359,7 +359,7 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   EPTW
+   EPTW HEADER
 ========================================================= */
 
 .eptw-section {
@@ -440,7 +440,7 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   RULE
+   PTW RULE
 ========================================================= */
 
 .ptw-rule-box {
@@ -484,11 +484,25 @@ a.site-item:hover::after {
     border: 1px solid var(--soft-border);
 }
 
-.eptw-table col.location-col { width: 10%; }
-.eptw-table col.number-col { width: 11%; }
-.eptw-table col.status-col { width: 15%; }
-.eptw-table col.validity-col { width: 27%; }
-.eptw-table col.description-col { width: 37%; }
+.eptw-table col.location-col {
+    width: 10%;
+}
+
+.eptw-table col.number-col {
+    width: 11%;
+}
+
+.eptw-table col.status-col {
+    width: 15%;
+}
+
+.eptw-table col.validity-col {
+    width: 27%;
+}
+
+.eptw-table col.description-col {
+    width: 37%;
+}
 
 .eptw-table thead th {
     padding: 13px 12px;
@@ -507,6 +521,11 @@ a.site-item:hover::after {
     border-right: none;
 }
 
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
 .category-row td {
     padding: 11px 12px;
     border-top: 1px solid var(--border);
@@ -519,6 +538,11 @@ a.site-item:hover::after {
     text-transform: uppercase;
 }
 
+
+/* =========================================================
+   DATA ROW
+========================================================= */
+
 .ptw-data-row td {
     padding: 14px 12px;
     border-right: 1px solid var(--soft-border);
@@ -529,6 +553,11 @@ a.site-item:hover::after {
 .ptw-data-row td:last-child {
     border-right: none;
 }
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
 
 .location-merged {
     vertical-align: top !important;
@@ -546,6 +575,11 @@ a.site-item:hover::after {
     letter-spacing: -.025em;
     text-transform: uppercase;
 }
+
+
+/* =========================================================
+   PTW NUMBER
+========================================================= */
 
 .ptw-number {
     display: inline-block;
@@ -571,6 +605,11 @@ a.site-item:hover::after {
     opacity: 1;
 }
 
+
+/* =========================================================
+   STATUS
+========================================================= */
+
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -593,17 +632,32 @@ a.site-item:hover::after {
     text-transform: uppercase;
 }
 
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
 .ptw-data-row.is-active .status-badge {
     background: var(--green);
     border-color: rgba(5,5,5,.35);
     color: var(--black);
 }
 
+
+/* =========================================================
+   UPCOMING
+========================================================= */
+
 .ptw-data-row.is-upcoming .status-badge {
     border-style: dashed;
     background: transparent;
     color: var(--black);
 }
+
+
+/* =========================================================
+   WARNINGS
+========================================================= */
 
 .ptw-data-row.is-next-last {
     box-shadow: inset 6px 0 0 var(--red);
@@ -640,6 +694,11 @@ a.site-item:hover::after {
     animation: redBlockFlash .75s infinite;
 }
 
+
+/* =========================================================
+   INVALID
+========================================================= */
+
 .ptw-data-row.is-shift-invalid {
     box-shadow: inset 8px 0 0 var(--red-dark);
     background: var(--red-soft);
@@ -657,6 +716,11 @@ a.site-item:hover::after {
     color: #fff;
     font-weight: 900;
 }
+
+
+/* =========================================================
+   EXPIRED
+========================================================= */
 
 .ptw-data-row.is-expired {
     opacity: .46;
@@ -682,31 +746,49 @@ a.site-item:hover::after {
     color: var(--bg);
 }
 
+
+/* =========================================================
+   FLASH
+========================================================= */
+
 @keyframes redFlash {
-    0%,45% {
+
+    0%,
+    45% {
         background: var(--red);
         color: #fff;
         opacity: 1;
     }
 
-    50%,100% {
+    50%,
+    100% {
         background: transparent;
         color: var(--red);
         opacity: .38;
     }
+
 }
 
 @keyframes redBlockFlash {
-    0%,45% {
+
+    0%,
+    45% {
         background: var(--red);
         color: #fff;
     }
 
-    50%,100% {
+    50%,
+    100% {
         background: rgba(208,0,0,.08);
         color: var(--red);
     }
+
 }
+
+
+/* =========================================================
+   VALIDITY
+========================================================= */
 
 .validity-label {
     display: block;
@@ -746,6 +828,11 @@ a.site-item:hover::after {
     color: rgba(5,5,5,.55);
     text-transform: uppercase;
 }
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .description-text {
     font-size: 9px;
@@ -1082,7 +1169,10 @@ a.site-item:hover::after {
    SHORT LAPTOP
 ========================================================= */
 
-@media (max-height: 800px) and (min-width: 801px) {
+@media
+(max-height: 800px)
+and
+(min-width: 801px) {
 
     :root {
         --outer-margin: 20px;
@@ -1103,7 +1193,8 @@ a.site-item:hover::after {
    MOBILE
 ========================================================= */
 
-@media (max-width: 800px) {
+@media
+(max-width: 800px) {
 
     :root {
         --outer-margin: 12px;
@@ -1319,7 +1410,8 @@ a.site-item:hover::after {
    SMALL PHONE
 ========================================================= */
 
-@media (max-width: 480px) {
+@media
+(max-width: 480px) {
 
     :root {
         --outer-margin: 8px;
@@ -1404,7 +1496,7 @@ a.site-item:hover::after {
 
 
 <!-- =========================================================
-     TOP
+     TOP SECTION
 ========================================================= -->
 
 <div class="top-section-header">
@@ -1422,6 +1514,10 @@ a.site-item:hover::after {
 
 <section class="top-columns">
 
+
+<!-- =========================================================
+     MAIN SITE
+========================================================= -->
 
 <div class="top-column main-site-column">
 
@@ -1518,6 +1614,10 @@ a.site-item:hover::after {
 
 
 
+<!-- =========================================================
+     ACTIVE PTW
+========================================================= -->
+
 <div class="top-column">
 
 
@@ -1601,6 +1701,7 @@ a.site-item:hover::after {
 
 <div class="shift-guide">
 
+
     <div class="shift-guide-item">
 
         <span class="shift-guide-label">
@@ -1642,6 +1743,7 @@ a.site-item:hover::after {
 
     </div>
 
+
 </div>
 
 
@@ -1668,7 +1770,9 @@ a.site-item:hover::after {
 
 <div class="eptw-table-container">
 
+
 <table class="eptw-table">
+
 
 <colgroup>
 
@@ -1684,11 +1788,21 @@ a.site-item:hover::after {
 <thead>
 
 <tr>
+
     <th>LOCATION</th>
+
     <th>EPTW NO.</th>
+
     <th>STATUS</th>
-    <th>PTW VALIDITY / LAST USABLE SHIFT</th>
-    <th>DESCRIPTION</th>
+
+    <th>
+        PTW VALIDITY / LAST USABLE SHIFT
+    </th>
+
+    <th>
+        DESCRIPTION
+    </th>
+
 </tr>
 
 </thead>
@@ -1702,9 +1816,106 @@ a.site-item:hover::after {
 ========================================================= -->
 
 <tr class="category-row">
+
     <td colspan="5">
         PIPELINE PRE-COMMISSIONING
     </td>
+
+</tr>
+
+
+
+<!-- =========================================================
+     GPS 0155325
+========================================================= -->
+
+<tr
+    class="ptw-data-row"
+    data-location="GPS"
+    data-activity="PIPELINE PRE-COMMISSIONING"
+    data-start="2026-09-10T08:00:00+08:00"
+    data-end="2026-09-17T05:59:00+08:00"
+>
+
+<td
+    class="location-merged"
+    rowspan="5"
+>
+
+    <div class="location-name">
+        GPS
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=6bbd51b0-d19c-41b3-ae1a-a0add1ce7312"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-number="EPTW 0155325"
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
+    >
+        0155325
+    </a>
+
+</td>
+
+
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+        10 SEP 2026 08:00 AM -
+        17 SEP 2026 05:59 AM
+    </div>
+
+    <div class="last-usable">
+
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
+    </div>
+
+    <div class="expiry-rule-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="DESCRIPTION">
+
+    <div class="description-text">
+        KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
+    </div>
+
+</td>
+
 </tr>
 
 
@@ -1718,15 +1929,6 @@ a.site-item:hover::after {
     data-start="2026-09-03T14:33:00+08:00"
     data-end="2026-09-10T05:59:00+08:00"
 >
-
-<td class="location-merged" rowspan="4">
-
-    <div class="location-name">
-        GPS
-    </div>
-
-</td>
-
 
 <td data-label="EPTW NO.">
 
@@ -1834,13 +2036,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -1898,13 +2107,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -1962,13 +2178,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -1976,6 +2199,101 @@ a.site-item:hover::after {
 
     <div class="description-text">
         KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION
+    </div>
+
+</td>
+
+</tr>
+
+
+
+<!-- =========================================================
+     GPP4 0155323
+========================================================= -->
+
+<tr
+    class="ptw-data-row"
+    data-location="GPP4"
+    data-activity="PIPELINE PRE-COMMISSIONING"
+    data-start="2026-09-10T08:00:00+08:00"
+    data-end="2026-09-17T05:59:00+08:00"
+>
+
+<td
+    class="location-merged"
+    rowspan="5"
+>
+
+    <div class="location-name">
+        GPP4
+    </div>
+
+</td>
+
+
+<td data-label="EPTW NO.">
+
+    <a
+        class="ptw-number hover-detail"
+        href="https://ptw.petronas.com/Ptw/Apply?applicationId=1f4dda96-6551-45c2-a44a-a20aebd85db2"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-number="EPTW 0155323"
+        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
+    >
+        0155323
+    </a>
+
+</td>
+
+
+<td data-label="STATUS">
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
+
+    <div class="validity-value">
+        10 SEP 2026 08:00 AM -
+        17 SEP 2026 05:59 AM
+    </div>
+
+    <div class="last-usable">
+
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
+    </div>
+
+    <div class="expiry-rule-note">
+        --
+    </div>
+
+</td>
+
+
+<td data-label="DESCRIPTION">
+
+    <div class="description-text">
+        KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
     </div>
 
 </td>
@@ -1993,15 +2311,6 @@ a.site-item:hover::after {
     data-start="2026-09-03T11:49:00+08:00"
     data-end="2026-09-10T05:59:00+08:00"
 >
-
-<td class="location-merged" rowspan="4">
-
-    <div class="location-name">
-        GPP4
-    </div>
-
-</td>
-
 
 <td data-label="EPTW NO.">
 
@@ -2035,13 +2344,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -2099,13 +2415,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -2163,13 +2486,20 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
+
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-        <div class="last-usable-value">--</div>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
@@ -2185,9 +2515,7 @@ a.site-item:hover::after {
 
 
 
-<!-- =========================================================
-     GPP4 0149403 — LINK UPDATED
-========================================================= -->
+<!-- GPP4 0149403 -->
 
 <tr
     class="ptw-data-row"
@@ -2212,12 +2540,10 @@ a.site-item:hover::after {
 
 </td>
 
-
 <td data-label="STATUS">
     <span class="status-badge">CHECKING</span>
     <div class="status-note">--</div>
 </td>
-
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
@@ -2248,7 +2574,6 @@ a.site-item:hover::after {
 
 </td>
 
-
 <td data-label="DESCRIPTION">
 
     <div class="description-text">
@@ -2266,9 +2591,11 @@ a.site-item:hover::after {
 ========================================================= -->
 
 <tr class="category-row">
+
     <td colspan="5">
         TOWER LIGHT
     </td>
+
 </tr>
 
 
@@ -2283,7 +2610,10 @@ a.site-item:hover::after {
     data-end="2026-09-06T17:59:00+08:00"
 >
 
-<td class="location-merged" rowspan="3">
+<td
+    class="location-merged"
+    rowspan="3"
+>
 
     <div class="location-name">
         GPS
@@ -2309,8 +2639,15 @@ a.site-item:hover::after {
 
 
 <td data-label="STATUS">
-    <span class="status-badge">CHECKING</span>
-    <div class="status-note">--</div>
+
+    <span class="status-badge">
+        CHECKING
+    </span>
+
+    <div class="status-note">
+        --
+    </div>
+
 </td>
 
 
@@ -2347,16 +2684,24 @@ a.site-item:hover::after {
 <td data-label="DESCRIPTION">
 
     <div class="description-text">
-        KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
+        KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
     </div>
 
 
     <div class="tower-equipment-box">
 
         <div class="tower-equipment-title">
-            <div>GPS TOWER LIGHT</div>
-            <div>EXPIRY DATE</div>
+
+            <div>
+                GPS TOWER LIGHT
+            </div>
+
+            <div>
+                EXPIRY DATE
+            </div>
+
         </div>
+
 
         <div class="tower-equipment-row">
             <div class="tower-equipment-name">MCWELL 2666</div>
@@ -2423,7 +2768,9 @@ a.site-item:hover::after {
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-    <span class="validity-label">PTW VALIDITY</span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
     <div class="validity-value">
         22 AUG 2026 07:00 PM -
@@ -2431,18 +2778,27 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
-        <span class="validity-label">LAST FULLY USABLE SHIFT</span>
-        <div class="last-usable-value">--</div>
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
 <td data-label="DESCRIPTION">
+
     <div class="description-text">
         KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION
     </div>
+
 </td>
 
 </tr>
@@ -2481,7 +2837,9 @@ a.site-item:hover::after {
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-    <span class="validity-label">PTW VALIDITY</span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
     <div class="validity-value">
         15 AUG 2026 09:07 PM -
@@ -2489,18 +2847,27 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
-        <span class="validity-label">LAST FULLY USABLE SHIFT</span>
-        <div class="last-usable-value">--</div>
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
 <td data-label="DESCRIPTION">
+
     <div class="description-text">
         GPS TOWER LIGHT — OLD EPTW RECORD
     </div>
+
 </td>
 
 </tr>
@@ -2517,7 +2884,10 @@ a.site-item:hover::after {
     data-end="2026-09-06T17:59:00+08:00"
 >
 
-<td class="location-merged" rowspan="3">
+<td
+    class="location-merged"
+    rowspan="3"
+>
 
     <div class="location-name">
         GPP4
@@ -2558,18 +2928,29 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
-        <span class="validity-label">LAST FULLY USABLE SHIFT</span>
-        <div class="last-usable-value">--</div>
+
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
 <td data-label="DESCRIPTION">
+
     <div class="description-text">
-        KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION
+        KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION
     </div>
+
 </td>
 
 </tr>
@@ -2608,7 +2989,9 @@ a.site-item:hover::after {
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-    <span class="validity-label">PTW VALIDITY</span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
     <div class="validity-value">
         21 AUG 2026 09:31 PM -
@@ -2616,18 +2999,29 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
-        <span class="validity-label">LAST FULLY USABLE SHIFT</span>
-        <div class="last-usable-value">--</div>
+
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
 <td data-label="DESCRIPTION">
+
     <div class="description-text">
         KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
     </div>
+
 </td>
 
 </tr>
@@ -2666,7 +3060,9 @@ a.site-item:hover::after {
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
-    <span class="validity-label">PTW VALIDITY</span>
+    <span class="validity-label">
+        PTW VALIDITY
+    </span>
 
     <div class="validity-value">
         15 AUG 2026 08:03 PM -
@@ -2674,18 +3070,29 @@ a.site-item:hover::after {
     </div>
 
     <div class="last-usable">
-        <span class="validity-label">LAST FULLY USABLE SHIFT</span>
-        <div class="last-usable-value">--</div>
+
+        <span class="validity-label">
+            LAST FULLY USABLE SHIFT
+        </span>
+
+        <div class="last-usable-value">
+            --
+        </div>
+
     </div>
 
-    <div class="expiry-rule-note">--</div>
+    <div class="expiry-rule-note">
+        --
+    </div>
 
 </td>
 
 <td data-label="DESCRIPTION">
+
     <div class="description-text">
         KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION.
     </div>
+
 </td>
 
 </tr>
@@ -2719,7 +3126,10 @@ a.site-item:hover::after {
     data-vec-id="0054173"
 >
 
-<td class="location-merged" rowspan="4">
+<td
+    class="location-merged"
+    rowspan="4"
+>
 
     <div class="location-name">
         GPS
@@ -2778,6 +3188,7 @@ a.site-item:hover::after {
     <div class="expiry-rule-note">
         --
     </div>
+
 
 
     <div class="vec-dependency">
@@ -3048,6 +3459,7 @@ a.site-item:hover::after {
 
     <div class="vec-dependency">
 
+
         <div class="vec-dependency-title">
             MANDATORY ATTACHED VEC
         </div>
@@ -3093,6 +3505,7 @@ a.site-item:hover::after {
         <div class="effective-validity">
             VEHICLE EPTW CAN ONLY BE USED WHILE BOTH EPTW 0152051 AND VEC 0053238 ARE VALID.
         </div>
+
 
     </div>
 
@@ -3179,6 +3592,7 @@ a.site-item:hover::after {
 
     <div class="vec-dependency">
 
+
         <div class="vec-dependency-title">
             MANDATORY ATTACHED VEC
         </div>
@@ -3225,6 +3639,7 @@ a.site-item:hover::after {
             OLD VEHICLE EPTW / VEC RETAINED FOR SAFEKEEPING.
         </div>
 
+
     </div>
 
 
@@ -3246,6 +3661,7 @@ a.site-item:hover::after {
 
 </table>
 
+
 </div>
 
 
@@ -3255,6 +3671,7 @@ a.site-item:hover::after {
 ========================================================= -->
 
 <div class="ejha-bottom-section">
+
 
     <div class="ejha-bottom-title">
         EJHA NO.
@@ -3286,7 +3703,9 @@ a.site-item:hover::after {
 
         </div>
 
+
     </div>
+
 
 </div>
 
@@ -3347,11 +3766,17 @@ const MONTHS = [
 
 
 function two(value) {
-    return String(value).padStart(2, "0");
+
+    return String(value).padStart(
+        2,
+        "0"
+    );
+
 }
 
 
 function formatDate(date) {
+
     return (
         two(date.getDate()) +
         " " +
@@ -3359,24 +3784,29 @@ function formatDate(date) {
         " " +
         date.getFullYear()
     );
+
 }
 
 
 function formatTime(date) {
+
     return (
         two(date.getHours()) +
         ":" +
         two(date.getMinutes())
     );
+
 }
 
 
 function formatDateTime(date) {
+
     return (
         formatDate(date) +
         " " +
         formatTime(date)
     );
+
 }
 
 
@@ -3387,47 +3817,108 @@ function formatDateTime(date) {
 
 function getShift(dateInput) {
 
-    const date = new Date(dateInput);
-    const hour = date.getHours();
+    const date =
+        new Date(dateInput);
 
-    let start = new Date(date);
-    let end = new Date(date);
+
+    const hour =
+        date.getHours();
+
+
+    let start =
+        new Date(date);
+
+
+    let end =
+        new Date(date);
+
+
     let type;
 
 
-    if (hour >= 7 && hour < 19) {
+    if (
+        hour >= 7 &&
+        hour < 19
+    ) {
 
-        type = "DAY SHIFT";
+        type =
+            "DAY SHIFT";
 
-        start.setHours(7,0,0,0);
-        end.setHours(18,59,0,0);
+
+        start.setHours(
+            7,
+            0,
+            0,
+            0
+        );
+
+
+        end.setHours(
+            18,
+            59,
+            0,
+            0
+        );
 
     }
 
-    else if (hour >= 19) {
 
-        type = "NIGHT SHIFT";
+    else if (
+        hour >= 19
+    ) {
 
-        start.setHours(19,0,0,0);
+        type =
+            "NIGHT SHIFT";
+
+
+        start.setHours(
+            19,
+            0,
+            0,
+            0
+        );
+
 
         end.setDate(
             end.getDate() + 1
         );
 
-        end.setHours(6,59,0,0);
+
+        end.setHours(
+            6,
+            59,
+            0,
+            0
+        );
 
     }
 
+
     else {
 
-        type = "NIGHT SHIFT";
+        type =
+            "NIGHT SHIFT";
+
 
         start.setDate(
             start.getDate() - 1
         );
 
-        start.setHours(19,0,0,0);
-        end.setHours(6,59,0,0);
+
+        start.setHours(
+            19,
+            0,
+            0,
+            0
+        );
+
+
+        end.setHours(
+            6,
+            59,
+            0,
+            0
+        );
 
     }
 
@@ -3449,10 +3940,12 @@ function getShift(dateInput) {
 function getNextShift(shift) {
 
     return getShift(
+
         new Date(
             shift.end.getTime() +
             61000
         )
+
     );
 
 }
@@ -3461,16 +3954,21 @@ function getNextShift(shift) {
 function getPreviousShift(shift) {
 
     return getShift(
+
         new Date(
             shift.start.getTime() -
             61000
         )
+
     );
 
 }
 
 
-function sameShift(shiftA, shiftB) {
+function sameShift(
+    shiftA,
+    shiftB
+) {
 
     return (
         shiftA.start.getTime() ===
@@ -3482,13 +3980,17 @@ function sameShift(shiftA, shiftB) {
 
 
 /* =========================================================
-   FULL SHIFT
+   FULL SHIFT COVERAGE
 ========================================================= */
 
-function permitCoversFullExpiryShift(permitEnd) {
+function permitCoversFullExpiryShift(
+    permitEnd
+) {
 
     const expiryShift =
-        getShift(permitEnd);
+        getShift(
+            permitEnd
+        );
 
 
     return (
@@ -3501,13 +4003,17 @@ function permitCoversFullExpiryShift(permitEnd) {
 
 
 /* =========================================================
-   LAST USABLE SHIFT
+   LAST FULLY USABLE SHIFT
 ========================================================= */
 
-function getLastFullyUsableShift(permitEnd) {
+function getLastFullyUsableShift(
+    permitEnd
+) {
 
     const expiryShift =
-        getShift(permitEnd);
+        getShift(
+            permitEnd
+        );
 
 
     if (
@@ -3530,16 +4036,23 @@ function getLastFullyUsableShift(permitEnd) {
 
 
 /* =========================================================
-   SHIFT LABEL
+   FORMAT SHIFT
 ========================================================= */
 
-function formatShiftLabel(shift) {
+function formatShiftLabel(
+    shift
+) {
 
-    if (shift.type === "DAY SHIFT") {
+    if (
+        shift.type ===
+        "DAY SHIFT"
+    ) {
 
         return (
             "DAY SHIFT · " +
-            formatDate(shift.start) +
+            formatDate(
+                shift.start
+            ) +
             " · 07:00 - 18:59"
         );
 
@@ -3548,9 +4061,13 @@ function formatShiftLabel(shift) {
 
     return (
         "NIGHT SHIFT · " +
-        formatDate(shift.start) +
+        formatDate(
+            shift.start
+        ) +
         " 19:00 - " +
-        formatDate(shift.end) +
+        formatDate(
+            shift.end
+        ) +
         " 06:59"
     );
 
@@ -3559,13 +4076,17 @@ function formatShiftLabel(shift) {
 
 
 /* =========================================================
-   EXPIRY RULE
+   EXPIRY RULE NOTE
 ========================================================= */
 
-function buildExpiryRuleNote(permitEnd) {
+function buildExpiryRuleNote(
+    permitEnd
+) {
 
     const expiryShift =
-        getShift(permitEnd);
+        getShift(
+            permitEnd
+        );
 
 
     if (
@@ -3585,7 +4106,9 @@ function buildExpiryRuleNote(permitEnd) {
 
     return (
         "EXPIRES AT " +
-        formatTime(permitEnd) +
+        formatTime(
+            permitEnd
+        ) +
         " DURING " +
         expiryShift.type +
         ". NEW PERMIT REQUIRED FOR THAT SHIFT."
@@ -3599,10 +4122,16 @@ function buildExpiryRuleNote(permitEnd) {
    REMAINING TIME
 ========================================================= */
 
-function formatRemaining(milliseconds) {
+function formatRemaining(
+    milliseconds
+) {
 
-    if (milliseconds <= 0) {
+    if (
+        milliseconds <= 0
+    ) {
+
         return "EXPIRED";
+
     }
 
 
@@ -3622,16 +4151,22 @@ function formatRemaining(milliseconds) {
 
     const hours =
         Math.floor(
-            (totalMinutes % 1440) /
+            (
+                totalMinutes %
+                1440
+            ) /
             60
         );
 
 
     const minutes =
-        totalMinutes % 60;
+        totalMinutes %
+        60;
 
 
-    if (days > 0) {
+    if (
+        days > 0
+    ) {
 
         return (
             days +
@@ -3676,7 +4211,9 @@ function updateVecStatus(
         !row.dataset.vecStart ||
         !row.dataset.vecEnd
     ) {
+
         return;
+
     }
 
 
@@ -3732,36 +4269,52 @@ function updateVecStatus(
     );
 
 
-    if (now < vecStart) {
+    if (
+        now <
+        vecStart
+    ) {
 
         vecBox.classList.add(
             "vec-upcoming"
         );
 
+
         badge.textContent =
             "VEC UPCOMING";
 
+
         note.textContent =
             "VALID FROM " +
-            formatDateTime(vecStart);
+            formatDateTime(
+                vecStart
+            );
+
 
         return;
 
     }
 
 
-    if (now > vecEnd) {
+    if (
+        now >
+        vecEnd
+    ) {
 
         vecBox.classList.add(
             "vec-expired"
         );
 
+
         badge.textContent =
             "VEC EXPIRED";
 
+
         note.textContent =
             "EXPIRED " +
-            formatDateTime(vecEnd);
+            formatDateTime(
+                vecEnd
+            );
+
 
         return;
 
@@ -3780,15 +4333,20 @@ function updateVecStatus(
             "vec-shift-invalid"
         );
 
+
         badge.textContent =
             "VEC NOT VALID FOR FULL SHIFT";
 
+
         note.textContent =
             "VEC EXPIRES AT " +
-            formatTime(vecEnd) +
+            formatTime(
+                vecEnd
+            ) +
             ". NEW VEC REQUIRED FOR THIS " +
             expiryShift.type +
             ".";
+
 
         return;
 
@@ -3806,11 +4364,14 @@ function updateVecStatus(
             "vec-last-shift"
         );
 
+
         badge.textContent =
             "VEC · FINAL USABLE SHIFT";
 
+
         note.textContent =
             "RENEW VEC NOW. THIS IS THE LAST FULL SHIFT COVERED BY THE CURRENT VEC.";
+
 
         return;
 
@@ -3828,11 +4389,14 @@ function updateVecStatus(
             "vec-next-last"
         );
 
+
         badge.textContent =
             "VEC · NEXT SHIFT = FINAL";
 
+
         note.textContent =
             "PREPARE NEW VEC. NEXT SHIFT IS THE LAST FULLY COVERED SHIFT.";
+
 
         return;
 
@@ -3860,15 +4424,20 @@ function updateVecStatus(
 
 
 /* =========================================================
-   PTW STATUS
+   UPDATE PTW STATUS
 ========================================================= */
 
 function updatePermitStatus() {
 
-    const now = new Date();
+    const now =
+        new Date();
+
 
     const currentShift =
-        getShift(now);
+        getShift(
+            now
+        );
+
 
     const nextShift =
         getNextShift(
@@ -3883,9 +4452,13 @@ function updatePermitStatus() {
 
 
     let activeCount = 0;
+
     let warningCount = 0;
+
     let invalidCount = 0;
+
     let expiredCount = 0;
+
     let upcomingCount = 0;
 
 
@@ -3905,18 +4478,24 @@ function updatePermitStatus() {
 
 
         let effectiveStart =
-            new Date(ptwStart);
+            new Date(
+                ptwStart
+            );
 
 
         let effectiveEnd =
-            new Date(ptwEnd);
+            new Date(
+                ptwEnd
+            );
 
 
-        let limitedByVec = false;
+        let limitedByVec =
+            false;
 
 
         const vecId =
-            row.dataset.vecId || "";
+            row.dataset.vecId ||
+            "";
 
 
         if (
@@ -3936,15 +4515,28 @@ function updatePermitStatus() {
                 );
 
 
-            if (vecStart > effectiveStart) {
-                effectiveStart = vecStart;
+            if (
+                vecStart >
+                effectiveStart
+            ) {
+
+                effectiveStart =
+                    vecStart;
+
             }
 
 
-            if (vecEnd < effectiveEnd) {
+            if (
+                vecEnd <
+                effectiveEnd
+            ) {
 
-                effectiveEnd = vecEnd;
-                limitedByVec = true;
+                effectiveEnd =
+                    vecEnd;
+
+
+                limitedByVec =
+                    true;
 
             }
 
@@ -4012,7 +4604,9 @@ function updatePermitStatus() {
         );
 
 
-        if (lastUsable) {
+        if (
+            lastUsable
+        ) {
 
             lastUsable.textContent =
                 formatShiftLabel(
@@ -4020,7 +4614,9 @@ function updatePermitStatus() {
                 );
 
 
-            if (limitedByVec) {
+            if (
+                limitedByVec
+            ) {
 
                 lastUsable.textContent +=
                     " · LIMITED BY VEC " +
@@ -4031,7 +4627,9 @@ function updatePermitStatus() {
         }
 
 
-        if (expiryRuleNote) {
+        if (
+            expiryRuleNote
+        ) {
 
             expiryRuleNote.textContent =
                 buildExpiryRuleNote(
@@ -4039,7 +4637,9 @@ function updatePermitStatus() {
                 );
 
 
-            if (limitedByVec) {
+            if (
+                limitedByVec
+            ) {
 
                 expiryRuleNote.textContent +=
                     " EFFECTIVE EXPIRY CONTROLLED BY VEC " +
@@ -4051,18 +4651,26 @@ function updatePermitStatus() {
         }
 
 
-        /* UPCOMING */
+        /* =================================================
+           UPCOMING
+        ================================================= */
 
-        if (now < effectiveStart) {
+        if (
+            now <
+            effectiveStart
+        ) {
 
             upcomingCount++;
+
 
             row.classList.add(
                 "is-upcoming"
             );
 
+
             statusBadge.textContent =
                 "UPCOMING";
+
 
             statusNote.textContent =
                 "VALID FROM " +
@@ -4070,14 +4678,19 @@ function updatePermitStatus() {
                     effectiveStart
                 );
 
+
             return;
 
         }
 
 
-        /* VEC EXPIRED */
+        /* =================================================
+           VEC EXPIRED WHILE EPTW STILL VALID
+        ================================================= */
 
-        if (row.dataset.vecEnd) {
+        if (
+            row.dataset.vecEnd
+        ) {
 
             const vecEnd =
                 new Date(
@@ -4086,25 +4699,33 @@ function updatePermitStatus() {
 
 
             if (
-                now > vecEnd &&
-                now <= ptwEnd
+                now >
+                vecEnd &&
+                now <=
+                ptwEnd
             ) {
 
                 invalidCount++;
+
 
                 row.classList.add(
                     "is-vec-expired"
                 );
 
+
                 statusBadge.textContent =
                     "INVALID · VEC EXPIRED";
+
 
                 statusNote.textContent =
                     "VEHICLE EPTW CANNOT BE USED. MANDATORY VEC " +
                     vecId +
                     " EXPIRED " +
-                    formatDateTime(vecEnd) +
+                    formatDateTime(
+                        vecEnd
+                    ) +
                     ".";
+
 
                 return;
 
@@ -4113,18 +4734,26 @@ function updatePermitStatus() {
         }
 
 
-        /* EXPIRED */
+        /* =================================================
+           EXPIRED
+        ================================================= */
 
-        if (now > effectiveEnd) {
+        if (
+            now >
+            effectiveEnd
+        ) {
 
             expiredCount++;
+
 
             row.classList.add(
                 "is-expired"
             );
 
+
             statusBadge.textContent =
                 "EXPIRED · ARCHIVE";
+
 
             statusNote.textContent =
                 limitedByVec
@@ -4135,12 +4764,15 @@ function updatePermitStatus() {
                 :
                 "OLD PTW RETAINED FOR SAFEKEEPING.";
 
+
             return;
 
         }
 
 
-        /* SHIFT INVALID */
+        /* =================================================
+           CURRENT SHIFT NOT FULLY COVERED
+        ================================================= */
 
         if (
             !coversExpiryShift &&
@@ -4152,12 +4784,15 @@ function updatePermitStatus() {
 
             invalidCount++;
 
+
             row.classList.add(
                 "is-shift-invalid"
             );
 
+
             statusBadge.textContent =
                 "NOT VALID FOR FULL SHIFT";
+
 
             statusNote.textContent =
                 "PERMIT EXPIRES AT " +
@@ -4168,12 +4803,15 @@ function updatePermitStatus() {
                 expiryShift.type +
                 " ENDS. NEW PERMIT SHOULD BE ACTIVE FOR THIS SHIFT.";
 
+
             return;
 
         }
 
 
-        /* FINAL SHIFT */
+        /* =================================================
+           FINAL USABLE SHIFT
+        ================================================= */
 
         if (
             sameShift(
@@ -4184,22 +4822,28 @@ function updatePermitStatus() {
 
             warningCount++;
 
+
             row.classList.add(
                 "is-last-shift"
             );
 
+
             statusBadge.textContent =
                 "FINAL USABLE SHIFT";
 
+
             statusNote.textContent =
                 "THIS IS THE LAST FULL SHIFT COVERED BY THIS PERMIT. ACTIVATE THE NEW PERMIT FOR THE NEXT SHIFT.";
+
 
             return;
 
         }
 
 
-        /* NEXT SHIFT FINAL */
+        /* =================================================
+           NEXT SHIFT = FINAL
+        ================================================= */
 
         if (
             sameShift(
@@ -4210,31 +4854,40 @@ function updatePermitStatus() {
 
             warningCount++;
 
+
             row.classList.add(
                 "is-next-last"
             );
 
+
             statusBadge.textContent =
                 "NEXT SHIFT = FINAL";
 
+
             statusNote.textContent =
                 "RENEWAL WARNING. NEXT SHIFT IS THE LAST FULLY USABLE SHIFT. PREPARE NEW PERMIT.";
+
 
             return;
 
         }
 
 
-        /* ACTIVE */
+        /* =================================================
+           ACTIVE
+        ================================================= */
 
         activeCount++;
+
 
         row.classList.add(
             "is-active"
         );
 
+
         statusBadge.textContent =
             "ACTIVE";
+
 
         statusNote.textContent =
             formatRemaining(
@@ -4323,10 +4976,13 @@ function updateActivePtwSummary() {
         activeRows.length;
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+        "";
 
 
-    if (activeRows.length === 0) {
+    if (
+        activeRows.length === 0
+    ) {
 
         list.innerHTML =
             `
@@ -4334,6 +4990,7 @@ function updateActivePtwSummary() {
                 NO ACTIVE PTW
             </div>
             `;
+
 
         return;
 
@@ -4344,11 +5001,13 @@ function updateActivePtwSummary() {
 
 
         const location =
-            row.dataset.location || "";
+            row.dataset.location ||
+            "";
 
 
         const activity =
-            row.dataset.activity || "EPTW";
+            row.dataset.activity ||
+            "EPTW";
 
 
         const link =
@@ -4357,8 +5016,12 @@ function updateActivePtwSummary() {
             );
 
 
-        if (!link) {
+        if (
+            !link
+        ) {
+
             return;
+
         }
 
 
@@ -4367,11 +5030,15 @@ function updateActivePtwSummary() {
 
 
         const href =
-            link.getAttribute("href");
+            link.getAttribute(
+                "href"
+            );
 
 
         const summaryItem =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
 
 
         summaryItem.className =
@@ -4422,22 +5089,29 @@ function updateActivePtwSummary() {
 
 function updateClock() {
 
-    const now = new Date();
+    const now =
+        new Date();
+
 
     const shift =
-        getShift(now);
+        getShift(
+            now
+        );
 
 
     document.getElementById(
         "liveClock"
     ).textContent =
-        formatDateTime(now);
+        formatDateTime(
+            now
+        );
 
 
     document.getElementById(
         "currentShift"
     ).textContent =
-        shift.type === "DAY SHIFT"
+        shift.type ===
+        "DAY SHIFT"
         ?
         "CURRENT SHIFT: DAY · 07:00 - 18:59"
         :
@@ -4478,11 +5152,13 @@ const tooltipDescription =
 function showTooltip(item) {
 
     tooltipNumber.textContent =
-        item.dataset.number || "";
+        item.dataset.number ||
+        "";
 
 
     tooltipDescription.textContent =
-        item.dataset.description || "";
+        item.dataset.description ||
+        "";
 
 
     tooltip.classList.add(
@@ -4501,13 +5177,19 @@ function hideTooltip() {
 }
 
 
-function positionTooltip(x, y) {
+function positionTooltip(
+    x,
+    y
+) {
 
     const padding = 20;
+
     const offset = 22;
+
 
     const width =
         tooltip.offsetWidth;
+
 
     const height =
         tooltip.offsetHeight;
@@ -4515,6 +5197,7 @@ function positionTooltip(x, y) {
 
     let left =
         x + offset;
+
 
     let top =
         y + offset;
@@ -4548,13 +5231,25 @@ function positionTooltip(x, y) {
     }
 
 
-    if (left < padding) {
-        left = padding;
+    if (
+        left <
+        padding
+    ) {
+
+        left =
+            padding;
+
     }
 
 
-    if (top < padding) {
-        top = padding;
+    if (
+        top <
+        padding
+    ) {
+
+        top =
+            padding;
+
     }
 
 
@@ -4575,7 +5270,10 @@ hoverItems.forEach(item => {
         "mouseenter",
         event => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
+
 
             positionTooltip(
                 event.clientX,
@@ -4609,7 +5307,9 @@ hoverItems.forEach(item => {
         "focus",
         () => {
 
-            showTooltip(item);
+            showTooltip(
+                item
+            );
 
 
             const rect =
@@ -4647,8 +5347,13 @@ document.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Escape") {
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
             hideTooltip();
+
         }
 
     }
@@ -4663,20 +5368,23 @@ document.addEventListener(
 function updateDashboard() {
 
     updateClock();
+
     updatePermitStatus();
 
 }
 
 
+
 /* =========================================================
-   INITIAL RUN
+   INITIAL
 ========================================================= */
 
 updateDashboard();
 
 
+
 /* =========================================================
-   AUTO REFRESH 30 SEC
+   AUTO REFRESH EVERY 30 SEC
 ========================================================= */
 
 setInterval(
@@ -4688,4 +5396,5 @@ setInterval(
 
 
 </body>
+
 </html>
