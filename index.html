@@ -521,11 +521,6 @@ a.site-item:hover::after {
     border-right: none;
 }
 
-
-/* =========================================================
-   CATEGORY
-========================================================= */
-
 .category-row td {
     padding: 11px 12px;
     border-top: 1px solid var(--border);
@@ -537,11 +532,6 @@ a.site-item:hover::after {
     letter-spacing: .04em;
     text-transform: uppercase;
 }
-
-
-/* =========================================================
-   DATA ROW
-========================================================= */
 
 .ptw-data-row td {
     padding: 14px 12px;
@@ -632,32 +622,17 @@ a.site-item:hover::after {
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   ACTIVE
-========================================================= */
-
 .ptw-data-row.is-active .status-badge {
     background: var(--green);
     border-color: rgba(5,5,5,.35);
     color: var(--black);
 }
 
-
-/* =========================================================
-   UPCOMING
-========================================================= */
-
 .ptw-data-row.is-upcoming .status-badge {
     border-style: dashed;
     background: transparent;
     color: var(--black);
 }
-
-
-/* =========================================================
-   WARNINGS
-========================================================= */
 
 .ptw-data-row.is-next-last {
     box-shadow: inset 6px 0 0 var(--red);
@@ -694,11 +669,6 @@ a.site-item:hover::after {
     animation: redBlockFlash .75s infinite;
 }
 
-
-/* =========================================================
-   INVALID
-========================================================= */
-
 .ptw-data-row.is-shift-invalid {
     box-shadow: inset 8px 0 0 var(--red-dark);
     background: var(--red-soft);
@@ -716,11 +686,6 @@ a.site-item:hover::after {
     color: #fff;
     font-weight: 900;
 }
-
-
-/* =========================================================
-   EXPIRED
-========================================================= */
 
 .ptw-data-row.is-expired {
     opacity: .46;
@@ -745,11 +710,6 @@ a.site-item:hover::after {
     border-color: var(--black);
     color: var(--bg);
 }
-
-
-/* =========================================================
-   FLASH
-========================================================= */
 
 @keyframes redFlash {
 
@@ -828,11 +788,6 @@ a.site-item:hover::after {
     color: rgba(5,5,5,.55);
     text-transform: uppercase;
 }
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
 
 .description-text {
     font-size: 9px;
@@ -1056,7 +1011,7 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   EJHA
+   JHA / EJHA
 ========================================================= */
 
 .ejha-bottom-section {
@@ -1078,8 +1033,12 @@ a.site-item:hover::after {
     text-transform: uppercase;
 }
 
-.ejha-bottom-content {
+.ejha-bottom-item {
     padding: 18px 16px 20px;
+}
+
+.ejha-bottom-item + .ejha-bottom-item {
+    border-top: 1px solid var(--soft-border);
 }
 
 .ejha-bottom-number {
@@ -1166,7 +1125,7 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   SHORT LAPTOP
+   LAPTOP
 ========================================================= */
 
 @media
@@ -1456,7 +1415,6 @@ and
 
 <body>
 
-
 <div class="page">
 
 
@@ -1494,7 +1452,6 @@ and
 <div class="section-divider"></div>
 
 
-
 <!-- =========================================================
      TOP SECTION
 ========================================================= -->
@@ -1514,10 +1471,6 @@ and
 
 <section class="top-columns">
 
-
-<!-- =========================================================
-     MAIN SITE
-========================================================= -->
 
 <div class="top-column main-site-column">
 
@@ -1614,14 +1567,11 @@ and
 
 
 
-<!-- =========================================================
-     ACTIVE PTW
-========================================================= -->
-
 <div class="top-column">
 
 
     <div class="active-summary-box">
+
 
         <div class="active-summary-head">
 
@@ -1650,6 +1600,7 @@ and
 
         </div>
 
+
     </div>
 
 
@@ -1664,13 +1615,14 @@ and
 
 
 <!-- =========================================================
-     EPTW
+     EPTW PERMIT CONTROL
 ========================================================= -->
 
 <section class="eptw-section">
 
 
 <div class="eptw-section-head">
+
 
     <div class="eptw-section-title">
         EPTW PERMIT CONTROL
@@ -1694,6 +1646,7 @@ and
         </div>
 
     </div>
+
 
 </div>
 
@@ -1825,9 +1778,7 @@ and
 
 
 
-<!-- =========================================================
-     GPS 0155325
-========================================================= -->
+<!-- GPS 0155325 -->
 
 <tr
     class="ptw-data-row"
@@ -1945,12 +1896,10 @@ and
 
 </td>
 
-
 <td data-label="STATUS">
     <span class="status-badge">CHECKING</span>
     <div class="status-note">--</div>
 </td>
-
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
@@ -1964,23 +1913,15 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
-
 
 <td data-label="DESCRIPTION">
 
@@ -2036,20 +1977,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2107,20 +2041,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2178,20 +2105,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2239,7 +2159,7 @@ and
         target="_blank"
         rel="noopener noreferrer"
         data-number="EPTW 0155323"
-        data-description="KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
+        data-description="KREJUV-FEC:TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
     >
         0155323
     </a>
@@ -2293,7 +2213,7 @@ and
 <td data-label="DESCRIPTION">
 
     <div class="description-text">
-        KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
+        KREJUV-FEC:TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1
     </div>
 
 </td>
@@ -2344,20 +2264,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2415,20 +2328,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2486,20 +2392,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2557,20 +2456,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2637,19 +2529,10 @@ and
 
 </td>
 
-
 <td data-label="STATUS">
-
-    <span class="status-badge">
-        CHECKING
-    </span>
-
-    <div class="status-note">
-        --
-    </div>
-
+    <span class="status-badge">CHECKING</span>
+    <div class="status-note">--</div>
 </td>
-
 
 <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
@@ -2663,23 +2546,15 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
-
 
 <td data-label="DESCRIPTION">
 
@@ -2704,29 +2579,54 @@ and
 
 
         <div class="tower-equipment-row">
-            <div class="tower-equipment-name">MCWELL 2666</div>
-            <div class="tower-equipment-expiry">04 SEP 2026</div>
+            <div class="tower-equipment-name">
+                MCWELL 2666
+            </div>
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
         </div>
 
-        <div class="tower-equipment-row">
-            <div class="tower-equipment-name">ATLAS COPCO PL100114</div>
-            <div class="tower-equipment-expiry">04 SEP 2026</div>
-        </div>
 
         <div class="tower-equipment-row">
-            <div class="tower-equipment-name">ATLAS COPCO PL100108</div>
-            <div class="tower-equipment-expiry">04 SEP 2026</div>
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100114
+            </div>
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
         </div>
 
-        <div class="tower-equipment-row">
-            <div class="tower-equipment-name">ATLAS COPCO PL100254</div>
-            <div class="tower-equipment-expiry">04 SEP 2026</div>
-        </div>
 
         <div class="tower-equipment-row">
-            <div class="tower-equipment-name">ATLAS COPCO PL100158</div>
-            <div class="tower-equipment-expiry">04 SEP 2026</div>
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100108
+            </div>
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
         </div>
+
+
+        <div class="tower-equipment-row">
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100254
+            </div>
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+        </div>
+
+
+        <div class="tower-equipment-row">
+            <div class="tower-equipment-name">
+                ATLAS COPCO PL100158
+            </div>
+            <div class="tower-equipment-expiry">
+                04 SEP 2026
+            </div>
+        </div>
+
 
     </div>
 
@@ -2781,15 +2681,10 @@ and
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2850,15 +2745,10 @@ and
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2928,20 +2818,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -2999,20 +2882,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -3070,20 +2946,13 @@ and
     </div>
 
     <div class="last-usable">
-
         <span class="validity-label">
             LAST FULLY USABLE SHIFT
         </span>
-
-        <div class="last-usable-value">
-            --
-        </div>
-
+        <div class="last-usable-value">--</div>
     </div>
 
-    <div class="expiry-rule-note">
-        --
-    </div>
+    <div class="expiry-rule-note">--</div>
 
 </td>
 
@@ -3188,7 +3057,6 @@ and
     <div class="expiry-rule-note">
         --
     </div>
-
 
 
     <div class="vec-dependency">
@@ -3667,18 +3535,87 @@ and
 
 
 <!-- =========================================================
-     EJHA
+     JHA / EJHA
 ========================================================= -->
 
 <div class="ejha-bottom-section">
 
 
     <div class="ejha-bottom-title">
-        EJHA NO.
+        JHA / EJHA
     </div>
 
 
-    <div class="ejha-bottom-content">
+    <!-- =====================================================
+         JHA 0047333
+    ====================================================== -->
+
+    <div class="ejha-bottom-item">
+
+
+        <a
+            class="ejha-bottom-number hover-detail"
+            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=bb710819-21ab-43f4-99ee-ea84a54c1d3f"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-number="JHA 0047333"
+            data-description="KREJUV FEC: TO PERFORM GAUGING PLATE PIGGING, CALIPER TOOL RUN AND AIR DRYING FROM NEW NPS 10 PERMANENT LAUNCHER (FC SL-101) AT GPP4 TO NEW NPS 10 PERMANENT RECEIVER (FC SL-101) AT GPS GAS STATION"
+        >
+            0047333
+        </a>
+
+
+        <div class="ejha-bottom-description">
+
+            KREJUV FEC: TO PERFORM GAUGING PLATE PIGGING,
+            CALIPER TOOL RUN AND AIR DRYING FROM NEW NPS 10
+            PERMANENT LAUNCHER (FC SL-101) AT GPP4 TO NEW
+            NPS 10 PERMANENT RECEIVER (FC SL-101)
+            AT GPS GAS STATION
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JHA 0047365
+    ====================================================== -->
+
+    <div class="ejha-bottom-item">
+
+
+        <a
+            class="ejha-bottom-number hover-detail"
+            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=074f9c55-a97f-441f-9f04-0b425fed371f"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-number="JHA 0047365"
+            data-description="KREJUV FEC: TO PERFORM STATION PIPING LEAK TEST USING N2 AT GPP4, CH10.3, BV 13.1 & GPS GAS STATION"
+        >
+            0047365
+        </a>
+
+
+        <div class="ejha-bottom-description">
+
+            KREJUV FEC: TO PERFORM STATION PIPING LEAK TEST
+            USING N2 AT GPP4, CH10.3, BV 13.1 & GPS GAS STATION
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EXISTING EJHA 0046453
+    ====================================================== -->
+
+    <div class="ejha-bottom-item">
 
 
         <a
@@ -4651,9 +4588,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           UPCOMING
-        ================================================= */
+        /* UPCOMING */
 
         if (
             now <
@@ -4684,9 +4619,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           VEC EXPIRED WHILE EPTW STILL VALID
-        ================================================= */
+        /* VEC EXPIRED */
 
         if (
             row.dataset.vecEnd
@@ -4734,9 +4667,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           EXPIRED
-        ================================================= */
+        /* EXPIRED */
 
         if (
             now >
@@ -4770,9 +4701,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           CURRENT SHIFT NOT FULLY COVERED
-        ================================================= */
+        /* CURRENT SHIFT NOT FULLY COVERED */
 
         if (
             !coversExpiryShift &&
@@ -4809,9 +4738,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           FINAL USABLE SHIFT
-        ================================================= */
+        /* FINAL USABLE SHIFT */
 
         if (
             sameShift(
@@ -4841,9 +4768,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           NEXT SHIFT = FINAL
-        ================================================= */
+        /* NEXT SHIFT FINAL */
 
         if (
             sameShift(
@@ -4873,9 +4798,7 @@ function updatePermitStatus() {
         }
 
 
-        /* =================================================
-           ACTIVE
-        ================================================= */
+        /* ACTIVE */
 
         activeCount++;
 
