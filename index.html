@@ -34,18 +34,31 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
     --bg:#f4f1eb;
     --black:#050505;
     --border:#aaa69f;
     --soft-border:rgba(5,5,5,.10);
+
     --green:#7fd66f;
+
     --red:#d00000;
     --red-dark:#980000;
     --red-soft:rgba(208,0,0,.07);
+
     --amber:#e0a600;
+
     --outer-margin:30px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin:0;
@@ -79,6 +92,11 @@ a {
 button {
     font-family:inherit;
 }
+
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page {
     width:calc(100% - (var(--outer-margin) * 2));
@@ -145,7 +163,7 @@ button {
 
 
 /* =========================================================
-   TOP
+   TOP SECTION
 ========================================================= */
 
 .top-section-header {
@@ -193,15 +211,22 @@ button {
     width:fit-content;
     position:relative;
     margin-bottom:7px;
+
     color:var(--black);
     text-decoration:none;
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
     font-size:clamp(30px,2.45vw,47px);
     font-weight:900;
+
     line-height:.97;
     letter-spacing:-.055em;
+
     text-transform:uppercase;
-    transition:transform .18s ease,opacity .18s ease;
+
+    transition:
+        transform .18s ease,
+        opacity .18s ease;
 }
 
 a.site-item:hover {
@@ -210,12 +235,18 @@ a.site-item:hover {
 
 a.site-item::after {
     content:"↗";
+
     position:absolute;
+
     left:calc(100% + 12px);
     top:50%;
+
     transform:translateY(-50%);
+
     font-size:.34em;
+
     opacity:0;
+
     transition:opacity .18s ease;
 }
 
@@ -235,25 +266,34 @@ a.site-item:hover::after {
 .main-site-separator {
     width:100%;
     height:1px;
+
     margin:26px 0 18px;
+
     background:var(--border);
 }
 
 .major-activities-label {
     margin-bottom:15px;
+
     font-size:10px;
     font-weight:900;
+
     letter-spacing:.07em;
+
     color:rgba(5,5,5,.58);
+
     text-transform:uppercase;
 }
 
 .site-loading {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:16px;
     font-weight:900;
-    text-transform:uppercase;
+
     color:rgba(5,5,5,.40);
+
+    text-transform:uppercase;
 }
 
 
@@ -263,84 +303,140 @@ a.site-item:hover::after {
 
 .active-summary-box {
     width:100%;
+
     border:1px solid var(--soft-border);
+
     background:rgba(255,255,255,.05);
 }
 
 .active-summary-head {
     min-height:42px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:15px;
+
     padding:10px 14px;
+
     border-bottom:1px solid var(--soft-border);
 }
 
 .active-summary-title {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:10px;
     font-weight:900;
+
     letter-spacing:.07em;
+
     text-transform:uppercase;
 }
 
 .active-summary-count {
     min-width:25px;
     min-height:22px;
+
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     padding:3px 7px;
+
     background:var(--green);
+
     border:1px solid rgba(5,5,5,.25);
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:9px;
     font-weight:900;
 }
 
+.active-summary-list {
+    width:100%;
+}
+
 .active-summary-item {
     display:grid;
-    grid-template-columns:60px 92px minmax(0,1fr);
+
+    grid-template-columns:
+        60px
+        92px
+        minmax(0,1fr);
+
     align-items:center;
+
     gap:8px;
+
     min-height:45px;
+
     padding:9px 12px;
+
     color:var(--black);
+
     text-decoration:none;
+
     border-bottom:1px solid rgba(5,5,5,.08);
+
+    transition:background .15s ease;
+}
+
+.active-summary-item:last-child {
+    border-bottom:none;
+}
+
+.active-summary-item:hover {
+    background:rgba(5,5,5,.045);
 }
 
 .active-summary-location {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:11px;
     font-weight:900;
+
+    text-transform:uppercase;
 }
 
 .active-summary-number {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:13px;
     font-weight:900;
 }
 
 .active-summary-number::after {
     content:"↗";
+
     margin-left:4px;
+
     font-size:7px;
 }
 
 .active-summary-activity {
+    min-width:0;
+
     font-size:8px;
     font-weight:700;
+
     line-height:1.3;
+
     color:rgba(5,5,5,.63);
+
+    text-transform:uppercase;
 }
 
 .active-summary-empty {
     padding:16px 14px;
+
     font-size:9px;
     font-weight:700;
+
     color:rgba(5,5,5,.45);
+
+    text-transform:uppercase;
 }
 
 
@@ -348,68 +444,113 @@ a.site-item:hover::after {
    EPTW HEADER
 ========================================================= */
 
+.eptw-section {
+    width:100%;
+}
+
 .eptw-section-head {
     min-height:88px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:30px;
+
     padding:16px 22px;
+
     border-bottom:1px solid var(--border);
 }
 
 .eptw-section-title {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:clamp(24px,2vw,38px);
+
     font-weight:900;
+
     letter-spacing:-.045em;
+
+    text-transform:uppercase;
 }
 
 .eptw-live {
     display:flex;
+
     flex-direction:column;
+
     align-items:flex-end;
+
     text-align:right;
 }
 
 .live-clock {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:13px;
+
     font-weight:900;
 }
 
 .current-shift {
     margin-top:3px;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     color:rgba(5,5,5,.52);
+
+    text-transform:uppercase;
 }
 
 
 /* =========================================================
-   SYNC
+   GOOGLE SHEET SYNC
 ========================================================= */
 
 .sync-line {
     margin-top:9px;
+
     display:flex;
+
     align-items:center;
+
+    justify-content:flex-end;
+
     gap:7px;
+
     font-size:8px;
+
     font-weight:900;
+
+    letter-spacing:.055em;
+
+    text-transform:uppercase;
 }
 
 .sync-dot {
     width:7px;
     height:7px;
+
+    flex:0 0 auto;
+
     border-radius:50%;
+
     background:rgba(5,5,5,.25);
 }
 
 .sync-line.is-loading .sync-dot {
     background:var(--amber);
-    animation:syncPulse .85s infinite;
+
+    animation:
+        syncPulse
+        .85s
+        infinite;
 }
 
 .sync-line.is-ok .sync-dot {
@@ -429,8 +570,16 @@ a.site-item:hover::after {
 }
 
 @keyframes syncPulse {
-    0%,100% { opacity:.3; }
-    50% { opacity:1; }
+
+    0%,
+    100% {
+        opacity:.3;
+    }
+
+    50% {
+        opacity:1;
+    }
+
 }
 
 
@@ -440,7 +589,12 @@ a.site-item:hover::after {
 
 .shift-guide {
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
     border-bottom:1px solid var(--border);
 }
 
@@ -454,16 +608,28 @@ a.site-item:hover::after {
 
 .shift-guide-label {
     display:block;
+
     margin-bottom:4px;
+
     font-size:8px;
+
     font-weight:900;
+
     letter-spacing:.09em;
+
     color:rgba(5,5,5,.50);
+
+    text-transform:uppercase;
 }
 
 .shift-guide-value {
     font-size:11px;
+
     font-weight:900;
+
+    line-height:1.4;
+
+    text-transform:uppercase;
 }
 
 
@@ -473,58 +639,101 @@ a.site-item:hover::after {
 
 .ptw-rule-box {
     padding:13px 22px;
+
     border-bottom:1px solid var(--border);
+
     background:rgba(5,5,5,.025);
 }
 
 .ptw-rule-title {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
+    text-transform:uppercase;
 }
 
 .ptw-rule-text {
     margin-top:5px;
+
     max-width:1150px;
+
     font-size:9px;
+
     font-weight:700;
+
     line-height:1.5;
+
     color:rgba(5,5,5,.65);
+
+    text-transform:uppercase;
 }
 
 
 /* =========================================================
-   TABLE
+   EPTW TABLE
 ========================================================= */
 
 .eptw-table-container {
     padding:22px 22px 30px;
+
     overflow-x:auto;
 }
 
 .eptw-table {
     width:100%;
+
     border-collapse:collapse;
+
     table-layout:fixed;
+
     border:1px solid var(--soft-border);
 }
 
-.eptw-table col.location-col { width:10%; }
-.eptw-table col.number-col { width:11%; }
-.eptw-table col.status-col { width:15%; }
-.eptw-table col.validity-col { width:27%; }
-.eptw-table col.description-col { width:37%; }
+.eptw-table col.location-col {
+    width:10%;
+}
+
+.eptw-table col.number-col {
+    width:11%;
+}
+
+.eptw-table col.status-col {
+    width:15%;
+}
+
+.eptw-table col.validity-col {
+    width:27%;
+}
+
+.eptw-table col.description-col {
+    width:37%;
+}
 
 .eptw-table thead th {
     padding:13px 12px;
+
     border-right:1px solid var(--soft-border);
+
     border-bottom:1px solid var(--soft-border);
+
     text-align:left;
+
+    vertical-align:middle;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.08em;
+
     color:rgba(5,5,5,.58);
+
+    text-transform:uppercase;
 }
 
 .eptw-table thead th:last-child {
@@ -533,76 +742,143 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   CATEGORY / COLLAPSE
+   COLLAPSIBLE CATEGORY
 ========================================================= */
 
 .category-row td {
     padding:0;
+
     border-top:1px solid var(--border);
+
     border-bottom:1px solid var(--soft-border);
+
     background:rgba(5,5,5,.035);
 }
 
 .section-toggle {
     width:100%;
+
     min-height:48px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
+    gap:15px;
+
     padding:11px 13px;
+
     border:0;
+
     background:transparent;
+
+    color:var(--black);
+
     cursor:pointer;
+
+    text-align:left;
 }
 
-.section-toggle-left,
-.section-toggle-right {
+.section-toggle:hover {
+    background:rgba(5,5,5,.035);
+}
+
+.section-toggle-left {
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
+    min-width:0;
 }
 
 .section-toggle-title {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:12px;
+
     font-weight:900;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
 }
 
 .section-toggle-count {
     min-width:31px;
+
     height:21px;
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
+
     padding:2px 7px;
+
     border:1px solid rgba(5,5,5,.17);
+
+    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:8px;
+
     font-weight:900;
+
+    white-space:nowrap;
+}
+
+.section-toggle-right {
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
 }
 
 .section-toggle-state {
     font-size:8px;
+
     font-weight:900;
+
     color:rgba(5,5,5,.48);
+
+    letter-spacing:.06em;
+
+    text-transform:uppercase;
 }
 
 .section-toggle-arrow {
     width:25px;
+
     height:25px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border:1px solid rgba(5,5,5,.18);
+
     font-size:15px;
+
     font-weight:900;
+
     transition:transform .18s ease;
 }
 
-.category-row.is-collapsed .section-toggle-arrow {
+.category-row.is-collapsed
+.section-toggle-arrow {
     transform:rotate(-90deg);
 }
 
-.section-hidden {
+.section-data-row.section-hidden {
     display:none;
 }
 
@@ -613,8 +889,11 @@ a.site-item:hover::after {
 
 .ptw-data-row td {
     padding:14px 12px;
+
     border-right:1px solid var(--soft-border);
+
     border-bottom:1px solid var(--soft-border);
+
     vertical-align:top;
 }
 
@@ -624,34 +903,68 @@ a.site-item:hover::after {
 
 .location-merged {
     vertical-align:top !important;
+
     background:rgba(255,255,255,.08);
+
+    border-right:
+        1px solid
+        var(--soft-border)
+        !important;
 }
 
 .location-name {
     position:sticky;
+
     top:15px;
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:16px;
+
     font-weight:900;
+
+    line-height:1.1;
+
+    letter-spacing:-.025em;
+
+    text-transform:uppercase;
 }
+
+
+/* =========================================================
+   PTW NUMBER
+========================================================= */
 
 .ptw-number {
     display:inline-block;
+
     color:var(--black);
+
     text-decoration:none;
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:clamp(17px,1.2vw,23px);
+
     font-weight:900;
+
+    line-height:1;
+
+    letter-spacing:-.035em;
 }
 
 .ptw-number::after {
     content:"↗";
+
     margin-left:6px;
+
     font-size:.45em;
+
     opacity:0;
 }
 
-.ptw-number:hover::after {
+.ptw-number:hover::after,
+.ptw-number:focus::after {
     opacity:1;
 }
 
@@ -662,66 +975,231 @@ a.site-item:hover::after {
 
 .status-badge {
     display:inline-flex;
+
     align-items:center;
+
     min-height:28px;
+
     padding:6px 9px;
+
     border:1px solid rgba(5,5,5,.20);
+
     font-size:8px;
+
     font-weight:900;
+
+    line-height:1.2;
+
+    letter-spacing:.06em;
+
+    text-transform:uppercase;
 }
 
 .status-note {
     margin-top:9px;
+
     font-size:8.5px;
+
     font-weight:700;
+
     line-height:1.45;
+
     color:rgba(5,5,5,.60);
+
+    text-transform:uppercase;
 }
 
-.is-active .status-badge {
+
+/* ACTIVE */
+
+.ptw-data-row.is-active .status-badge {
     background:var(--green);
+
+    border-color:rgba(5,5,5,.35);
 }
 
-.is-upcoming .status-badge {
+
+/* UPCOMING */
+
+.ptw-data-row.is-upcoming .status-badge {
     border-style:dashed;
+
+    background:transparent;
 }
 
-.is-next-last {
-    box-shadow:inset 6px 0 0 var(--red);
+
+/* NEXT FINAL */
+
+.ptw-data-row.is-next-last {
+    box-shadow:
+        inset
+        6px
+        0
+        0
+        var(--red);
 }
 
-.is-next-last .status-badge,
-.is-last-shift .status-badge {
+.ptw-data-row.is-next-last .status-badge {
     background:var(--red);
+
+    border-color:var(--red);
+
     color:#fff;
+
+    animation:
+        redFlash
+        .9s
+        infinite;
 }
 
-.is-last-shift {
-    box-shadow:inset 8px 0 0 var(--red);
+.ptw-data-row.is-next-last .status-note {
+    color:var(--red);
+
+    font-weight:900;
 }
 
-.is-shift-invalid {
-    box-shadow:inset 8px 0 0 var(--red-dark);
+
+/* FINAL */
+
+.ptw-data-row.is-last-shift {
+    box-shadow:
+        inset
+        8px
+        0
+        0
+        var(--red);
+}
+
+.ptw-data-row.is-last-shift .status-badge {
+    background:var(--red);
+
+    border-color:var(--red);
+
+    color:#fff;
+
+    animation:
+        redFlash
+        .75s
+        infinite;
+}
+
+.ptw-data-row.is-last-shift .status-note {
+    padding:8px 9px;
+
+    background:var(--red);
+
+    color:#fff;
+
+    font-weight:900;
+
+    animation:
+        redBlockFlash
+        .75s
+        infinite;
+}
+
+
+/* INVALID */
+
+.ptw-data-row.is-shift-invalid {
+    box-shadow:
+        inset
+        8px
+        0
+        0
+        var(--red-dark);
+
     background:var(--red-soft);
 }
 
-.is-shift-invalid .status-badge {
+.ptw-data-row.is-shift-invalid .status-badge {
     background:var(--red-dark);
+
+    border-color:var(--red-dark);
+
     color:#fff;
 }
 
-.is-expired {
+.ptw-data-row.is-shift-invalid .status-note {
+    padding:8px 9px;
+
+    background:var(--red-dark);
+
+    color:#fff;
+
+    font-weight:900;
+}
+
+
+/* EXPIRED */
+
+.ptw-data-row.is-expired {
     opacity:.46;
 }
 
-.is-vec-expired {
-    opacity:.68;
-    box-shadow:inset 6px 0 0 var(--black);
+.ptw-data-row.is-expired:hover {
+    opacity:.76;
 }
 
-.is-vec-expired .status-badge {
+.ptw-data-row.is-expired .status-badge {
+    background:rgba(5,5,5,.07);
+}
+
+
+/* VEC EXPIRED */
+
+.ptw-data-row.is-vec-expired {
+    opacity:.68;
+
+    box-shadow:
+        inset
+        6px
+        0
+        0
+        var(--black);
+}
+
+.ptw-data-row.is-vec-expired .status-badge {
     background:var(--black);
+
+    border-color:var(--black);
+
     color:var(--bg);
+}
+
+
+@keyframes redFlash {
+
+    0%,
+    45% {
+        background:var(--red);
+        color:#fff;
+        opacity:1;
+    }
+
+    50%,
+    100% {
+        background:transparent;
+        color:var(--red);
+        opacity:.38;
+    }
+
+}
+
+@keyframes redBlockFlash {
+
+    0%,
+    45% {
+        background:var(--red);
+        color:#fff;
+    }
+
+    50%,
+    100% {
+        background:rgba(208,0,0,.08);
+        color:var(--red);
+    }
+
 }
 
 
@@ -731,92 +1209,72 @@ a.site-item:hover::after {
 
 .validity-label {
     display:block;
+
     margin-bottom:3px;
+
     font-size:7.5px;
+
     font-weight:900;
+
+    letter-spacing:.08em;
+
     color:rgba(5,5,5,.45);
+
+    text-transform:uppercase;
 }
 
 .validity-value {
     font-size:9px;
+
     font-weight:700;
+
     line-height:1.45;
+
+    text-transform:uppercase;
 }
 
 .last-usable {
     margin-top:11px;
+
     padding-top:9px;
+
     border-top:1px solid rgba(5,5,5,.08);
 }
 
 .last-usable-value {
     font-size:9px;
+
     font-weight:900;
+
+    line-height:1.45;
+
+    text-transform:uppercase;
 }
 
 .expiry-rule-note {
     margin-top:7px;
+
     font-size:7.5px;
+
     font-weight:700;
+
+    line-height:1.45;
+
     color:rgba(5,5,5,.55);
+
+    text-transform:uppercase;
 }
 
 .description-text {
     font-size:9px;
+
+    font-weight:400;
+
     line-height:1.55;
+
     color:rgba(5,5,5,.69);
-}
 
-
-/* =========================================================
-   VEC
-========================================================= */
-
-.vec-dependency {
-    margin-top:12px;
-    padding:11px;
-    border:1px solid rgba(5,5,5,.15);
-    background:rgba(5,5,5,.025);
-}
-
-.vec-dependency-title {
-    margin-bottom:8px;
-    font-size:8px;
-    font-weight:900;
-}
-
-.vec-number {
-    color:var(--black);
-    text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:14px;
-    font-weight:900;
-}
-
-.vec-description,
-.vec-validity,
-.vec-status-note,
-.effective-validity {
-    margin-top:7px;
-    font-size:8px;
-    line-height:1.45;
-}
-
-.vec-status-badge {
-    display:inline-flex;
-    margin-top:9px;
-    padding:5px 8px;
-    border:1px solid rgba(5,5,5,.20);
-    font-size:7.5px;
-    font-weight:900;
-}
-
-.vec-active .vec-status-badge {
-    background:var(--green);
-}
-
-.vec-expired {
-    opacity:.55;
+    text-transform:uppercase;
 }
 
 
@@ -826,96 +1284,424 @@ a.site-item:hover::after {
 
 .tower-equipment-box {
     margin-top:14px;
+
     border:1px solid rgba(5,5,5,.16);
+
+    background:rgba(5,5,5,.025);
 }
 
 .tower-equipment-title,
 .tower-equipment-row {
     display:grid;
-    grid-template-columns:1fr 110px;
+
+    grid-template-columns:
+        1fr
+        110px;
+}
+
+.tower-equipment-title {
+    background:rgba(5,5,5,.04);
+
+    border-bottom:1px solid rgba(5,5,5,.12);
 }
 
 .tower-equipment-title > div,
-.tower-equipment-row > div {
+.tower-equipment-name,
+.tower-equipment-expiry {
     padding:8px 9px;
-    font-size:8px;
+}
+
+.tower-equipment-title > div {
+    font-size:7.5px;
+
+    font-weight:900;
+
+    letter-spacing:.07em;
+
+    text-transform:uppercase;
 }
 
 .tower-equipment-row + .tower-equipment-row {
     border-top:1px solid rgba(5,5,5,.08);
 }
 
+.tower-equipment-name {
+    font-size:8px;
+
+    font-weight:800;
+
+    line-height:1.35;
+
+    text-transform:uppercase;
+}
+
+.tower-equipment-expiry {
+    border-left:1px solid rgba(5,5,5,.08);
+
+    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
 
 /* =========================================================
-   JHA
+   VEC
+========================================================= */
+
+.vec-dependency {
+    margin-top:12px;
+
+    padding:11px;
+
+    border:1px solid rgba(5,5,5,.15);
+
+    background:rgba(5,5,5,.025);
+}
+
+.vec-dependency-title {
+    margin-bottom:8px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+}
+
+.vec-number {
+    display:inline-block;
+
+    color:var(--black);
+
+    text-decoration:none;
+
+    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+.vec-number::after {
+    content:"↗";
+
+    margin-left:5px;
+
+    font-size:8px;
+}
+
+.vec-description {
+    margin-top:7px;
+
+    font-size:8px;
+
+    line-height:1.45;
+
+    color:rgba(5,5,5,.66);
+
+    text-transform:uppercase;
+}
+
+.vec-validity {
+    margin-top:8px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    line-height:1.45;
+
+    text-transform:uppercase;
+}
+
+.vec-status-line {
+    margin-top:10px;
+
+    padding-top:9px;
+
+    border-top:1px solid rgba(5,5,5,.09);
+}
+
+.vec-status-badge {
+    display:inline-flex;
+
+    padding:5px 8px;
+
+    border:1px solid rgba(5,5,5,.20);
+
+    font-size:7.5px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.vec-status-note {
+    margin-top:6px;
+
+    font-size:7.5px;
+
+    font-weight:700;
+
+    line-height:1.45;
+
+    text-transform:uppercase;
+}
+
+.vec-dependency.vec-active
+.vec-status-badge {
+    background:var(--green);
+}
+
+.vec-dependency.vec-upcoming
+.vec-status-badge {
+    border-style:dashed;
+}
+
+.vec-dependency.vec-next-last,
+.vec-dependency.vec-last-shift {
+    border:2px solid var(--red);
+}
+
+.vec-dependency.vec-next-last
+.vec-status-badge,
+.vec-dependency.vec-last-shift
+.vec-status-badge {
+    background:var(--red);
+
+    color:#fff;
+}
+
+.vec-dependency.vec-shift-invalid {
+    border:2px solid var(--red-dark);
+
+    background:var(--red-soft);
+}
+
+.vec-dependency.vec-shift-invalid
+.vec-status-badge {
+    background:var(--red-dark);
+
+    color:#fff;
+}
+
+.vec-dependency.vec-expired {
+    opacity:.55;
+}
+
+.effective-validity {
+    margin-top:9px;
+
+    padding-top:8px;
+
+    border-top:1px solid rgba(5,5,5,.09);
+
+    font-size:8px;
+
+    font-weight:900;
+
+    line-height:1.5;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   JHA / EJHA
 ========================================================= */
 
 .ejha-bottom-section {
     margin:0 22px 30px;
+
     border:1px solid var(--soft-border);
+
+    background:rgba(255,255,255,.04);
 }
 
 .ejha-bottom-title {
     width:100%;
+
     min-height:46px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
+    gap:15px;
+
     padding:10px 14px;
+
     border:0;
+
+    border-bottom:1px solid var(--soft-border);
+
     background:transparent;
+
+    color:var(--black);
+
     cursor:pointer;
+
+    text-align:left;
 }
 
 .ejha-title-left,
 .ejha-title-right {
     display:flex;
+
     align-items:center;
+
     gap:8px;
 }
 
 .ejha-bottom-title-text {
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:10px;
+
     font-weight:900;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
 }
 
 .ejha-count {
+    min-width:27px;
+
+    min-height:21px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     padding:2px 7px;
+
     border:1px solid rgba(5,5,5,.18);
+
     font-size:8px;
+
     font-weight:900;
+}
+
+.ejha-state {
+    font-size:8px;
+
+    font-weight:900;
+
+    color:rgba(5,5,5,.48);
+
+    text-transform:uppercase;
+}
+
+.ejha-arrow {
+    width:25px;
+
+    height:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid rgba(5,5,5,.18);
+
+    font-size:15px;
+
+    font-weight:900;
+
+    transition:transform .18s ease;
+}
+
+.ejha-bottom-section.is-collapsed
+.ejha-arrow {
+    transform:rotate(-90deg);
+}
+
+.ejha-bottom-section.is-collapsed
+.ejha-items {
+    display:none;
 }
 
 .ejha-bottom-item {
     padding:18px 16px 20px;
+}
+
+.ejha-bottom-item + .ejha-bottom-item {
     border-top:1px solid var(--soft-border);
 }
 
-.ejha-bottom-number {
-    color:var(--black);
-    text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(18px,1.5vw,28px);
+.ejha-type-label {
+    margin-bottom:5px;
+
+    font-size:8px;
+
     font-weight:900;
+
+    color:rgba(5,5,5,.50);
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
 }
 
-.ejha-type-label {
-    margin-bottom:6px;
-    font-size:8px;
+.ejha-bottom-number {
+    display:inline-block;
+
+    color:var(--black);
+
+    text-decoration:none;
+
+    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-size:clamp(20px,1.65vw,30px);
+
     font-weight:900;
-    color:rgba(5,5,5,.50);
+
+    line-height:1;
+
+    letter-spacing:-.035em;
+}
+
+.ejha-bottom-number::after {
+    content:"↗";
+
+    margin-left:7px;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    font-size:.42em;
+}
+
+.ejha-bottom-number:hover {
+    text-decoration:underline;
+    text-underline-offset:4px;
 }
 
 .ejha-bottom-description {
     margin-top:11px;
-    font-size:9px;
-    line-height:1.55;
-    color:rgba(5,5,5,.68);
-}
 
-.ejha-bottom-section.is-collapsed .ejha-items {
-    display:none;
+    max-width:1200px;
+
+    font-size:9px;
+
+    font-weight:400;
+
+    line-height:1.55;
+
+    color:rgba(5,5,5,.68);
+
+    text-transform:uppercase;
 }
 
 
@@ -925,29 +1711,62 @@ a.site-item:hover::after {
 
 .tooltip {
     position:fixed;
+
     width:min(600px,calc(100vw - 80px));
+
     padding:22px;
+
     background:var(--black);
+
     color:var(--bg);
+
     font-size:12px;
+
     font-weight:700;
+
     line-height:1.55;
+
+    text-transform:uppercase;
+
     z-index:9999;
+
     pointer-events:none;
+
     opacity:0;
+
     visibility:hidden;
+
+    transform:translateY(8px);
+
+    box-shadow:
+        0
+        16px
+        40px
+        rgba(0,0,0,.22);
+
+    transition:
+        opacity .12s ease,
+        transform .12s ease;
 }
 
 .tooltip.active {
     opacity:1;
+
     visibility:visible;
+
+    transform:translateY(0);
 }
 
 .tooltip-number {
     display:block;
+
     margin-bottom:11px;
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:20px;
+
+    font-weight:900;
 }
 
 
@@ -957,13 +1776,48 @@ a.site-item:hover::after {
 
 .footer {
     min-height:58px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-top:1px solid var(--border);
+
     font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
     font-size:10px;
+
     font-weight:900;
+
+    letter-spacing:.09em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media
+(max-height:800px)
+and
+(min-width:801px) {
+
+    :root {
+        --outer-margin:20px;
+    }
+
+    .hero {
+        min-height:340px;
+    }
+
+    .hero-title {
+        font-size:clamp(65px,8vw,130px);
+    }
+
 }
 
 
@@ -977,6 +1831,11 @@ a.site-item:hover::after {
         --outer-margin:12px;
     }
 
+    .page {
+        width:calc(100% - (var(--outer-margin) * 2));
+        margin:var(--outer-margin);
+    }
+
     .hero {
         min-height:300px;
         padding:35px 12px;
@@ -984,6 +1843,16 @@ a.site-item:hover::after {
 
     .hero-title {
         font-size:clamp(42px,12vw,90px);
+        line-height:.84;
+    }
+
+    .hero-subtitle {
+        margin-top:25px;
+        font-size:12px;
+    }
+
+    .section-divider {
+        height:14px;
     }
 
     .top-section-header {
@@ -994,6 +1863,10 @@ a.site-item:hover::after {
         display:block;
     }
 
+    .top-column {
+        padding:19px 16px 25px;
+    }
+
     .top-column + .top-column {
         border-left:none;
         border-top:1px solid var(--border);
@@ -1001,9 +1874,14 @@ a.site-item:hover::after {
 
     .top-column::before {
         display:block;
+
         margin-bottom:18px;
+
         font-size:10px;
+
         font-weight:900;
+
+        text-transform:uppercase;
     }
 
     .top-column:nth-child(1)::before {
@@ -1014,14 +1892,30 @@ a.site-item:hover::after {
         content:"ACTIVE PTW";
     }
 
+    .site-item {
+        font-size:clamp(27px,7vw,44px);
+    }
+
+    .active-summary-item {
+        grid-template-columns:
+            55px
+            88px
+            minmax(0,1fr);
+    }
+
     .eptw-section-head {
         align-items:flex-start;
         flex-direction:column;
+        padding:17px 16px;
     }
 
     .eptw-live {
         align-items:flex-start;
         text-align:left;
+    }
+
+    .sync-line {
+        justify-content:flex-start;
     }
 
     .shift-guide {
@@ -1031,6 +1925,10 @@ a.site-item:hover::after {
     .shift-guide-item + .shift-guide-item {
         border-left:none;
         border-top:1px solid var(--border);
+    }
+
+    .ptw-rule-box {
+        padding:12px 16px;
     }
 
     .eptw-table-container {
@@ -1045,8 +1943,26 @@ a.site-item:hover::after {
         width:100%;
     }
 
-    .eptw-table thead,
-    .eptw-table colgroup {
+    .eptw-table colgroup,
+    .eptw-table thead {
+        display:none;
+    }
+
+    .category-row {
+        display:block;
+        margin-bottom:10px;
+    }
+
+    .category-row td {
+        display:block;
+        border:1px solid var(--soft-border);
+    }
+
+    .section-toggle-state {
+        display:none;
+    }
+
+    .section-data-row.section-hidden {
         display:none;
     }
 
@@ -1056,45 +1972,86 @@ a.site-item:hover::after {
 
     .ptw-data-row {
         position:relative;
+
         margin-bottom:14px;
+
         padding-top:42px;
+
         border:1px solid var(--soft-border);
     }
 
     .ptw-data-row::before {
         content:attr(data-location);
+
         position:absolute;
+
         top:0;
         left:0;
         right:0;
+
         min-height:42px;
+
         display:flex;
+
         align-items:center;
+
         padding:9px 12px;
+
         border-bottom:1px solid var(--soft-border);
+
+        background:rgba(5,5,5,.025);
+
         font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
         font-size:14px;
+
         font-weight:900;
+
+        text-transform:uppercase;
     }
 
     .ptw-data-row td {
+        width:100%;
+
         border-right:none;
+
+        border-bottom:1px solid var(--soft-border);
     }
 
     .ptw-data-row td::before {
         content:attr(data-label);
+
         display:block;
+
         margin-bottom:7px;
+
         font-size:7.5px;
+
         font-weight:900;
+
         color:rgba(5,5,5,.45);
+
+        text-transform:uppercase;
     }
 
     .ejha-bottom-section {
         margin:0 16px 24px;
     }
 
+    .ejha-state {
+        display:none;
+    }
+
+    .tooltip {
+        width:calc(100vw - 40px);
+
+        padding:18px;
+
+        font-size:11px;
+    }
+
 }
+
 
 @media(max-width:480px) {
 
@@ -1104,10 +2061,22 @@ a.site-item:hover::after {
 
     .hero {
         min-height:270px;
+
+        padding:25px 8px;
+    }
+
+    .hero-title {
+        font-size:clamp(36px,11vw,62px);
     }
 
     .section-toggle-count {
         display:none;
+    }
+
+    .footer {
+        min-height:50px;
+
+        font-size:9px;
     }
 
 }
@@ -1121,6 +2090,10 @@ a.site-item:hover::after {
 
 <div class="page">
 
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
@@ -1152,11 +2125,19 @@ a.site-item:hover::after {
 <div class="section-divider"></div>
 
 
+<!-- =========================================================
+     TOP
+========================================================= -->
+
 <div class="top-section-header">
 
-    <div>MAIN SITE</div>
+    <div>
+        MAIN SITE
+    </div>
 
-    <div>ACTIVE PTW</div>
+    <div>
+        ACTIVE PTW
+    </div>
 
 </div>
 
@@ -1218,16 +2199,23 @@ a.site-item:hover::after {
 <div class="section-divider"></div>
 
 
+<!-- =========================================================
+     EPTW
+========================================================= -->
+
 <section class="eptw-section">
 
 
 <div class="eptw-section-head">
 
+
     <div class="eptw-section-title">
         EPTW PERMIT CONTROL
     </div>
 
+
     <div class="eptw-live">
+
 
         <div
             id="liveClock"
@@ -1236,12 +2224,14 @@ a.site-item:hover::after {
             --
         </div>
 
+
         <div
             id="currentShift"
             class="current-shift"
         >
             --
         </div>
+
 
         <div
             id="syncLine"
@@ -1259,12 +2249,15 @@ a.site-item:hover::after {
 
         </div>
 
+
     </div>
+
 
 </div>
 
 
 <div class="shift-guide">
+
 
     <div class="shift-guide-item">
 
@@ -1278,6 +2271,7 @@ a.site-item:hover::after {
 
     </div>
 
+
     <div class="shift-guide-item">
 
         <span class="shift-guide-label">
@@ -1289,6 +2283,7 @@ a.site-item:hover::after {
         </span>
 
     </div>
+
 
     <div class="shift-guide-item">
 
@@ -1304,6 +2299,7 @@ a.site-item:hover::after {
         </span>
 
     </div>
+
 
 </div>
 
@@ -1351,17 +2347,25 @@ a.site-item:hover::after {
 
 <tr>
 
-    <th>LOCATION</th>
+    <th>
+        LOCATION
+    </th>
 
-    <th>EPTW NO.</th>
+    <th>
+        EPTW NO.
+    </th>
 
-    <th>STATUS</th>
+    <th>
+        STATUS
+    </th>
 
     <th>
         PTW VALIDITY / LAST USABLE SHIFT
     </th>
 
-    <th>DESCRIPTION</th>
+    <th>
+        DESCRIPTION
+    </th>
 
 </tr>
 
@@ -1385,6 +2389,10 @@ a.site-item:hover::after {
 
 </div>
 
+
+<!-- =========================================================
+     JHA / EJHA
+========================================================= -->
 
 <div
     id="jhaSection"
@@ -1413,13 +2421,17 @@ a.site-item:hover::after {
 
         </span>
 
+
         <span class="ejha-title-right">
 
-            <span id="jhaState">
+            <span
+                id="jhaState"
+                class="ejha-state"
+            >
                 COLLAPSE
             </span>
 
-            <span>
+            <span class="ejha-arrow">
                 ↓
             </span>
 
@@ -1431,7 +2443,18 @@ a.site-item:hover::after {
     <div
         id="jhaItems"
         class="ejha-items"
-    ></div>
+    >
+
+        <div class="ejha-bottom-item">
+
+            <div class="ejha-bottom-description">
+                LOADING JHA / EJHA FROM GOOGLE SHEETS...
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>
 
@@ -1446,6 +2469,10 @@ a.site-item:hover::after {
 
 </div>
 
+
+<!-- =========================================================
+     TOOLTIP
+========================================================= -->
 
 <div
     id="tooltip"
@@ -1467,7 +2494,7 @@ a.site-item:hover::after {
 <script>
 
 /* =========================================================
-   CONFIG
+   CONFIGURATION
 ========================================================= */
 
 const SHEET_ID =
@@ -1485,6 +2512,99 @@ const MALAYSIA_OFFSET_MS =
     1000;
 
 
+/* =========================================================
+   EXPECTED GOOGLE SHEET COLUMN ORDER
+========================================================= */
+
+/*
+    DATA TAB
+
+    A  TYPE
+    B  SECTION
+    C  LOCATION
+    D  NUMBER
+    E  START
+    F  END
+    G  DESCRIPTION
+    H  URL
+    I  VEC_NO
+    J  VEC_START
+    K  VEC_END
+    L  VEC_DESCRIPTION
+    M  VEC_URL
+*/
+
+const DATA_HEADERS = [
+
+    "TYPE",
+    "SECTION",
+    "LOCATION",
+    "NUMBER",
+    "START",
+    "END",
+    "DESCRIPTION",
+    "URL",
+    "VEC_NO",
+    "VEC_START",
+    "VEC_END",
+    "VEC_DESCRIPTION",
+    "VEC_URL"
+
+];
+
+
+const EQUIPMENT_HEADERS = [
+
+    "PTW_NO",
+    "LOCATION",
+    "EQUIPMENT",
+    "EXPIRY_DATE"
+
+];
+
+
+const BOOKMARK_HEADERS = [
+
+    "SECTION",
+    "NAME",
+    "URL",
+    "ORDER"
+
+];
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+const CACHE_DATA_KEY =
+    "krejuv-fec-sheet-data-v5";
+
+
+const CACHE_EQUIPMENT_KEY =
+    "krejuv-fec-sheet-equipment-v5";
+
+
+const CACHE_BOOKMARK_KEY =
+    "krejuv-fec-sheet-bookmarks-v5";
+
+
+const CACHE_TIME_KEY =
+    "krejuv-fec-sheet-cache-time-v5";
+
+
+const COLLAPSE_STORAGE_KEY =
+    "krejuv-fec-collapsed-sections-v5";
+
+
+const JHA_COLLAPSE_STORAGE_KEY =
+    "krejuv-fec-jha-collapsed-v5";
+
+
+/* =========================================================
+   LIVE DATA
+========================================================= */
+
 let CURRENT_DATA =
     [];
 
@@ -1497,8 +2617,38 @@ let CURRENT_BOOKMARKS =
     [];
 
 
+let refreshInProgress =
+    false;
+
+
 /* =========================================================
-   GOOGLE GVIZ JSON URL
+   NORMALIZE HEADER
+========================================================= */
+
+function normalizeHeader(
+    value
+) {
+
+    return String(
+        value ??
+        ""
+    )
+    .trim()
+    .toUpperCase()
+    .replace(
+        /[^A-Z0-9]+/g,
+        "_"
+    )
+    .replace(
+        /^_+|_+$/g,
+        ""
+    );
+
+}
+
+
+/* =========================================================
+   GOOGLE SHEETS URL
 ========================================================= */
 
 function getSheetJsonUrl(
@@ -1513,6 +2663,7 @@ function getSheetJsonUrl(
         encodeURIComponent(
             sheetName
         ) +
+        "&headers=1" +
         "&tqx=out:json" +
         "&_=" +
         Date.now()
@@ -1522,7 +2673,7 @@ function getSheetJsonUrl(
 
 
 /* =========================================================
-   EXTRACT GVIZ JSON
+   PARSE GVIZ RESPONSE
 ========================================================= */
 
 function parseGvizResponse(
@@ -1542,12 +2693,14 @@ function parseGvizResponse(
 
 
     if (
-        start === -1 ||
-        end === -1
+        start ===
+        -1 ||
+        end ===
+        -1
     ) {
 
         throw new Error(
-            "Invalid Google Sheets response"
+            "INVALID GOOGLE SHEETS RESPONSE"
         );
 
     }
@@ -1564,7 +2717,789 @@ function parseGvizResponse(
 
 
 /* =========================================================
-   PARSE GOOGLE DATE(...)
+   READ GVIZ CELL
+========================================================= */
+
+function readGvizCell(
+    cell
+) {
+
+    if (
+        !cell
+    ) {
+
+        return "";
+
+    }
+
+
+    /*
+        Google date/time value.
+
+        Example:
+        Date(2026,9,18,9,30,0)
+    */
+
+    if (
+        typeof cell.v ===
+        "string" &&
+        /^Date\(/.test(
+            cell.v
+        )
+    ) {
+
+        return cell.v;
+
+    }
+
+
+    /*
+        Prefer the formatted value where available.
+
+        This protects formatted numbers / leading zeroes.
+    */
+
+    if (
+        cell.f !==
+        undefined &&
+        cell.f !==
+        null &&
+        String(
+            cell.f
+        ).trim() !==
+        ""
+    ) {
+
+        return String(
+            cell.f
+        ).trim();
+
+    }
+
+
+    if (
+        cell.v !==
+        undefined &&
+        cell.v !==
+        null
+    ) {
+
+        return String(
+            cell.v
+        ).trim();
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   GVIZ TO OBJECTS
+========================================================= */
+
+function gvizToObjects(
+    result,
+    expectedHeaders = []
+) {
+
+    if (
+        !result ||
+        !result.table
+    ) {
+
+        return [];
+
+    }
+
+
+    const table =
+        result.table;
+
+
+    const headers =
+        table.cols.map(
+            (
+                column,
+                index
+            ) => {
+
+
+                const actualHeader =
+                    normalizeHeader(
+                        column.label ||
+                        ""
+                    );
+
+
+                /*
+                    If Google does not correctly expose a label,
+                    use the known spreadsheet column position.
+                */
+
+                return (
+                    actualHeader ||
+                    expectedHeaders[
+                        index
+                    ] ||
+                    (
+                        "COL_" +
+                        index
+                    )
+                );
+
+            }
+        );
+
+
+    return table.rows
+        .map(
+            row => {
+
+
+                const item =
+                    {};
+
+
+                headers.forEach(
+                    (
+                        header,
+                        index
+                    ) => {
+
+                        item[
+                            header
+                        ] =
+                            readGvizCell(
+                                row.c[
+                                    index
+                                ]
+                            );
+
+                    }
+                );
+
+
+                /*
+                    Also create positional aliases.
+
+                    This guarantees DATA column D can always
+                    be retrieved as NUMBER, for example.
+                */
+
+                expectedHeaders.forEach(
+                    (
+                        expectedHeader,
+                        index
+                    ) => {
+
+
+                        const value =
+                            readGvizCell(
+                                row.c[
+                                    index
+                                ]
+                            );
+
+
+                        if (
+                            value !==
+                            ""
+                        ) {
+
+                            item[
+                                expectedHeader
+                            ] =
+                                value;
+
+                        }
+
+                    }
+                );
+
+
+                return item;
+
+            }
+        )
+        .filter(
+            row =>
+                Object.values(
+                    row
+                )
+                .some(
+                    value =>
+                        String(
+                            value
+                        ).trim() !==
+                        ""
+                )
+        );
+
+}
+
+
+/* =========================================================
+   FETCH SHEET
+========================================================= */
+
+async function fetchSheet(
+    sheetName,
+    expectedHeaders
+) {
+
+    const response =
+        await fetch(
+            getSheetJsonUrl(
+                sheetName
+            ),
+            {
+                cache:"no-store"
+            }
+        );
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            sheetName +
+            " HTTP " +
+            response.status
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    const json =
+        parseGvizResponse(
+            text
+        );
+
+
+    return gvizToObjects(
+        json,
+        expectedHeaders
+    );
+
+}
+
+
+/* =========================================================
+   CACHE
+========================================================= */
+
+function saveCache() {
+
+    try {
+
+        localStorage.setItem(
+            CACHE_DATA_KEY,
+            JSON.stringify(
+                CURRENT_DATA
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_EQUIPMENT_KEY,
+            JSON.stringify(
+                CURRENT_EQUIPMENT
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_BOOKMARK_KEY,
+            JSON.stringify(
+                CURRENT_BOOKMARKS
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_TIME_KEY,
+            String(
+                Date.now()
+            )
+        );
+
+    }
+
+    catch(error) {
+
+        console.warn(
+            "CACHE SAVE FAILED",
+            error
+        );
+
+    }
+
+}
+
+
+function readCache() {
+
+    try {
+
+        return {
+
+            data:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_DATA_KEY
+                    ) ||
+                    "[]"
+                ),
+
+            equipment:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_EQUIPMENT_KEY
+                    ) ||
+                    "[]"
+                ),
+
+            bookmarks:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_BOOKMARK_KEY
+                    ) ||
+                    "[]"
+                )
+
+        };
+
+    }
+
+    catch(error) {
+
+        return {
+
+            data:[],
+            equipment:[],
+            bookmarks:[]
+
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ??
+        ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================================
+   SAFE URL
+========================================================= */
+
+function safeUrl(
+    value
+) {
+
+    const text =
+        String(
+            value ??
+            ""
+        ).trim();
+
+
+    if (
+        !text
+    ) {
+
+        return "";
+
+    }
+
+
+    try {
+
+        const url =
+            new URL(
+                text
+            );
+
+
+        if (
+            url.protocol !==
+            "https:" &&
+            url.protocol !==
+            "http:"
+        ) {
+
+            return "";
+
+        }
+
+
+        return url.href;
+
+    }
+
+    catch(error) {
+
+        return "";
+
+    }
+
+}
+
+
+/* =========================================================
+   FIELD LOOKUP
+========================================================= */
+
+function getFirstField(
+    row,
+    names
+) {
+
+    for (
+        const name of names
+    ) {
+
+        const normalized =
+            normalizeHeader(
+                name
+            );
+
+
+        if (
+            row[
+                normalized
+            ] !==
+            undefined &&
+            row[
+                normalized
+            ] !==
+            null &&
+            String(
+                row[
+                    normalized
+                ]
+            ).trim() !==
+            ""
+        ) {
+
+            return String(
+                row[
+                    normalized
+                ]
+            ).trim();
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   NUMBER FIELD
+========================================================= */
+
+function getRecordNumber(
+    row
+) {
+
+    return getFirstField(
+        row,
+        [
+            "NUMBER",
+            "EPTW_NO",
+            "EPTW NUMBER",
+            "PTW_NO",
+            "PTW NUMBER",
+            "JHA_NO",
+            "JHA NUMBER",
+            "EJHA_NO",
+            "EJHA NUMBER",
+            "NO",
+            "NO.",
+            "PERMIT_NO",
+            "PERMIT NUMBER"
+        ]
+    );
+
+}
+
+
+/* =========================================================
+   TYPE FROM NUMBER
+========================================================= */
+
+function deriveRecordType(
+    rawType,
+    number
+) {
+
+    const numberText =
+        String(
+            number ??
+            ""
+        )
+        .trim()
+        .toUpperCase();
+
+
+    if (
+        /^EJHA\b/.test(
+            numberText
+        )
+    ) {
+
+        return "EJHA";
+
+    }
+
+
+    if (
+        /^JHA\b/.test(
+            numberText
+        )
+    ) {
+
+        return "JHA";
+
+    }
+
+
+    return String(
+        rawType ??
+        ""
+    )
+    .trim()
+    .toUpperCase();
+
+}
+
+
+/* =========================================================
+   DISPLAY NUMBER
+========================================================= */
+
+function cleanDisplayNumber(
+    number
+) {
+
+    const text =
+        String(
+            number ??
+            ""
+        ).trim();
+
+
+    return text
+        .replace(
+            /^EJHA[\s:#-]*/i,
+            ""
+        )
+        .replace(
+            /^JHA[\s:#-]*/i,
+            ""
+        )
+        .replace(
+            /^EPTW[\s:#-]*/i,
+            ""
+        )
+        .replace(
+            /^PTW[\s:#-]*/i,
+            ""
+        )
+        .trim();
+
+}
+
+
+/* =========================================================
+   NORMALIZE DATA ROW
+========================================================= */
+
+function normalizeDataRow(
+    raw
+) {
+
+    const number =
+        getRecordNumber(
+            raw
+        );
+
+
+    const rawType =
+        getFirstField(
+            raw,
+            [
+                "TYPE"
+            ]
+        );
+
+
+    const type =
+        deriveRecordType(
+            rawType,
+            number
+        );
+
+
+    return {
+
+        type,
+
+        section:
+            getFirstField(
+                raw,
+                [
+                    "SECTION"
+                ]
+            ),
+
+        location:
+            getFirstField(
+                raw,
+                [
+                    "LOCATION"
+                ]
+            ),
+
+        number,
+
+        displayNumber:
+            cleanDisplayNumber(
+                number
+            ),
+
+        start:
+            getFirstField(
+                raw,
+                [
+                    "START"
+                ]
+            ),
+
+        end:
+            getFirstField(
+                raw,
+                [
+                    "END"
+                ]
+            ),
+
+        description:
+            getFirstField(
+                raw,
+                [
+                    "DESCRIPTION"
+                ]
+            ),
+
+        url:
+            safeUrl(
+                getFirstField(
+                    raw,
+                    [
+                        "URL",
+                        "LINK"
+                    ]
+                )
+            ),
+
+        vecNo:
+            getFirstField(
+                raw,
+                [
+                    "VEC_NO",
+                    "VEC NUMBER",
+                    "VEC"
+                ]
+            ),
+
+        vecStart:
+            getFirstField(
+                raw,
+                [
+                    "VEC_START"
+                ]
+            ),
+
+        vecEnd:
+            getFirstField(
+                raw,
+                [
+                    "VEC_END"
+                ]
+            ),
+
+        vecDescription:
+            getFirstField(
+                raw,
+                [
+                    "VEC_DESCRIPTION"
+                ]
+            ),
+
+        vecUrl:
+            safeUrl(
+                getFirstField(
+                    raw,
+                    [
+                        "VEC_URL",
+                        "VEC_LINK"
+                    ]
+                )
+            )
+
+    };
+
+}
+
+
+/* =========================================================
+   GOOGLE DATE PARSER
 ========================================================= */
 
 function parseGoogleDateValue(
@@ -1580,19 +3515,16 @@ function parseGoogleDateValue(
     }
 
 
-    if (
-        typeof value !==
-        "string"
-    ) {
-
-        return null;
-
-    }
+    const text =
+        String(
+            value ??
+            ""
+        ).trim();
 
 
     const match =
-        value.match(
-            /^Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)$/
+        text.match(
+            /^Date\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+),\s*(\d+),?\s*(\d+)?)?\)$/
         );
 
 
@@ -1663,7 +3595,7 @@ function parseGoogleDateValue(
 
 
 /* =========================================================
-   FALLBACK TEXT DATE PARSER
+   TEXT DATE PARSER
 ========================================================= */
 
 function parseTextDate(
@@ -1672,12 +3604,13 @@ function parseTextDate(
 
     const text =
         String(
-            value ?? ""
+            value ??
+            ""
         ).trim();
 
 
     if (
-        text === ""
+        !text
     ) {
 
         return null;
@@ -1687,11 +3620,12 @@ function parseTextDate(
 
     /*
         DD/MM/YY HH:MM AM/PM
+        DD/MM/YYYY HH:MM AM/PM
     */
 
-    let match =
+    const match =
         text.match(
-            /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})\s+(\d{1,2}):(\d{2})\s*(AM|PM)$/i
+            /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM|A\.M\.|P\.M\.|a\.m\.|p\.m\.)$/i
         );
 
 
@@ -1729,9 +3663,22 @@ function parseTextDate(
             );
 
 
-        const ampm =
-            match[6]
-                .toUpperCase();
+        const second =
+            Number(
+                match[6] ||
+                0
+            );
+
+
+        const period =
+            String(
+                match[7]
+            )
+            .replace(
+                /\./g,
+                ""
+            )
+            .toUpperCase();
 
 
         if (
@@ -1746,7 +3693,7 @@ function parseTextDate(
 
 
         if (
-            ampm ===
+            period ===
             "AM"
         ) {
 
@@ -1785,7 +3732,7 @@ function parseTextDate(
                 day,
                 hour,
                 minute,
-                0
+                second
             )
             -
             MALAYSIA_OFFSET_MS
@@ -1796,22 +3743,30 @@ function parseTextDate(
 
 
     /*
-        ISO fallback
+        ISO FALLBACK
     */
 
-    const date =
-        new Date(
-            text
-        );
-
-
     if (
-        !Number.isNaN(
-            date.getTime()
+        /^\d{4}-\d{2}-\d{2}T/.test(
+            text
         )
     ) {
 
-        return date;
+        const date =
+            new Date(
+                text
+            );
+
+
+        if (
+            !Number.isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return date;
+
+        }
 
     }
 
@@ -1829,411 +3784,21 @@ function parseAnyDate(
     value
 ) {
 
-    if (
-        value instanceof Date
-    ) {
-
-        return value;
-
-    }
-
-
-    const googleDate =
+    return (
         parseGoogleDateValue(
             value
-        );
-
-
-    if (
-        googleDate
-    ) {
-
-        return googleDate;
-
-    }
-
-
-    return parseTextDate(
-        value
-    );
-
-}
-
-
-/* =========================================================
-   CONVERT GVIZ SHEET TO OBJECTS
-========================================================= */
-
-function gvizToObjects(
-    result
-) {
-
-    const table =
-        result.table;
-
-
-    const headers =
-        table.cols.map(
-            col =>
-                String(
-                    col.label ||
-                    ""
-                )
-                .trim()
-                .toUpperCase()
-                .replace(
-                    /\s+/g,
-                    "_"
-                )
-        );
-
-
-    return table.rows
-        .map(
-            row => {
-
-
-                const object =
-                    {};
-
-
-                headers.forEach(
-                    (
-                        header,
-                        index
-                    ) => {
-
-
-                        const cell =
-                            row.c[
-                                index
-                            ];
-
-
-                        if (
-                            !cell
-                        ) {
-
-                            object[
-                                header
-                            ] =
-                                "";
-
-                            return;
-
-                        }
-
-
-                        /*
-                            Raw GVIZ date values
-                            may arrive as Date(...)
-                        */
-
-                        if (
-                            typeof cell.v ===
-                            "string" &&
-                            /^Date\(/.test(
-                                cell.v
-                            )
-                        ) {
-
-                            object[
-                                header
-                            ] =
-                                cell.v;
-
-                        }
-
-                        else if (
-                            cell.v !==
-                            null &&
-                            cell.v !==
-                            undefined
-                        ) {
-
-                            object[
-                                header
-                            ] =
-                                String(
-                                    cell.v
-                                );
-
-                        }
-
-                        else {
-
-                            object[
-                                header
-                            ] =
-                                cell.f ||
-                                "";
-
-                        }
-
-                    }
-                );
-
-
-                return object;
-
-            }
         )
-        .filter(
-            row =>
-                Object.values(
-                    row
-                )
-                .some(
-                    value =>
-                        String(
-                            value
-                        ).trim() !==
-                        ""
-                )
-        );
-
-}
-
-
-/* =========================================================
-   FETCH GOOGLE SHEET
-========================================================= */
-
-async function fetchSheet(
-    sheetName
-) {
-
-    const response =
-        await fetch(
-
-            getSheetJsonUrl(
-                sheetName
-            ),
-
-            {
-                cache:
-                    "no-store"
-            }
-
-        );
-
-
-    if (
-        !response.ok
-    ) {
-
-        throw new Error(
-            "Unable to load " +
-            sheetName
-        );
-
-    }
-
-
-    const text =
-        await response.text();
-
-
-    const json =
-        parseGvizResponse(
-            text
-        );
-
-
-    return gvizToObjects(
-        json
+        ||
+        parseTextDate(
+            value
+        )
     );
 
 }
 
 
 /* =========================================================
-   BASIC HELPERS
-========================================================= */
-
-function value(
-    row,
-    key
-) {
-
-    return String(
-        row[
-            key
-        ] ??
-        ""
-    ).trim();
-
-}
-
-
-function escapeHtml(
-    value
-) {
-
-    return String(
-        value ??
-        ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-function safeUrl(
-    value
-) {
-
-    try {
-
-        const url =
-            new URL(
-                value
-            );
-
-
-        if (
-            url.protocol !==
-            "https:" &&
-            url.protocol !==
-            "http:"
-        ) {
-
-            return "";
-
-        }
-
-
-        return url.href;
-
-    }
-
-    catch(error) {
-
-        return "";
-
-    }
-
-}
-
-
-/* =========================================================
-   NORMALIZE DATA
-========================================================= */
-
-function normalizeDataRow(
-    row
-) {
-
-    return {
-
-        type:
-            value(
-                row,
-                "TYPE"
-            ).toUpperCase(),
-
-        section:
-            value(
-                row,
-                "SECTION"
-            ),
-
-        location:
-            value(
-                row,
-                "LOCATION"
-            ),
-
-        number:
-            value(
-                row,
-                "NUMBER"
-            ),
-
-        start:
-            value(
-                row,
-                "START"
-            ),
-
-        end:
-            value(
-                row,
-                "END"
-            ),
-
-        description:
-            value(
-                row,
-                "DESCRIPTION"
-            ),
-
-        url:
-            safeUrl(
-                value(
-                    row,
-                    "URL"
-                )
-            ),
-
-        vecNo:
-            value(
-                row,
-                "VEC_NO"
-            ),
-
-        vecStart:
-            value(
-                row,
-                "VEC_START"
-            ),
-
-        vecEnd:
-            value(
-                row,
-                "VEC_END"
-            ),
-
-        vecDescription:
-            value(
-                row,
-                "VEC_DESCRIPTION"
-            ),
-
-        vecUrl:
-            safeUrl(
-                value(
-                    row,
-                    "VEC_URL"
-                )
-            )
-
-    };
-
-}
-
-
-/* =========================================================
-   MALAYSIA PARTS
+   MALAYSIA DATE PARTS
 ========================================================= */
 
 function getMalaysiaParts(
@@ -2263,7 +3828,10 @@ function getMalaysiaParts(
             shifted.getUTCHours(),
 
         minute:
-            shifted.getUTCMinutes()
+            shifted.getUTCMinutes(),
+
+        second:
+            shifted.getUTCSeconds()
 
     };
 
@@ -2288,6 +3856,58 @@ function two(
    DISPLAY DATE
 ========================================================= */
 
+function formatDateOnly(
+    date
+) {
+
+    const p =
+        getMalaysiaParts(
+            date
+        );
+
+
+    return (
+        two(
+            p.day
+        ) +
+        "/" +
+        two(
+            p.month
+        ) +
+        "/" +
+        String(
+            p.year
+        ).slice(
+            -2
+        )
+    );
+
+}
+
+
+function formatTime24(
+    date
+) {
+
+    const p =
+        getMalaysiaParts(
+            date
+        );
+
+
+    return (
+        two(
+            p.hour
+        ) +
+        ":" +
+        two(
+            p.minute
+        )
+    );
+
+}
+
+
 function formatDateTime(
     date
 ) {
@@ -2302,7 +3922,7 @@ function formatDateTime(
         p.hour;
 
 
-    const ampm =
+    const period =
         hour >=
         12
         ?
@@ -2350,14 +3970,14 @@ function formatDateTime(
             p.minute
         ) +
         " " +
-        ampm
+        period
     );
 
 }
 
 
 /* =========================================================
-   SHIFT
+   MALAYSIA DATE CONSTRUCTOR
 ========================================================= */
 
 function makeMalaysiaDate(
@@ -2365,7 +3985,8 @@ function makeMalaysiaDate(
     month,
     day,
     hour,
-    minute
+    minute,
+    second = 0
 ) {
 
     return new Date(
@@ -2375,7 +3996,8 @@ function makeMalaysiaDate(
             month - 1,
             day,
             hour,
-            minute
+            minute,
+            second
         )
         -
         MALAYSIA_OFFSET_MS
@@ -2384,6 +4006,10 @@ function makeMalaysiaDate(
 
 }
 
+
+/* =========================================================
+   SHIFT
+========================================================= */
 
 function getShift(
     date
@@ -2395,11 +4021,11 @@ function getShift(
         );
 
 
+    let type;
+
     let start;
 
     let end;
-
-    let type;
 
 
     if (
@@ -2443,7 +4069,7 @@ function getShift(
             "NIGHT SHIFT";
 
 
-        const tomorrow =
+        const next =
             new Date(
                 Date.UTC(
                     p.year,
@@ -2465,9 +4091,9 @@ function getShift(
 
         end =
             makeMalaysiaDate(
-                tomorrow.getUTCFullYear(),
-                tomorrow.getUTCMonth() + 1,
-                tomorrow.getUTCDate(),
+                next.getUTCFullYear(),
+                next.getUTCMonth() + 1,
+                next.getUTCDate(),
                 6,
                 59
             );
@@ -2480,7 +4106,7 @@ function getShift(
             "NIGHT SHIFT";
 
 
-        const yesterday =
+        const previous =
             new Date(
                 Date.UTC(
                     p.year,
@@ -2492,9 +4118,9 @@ function getShift(
 
         start =
             makeMalaysiaDate(
-                yesterday.getUTCFullYear(),
-                yesterday.getUTCMonth() + 1,
-                yesterday.getUTCDate(),
+                previous.getUTCFullYear(),
+                previous.getUTCMonth() + 1,
+                previous.getUTCDate(),
                 19,
                 0
             );
@@ -2562,80 +4188,144 @@ function sameShift(
 }
 
 
+/* =========================================================
+   FULL SHIFT
+========================================================= */
+
 function permitCoversFullExpiryShift(
-    end
+    permitEnd
 ) {
 
-    const shift =
+    const expiryShift =
         getShift(
-            end
+            permitEnd
         );
 
 
     return (
-        end.getTime() >=
-        shift.end.getTime()
+        permitEnd.getTime() >=
+        expiryShift.end.getTime()
     );
 
 }
 
 
 function getLastFullyUsableShift(
-    end
+    permitEnd
 ) {
 
     const expiryShift =
         getShift(
-            end
+            permitEnd
         );
 
 
-    if (
+    return (
         permitCoversFullExpiryShift(
-            end
+            permitEnd
         )
-    ) {
-
-        return expiryShift;
-
-    }
-
-
-    return getPreviousShift(
+        ?
         expiryShift
+        :
+        getPreviousShift(
+            expiryShift
+        )
     );
 
 }
 
+
+/* =========================================================
+   SHIFT LABEL
+========================================================= */
 
 function formatShiftLabel(
     shift
 ) {
 
+    if (
+        shift.type ===
+        "DAY SHIFT"
+    ) {
+
+        return (
+            "DAY SHIFT · " +
+            formatDateOnly(
+                shift.start
+            ) +
+            " · 07:00 - 18:59"
+        );
+
+    }
+
+
     return (
-        shift.type +
-        " · " +
-        formatDateTime(
+        "NIGHT SHIFT · " +
+        formatDateOnly(
             shift.start
-        )
+        ) +
+        " 19:00 - " +
+        formatDateOnly(
+            shift.end
+        ) +
+        " 06:59"
     );
 
 }
 
 
-function formatRemaining(
-    ms
+/* =========================================================
+   EXPIRY NOTE
+========================================================= */
+
+function buildExpiryRuleNote(
+    permitEnd
 ) {
 
-    const minutes =
-        Math.floor(
-            ms /
-            60000
+    const expiryShift =
+        getShift(
+            permitEnd
         );
 
 
     if (
-        minutes <
+        permitCoversFullExpiryShift(
+            permitEnd
+        )
+    ) {
+
+        return (
+            "PERMIT COVERS THE FULL " +
+            expiryShift.type +
+            "."
+        );
+
+    }
+
+
+    return (
+        "EXPIRES AT " +
+        formatTime24(
+            permitEnd
+        ) +
+        " DURING " +
+        expiryShift.type +
+        ". NEW PERMIT REQUIRED FOR THAT SHIFT."
+    );
+
+}
+
+
+/* =========================================================
+   REMAINING TIME
+========================================================= */
+
+function formatRemaining(
+    milliseconds
+) {
+
+    if (
+        milliseconds <=
         0
     ) {
 
@@ -2644,9 +4334,16 @@ function formatRemaining(
     }
 
 
+    const totalMinutes =
+        Math.floor(
+            milliseconds /
+            60000
+        );
+
+
     const days =
         Math.floor(
-            minutes /
+            totalMinutes /
             1440
         );
 
@@ -2654,16 +4351,15 @@ function formatRemaining(
     const hours =
         Math.floor(
             (
-                minutes %
+                totalMinutes %
                 1440
-            )
-            /
+            ) /
             60
         );
 
 
-    const mins =
-        minutes %
+    const minutes =
+        totalMinutes %
         60;
 
 
@@ -2685,7 +4381,7 @@ function formatRemaining(
     return (
         hours +
         "H " +
-        mins +
+        minutes +
         "M"
     );
 
@@ -2693,77 +4389,206 @@ function formatRemaining(
 
 
 /* =========================================================
-   GROUPS
+   BOOKMARKS
 ========================================================= */
 
-function slugify(
-    value
-) {
+function renderBookmarks() {
 
-    return String(
-        value
-    )
-    .toLowerCase()
-    .replace(
-        /[^a-z0-9]+/g,
-        "-"
-    )
-    .replace(
-        /^-|-$/g,
-        ""
+    const container =
+        document.getElementById(
+            "mainSiteColumn"
+        );
+
+
+    const rows =
+        CURRENT_BOOKMARKS.map(
+            row => ({
+
+                section:
+                    getFirstField(
+                        row,
+                        [
+                            "SECTION"
+                        ]
+                    ),
+
+                name:
+                    getFirstField(
+                        row,
+                        [
+                            "NAME"
+                        ]
+                    ),
+
+                url:
+                    safeUrl(
+                        getFirstField(
+                            row,
+                            [
+                                "URL"
+                            ]
+                        )
+                    ),
+
+                order:
+                    Number(
+                        getFirstField(
+                            row,
+                            [
+                                "ORDER"
+                            ]
+                        ) ||
+                        9999
+                    )
+
+            })
+        );
+
+
+    const main =
+        rows
+            .filter(
+                row =>
+                    row.section
+                        .toUpperCase() ===
+                    "MAIN SITE"
+            )
+            .sort(
+                (
+                    a,
+                    b
+                ) =>
+                    a.order -
+                    b.order
+            );
+
+
+    const major =
+        rows
+            .filter(
+                row =>
+                    row.section
+                        .toUpperCase() ===
+                    "MAJOR ACTIVITIES"
+            )
+            .sort(
+                (
+                    a,
+                    b
+                ) =>
+                    a.order -
+                    b.order
+            );
+
+
+    let html =
+        "";
+
+
+    main.forEach(
+        row => {
+
+
+            if (
+                row.url
+            ) {
+
+                html += `
+
+                    <a
+                        class="site-item"
+                        href="${escapeHtml(row.url)}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ${escapeHtml(row.name)}
+                    </a>
+
+                `;
+
+            }
+
+            else {
+
+                html += `
+
+                    <span class="site-item site-item-static">
+                        ${escapeHtml(row.name)}
+                    </span>
+
+                `;
+
+            }
+
+        }
     );
 
-}
+
+    if (
+        major.length
+    ) {
+
+        html += `
+
+            <div class="main-site-separator"></div>
+
+            <div class="major-activities-label">
+                MAJOR ACTIVITIES
+            </div>
+
+        `;
 
 
-function getGroups() {
-
-    const groups =
-        new Map();
-
-
-    CURRENT_DATA
-        .map(
-            normalizeDataRow
-        )
-        .filter(
-            row =>
-                row.type ===
-                "EPTW"
-        )
-        .forEach(
+        major.forEach(
             row => {
 
 
                 if (
-                    !groups.has(
-                        row.section
-                    )
+                    row.url
                 ) {
 
-                    groups.set(
-                        row.section,
-                        []
-                    );
+                    html += `
+
+                        <a
+                            class="site-item"
+                            href="${escapeHtml(row.url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ${escapeHtml(row.name)}
+                        </a>
+
+                    `;
 
                 }
 
+                else {
 
-                groups
-                    .get(
-                        row.section
-                    )
-                    .push(
-                        row
-                    );
+                    html += `
+
+                        <span class="site-item site-item-static">
+                            ${escapeHtml(row.name)}
+                        </span>
+
+                    `;
+
+                }
 
             }
         );
 
+    }
 
-    return Array.from(
-        groups.entries()
-    );
+
+    container.innerHTML =
+        html ||
+        `
+
+        <div class="site-loading">
+            NO BOOKMARK DATA FOUND
+        </div>
+
+        `;
 
 }
 
@@ -2772,18 +4597,53 @@ function getGroups() {
    EQUIPMENT
 ========================================================= */
 
+function getEquipmentForPtw(
+    ptwNumber
+) {
+
+    return CURRENT_EQUIPMENT
+        .filter(
+            row =>
+                getFirstField(
+                    row,
+                    [
+                        "PTW_NO"
+                    ]
+                ) ===
+                ptwNumber
+        )
+        .map(
+            row => ({
+
+                name:
+                    getFirstField(
+                        row,
+                        [
+                            "EQUIPMENT"
+                        ]
+                    ),
+
+                expiry:
+                    getFirstField(
+                        row,
+                        [
+                            "EXPIRY_DATE"
+                        ]
+                    )
+
+            })
+        );
+
+}
+
+
 function renderEquipment(
-    number
+    ptwNumber
 ) {
 
     const equipment =
-        CURRENT_EQUIPMENT.filter(
-            row =>
-                value(
-                    row,
-                    "PTW_NO"
-                ) ===
-                number
+        getEquipmentForPtw(
+            ptwNumber
         );
 
 
@@ -2813,24 +4673,29 @@ function renderEquipment(
 
             </div>
 
+
             ${
-                equipment.map(
-                    row => `
+                equipment
+                    .map(
+                        item => `
 
-                        <div class="tower-equipment-row">
+                            <div class="tower-equipment-row">
 
-                            <div>
-                                ${escapeHtml(value(row,"EQUIPMENT"))}
+                                <div class="tower-equipment-name">
+                                    ${escapeHtml(item.name)}
+                                </div>
+
+                                <div class="tower-equipment-expiry">
+                                    ${escapeHtml(item.expiry)}
+                                </div>
+
                             </div>
 
-                            <div>
-                                ${escapeHtml(value(row,"EXPIRY_DATE"))}
-                            </div>
-
-                        </div>
-
-                    `
-                ).join("")
+                        `
+                    )
+                    .join(
+                        ""
+                    )
             }
 
         </div>
@@ -2877,44 +4742,85 @@ function renderVec(
                 MANDATORY ATTACHED VEC
             </div>
 
-            <a
-                class="vec-number hover-detail"
-                href="${escapeHtml(row.vecUrl)}"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-number="VEC ${escapeHtml(row.vecNo)}"
-                data-description="${escapeHtml(row.vecDescription)}"
-            >
-                VEC ${escapeHtml(row.vecNo)}
-            </a>
+
+            ${
+                row.vecUrl
+                ?
+                `
+
+                <a
+                    class="vec-number hover-detail"
+                    href="${escapeHtml(row.vecUrl)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-number="VEC ${escapeHtml(row.vecNo)}"
+                    data-description="${escapeHtml(row.vecDescription)}"
+                >
+                    VEC ${escapeHtml(row.vecNo)}
+                </a>
+
+                `
+                :
+                `
+
+                <span class="vec-number">
+                    VEC ${escapeHtml(row.vecNo)}
+                </span>
+
+                `
+            }
+
 
             <div class="vec-description">
                 ${escapeHtml(row.vecDescription)}
             </div>
 
+
             <div class="vec-validity">
 
-                VEC VALIDITY:
+                VEC VALIDITY:<br>
 
                 ${
                     start &&
                     end
                     ?
-                    formatDateTime(start) +
-                    " - " +
-                    formatDateTime(end)
+                    escapeHtml(
+                        formatDateTime(
+                            start
+                        ) +
+                        " - " +
+                        formatDateTime(
+                            end
+                        )
+                    )
                     :
-                    "DATE REQUIRED"
+                    "VEC VALIDITY NOT PROVIDED"
                 }
 
             </div>
 
-            <span class="vec-status-badge">
-                CHECKING
-            </span>
 
-            <div class="vec-status-note">
-                --
+            <div class="vec-status-line">
+
+                <span class="vec-status-badge">
+                    CHECKING
+                </span>
+
+                <div class="vec-status-note">
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="effective-validity">
+
+                VEHICLE ENTRY REQUIRES BOTH EPTW
+                ${escapeHtml(row.displayNumber || row.number)}
+                AND VEC
+                ${escapeHtml(row.vecNo)}
+                TO BE VALID.
+
             </div>
 
         </div>
@@ -2925,62 +4831,242 @@ function renderVec(
 
 
 /* =========================================================
-   RENDER PTW
+   SLUG
+========================================================= */
+
+function slugify(
+    value
+) {
+
+    return (
+        String(
+            value ??
+            ""
+        )
+        .toLowerCase()
+        .trim()
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        )
+        ||
+        "section"
+    );
+
+}
+
+
+/* =========================================================
+   PTW GROUPS
+========================================================= */
+
+function getPtwGroups() {
+
+    const groups =
+        [];
+
+
+    const map =
+        new Map();
+
+
+    CURRENT_DATA
+        .map(
+            normalizeDataRow
+        )
+        .filter(
+            row =>
+                row.type ===
+                "EPTW"
+        )
+        .forEach(
+            row => {
+
+
+                const section =
+                    row.section ||
+                    "OTHER";
+
+
+                if (
+                    !map.has(
+                        section
+                    )
+                ) {
+
+                    const group = {
+
+                        id:
+                            slugify(
+                                section
+                            ),
+
+                        section,
+
+                        rows:[]
+
+                    };
+
+
+                    map.set(
+                        section,
+                        group
+                    );
+
+
+                    groups.push(
+                        group
+                    );
+
+                }
+
+
+                map
+                    .get(
+                        section
+                    )
+                    .rows
+                    .push(
+                        row
+                    );
+
+            }
+        );
+
+
+    return groups;
+
+}
+
+
+/* =========================================================
+   LOCATION ROWSPAN
+========================================================= */
+
+function getLocationRowspan(
+    rows,
+    index
+) {
+
+    const location =
+        rows[
+            index
+        ].location;
+
+
+    let count =
+        0;
+
+
+    for (
+        let i =
+            index;
+        i <
+            rows.length;
+        i++
+    ) {
+
+        if (
+            rows[
+                i
+            ].location !==
+            location
+        ) {
+
+            break;
+
+        }
+
+
+        count++;
+
+    }
+
+
+    return count;
+
+}
+
+
+/* =========================================================
+   PTW RENDER
 ========================================================= */
 
 function renderPtwTable() {
 
-    const body =
+    const tbody =
         document.getElementById(
             "ptwTableBody"
         );
+
+
+    const groups =
+        getPtwGroups();
+
+
+    if (
+        groups.length ===
+        0
+    ) {
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+                    NO EPTW DATA FOUND
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
 
 
     let html =
         "";
 
 
-    getGroups().forEach(
-        (
-            [
-                section,
-                rows
-            ]
-        ) => {
-
-
-            const id =
-                slugify(
-                    section
-                );
+    groups.forEach(
+        group => {
 
 
             html += `
 
                 <tr
                     class="category-row"
-                    data-section-id="${id}"
+                    data-section-id="${escapeHtml(group.id)}"
                 >
 
                     <td colspan="5">
 
                         <button
                             class="section-toggle"
-                            data-toggle-section="${id}"
+                            type="button"
+                            data-toggle-section="${escapeHtml(group.id)}"
                             aria-expanded="true"
                         >
 
                             <span class="section-toggle-left">
 
                                 <span class="section-toggle-title">
-                                    ${escapeHtml(section)}
+                                    ${escapeHtml(group.section)}
                                 </span>
 
                                 <span class="section-toggle-count">
-                                    ${rows.length} PTW
+                                    ${group.rows.length} PTW
                                 </span>
 
                             </span>
+
 
                             <span class="section-toggle-right">
 
@@ -3003,7 +5089,7 @@ function renderPtwTable() {
             `;
 
 
-            rows.forEach(
+            group.rows.forEach(
                 (
                     row,
                     index
@@ -3026,40 +5112,27 @@ function renderPtwTable() {
                         "";
 
 
-                    if (
-                        index ===
-                        0 ||
-                        rows[
+                    const previous =
+                        index >
+                        0
+                        ?
+                        group.rows[
                             index - 1
-                        ].location !==
+                        ].location
+                        :
+                        null;
+
+
+                    if (
+                        previous !==
                         row.location
                     ) {
 
-                        let rowspan =
-                            1;
-
-
-                        for (
-                            let j =
-                                index + 1;
-                            j <
-                                rows.length;
-                            j++
-                        ) {
-
-                            if (
-                                rows[j].location !==
-                                row.location
-                            ) {
-
-                                break;
-
-                            }
-
-
-                            rowspan++;
-
-                        }
+                        const rowspan =
+                            getLocationRowspan(
+                                group.rows,
+                                index
+                            );
 
 
                         locationCell = `
@@ -3070,7 +5143,7 @@ function renderPtwTable() {
                             >
 
                                 <div class="location-name">
-                                    ${escapeHtml(row.location)}
+                                    ${escapeHtml(row.location || "-")}
                                 </div>
 
                             </td>
@@ -3080,13 +5153,19 @@ function renderPtwTable() {
                     }
 
 
+                    const displayNumber =
+                        row.displayNumber ||
+                        row.number ||
+                        "-";
+
+
                     html += `
 
                         <tr
                             class="ptw-data-row section-data-row"
-                            data-section-id="${id}"
-                            data-location="${escapeHtml(row.location)}"
-                            data-activity="${escapeHtml(row.section)}"
+                            data-section-id="${escapeHtml(group.id)}"
+                            data-location="${escapeHtml(row.location || "-")}"
+                            data-activity="${escapeHtml(row.section || "EPTW")}"
                             data-start="${escapeHtml(row.start)}"
                             data-end="${escapeHtml(row.end)}"
                             data-vec-start="${escapeHtml(row.vecStart)}"
@@ -3096,20 +5175,38 @@ function renderPtwTable() {
 
                             ${locationCell}
 
+
                             <td data-label="EPTW NO.">
 
-                                <a
-                                    class="ptw-number hover-detail"
-                                    href="${escapeHtml(row.url)}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    data-number="EPTW ${escapeHtml(row.number)}"
-                                    data-description="${escapeHtml(row.description)}"
-                                >
-                                    ${escapeHtml(row.number)}
-                                </a>
+                                ${
+                                    row.url
+                                    ?
+                                    `
+
+                                    <a
+                                        class="ptw-number hover-detail"
+                                        href="${escapeHtml(row.url)}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-number="EPTW ${escapeHtml(displayNumber)}"
+                                        data-description="${escapeHtml(row.description)}"
+                                    >
+                                        ${escapeHtml(displayNumber)}
+                                    </a>
+
+                                    `
+                                    :
+                                    `
+
+                                    <span class="ptw-number">
+                                        ${escapeHtml(displayNumber)}
+                                    </span>
+
+                                    `
+                                }
 
                             </td>
+
 
                             <td data-label="STATUS">
 
@@ -3123,11 +5220,19 @@ function renderPtwTable() {
 
                             </td>
 
-                            <td data-label="PTW VALIDITY">
+
+                            <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
 
                                 <span class="validity-label">
-                                    PTW VALIDITY
+                                    ${
+                                        row.vecNo
+                                        ?
+                                        "EPTW VALIDITY"
+                                        :
+                                        "PTW VALIDITY"
+                                    }
                                 </span>
+
 
                                 <div class="validity-value">
 
@@ -3135,19 +5240,32 @@ function renderPtwTable() {
                                         start &&
                                         end
                                         ?
-                                        formatDateTime(start) +
-                                        " - " +
-                                        formatDateTime(end)
+                                        escapeHtml(
+                                            formatDateTime(
+                                                start
+                                            ) +
+                                            " - " +
+                                            formatDateTime(
+                                                end
+                                            )
+                                        )
                                         :
                                         "PTW VALIDITY NOT PROVIDED"
                                     }
 
                                 </div>
 
+
                                 <div class="last-usable">
 
                                     <span class="validity-label">
-                                        LAST FULLY USABLE SHIFT
+                                        ${
+                                            row.vecNo
+                                            ?
+                                            "EFFECTIVE LAST FULLY USABLE SHIFT"
+                                            :
+                                            "LAST FULLY USABLE SHIFT"
+                                        }
                                     </span>
 
                                     <div class="last-usable-value">
@@ -3156,13 +5274,16 @@ function renderPtwTable() {
 
                                 </div>
 
+
                                 <div class="expiry-rule-note">
                                     --
                                 </div>
 
+
                                 ${renderVec(row)}
 
                             </td>
+
 
                             <td data-label="DESCRIPTION">
 
@@ -3173,6 +5294,7 @@ function renderPtwTable() {
                                 ${renderEquipment(row.number)}
 
                             </td>
+
 
                         </tr>
 
@@ -3185,157 +5307,22 @@ function renderPtwTable() {
     );
 
 
-    body.innerHTML =
+    tbody.innerHTML =
         html;
+
+
+    restoreCollapsedSections();
 
 }
 
 
 /* =========================================================
-   BOOKMARKS
-========================================================= */
-
-function renderBookmarks() {
-
-    const container =
-        document.getElementById(
-            "mainSiteColumn"
-        );
-
-
-    const rows =
-        CURRENT_BOOKMARKS;
-
-
-    let html =
-        "";
-
-
-    const main =
-        rows.filter(
-            row =>
-                value(
-                    row,
-                    "SECTION"
-                ).toUpperCase() ===
-                "MAIN SITE"
-        );
-
-
-    const major =
-        rows.filter(
-            row =>
-                value(
-                    row,
-                    "SECTION"
-                ).toUpperCase() ===
-                "MAJOR ACTIVITIES"
-        );
-
-
-    main.forEach(
-        row => {
-
-
-            const url =
-                safeUrl(
-                    value(
-                        row,
-                        "URL"
-                    )
-                );
-
-
-            html +=
-                url
-                ?
-                `
-                <a
-                    class="site-item"
-                    href="${escapeHtml(url)}"
-                    target="_blank"
-                >
-                    ${escapeHtml(value(row,"NAME"))}
-                </a>
-                `
-                :
-                `
-                <span class="site-item site-item-static">
-                    ${escapeHtml(value(row,"NAME"))}
-                </span>
-                `;
-
-        }
-    );
-
-
-    if (
-        major.length >
-        0
-    ) {
-
-        html += `
-
-            <div class="main-site-separator"></div>
-
-            <div class="major-activities-label">
-                MAJOR ACTIVITIES
-            </div>
-
-        `;
-
-
-        major.forEach(
-            row => {
-
-
-                const url =
-                    safeUrl(
-                        value(
-                            row,
-                            "URL"
-                        )
-                    );
-
-
-                html +=
-                    url
-                    ?
-                    `
-                    <a
-                        class="site-item"
-                        href="${escapeHtml(url)}"
-                        target="_blank"
-                    >
-                        ${escapeHtml(value(row,"NAME"))}
-                    </a>
-                    `
-                    :
-                    `
-                    <span class="site-item site-item-static">
-                        ${escapeHtml(value(row,"NAME"))}
-                    </span>
-                    `;
-
-            }
-        );
-
-    }
-
-
-    container.innerHTML =
-        html;
-
-}
-
-
-/* =========================================================
-   JHA
+   JHA / EJHA RENDER
 ========================================================= */
 
 function renderJha() {
 
-    const rows =
+    const items =
         CURRENT_DATA
             .map(
                 normalizeDataRow
@@ -3343,54 +5330,685 @@ function renderJha() {
             .filter(
                 row =>
                     row.type ===
-                    "JHA" ||
+                    "JHA"
+                    ||
                     row.type ===
                     "EJHA"
             );
 
 
-    document.getElementById(
-        "jhaCount"
-    ).textContent =
-        rows.length;
+    const container =
+        document.getElementById(
+            "jhaItems"
+        );
 
 
-    document.getElementById(
-        "jhaItems"
-    ).innerHTML =
-        rows.map(
-            row => `
+    const count =
+        document.getElementById(
+            "jhaCount"
+        );
 
-                <div class="ejha-bottom-item">
 
-                    <div class="ejha-type-label">
-                        ${escapeHtml(row.type)}
-                    </div>
+    count.textContent =
+        items.length;
 
-                    <a
-                        class="ejha-bottom-number hover-detail"
-                        href="${escapeHtml(row.url)}"
-                        target="_blank"
-                        data-number="${escapeHtml(row.number)}"
-                        data-description="${escapeHtml(row.description)}"
-                    >
-                        ${escapeHtml(row.number.replace(/^(E?JHA)\s+/i,""))}
-                    </a>
 
-                    <div class="ejha-bottom-description">
-                        ${escapeHtml(row.description)}
-                    </div>
+    if (
+        items.length ===
+        0
+    ) {
 
+        container.innerHTML = `
+
+            <div class="ejha-bottom-item">
+
+                <div class="ejha-bottom-description">
+                    NO JHA / EJHA DATA FOUND.
                 </div>
 
-            `
-        ).join("");
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        items
+            .map(
+                item => {
+
+
+                    const type =
+                        deriveRecordType(
+                            item.type,
+                            item.number
+                        );
+
+
+                    const displayNumber =
+                        item.displayNumber ||
+                        cleanDisplayNumber(
+                            item.number
+                        ) ||
+                        "NUMBER NOT PROVIDED";
+
+
+                    const fullNumber =
+                        (
+                            type +
+                            " " +
+                            displayNumber
+                        ).trim();
+
+
+                    return `
+
+                        <div class="ejha-bottom-item">
+
+
+                            <div class="ejha-type-label">
+                                ${escapeHtml(type)}
+                            </div>
+
+
+                            ${
+                                item.url
+                                ?
+                                `
+
+                                <a
+                                    class="ejha-bottom-number hover-detail"
+                                    href="${escapeHtml(item.url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    data-number="${escapeHtml(fullNumber)}"
+                                    data-description="${escapeHtml(item.description)}"
+                                >
+                                    ${escapeHtml(displayNumber)}
+                                </a>
+
+                                `
+                                :
+                                `
+
+                                <span class="ejha-bottom-number">
+                                    ${escapeHtml(displayNumber)}
+                                </span>
+
+                                `
+                            }
+
+
+                            <div class="ejha-bottom-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join(
+                ""
+            );
 
 }
 
 
 /* =========================================================
-   STATUS
+   COLLAPSED PTW SECTIONS
+========================================================= */
+
+function getCollapsedSections() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                COLLAPSE_STORAGE_KEY
+            ) ||
+            "[]"
+        );
+
+    }
+
+    catch(error) {
+
+        return [];
+
+    }
+
+}
+
+
+function saveCollapsedSections(
+    sections
+) {
+
+    try {
+
+        localStorage.setItem(
+            COLLAPSE_STORAGE_KEY,
+            JSON.stringify(
+                sections
+            )
+        );
+
+    }
+
+    catch(error) {
+
+        /* ignore */
+
+    }
+
+}
+
+
+function setSectionCollapsed(
+    sectionId,
+    collapsed,
+    save = true
+) {
+
+    const header =
+        document.querySelector(
+            `.category-row[data-section-id="${sectionId}"]`
+        );
+
+
+    if (
+        !header
+    ) {
+
+        return;
+
+    }
+
+
+    const button =
+        header.querySelector(
+            ".section-toggle"
+        );
+
+
+    const state =
+        header.querySelector(
+            ".section-toggle-state"
+        );
+
+
+    const rows =
+        document.querySelectorAll(
+            `.section-data-row[data-section-id="${sectionId}"]`
+        );
+
+
+    header.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+
+    button?.setAttribute(
+        "aria-expanded",
+        collapsed
+        ?
+        "false"
+        :
+        "true"
+    );
+
+
+    if (
+        state
+    ) {
+
+        state.textContent =
+            collapsed
+            ?
+            "EXPAND"
+            :
+            "COLLAPSE";
+
+    }
+
+
+    rows.forEach(
+        row => {
+
+            row.classList.toggle(
+                "section-hidden",
+                collapsed
+            );
+
+        }
+    );
+
+
+    if (
+        save
+    ) {
+
+        const current =
+            new Set(
+                getCollapsedSections()
+            );
+
+
+        if (
+            collapsed
+        ) {
+
+            current.add(
+                sectionId
+            );
+
+        }
+
+        else {
+
+            current.delete(
+                sectionId
+            );
+
+        }
+
+
+        saveCollapsedSections(
+            Array.from(
+                current
+            )
+        );
+
+    }
+
+}
+
+
+function restoreCollapsedSections() {
+
+    getCollapsedSections()
+        .forEach(
+            sectionId => {
+
+                setSectionCollapsed(
+                    sectionId,
+                    true,
+                    false
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   JHA COLLAPSE
+========================================================= */
+
+function setJhaCollapsed(
+    collapsed,
+    save = true
+) {
+
+    const section =
+        document.getElementById(
+            "jhaSection"
+        );
+
+
+    const toggle =
+        document.getElementById(
+            "jhaToggle"
+        );
+
+
+    const state =
+        document.getElementById(
+            "jhaState"
+        );
+
+
+    section.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+
+    toggle.setAttribute(
+        "aria-expanded",
+        collapsed
+        ?
+        "false"
+        :
+        "true"
+    );
+
+
+    state.textContent =
+        collapsed
+        ?
+        "EXPAND"
+        :
+        "COLLAPSE";
+
+
+    if (
+        save
+    ) {
+
+        try {
+
+            localStorage.setItem(
+                JHA_COLLAPSE_STORAGE_KEY,
+                collapsed
+                ?
+                "1"
+                :
+                "0"
+            );
+
+        }
+
+        catch(error) {
+
+            /* ignore */
+
+        }
+
+    }
+
+}
+
+
+function restoreJhaCollapsed() {
+
+    try {
+
+        setJhaCollapsed(
+
+            localStorage.getItem(
+                JHA_COLLAPSE_STORAGE_KEY
+            ) ===
+            "1",
+
+            false
+
+        );
+
+    }
+
+    catch(error) {
+
+        setJhaCollapsed(
+            false,
+            false
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   VEC STATUS
+========================================================= */
+
+function updateVecStatus(
+    row,
+    now,
+    currentShift,
+    nextShift
+) {
+
+    const vecBox =
+        row.querySelector(
+            ".vec-dependency"
+        );
+
+
+    if (
+        !vecBox
+    ) {
+
+        return;
+
+    }
+
+
+    const badge =
+        vecBox.querySelector(
+            ".vec-status-badge"
+        );
+
+
+    const note =
+        vecBox.querySelector(
+            ".vec-status-note"
+        );
+
+
+    const vecStart =
+        parseAnyDate(
+            row.dataset.vecStart
+        );
+
+
+    const vecEnd =
+        parseAnyDate(
+            row.dataset.vecEnd
+        );
+
+
+    vecBox.classList.remove(
+        "vec-active",
+        "vec-next-last",
+        "vec-last-shift",
+        "vec-shift-invalid",
+        "vec-expired",
+        "vec-upcoming"
+    );
+
+
+    if (
+        !vecStart ||
+        !vecEnd
+    ) {
+
+        badge.textContent =
+            "VEC DATE REQUIRED";
+
+
+        note.textContent =
+            "CHECK VEC START / END DATE IN GOOGLE SHEETS.";
+
+
+        return;
+
+    }
+
+
+    const lastFullShift =
+        getLastFullyUsableShift(
+            vecEnd
+        );
+
+
+    const expiryShift =
+        getShift(
+            vecEnd
+        );
+
+
+    const coversExpiryShift =
+        permitCoversFullExpiryShift(
+            vecEnd
+        );
+
+
+    if (
+        now <
+        vecStart
+    ) {
+
+        vecBox.classList.add(
+            "vec-upcoming"
+        );
+
+
+        badge.textContent =
+            "VEC UPCOMING";
+
+
+        note.textContent =
+            "VALID FROM " +
+            formatDateTime(
+                vecStart
+            );
+
+
+        return;
+
+    }
+
+
+    if (
+        now >
+        vecEnd
+    ) {
+
+        vecBox.classList.add(
+            "vec-expired"
+        );
+
+
+        badge.textContent =
+            "VEC EXPIRED";
+
+
+        note.textContent =
+            "EXPIRED " +
+            formatDateTime(
+                vecEnd
+            );
+
+
+        return;
+
+    }
+
+
+    if (
+        !coversExpiryShift &&
+        sameShift(
+            currentShift,
+            expiryShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-shift-invalid"
+        );
+
+
+        badge.textContent =
+            "VEC NOT VALID FOR FULL SHIFT";
+
+
+        note.textContent =
+            "VEC EXPIRES AT " +
+            formatTime24(
+                vecEnd
+            ) +
+            ". NEW VEC REQUIRED FOR THIS " +
+            expiryShift.type +
+            ".";
+
+
+        return;
+
+    }
+
+
+    if (
+        sameShift(
+            currentShift,
+            lastFullShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-last-shift"
+        );
+
+
+        badge.textContent =
+            "VEC · FINAL USABLE SHIFT";
+
+
+        note.textContent =
+            "RENEW VEC NOW. THIS IS THE LAST FULL SHIFT COVERED BY THE CURRENT VEC.";
+
+
+        return;
+
+    }
+
+
+    if (
+        sameShift(
+            nextShift,
+            lastFullShift
+        )
+    ) {
+
+        vecBox.classList.add(
+            "vec-next-last"
+        );
+
+
+        badge.textContent =
+            "VEC · NEXT SHIFT = FINAL";
+
+
+        note.textContent =
+            "PREPARE NEW VEC. NEXT SHIFT IS THE LAST FULLY COVERED SHIFT.";
+
+
+        return;
+
+    }
+
+
+    vecBox.classList.add(
+        "vec-active"
+    );
+
+
+    badge.textContent =
+        "VEC ACTIVE";
+
+
+    note.textContent =
+        formatRemaining(
+            vecEnd.getTime() -
+            now.getTime()
+        ) +
+        " REMAINING";
+
+}
+
+
+/* =========================================================
+   PTW STATUS
 ========================================================= */
 
 function updatePermitStatus() {
@@ -3411,23 +6029,27 @@ function updatePermitStatus() {
         );
 
 
-    let active =
+    let activeCount =
         0;
 
 
-    let warning =
+    let warningCount =
         0;
 
 
-    let invalid =
+    let invalidCount =
         0;
 
 
-    let expired =
+    let expiredCount =
         0;
 
 
-    let upcoming =
+    let upcomingCount =
+        0;
+
+
+    let dateErrorCount =
         0;
 
 
@@ -3437,18 +6059,6 @@ function updatePermitStatus() {
         )
         .forEach(
             row => {
-
-
-                const start =
-                    parseAnyDate(
-                        row.dataset.start
-                    );
-
-
-                const end =
-                    parseAnyDate(
-                        row.dataset.end
-                    );
 
 
                 const badge =
@@ -3486,17 +6096,32 @@ function updatePermitStatus() {
                 );
 
 
+                const ptwStart =
+                    parseAnyDate(
+                        row.dataset.start
+                    );
+
+
+                const ptwEnd =
+                    parseAnyDate(
+                        row.dataset.end
+                    );
+
+
                 if (
-                    !start ||
-                    !end
+                    !ptwStart ||
+                    !ptwEnd
                 ) {
+
+                    dateErrorCount++;
+
 
                     badge.textContent =
                         "DATE REQUIRED";
 
 
                     note.textContent =
-                        "CHECK START / END CELL.";
+                        "CHECK START / END DATE IN GOOGLE SHEETS.";
 
 
                     lastUsable.textContent =
@@ -3504,7 +6129,7 @@ function updatePermitStatus() {
 
 
                     expiryRule.textContent =
-                        "INVALID DATE VALUE.";
+                        "INVALID OR EMPTY DATE VALUE.";
 
 
                     return;
@@ -3513,56 +6138,82 @@ function updatePermitStatus() {
 
 
                 let effectiveStart =
-                    start;
+                    ptwStart;
 
 
                 let effectiveEnd =
-                    end;
+                    ptwEnd;
 
 
-                const vecStart =
-                    parseAnyDate(
-                        row.dataset.vecStart
-                    );
+                let limitedByVec =
+                    false;
 
 
-                const vecEnd =
-                    parseAnyDate(
-                        row.dataset.vecEnd
-                    );
+                const vecId =
+                    row.dataset.vecId ||
+                    "";
 
 
                 if (
-                    row.dataset.vecId &&
-                    vecStart &&
-                    vecEnd
+                    vecId
                 ) {
 
+                    updateVecStatus(
+                        row,
+                        now,
+                        currentShift,
+                        nextShift
+                    );
+
+
+                    const vecStart =
+                        parseAnyDate(
+                            row.dataset.vecStart
+                        );
+
+
+                    const vecEnd =
+                        parseAnyDate(
+                            row.dataset.vecEnd
+                        );
+
+
                     if (
-                        vecStart >
-                        effectiveStart
+                        vecStart &&
+                        vecEnd
                     ) {
 
-                        effectiveStart =
-                            vecStart;
+                        if (
+                            vecStart >
+                            effectiveStart
+                        ) {
 
-                    }
+                            effectiveStart =
+                                vecStart;
+
+                        }
 
 
-                    if (
-                        vecEnd <
-                        effectiveEnd
-                    ) {
+                        if (
+                            vecEnd <
+                            effectiveEnd
+                        ) {
 
-                        effectiveEnd =
-                            vecEnd;
+                            effectiveEnd =
+                                vecEnd;
+
+
+                            limitedByVec =
+                                true;
+
+                        }
 
                     }
 
                 }
 
 
-                const lastShift =
+                const lastFullShift =
                     getLastFullyUsableShift(
                         effectiveEnd
                     );
@@ -3574,20 +6225,45 @@ function updatePermitStatus() {
                     );
 
 
-                lastUsable.textContent =
-                    formatShiftLabel(
-                        lastShift
+                const coversExpiryShift =
+                    permitCoversFullExpiryShift(
+                        effectiveEnd
                     );
 
 
+                lastUsable.textContent =
+                    formatShiftLabel(
+                        lastFullShift
+                    );
+
+
+                if (
+                    limitedByVec
+                ) {
+
+                    lastUsable.textContent +=
+                        " · LIMITED BY VEC " +
+                        vecId;
+
+                }
+
+
                 expiryRule.textContent =
-                    permitCoversFullExpiryShift(
+                    buildExpiryRuleNote(
                         effectiveEnd
-                    )
-                    ?
-                    "PERMIT COVERS THE FULL EXPIRY SHIFT."
-                    :
-                    "PERMIT DOES NOT COVER THE FULL EXPIRY SHIFT.";
+                    );
+
+
+                if (
+                    limitedByVec
+                ) {
+
+                    expiryRule.textContent +=
+                        " EFFECTIVE EXPIRY CONTROLLED BY VEC " +
+                        vecId +
+                        ".";
+
+                }
 
 
                 if (
@@ -3595,7 +6271,7 @@ function updatePermitStatus() {
                     effectiveStart
                 ) {
 
-                    upcoming++;
+                    upcomingCount++;
 
 
                     row.classList.add(
@@ -3620,11 +6296,58 @@ function updatePermitStatus() {
 
 
                 if (
+                    vecId
+                ) {
+
+                    const vecEnd =
+                        parseAnyDate(
+                            row.dataset.vecEnd
+                        );
+
+
+                    if (
+                        vecEnd &&
+                        now >
+                        vecEnd &&
+                        now <=
+                        ptwEnd
+                    ) {
+
+                        invalidCount++;
+
+
+                        row.classList.add(
+                            "is-vec-expired"
+                        );
+
+
+                        badge.textContent =
+                            "INVALID · VEC EXPIRED";
+
+
+                        note.textContent =
+                            "VEHICLE EPTW CANNOT BE USED. MANDATORY VEC " +
+                            vecId +
+                            " EXPIRED " +
+                            formatDateTime(
+                                vecEnd
+                            ) +
+                            ".";
+
+
+                        return;
+
+                    }
+
+                }
+
+
+                if (
                     now >
                     effectiveEnd
                 ) {
 
-                    expired++;
+                    expiredCount++;
 
 
                     row.classList.add(
@@ -3637,6 +6360,12 @@ function updatePermitStatus() {
 
 
                     note.textContent =
+                        limitedByVec
+                        ?
+                        "RETAINED FOR SAFEKEEPING. EFFECTIVE VEHICLE VALIDITY ENDED WITH VEC " +
+                        vecId +
+                        "."
+                        :
                         "OLD PTW RETAINED FOR SAFEKEEPING.";
 
 
@@ -3646,16 +6375,14 @@ function updatePermitStatus() {
 
 
                 if (
-                    !permitCoversFullExpiryShift(
-                        effectiveEnd
-                    ) &&
+                    !coversExpiryShift &&
                     sameShift(
                         currentShift,
                         expiryShift
                     )
                 ) {
 
-                    invalid++;
+                    invalidCount++;
 
 
                     row.classList.add(
@@ -3668,7 +6395,13 @@ function updatePermitStatus() {
 
 
                     note.textContent =
-                        "NEW PERMIT REQUIRED FOR THIS SHIFT.";
+                        "PERMIT EXPIRES AT " +
+                        formatTime24(
+                            effectiveEnd
+                        ) +
+                        " BEFORE THIS " +
+                        expiryShift.type +
+                        " ENDS. NEW PERMIT SHOULD BE ACTIVE FOR THIS SHIFT.";
 
 
                     return;
@@ -3679,11 +6412,11 @@ function updatePermitStatus() {
                 if (
                     sameShift(
                         currentShift,
-                        lastShift
+                        lastFullShift
                     )
                 ) {
 
-                    warning++;
+                    warningCount++;
 
 
                     row.classList.add(
@@ -3696,7 +6429,7 @@ function updatePermitStatus() {
 
 
                     note.textContent =
-                        "ACTIVATE NEW PERMIT FOR NEXT SHIFT.";
+                        "THIS IS THE LAST FULL SHIFT COVERED BY THIS PERMIT. ACTIVATE THE NEW PERMIT FOR THE NEXT SHIFT.";
 
 
                     return;
@@ -3707,11 +6440,11 @@ function updatePermitStatus() {
                 if (
                     sameShift(
                         nextShift,
-                        lastShift
+                        lastFullShift
                     )
                 ) {
 
-                    warning++;
+                    warningCount++;
 
 
                     row.classList.add(
@@ -3724,7 +6457,7 @@ function updatePermitStatus() {
 
 
                     note.textContent =
-                        "PREPARE NEW PERMIT.";
+                        "RENEWAL WARNING. NEXT SHIFT IS THE LAST FULLY USABLE SHIFT. PREPARE NEW PERMIT.";
 
 
                     return;
@@ -3732,7 +6465,7 @@ function updatePermitStatus() {
                 }
 
 
-                active++;
+                activeCount++;
 
 
                 row.classList.add(
@@ -3755,22 +6488,58 @@ function updatePermitStatus() {
         );
 
 
+    const summary = [
+
+        activeCount +
+        " ACTIVE",
+
+        warningCount +
+        " WARNING",
+
+        invalidCount +
+        " INVALID",
+
+        expiredCount +
+        " EXPIRED"
+
+    ];
+
+
+    if (
+        upcomingCount >
+        0
+    ) {
+
+        summary.push(
+            upcomingCount +
+            " UPCOMING"
+        );
+
+    }
+
+
+    if (
+        dateErrorCount >
+        0
+    ) {
+
+        summary.push(
+            dateErrorCount +
+            " DATE ERROR"
+        );
+
+    }
+
+
     document.getElementById(
         "permitSummary"
     ).textContent =
-        active +
-        " ACTIVE · " +
-        warning +
-        " WARNING · " +
-        invalid +
-        " INVALID · " +
-        expired +
-        " EXPIRED · " +
-        upcoming +
-        " UPCOMING";
+        summary.join(
+            " · "
+        );
 
 
-    updateActiveSummary();
+    updateActivePtwSummary();
 
 }
 
@@ -3779,15 +6548,30 @@ function updatePermitStatus() {
    ACTIVE SUMMARY
 ========================================================= */
 
-function updateActiveSummary() {
+function updateActivePtwSummary() {
+
+    const list =
+        document.getElementById(
+            "activePtwList"
+        );
+
+
+    const count =
+        document.getElementById(
+            "activePtwCount"
+        );
+
 
     const rows =
         Array.from(
             document.querySelectorAll(
                 ".ptw-data-row"
             )
-        )
-        .filter(
+        );
+
+
+    const activeRows =
+        rows.filter(
             row =>
                 row.classList.contains(
                     "is-active"
@@ -3803,59 +6587,97 @@ function updateActiveSummary() {
         );
 
 
-    document.getElementById(
-        "activePtwCount"
-    ).textContent =
-        rows.length;
+    count.textContent =
+        activeRows.length;
 
 
-    document.getElementById(
-        "activePtwList"
-    ).innerHTML =
-        rows.length
-        ?
-        rows.map(
-            row => {
+    list.innerHTML =
+        "";
 
 
-                const link =
-                    row.querySelector(
-                        ".ptw-number"
-                    );
+    if (
+        activeRows.length ===
+        0
+    ) {
+
+        list.innerHTML = `
+
+            <div class="active-summary-empty">
+                NO ACTIVE PTW
+            </div>
+
+        `;
 
 
-                return `
+        return;
 
-                    <a
-                        class="active-summary-item"
-                        href="${escapeHtml(link.href)}"
-                        target="_blank"
-                    >
+    }
 
-                        <span class="active-summary-location">
-                            ${escapeHtml(row.dataset.location)}
-                        </span>
 
-                        <span class="active-summary-number">
-                            ${escapeHtml(link.textContent.trim())}
-                        </span>
+    activeRows.forEach(
+        row => {
 
-                        <span class="active-summary-activity">
-                            ${escapeHtml(row.dataset.activity)}
-                        </span>
 
-                    </a>
+            const link =
+                row.querySelector(
+                    ".ptw-number"
+                );
 
-                `;
+
+            if (
+                !link
+            ) {
+
+                return;
 
             }
-        ).join("")
-        :
-        `
-        <div class="active-summary-empty">
-            NO ACTIVE PTW
-        </div>
-        `;
+
+
+            const item =
+                document.createElement(
+                    "a"
+                );
+
+
+            item.className =
+                "active-summary-item";
+
+
+            item.href =
+                link.href;
+
+
+            item.target =
+                "_blank";
+
+
+            item.rel =
+                "noopener noreferrer";
+
+
+            item.innerHTML = `
+
+                <span class="active-summary-location">
+                    ${escapeHtml(row.dataset.location || "")}
+                </span>
+
+                <span class="active-summary-number">
+                    ${escapeHtml(link.textContent.trim())}
+                </span>
+
+                <span class="active-summary-activity">
+                    ${escapeHtml(row.dataset.activity || "")}
+                </span>
+
+            `;
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
 
 }
 
@@ -3870,6 +6692,12 @@ function updateClock() {
         new Date();
 
 
+    const shift =
+        getShift(
+            now
+        );
+
+
     document.getElementById(
         "liveClock"
     ).textContent =
@@ -3882,19 +6710,22 @@ function updateClock() {
     document.getElementById(
         "currentShift"
     ).textContent =
-        getShift(
-            now
-        ).type;
+        shift.type ===
+        "DAY SHIFT"
+        ?
+        "CURRENT SHIFT: DAY · 07:00 - 18:59"
+        :
+        "CURRENT SHIFT: NIGHT · 19:00 - 06:59";
 
 }
 
 
 /* =========================================================
-   SYNC
+   SYNC STATUS
 ========================================================= */
 
-function setSync(
-    className,
+function setSyncStatus(
+    type,
     text
 ) {
 
@@ -3904,9 +6735,17 @@ function setSync(
         );
 
 
-    line.className =
-        "sync-line " +
-        className;
+    line.classList.remove(
+        "is-loading",
+        "is-ok",
+        "is-error",
+        "is-cache"
+    );
+
+
+    line.classList.add(
+        type
+    );
 
 
     document.getElementById(
@@ -3918,14 +6757,94 @@ function setSync(
 
 
 /* =========================================================
-   LOAD GOOGLE SHEETS
+   RENDER ALL
 ========================================================= */
 
-async function loadGoogleSheets() {
+function renderAll() {
 
-    setSync(
+    renderBookmarks();
+
+    renderPtwTable();
+
+    renderJha();
+
+    restoreJhaCollapsed();
+
+    updateClock();
+
+    updatePermitStatus();
+
+}
+
+
+/* =========================================================
+   LOAD CACHE
+========================================================= */
+
+function loadCachedData() {
+
+    const cached =
+        readCache();
+
+
+    if (
+        cached.data.length ===
+        0
+    ) {
+
+        return false;
+
+    }
+
+
+    CURRENT_DATA =
+        cached.data;
+
+
+    CURRENT_EQUIPMENT =
+        cached.equipment;
+
+
+    CURRENT_BOOKMARKS =
+        cached.bookmarks;
+
+
+    renderAll();
+
+
+    setSyncStatus(
+        "is-cache",
+        "GOOGLE SHEETS · CACHED DATA"
+    );
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   GOOGLE SHEETS REFRESH
+========================================================= */
+
+async function refreshGoogleSheets() {
+
+    if (
+        refreshInProgress
+    ) {
+
+        return;
+
+    }
+
+
+    refreshInProgress =
+        true;
+
+
+    setSyncStatus(
         "is-loading",
-        "GOOGLE SHEETS · SYNCING"
+        "GOOGLE SHEETS · SYNCING..."
     );
 
 
@@ -3939,18 +6858,33 @@ async function loadGoogleSheets() {
             await Promise.all([
 
                 fetchSheet(
-                    "DATA"
+                    "DATA",
+                    DATA_HEADERS
                 ),
 
                 fetchSheet(
-                    "EQUIPMENT"
+                    "EQUIPMENT",
+                    EQUIPMENT_HEADERS
                 ),
 
                 fetchSheet(
-                    "BOOKMARKS"
+                    "BOOKMARKS",
+                    BOOKMARK_HEADERS
                 )
 
             ]);
+
+
+        if (
+            data.length ===
+            0
+        ) {
+
+            throw new Error(
+                "DATA TAB EMPTY"
+            );
+
+        }
 
 
         CURRENT_DATA =
@@ -3965,18 +6899,18 @@ async function loadGoogleSheets() {
             bookmarks;
 
 
-        renderBookmarks();
-
-        renderPtwTable();
-
-        renderJha();
-
-        updatePermitStatus();
+        saveCache();
 
 
-        setSync(
+        renderAll();
+
+
+        setSyncStatus(
             "is-ok",
-            "GOOGLE SHEETS · SYNCED"
+            "GOOGLE SHEETS · SYNCED " +
+            formatDateTime(
+                new Date()
+            )
         );
 
     }
@@ -3984,14 +6918,66 @@ async function loadGoogleSheets() {
     catch(error) {
 
         console.error(
+            "GOOGLE SHEETS ERROR:",
             error
         );
 
 
-        setSync(
-            "is-error",
-            "GOOGLE SHEETS · ERROR"
-        );
+        const cached =
+            readCache();
+
+
+        if (
+            CURRENT_DATA.length ===
+            0 &&
+            cached.data.length >
+            0
+        ) {
+
+            CURRENT_DATA =
+                cached.data;
+
+
+            CURRENT_EQUIPMENT =
+                cached.equipment;
+
+
+            CURRENT_BOOKMARKS =
+                cached.bookmarks;
+
+
+            renderAll();
+
+        }
+
+
+        if (
+            CURRENT_DATA.length >
+            0
+        ) {
+
+            setSyncStatus(
+                "is-cache",
+                "SHEET UNAVAILABLE · USING LAST DATA"
+            );
+
+        }
+
+        else {
+
+            setSyncStatus(
+                "is-error",
+                "GOOGLE SHEETS · CONNECTION ERROR"
+            );
+
+        }
+
+    }
+
+    finally {
+
+        refreshInProgress =
+            false;
 
     }
 
@@ -3999,7 +6985,7 @@ async function loadGoogleSheets() {
 
 
 /* =========================================================
-   COLLAPSE
+   PTW COLLAPSE
 ========================================================= */
 
 document.addEventListener(
@@ -4014,93 +7000,66 @@ document.addEventListener(
 
 
         if (
-            button
+            !button
         ) {
 
-            const id =
-                button.dataset.toggleSection;
-
-
-            const expanded =
-                button.getAttribute(
-                    "aria-expanded"
-                ) ===
-                "true";
-
-
-            button.setAttribute(
-                "aria-expanded",
-                expanded
-                ?
-                "false"
-                :
-                "true"
-            );
-
-
-            button
-                .closest(
-                    ".category-row"
-                )
-                .classList
-                .toggle(
-                    "is-collapsed",
-                    expanded
-                );
-
-
-            document
-                .querySelectorAll(
-                    `.section-data-row[data-section-id="${id}"]`
-                )
-                .forEach(
-                    row =>
-                        row.classList.toggle(
-                            "section-hidden",
-                            expanded
-                        )
-                );
+            return;
 
         }
+
+
+        const sectionId =
+            button.dataset.toggleSection;
+
+
+        const expanded =
+            button.getAttribute(
+                "aria-expanded"
+            ) ===
+            "true";
+
+
+        setSectionCollapsed(
+            sectionId,
+            expanded,
+            true
+        );
 
     }
 );
 
 
 /* =========================================================
-   JHA COLLAPSE
+   JHA COLLAPSE CLICK
 ========================================================= */
 
-document.getElementById(
-    "jhaToggle"
-).addEventListener(
-    "click",
-    () => {
+document
+    .getElementById(
+        "jhaToggle"
+    )
+    .addEventListener(
+        "click",
+        () => {
 
 
-        const section =
-            document.getElementById(
-                "jhaSection"
+            const expanded =
+                document
+                    .getElementById(
+                        "jhaToggle"
+                    )
+                    .getAttribute(
+                        "aria-expanded"
+                    ) ===
+                    "true";
+
+
+            setJhaCollapsed(
+                expanded,
+                true
             );
 
-
-        const collapsed =
-            section.classList.toggle(
-                "is-collapsed"
-            );
-
-
-        document.getElementById(
-            "jhaState"
-        ).textContent =
-            collapsed
-            ?
-            "EXPAND"
-            :
-            "COLLAPSE";
-
-    }
-);
+        }
+    );
 
 
 /* =========================================================
@@ -4113,8 +7072,203 @@ const tooltip =
     );
 
 
+const tooltipNumber =
+    document.getElementById(
+        "tooltipNumber"
+    );
+
+
+const tooltipDescription =
+    document.getElementById(
+        "tooltipDescription"
+    );
+
+
+let activeTooltipItem =
+    null;
+
+
+function showTooltip(
+    item
+) {
+
+    activeTooltipItem =
+        item;
+
+
+    tooltipNumber.textContent =
+        item.dataset.number ||
+        "";
+
+
+    tooltipDescription.textContent =
+        item.dataset.description ||
+        "";
+
+
+    tooltip.classList.add(
+        "active"
+    );
+
+}
+
+
+function hideTooltip() {
+
+    activeTooltipItem =
+        null;
+
+
+    tooltip.classList.remove(
+        "active"
+    );
+
+}
+
+
+function positionTooltip(
+    x,
+    y
+) {
+
+    const padding =
+        20;
+
+
+    const offset =
+        22;
+
+
+    const width =
+        tooltip.offsetWidth;
+
+
+    const height =
+        tooltip.offsetHeight;
+
+
+    let left =
+        x +
+        offset;
+
+
+    let top =
+        y +
+        offset;
+
+
+    if (
+        left +
+        width >
+        window.innerWidth -
+        padding
+    ) {
+
+        left =
+            x -
+            width -
+            offset;
+
+    }
+
+
+    if (
+        top +
+        height >
+        window.innerHeight -
+        padding
+    ) {
+
+        top =
+            y -
+            height -
+            offset;
+
+    }
+
+
+    tooltip.style.left =
+        Math.max(
+            padding,
+            left
+        ) +
+        "px";
+
+
+    tooltip.style.top =
+        Math.max(
+            padding,
+            top
+        ) +
+        "px";
+
+}
+
+
+/* =========================================================
+   TOOLTIP EVENTS
+========================================================= */
+
 document.addEventListener(
     "mouseover",
+    event => {
+
+
+        const item =
+            event.target.closest(
+                ".hover-detail"
+            );
+
+
+        if (
+            !item ||
+            activeTooltipItem ===
+            item
+        ) {
+
+            return;
+
+        }
+
+
+        showTooltip(
+            item
+        );
+
+
+        positionTooltip(
+            event.clientX,
+            event.clientY
+        );
+
+    }
+);
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+
+        if (
+            tooltip.classList.contains(
+                "active"
+            )
+        ) {
+
+            positionTooltip(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseout",
     event => {
 
 
@@ -4133,45 +7287,29 @@ document.addEventListener(
         }
 
 
-        document.getElementById(
-            "tooltipNumber"
-        ).textContent =
-            item.dataset.number ||
-            "";
+        if (
+            event.relatedTarget &&
+            item.contains(
+                event.relatedTarget
+            )
+        ) {
+
+            return;
+
+        }
 
 
-        document.getElementById(
-            "tooltipDescription"
-        ).textContent =
-            item.dataset.description ||
-            "";
-
-
-        tooltip.classList.add(
-            "active"
-        );
+        hideTooltip();
 
     }
 );
 
 
-document.addEventListener(
-    "mouseout",
-    event => {
-
-
-        if (
-            event.target.closest(
-                ".hover-detail"
-            )
-        ) {
-
-            tooltip.classList.remove(
-                "active"
-            );
-
-        }
-
+window.addEventListener(
+    "scroll",
+    hideTooltip,
+    {
+        passive:true
     }
 );
 
@@ -4180,9 +7318,16 @@ document.addEventListener(
    INITIALIZE
 ========================================================= */
 
+loadCachedData();
+
+
+restoreJhaCollapsed();
+
+
 updateClock();
 
-loadGoogleSheets();
+
+refreshGoogleSheets();
 
 
 setInterval(
@@ -4198,7 +7343,7 @@ setInterval(
 
 
 setInterval(
-    loadGoogleSheets,
+    refreshGoogleSheets,
     AUTO_REFRESH_MS
 );
 
@@ -4207,12 +7352,17 @@ document.addEventListener(
     "visibilitychange",
     () => {
 
+
         if (
             document.visibilityState ===
             "visible"
         ) {
 
-            loadGoogleSheets();
+            updateClock();
+
+            updatePermitStatus();
+
+            refreshGoogleSheets();
 
         }
 
