@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -20,6 +21,12 @@
 >
 
 <link
+    rel="shortcut icon"
+    type="image/png"
+    href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
+>
+
+<link
     rel="apple-touch-icon"
     href="https://i.ibb.co/gbgLwSqg/Chat-GPT-Image-Jul-26-2026-04-53-23-AM-2.png"
 >
@@ -27,17 +34,32 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
+
     --bg:#f4f1eb;
     --black:#050505;
     --border:#aaa69f;
     --soft-border:rgba(5,5,5,.10);
+
     --green:#7fd66f;
+
     --red:#d00000;
     --red-dark:#980000;
     --red-soft:rgba(208,0,0,.07);
+
+    --amber:#e0a600;
+
     --outer-margin:30px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin:0;
@@ -60,6 +82,7 @@ body {
     color:var(--black);
     font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
+    overflow-y:auto;
 }
 
 button,
@@ -67,11 +90,31 @@ a {
     -webkit-tap-highlight-color:transparent;
 }
 
+button {
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 .page {
-    width:calc(100% - (var(--outer-margin) * 2));
-    min-height:calc(100vh - (var(--outer-margin) * 2));
+
+    width:calc(
+        100% -
+        (var(--outer-margin) * 2)
+    );
+
+    min-height:calc(
+        100vh -
+        (var(--outer-margin) * 2)
+    );
+
     margin:var(--outer-margin);
+
     background:var(--bg);
+
     overflow:hidden;
 }
 
@@ -81,41 +124,80 @@ a {
 ========================================================= */
 
 .hero {
+
     min-height:420px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     padding:45px 40px;
+
     text-align:center;
 }
+
 
 .hero-inner {
     width:100%;
 }
 
+
 .hero-title {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(80px,8.7vw,165px);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            80px,
+            8.7vw,
+            165px
+        );
+
     font-weight:900;
+
     line-height:.80;
+
     text-transform:uppercase;
 }
 
+
 .krejuv-title {
+
     display:inline-block;
+
     letter-spacing:.08em;
+
     padding-left:.08em;
 }
 
+
 .bookmark-title {
+
     display:inline-block;
+
     letter-spacing:-.075em;
 }
 
+
 .hero-subtitle {
+
     margin-top:35px;
-    font-size:clamp(13px,1vw,19px);
+
+    font-size:
+        clamp(
+            13px,
+            1vw,
+            19px
+        );
+
     font-weight:700;
+
     letter-spacing:.16em;
 }
 
@@ -125,49 +207,89 @@ a {
 ========================================================= */
 
 .section-divider {
+
     width:100%;
+
     height:18px;
+
     background:var(--black);
 }
 
 
 /* =========================================================
-   TOP
+   TOP SECTION
 ========================================================= */
 
 .top-section-header {
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
     min-height:58px;
-    border-bottom:1px solid var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
 }
 
+
 .top-section-header > div {
+
     display:flex;
+
     align-items:center;
-    padding:0 20px;
+
+    padding:
+        0
+        20px;
+
     font-size:11px;
+
     font-weight:900;
+
     letter-spacing:.04em;
+
     text-transform:uppercase;
 }
 
+
 .top-section-header > div + div {
-    border-left:1px solid var(--border);
+
+    border-left:
+        1px solid
+        var(--border);
 }
+
 
 .top-columns {
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
 }
+
 
 .top-column {
+
     min-width:0;
-    padding:24px 20px 30px;
+
+    padding:
+        24px
+        20px
+        30px;
 }
 
+
 .top-column + .top-column {
-    border-left:1px solid var(--border);
+
+    border-left:
+        1px solid
+        var(--border);
 }
 
 
@@ -176,65 +298,146 @@ a {
 ========================================================= */
 
 .site-item {
+
     display:block;
+
     width:fit-content;
+
     position:relative;
+
     margin-bottom:7px;
+
     color:var(--black);
+
     text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(30px,2.45vw,47px);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            30px,
+            2.45vw,
+            47px
+        );
+
     font-weight:900;
+
     line-height:.97;
+
     letter-spacing:-.055em;
+
     text-transform:uppercase;
+
     transition:
         transform .18s ease,
         opacity .18s ease;
 }
 
+
 a.site-item:hover {
-    transform:translateX(10px);
+
+    transform:
+        translateX(
+            10px
+        );
 }
 
+
 a.site-item::after {
+
     content:"↗";
+
     position:absolute;
-    left:calc(100% + 12px);
+
+    left:
+        calc(
+            100% + 12px
+        );
+
     top:50%;
-    transform:translateY(-50%);
+
+    transform:
+        translateY(
+            -50%
+        );
+
     font-size:.34em;
+
     opacity:0;
-    transition:opacity .18s ease;
+
+    transition:
+        opacity .18s ease;
 }
+
 
 a.site-item:hover::after {
     opacity:1;
 }
 
-.main-site-column:has(a.site-item:hover)
+
+.main-site-column:has(
+    a.site-item:hover
+)
 .site-item:not(:hover) {
     opacity:.25;
 }
+
 
 .site-item-static {
     cursor:default;
 }
 
+
 .main-site-separator {
+
     width:100%;
+
     height:1px;
-    margin:26px 0 18px;
+
+    margin:
+        26px
+        0
+        18px;
+
     background:var(--border);
 }
 
+
 .major-activities-label {
+
     margin-bottom:15px;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     color:rgba(5,5,5,.58);
+
     text-transform:uppercase;
+}
+
+
+.site-loading {
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:16px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    color:rgba(5,5,5,.40);
 }
 
 
@@ -243,101 +446,231 @@ a.site-item:hover::after {
 ========================================================= */
 
 .active-summary-box {
+
     width:100%;
-    border:1px solid var(--soft-border);
-    background:rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        var(--soft-border);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .05
+        );
 }
+
 
 .active-summary-head {
+
     min-height:42px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:15px;
-    padding:10px 14px;
-    border-bottom:1px solid var(--soft-border);
+
+    padding:
+        10px
+        14px;
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
 }
 
+
 .active-summary-title {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     text-transform:uppercase;
 }
 
+
 .active-summary-count {
+
     min-width:25px;
+
     min-height:22px;
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
-    padding:3px 7px;
+
+    padding:
+        3px
+        7px;
+
     background:var(--green);
-    border:1px solid rgba(5,5,5,.25);
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    color:var(--black);
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .25
+        );
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:9px;
+
     font-weight:900;
 }
+
 
 .active-summary-list {
     width:100%;
 }
 
+
 .active-summary-item {
+
     display:grid;
-    grid-template-columns:60px 92px minmax(0,1fr);
+
+    grid-template-columns:
+        60px
+        92px
+        minmax(0,1fr);
+
     align-items:center;
+
     gap:8px;
+
     min-height:45px;
-    padding:9px 12px;
+
+    padding:
+        9px
+        12px;
+
     color:var(--black);
+
     text-decoration:none;
-    border-bottom:1px solid rgba(5,5,5,.08);
-    transition:background .15s ease;
+
+    border-bottom:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .08
+        );
+
+    transition:
+        background .15s ease;
 }
+
 
 .active-summary-item:last-child {
     border-bottom:none;
 }
 
+
 .active-summary-item:hover {
-    background:rgba(5,5,5,.045);
+
+    background:
+        rgba(
+            5,
+            5,
+            5,
+            .045
+        );
 }
 
+
 .active-summary-location {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:11px;
+
     font-weight:900;
+
     text-transform:uppercase;
 }
 
+
 .active-summary-number {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:13px;
+
     font-weight:900;
 }
 
+
 .active-summary-number::after {
+
     content:"↗";
+
     margin-left:4px;
+
     font-size:7px;
 }
 
+
 .active-summary-activity {
+
     min-width:0;
+
     font-size:8px;
+
     font-weight:700;
+
     line-height:1.3;
+
     color:rgba(5,5,5,.63);
+
     text-transform:uppercase;
 }
 
+
 .active-summary-empty {
-    padding:16px 14px;
+
+    padding:
+        16px
+        14px;
+
     font-size:9px;
+
     font-weight:700;
+
     color:rgba(5,5,5,.45);
+
     text-transform:uppercase;
 }
 
@@ -350,41 +683,176 @@ a.site-item:hover::after {
     width:100%;
 }
 
+
 .eptw-section-head {
-    min-height:80px;
+
+    min-height:88px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:30px;
-    padding:16px 22px;
-    border-bottom:1px solid var(--border);
+
+    padding:
+        16px
+        22px;
+
+    border-bottom:
+        1px solid
+        var(--border);
 }
 
+
 .eptw-section-title {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(24px,2vw,38px);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            24px,
+            2vw,
+            38px
+        );
+
     font-weight:900;
+
     letter-spacing:-.045em;
+
     text-transform:uppercase;
 }
 
+
 .eptw-live {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
     text-align:right;
 }
 
+
 .live-clock {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:13px;
+
     font-weight:900;
 }
 
+
 .current-shift {
+
     margin-top:3px;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     color:rgba(5,5,5,.52);
+
     text-transform:uppercase;
+}
+
+
+/* =========================================================
+   SYNC
+========================================================= */
+
+.sync-line {
+
+    margin-top:9px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:7px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.055em;
+
+    text-transform:uppercase;
+}
+
+
+.sync-dot {
+
+    width:7px;
+
+    height:7px;
+
+    flex:0 0 auto;
+
+    border-radius:50%;
+
+    background:rgba(5,5,5,.25);
+}
+
+
+.sync-line.is-loading .sync-dot {
+
+    background:var(--amber);
+
+    animation:
+        syncPulse
+        .85s
+        infinite;
+}
+
+
+.sync-line.is-ok .sync-dot {
+    background:var(--green);
+}
+
+
+.sync-line.is-error .sync-dot {
+    background:var(--red);
+}
+
+
+.sync-line.is-cache .sync-dot {
+    background:var(--amber);
+}
+
+
+.sync-text {
+    color:rgba(5,5,5,.58);
+}
+
+
+@keyframes syncPulse {
+
+    0%,
+    100% {
+        opacity:.3;
+    }
+
+    50% {
+        opacity:1;
+    }
+
 }
 
 
@@ -393,32 +861,62 @@ a.site-item:hover::after {
 ========================================================= */
 
 .shift-guide {
+
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    border-bottom:1px solid var(--border);
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    border-bottom:
+        1px solid
+        var(--border);
 }
+
 
 .shift-guide-item {
-    padding:12px 20px;
+
+    padding:
+        12px
+        20px;
 }
+
 
 .shift-guide-item + .shift-guide-item {
-    border-left:1px solid var(--border);
+
+    border-left:
+        1px solid
+        var(--border);
 }
 
+
 .shift-guide-label {
+
     display:block;
+
     margin-bottom:4px;
+
     font-size:8px;
+
     font-weight:900;
+
     letter-spacing:.09em;
+
     color:rgba(5,5,5,.50);
+
     text-transform:uppercase;
 }
 
+
 .shift-guide-value {
+
     font-size:11px;
+
     font-weight:900;
+
+    line-height:1.4;
+
     text-transform:uppercase;
 }
 
@@ -428,26 +926,51 @@ a.site-item:hover::after {
 ========================================================= */
 
 .ptw-rule-box {
-    padding:13px 22px;
-    border-bottom:1px solid var(--border);
+
+    padding:
+        13px
+        22px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
     background:rgba(5,5,5,.025);
 }
 
+
 .ptw-rule-title {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     text-transform:uppercase;
 }
 
+
 .ptw-rule-text {
+
     margin-top:5px;
+
     max-width:1150px;
+
     font-size:9px;
+
     font-weight:700;
+
     line-height:1.5;
+
     color:rgba(5,5,5,.65);
+
     text-transform:uppercase;
 }
 
@@ -457,16 +980,29 @@ a.site-item:hover::after {
 ========================================================= */
 
 .eptw-table-container {
-    padding:22px 22px 30px;
+
+    padding:
+        22px
+        22px
+        30px;
+
     overflow-x:auto;
 }
 
+
 .eptw-table {
+
     width:100%;
+
     border-collapse:collapse;
+
     table-layout:fixed;
-    border:1px solid var(--soft-border);
+
+    border:
+        1px solid
+        var(--soft-border);
 }
+
 
 .eptw-table col.location-col {
     width:10%;
@@ -488,17 +1024,36 @@ a.site-item:hover::after {
     width:37%;
 }
 
+
 .eptw-table thead th {
-    padding:13px 12px;
-    border-right:1px solid var(--soft-border);
-    border-bottom:1px solid var(--soft-border);
+
+    padding:
+        13px
+        12px;
+
+    border-right:
+        1px solid
+        var(--soft-border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
     text-align:left;
+
+    vertical-align:middle;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.08em;
+
     color:rgba(5,5,5,.58);
+
     text-transform:uppercase;
 }
+
 
 .eptw-table thead th:last-child {
     border-right:none;
@@ -510,93 +1065,187 @@ a.site-item:hover::after {
 ========================================================= */
 
 .category-row td {
+
     padding:0;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--soft-border);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
     background:rgba(5,5,5,.035);
 }
 
+
 .section-toggle {
+
     width:100%;
+
     min-height:48px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:15px;
-    padding:11px 13px;
+
+    padding:
+        11px
+        13px;
+
     border:0;
+
     background:transparent;
+
     color:var(--black);
+
     cursor:pointer;
+
     text-align:left;
 }
+
 
 .section-toggle:hover {
     background:rgba(5,5,5,.035);
 }
 
+
 .section-toggle-left {
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     min-width:0;
 }
 
+
 .section-toggle-title {
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:12px;
+
     font-weight:900;
+
     letter-spacing:.04em;
+
     text-transform:uppercase;
 }
 
+
 .section-toggle-count {
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+
     min-width:31px;
+
     height:21px;
-    padding:2px 7px;
-    border:1px solid rgba(5,5,5,.17);
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        2px
+        7px;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .17
+        );
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:8px;
+
     font-weight:900;
+
     white-space:nowrap;
 }
 
+
 .section-toggle-right {
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     flex-shrink:0;
 }
 
+
 .section-toggle-state {
+
     font-size:8px;
+
     font-weight:900;
+
     color:rgba(5,5,5,.48);
+
     letter-spacing:.06em;
+
     text-transform:uppercase;
 }
 
+
 .section-toggle-arrow {
+
     width:25px;
+
     height:25px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    border:1px solid rgba(5,5,5,.18);
-    font-size:16px;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .18
+        );
+
+    font-size:15px;
+
     font-weight:900;
-    line-height:1;
-    transform:rotate(0deg);
-    transition:transform .18s ease;
+
+    transition:
+        transform .18s ease;
 }
+
 
 .category-row.is-collapsed
 .section-toggle-arrow {
+
     transform:rotate(-90deg);
 }
+
 
 .section-data-row.section-hidden {
     display:none;
@@ -604,34 +1253,65 @@ a.site-item:hover::after {
 
 
 /* =========================================================
-   ROW
+   PTW DATA ROW
 ========================================================= */
 
 .ptw-data-row td {
-    padding:14px 12px;
-    border-right:1px solid var(--soft-border);
-    border-bottom:1px solid var(--soft-border);
+
+    padding:
+        14px
+        12px;
+
+    border-right:
+        1px solid
+        var(--soft-border);
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
     vertical-align:top;
 }
+
 
 .ptw-data-row td:last-child {
     border-right:none;
 }
 
+
 .location-merged {
+
     vertical-align:top !important;
+
     background:rgba(255,255,255,.08);
-    border-right:1px solid var(--soft-border) !important;
+
+    border-right:
+        1px solid
+        var(--soft-border)
+        !important;
 }
 
+
 .location-name {
+
     position:sticky;
+
     top:15px;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:16px;
+
     font-weight:900;
+
     line-height:1.1;
+
     letter-spacing:-.025em;
+
     text-transform:uppercase;
 }
 
@@ -641,22 +1321,45 @@ a.site-item:hover::after {
 ========================================================= */
 
 .ptw-number {
+
     display:inline-block;
+
     color:var(--black);
+
     text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(17px,1.2vw,23px);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            17px,
+            1.2vw,
+            23px
+        );
+
     font-weight:900;
+
     line-height:1;
+
     letter-spacing:-.035em;
 }
 
+
 .ptw-number::after {
+
     content:"↗";
+
     margin-left:6px;
+
     font-size:.45em;
+
     opacity:0;
 }
+
 
 .ptw-number:hover::after,
 .ptw-number:focus::after {
@@ -669,128 +1372,261 @@ a.site-item:hover::after {
 ========================================================= */
 
 .status-badge {
+
     display:inline-flex;
+
     align-items:center;
+
     min-height:28px;
-    padding:6px 9px;
-    border:1px solid rgba(5,5,5,.20);
+
+    padding:
+        6px
+        9px;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .20
+        );
+
     font-size:8px;
+
     font-weight:900;
+
     line-height:1.2;
+
     letter-spacing:.06em;
+
     text-transform:uppercase;
 }
+
 
 .status-note {
+
     margin-top:9px;
+
     font-size:8.5px;
+
     font-weight:700;
+
     line-height:1.45;
+
     color:rgba(5,5,5,.60);
+
     text-transform:uppercase;
 }
 
+
 .ptw-data-row.is-active .status-badge {
+
     background:var(--green);
+
     border-color:rgba(5,5,5,.35);
 }
 
+
 .ptw-data-row.is-upcoming .status-badge {
+
     border-style:dashed;
+
+    background:transparent;
 }
+
 
 .ptw-data-row.is-next-last {
-    box-shadow:inset 6px 0 0 var(--red);
+
+    box-shadow:
+        inset
+        6px
+        0
+        0
+        var(--red);
 }
+
 
 .ptw-data-row.is-next-last .status-badge {
+
     background:var(--red);
+
     border-color:var(--red);
+
     color:#fff;
-    animation:redFlash .9s infinite;
+
+    animation:
+        redFlash
+        .9s
+        infinite;
 }
+
 
 .ptw-data-row.is-next-last .status-note {
+
     color:var(--red);
+
     font-weight:900;
 }
+
 
 .ptw-data-row.is-last-shift {
-    box-shadow:inset 8px 0 0 var(--red);
+
+    box-shadow:
+        inset
+        8px
+        0
+        0
+        var(--red);
 }
+
 
 .ptw-data-row.is-last-shift .status-badge {
+
     background:var(--red);
+
     border-color:var(--red);
+
     color:#fff;
-    animation:redFlash .75s infinite;
+
+    animation:
+        redFlash
+        .75s
+        infinite;
 }
+
 
 .ptw-data-row.is-last-shift .status-note {
-    padding:8px 9px;
+
+    padding:
+        8px
+        9px;
+
     background:var(--red);
+
     color:#fff;
+
     font-weight:900;
-    animation:redBlockFlash .75s infinite;
+
+    animation:
+        redBlockFlash
+        .75s
+        infinite;
 }
 
+
 .ptw-data-row.is-shift-invalid {
-    box-shadow:inset 8px 0 0 var(--red-dark);
+
+    box-shadow:
+        inset
+        8px
+        0
+        0
+        var(--red-dark);
+
     background:var(--red-soft);
 }
 
+
 .ptw-data-row.is-shift-invalid .status-badge {
+
     background:var(--red-dark);
+
     color:#fff;
 }
+
+
+.ptw-data-row.is-shift-invalid .status-note {
+
+    padding:
+        8px
+        9px;
+
+    background:var(--red-dark);
+
+    color:#fff;
+
+    font-weight:900;
+}
+
 
 .ptw-data-row.is-expired {
     opacity:.46;
 }
 
+
 .ptw-data-row.is-expired:hover {
     opacity:.76;
 }
 
+
 .ptw-data-row.is-expired .status-badge {
+
     background:rgba(5,5,5,.07);
 }
 
+
 .ptw-data-row.is-vec-expired {
+
     opacity:.68;
-    box-shadow:inset 6px 0 0 var(--black);
+
+    box-shadow:
+        inset
+        6px
+        0
+        0
+        var(--black);
 }
 
+
 .ptw-data-row.is-vec-expired .status-badge {
+
     background:var(--black);
+
     color:var(--bg);
 }
 
+
 @keyframes redFlash {
 
-    0%,45% {
+    0%,
+    45% {
+
         background:var(--red);
+
         color:#fff;
+
         opacity:1;
     }
 
-    50%,100% {
+    50%,
+    100% {
+
         background:transparent;
+
         color:var(--red);
+
         opacity:.38;
     }
 
 }
 
+
 @keyframes redBlockFlash {
 
-    0%,45% {
+    0%,
+    45% {
+
         background:var(--red);
+
         color:#fff;
     }
 
-    50%,100% {
+    50%,
+    100% {
+
         background:rgba(208,0,0,.08);
+
         color:var(--red);
     }
 
@@ -802,49 +1638,90 @@ a.site-item:hover::after {
 ========================================================= */
 
 .validity-label {
+
     display:block;
+
     margin-bottom:3px;
+
     font-size:7.5px;
+
     font-weight:900;
+
     letter-spacing:.08em;
+
     color:rgba(5,5,5,.45);
+
     text-transform:uppercase;
 }
+
 
 .validity-value {
+
     font-size:9px;
+
     font-weight:700;
+
     line-height:1.45;
+
     text-transform:uppercase;
 }
+
 
 .last-usable {
+
     margin-top:11px;
+
     padding-top:9px;
-    border-top:1px solid rgba(5,5,5,.08);
+
+    border-top:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .08
+        );
 }
+
 
 .last-usable-value {
+
     font-size:9px;
+
     font-weight:900;
+
     line-height:1.45;
+
     text-transform:uppercase;
 }
+
 
 .expiry-rule-note {
+
     margin-top:7px;
+
     font-size:7.5px;
+
     font-weight:700;
+
     line-height:1.45;
+
     color:rgba(5,5,5,.55);
+
     text-transform:uppercase;
 }
 
+
 .description-text {
+
     font-size:9px;
+
     font-weight:400;
+
     line-height:1.55;
+
     color:rgba(5,5,5,.69);
+
     text-transform:uppercase;
 }
 
@@ -854,47 +1731,136 @@ a.site-item:hover::after {
 ========================================================= */
 
 .tower-equipment-box {
+
     margin-top:14px;
-    border:1px solid rgba(5,5,5,.16);
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .16
+        );
+
     background:rgba(5,5,5,.025);
 }
 
+
 .tower-equipment-title,
 .tower-equipment-row {
+
     display:grid;
-    grid-template-columns:1fr 110px;
+
+    grid-template-columns:
+        1fr
+        110px;
 }
 
+
 .tower-equipment-title {
+
     background:rgba(5,5,5,.04);
+
+    border-bottom:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .12
+        );
 }
+
 
 .tower-equipment-title > div,
 .tower-equipment-name,
 .tower-equipment-expiry {
-    padding:8px 9px;
+
+    padding:
+        8px
+        9px;
 }
+
 
 .tower-equipment-title > div {
+
     font-size:7.5px;
+
     font-weight:900;
+
     letter-spacing:.07em;
+
     text-transform:uppercase;
 }
 
-.tower-equipment-row {
-    border-top:1px solid rgba(5,5,5,.08);
+
+.tower-equipment-title > div + div {
+
+    border-left:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .10
+        );
 }
 
-.tower-equipment-name,
-.tower-equipment-expiry {
+
+.tower-equipment-row + .tower-equipment-row {
+
+    border-top:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .08
+        );
+}
+
+
+.tower-equipment-name {
+
     font-size:8px;
+
+    font-weight:800;
+
+    line-height:1.35;
+
     text-transform:uppercase;
 }
 
+
 .tower-equipment-expiry {
+
+    display:flex;
+
+    align-items:center;
+
+    border-left:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .08
+        );
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:8px;
+
     font-weight:900;
-    border-left:1px solid rgba(5,5,5,.08);
+
+    white-space:nowrap;
+
+    text-transform:uppercase;
 }
 
 
@@ -903,163 +1869,527 @@ a.site-item:hover::after {
 ========================================================= */
 
 .vec-dependency {
+
     margin-top:12px;
+
     padding:11px;
-    border:1px solid rgba(5,5,5,.15);
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .15
+        );
+
     background:rgba(5,5,5,.025);
 }
 
+
 .vec-dependency-title {
+
     margin-bottom:8px;
+
     font-size:8px;
+
     font-weight:900;
+
     letter-spacing:.08em;
+
     text-transform:uppercase;
 }
+
 
 .vec-number {
+
     display:inline-block;
+
     color:var(--black);
+
     text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:14px;
+
     font-weight:900;
 }
+
 
 .vec-number::after {
+
     content:"↗";
+
     margin-left:5px;
+
     font-size:8px;
 }
+
 
 .vec-description {
+
     margin-top:7px;
+
     font-size:8px;
+
     line-height:1.45;
+
     color:rgba(5,5,5,.66);
+
     text-transform:uppercase;
 }
+
 
 .vec-validity {
+
     margin-top:8px;
+
     font-size:8px;
+
     font-weight:900;
+
     line-height:1.45;
+
     text-transform:uppercase;
 }
+
 
 .vec-status-line {
+
     margin-top:10px;
+
     padding-top:9px;
-    border-top:1px solid rgba(5,5,5,.09);
+
+    border-top:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .09
+        );
 }
+
 
 .vec-status-badge {
+
     display:inline-flex;
-    padding:5px 8px;
-    border:1px solid rgba(5,5,5,.20);
+
+    padding:
+        5px
+        8px;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .20
+        );
+
     font-size:7.5px;
+
     font-weight:900;
+
     text-transform:uppercase;
 }
+
 
 .vec-status-note {
+
     margin-top:6px;
+
     font-size:7.5px;
+
     font-weight:700;
+
     line-height:1.45;
+
     text-transform:uppercase;
 }
 
-.vec-dependency.vec-active .vec-status-badge {
+
+.vec-dependency.vec-active
+.vec-status-badge {
     background:var(--green);
 }
 
-.vec-dependency.vec-last-shift,
-.vec-dependency.vec-next-last {
-    border:2px solid var(--red);
+
+.vec-dependency.vec-upcoming
+.vec-status-badge {
+    border-style:dashed;
 }
 
-.vec-dependency.vec-last-shift .vec-status-badge,
-.vec-dependency.vec-next-last .vec-status-badge {
-    background:var(--red);
-    color:#fff;
-    animation:redFlash .8s infinite;
+
+.vec-dependency.vec-next-last {
+
+    border:
+        2px solid
+        var(--red);
 }
+
+
+.vec-dependency.vec-next-last
+.vec-status-badge {
+
+    background:var(--red);
+
+    color:#fff;
+
+    animation:
+        redFlash
+        .9s
+        infinite;
+}
+
+
+.vec-dependency.vec-last-shift {
+
+    border:
+        2px solid
+        var(--red);
+
+    background:var(--red-soft);
+}
+
+
+.vec-dependency.vec-last-shift
+.vec-status-badge {
+
+    background:var(--red);
+
+    color:#fff;
+
+    animation:
+        redFlash
+        .75s
+        infinite;
+}
+
 
 .vec-dependency.vec-shift-invalid {
-    border:2px solid var(--red-dark);
+
+    border:
+        2px solid
+        var(--red-dark);
+
+    background:var(--red-soft);
 }
 
-.vec-dependency.vec-shift-invalid .vec-status-badge {
+
+.vec-dependency.vec-shift-invalid
+.vec-status-badge {
+
     background:var(--red-dark);
+
     color:#fff;
 }
+
 
 .vec-dependency.vec-expired {
     opacity:.55;
 }
 
+
 .effective-validity {
+
     margin-top:9px;
+
     padding-top:8px;
-    border-top:1px solid rgba(5,5,5,.09);
+
+    border-top:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .09
+        );
+
     font-size:8px;
+
     font-weight:900;
+
     line-height:1.5;
+
     text-transform:uppercase;
 }
 
 
 /* =========================================================
-   JHA
+   TABLE MESSAGE
+========================================================= */
+
+.table-message-row td {
+
+    padding:
+        34px
+        20px;
+
+    text-align:center;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    color:rgba(5,5,5,.45);
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   JHA / EJHA
 ========================================================= */
 
 .ejha-bottom-section {
-    margin:0 22px 30px;
-    border:1px solid var(--soft-border);
+
+    margin:
+        0
+        22px
+        30px;
+
+    border:
+        1px solid
+        var(--soft-border);
 }
+
 
 .ejha-bottom-title {
-    min-height:42px;
+
+    min-height:46px;
+
     display:flex;
+
     align-items:center;
-    padding:10px 14px;
-    border-bottom:1px solid var(--soft-border);
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:.08em;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    padding:
+        10px
+        14px;
+
+    border:0;
+
+    border-bottom:
+        1px solid
+        var(--soft-border);
+
+    background:transparent;
+
+    cursor:pointer;
 }
+
+
+.ejha-bottom-title-text {
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+}
+
+
+.ejha-title-left,
+.ejha-title-right {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+
+.ejha-count {
+
+    min-width:27px;
+
+    min-height:21px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        2px
+        7px;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .18
+        );
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+
+.ejha-state {
+
+    font-size:8px;
+
+    font-weight:900;
+
+    color:rgba(5,5,5,.48);
+
+    text-transform:uppercase;
+}
+
+
+.ejha-arrow {
+
+    width:25px;
+
+    height:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(
+            5,
+            5,
+            5,
+            .18
+        );
+
+    font-size:15px;
+
+    font-weight:900;
+
+    transition:
+        transform .18s ease;
+}
+
+
+.ejha-bottom-section.is-collapsed
+.ejha-arrow {
+
+    transform:rotate(-90deg);
+}
+
+
+.ejha-bottom-section.is-collapsed
+.ejha-items {
+    display:none;
+}
+
 
 .ejha-bottom-item {
-    padding:18px 16px 20px;
+
+    padding:
+        18px
+        16px
+        20px;
 }
+
 
 .ejha-bottom-item + .ejha-bottom-item {
-    border-top:1px solid var(--soft-border);
+
+    border-top:
+        1px solid
+        var(--soft-border);
 }
 
+
 .ejha-bottom-number {
+
+    display:inline-block;
+
     color:var(--black);
+
     text-decoration:none;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
-    font-size:clamp(18px,1.5vw,28px);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            18px,
+            1.5vw,
+            28px
+        );
+
     font-weight:900;
 }
 
+
 .ejha-bottom-number::after {
+
     content:"↗";
+
     margin-left:7px;
+
     font-size:.42em;
 }
 
+
+.ejha-type-label {
+
+    margin-bottom:6px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    color:rgba(5,5,5,.50);
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+}
+
+
 .ejha-bottom-description {
+
     margin-top:11px;
+
     max-width:1100px;
+
     font-size:9px;
+
     line-height:1.55;
+
     color:rgba(5,5,5,.68);
+
     text-transform:uppercase;
 }
 
@@ -1069,32 +2399,75 @@ a.site-item:hover::after {
 ========================================================= */
 
 .tooltip {
+
     position:fixed;
-    width:min(600px,calc(100vw - 80px));
+
+    width:
+        min(
+            600px,
+            calc(
+                100vw - 80px
+            )
+        );
+
     padding:22px;
+
     background:var(--black);
+
     color:var(--bg);
+
     font-size:12px;
+
     font-weight:700;
+
     line-height:1.55;
+
     text-transform:uppercase;
+
     z-index:9999;
+
     pointer-events:none;
+
     opacity:0;
+
     visibility:hidden;
-    box-shadow:0 16px 40px rgba(0,0,0,.22);
+
+    box-shadow:
+        0
+        16px
+        40px
+        rgba(
+            0,
+            0,
+            0,
+            .22
+        );
 }
 
+
 .tooltip.active {
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .tooltip-number {
+
     display:block;
+
     margin-bottom:11px;
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:20px;
+
+    font-weight:900;
 }
 
 
@@ -1103,15 +2476,62 @@ a.site-item:hover::after {
 ========================================================= */
 
 .footer {
+
     min-height:58px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    border-top:1px solid var(--border);
-    font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-family:
+        "Arial Black",
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:.09em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media
+(max-height:800px)
+and
+(min-width:801px) {
+
+    :root {
+        --outer-margin:20px;
+    }
+
+    .hero {
+        min-height:340px;
+    }
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                65px,
+                8vw,
+                130px
+            );
+    }
+
 }
 
 
@@ -1125,162 +2545,362 @@ a.site-item:hover::after {
         --outer-margin:12px;
     }
 
-    .hero {
-        min-height:300px;
-        padding:35px 12px;
+
+    .page {
+
+        width:
+            calc(
+                100% -
+                (var(--outer-margin) * 2)
+            );
+
+        margin:
+            var(--outer-margin);
     }
 
+
+    .hero {
+
+        min-height:300px;
+
+        padding:
+            35px
+            12px;
+    }
+
+
     .hero-title {
-        font-size:clamp(42px,12vw,90px);
+
+        font-size:
+            clamp(
+                42px,
+                12vw,
+                90px
+            );
+
         line-height:.84;
     }
+
+
+    .hero-subtitle {
+
+        margin-top:25px;
+
+        font-size:12px;
+    }
+
+
+    .section-divider {
+        height:14px;
+    }
+
 
     .top-section-header {
         display:none;
     }
 
+
     .top-columns {
         display:block;
     }
 
+
     .top-column {
-        padding:19px 16px 25px;
+
+        padding:
+            19px
+            16px
+            25px;
     }
+
 
     .top-column + .top-column {
+
         border-left:none;
-        border-top:1px solid var(--border);
+
+        border-top:
+            1px solid
+            var(--border);
     }
 
+
     .top-column::before {
+
         display:block;
+
         margin-bottom:18px;
+
         font-size:10px;
+
         font-weight:900;
+
+        text-transform:uppercase;
     }
+
 
     .top-column:nth-child(1)::before {
         content:"MAIN SITE";
     }
 
+
     .top-column:nth-child(2)::before {
         content:"ACTIVE PTW";
     }
 
+
     .site-item {
-        font-size:clamp(27px,7vw,44px);
+
+        font-size:
+            clamp(
+                27px,
+                7vw,
+                44px
+            );
     }
+
 
     .active-summary-item {
-        grid-template-columns:55px 88px minmax(0,1fr);
+
+        grid-template-columns:
+            55px
+            88px
+            minmax(0,1fr);
     }
+
 
     .eptw-section-head {
+
         align-items:flex-start;
+
         flex-direction:column;
-        padding:17px 16px;
+
+        padding:
+            17px
+            16px;
     }
 
+
     .eptw-live {
+
+        align-items:flex-start;
+
         text-align:left;
     }
+
+
+    .sync-line {
+        justify-content:flex-start;
+    }
+
 
     .shift-guide {
         grid-template-columns:1fr;
     }
 
+
     .shift-guide-item + .shift-guide-item {
+
         border-left:none;
-        border-top:1px solid var(--border);
+
+        border-top:
+            1px solid
+            var(--border);
     }
+
+
+    .ptw-rule-box {
+
+        padding:
+            12px
+            16px;
+    }
+
 
     .eptw-table-container {
         padding:16px;
     }
 
+
     .eptw-table,
     .eptw-table tbody,
     .eptw-table tr,
     .eptw-table td {
+
         display:block;
+
         width:100%;
     }
+
 
     .eptw-table colgroup,
     .eptw-table thead {
         display:none;
     }
 
+
     .category-row {
+
+        display:block;
+
         margin-bottom:10px;
     }
 
+
     .category-row td {
-        border:1px solid var(--soft-border);
+
+        display:block;
+
+        border:
+            1px solid
+            var(--soft-border);
     }
 
-    .section-toggle {
-        min-height:54px;
-        padding:11px 12px;
-    }
-
-    .section-toggle-title {
-        font-size:11px;
-    }
 
     .section-toggle-state {
         display:none;
     }
 
+
     .section-data-row.section-hidden {
         display:none;
     }
+
 
     .location-merged {
         display:none !important;
     }
 
+
     .ptw-data-row {
+
         position:relative;
+
         margin-bottom:14px;
+
         padding-top:42px;
-        border:1px solid var(--soft-border);
+
+        border:
+            1px solid
+            var(--soft-border);
     }
+
 
     .ptw-data-row::before {
-        content:attr(data-location);
+
+        content:
+            attr(
+                data-location
+            );
+
         position:absolute;
+
         top:0;
+
         left:0;
+
         right:0;
+
         min-height:42px;
+
         display:flex;
+
         align-items:center;
-        padding:9px 12px;
-        border-bottom:1px solid var(--soft-border);
-        font-family:"Arial Black",Arial,Helvetica,sans-serif;
+
+        padding:
+            9px
+            12px;
+
+        border-bottom:
+            1px solid
+            var(--soft-border);
+
+        background:rgba(5,5,5,.025);
+
+        font-family:
+            "Arial Black",
+            Arial,
+            Helvetica,
+            sans-serif;
+
         font-size:14px;
+
         font-weight:900;
+
+        text-transform:uppercase;
     }
+
 
     .ptw-data-row td {
+
+        width:100%;
+
         border-right:none;
+
+        border-bottom:
+            1px solid
+            var(--soft-border);
     }
+
 
     .ptw-data-row td::before {
-        content:attr(data-label);
+
+        content:
+            attr(
+                data-label
+            );
+
         display:block;
+
         margin-bottom:7px;
+
         font-size:7.5px;
+
         font-weight:900;
+
         color:rgba(5,5,5,.45);
+
+        text-transform:uppercase;
     }
 
+
+    .tower-equipment-title,
+    .tower-equipment-row {
+
+        grid-template-columns:
+            1fr
+            92px;
+    }
+
+
     .ejha-bottom-section {
-        margin:0 16px 24px;
+
+        margin:
+            0
+            16px
+            24px;
+    }
+
+
+    .ejha-state {
+        display:none;
+    }
+
+
+    .tooltip {
+
+        width:
+            calc(
+                100vw -
+                40px
+            );
+
+        padding:18px;
+
+        font-size:11px;
     }
 
 }
+
 
 @media(max-width:480px) {
 
@@ -1288,37 +2908,61 @@ a.site-item:hover::after {
         --outer-margin:8px;
     }
 
+
     .hero {
+
         min-height:270px;
-        padding:25px 8px;
+
+        padding:
+            25px
+            8px;
     }
+
 
     .hero-title {
-        font-size:clamp(36px,11vw,62px);
+
+        font-size:
+            clamp(
+                36px,
+                11vw,
+                62px
+            );
     }
 
+
     .active-summary-item {
-        grid-template-columns:48px 78px minmax(0,1fr);
+
+        grid-template-columns:
+            48px
+            78px
+            minmax(0,1fr);
     }
+
 
     .section-toggle-count {
         display:none;
     }
 
+
+    .footer {
+
+        min-height:50px;
+
+        font-size:9px;
+    }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="page">
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
 
 <section class="hero">
 
@@ -1350,102 +2994,28 @@ a.site-item:hover::after {
 <div class="section-divider"></div>
 
 
-<!-- =========================================================
-     MAIN SITE / ACTIVE PTW
-========================================================= -->
-
 <div class="top-section-header">
+
     <div>MAIN SITE</div>
+
     <div>ACTIVE PTW</div>
+
 </div>
 
 
 <section class="top-columns">
 
 
-<div class="top-column main-site-column">
+<div
+    id="mainSiteColumn"
+    class="top-column main-site-column"
+>
 
-    <a
-        class="site-item"
-        href="https://acm.petronas.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        XPRESS PETRONAS
-    </a>
-
-    <a
-        class="site-item"
-        href="https://ace.petronas.com/home"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        ACE PETRONAS
-    </a>
-
-    <a
-        class="site-item"
-        href="https://ptw.petronas.com/Home/Dashboard?isPtwAudit=False"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        EPTW
-    </a>
-
-    <a
-        class="site-item"
-        href="https://hx-ts.github.io/LOKASI-FEC/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        LOCATION
-    </a>
-
-
-    <div class="main-site-separator"></div>
-
-
-    <div class="major-activities-label">
-        MAJOR ACTIVITIES
+    <div class="site-loading">
+        LOADING GOOGLE SHEETS...
     </div>
 
-    <span class="site-item site-item-static">
-        CLEANING
-    </span>
-
-    <a
-        class="site-item"
-        href="https://hx-ts.github.io/FECWATERFILLING/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        WATER FILLING CALC
-    </a>
-
-    <a
-        class="site-item"
-        href="https://hx-ts.github.io/FECHT/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        HYDROTEST
-    </a>
-
-    <span class="site-item site-item-static">
-        DEWATERING
-    </span>
-
-    <a
-        class="site-item"
-        href="https://hx-ts.github.io/HAFIZ-KREJUV/SWABBING/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        SWABBING
-    </a>
-
 </div>
-
 
 
 <div class="top-column">
@@ -1467,13 +3037,16 @@ a.site-item:hover::after {
 
         </div>
 
+
         <div
             id="activePtwList"
             class="active-summary-list"
         >
+
             <div class="active-summary-empty">
                 CHECKING ACTIVE PTW...
             </div>
+
         </div>
 
     </div>
@@ -1487,20 +3060,19 @@ a.site-item:hover::after {
 <div class="section-divider"></div>
 
 
-<!-- =========================================================
-     EPTW
-========================================================= -->
-
 <section class="eptw-section">
 
 
 <div class="eptw-section-head">
 
+
     <div class="eptw-section-title">
         EPTW PERMIT CONTROL
     </div>
 
+
     <div class="eptw-live">
+
 
         <div
             id="liveClock"
@@ -1509,6 +3081,7 @@ a.site-item:hover::after {
             --
         </div>
 
+
         <div
             id="currentShift"
             class="current-shift"
@@ -1516,13 +3089,32 @@ a.site-item:hover::after {
             --
         </div>
 
+
+        <div
+            id="syncLine"
+            class="sync-line is-loading"
+        >
+
+            <span class="sync-dot"></span>
+
+            <span
+                id="syncText"
+                class="sync-text"
+            >
+                GOOGLE SHEETS · CONNECTING
+            </span>
+
+        </div>
+
+
     </div>
+
 
 </div>
 
 
-
 <div class="shift-guide">
+
 
     <div class="shift-guide-item">
 
@@ -1536,6 +3128,7 @@ a.site-item:hover::after {
 
     </div>
 
+
     <div class="shift-guide-item">
 
         <span class="shift-guide-label">
@@ -1548,6 +3141,7 @@ a.site-item:hover::after {
 
     </div>
 
+
     <div class="shift-guide-item">
 
         <span class="shift-guide-label">
@@ -1558,13 +3152,13 @@ a.site-item:hover::after {
             id="permitSummary"
             class="shift-guide-value"
         >
-            CHECKING...
+            LOADING...
         </span>
 
     </div>
 
-</div>
 
+</div>
 
 
 <div class="ptw-rule-box">
@@ -1586,186 +3180,122 @@ a.site-item:hover::after {
 </div>
 
 
-
 <div class="eptw-table-container">
 
 <table class="eptw-table">
 
+
 <colgroup>
+
     <col class="location-col">
+
     <col class="number-col">
+
     <col class="status-col">
+
     <col class="validity-col">
+
     <col class="description-col">
+
 </colgroup>
+
 
 <thead>
 
 <tr>
+
     <th>LOCATION</th>
+
     <th>EPTW NO.</th>
+
     <th>STATUS</th>
-    <th>PTW VALIDITY / LAST USABLE SHIFT</th>
+
+    <th>
+        PTW VALIDITY / LAST USABLE SHIFT
+    </th>
+
     <th>DESCRIPTION</th>
+
 </tr>
 
 </thead>
 
 
-<tbody id="ptwTableBody"></tbody>
+<tbody id="ptwTableBody">
+
+<tr class="table-message-row">
+
+    <td colspan="5">
+        LOADING DATA FROM GOOGLE SHEETS...
+    </td>
+
+</tr>
+
+</tbody>
+
 
 </table>
 
 </div>
 
 
+<div
+    id="jhaSection"
+    class="ejha-bottom-section"
+>
 
-<!-- =========================================================
-     JHA
-========================================================= -->
+    <button
+        id="jhaToggle"
+        class="ejha-bottom-title"
+        type="button"
+        aria-expanded="true"
+    >
 
-<div class="ejha-bottom-section">
+        <span class="ejha-title-left">
 
-    <div class="ejha-bottom-title">
-        JHA / EJHA
-    </div>
+            <span class="ejha-bottom-title-text">
+                JHA / EJHA
+            </span>
 
+            <span
+                id="jhaCount"
+                class="ejha-count"
+            >
+                0
+            </span>
 
-
-    <div class="ejha-bottom-item">
-
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=bb710819-21ab-43f4-99ee-ea84a54c1d3f"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="JHA 0047333"
-            data-description="KREJUV FEC: TO PERFORM GAUGING PLATE PIGGING, CALIPER TOOL RUN AND AIR DRYING FROM NEW NPS 10 PERMANENT LAUNCHER (FC SL-101) AT GPP4 TO NEW NPS 10 PERMANENT RECEIVER (FC SL-101) AT GPS GAS STATION"
-        >
-            0047333
-        </a>
-
-        <div class="ejha-bottom-description">
-            KREJUV FEC: TO PERFORM GAUGING PLATE PIGGING,
-            CALIPER TOOL RUN AND AIR DRYING FROM NEW NPS 10
-            PERMANENT LAUNCHER (FC SL-101) AT GPP4 TO NEW NPS 10
-            PERMANENT RECEIVER (FC SL-101) AT GPS GAS STATION
-        </div>
-
-    </div>
+        </span>
 
 
+        <span class="ejha-title-right">
 
-    <div class="ejha-bottom-item">
+            <span
+                id="jhaState"
+                class="ejha-state"
+            >
+                COLLAPSE
+            </span>
 
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=074f9c55-a97f-441f-9f04-0b425fed371f"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="JHA 0047365"
-            data-description="KREJUV FEC: TO PERFORM STATION PIPING LEAK TEST USING N2 AT GPP4, CH10.3, BV 13.1 & GPS GAS STATION"
-        >
-            0047365
-        </a>
+            <span class="ejha-arrow">
+                ↓
+            </span>
 
-        <div class="ejha-bottom-description">
-            KREJUV FEC: TO PERFORM STATION PIPING LEAK TEST
-            USING N2 AT GPP4, CH10.3, BV 13.1 &amp; GPS GAS STATION
-        </div>
+        </span>
 
-    </div>
+    </button>
 
 
+    <div
+        id="jhaItems"
+        class="ejha-items"
+    >
 
-    <div class="ejha-bottom-item">
+        <div class="ejha-bottom-item">
 
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=c1ae560a-81ea-45f2-a87b-96d7870685ec"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="EJHA 0046453"
-            data-description="KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES (CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING, SWABBING AND AIR DRYING) FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)"
-        >
-            0046453
-        </a>
+            <div class="ejha-bottom-description">
+                LOADING JHA / EJHA FROM GOOGLE SHEETS...
+            </div>
 
-        <div class="ejha-bottom-description">
-            KREJUV FEC: TO PERFORM PRE-COMMISSIONING ACTIVITIES
-            (CLEANING, GAUGING, WATER FILLING, HYDROTEST,
-            DEWATERING, SWABBING AND AIR DRYING)
-            FOR NEW NPS10 PIPELINE (GPP4 TO GPS GAS STATION)
-        </div>
-
-    </div>
-
-
-
-    <div class="ejha-bottom-item">
-
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/Jha/CreateJHA?applicationId=0724fbfe-1d5a-4e1d-9ccf-feea49a18dfd"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="JHA 0045503"
-            data-description="KREJUV-FEC: TO PERFORM INTEGRATED SHUTDOWN AND RE-COMMISSIONNING ACTIVITY ON THE EXISTING FEC NPS10 PIPELINE AT GPP4 & GPS (GPP5/6 METERING STATION)"
-        >
-            0045503
-        </a>
-
-        <div class="ejha-bottom-description">
-            KREJUV-FEC: TO PERFORM INTEGRATED SHUTDOWN AND
-            RE-COMMISSIONNING ACTIVITY ON THE EXISTING FEC NPS10
-            PIPELINE AT GPP4 &amp; GPS (GPP5/6 METERING STATION)
-        </div>
-
-    </div>
-
-
-
-    <div class="ejha-bottom-item">
-
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/JHA/CreateJHA?applicationId=948cb925-837e-499d-930f-cb723f711e58"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="JHA 0047847"
-            data-description="KREJUV-FEC: TO PERFORM COMMISSIONING OF THE NEW NPS 10 FEC PIPELINE, DECOMMISSIONING OF THE EXISTING NPS 10 FEC PIPELINE AT GPP4 AND GPS (GPP5/6 METERING STATION), AND TIE-IN WORKS AT TP-02, GPP4 STATION."
-        >
-            0047847
-        </a>
-
-        <div class="ejha-bottom-description">
-            KREJUV-FEC: TO PERFORM COMMISSIONING OF THE NEW NPS 10
-            FEC PIPELINE, DECOMMISSIONING OF THE EXISTING NPS 10 FEC
-            PIPELINE AT GPP4 AND GPS (GPP5/6 METERING STATION),
-            AND TIE-IN WORKS AT TP-02, GPP4 STATION.
-        </div>
-
-    </div>
-
-
-
-    <div class="ejha-bottom-item">
-
-        <a
-            class="ejha-bottom-number hover-detail"
-            href="https://ptw.petronas.com/Jha/CreateJHA?applicationId=c9311f9f-2d80-464e-9483-7d52762aec87"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-number="EJHA 47367"
-            data-description="KREJUV-FEC: TO PERFORM TIE IN OF NPS 3 UNDERGROUND PIPING WITH EXISTING NPS 4 BLOWDOWN AT GPP4 STATION AND GPS GAS STATION."
-        >
-            47367
-        </a>
-
-        <div class="ejha-bottom-description">
-            KREJUV-FEC: TO PERFORM TIE IN OF NPS 3 UNDERGROUND
-            PIPING WITH EXISTING NPS 4 BLOWDOWN AT GPP4 STATION
-            AND GPS GAS STATION.
         </div>
 
     </div>
@@ -1777,7 +3307,6 @@ a.site-item:hover::after {
 </section>
 
 
-
 <footer class="footer">
     FLY TECHSMITH
 </footer>
@@ -1786,1313 +3315,109 @@ a.site-item:hover::after {
 </div>
 
 
-
 <div
     id="tooltip"
     class="tooltip"
 >
+
     <span
         id="tooltipNumber"
         class="tooltip-number"
     ></span>
 
-    <span id="tooltipDescription"></span>
-</div>
+    <span
+        id="tooltipDescription"
+    ></span>
 
+</div>
 
 
 <script>
 
 /* =========================================================
-   PTW DATA
+   GOOGLE SHEET
 ========================================================= */
 
-const PTW_SECTIONS = [
+const SHEET_ID =
+    "1TO2V5GSsTv73uxyCsBCO-e-oKGKVuPMea8tuok6Y2jE";
 
-    /* =====================================================
-       PIPELINE PRE-COMMISSIONING
-    ===================================================== */
 
-    {
-        id:"pipeline",
-        title:"PIPELINE PRE-COMMISSIONING",
+const DATA_SHEET =
+    "DATA";
 
-        rows:[
 
-            {
-                location:"GPS",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0155325",
+const EQUIPMENT_SHEET =
+    "EQUIPMENT";
 
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=6bbd51b0-d19c-41b3-ae1a-a0add1ce7312",
 
-                start:"2026-09-13T09:23:00+08:00",
-                end:"2026-09-20T05:59:00+08:00",
+const BOOKMARKS_SHEET =
+    "BOOKMARKS";
 
-                validity:"13 SEP 2026 09:23 AM - 20 SEP 2026 05:59 AM",
 
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0153937",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=93f67d57-34e0-4594-ab61-f006a3ab2be9",
-
-                start:"2026-09-03T14:33:00+08:00",
-                end:"2026-09-10T05:59:00+08:00",
-
-                validity:"03 SEP 2026 02:33 PM - 10 SEP 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0152730",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=373fa5e6-3f00-487a-a1a0-791455ee08f9",
-
-                start:"2026-08-27T08:00:00+08:00",
-                end:"2026-09-03T05:59:00+08:00",
-
-                validity:"27 AUG 2026 08:00 AM - 03 SEP 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"151521",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=ee0ef0b3-5023-4e08-b180-773ff7794188",
-
-                start:"2026-08-20T20:56:00+08:00",
-                end:"2026-08-27T17:59:00+08:00",
-
-                validity:"20 AUG 2026 08:56 PM - 27 AUG 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0149469",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=86d2eb38-07f4-49b1-9e23-770142852c2b",
-
-                start:"2026-08-14T10:02:00+08:00",
-                end:"2026-08-21T05:59:00+08:00",
-
-                validity:"14 AUG 2026 10:02 AM - 21 AUG 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, PIGGING ACTIVITIES (FOR CLEANING, GAUGING, WATER FILLING, DEWATERING AND SWABBING), HYDROTEST AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0155323",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=1f4dda96-6551-45c2-a44a-a20aebd85db2",
-
-                start:"2026-09-13T09:16:00+08:00",
-                end:"2026-09-20T05:59:00+08:00",
-
-                validity:"13 SEP 2026 09:16 AM - 20 SEP 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0153935",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=0b553018-9371-44d0-8bcc-5336554a6286",
-
-                start:"2026-09-03T11:49:00+08:00",
-                end:"2026-09-10T05:59:00+08:00",
-
-                validity:"03 SEP 2026 11:49 AM - 10 SEP 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0152731",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=3f656b9a-2bfb-4c3c-92fa-46675cbc4a47",
-
-                start:"2026-08-27T08:00:00+08:00",
-                end:"2026-09-03T05:59:00+08:00",
-
-                validity:"27 AUG 2026 08:00 AM - 03 SEP 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION, BV10.3 AND BV13.1"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"151320",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=5aa89018-9221-4066-941f-754ed3be729d",
-
-                start:"2026-08-20T20:56:00+08:00",
-                end:"2026-08-27T17:59:00+08:00",
-
-                validity:"20 AUG 2026 08:56 PM - 27 AUG 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"PIPELINE PRE-COMMISSIONING",
-                number:"0149403",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=e2f7363c-60ba-43ff-9c2f-4c44f574574f",
-
-                start:"2026-08-14T10:02:00+08:00",
-                end:"2026-08-21T05:59:00+08:00",
-
-                validity:"14 AUG 2026 10:02 AM - 21 AUG 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM PIPELINE PRE-COMMISSIONING ACTIVITIES INCLUDING MOB DEMOB, SET UP PREPARATION, CLEANING, GAUGING, WATER FILLING, HYDROTEST, DEWATERING AND SWABBING AND AIR DRYING FOR NEW NPS 10 FEC PIPELINE AT GPP4 STATION (RECEIVER), BV10.3 AND BV13.1"
-            }
-
-        ]
-    },
-
-
-    /* =====================================================
-       TOWER LIGHT
-    ===================================================== */
-
-    {
-        id:"tower-light",
-        title:"TOWER LIGHT",
-
-        rows:[
-
-            {
-                location:"GPS",
-                activity:"TOWER LIGHT",
-                number:"0155915",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=8ac58e97-9bdb-450d-b3bf-5a91de9d5dba",
-
-                start:"2026-09-13T20:06:00+08:00",
-                end:"2026-09-20T17:59:00+08:00",
-
-                validity:"13 SEP 2026 08:06 PM - 20 SEP 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"TOWER LIGHT",
-                number:"0153035",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=21b46898-323a-4c83-942e-ec833533752c",
-
-                start:"2026-08-30T21:04:00+08:00",
-                end:"2026-09-06T17:59:00+08:00",
-
-                validity:"30 AUG 2026 09:04 PM - 06 SEP 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION",
-
-                equipment:[
-
-                    {
-                        name:"MCWELL 2666",
-                        expiry:"04 SEP 2026"
-                    },
-
-                    {
-                        name:"ATLAS COPCO PL100114",
-                        expiry:"04 SEP 2026"
-                    },
-
-                    {
-                        name:"ATLAS COPCO PL100108",
-                        expiry:"04 SEP 2026"
-                    },
-
-                    {
-                        name:"ATLAS COPCO PL100254",
-                        expiry:"04 SEP 2026"
-                    },
-
-                    {
-                        name:"ATLAS COPCO PL100158",
-                        expiry:"04 SEP 2026"
-                    }
-
-                ]
-            },
-
-
-            {
-                location:"GPS",
-                activity:"TOWER LIGHT",
-                number:"0151730",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=59983f05-01ba-49d6-8c93-d75b5981e4bd",
-
-                start:"2026-08-22T19:00:00+08:00",
-                end:"2026-08-29T05:59:00+08:00",
-
-                validity:"22 AUG 2026 07:00 PM - 29 AUG 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM RUNNING TOWER LIGHT AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"TOWER LIGHT",
-                number:"0150129",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=7d6f23e6-90b8-44c3-933e-84869b02c157",
-
-                start:"2026-08-15T21:07:00+08:00",
-                end:"2026-08-22T05:59:00+08:00",
-
-                validity:"15 AUG 2026 09:07 PM - 22 AUG 2026 05:59 AM",
-
-                description:
-                "GPS TOWER LIGHT — OLD EPTW RECORD"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"TOWER LIGHT",
-                number:"0155674",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=339543c8-c7bb-4566-aca5-7378ae7b92fa",
-
-                start:"2026-09-15T20:09:00+08:00",
-                end:"2026-09-22T17:59:00+08:00",
-
-                validity:"15 SEP 2026 08:09 PM - 22 SEP 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"TOWER LIGHT",
-                number:"0153036",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=62ffdacf-1fc9-437c-b602-d06ef67835f7",
-
-                start:"2026-08-30T19:11:00+08:00",
-                end:"2026-09-06T17:59:00+08:00",
-
-                validity:"30 AUG 2026 07:11 PM - 06 SEP 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC : TO PERFORM RUNNING TOWER LIGHT AT GPP4 STATION"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"TOWER LIGHT",
-                number:"151524",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=5652ba22-a69a-43f2-b7aa-48b3454cfb05",
-
-                start:"2026-08-21T21:31:00+08:00",
-                end:"2026-08-28T17:59:00+08:00",
-
-                validity:"21 AUG 2026 09:31 PM - 28 AUG 2026 05:59 PM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION."
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"TOWER LIGHT",
-                number:"0149256",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=889b8e36-23e9-4c8f-996e-b16ad7017200",
-
-                start:"2026-08-15T20:03:00+08:00",
-                end:"2026-08-22T05:59:00+08:00",
-
-                validity:"15 AUG 2026 08:03 PM - 22 AUG 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM RUN TOWER LIGHT AT GPP4 STATION."
-            }
-
-        ]
-    },
-
-
-    /* =====================================================
-       BD TIE IN
-    ===================================================== */
-
-    {
-        id:"bd-tie-in",
-        title:"BD TIE IN",
-
-        rows:[
-
-            {
-                location:"GPP4",
-                activity:"BD TIE IN",
-                number:"162995",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=34de7757-363f-4ec8-afc5-a1c8d29fb2b8",
-
-                start:"2026-10-18T09:30:00+08:00",
-                end:"2026-10-25T05:59:00+08:00",
-
-                validity:"18 OCT 2026 09:30 AM - 25 OCT 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM SITE PREPARATION FOR MERCURY MONITORING AND DECONTAMINATION EQUIPMENTS ACTIVITY FOR BLOWDOWN AT GPP4"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"BD TIE IN",
-                number:"162996",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=119f4665-7dae-4dc4-ba0b-22b93d6f7fdf",
-
-                start:"2026-10-18T09:30:00+08:00",
-                end:"2026-10-25T05:59:00+08:00",
-
-                validity:"18 OCT 2026 09:30 AM - 25 OCT 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC:(GPS) TO PERFORM SITE PREPARATION FOR MERCURY MONITORING AND DECONTAMINATION EQUIPMENTS FOR BLOWDOWN ACTIVITY AT GPS GAS STATION"
-            },
-
-
-            {
-                location:"GPP4",
-                activity:"BD TIE IN",
-                number:"162896",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=6763cd13-df13-4d81-ae22-b3d54d2cc107",
-
-                start:"2026-10-18T09:30:00+08:00",
-                end:"2026-10-25T05:59:00+08:00",
-
-                validity:"18 OCT 2026 09:30 AM - 25 OCT 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM ABOVEGROUND VALVE LINE-UP AND CONDUCT SPADING FOR TIE IN GOLDEN JOINT NEW NPS 3 PIPING TO EXISTING NPS 4 BLOWDOWN AT GPP4 STATION TP17A & TP17B"
-            },
-
-
-            {
-                location:"GPS",
-                activity:"BD TIE IN",
-                number:"0162886",
-
-                url:"https://ptw.petronas.com/PTW/Apply?applicationId=727a21b0-af0d-49fa-a229-87aa222bbdc9",
-
-                start:"2026-10-18T09:30:00+08:00",
-                end:"2026-10-25T05:59:00+08:00",
-
-                validity:"18 OCT 2026 09:30 AM - 25 OCT 2026 05:59 AM",
-
-                description:
-                "KREJUV-FEC: TO PERFORM VALVE LINE-UP AND CONDUCT SPADING FOR TIE IN GOLDEN JOINT NEW NPS 3 UNDERGROUND PIPING TO EXISTING NPS 4 BLOWDOWN AT GPS GAS STATION TP18A & TP18B"
-            }
-
-        ]
-    },
-
-
-    /* =====================================================
-       VEHICLE ENTRY
-    ===================================================== */
-
-    {
-        id:"vehicle-entry",
-        title:"VEHICLE ENTRY — EPTW + MANDATORY VEC",
-
-        rows:[
-
-            {
-                location:"GPS",
-                activity:"VEHICLE ENTRY",
-                number:"0154254",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=06ba374d-3e4a-4fcb-a39c-f5b4fe448110",
-
-                start:"2026-09-05T08:00:00+08:00",
-                end:"2026-09-12T05:59:00+08:00",
-
-                validity:"05 SEP 2026 08:00 AM - 12 SEP 2026 05:59 AM",
-
-                description:
-                "GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)",
-
-                vec:{
-
-                    id:"0054173",
-
-                    url:"https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=542223f5-e9ea-4b49-a59d-d6084f6c33a3",
-
-                    start:"2026-09-05T09:53:00+08:00",
-                    end:"2026-09-11T23:59:00+08:00",
-
-                    validity:"05 SEP 2026 09:53 AM - 11 SEP 2026 11:59 PM",
-
-                    description:
-                    "KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-                }
-            },
-
-
-            {
-                location:"GPS",
-                activity:"VEHICLE ENTRY",
-                number:"0153038",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=b8906839-2d26-4ce5-9377-f9273c090e71",
-
-                start:"2026-08-30T09:19:00+08:00",
-                end:"2026-09-06T05:59:00+08:00",
-
-                validity:"30 AUG 2026 09:19 AM - 06 SEP 2026 05:59 AM",
-
-                description:
-                "GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)",
-
-                vec:{
-
-                    id:"0053721",
-
-                    url:"https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=938dde8f-6a6f-484f-b903-bd86af88804b",
-
-                    start:"2026-08-29T10:43:00+08:00",
-                    end:"2026-09-04T23:59:00+08:00",
-
-                    validity:"29 AUG 2026 10:43 AM - 04 SEP 2026 11:59 PM",
-
-                    description:
-                    "KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-                }
-            },
-
-
-            {
-                location:"GPS",
-                activity:"VEHICLE ENTRY",
-                number:"0152051",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=2f80462f-952d-4831-975a-8c24e72eb856",
-
-                start:"2026-08-24T10:12:00+08:00",
-                end:"2026-08-31T05:59:00+08:00",
-
-                validity:"24 AUG 2026 10:12 AM - 31 AUG 2026 05:59 AM",
-
-                description:
-                "GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)",
-
-                vec:{
-
-                    id:"0053238",
-
-                    url:"https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=3bf4ffe3-bb02-484b-ac52-3904e5fedf10",
-
-                    start:"2026-08-23T09:29:00+08:00",
-                    end:"2026-08-29T23:59:00+08:00",
-
-                    validity:"23 AUG 2026 09:29 AM - 29 AUG 2026 11:59 PM",
-
-                    description:
-                    "KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-                }
-            },
-
-
-            {
-                location:"GPS",
-                activity:"VEHICLE ENTRY",
-                number:"0150142",
-
-                url:"https://ptw.petronas.com/Ptw/Apply?applicationId=5456cdea-24a3-4a99-8786-af5a5e50615a",
-
-                start:"2026-08-17T09:27:00+08:00",
-                end:"2026-08-24T05:59:00+08:00",
-
-                validity:"17 AUG 2026 09:27 AM - 24 AUG 2026 05:59 AM",
-
-                description:
-                "GPS KREJUV-FEC: TO PERFORM VEHICLE ENTRY FOR TRANSPORTATION AND LOADING / UNLOADING EQUIPMENT USING PICKUP (VJN 2339)",
-
-                vec:{
-
-                    id:"0052629",
-
-                    url:"https://ptw.petronas.com/VehicleEntryCertificate/Apply?applicationId=9e68802e-9960-4638-a921-2272f3384aef",
-
-                    start:"2026-08-15T09:47:00+08:00",
-                    end:"2026-08-21T23:59:00+08:00",
-
-                    validity:"15 AUG 2026 09:47 AM - 21 AUG 2026 11:59 PM",
-
-                    description:
-                    "KREJUV-FEC: TO PERFORM MOBILIZATION / DEMOBILZIATION EQUIPMENT AND TOOLS USING PICKUP (VJN 2339)"
-                }
-            }
-
-        ]
-    }
-
-];
+const AUTO_REFRESH_MS =
+    60000;
 
 
 /* =========================================================
-   ESCAPE
+   STORAGE
 ========================================================= */
 
-function escapeHtml(value) {
+const CACHE_DATA_KEY =
+    "krejuv-fec-sheet-data-v3";
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
 
-}
+const CACHE_EQUIPMENT_KEY =
+    "krejuv-fec-sheet-equipment-v3";
 
 
-/* =========================================================
-   SECTION RENDER
-========================================================= */
+const CACHE_BOOKMARK_KEY =
+    "krejuv-fec-sheet-bookmarks-v3";
 
-function getContiguousLocationCount(
-    rows,
-    startIndex
-) {
 
-    const location =
-        rows[startIndex].location;
+const CACHE_TIME_KEY =
+    "krejuv-fec-sheet-cache-time-v3";
 
-    let count = 0;
-
-    for (
-        let i = startIndex;
-        i < rows.length;
-        i++
-    ) {
-
-        if (
-            rows[i].location !==
-            location
-        ) {
-            break;
-        }
-
-        count++;
-
-    }
-
-    return count;
-
-}
-
-
-function renderEquipment(
-    equipment
-) {
-
-    if (
-        !Array.isArray(equipment) ||
-        equipment.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-        <div class="tower-equipment-box">
-
-            <div class="tower-equipment-title">
-                <div>TOWER LIGHT</div>
-                <div>EXPIRY DATE</div>
-            </div>
-
-            ${equipment.map(item => `
-
-                <div class="tower-equipment-row">
-
-                    <div class="tower-equipment-name">
-                        ${escapeHtml(item.name)}
-                    </div>
-
-                    <div class="tower-equipment-expiry">
-                        ${escapeHtml(item.expiry)}
-                    </div>
-
-                </div>
-
-            `).join("")}
-
-        </div>
-    `;
-
-}
-
-
-function renderVec(
-    row
-) {
-
-    if (
-        !row.vec
-    ) {
-
-        return "";
-
-    }
-
-
-    const vec =
-        row.vec;
-
-
-    return `
-        <div class="vec-dependency">
-
-            <div class="vec-dependency-title">
-                MANDATORY ATTACHED VEC
-            </div>
-
-
-            <a
-                class="vec-number hover-detail"
-                href="${escapeHtml(vec.url)}"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-number="VEC ${escapeHtml(vec.id)}"
-                data-description="${escapeHtml(vec.description)}"
-            >
-                VEC ${escapeHtml(vec.id)}
-            </a>
-
-
-            <div class="vec-description">
-                ${escapeHtml(vec.description)}
-            </div>
-
-
-            <div class="vec-validity">
-
-                VEC VALIDITY:<br>
-
-                ${escapeHtml(vec.validity)}
-
-            </div>
-
-
-            <div class="vec-status-line">
-
-                <span class="vec-status-badge">
-                    CHECKING
-                </span>
-
-                <div class="vec-status-note">
-                    --
-                </div>
-
-            </div>
-
-
-            <div class="effective-validity">
-                VEHICLE ENTRY REQUIRES BOTH EPTW
-                ${escapeHtml(row.number)}
-                AND VEC
-                ${escapeHtml(vec.id)}
-                TO BE VALID.
-            </div>
-
-        </div>
-    `;
-
-}
-
-
-function renderPtwSections() {
-
-    const tbody =
-        document.getElementById(
-            "ptwTableBody"
-        );
-
-
-    tbody.innerHTML =
-        "";
-
-
-    PTW_SECTIONS.forEach(section => {
-
-
-        const category =
-            document.createElement(
-                "tr"
-            );
-
-
-        category.className =
-            "category-row";
-
-
-        category.dataset.sectionId =
-            section.id;
-
-
-        category.innerHTML =
-            `
-            <td colspan="5">
-
-                <button
-                    class="section-toggle"
-                    type="button"
-                    data-toggle-section="${escapeHtml(section.id)}"
-                    aria-expanded="true"
-                >
-
-                    <span class="section-toggle-left">
-
-                        <span class="section-toggle-title">
-                            ${escapeHtml(section.title)}
-                        </span>
-
-                        <span class="section-toggle-count">
-                            ${section.rows.length} PTW
-                        </span>
-
-                    </span>
-
-
-                    <span class="section-toggle-right">
-
-                        <span class="section-toggle-state">
-                            COLLAPSE
-                        </span>
-
-                        <span class="section-toggle-arrow">
-                            ↓
-                        </span>
-
-                    </span>
-
-                </button>
-
-            </td>
-            `;
-
-
-        tbody.appendChild(
-            category
-        );
-
-
-        section.rows.forEach(
-            (row,index) => {
-
-
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                tr.className =
-                    "ptw-data-row section-data-row";
-
-
-                if (
-                    row.vec
-                ) {
-
-                    tr.classList.add(
-                        "vehicle-ptw"
-                    );
-
-                }
-
-
-                tr.dataset.sectionId =
-                    section.id;
-
-                tr.dataset.location =
-                    row.location;
-
-                tr.dataset.activity =
-                    row.activity;
-
-                tr.dataset.start =
-                    row.start;
-
-                tr.dataset.end =
-                    row.end;
-
-
-                if (
-                    row.vec
-                ) {
-
-                    tr.dataset.vecStart =
-                        row.vec.start;
-
-                    tr.dataset.vecEnd =
-                        row.vec.end;
-
-                    tr.dataset.vecId =
-                        row.vec.id;
-
-                }
-
-
-                let locationCell =
-                    "";
-
-
-                const previousLocation =
-                    index > 0
-                    ?
-                    section.rows[index - 1].location
-                    :
-                    null;
-
-
-                if (
-                    previousLocation !==
-                    row.location
-                ) {
-
-                    const rowspan =
-                        getContiguousLocationCount(
-                            section.rows,
-                            index
-                        );
-
-
-                    locationCell =
-                        `
-                        <td
-                            class="location-merged"
-                            rowspan="${rowspan}"
-                        >
-
-                            <div class="location-name">
-                                ${escapeHtml(row.location)}
-                            </div>
-
-                        </td>
-                        `;
-
-                }
-
-
-                tr.innerHTML =
-                    `
-
-                    ${locationCell}
-
-
-                    <td data-label="EPTW NO.">
-
-                        <a
-                            class="ptw-number hover-detail"
-                            href="${escapeHtml(row.url)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            data-number="EPTW ${escapeHtml(row.number)}"
-                            data-description="${escapeHtml(row.description)}"
-                        >
-                            ${escapeHtml(row.number)}
-                        </a>
-
-                    </td>
-
-
-                    <td data-label="STATUS">
-
-                        <span class="status-badge">
-                            CHECKING
-                        </span>
-
-                        <div class="status-note">
-                            --
-                        </div>
-
-                    </td>
-
-
-                    <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
-
-                        <span class="validity-label">
-                            ${row.vec ? "EPTW VALIDITY" : "PTW VALIDITY"}
-                        </span>
-
-
-                        <div class="validity-value">
-                            ${escapeHtml(row.validity)}
-                        </div>
-
-
-                        <div class="last-usable">
-
-                            <span class="validity-label">
-
-                                ${
-                                    row.vec
-                                    ?
-                                    "EFFECTIVE LAST FULLY USABLE SHIFT"
-                                    :
-                                    "LAST FULLY USABLE SHIFT"
-                                }
-
-                            </span>
-
-                            <div class="last-usable-value">
-                                --
-                            </div>
-
-                        </div>
-
-
-                        <div class="expiry-rule-note">
-                            --
-                        </div>
-
-
-                        ${renderVec(row)}
-
-                    </td>
-
-
-                    <td data-label="DESCRIPTION">
-
-                        <div class="description-text">
-                            ${escapeHtml(row.description)}
-                        </div>
-
-                        ${renderEquipment(row.equipment)}
-
-                    </td>
-
-                    `;
-
-
-                tbody.appendChild(
-                    tr
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   COLLAPSE / EXPAND
-========================================================= */
 
 const COLLAPSE_STORAGE_KEY =
-    "krejuv-fec-collapsed-sections";
+    "krejuv-fec-collapsed-sections-v3";
 
 
-function getCollapsedSections() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                COLLAPSE_STORAGE_KEY
-            ) || "[]"
-        );
-
-    }
-
-    catch(error) {
-
-        return [];
-
-    }
-
-}
-
-
-function saveCollapsedSections(
-    sections
-) {
-
-    try {
-
-        localStorage.setItem(
-            COLLAPSE_STORAGE_KEY,
-            JSON.stringify(
-                sections
-            )
-        );
-
-    }
-
-    catch(error) {
-
-        /* ignore storage error */
-
-    }
-
-}
-
-
-function setSectionCollapsed(
-    sectionId,
-    collapsed,
-    save = true
-) {
-
-    const header =
-        document.querySelector(
-            `.category-row[data-section-id="${sectionId}"]`
-        );
-
-
-    const button =
-        header?.querySelector(
-            ".section-toggle"
-        );
-
-
-    const state =
-        header?.querySelector(
-            ".section-toggle-state"
-        );
-
-
-    const rows =
-        document.querySelectorAll(
-            `.section-data-row[data-section-id="${sectionId}"]`
-        );
-
-
-    if (
-        !header ||
-        !button
-    ) {
-
-        return;
-
-    }
-
-
-    header.classList.toggle(
-        "is-collapsed",
-        collapsed
-    );
-
-
-    button.setAttribute(
-        "aria-expanded",
-        collapsed
-        ?
-        "false"
-        :
-        "true"
-    );
-
-
-    if (
-        state
-    ) {
-
-        state.textContent =
-            collapsed
-            ?
-            "EXPAND"
-            :
-            "COLLAPSE";
-
-    }
-
-
-    rows.forEach(row => {
-
-        row.classList.toggle(
-            "section-hidden",
-            collapsed
-        );
-
-    });
-
-
-    if (
-        save
-    ) {
-
-        const current =
-            new Set(
-                getCollapsedSections()
-            );
-
-
-        if (
-            collapsed
-        ) {
-
-            current.add(
-                sectionId
-            );
-
-        }
-
-        else {
-
-            current.delete(
-                sectionId
-            );
-
-        }
-
-
-        saveCollapsedSections(
-            Array.from(
-                current
-            )
-        );
-
-    }
-
-}
-
-
-function initialiseSectionToggles() {
-
-    document
-        .querySelectorAll(
-            ".section-toggle"
-        )
-        .forEach(button => {
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-
-                    const sectionId =
-                        button.dataset.toggleSection;
-
-
-                    const expanded =
-                        button.getAttribute(
-                            "aria-expanded"
-                        ) ===
-                        "true";
-
-
-                    setSectionCollapsed(
-                        sectionId,
-                        expanded,
-                        true
-                    );
-
-                }
-            );
-
-        });
-
-
-    const collapsed =
-        getCollapsedSections();
-
-
-    collapsed.forEach(
-        sectionId => {
-
-            setSectionCollapsed(
-                sectionId,
-                true,
-                false
-            );
-
-        }
-    );
-
-}
+const JHA_COLLAPSE_STORAGE_KEY =
+    "krejuv-fec-jha-collapsed-v3";
 
 
 /* =========================================================
-   DATE
+   CURRENT DATA
 ========================================================= */
 
-const MONTHS = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC"
-];
+let CURRENT_DATA = [];
 
+let CURRENT_EQUIPMENT = [];
+
+let CURRENT_BOOKMARKS = [];
+
+let refreshInProgress =
+    false;
+
+
+/* =========================================================
+   MALAYSIA TIME
+========================================================= */
+
+const MALAYSIA_OFFSET_HOURS =
+    8;
+
+
+const MALAYSIA_OFFSET_MS =
+    MALAYSIA_OFFSET_HOURS *
+    60 *
+    60 *
+    1000;
+
+
+/* =========================================================
+   TWO DIGIT
+========================================================= */
 
 function two(
     value
@@ -3108,55 +3433,1355 @@ function two(
 }
 
 
-function formatDate(
-    date
+/* =========================================================
+   MALAYSIA WALL CLOCK → TIMESTAMP
+========================================================= */
+
+function malaysiaTimestamp(
+    year,
+    month,
+    day,
+    hour,
+    minute = 0,
+    second = 0
 ) {
 
     return (
-        two(
-            date.getDate()
-        ) +
-        " " +
-        MONTHS[
-            date.getMonth()
-        ] +
-        " " +
-        date.getFullYear()
+        Date.UTC(
+            year,
+            month - 1,
+            day,
+            hour,
+            minute,
+            second,
+            0
+        )
+        -
+        MALAYSIA_OFFSET_MS
     );
 
 }
 
 
-function formatTime(
-    date
+/* =========================================================
+   PARSE GOOGLE SHEET DATE
+========================================================= */
+
+/*
+
+    PREFERRED FORMAT:
+
+    DD/MM/YY HH:MM AM/PM
+
+    EXAMPLES:
+
+    18/10/26 09:30 AM
+    25/10/26 05:59 AM
+    18/10/26 08:00 PM
+
+    Also accepts:
+
+    DD/MM/YYYY HH:MM AM/PM
+
+    and the previous ISO format as fallback.
+
+*/
+
+function parseSheetDate(
+    value
+) {
+
+    const text =
+        String(
+            value ?? ""
+        ).trim();
+
+
+    if (
+        text === ""
+    ) {
+
+        return null;
+
+    }
+
+
+    /* =====================================================
+       DD/MM/YY HH:MM AM/PM
+       Seconds optional
+    ===================================================== */
+
+    const twelveHourMatch =
+        text.match(
+            /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)$/i
+        );
+
+
+    if (
+        twelveHourMatch
+    ) {
+
+        const day =
+            Number(
+                twelveHourMatch[1]
+            );
+
+
+        const month =
+            Number(
+                twelveHourMatch[2]
+            );
+
+
+        let year =
+            Number(
+                twelveHourMatch[3]
+            );
+
+
+        let hour =
+            Number(
+                twelveHourMatch[4]
+            );
+
+
+        const minute =
+            Number(
+                twelveHourMatch[5]
+            );
+
+
+        const second =
+            Number(
+                twelveHourMatch[6] ||
+                0
+            );
+
+
+        const ampm =
+            twelveHourMatch[7]
+                .toUpperCase();
+
+
+        if (
+            year < 100
+        ) {
+
+            year =
+                2000 +
+                year;
+
+        }
+
+
+        if (
+            hour < 1 ||
+            hour > 12
+        ) {
+
+            return null;
+
+        }
+
+
+        if (
+            minute < 0 ||
+            minute > 59
+        ) {
+
+            return null;
+
+        }
+
+
+        if (
+            second < 0 ||
+            second > 59
+        ) {
+
+            return null;
+
+        }
+
+
+        if (
+            ampm ===
+            "AM"
+        ) {
+
+            if (
+                hour === 12
+            ) {
+
+                hour = 0;
+
+            }
+
+        }
+
+        else {
+
+            if (
+                hour !== 12
+            ) {
+
+                hour += 12;
+
+            }
+
+        }
+
+
+        const date =
+            new Date(
+                malaysiaTimestamp(
+                    year,
+                    month,
+                    day,
+                    hour,
+                    minute,
+                    second
+                )
+            );
+
+
+        /*
+            Validate that impossible dates such as
+            31/02/26 are rejected.
+        */
+
+        const parts =
+            getMalaysiaParts(
+                date
+            );
+
+
+        if (
+            parts.year !== year ||
+            parts.month !== month ||
+            parts.day !== day ||
+            parts.hour !== hour ||
+            parts.minute !== minute
+        ) {
+
+            return null;
+
+        }
+
+
+        return date;
+
+    }
+
+
+    /* =====================================================
+       OPTIONAL 24-HOUR FALLBACK
+       DD/MM/YY HH:MM
+    ===================================================== */
+
+    const twentyFourHourMatch =
+        text.match(
+            /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?$/
+        );
+
+
+    if (
+        twentyFourHourMatch
+    ) {
+
+        const day =
+            Number(
+                twentyFourHourMatch[1]
+            );
+
+
+        const month =
+            Number(
+                twentyFourHourMatch[2]
+            );
+
+
+        let year =
+            Number(
+                twentyFourHourMatch[3]
+            );
+
+
+        const hour =
+            Number(
+                twentyFourHourMatch[4]
+            );
+
+
+        const minute =
+            Number(
+                twentyFourHourMatch[5]
+            );
+
+
+        const second =
+            Number(
+                twentyFourHourMatch[6] ||
+                0
+            );
+
+
+        if (
+            year < 100
+        ) {
+
+            year =
+                2000 +
+                year;
+
+        }
+
+
+        if (
+            hour < 0 ||
+            hour > 23 ||
+            minute < 0 ||
+            minute > 59 ||
+            second < 0 ||
+            second > 59
+        ) {
+
+            return null;
+
+        }
+
+
+        const date =
+            new Date(
+                malaysiaTimestamp(
+                    year,
+                    month,
+                    day,
+                    hour,
+                    minute,
+                    second
+                )
+            );
+
+
+        const parts =
+            getMalaysiaParts(
+                date
+            );
+
+
+        if (
+            parts.year !== year ||
+            parts.month !== month ||
+            parts.day !== day ||
+            parts.hour !== hour ||
+            parts.minute !== minute
+        ) {
+
+            return null;
+
+        }
+
+
+        return date;
+
+    }
+
+
+    /* =====================================================
+       OLD ISO FORMAT FALLBACK
+    ===================================================== */
+
+    if (
+        /^\d{4}-\d{2}-\d{2}T/.test(
+            text
+        )
+    ) {
+
+        const isoDate =
+            new Date(
+                text
+            );
+
+
+        if (
+            !Number.isNaN(
+                isoDate.getTime()
+            )
+        ) {
+
+            return isoDate;
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   VALID SHEET DATE
+========================================================= */
+
+function isValidSheetDate(
+    value
 ) {
 
     return (
+        parseSheetDate(
+            value
+        ) !==
+        null
+    );
+
+}
+
+
+/* =========================================================
+   MALAYSIA DATE PARTS
+========================================================= */
+
+function getMalaysiaParts(
+    dateInput
+) {
+
+    const date =
+        dateInput instanceof Date
+        ?
+        dateInput
+        :
+        new Date(
+            dateInput
+        );
+
+
+    const malaysiaDate =
+        new Date(
+            date.getTime() +
+            MALAYSIA_OFFSET_MS
+        );
+
+
+    return {
+
+        year:
+            malaysiaDate.getUTCFullYear(),
+
+        month:
+            malaysiaDate.getUTCMonth() +
+            1,
+
+        day:
+            malaysiaDate.getUTCDate(),
+
+        hour:
+            malaysiaDate.getUTCHours(),
+
+        minute:
+            malaysiaDate.getUTCMinutes(),
+
+        second:
+            malaysiaDate.getUTCSeconds()
+
+    };
+
+}
+
+
+/* =========================================================
+   SIMPLE DATE FORMAT
+========================================================= */
+
+/*
+
+    DISPLAY FORMAT:
+
+    DD/MM/YY HH:MM AM/PM
+
+*/
+
+function formatSimpleDateTime(
+    dateInput
+) {
+
+    const date =
+        dateInput instanceof Date
+        ?
+        dateInput
+        :
+        new Date(
+            dateInput
+        );
+
+
+    const p =
+        getMalaysiaParts(
+            date
+        );
+
+
+    let hour =
+        p.hour;
+
+
+    const ampm =
+        hour >= 12
+        ?
+        "PM"
+        :
+        "AM";
+
+
+    hour =
+        hour %
+        12;
+
+
+    if (
+        hour === 0
+    ) {
+
+        hour =
+            12;
+
+    }
+
+
+    const year =
+        String(
+            p.year
+        ).slice(
+            -2
+        );
+
+
+    return (
         two(
-            date.getHours()
+            p.day
+        ) +
+        "/" +
+        two(
+            p.month
+        ) +
+        "/" +
+        year +
+        " " +
+        two(
+            hour
         ) +
         ":" +
         two(
-            date.getMinutes()
+            p.minute
+        ) +
+        " " +
+        ampm
+    );
+
+}
+
+
+/* =========================================================
+   SIMPLE DATE ONLY
+========================================================= */
+
+function formatSimpleDate(
+    dateInput
+) {
+
+    const p =
+        getMalaysiaParts(
+            dateInput
+        );
+
+
+    return (
+        two(
+            p.day
+        ) +
+        "/" +
+        two(
+            p.month
+        ) +
+        "/" +
+        String(
+            p.year
+        ).slice(
+            -2
         )
     );
 
 }
 
 
-function formatDateTime(
-    date
+/* =========================================================
+   SIMPLE TIME 24H
+========================================================= */
+
+function formatSimpleTime24(
+    dateInput
+) {
+
+    const p =
+        getMalaysiaParts(
+            dateInput
+        );
+
+
+    return (
+        two(
+            p.hour
+        ) +
+        ":" +
+        two(
+            p.minute
+        )
+    );
+
+}
+
+
+/* =========================================================
+   VALIDITY DISPLAY
+========================================================= */
+
+function formatValidity(
+    startValue,
+    endValue
+) {
+
+    const start =
+        parseSheetDate(
+            startValue
+        );
+
+
+    const end =
+        parseSheetDate(
+            endValue
+        );
+
+
+    if (
+        !start ||
+        !end
+    ) {
+
+        return "INVALID DATE / TIME";
+
+    }
+
+
+    return (
+        formatSimpleDateTime(
+            start
+        ) +
+        " - " +
+        formatSimpleDateTime(
+            end
+        )
+    );
+
+}
+
+
+/* =========================================================
+   GOOGLE SHEET URL
+========================================================= */
+
+function getSheetUrl(
+    sheetName
 ) {
 
     return (
-        formatDate(
-            date
+        "https://docs.google.com/spreadsheets/d/" +
+        encodeURIComponent(
+            SHEET_ID
         ) +
-        " " +
-        formatTime(
-            date
-        )
+        "/gviz/tq" +
+        "?tqx=out:csv" +
+        "&sheet=" +
+        encodeURIComponent(
+            sheetName
+        ) +
+        "&_=" +
+        Date.now()
     );
+
+}
+
+
+/* =========================================================
+   CSV PARSER
+========================================================= */
+
+function parseCSV(
+    text
+) {
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let insideQuote =
+        false;
+
+
+    for (
+        let i = 0;
+        i < text.length;
+        i++
+    ) {
+
+        const char =
+            text[i];
+
+
+        const next =
+            text[i + 1];
+
+
+        if (
+            char === '"'
+        ) {
+
+            if (
+                insideQuote &&
+                next === '"'
+            ) {
+
+                cell += '"';
+
+                i++;
+
+            }
+
+            else {
+
+                insideQuote =
+                    !insideQuote;
+
+            }
+
+        }
+
+        else if (
+            char === "," &&
+            !insideQuote
+        ) {
+
+            row.push(
+                cell
+            );
+
+            cell = "";
+
+        }
+
+        else if (
+            (
+                char === "\n" ||
+                char === "\r"
+            )
+            &&
+            !insideQuote
+        ) {
+
+            if (
+                char === "\r" &&
+                next === "\n"
+            ) {
+
+                i++;
+
+            }
+
+
+            row.push(
+                cell
+            );
+
+
+            cell = "";
+
+
+            if (
+                row.some(
+                    value =>
+                        String(
+                            value
+                        ).trim() !== ""
+                )
+            ) {
+
+                rows.push(
+                    row
+                );
+
+            }
+
+
+            row = [];
+
+        }
+
+        else {
+
+            cell +=
+                char;
+
+        }
+
+    }
+
+
+    row.push(
+        cell
+    );
+
+
+    if (
+        row.some(
+            value =>
+                String(
+                    value
+                ).trim() !== ""
+        )
+    ) {
+
+        rows.push(
+            row
+        );
+
+    }
+
+
+    return rows;
+
+}
+
+
+/* =========================================================
+   NORMALIZE HEADER
+========================================================= */
+
+function normalizeHeader(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+    .trim()
+    .toUpperCase()
+    .replace(
+        /\s+/g,
+        "_"
+    );
+
+}
+
+
+/* =========================================================
+   CSV TO OBJECTS
+========================================================= */
+
+function csvToObjects(
+    csvText
+) {
+
+    const rows =
+        parseCSV(
+            csvText
+        );
+
+
+    if (
+        rows.length === 0
+    ) {
+
+        return [];
+
+    }
+
+
+    const headers =
+        rows[0]
+            .map(
+                normalizeHeader
+            );
+
+
+    return rows
+        .slice(
+            1
+        )
+        .map(
+            row => {
+
+                const item = {};
+
+
+                headers.forEach(
+                    (
+                        header,
+                        index
+                    ) => {
+
+                        item[header] =
+                            String(
+                                row[index] ??
+                                ""
+                            ).trim();
+
+                    }
+                );
+
+
+                return item;
+
+            }
+        )
+        .filter(
+            item =>
+                Object.values(
+                    item
+                )
+                .some(
+                    value =>
+                        String(
+                            value
+                        ).trim() !== ""
+                )
+        );
+
+}
+
+
+/* =========================================================
+   FETCH SHEET
+========================================================= */
+
+async function fetchSheet(
+    sheetName
+) {
+
+    const response =
+        await fetch(
+            getSheetUrl(
+                sheetName
+            ),
+            {
+                method:"GET",
+                cache:"no-store"
+            }
+        );
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            sheetName +
+            " HTTP " +
+            response.status
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if (
+        text.includes(
+            "<html"
+        ) ||
+        text.includes(
+            "<!DOCTYPE"
+        )
+    ) {
+
+        throw new Error(
+            sheetName +
+            " returned HTML instead of CSV"
+        );
+
+    }
+
+
+    return csvToObjects(
+        text
+    );
+
+}
+
+
+/* =========================================================
+   CACHE
+========================================================= */
+
+function saveCache() {
+
+    try {
+
+        localStorage.setItem(
+            CACHE_DATA_KEY,
+            JSON.stringify(
+                CURRENT_DATA
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_EQUIPMENT_KEY,
+            JSON.stringify(
+                CURRENT_EQUIPMENT
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_BOOKMARK_KEY,
+            JSON.stringify(
+                CURRENT_BOOKMARKS
+            )
+        );
+
+
+        localStorage.setItem(
+            CACHE_TIME_KEY,
+            String(
+                Date.now()
+            )
+        );
+
+    }
+
+    catch(error) {
+
+        console.warn(
+            "Cache save failed",
+            error
+        );
+
+    }
+
+}
+
+
+function readCache() {
+
+    try {
+
+        return {
+
+            data:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_DATA_KEY
+                    ) ||
+                    "[]"
+                ),
+
+            equipment:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_EQUIPMENT_KEY
+                    ) ||
+                    "[]"
+                ),
+
+            bookmarks:
+                JSON.parse(
+                    localStorage.getItem(
+                        CACHE_BOOKMARK_KEY
+                    ) ||
+                    "[]"
+                ),
+
+            time:
+                Number(
+                    localStorage.getItem(
+                        CACHE_TIME_KEY
+                    ) ||
+                    0
+                )
+
+        };
+
+    }
+
+    catch(error) {
+
+        return {
+
+            data:[],
+
+            equipment:[],
+
+            bookmarks:[],
+
+            time:0
+
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================================
+   SAFE URL
+========================================================= */
+
+function safeUrl(
+    value
+) {
+
+    const url =
+        String(
+            value ?? ""
+        ).trim();
+
+
+    if (
+        url === ""
+    ) {
+
+        return "";
+
+    }
+
+
+    try {
+
+        const parsed =
+            new URL(
+                url
+            );
+
+
+        if (
+            parsed.protocol !== "https:" &&
+            parsed.protocol !== "http:"
+        ) {
+
+            return "";
+
+        }
+
+
+        return parsed.href;
+
+    }
+
+    catch(error) {
+
+        return "";
+
+    }
+
+}
+
+
+/* =========================================================
+   ROW VALUE
+========================================================= */
+
+function rowValue(
+    row,
+    key
+) {
+
+    return String(
+        row[
+            normalizeHeader(
+                key
+            )
+        ] ??
+        ""
+    ).trim();
+
+}
+
+
+/* =========================================================
+   NORMALIZE DATA ROW
+========================================================= */
+
+function normalizeDataRow(
+    raw
+) {
+
+    return {
+
+        type:
+            rowValue(
+                raw,
+                "TYPE"
+            ).toUpperCase(),
+
+        section:
+            rowValue(
+                raw,
+                "SECTION"
+            ),
+
+        location:
+            rowValue(
+                raw,
+                "LOCATION"
+            ),
+
+        number:
+            rowValue(
+                raw,
+                "NUMBER"
+            ),
+
+        start:
+            rowValue(
+                raw,
+                "START"
+            ),
+
+        end:
+            rowValue(
+                raw,
+                "END"
+            ),
+
+        description:
+            rowValue(
+                raw,
+                "DESCRIPTION"
+            ),
+
+        url:
+            safeUrl(
+                rowValue(
+                    raw,
+                    "URL"
+                )
+            ),
+
+        vecNo:
+            rowValue(
+                raw,
+                "VEC_NO"
+            ),
+
+        vecStart:
+            rowValue(
+                raw,
+                "VEC_START"
+            ),
+
+        vecEnd:
+            rowValue(
+                raw,
+                "VEC_END"
+            ),
+
+        vecDescription:
+            rowValue(
+                raw,
+                "VEC_DESCRIPTION"
+            ),
+
+        vecUrl:
+            safeUrl(
+                rowValue(
+                    raw,
+                    "VEC_URL"
+                )
+            )
+
+    };
+
+}
+
+
+/* =========================================================
+   SHIFT DATE MOVE
+========================================================= */
+
+function shiftMalaysiaDateParts(
+    parts,
+    dayDelta
+) {
+
+    const utc =
+        Date.UTC(
+            parts.year,
+            parts.month - 1,
+            parts.day + dayDelta,
+            12,
+            0,
+            0
+        );
+
+
+    const date =
+        new Date(
+            utc
+        );
+
+
+    return {
+
+        year:
+            date.getUTCFullYear(),
+
+        month:
+            date.getUTCMonth() + 1,
+
+        day:
+            date.getUTCDate()
+
+    };
 
 }
 
@@ -3170,83 +4795,95 @@ function getShift(
 ) {
 
     const date =
+        dateInput instanceof Date
+        ?
+        dateInput
+        :
         new Date(
             dateInput
         );
 
 
-    const hour =
-        date.getHours();
-
-
-    let start =
-        new Date(
-            date
-        );
-
-
-    let end =
-        new Date(
+    const p =
+        getMalaysiaParts(
             date
         );
 
 
     let type;
 
+    let startTimestamp;
+
+    let endTimestamp;
+
 
     if (
-        hour >= 7 &&
-        hour < 19
+        p.hour >= 7 &&
+        p.hour < 19
     ) {
 
         type =
             "DAY SHIFT";
 
 
-        start.setHours(
-            7,
-            0,
-            0,
-            0
-        );
+        startTimestamp =
+            malaysiaTimestamp(
+                p.year,
+                p.month,
+                p.day,
+                7,
+                0,
+                0
+            );
 
 
-        end.setHours(
-            18,
-            59,
-            0,
-            0
-        );
+        endTimestamp =
+            malaysiaTimestamp(
+                p.year,
+                p.month,
+                p.day,
+                18,
+                59,
+                0
+            );
 
     }
 
     else if (
-        hour >= 19
+        p.hour >= 19
     ) {
 
         type =
             "NIGHT SHIFT";
 
 
-        start.setHours(
-            19,
-            0,
-            0,
-            0
-        );
+        const nextDay =
+            shiftMalaysiaDateParts(
+                p,
+                1
+            );
 
 
-        end.setDate(
-            end.getDate() + 1
-        );
+        startTimestamp =
+            malaysiaTimestamp(
+                p.year,
+                p.month,
+                p.day,
+                19,
+                0,
+                0
+            );
 
 
-        end.setHours(
-            6,
-            59,
-            0,
-            0
-        );
+        endTimestamp =
+            malaysiaTimestamp(
+                nextDay.year,
+                nextDay.month,
+                nextDay.day,
+                6,
+                59,
+                0
+            );
 
     }
 
@@ -3256,49 +4893,69 @@ function getShift(
             "NIGHT SHIFT";
 
 
-        start.setDate(
-            start.getDate() - 1
-        );
+        const previousDay =
+            shiftMalaysiaDateParts(
+                p,
+                -1
+            );
 
 
-        start.setHours(
-            19,
-            0,
-            0,
-            0
-        );
+        startTimestamp =
+            malaysiaTimestamp(
+                previousDay.year,
+                previousDay.month,
+                previousDay.day,
+                19,
+                0,
+                0
+            );
 
 
-        end.setHours(
-            6,
-            59,
-            0,
-            0
-        );
+        endTimestamp =
+            malaysiaTimestamp(
+                p.year,
+                p.month,
+                p.day,
+                6,
+                59,
+                0
+            );
 
     }
 
 
     return {
+
         type,
-        start,
-        end
+
+        start:
+            new Date(
+                startTimestamp
+            ),
+
+        end:
+            new Date(
+                endTimestamp
+            )
+
     };
 
 }
 
+
+/* =========================================================
+   NEXT / PREVIOUS SHIFT
+========================================================= */
 
 function getNextShift(
     shift
 ) {
 
     return getShift(
-
         new Date(
             shift.end.getTime() +
             61000
         )
-
     );
 
 }
@@ -3309,12 +4966,10 @@ function getPreviousShift(
 ) {
 
     return getShift(
-
         new Date(
             shift.start.getTime() -
             61000
         )
-
     );
 
 }
@@ -3333,6 +4988,10 @@ function sameShift(
 }
 
 
+/* =========================================================
+   FULL SHIFT COVERAGE
+========================================================= */
+
 function permitCoversFullExpiryShift(
     permitEnd
 ) {
@@ -3350,6 +5009,10 @@ function permitCoversFullExpiryShift(
 
 }
 
+
+/* =========================================================
+   LAST FULL SHIFT
+========================================================= */
 
 function getLastFullyUsableShift(
     permitEnd
@@ -3379,6 +5042,10 @@ function getLastFullyUsableShift(
 }
 
 
+/* =========================================================
+   SHIFT LABEL
+========================================================= */
+
 function formatShiftLabel(
     shift
 ) {
@@ -3390,7 +5057,7 @@ function formatShiftLabel(
 
         return (
             "DAY SHIFT · " +
-            formatDate(
+            formatSimpleDate(
                 shift.start
             ) +
             " · 07:00 - 18:59"
@@ -3401,11 +5068,11 @@ function formatShiftLabel(
 
     return (
         "NIGHT SHIFT · " +
-        formatDate(
+        formatSimpleDate(
             shift.start
         ) +
         " 19:00 - " +
-        formatDate(
+        formatSimpleDate(
             shift.end
         ) +
         " 06:59"
@@ -3413,6 +5080,10 @@ function formatShiftLabel(
 
 }
 
+
+/* =========================================================
+   EXPIRY RULE
+========================================================= */
 
 function buildExpiryRuleNote(
     permitEnd
@@ -3441,7 +5112,7 @@ function buildExpiryRuleNote(
 
     return (
         "EXPIRES AT " +
-        formatTime(
+        formatSimpleTime24(
             permitEnd
         ) +
         " DURING " +
@@ -3451,6 +5122,10 @@ function buildExpiryRuleNote(
 
 }
 
+
+/* =========================================================
+   REMAINING
+========================================================= */
 
 function formatRemaining(
     milliseconds
@@ -3519,7 +5194,1412 @@ function formatRemaining(
 
 
 /* =========================================================
+   BOOKMARKS
+========================================================= */
+
+function renderBookmarks() {
+
+    const container =
+        document.getElementById(
+            "mainSiteColumn"
+        );
+
+
+    const normalized =
+        CURRENT_BOOKMARKS
+            .map(
+                row => ({
+
+                    section:
+                        rowValue(
+                            row,
+                            "SECTION"
+                        ),
+
+                    name:
+                        rowValue(
+                            row,
+                            "NAME"
+                        ),
+
+                    url:
+                        safeUrl(
+                            rowValue(
+                                row,
+                                "URL"
+                            )
+                        ),
+
+                    order:
+                        Number(
+                            rowValue(
+                                row,
+                                "ORDER"
+                            ) ||
+                            9999
+                        )
+
+                })
+            )
+            .filter(
+                row =>
+                    row.name !== ""
+            );
+
+
+    const mainSite =
+        normalized
+            .filter(
+                row =>
+                    row.section
+                        .toUpperCase() ===
+                    "MAIN SITE"
+            )
+            .sort(
+                (
+                    a,
+                    b
+                ) =>
+                    a.order -
+                    b.order
+            );
+
+
+    const major =
+        normalized
+            .filter(
+                row =>
+                    row.section
+                        .toUpperCase() ===
+                    "MAJOR ACTIVITIES"
+            )
+            .sort(
+                (
+                    a,
+                    b
+                ) =>
+                    a.order -
+                    b.order
+            );
+
+
+    let html =
+        "";
+
+
+    mainSite.forEach(
+        item => {
+
+
+            if (
+                item.url
+            ) {
+
+                html += `
+                    <a
+                        class="site-item"
+                        href="${escapeHtml(item.url)}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ${escapeHtml(item.name)}
+                    </a>
+                `;
+
+            }
+
+            else {
+
+                html += `
+                    <span class="site-item site-item-static">
+                        ${escapeHtml(item.name)}
+                    </span>
+                `;
+
+            }
+
+        }
+    );
+
+
+    if (
+        major.length > 0
+    ) {
+
+        html += `
+
+            <div class="main-site-separator"></div>
+
+            <div class="major-activities-label">
+                MAJOR ACTIVITIES
+            </div>
+
+        `;
+
+
+        major.forEach(
+            item => {
+
+
+                if (
+                    item.url
+                ) {
+
+                    html += `
+                        <a
+                            class="site-item"
+                            href="${escapeHtml(item.url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ${escapeHtml(item.name)}
+                        </a>
+                    `;
+
+                }
+
+                else {
+
+                    html += `
+                        <span class="site-item site-item-static">
+                            ${escapeHtml(item.name)}
+                        </span>
+                    `;
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (
+        html === ""
+    ) {
+
+        html = `
+            <div class="site-loading">
+                NO BOOKMARK DATA FOUND
+            </div>
+        `;
+
+    }
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   EQUIPMENT
+========================================================= */
+
+function getEquipmentForPtw(
+    ptwNumber
+) {
+
+    return CURRENT_EQUIPMENT
+        .filter(
+            row =>
+                rowValue(
+                    row,
+                    "PTW_NO"
+                ) ===
+                ptwNumber
+        )
+        .map(
+            row => ({
+
+                name:
+                    rowValue(
+                        row,
+                        "EQUIPMENT"
+                    ),
+
+                expiry:
+                    rowValue(
+                        row,
+                        "EXPIRY_DATE"
+                    )
+
+            })
+        )
+        .filter(
+            row =>
+                row.name !== ""
+        );
+
+}
+
+
+/* =========================================================
+   EQUIPMENT DATE
+========================================================= */
+
+function formatEquipmentDate(
+    value
+) {
+
+    const text =
+        String(
+            value ?? ""
+        ).trim();
+
+
+    if (
+        text === ""
+    ) {
+
+        return "";
+
+    }
+
+
+    const iso =
+        text.match(
+            /^(\d{4})-(\d{2})-(\d{2})$/
+        );
+
+
+    if (
+        iso
+    ) {
+
+        return (
+            iso[3] +
+            "/" +
+            iso[2] +
+            "/" +
+            iso[1].slice(
+                -2
+            )
+        );
+
+    }
+
+
+    const normal =
+        text.match(
+            /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/
+        );
+
+
+    if (
+        normal
+    ) {
+
+        return (
+            two(
+                normal[1]
+            ) +
+            "/" +
+            two(
+                normal[2]
+            ) +
+            "/" +
+            String(
+                normal[3]
+            ).slice(
+                -2
+            )
+        );
+
+    }
+
+
+    return text;
+
+}
+
+
+/* =========================================================
+   EQUIPMENT HTML
+========================================================= */
+
+function renderEquipment(
+    ptwNumber
+) {
+
+    const equipment =
+        getEquipmentForPtw(
+            ptwNumber
+        );
+
+
+    if (
+        equipment.length === 0
+    ) {
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="tower-equipment-box">
+
+            <div class="tower-equipment-title">
+
+                <div>
+                    EQUIPMENT
+                </div>
+
+                <div>
+                    EXPIRY DATE
+                </div>
+
+            </div>
+
+
+            ${
+                equipment
+                    .map(
+                        item => `
+
+                            <div class="tower-equipment-row">
+
+                                <div class="tower-equipment-name">
+                                    ${escapeHtml(item.name)}
+                                </div>
+
+                                <div class="tower-equipment-expiry">
+                                    ${escapeHtml(
+                                        formatEquipmentDate(
+                                            item.expiry
+                                        )
+                                    )}
+                                </div>
+
+                            </div>
+
+                        `
+                    )
+                    .join(
+                        ""
+                    )
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
    VEC
+========================================================= */
+
+function renderVec(
+    row
+) {
+
+    if (
+        !row.vecNo
+    ) {
+
+        return "";
+
+    }
+
+
+    const vecValidity =
+        isValidSheetDate(
+            row.vecStart
+        ) &&
+        isValidSheetDate(
+            row.vecEnd
+        )
+        ?
+        formatValidity(
+            row.vecStart,
+            row.vecEnd
+        )
+        :
+        "VEC VALIDITY NOT PROVIDED";
+
+
+    return `
+
+        <div class="vec-dependency">
+
+            <div class="vec-dependency-title">
+                MANDATORY ATTACHED VEC
+            </div>
+
+
+            ${
+                row.vecUrl
+                ?
+                `
+                <a
+                    class="vec-number hover-detail"
+                    href="${escapeHtml(row.vecUrl)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-number="VEC ${escapeHtml(row.vecNo)}"
+                    data-description="${escapeHtml(row.vecDescription)}"
+                >
+                    VEC ${escapeHtml(row.vecNo)}
+                </a>
+                `
+                :
+                `
+                <span class="vec-number">
+                    VEC ${escapeHtml(row.vecNo)}
+                </span>
+                `
+            }
+
+
+            <div class="vec-description">
+                ${escapeHtml(row.vecDescription)}
+            </div>
+
+
+            <div class="vec-validity">
+
+                VEC VALIDITY:<br>
+
+                ${escapeHtml(vecValidity)}
+
+            </div>
+
+
+            <div class="vec-status-line">
+
+                <span class="vec-status-badge">
+                    CHECKING
+                </span>
+
+                <div class="vec-status-note">
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="effective-validity">
+
+                VEHICLE ENTRY REQUIRES BOTH EPTW
+                ${escapeHtml(row.number)}
+                AND VEC
+                ${escapeHtml(row.vecNo)}
+                TO BE VALID.
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SLUG
+========================================================= */
+
+function slugify(
+    value
+) {
+
+    return (
+        String(
+            value ??
+            ""
+        )
+        .toLowerCase()
+        .trim()
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        )
+        ||
+        "section"
+    );
+
+}
+
+
+/* =========================================================
+   PTW GROUP
+========================================================= */
+
+function getPtwGroups() {
+
+    const eptwRows =
+        CURRENT_DATA
+            .map(
+                normalizeDataRow
+            )
+            .filter(
+                row =>
+                    row.type ===
+                    "EPTW"
+            );
+
+
+    const groups = [];
+
+    const groupMap =
+        new Map();
+
+
+    eptwRows.forEach(
+        row => {
+
+
+            const section =
+                row.section ||
+                "OTHER";
+
+
+            if (
+                !groupMap.has(
+                    section
+                )
+            ) {
+
+                const group = {
+
+                    section,
+
+                    id:
+                        slugify(
+                            section
+                        ),
+
+                    rows:[]
+
+                };
+
+
+                groupMap.set(
+                    section,
+                    group
+                );
+
+
+                groups.push(
+                    group
+                );
+
+            }
+
+
+            groupMap
+                .get(
+                    section
+                )
+                .rows
+                .push(
+                    row
+                );
+
+        }
+    );
+
+
+    return groups;
+
+}
+
+
+/* =========================================================
+   CONTIGUOUS LOCATION COUNT
+========================================================= */
+
+function getContiguousLocationCount(
+    rows,
+    index
+) {
+
+    const location =
+        rows[index].location;
+
+
+    let count =
+        0;
+
+
+    for (
+        let i = index;
+        i < rows.length;
+        i++
+    ) {
+
+        if (
+            rows[i].location !==
+            location
+        ) {
+
+            break;
+
+        }
+
+
+        count++;
+
+    }
+
+
+    return count;
+
+}
+
+
+/* =========================================================
+   PTW TABLE
+========================================================= */
+
+function renderPtwTable() {
+
+    const tbody =
+        document.getElementById(
+            "ptwTableBody"
+        );
+
+
+    const groups =
+        getPtwGroups();
+
+
+    if (
+        groups.length === 0
+    ) {
+
+        tbody.innerHTML = `
+
+            <tr class="table-message-row">
+
+                <td colspan="5">
+                    NO EPTW DATA FOUND IN DATA TAB
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    let html =
+        "";
+
+
+    groups.forEach(
+        group => {
+
+
+            html += `
+
+                <tr
+                    class="category-row"
+                    data-section-id="${escapeHtml(group.id)}"
+                >
+
+                    <td colspan="5">
+
+                        <button
+                            class="section-toggle"
+                            type="button"
+                            data-toggle-section="${escapeHtml(group.id)}"
+                            aria-expanded="true"
+                        >
+
+                            <span class="section-toggle-left">
+
+                                <span class="section-toggle-title">
+                                    ${escapeHtml(group.section)}
+                                </span>
+
+                                <span class="section-toggle-count">
+                                    ${group.rows.length} PTW
+                                </span>
+
+                            </span>
+
+
+                            <span class="section-toggle-right">
+
+                                <span class="section-toggle-state">
+                                    COLLAPSE
+                                </span>
+
+                                <span class="section-toggle-arrow">
+                                    ↓
+                                </span>
+
+                            </span>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+
+            group.rows.forEach(
+                (
+                    row,
+                    index
+                ) => {
+
+
+                    let locationCell =
+                        "";
+
+
+                    const previousLocation =
+                        index > 0
+                        ?
+                        group.rows[
+                            index - 1
+                        ].location
+                        :
+                        null;
+
+
+                    if (
+                        previousLocation !==
+                        row.location
+                    ) {
+
+                        const rowspan =
+                            getContiguousLocationCount(
+                                group.rows,
+                                index
+                            );
+
+
+                        locationCell = `
+
+                            <td
+                                class="location-merged"
+                                rowspan="${rowspan}"
+                            >
+
+                                <div class="location-name">
+                                    ${escapeHtml(row.location || "-")}
+                                </div>
+
+                            </td>
+
+                        `;
+
+                    }
+
+
+                    const validity =
+                        isValidSheetDate(
+                            row.start
+                        ) &&
+                        isValidSheetDate(
+                            row.end
+                        )
+                        ?
+                        formatValidity(
+                            row.start,
+                            row.end
+                        )
+                        :
+                        "PTW VALIDITY NOT PROVIDED";
+
+
+                    html += `
+
+                        <tr
+                            class="ptw-data-row section-data-row"
+                            data-section-id="${escapeHtml(group.id)}"
+                            data-location="${escapeHtml(row.location || "-")}"
+                            data-activity="${escapeHtml(row.section || "EPTW")}"
+                            data-start="${escapeHtml(row.start)}"
+                            data-end="${escapeHtml(row.end)}"
+                            data-vec-start="${escapeHtml(row.vecStart)}"
+                            data-vec-end="${escapeHtml(row.vecEnd)}"
+                            data-vec-id="${escapeHtml(row.vecNo)}"
+                        >
+
+                            ${locationCell}
+
+
+                            <td data-label="EPTW NO.">
+
+                                ${
+                                    row.url
+                                    ?
+                                    `
+                                    <a
+                                        class="ptw-number hover-detail"
+                                        href="${escapeHtml(row.url)}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-number="EPTW ${escapeHtml(row.number)}"
+                                        data-description="${escapeHtml(row.description)}"
+                                    >
+                                        ${escapeHtml(row.number || "-")}
+                                    </a>
+                                    `
+                                    :
+                                    `
+                                    <span class="ptw-number">
+                                        ${escapeHtml(row.number || "-")}
+                                    </span>
+                                    `
+                                }
+
+                            </td>
+
+
+                            <td data-label="STATUS">
+
+                                <span class="status-badge">
+                                    CHECKING
+                                </span>
+
+                                <div class="status-note">
+                                    --
+                                </div>
+
+                            </td>
+
+
+                            <td data-label="PTW VALIDITY / LAST USABLE SHIFT">
+
+                                <span class="validity-label">
+
+                                    ${
+                                        row.vecNo
+                                        ?
+                                        "EPTW VALIDITY"
+                                        :
+                                        "PTW VALIDITY"
+                                    }
+
+                                </span>
+
+
+                                <div class="validity-value">
+                                    ${escapeHtml(validity)}
+                                </div>
+
+
+                                <div class="last-usable">
+
+                                    <span class="validity-label">
+
+                                        ${
+                                            row.vecNo
+                                            ?
+                                            "EFFECTIVE LAST FULLY USABLE SHIFT"
+                                            :
+                                            "LAST FULLY USABLE SHIFT"
+                                        }
+
+                                    </span>
+
+                                    <div class="last-usable-value">
+                                        --
+                                    </div>
+
+                                </div>
+
+
+                                <div class="expiry-rule-note">
+                                    --
+                                </div>
+
+
+                                ${renderVec(row)}
+
+                            </td>
+
+
+                            <td data-label="DESCRIPTION">
+
+                                <div class="description-text">
+                                    ${escapeHtml(row.description)}
+                                </div>
+
+                                ${renderEquipment(row.number)}
+
+                            </td>
+
+
+                        </tr>
+
+                    `;
+
+                }
+            );
+
+        }
+    );
+
+
+    tbody.innerHTML =
+        html;
+
+
+    restoreCollapsedSections();
+
+}
+
+
+/* =========================================================
+   COLLAPSE
+========================================================= */
+
+function getCollapsedSections() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                COLLAPSE_STORAGE_KEY
+            ) ||
+            "[]"
+        );
+
+    }
+
+    catch(error) {
+
+        return [];
+
+    }
+
+}
+
+
+function saveCollapsedSections(
+    sections
+) {
+
+    try {
+
+        localStorage.setItem(
+            COLLAPSE_STORAGE_KEY,
+            JSON.stringify(
+                sections
+            )
+        );
+
+    }
+
+    catch(error) {}
+
+}
+
+
+function setSectionCollapsed(
+    sectionId,
+    collapsed,
+    save = true
+) {
+
+    const header =
+        document.querySelector(
+            `.category-row[data-section-id="${cssEscape(sectionId)}"]`
+        );
+
+
+    if (
+        !header
+    ) {
+
+        return;
+
+    }
+
+
+    const button =
+        header.querySelector(
+            ".section-toggle"
+        );
+
+
+    const state =
+        header.querySelector(
+            ".section-toggle-state"
+        );
+
+
+    const rows =
+        document.querySelectorAll(
+            `.section-data-row[data-section-id="${cssEscape(sectionId)}"]`
+        );
+
+
+    header.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+
+    button?.setAttribute(
+        "aria-expanded",
+        collapsed
+        ?
+        "false"
+        :
+        "true"
+    );
+
+
+    if (
+        state
+    ) {
+
+        state.textContent =
+            collapsed
+            ?
+            "EXPAND"
+            :
+            "COLLAPSE";
+
+    }
+
+
+    rows.forEach(
+        row => {
+
+            row.classList.toggle(
+                "section-hidden",
+                collapsed
+            );
+
+        }
+    );
+
+
+    if (
+        save
+    ) {
+
+        const current =
+            new Set(
+                getCollapsedSections()
+            );
+
+
+        if (
+            collapsed
+        ) {
+
+            current.add(
+                sectionId
+            );
+
+        }
+
+        else {
+
+            current.delete(
+                sectionId
+            );
+
+        }
+
+
+        saveCollapsedSections(
+            Array.from(
+                current
+            )
+        );
+
+    }
+
+}
+
+
+function cssEscape(
+    value
+) {
+
+    if (
+        window.CSS &&
+        typeof window.CSS.escape ===
+        "function"
+    ) {
+
+        return window.CSS.escape(
+            value
+        );
+
+    }
+
+
+    return String(
+        value
+    ).replace(
+        /["\\]/g,
+        "\\$&"
+    );
+
+}
+
+
+function restoreCollapsedSections() {
+
+    getCollapsedSections()
+        .forEach(
+            sectionId => {
+
+                setSectionCollapsed(
+                    sectionId,
+                    true,
+                    false
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   JHA
+========================================================= */
+
+function renderJha() {
+
+    const items =
+        CURRENT_DATA
+            .map(
+                normalizeDataRow
+            )
+            .filter(
+                row =>
+                    row.type ===
+                    "JHA" ||
+                    row.type ===
+                    "EJHA"
+            );
+
+
+    const container =
+        document.getElementById(
+            "jhaItems"
+        );
+
+
+    document.getElementById(
+        "jhaCount"
+    ).textContent =
+        items.length;
+
+
+    if (
+        items.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="ejha-bottom-item">
+
+                <div class="ejha-bottom-description">
+                    NO JHA / EJHA DATA FOUND.
+                </div>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        items
+            .map(
+                item => {
+
+
+                    const displayNumber =
+                        item.number
+                            .replace(
+                                /^JHA\s+/i,
+                                ""
+                            )
+                            .replace(
+                                /^EJHA\s+/i,
+                                ""
+                            );
+
+
+                    return `
+
+                        <div class="ejha-bottom-item">
+
+                            <div class="ejha-type-label">
+                                ${escapeHtml(item.type)}
+                            </div>
+
+
+                            ${
+                                item.url
+                                ?
+                                `
+                                <a
+                                    class="ejha-bottom-number hover-detail"
+                                    href="${escapeHtml(item.url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    data-number="${escapeHtml(item.number)}"
+                                    data-description="${escapeHtml(item.description)}"
+                                >
+                                    ${escapeHtml(displayNumber)}
+                                </a>
+                                `
+                                :
+                                `
+                                <span class="ejha-bottom-number">
+                                    ${escapeHtml(displayNumber)}
+                                </span>
+                                `
+                            }
+
+
+                            <div class="ejha-bottom-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join(
+                ""
+            );
+
+}
+
+
+/* =========================================================
+   JHA COLLAPSE
+========================================================= */
+
+function setJhaCollapsed(
+    collapsed,
+    save = true
+) {
+
+    const section =
+        document.getElementById(
+            "jhaSection"
+        );
+
+
+    const toggle =
+        document.getElementById(
+            "jhaToggle"
+        );
+
+
+    const state =
+        document.getElementById(
+            "jhaState"
+        );
+
+
+    section.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+
+    toggle.setAttribute(
+        "aria-expanded",
+        collapsed
+        ?
+        "false"
+        :
+        "true"
+    );
+
+
+    state.textContent =
+        collapsed
+        ?
+        "EXPAND"
+        :
+        "COLLAPSE";
+
+
+    if (
+        save
+    ) {
+
+        try {
+
+            localStorage.setItem(
+                JHA_COLLAPSE_STORAGE_KEY,
+                collapsed
+                ?
+                "1"
+                :
+                "0"
+            );
+
+        }
+
+        catch(error) {}
+
+    }
+
+}
+
+
+function restoreJhaCollapsed() {
+
+    try {
+
+        setJhaCollapsed(
+
+            localStorage.getItem(
+                JHA_COLLAPSE_STORAGE_KEY
+            ) ===
+            "1",
+
+            false
+
+        );
+
+    }
+
+    catch(error) {
+
+        setJhaCollapsed(
+            false,
+            false
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   VEC STATUS
 ========================================================= */
 
 function updateVecStatus(
@@ -3536,26 +6616,12 @@ function updateVecStatus(
 
 
     if (
-        !vecBox ||
-        !row.dataset.vecStart ||
-        !row.dataset.vecEnd
+        !vecBox
     ) {
 
         return;
 
     }
-
-
-    const vecStart =
-        new Date(
-            row.dataset.vecStart
-        );
-
-
-    const vecEnd =
-        new Date(
-            row.dataset.vecEnd
-        );
 
 
     const badge =
@@ -3568,6 +6634,36 @@ function updateVecStatus(
         vecBox.querySelector(
             ".vec-status-note"
         );
+
+
+    const vecStart =
+        parseSheetDate(
+            row.dataset.vecStart
+        );
+
+
+    const vecEnd =
+        parseSheetDate(
+            row.dataset.vecEnd
+        );
+
+
+    if (
+        !vecStart ||
+        !vecEnd
+    ) {
+
+        badge.textContent =
+            "VEC DATE REQUIRED";
+
+
+        note.textContent =
+            "USE DD/MM/YY HH:MM AM/PM IN GOOGLE SHEETS.";
+
+
+        return;
+
+    }
 
 
     const lastFullShift =
@@ -3607,14 +6703,17 @@ function updateVecStatus(
             "vec-upcoming"
         );
 
+
         badge.textContent =
             "VEC UPCOMING";
 
+
         note.textContent =
             "VALID FROM " +
-            formatDateTime(
+            formatSimpleDateTime(
                 vecStart
             );
+
 
         return;
 
@@ -3630,14 +6729,17 @@ function updateVecStatus(
             "vec-expired"
         );
 
+
         badge.textContent =
             "VEC EXPIRED";
 
+
         note.textContent =
             "EXPIRED " +
-            formatDateTime(
+            formatSimpleDateTime(
                 vecEnd
             );
+
 
         return;
 
@@ -3656,11 +6758,14 @@ function updateVecStatus(
             "vec-shift-invalid"
         );
 
+
         badge.textContent =
             "VEC NOT VALID FOR FULL SHIFT";
 
+
         note.textContent =
             "NEW VEC REQUIRED FOR THIS SHIFT.";
+
 
         return;
 
@@ -3678,11 +6783,14 @@ function updateVecStatus(
             "vec-last-shift"
         );
 
+
         badge.textContent =
             "VEC · FINAL USABLE SHIFT";
 
+
         note.textContent =
             "RENEW VEC NOW.";
+
 
         return;
 
@@ -3700,11 +6808,14 @@ function updateVecStatus(
             "vec-next-last"
         );
 
+
         badge.textContent =
             "VEC · NEXT SHIFT = FINAL";
 
+
         note.textContent =
             "PREPARE NEW VEC.";
+
 
         return;
 
@@ -3758,127 +6869,36 @@ function updatePermitStatus() {
         );
 
 
-    let activeCount = 0;
-    let warningCount = 0;
-    let invalidCount = 0;
-    let expiredCount = 0;
-    let upcomingCount = 0;
+    let activeCount =
+        0;
+
+    let warningCount =
+        0;
+
+    let invalidCount =
+        0;
+
+    let expiredCount =
+        0;
+
+    let upcomingCount =
+        0;
+
+    let errorCount =
+        0;
 
 
     rows.forEach(
         row => {
 
 
-            const ptwStart =
-                new Date(
-                    row.dataset.start
-                );
-
-
-            const ptwEnd =
-                new Date(
-                    row.dataset.end
-                );
-
-
-            let effectiveStart =
-                new Date(
-                    ptwStart
-                );
-
-
-            let effectiveEnd =
-                new Date(
-                    ptwEnd
-                );
-
-
-            let limitedByVec =
-                false;
-
-
-            const vecId =
-                row.dataset.vecId ||
-                "";
-
-
-            if (
-                row.dataset.vecStart &&
-                row.dataset.vecEnd
-            ) {
-
-                const vecStart =
-                    new Date(
-                        row.dataset.vecStart
-                    );
-
-
-                const vecEnd =
-                    new Date(
-                        row.dataset.vecEnd
-                    );
-
-
-                if (
-                    vecStart >
-                    effectiveStart
-                ) {
-
-                    effectiveStart =
-                        vecStart;
-
-                }
-
-
-                if (
-                    vecEnd <
-                    effectiveEnd
-                ) {
-
-                    effectiveEnd =
-                        vecEnd;
-
-                    limitedByVec =
-                        true;
-
-                }
-
-
-                updateVecStatus(
-                    row,
-                    now,
-                    currentShift,
-                    nextShift
-                );
-
-            }
-
-
-            const lastFullShift =
-                getLastFullyUsableShift(
-                    effectiveEnd
-                );
-
-
-            const expiryShift =
-                getShift(
-                    effectiveEnd
-                );
-
-
-            const coversExpiryShift =
-                permitCoversFullExpiryShift(
-                    effectiveEnd
-                );
-
-
-            const statusBadge =
+            const badge =
                 row.querySelector(
                     ".status-badge"
                 );
 
 
-            const statusNote =
+            const note =
                 row.querySelector(
                     ".status-note"
                 );
@@ -3907,49 +6927,172 @@ function updatePermitStatus() {
             );
 
 
+            const ptwStart =
+                parseSheetDate(
+                    row.dataset.start
+                );
+
+
+            const ptwEnd =
+                parseSheetDate(
+                    row.dataset.end
+                );
+
+
             if (
-                lastUsable
+                !ptwStart ||
+                !ptwEnd
             ) {
 
+                errorCount++;
+
+
+                badge.textContent =
+                    "DATE REQUIRED";
+
+
+                note.textContent =
+                    "USE DD/MM/YY HH:MM AM/PM IN GOOGLE SHEETS.";
+
+
                 lastUsable.textContent =
-                    formatShiftLabel(
-                        lastFullShift
+                    "NOT AVAILABLE";
+
+
+                expiryRule.textContent =
+                    "CHECK START / END DATE FORMAT.";
+
+
+                return;
+
+            }
+
+
+            let effectiveStart =
+                ptwStart;
+
+
+            let effectiveEnd =
+                ptwEnd;
+
+
+            let limitedByVec =
+                false;
+
+
+            const vecId =
+                row.dataset.vecId ||
+                "";
+
+
+            if (
+                vecId
+            ) {
+
+                updateVecStatus(
+                    row,
+                    now,
+                    currentShift,
+                    nextShift
+                );
+
+
+                const vecStart =
+                    parseSheetDate(
+                        row.dataset.vecStart
+                    );
+
+
+                const vecEnd =
+                    parseSheetDate(
+                        row.dataset.vecEnd
                     );
 
 
                 if (
-                    limitedByVec
+                    vecStart &&
+                    vecEnd
                 ) {
 
-                    lastUsable.textContent +=
-                        " · LIMITED BY VEC " +
-                        vecId;
+                    if (
+                        vecStart >
+                        effectiveStart
+                    ) {
+
+                        effectiveStart =
+                            vecStart;
+
+                    }
+
+
+                    if (
+                        vecEnd <
+                        effectiveEnd
+                    ) {
+
+                        effectiveEnd =
+                            vecEnd;
+
+
+                        limitedByVec =
+                            true;
+
+                    }
 
                 }
 
             }
 
 
+            const lastFullShift =
+                getLastFullyUsableShift(
+                    effectiveEnd
+                );
+
+
+            const expiryShift =
+                getShift(
+                    effectiveEnd
+                );
+
+
+            const coversExpiryShift =
+                permitCoversFullExpiryShift(
+                    effectiveEnd
+                );
+
+
+            lastUsable.textContent =
+                formatShiftLabel(
+                    lastFullShift
+                );
+
+
             if (
-                expiryRule
+                limitedByVec
             ) {
 
-                expiryRule.textContent =
-                    buildExpiryRuleNote(
-                        effectiveEnd
-                    );
+                lastUsable.textContent +=
+                    " · LIMITED BY VEC " +
+                    vecId;
+
+            }
 
 
-                if (
-                    limitedByVec
-                ) {
+            expiryRule.textContent =
+                buildExpiryRuleNote(
+                    effectiveEnd
+                );
 
-                    expiryRule.textContent +=
-                        " EFFECTIVE EXPIRY CONTROLLED BY VEC " +
-                        vecId +
-                        ".";
 
-                }
+            if (
+                limitedByVec
+            ) {
+
+                expiryRule.textContent +=
+                    " EFFECTIVE EXPIRY CONTROLLED BY VEC " +
+                    vecId +
+                    ".";
 
             }
 
@@ -3967,13 +7110,13 @@ function updatePermitStatus() {
                 );
 
 
-                statusBadge.textContent =
+                badge.textContent =
                     "UPCOMING";
 
 
-                statusNote.textContent =
+                note.textContent =
                     "VALID FROM " +
-                    formatDateTime(
+                    formatSimpleDateTime(
                         effectiveStart
                     );
 
@@ -3984,16 +7127,17 @@ function updatePermitStatus() {
 
 
             if (
-                row.dataset.vecEnd
+                vecId
             ) {
 
                 const vecEnd =
-                    new Date(
+                    parseSheetDate(
                         row.dataset.vecEnd
                     );
 
 
                 if (
+                    vecEnd &&
                     now >
                     vecEnd &&
                     now <=
@@ -4008,14 +7152,18 @@ function updatePermitStatus() {
                     );
 
 
-                    statusBadge.textContent =
+                    badge.textContent =
                         "INVALID · VEC EXPIRED";
 
 
-                    statusNote.textContent =
+                    note.textContent =
                         "MANDATORY VEC " +
                         vecId +
-                        " HAS EXPIRED.";
+                        " EXPIRED " +
+                        formatSimpleDateTime(
+                            vecEnd
+                        ) +
+                        ".";
 
 
                     return;
@@ -4038,11 +7186,11 @@ function updatePermitStatus() {
                 );
 
 
-                statusBadge.textContent =
+                badge.textContent =
                     "EXPIRED · ARCHIVE";
 
 
-                statusNote.textContent =
+                note.textContent =
                     "OLD PTW RETAINED FOR SAFEKEEPING.";
 
 
@@ -4067,11 +7215,11 @@ function updatePermitStatus() {
                 );
 
 
-                statusBadge.textContent =
+                badge.textContent =
                     "NOT VALID FOR FULL SHIFT";
 
 
-                statusNote.textContent =
+                note.textContent =
                     "NEW PERMIT REQUIRED FOR THIS SHIFT.";
 
 
@@ -4095,11 +7243,11 @@ function updatePermitStatus() {
                 );
 
 
-                statusBadge.textContent =
+                badge.textContent =
                     "FINAL USABLE SHIFT";
 
 
-                statusNote.textContent =
+                note.textContent =
                     "ACTIVATE NEW PERMIT FOR THE NEXT SHIFT.";
 
 
@@ -4123,11 +7271,11 @@ function updatePermitStatus() {
                 );
 
 
-                statusBadge.textContent =
+                badge.textContent =
                     "NEXT SHIFT = FINAL";
 
 
-                statusNote.textContent =
+                note.textContent =
                     "PREPARE NEW PERMIT.";
 
 
@@ -4144,11 +7292,11 @@ function updatePermitStatus() {
             );
 
 
-            statusBadge.textContent =
+            badge.textContent =
                 "ACTIVE";
 
 
-            statusNote.textContent =
+            note.textContent =
                 formatRemaining(
                     effectiveEnd.getTime() -
                     now.getTime()
@@ -4159,30 +7307,54 @@ function updatePermitStatus() {
     );
 
 
+    const summary = [
+
+        activeCount +
+        " ACTIVE",
+
+        warningCount +
+        " WARNING",
+
+        invalidCount +
+        " INVALID",
+
+        expiredCount +
+        " EXPIRED"
+
+    ];
+
+
+    if (
+        upcomingCount >
+        0
+    ) {
+
+        summary.push(
+            upcomingCount +
+            " UPCOMING"
+        );
+
+    }
+
+
+    if (
+        errorCount >
+        0
+    ) {
+
+        summary.push(
+            errorCount +
+            " DATE ERROR"
+        );
+
+    }
+
+
     document.getElementById(
         "permitSummary"
     ).textContent =
-
-        activeCount +
-        " ACTIVE · " +
-
-        warningCount +
-        " WARNING · " +
-
-        invalidCount +
-        " INVALID · " +
-
-        expiredCount +
-        " EXPIRED" +
-
-        (
-            upcomingCount > 0
-            ?
-            " · " +
-            upcomingCount +
-            " UPCOMING"
-            :
-            ""
+        summary.join(
+            " · "
         );
 
 
@@ -4192,7 +7364,7 @@ function updatePermitStatus() {
 
 
 /* =========================================================
-   ACTIVE PTW SUMMARY
+   ACTIVE SUMMARY
 ========================================================= */
 
 function updateActivePtwSummary() {
@@ -4220,19 +7392,14 @@ function updateActivePtwSummary() {
     const activeRows =
         rows.filter(
             row =>
-
                 row.classList.contains(
                     "is-active"
                 )
-
                 ||
-
                 row.classList.contains(
                     "is-next-last"
                 )
-
                 ||
-
                 row.classList.contains(
                     "is-last-shift"
                 )
@@ -4248,15 +7415,18 @@ function updateActivePtwSummary() {
 
 
     if (
-        activeRows.length === 0
+        activeRows.length ===
+        0
     ) {
 
-        list.innerHTML =
-            `
+        list.innerHTML = `
+
             <div class="active-summary-empty">
                 NO ACTIVE PTW
             </div>
-            `;
+
+        `;
+
 
         return;
 
@@ -4284,7 +7454,12 @@ function updateActivePtwSummary() {
 
             const item =
                 document.createElement(
+                    link.tagName ===
+                    "A"
+                    ?
                     "a"
+                    :
+                    "div"
                 );
 
 
@@ -4292,23 +7467,29 @@ function updateActivePtwSummary() {
                 "active-summary-item";
 
 
-            item.href =
-                link.href;
+            if (
+                link.tagName ===
+                "A"
+            ) {
+
+                item.href =
+                    link.href;
 
 
-            item.target =
-                "_blank";
+                item.target =
+                    "_blank";
 
 
-            item.rel =
-                "noopener noreferrer";
+                item.rel =
+                    "noopener noreferrer";
+
+            }
 
 
-            item.innerHTML =
-                `
+            item.innerHTML = `
 
                 <span class="active-summary-location">
-                    ${escapeHtml(row.dataset.location)}
+                    ${escapeHtml(row.dataset.location || "")}
                 </span>
 
                 <span class="active-summary-number">
@@ -4316,10 +7497,10 @@ function updateActivePtwSummary() {
                 </span>
 
                 <span class="active-summary-activity">
-                    ${escapeHtml(row.dataset.activity)}
+                    ${escapeHtml(row.dataset.activity || "EPTW")}
                 </span>
 
-                `;
+            `;
 
 
             list.appendChild(
@@ -4351,25 +7532,285 @@ function updateClock() {
     document.getElementById(
         "liveClock"
     ).textContent =
-        formatDateTime(
+        formatSimpleDateTime(
             now
-        );
+        ) +
+        " MYT";
 
 
     document.getElementById(
         "currentShift"
     ).textContent =
-
         shift.type ===
         "DAY SHIFT"
-
         ?
-
         "CURRENT SHIFT: DAY · 07:00 - 18:59"
-
         :
-
         "CURRENT SHIFT: NIGHT · 19:00 - 06:59";
+
+}
+
+
+/* =========================================================
+   SYNC STATUS
+========================================================= */
+
+function setSyncStatus(
+    type,
+    text
+) {
+
+    const line =
+        document.getElementById(
+            "syncLine"
+        );
+
+
+    const label =
+        document.getElementById(
+            "syncText"
+        );
+
+
+    line.classList.remove(
+        "is-loading",
+        "is-ok",
+        "is-error",
+        "is-cache"
+    );
+
+
+    line.classList.add(
+        type
+    );
+
+
+    label.textContent =
+        text;
+
+}
+
+
+/* =========================================================
+   RENDER ALL
+========================================================= */
+
+function renderAll() {
+
+    renderBookmarks();
+
+    renderPtwTable();
+
+    renderJha();
+
+    restoreJhaCollapsed();
+
+    updateClock();
+
+    updatePermitStatus();
+
+}
+
+
+/* =========================================================
+   CACHE LOAD
+========================================================= */
+
+function loadCachedData() {
+
+    const cached =
+        readCache();
+
+
+    if (
+        cached.data.length ===
+        0
+    ) {
+
+        return false;
+
+    }
+
+
+    CURRENT_DATA =
+        cached.data;
+
+
+    CURRENT_EQUIPMENT =
+        cached.equipment;
+
+
+    CURRENT_BOOKMARKS =
+        cached.bookmarks;
+
+
+    renderAll();
+
+
+    setSyncStatus(
+        "is-cache",
+        "GOOGLE SHEETS · CACHED DATA"
+    );
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   REFRESH GOOGLE SHEETS
+========================================================= */
+
+async function refreshGoogleSheets() {
+
+    if (
+        refreshInProgress
+    ) {
+
+        return;
+
+    }
+
+
+    refreshInProgress =
+        true;
+
+
+    setSyncStatus(
+        "is-loading",
+        "GOOGLE SHEETS · SYNCING..."
+    );
+
+
+    try {
+
+        const [
+            data,
+            equipment,
+            bookmarks
+        ] =
+            await Promise.all([
+
+                fetchSheet(
+                    DATA_SHEET
+                ),
+
+                fetchSheet(
+                    EQUIPMENT_SHEET
+                ),
+
+                fetchSheet(
+                    BOOKMARKS_SHEET
+                )
+
+            ]);
+
+
+        if (
+            data.length ===
+            0
+        ) {
+
+            throw new Error(
+                "DATA TAB EMPTY"
+            );
+
+        }
+
+
+        CURRENT_DATA =
+            data;
+
+
+        CURRENT_EQUIPMENT =
+            equipment;
+
+
+        CURRENT_BOOKMARKS =
+            bookmarks;
+
+
+        saveCache();
+
+
+        renderAll();
+
+
+        setSyncStatus(
+            "is-ok",
+            "GOOGLE SHEETS · SYNCED " +
+            formatSimpleDateTime(
+                new Date()
+            )
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(
+            error
+        );
+
+
+        const cache =
+            readCache();
+
+
+        if (
+            CURRENT_DATA.length ===
+            0 &&
+            cache.data.length >
+            0
+        ) {
+
+            CURRENT_DATA =
+                cache.data;
+
+
+            CURRENT_EQUIPMENT =
+                cache.equipment;
+
+
+            CURRENT_BOOKMARKS =
+                cache.bookmarks;
+
+
+            renderAll();
+
+        }
+
+
+        if (
+            CURRENT_DATA.length >
+            0
+        ) {
+
+            setSyncStatus(
+                "is-cache",
+                "SHEET UNAVAILABLE · USING LAST DATA"
+            );
+
+        }
+
+        else {
+
+            setSyncStatus(
+                "is-error",
+                "GOOGLE SHEETS · CONNECTION ERROR"
+            );
+
+        }
+
+    }
+
+    finally {
+
+        refreshInProgress =
+            false;
+
+    }
 
 }
 
@@ -4396,7 +7837,40 @@ const tooltipDescription =
     );
 
 
+let activeTooltipItem =
+    null;
+
+
+function showTooltip(
+    item
+) {
+
+    activeTooltipItem =
+        item;
+
+
+    tooltipNumber.textContent =
+        item.dataset.number ||
+        "";
+
+
+    tooltipDescription.textContent =
+        item.dataset.description ||
+        "";
+
+
+    tooltip.classList.add(
+        "active"
+    );
+
+}
+
+
 function hideTooltip() {
+
+    activeTooltipItem =
+        null;
+
 
     tooltip.classList.remove(
         "active"
@@ -4410,12 +7884,20 @@ function positionTooltip(
     y
 ) {
 
+    const padding =
+        20;
+
+
     const offset =
         22;
 
 
-    const padding =
-        20;
+    const width =
+        tooltip.offsetWidth;
+
+
+    const height =
+        tooltip.offsetHeight;
 
 
     let left =
@@ -4426,14 +7908,6 @@ function positionTooltip(
     let top =
         y +
         offset;
-
-
-    const width =
-        tooltip.offsetWidth;
-
-
-    const height =
-        tooltip.offsetHeight;
 
 
     if (
@@ -4484,7 +7958,9 @@ function positionTooltip(
 }
 
 
-/* Dynamic event delegation */
+/* =========================================================
+   TOOLTIP EVENTS
+========================================================= */
 
 document.addEventListener(
     "mouseover",
@@ -4498,7 +7974,9 @@ document.addEventListener(
 
 
         if (
-            !item
+            !item ||
+            activeTooltipItem ===
+            item
         ) {
 
             return;
@@ -4506,18 +7984,8 @@ document.addEventListener(
         }
 
 
-        tooltipNumber.textContent =
-            item.dataset.number ||
-            "";
-
-
-        tooltipDescription.textContent =
-            item.dataset.description ||
-            "";
-
-
-        tooltip.classList.add(
-            "active"
+        showTooltip(
+            item
         );
 
 
@@ -4536,20 +8004,17 @@ document.addEventListener(
 
 
         if (
-            !tooltip.classList.contains(
+            tooltip.classList.contains(
                 "active"
             )
         ) {
 
-            return;
+            positionTooltip(
+                event.clientX,
+                event.clientY
+            );
 
         }
-
-
-        positionTooltip(
-            event.clientX,
-            event.clientY
-        );
 
     }
 );
@@ -4575,14 +8040,10 @@ document.addEventListener(
         }
 
 
-        const related =
-            event.relatedTarget;
-
-
         if (
-            related &&
+            event.relatedTarget &&
             item.contains(
-                related
+                event.relatedTarget
             )
         ) {
 
@@ -4607,32 +8068,140 @@ window.addEventListener(
 
 
 /* =========================================================
-   UPDATE
+   COLLAPSE CLICK
 ========================================================= */
 
-function updateDashboard() {
+document.addEventListener(
+    "click",
+    event => {
 
-    updateClock();
 
-    updatePermitStatus();
+        const button =
+            event.target.closest(
+                ".section-toggle"
+            );
 
-}
+
+        if (
+            !button
+        ) {
+
+            return;
+
+        }
+
+
+        const sectionId =
+            button.dataset.toggleSection;
+
+
+        const expanded =
+            button.getAttribute(
+                "aria-expanded"
+            ) ===
+            "true";
+
+
+        setSectionCollapsed(
+            sectionId,
+            expanded,
+            true
+        );
+
+    }
+);
+
+
+/* =========================================================
+   JHA COLLAPSE CLICK
+========================================================= */
+
+document
+    .getElementById(
+        "jhaToggle"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            const expanded =
+                document
+                    .getElementById(
+                        "jhaToggle"
+                    )
+                    .getAttribute(
+                        "aria-expanded"
+                    ) ===
+                    "true";
+
+
+            setJhaCollapsed(
+                expanded,
+                true
+            );
+
+        }
+    );
 
 
 /* =========================================================
    START
 ========================================================= */
 
-renderPtwSections();
+loadCachedData();
 
-initialiseSectionToggles();
 
-updateDashboard();
+restoreJhaCollapsed();
+
+
+updateClock();
+
+
+refreshGoogleSheets();
 
 
 setInterval(
-    updateDashboard,
+    () => {
+
+        updateClock();
+
+        updatePermitStatus();
+
+    },
     30000
+);
+
+
+setInterval(
+    refreshGoogleSheets,
+    AUTO_REFRESH_MS
+);
+
+
+/* =========================================================
+   REFRESH WHEN RETURNING TO TAB
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+
+        if (
+            document.visibilityState ===
+            "visible"
+        ) {
+
+            updateClock();
+
+            updatePermitStatus();
+
+            refreshGoogleSheets();
+
+        }
+
+    }
 );
 
 </script>
