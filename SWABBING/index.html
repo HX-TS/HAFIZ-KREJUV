@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/ 'sha256-KSktMCE43WTvXOTuIjOfTycel0BjScry0OrX6w0JILk='; connect-src https://sheets.googleapis.com https://accounts.google.com/gsi/ https://oauth2.googleapis.com; frame-src https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/; img-src 'self' data: https://i.ibb.co https://*.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 
 <meta charset="UTF-8">
 
@@ -33,7 +35,7 @@
      SOUNDCLOUD API
 ========================================================= -->
 
-<script src="https://w.soundcloud.com/player/api.js"></script>
+<!-- Third-party music code removed from the authenticated data page. -->
 
 
 <style>
@@ -1382,27 +1384,34 @@ td.lowest-value {
 
 </style>
 
+<link rel="stylesheet" href="../security.css">
+<script src="../security-config.js"></script>
+<script src="../security.js"></script>
 </head>
 
 
 <body>
+<section id="security-gate" aria-labelledby="security-heading">
+  <div class="security-card">
+    <h1 id="security-heading">Private reference data</h1>
+    <p>Sign in with a Google account that has permission to view the source sheets.</p>
+    <p id="security-status" role="status" aria-live="polite">Preparing Google sign-in…</p>
+    <button id="security-signin" class="security-button" type="button" disabled>Continue with Google</button>
+    <noscript><p>Enable JavaScript to sign in. No reference data is loaded while signed out.</p></noscript>
+  </div>
+</section>
+<div id="private-app" hidden>
+  <div class="security-bar">
+    <span>Google Sheets access authorised</span>
+    <button id="security-signout" class="security-button" type="button">Sign out</button>
+  </div>
 
 
 <!-- =========================================================
      HIDDEN SOUNDCLOUD
 ========================================================= -->
 
-<iframe
-  id="backgroundMusic"
-  class="soundcloud-background"
-  title="Background Music"
-  width="1"
-  height="1"
-  scrolling="no"
-  frameborder="no"
-  allow="autoplay; encrypted-media"
-  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A669354587&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
-></iframe>
+
 
 
 
@@ -1837,119 +1846,6 @@ td.lowest-value {
 
 
 <script>
-
-/* =========================================================
-   BACKGROUND MUSIC
-========================================================= */
-
-const BACKGROUND_MUSIC_VOLUME =
-  10;
-
-
-let backgroundMusicWidget =
-  null;
-
-
-function initialiseBackgroundMusic() {
-
-  const iframe =
-    document.getElementById(
-      "backgroundMusic"
-    );
-
-
-  if (
-    !iframe
-    ||
-    !window.SC
-    ||
-    !SC.Widget
-  ) {
-
-    return;
-
-  }
-
-
-  backgroundMusicWidget =
-    SC.Widget(
-      iframe
-    );
-
-
-  backgroundMusicWidget.bind(
-
-    SC.Widget.Events.READY,
-
-    function () {
-
-      backgroundMusicWidget.setVolume(
-        BACKGROUND_MUSIC_VOLUME
-      );
-
-      backgroundMusicWidget.play();
-
-    }
-
-  );
-
-
-  backgroundMusicWidget.bind(
-
-    SC.Widget.Events.PLAY,
-
-    function () {
-
-      backgroundMusicWidget.setVolume(
-        BACKGROUND_MUSIC_VOLUME
-      );
-
-    }
-
-  );
-
-}
-
-
-function unlockBackgroundMusic() {
-
-  if (
-    !backgroundMusicWidget
-  ) {
-
-    return;
-
-  }
-
-
-  backgroundMusicWidget.setVolume(
-    BACKGROUND_MUSIC_VOLUME
-  );
-
-
-  backgroundMusicWidget.play();
-
-}
-
-
-window.addEventListener(
-  "load",
-  initialiseBackgroundMusic
-);
-
-
-document.addEventListener(
-
-  "pointerdown",
-
-  unlockBackgroundMusic,
-
-  {
-    once:true,
-    passive:true
-  }
-
-);
 
 
 
@@ -3385,120 +3281,13 @@ function findLowestValues(
    GOOGLE SHEET LOADER
 ========================================================= */
 
-function loadSheet(config) {
-
-  const tqx =
-
-    `out:json;responseHandler:${config.callback}`;
-
-
-  const url =
-
-    "https://docs.google.com/spreadsheets/d/"
-
-    +
-
-    config.spreadsheetId
-
-    +
-
-    "/gviz/tq"
-
-    +
-
-    "?gid="
-
-    +
-
-    config.gid
-
-    +
-
-    "&range="
-
-    +
-
-    encodeURIComponent(
-      config.range
-    )
-
-    +
-
-    "&headers=1"
-
-    +
-
-    "&tqx="
-
-    +
-
-    encodeURIComponent(
-      tqx
-    )
-
-    +
-
-    "&tq="
-
-    +
-
-    encodeURIComponent(
-      "select *"
-    )
-
-    +
-
-    "&_="
-
-    +
-
-    Date.now();
-
-
-  const script =
-    document.createElement(
-      "script"
-    );
-
-
-  script.src =
-    url;
-
-
-  script.async =
-    true;
-
-
-  document.head.appendChild(
-    script
-  );
-
-
-  script.onload =
-    function () {
-
-      setTimeout(
-
-        function () {
-
-          if (
-            script.parentNode
-          ) {
-
-            script.remove();
-
-          }
-
-        },
-
-        1000
-
-      );
-
-    };
-
+async function loadSheet(config) {
+  const response = await SecureSheets.readTable(config.spreadsheetId, {
+    gid: config.gid, range: config.range,
+  });
+  if (!SecureSheets.isAuthenticated()) throw new Error("Session ended.");
+  window[config.callback](response);
 }
-
 
 
 /* =========================================================
@@ -8239,26 +8028,37 @@ window.dewPointResponse =
    LOAD ALL
 ========================================================= */
 
-function loadAllTables() {
-
-  loadSheet(
-    SWABBING
-  );
-
-
-  loadSheet(
-    DEW_POINT
-  );
-
+async function loadAllTables() {
+  if (!SecureSheets.isAuthenticated()) return false;
+  try {
+    await Promise.all([loadSheet(SWABBING), loadSheet(DEW_POINT)]);
+    return SecureSheets.isAuthenticated();
+  } catch {
+    return false;
+  }
 }
-
 
 
 /* =========================================================
    INITIAL LOAD
 ========================================================= */
 
-loadAllTables();
+SecureSheets.start(async () => {
+  if (!await loadAllTables()) throw new Error("Unable to load private data.");
+}, () => {
+  lastSwabbingColumns = [];
+  lastSwabbingRows = [];
+  lastDewColumns = [];
+  lastDewRows = [];
+  for (const id of ["swabbingContainer", "dewPointContainer", "swabbingGraphWrapper", "dewGraphWrapper"]) {
+    document.getElementById(id).replaceChildren();
+  }
+  const tooltip = document.getElementById("dewTooltip");
+  tooltip.classList.remove("active", "show");
+  for (const id of ["dewTooltipLocation", "dewTooltipDate", "dewTooltipTime", "dewTooltipReading", "swabbingGraphCount", "dewGraphInfo"]) {
+    document.getElementById(id).textContent = "";
+  }
+});
 
 
 
@@ -8343,6 +8143,7 @@ window.addEventListener(
 </script>
 
 
+</div><!-- private-app -->
 </body>
 
 </html>

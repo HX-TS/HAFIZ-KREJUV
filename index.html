@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/ 'sha256-ynRRXh4gqn+F/fmdo3in0adbYd3fxOcflMnCWoQo0jc='; connect-src https://sheets.googleapis.com https://accounts.google.com/gsi/ https://oauth2.googleapis.com; frame-src https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/; img-src 'self' data: https://i.ibb.co https://*.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta charset="UTF-8">
 
 <meta
@@ -1951,10 +1953,27 @@ and
 
 </style>
 
+<link rel="stylesheet" href="security.css">
+<script src="security-config.js"></script>
+<script src="security.js"></script>
 </head>
 
 
 <body>
+<section id="security-gate" aria-labelledby="security-heading">
+  <div class="security-card">
+    <h1 id="security-heading">Private reference data</h1>
+    <p>Sign in with a Google account that has permission to view the source sheets.</p>
+    <p id="security-status" role="status" aria-live="polite">Preparing Google sign-in…</p>
+    <button id="security-signin" class="security-button" type="button" disabled>Continue with Google</button>
+    <noscript><p>Enable JavaScript to sign in. No reference data is loaded while signed out.</p></noscript>
+  </div>
+</section>
+<div id="private-app" hidden>
+  <div class="security-bar">
+    <span>Google Sheets access authorised</span>
+    <button id="security-signout" class="security-button" type="button">Sign out</button>
+  </div>
 
 
 <div class="page">
@@ -2409,20 +2428,6 @@ const BOOKMARK_HEADERS = [
 ];
 
 
-/* =========================================================
-   CACHE
-========================================================= */
-
-const CACHE_DATA_KEY =
-    "krejuv-fec-sheet-data-v7";
-
-
-const CACHE_EQUIPMENT_KEY =
-    "krejuv-fec-sheet-equipment-v7";
-
-
-const CACHE_BOOKMARK_KEY =
-    "krejuv-fec-sheet-bookmarks-v7";
 
 
 /* =========================================================
@@ -2463,71 +2468,6 @@ function normalizeHeader(
 }
 
 
-/* =========================================================
-   SHEET URL
-========================================================= */
-
-function getSheetJsonUrl(
-    sheetName
-) {
-
-    return (
-        "https://docs.google.com/spreadsheets/d/" +
-        SHEET_ID +
-        "/gviz/tq" +
-        "?sheet=" +
-        encodeURIComponent(
-            sheetName
-        ) +
-        "&headers=1" +
-        "&tqx=out:json" +
-        "&_=" +
-        Date.now()
-    );
-
-}
-
-
-/* =========================================================
-   GOOGLE RESPONSE
-========================================================= */
-
-function parseGvizResponse(
-    text
-) {
-
-    const start =
-        text.indexOf(
-            "{"
-        );
-
-
-    const end =
-        text.lastIndexOf(
-            "}"
-        );
-
-
-    if (
-        start === -1 ||
-        end === -1
-    ) {
-
-        throw new Error(
-            "INVALID GOOGLE SHEETS RESPONSE"
-        );
-
-    }
-
-
-    return JSON.parse(
-        text.substring(
-            start,
-            end + 1
-        )
-    );
-
-}
 
 
 /* =========================================================
@@ -2744,46 +2684,9 @@ function gvizToObjects(
    FETCH SHEET
 ========================================================= */
 
-async function fetchSheet(
-    sheetName,
-    expectedHeaders
-) {
-
-    const response =
-        await fetch(
-            getSheetJsonUrl(
-                sheetName
-            ),
-            {
-                cache:"no-store"
-            }
-        );
-
-
-    if (
-        !response.ok
-    ) {
-
-        throw new Error(
-            sheetName +
-            " HTTP " +
-            response.status
-        );
-
-    }
-
-
-    const text =
-        await response.text();
-
-
-    return gvizToObjects(
-        parseGvizResponse(
-            text
-        ),
-        expectedHeaders
-    );
-
+async function fetchSheet(sheetName, expectedHeaders) {
+    const result = await SecureSheets.readTable(SHEET_ID, { sheetName });
+    return gvizToObjects(result, expectedHeaders);
 }
 
 
@@ -5559,114 +5462,7 @@ function setSyncStatus(
 }
 
 
-/* =========================================================
-   CACHE
-========================================================= */
 
-function saveCache() {
-
-    try {
-
-        localStorage.setItem(
-            CACHE_DATA_KEY,
-            JSON.stringify(
-                CURRENT_DATA
-            )
-        );
-
-
-        localStorage.setItem(
-            CACHE_EQUIPMENT_KEY,
-            JSON.stringify(
-                CURRENT_EQUIPMENT
-            )
-        );
-
-
-        localStorage.setItem(
-            CACHE_BOOKMARK_KEY,
-            JSON.stringify(
-                CURRENT_BOOKMARKS
-            )
-        );
-
-    }
-
-    catch(error) {}
-
-}
-
-
-function loadCache() {
-
-    try {
-
-        const data =
-            JSON.parse(
-                localStorage.getItem(
-                    CACHE_DATA_KEY
-                ) ||
-                "[]"
-            );
-
-
-        const equipment =
-            JSON.parse(
-                localStorage.getItem(
-                    CACHE_EQUIPMENT_KEY
-                ) ||
-                "[]"
-            );
-
-
-        const bookmarks =
-            JSON.parse(
-                localStorage.getItem(
-                    CACHE_BOOKMARK_KEY
-                ) ||
-                "[]"
-            );
-
-
-        if (
-            !data.length
-        ) {
-
-            return;
-
-        }
-
-
-        CURRENT_DATA =
-            data;
-
-
-        CURRENT_EQUIPMENT =
-            equipment;
-
-
-        CURRENT_BOOKMARKS =
-            bookmarks;
-
-
-        renderAll();
-
-
-        setSyncStatus(
-            "is-cache",
-            "GOOGLE SHEETS · CACHED DATA"
-        );
-
-    }
-
-    catch(error) {}
-
-}
-
-
-/* =========================================================
-   RENDER ALL
-========================================================= */
 
 function renderAll() {
 
@@ -5699,6 +5495,7 @@ function renderAll() {
 ========================================================= */
 
 async function refreshGoogleSheets() {
+    if (!SecureSheets.isAuthenticated()) return false;
 
     if (
         refreshInProgress
@@ -5746,6 +5543,8 @@ async function refreshGoogleSheets() {
             ]);
 
 
+        if (!SecureSheets.isAuthenticated()) return false;
+
         CURRENT_DATA =
             data;
 
@@ -5758,9 +5557,6 @@ async function refreshGoogleSheets() {
             bookmarks;
 
 
-        saveCache();
-
-
         renderAll();
 
 
@@ -5771,6 +5567,7 @@ async function refreshGoogleSheets() {
                 new Date()
             )
         );
+        return true;
 
     }
 
@@ -5785,6 +5582,7 @@ async function refreshGoogleSheets() {
             "is-error",
             "GOOGLE SHEETS · CONNECTION ERROR"
         );
+        return false;
 
     }
 
@@ -6125,13 +5923,23 @@ window.addEventListener(
    START
 ========================================================= */
 
-loadCache();
+SecureSheets.start(async () => {
+    if (!await refreshGoogleSheets()) throw new Error("Unable to load private data.");
+}, () => {
+    CURRENT_DATA = [];
+    CURRENT_EQUIPMENT = [];
+    CURRENT_BOOKMARKS = [];
+    hideTooltip();
+    tooltipNumber.textContent = "";
+    tooltipDescription.textContent = "";
+    renderAll();
+});
 
 
 updateClock();
 
 
-refreshGoogleSheets();
+// Initial loading starts only after Google authorisation.
 
 
 setInterval(
@@ -6176,5 +5984,6 @@ document.addEventListener(
 </script>
 
 
+</div><!-- private-app -->
 </body>
 </html>
