@@ -71,7 +71,28 @@
       renderLinks();
     } catch { renderLinks(); }
   }
+  async function updateVisitCounter() {
+    const output = document.querySelector('.visitor-count');
+    if (!output || !PublicData.isReady()) return;
+    let visitor;
+    try {
+      visitor = sessionStorage.getItem('krejuv-fec-visit-session');
+      if (!/^[a-f0-9]{32}$/.test(visitor || '')) {
+        visitor = crypto.randomUUID().replace(/-/g, '');
+        sessionStorage.setItem('krejuv-fec-visit-session', visitor);
+      }
+    } catch { visitor = crypto.randomUUID().replace(/-/g, ''); }
+    try {
+      const count = await PublicData.visitCount(visitor);
+      output.textContent = count.toLocaleString('en-GB');
+      output.closest('.footer-visits').title = 'Approximate visits; repeat page loads in the same tab are grouped for 30 minutes';
+    } catch {
+      output.textContent = '—';
+      output.closest('.footer-visits').title = 'Visit count is temporarily unavailable';
+    }
+  }
   function initialise() {
+    updateVisitCounter();
     const header = document.querySelector('.site-header');
     const mobileButton = document.getElementById('site-menu-toggle');
     mobileButton.addEventListener('click', () => {

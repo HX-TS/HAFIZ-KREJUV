@@ -39,6 +39,10 @@ a.site-menu-link:hover,a.site-menu-link:focus-visible { background:#292929; colo
 .site-hero--compact .site-hero__title { font-size:clamp(40px,4vw,62px); }
 .site-hero--compact .site-hero__action { display:none; }
 .site-footer { max-width:1480px; margin:32px auto 0; padding:24px 40px; border-top:1px solid var(--theme-line); text-align:center; color:var(--theme-muted); font-size:10px; letter-spacing:.14em; }
+.site-credit-footer { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:12px; padding:20px 16px; text-transform:uppercase; }
+.footer-credit,.footer-visits { font:700 11px/1.5 Arial,Helvetica,sans-serif; letter-spacing:.12em; white-space:nowrap; }
+.footer-separator { color:#696969; }
+.visitor-count { display:inline-block; min-width:1ch; margin-left:5px; color:var(--theme-text); font-size:12px; font-variant-numeric:tabular-nums; }
 .site-scroll-hint { display:block; margin:0 0 12px; color:var(--theme-muted); font-size:11px; line-height:1.5; letter-spacing:.04em; }
 #public-data-status { margin:0; border:0; border-bottom:1px solid #76501c; border-radius:0; background:#30240f; color:#ffe1a7; }
 /* Permit control retains the existing data and validity calculations. */
