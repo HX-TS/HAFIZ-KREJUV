@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-ZfXRpx07m5bmaO+0NvDXA8QPA6QCxbT29yolFacOkbs='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-ZfXRpx07m5bmaO+0NvDXA8QPA6QCxbT29yolFacOkbs='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080808" />
@@ -901,6 +901,8 @@
 <script src="../public-data.js"></script>
 <link rel="stylesheet" href="../site-theme.css">
 <script src="../site-theme.js"></script>
+<link rel="stylesheet" href="../analytics.css">
+<script src="../analytics.js" defer></script>
 </head>
 <body class="page-summary" data-page="summary">
 <div id="public-data-status" role="status" aria-live="polite" hidden></div>
