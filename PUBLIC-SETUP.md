@@ -109,6 +109,28 @@ The service exposes only the four named datasets and the existing A:Z record
 columns. It does not accept a visitor-provided source ID, arbitrary range, or
 write operation. Backend exceptions are replaced with a generic error message.
 
+## Footer visit counter
+
+The footer displays `FLY TECHSMITH · VISITS 1,234` on all three pages. The public
+total comes from the same Apps Script deployment using `dataset=visits`.
+The count is persisted in the script property `PUBLIC_VISITS_TOTAL`. No source
+spreadsheet is opened or edited by the counter.
+
+The browser keeps one random, anonymous marker in sessionStorage for this tab.
+Repeated loads or navigation within the tab count once per 30-minute cache
+window. This measures approximate visits, not identified people or a verified
+unique-user count. New tabs, blocked storage, bots, or cache eviction can affect
+the count. It starts when this feature is activated; it cannot recover earlier
+visits. The public endpoint returns only a total, never visitor identities or
+locations. Detailed analytics remains a separate private GA4 setup.
+
+After replacing `Code.gs`, update the existing Web app deployment to a **New
+version**. Keep the four source properties and existing `/exec` URL. No new API
+service or spreadsheet is needed. A missing/unavailable count appears as `—`
+and does not block the reference records. Reading `?dataset=visits` without a
+visitor marker returns the total without incrementing it. No public reset or
+spreadsheet-write operation is provided.
+
 ## Maintenance and limits
 
 If a dataset returns `"ok":false`, first check its Script Property name/value,

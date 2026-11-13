@@ -5,6 +5,7 @@ const fs=require('node:fs');
 const BASE=process.env.TEST_SITE_URL||'http://127.0.0.1:8765';
 function table(headers,rows=[]){return {table:{cols:headers.map(label=>({label})),rows:rows.map(row=>({c:row.map(value=>({v:value,f:String(value)}))}))}}}
 function dataFor(dataset){
+  if(dataset==='visits')return {count:1234};
   if(dataset==='main')return {tables:{
     DATA:table(['TYPE','SECTION','LOCATION','NUMBER','START','END','DESCRIPTION','URL','VEC_NO','VEC_START','VEC_END','VEC_DESCRIPTION','VEC_URL']),
     EQUIPMENT:table(['PTW_NO','LOCATION','EQUIPMENT','EXPIRY_DATE']),
@@ -21,6 +22,7 @@ function dataFor(dataset){
       const page=await context.newPage();
       const errors=[],violations=[],serviceCalls=[],unexpected=[];
       let failure=false;
+      let counterFailure=false;
       page.on('pageerror',error=>errors.push(error.message));
       page.on('request',request=>{if(/accounts\.google|sheets\.googleapis|docs\.google/.test(request.url()))unexpected.push(request.url())});
       await page.exposeFunction('recordViolation',event=>violations.push(event));
@@ -34,7 +36,7 @@ function dataFor(dataset){
         const url=new URL(route.request().url());
         serviceCalls.push(url);
         assert.equal(route.request().headers().authorization,undefined);
-        const payload=failure?{ok:false,error:'Unavailable'}:{ok:true,data:dataFor(url.searchParams.get('dataset'))};
+        const payload=failure||(counterFailure&&url.searchParams.get('dataset')==='visits')?{ok:false,error:'Unavailable'}:{ok:true,data:dataFor(url.searchParams.get('dataset'))};
         return route.fulfill({contentType:'application/javascript',body:url.searchParams.get('callback')+'('+JSON.stringify(payload)+');'});
       });
       await context.route('https://script.googleusercontent.com/macros/echo?**',route=>{
@@ -56,10 +58,20 @@ function dataFor(dataset){
       assert.deepEqual(errors,[]);
       assert.deepEqual(violations,[]);
       assert.deepEqual(unexpected,[]);
-      assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
-      const expectedRequests=path==='/SWABBING/'?3:path==='/SUMMARY/'?2:1;
+      assert.equal(await page.evaluate(()=>localStorage.length),0,'Records are not persistently cached');
+      assert.deepEqual(await page.evaluate(()=>Object.keys(sessionStorage)),['krejuv-fec-visit-session'],'Only an anonymous visit marker is stored');
+      await page.waitForFunction(()=>document.querySelector('.visitor-count').textContent==='1,234');
+      assert.equal(await page.locator('.footer-credit').textContent(),'FLY TECHSMITH');
+      assert.equal(await page.locator('.footer-visits').textContent().then(text=>text.replace(/\s+/g,' ').trim()),'VISITS 1,234');
+      const expectedRequests=path==='/SWABBING/'?4:path==='/SUMMARY/'?3:2;
       assert.equal(serviceCalls.length,expectedRequests,'Concurrent requests coalesced by dataset, including shared navigation');
-      assert.ok(serviceCalls.every(url=>Array.from(url.searchParams.keys()).sort().join(',')==='callback,dataset'));
+      assert.ok(serviceCalls.every(url=>Array.from(url.searchParams.keys()).sort().join(',')===(url.searchParams.get('dataset')==='visits'?'callback,dataset,visitor':'callback,dataset')));
+      await page.setViewportSize({width:390,height:844});
+      await page.locator('.site-credit-footer').scrollIntoViewIfNeeded();
+      const credit=await page.locator('.footer-credit').boundingBox();
+      const visit=await page.locator('.footer-visits').boundingBox();
+      assert.ok(credit.x<visit.x&&Math.abs(credit.y-visit.y)<8,'Counter sits beside the credit on mobile');
+      await page.locator('.site-credit-footer').screenshot({path:'/workspace/footer-counter-'+(path==='/'?'overview':path.replaceAll('/','').toLowerCase())+'.png'});
       // Check the Google ContentService response host separately: Playwright
       // routes only the first URL of a browser redirect chain.
       assert.equal(await page.evaluate(()=>new Promise((resolve,reject)=>{
@@ -71,6 +83,14 @@ function dataFor(dataset){
         document.head.appendChild(script);
       })),true);
       assert.deepEqual(violations,[]);
+      counterFailure=true;
+      await page.reload();
+      await page.waitForFunction(()=>document.getElementById('public-app').textContent.includes('PUBLIC RECORD'));
+      await page.waitForFunction(()=>document.querySelector('.footer-visits').title==='Visit count is temporarily unavailable');
+      assert.equal(await page.locator('.visitor-count').textContent(),'—','Unavailable totals do not display a fabricated zero');
+      assert.equal(await page.locator('#public-data-status').isVisible(),false,'Counter failure does not block records');
+      const markers=serviceCalls.filter(url=>url.searchParams.get('dataset')==='visits').map(url=>url.searchParams.get('visitor'));
+      assert.equal(new Set(markers).size,1,'Same tab keeps its anonymous session marker after reload');
       failure=true;
       await page.reload();
       await page.locator('#public-data-status').waitFor({state:'visible'});

@@ -1,6 +1,6 @@
-/** Public read-only records API. Store all source IDs in SCRIPT PROPERTIES.
- * No doPost, write methods, arbitrary sheet IDs, OAuth tokens, or source URLs
- * are returned to visitors. Uses the built-in SpreadsheetApp service.
+/** Public records API and aggregate visit count. Source IDs stay in SCRIPT PROPERTIES.
+ * Source workbooks are read-only. No doPost, arbitrary source IDs, OAuth tokens,
+ * or source URLs are exposed. Uses the built-in SpreadsheetApp service.
  */
 const PUBLIC_DATASETS = Object.freeze({
   main: { property: 'MAIN_SHEET_ID', tabs: { DATA: 'DATA', EQUIPMENT: 'EQUIPMENT', BOOKMARKS: 'BOOKMARK' } },
@@ -42,6 +42,7 @@ function doGet(event) {
     return output_({ ok: false, error: 'Invalid callback.' }, '');
   }
   const dataset = parameters.dataset || '';
+  if (dataset === 'visits') return visits_(parameters.visitor || '', callback);
   if (!Object.prototype.hasOwnProperty.call(PUBLIC_DATASETS, dataset)) {
     return output_({ ok: false, error: 'Unknown dataset.' }, callback);
   }
@@ -97,6 +98,39 @@ function doGet(event) {
   } catch (ignored) {
     // Never expose Google's exception text, source IDs, or private URLs.
     return output_({ ok: false, error: 'Reference data is temporarily unavailable.' }, callback);
+  }
+}
+
+// Counts are stored in this script's properties, never in the source workbooks.
+// No visitor identity, IP, or location is collected here. GA4 reports are separate.
+function visits_(visitor, callback) {
+  if (visitor && !/^[a-f0-9]{32}$/.test(visitor)) {
+    return output_({ ok: false, error: 'Invalid visit identifier.' }, callback);
+  }
+  const lock = LockService.getScriptLock();
+  let acquired = false;
+  try {
+    acquired = lock.tryLock(4000);
+    if (!acquired) throw new Error('Counter is busy.');
+    const properties = PropertiesService.getScriptProperties();
+    const stored = properties.getProperty('PUBLIC_VISITS_TOTAL');
+    let count = stored === null || stored === undefined || stored === '' ? 0 : Number(stored);
+    if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid counter state.');
+    if (visitor) {
+      const cache = CacheService.getScriptCache();
+      const key = 'public-visit-' + visitor;
+      if (!cache.get(key)) {
+        if (count >= Number.MAX_SAFE_INTEGER) throw new Error('Counter limit reached.');
+        count += 1;
+        properties.setProperty('PUBLIC_VISITS_TOTAL', String(count));
+        cache.put(key, 'counted', 1800);
+      }
+    }
+    return output_({ ok: true, data: { count: count } }, callback);
+  } catch (ignored) {
+    return output_({ ok: false, error: 'Visit count is temporarily unavailable.' }, callback);
+  } finally {
+    if (acquired) lock.releaseLock();
   }
 }
 

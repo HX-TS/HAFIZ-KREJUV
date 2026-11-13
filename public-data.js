@@ -2,7 +2,7 @@
    JSONP supports Apps Script's cross-origin redirects without OAuth or CORS. */
 (() => {
   "use strict";
-  const DATASETS = new Set(["main", "swabbing", "dew", "summary"]);
+  const DATASETS = new Set(["main", "swabbing", "dew", "summary", "visits"]);
   const cache = new Map();
   const pending = new Map();
   const endpoint = window.PUBLIC_REFERENCE_CONFIG?.endpoint || "";
@@ -21,7 +21,7 @@
     if (element) element.hidden = true;
   }
 
-  function request(dataset) {
+  function request(dataset, visitor) {
     if (!configured) return Promise.reject(new Error("Public reference service is not configured."));
     if (!DATASETS.has(dataset)) return Promise.reject(new Error("Unknown dataset."));
     return new Promise((resolve, reject) => {
@@ -47,6 +47,7 @@
       const url = new URL(endpoint);
       url.searchParams.set("dataset", dataset);
       url.searchParams.set("callback", callback);
+      if (dataset === "visits" && visitor) url.searchParams.set("visitor", visitor);
       script.src = url.href;
       script.async = true;
       script.referrerPolicy = "no-referrer";
@@ -86,6 +87,12 @@
 
   window.PublicData = Object.freeze({
     isReady: () => configured, readTable, readCSV,
+    async visitCount(visitor) {
+      if (!/^[a-f0-9]{32}$/.test(visitor || "")) throw new Error("Invalid visit identifier.");
+      const data = await request("visits", visitor);
+      if (!Number.isSafeInteger(data.count) || data.count < 0) throw new Error("Invalid visit count.");
+      return data.count;
+    },
     start(loadPage) {
       const initialise = async () => {
         try {

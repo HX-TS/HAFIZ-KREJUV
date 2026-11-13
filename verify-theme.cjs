@@ -24,7 +24,11 @@ const ready={
         await page.exposeFunction('reportViolation',item=>violations.push(item));
         await page.addInitScript(()=>document.addEventListener('securitypolicyviolation',event=>window.reportViolation(event.effectiveDirective+':'+event.blockedURI)));
         await page.goto(BASE+path,{waitUntil:'domcontentloaded',timeout:45000});
+        if (await page.locator('#analytics-preferences').isVisible()) await page.locator('#analytics-decline').click();
         await page.waitForFunction(ready[path],null,{timeout:45000});
+        if (await page.locator('.visitor-count').count()) {
+          await page.waitForFunction(()=>/^\d[\d,]*$/.test(document.querySelector('.visitor-count').textContent),null,{timeout:30000});
+        }
         await page.waitForFunction(()=>document.querySelectorAll('#historical-event-links .site-menu-link').length===5,null,{timeout:30000});
         await page.evaluate(()=>document.fonts.ready);
         assert.deepEqual(await page.locator('#main-site-links .site-menu-link').allTextContents(),mainNames);

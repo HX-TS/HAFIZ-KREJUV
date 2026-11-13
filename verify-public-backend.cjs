@@ -8,6 +8,11 @@ let fail = false;
 let empty = false;
 let setupLog = '';
 let tabsRead = [];
+const counterProperties = {};
+const visitCache = new Map();
+let lockAvailable = true;
+let lockAcquisitions = 0;
+let lockReleases = 0;
 const date = new Date('2026-08-10T04:00:00Z');
 function sheet(name,gid=0) {
   return {
@@ -27,13 +32,17 @@ function sheet(name,gid=0) {
 const output = { text:'', mime:'', setMimeType(type) { this.mime=type; return this; } };
 const context = {
   Logger:{log:text=>{setupLog=text;}},
-  PropertiesService:{getScriptProperties:()=>({getProperties:()=>ids})},
+  PropertiesService:{getScriptProperties:()=>({getProperties:()=>ids,
+    getProperty:key=>counterProperties[key]??null,
+    setProperty(key,value){assert.equal(key,'PUBLIC_VISITS_TOTAL','No source workbook properties changed');counterProperties[key]=value;}
+  })},
+  LockService:{getScriptLock:()=>({tryLock(timeout){assert.equal(timeout,4000);if(lockAvailable)lockAcquisitions++;return lockAvailable;},releaseLock(){lockReleases++;}})},
   Utilities:{DigestAlgorithm:{SHA_256:'sha256'}, computeDigest:()=>[1], base64EncodeWebSafe:()=> 'test-signature',
     formatDate(value,timeZone,format) {
       assert.equal(value,date); assert.equal(timeZone,'Asia/Kuala_Lumpur');
       assert.equal(format,'yyyy,M,d,H,m,s'); return '2026,8,10,12,0,0';
     }},
-  CacheService:{getScriptCache:()=>({get:()=>null, put:()=>{}})},
+  CacheService:{getScriptCache:()=>({get:key=>visitCache.get(key)||null, put(key,value,ttl){if(key.startsWith('public-visit-')){assert.equal(ttl,1800);visitCache.set(key,value);}}})},
   ContentService:{MimeType:{JSON:'json',JAVASCRIPT:'javascript'},createTextOutput(text){return {...output,text}}},
   SpreadsheetApp:{openById(id){
     calls.push({id});
@@ -46,7 +55,7 @@ const context = {
 };
 vm.createContext(context);
 vm.runInContext(source,context);
-assert.equal(typeof context.doPost,'undefined','No write endpoint');
+assert.equal(typeof context.doPost,'undefined','No public POST or spreadsheet-write endpoint');
 for(const dataset of ['main','swabbing','dew','summary']){
   calls=[];
   tabsRead=[];
@@ -93,3 +102,22 @@ const setup=context.checkSetup();
 assert.ok(setup.every(item=>item.status==='ready'));
 for(const id of Object.values(ids))assert.ok(!setupLog.includes(id),'Diagnostics omit source IDs');
 console.log('PASS native backend: fixed datasets, read-only endpoint, source-ID redaction, dates, empty sheets, callback validation, and private error handling');
+calls=[];
+const counter=visitor=>JSON.parse(context.doGet({parameter:{dataset:'visits',...(visitor?{visitor}:{})}}).text);
+assert.equal(counter().data.count,0,'New counter starts at zero and read-only queries do not increment');
+assert.equal(counter('bad-id').ok,false);
+assert.equal(counter('a'.repeat(32)).data.count,1);
+assert.equal(counter('a'.repeat(32)).data.count,1,'Repeated page loads in the same session count once');
+assert.equal(counter('b'.repeat(32)).data.count,2,'A new session increments the persistent count');
+assert.equal(counter().data.count,2);
+visitCache.clear();
+assert.equal(counter('a'.repeat(32)).data.count,3,'An expired visit window can count a new visit');
+lockAvailable=false;
+assert.equal(counter('c'.repeat(32)).ok,false,'Busy counter fails without incrementing');
+assert.equal(counterProperties.PUBLIC_VISITS_TOTAL,'3');
+lockAvailable=true;
+counterProperties.PUBLIC_VISITS_TOTAL='invalid';
+assert.equal(counter().ok,false,'Invalid stored counts do not silently reset');
+assert.equal(calls.length,0,'Counter never opens or edits source workbooks');
+assert.equal(lockAcquisitions,lockReleases,'All acquired locks are released');
+console.log('PASS counter: persistence, session deduplication, read-only totals, invalid input, lock handling, and no workbook access');
