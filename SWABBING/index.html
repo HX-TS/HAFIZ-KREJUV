@@ -14,7 +14,7 @@
 
 <meta
   name="theme-color"
-  content="#050505"
+  content="#080808"
 >
 
 <title>FEC Swabbing Data</title>
@@ -1387,12 +1387,40 @@ td.lowest-value {
 <link rel="stylesheet" href="../public-data.css">
 <script src="../public-config.js"></script>
 <script src="../public-data.js"></script>
+<link rel="stylesheet" href="../site-theme.css">
+<script src="../site-theme.js"></script>
 </head>
 
 
-<body>
+<body class="page-swabbing" data-page="swabbing">
 <div id="public-data-status" role="status" aria-live="polite" hidden></div>
 <div id="public-app">
+<a class="site-skip" href="#reading-dashboard">Skip to records</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="../" aria-label="KREJUV FEC home">KREJUV / FEC</a>
+    <button id="site-menu-toggle" class="site-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+    <nav id="site-navigation" class="site-nav" aria-label="Reference navigation">
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="main-site-links">MAIN SITE</button>
+        <div id="main-site-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="historical-event-links">HISTORICAL EVENT</button>
+        <div id="historical-event-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <a class="site-nav__link" href="../SUMMARY/">SUMMARY</a>
+    </nav>
+  </div>
+</header>
+<section class="site-hero site-hero--compact" aria-labelledby="site-hero-heading">
+  <img class="site-hero__image" src="../assets/hero-yard.webp" width="1672" height="941" alt="Aerial pipeline worksite with white pipework and a yellow crane" fetchpriority="high">
+  <div class="site-hero__content">
+    <h1 id="site-hero-heading" class="site-hero__title">SWABBING &amp; DEW POINT</h1>
+    <p class="site-hero__subtitle">KREJUV FEC · FIELD RECORDS</p>
+    <a class="site-hero__action" href="#reading-dashboard">VIEW RECORDS</a>
+  </div>
+</section>
 
 
 <!-- =========================================================
@@ -1410,58 +1438,14 @@ td.lowest-value {
      HEADER
 ========================================================= -->
 
-<header class="hero">
-
-  <div class="hero-left">
-
-    <div class="hero-title">
-      FEC SWABBING DATA
-    </div>
-
-    <div class="hero-subtitle">
-      TECHSMITH
-    </div>
-
-  </div>
-
-
-  <div class="current-status">
-
-    <div
-      class="current-datetime"
-      id="currentDateTime"
-    >
-      -- --- ---- --:--:--
-    </div>
-
-    <div
-      class="current-shift"
-      id="currentShift"
-    >
-      CURRENT SHIFT: --
-    </div>
-
-  </div>
-
-
-  <a
-    class="main-bookmark"
-    href="https://hx-ts.github.io/HAFIZ-KREJUV/"
-  >
-
-    MAIN BOOKMARK
-
-    <span class="bookmark-arrow">
-      ↗
-    </span>
-
-  </a>
-
-</header>
+<div class="reading-status">
+  <div class="current-datetime" id="currentDateTime">-- --- ---- --:--:--</div>
+  <div class="current-shift" id="currentShift">CURRENT SHIFT: --</div>
+</div>
 
 
 
-<main class="dashboard">
+<main class="dashboard" id="reading-dashboard" tabindex="-1">
 
 
 <!-- =========================================================
