@@ -1,9 +1,0 @@
-#private-app[hidden], #security-gate[hidden] { display: none !important; }
-#security-gate { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #f4f1eb; color: #050505; font-family: Arial, sans-serif; }
-.security-card { max-width: 460px; padding: 32px; border: 1px solid #aaa69f; border-radius: 12px; background: white; }
-.security-card h1 { margin: 0 0 16px; font-size: 28px; }
-.security-card p { margin: 16px 0; line-height: 1.6; }
-.security-button { padding: 12px 18px; border: 1px solid #050505; border-radius: 6px; background: #050505; color: white; cursor: pointer; font: bold 15px Arial, sans-serif; }
-.security-button:disabled { opacity: .55; cursor: wait; }
-.security-button:focus-visible { outline: 3px solid #2876dc; outline-offset: 3px; }
-.security-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 24px; background: #f4f1eb; color: #050505; border-bottom: 1px solid #aaa69f; font: 14px Arial, sans-serif; }
