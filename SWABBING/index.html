@@ -3,7 +3,7 @@
 
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/ 'sha256-KSktMCE43WTvXOTuIjOfTycel0BjScry0OrX6w0JILk='; connect-src https://sheets.googleapis.com https://accounts.google.com/gsi/ https://oauth2.googleapis.com; frame-src https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/; img-src 'self' data: https://i.ibb.co https://*.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-l2lUr0baQdkZNg/Y6yGpQVjNX3HAsrw9eN6a9xPqHdk='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
 
 <meta charset="UTF-8">
 
@@ -1384,27 +1384,15 @@ td.lowest-value {
 
 </style>
 
-<link rel="stylesheet" href="../security.css">
-<script src="../security-config.js"></script>
-<script src="../security.js"></script>
+<link rel="stylesheet" href="../public-data.css">
+<script src="../public-config.js"></script>
+<script src="../public-data.js"></script>
 </head>
 
 
 <body>
-<section id="security-gate" aria-labelledby="security-heading">
-  <div class="security-card">
-    <h1 id="security-heading">Private reference data</h1>
-    <p>Sign in with a Google account that has permission to view the source sheets.</p>
-    <p id="security-status" role="status" aria-live="polite">Preparing Google sign-in…</p>
-    <button id="security-signin" class="security-button" type="button" disabled>Continue with Google</button>
-    <noscript><p>Enable JavaScript to sign in. No reference data is loaded while signed out.</p></noscript>
-  </div>
-</section>
-<div id="private-app" hidden>
-  <div class="security-bar">
-    <span>Google Sheets access authorised</span>
-    <button id="security-signout" class="security-button" type="button">Sign out</button>
-  </div>
+<div id="public-data-status" role="status" aria-live="polite" hidden></div>
+<div id="public-app">
 
 
 <!-- =========================================================
@@ -1888,14 +1876,7 @@ const ONE_DAY =
 
 const SWABBING = {
 
-  spreadsheetId:
-    "1dPQfygx00SWQLDKmLbK1zyKX5by40ub6xZqm1VAUaDs",
-
-  gid:
-    "0",
-
-  range:
-    "A:Z",
+  dataset: "swabbing",
 
   container:
     "swabbingContainer",
@@ -1921,14 +1902,7 @@ const SWABBING = {
 
 const DEW_POINT = {
 
-  spreadsheetId:
-    "1vdrb81qWoamvrjqI-t6nSOUjYlK1ldnMxKduUAZxTWM",
-
-  gid:
-    "0",
-
-  range:
-    "A:Z",
+  dataset: "dew",
 
   container:
     "dewPointContainer",
@@ -3282,10 +3256,8 @@ function findLowestValues(
 ========================================================= */
 
 async function loadSheet(config) {
-  const response = await SecureSheets.readTable(config.spreadsheetId, {
-    gid: config.gid, range: config.range,
-  });
-  if (!SecureSheets.isAuthenticated()) throw new Error("Session ended.");
+  const response = await PublicData.readTable(config.dataset);
+  if (!PublicData.isReady()) throw new Error("Reference service unavailable.");
   window[config.callback](response);
 }
 
@@ -8029,10 +8001,10 @@ window.dewPointResponse =
 ========================================================= */
 
 async function loadAllTables() {
-  if (!SecureSheets.isAuthenticated()) return false;
+  if (!PublicData.isReady()) return false;
   try {
     await Promise.all([loadSheet(SWABBING), loadSheet(DEW_POINT)]);
-    return SecureSheets.isAuthenticated();
+    return PublicData.isReady();
   } catch {
     return false;
   }
@@ -8043,24 +8015,9 @@ async function loadAllTables() {
    INITIAL LOAD
 ========================================================= */
 
-SecureSheets.start(async () => {
-  if (!await loadAllTables()) throw new Error("Unable to load private data.");
-}, () => {
-  lastSwabbingColumns = [];
-  lastSwabbingRows = [];
-  lastDewColumns = [];
-  lastDewRows = [];
-  for (const id of ["swabbingContainer", "dewPointContainer", "swabbingGraphWrapper", "dewGraphWrapper"]) {
-    document.getElementById(id).replaceChildren();
-  }
-  const tooltip = document.getElementById("dewTooltip");
-  tooltip.classList.remove("active", "show");
-  for (const id of ["dewTooltipLocation", "dewTooltipDate", "dewTooltipTime", "dewTooltipReading", "swabbingGraphCount", "dewGraphInfo"]) {
-    document.getElementById(id).textContent = "";
-  }
+PublicData.start(async () => {
+  if (!await loadAllTables()) throw new Error("Unable to load reference data.");
 });
-
-
 
 /* =========================================================
    AUTO REFRESH 60 SEC
@@ -8143,7 +8100,7 @@ window.addEventListener(
 </script>
 
 
-</div><!-- private-app -->
+</div><!-- public-app -->
 </body>
 
 </html>

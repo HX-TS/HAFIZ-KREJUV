@@ -16,11 +16,11 @@ for relative in ("index.html", "SWABBING/index.html", "SUMMARY/index.html"):
             hashes.append(f"'sha256-{digest}'")
     policy = "; ".join([
         "default-src 'self'",
-        "script-src 'self' https://accounts.google.com/gsi/ " + " ".join(hashes),
-        "connect-src https://sheets.googleapis.com https://accounts.google.com/gsi/ https://oauth2.googleapis.com",
-        "frame-src https://accounts.google.com",
-        "style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/",
-        "img-src 'self' data: https://i.ibb.co https://*.googleusercontent.com",
+        "script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo " + " ".join(hashes),
+        "connect-src 'none'",
+        "frame-src 'none'",
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: https://i.ibb.co",
         "object-src 'none'", "base-uri 'none'", "form-action 'none'",
     ])
     meta = f'<meta http-equiv="Content-Security-Policy" content="{policy}">'

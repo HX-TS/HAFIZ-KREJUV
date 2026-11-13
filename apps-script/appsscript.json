@@ -1,0 +1,10 @@
+{
+  "timeZone": "Asia/Kuala_Lumpur",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      { "userSymbol": "Sheets", "version": "v4", "serviceId": "sheets" }
+    ]
+  },
+  "oauthScopes": ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+  "runtimeVersion": "V8"
+}
