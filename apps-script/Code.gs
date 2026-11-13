@@ -1,6 +1,6 @@
 /** Public read-only records API. Store all source IDs in SCRIPT PROPERTIES.
  * No doPost, write methods, arbitrary sheet IDs, OAuth tokens, or source URLs
- * are returned to visitors. Enable the Google Sheets advanced service (v4).
+ * are returned to visitors. Uses the built-in SpreadsheetApp service.
  */
 const PUBLIC_DATASETS = Object.freeze({
   main: { property: 'MAIN_SHEET_ID', tabs: ['DATA', 'EQUIPMENT', 'BOOKMARKS'] },
@@ -26,35 +26,38 @@ function doGet(event) {
     if (!sourceId || !/^[a-zA-Z0-9_-]+$/.test(sourceId)) throw new Error('Source configuration required.');
     const sourceIds = Object.keys(PUBLIC_DATASETS).map(key => properties[PUBLIC_DATASETS[key].property]).filter(Boolean);
     const signature = Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify(sourceIds)));
-    const cacheKey = 'public-v1-' + dataset + '-' + signature;
+    const cacheKey = 'public-v2-' + dataset + '-' + signature;
     const cache = CacheService.getScriptCache();
     const cached = cache.get(cacheKey);
     if (cached) return output_(JSON.parse(cached), callback);
 
-    let tabs = configuration.tabs;
-    if (!tabs) {
-      const metadata = Sheets.Spreadsheets.get(sourceId, { fields: 'sheets.properties(sheetId,title)' });
-      const tab = (metadata.sheets || []).find(item => item.properties.sheetId === configuration.gid);
-      if (!tab) throw new Error('Configured tab unavailable.');
-      tabs = [tab.properties.title];
-    }
-    const response = Sheets.Spreadsheets.get(sourceId, {
-      ranges: tabs.map(name => "'" + name.replace(/'/g, "''") + "'!A:Z"),
-      includeGridData: true,
-      fields: 'sheets(properties(title),data(rowData(values(effectiveValue,formattedValue,effectiveFormat(numberFormat)))))',
-    });
+    const workbook = SpreadsheetApp.openById(sourceId);
+    const sheets = configuration.tabs
+      ? configuration.tabs.map(name => workbook.getSheetByName(name))
+      : [workbook.getSheets().find(sheet => sheet.getSheetId() === configuration.gid)];
+    if (sheets.some(sheet => !sheet)) throw new Error('Configured tab unavailable.');
+    const timeZone = workbook.getSpreadsheetTimeZone();
+    const tabs = sheets.map(sheet => sheet.getName());
     const tables = {};
     const displayRows = {};
-    (response.sheets || []).forEach(sheet => {
-      const grid = sheet.data && sheet.data[0] && sheet.data[0].rowData || [];
-      const rows = grid.map(row => (row.values || []).map(cell => cell_(cell, sourceIds)));
+    sheets.forEach(sheet => {
+      const lastRow = sheet.getLastRow();
+      const lastColumn = Math.min(sheet.getLastColumn(), 26);
+      let rows = [];
+      if (lastRow > 0 && lastColumn > 0) {
+        const range = sheet.getRange(1, 1, lastRow, lastColumn);
+        const values = range.getValues();
+        const display = range.getDisplayValues();
+        rows = values.map((row, rowIndex) => row.map((value, columnIndex) =>
+          cell_(value, display[rowIndex][columnIndex], timeZone, sourceIds)));
+      }
       const headers = rows[0] || [];
       const width = rows.reduce((size, row) => Math.max(size, row.length), headers.length);
-      tables[sheet.properties.title] = { table: {
+      tables[sheet.getName()] = { table: {
         cols: Array.from({ length: width }, (_, index) => ({ label: headers[index] ? headers[index].f : '' })),
         rows: rows.slice(1).map(row => ({ c: Array.from({ length: width }, (_, index) => row[index] || { v: '', f: '' }) })),
       } };
-      displayRows[sheet.properties.title] = rows.map(row => row.map(cell => cell.f));
+      displayRows[sheet.getName()] = rows.map(row => row.map(cell => cell.f));
     });
     if (tabs.some(name => !tables[name])) throw new Error('Configured table unavailable.');
     const data = dataset === 'main' ? { tables: tables }
@@ -70,18 +73,18 @@ function doGet(event) {
   }
 }
 
-function cell_(cell, sourceIds) {
-  const effective = cell.effectiveValue || {};
-  let value = effective.stringValue !== undefined ? redact_(effective.stringValue, sourceIds)
-    : effective.numberValue !== undefined ? effective.numberValue
-    : effective.boolValue !== undefined ? effective.boolValue : '';
-  const numberType = cell.effectiveFormat && cell.effectiveFormat.numberFormat && cell.effectiveFormat.numberFormat.type;
-  if (typeof value === 'number' && (numberType === 'DATE' || numberType === 'DATE_TIME')) {
-    const date = new Date(Date.UTC(1899, 11, 30) + Math.round(value * 86400000));
-    value = 'Date(' + [date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()].join(',') + ')';
+function cell_(rawValue, display, timeZone, sourceIds) {
+  let value = rawValue;
+  if (Object.prototype.toString.call(value) === '[object Date]') {
+    if (!isNaN(value.getTime())) {
+      const parts = Utilities.formatDate(value, timeZone, 'yyyy,M,d,H,m,s').split(',').map(Number);
+      parts[1] -= 1; // GViz-compatible month index, preserving spreadsheet time zone.
+      value = 'Date(' + parts.join(',') + ')';
+    } else value = '';
   }
-  const display = cell.formattedValue !== undefined ? cell.formattedValue : String(value);
-  return { v: value, f: redact_(String(display), sourceIds) };
+  if (typeof value === 'string') value = redact_(value, sourceIds);
+  return { v: value === null || value === undefined ? '' : value,
+    f: redact_(String(display === null || display === undefined ? '' : display), sourceIds) };
 }
 
 function redact_(text, sourceIds) {

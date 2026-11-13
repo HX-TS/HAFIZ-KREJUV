@@ -6,7 +6,12 @@ reads the private sheets and returns selected dataset responses to the website.
 
 The public website contains a service URL and dataset names. Source spreadsheet
 IDs are stored in the Apps Script project's private Script Properties. The
-service has no write endpoint and requests read-only Google Sheets permission.
+service has no write endpoint and uses only read methods. It uses Apps Script's
+built-in SpreadsheetApp, so no advanced Google Sheets API service is needed.
+Google requires an owner-side spreadsheet access permission for this built-in
+workbook opener; its consent screen can mention editing. That authorization stays
+with your private script and is never given to visitors. The supplied code only
+reads records and offers no edit operation.
 
 Public visitors can copy the displayed records or read the public service's
 responses directly. A no-login service cannot guarantee that only this website
@@ -36,11 +41,9 @@ does not erase that history; Restricted permissions protect the actual workbook.
 3. Open **Project Settings**, enable **Show appsscript.json manifest file in
    editor**, then replace that file with
    [`apps-script/appsscript.json`](apps-script/appsscript.json).
-4. In the editor, confirm **Services** includes **Google Sheets API v4**. If
-   necessary, use **Services → + → Google Sheets API → Add**. If you attached a
-   standard Google Cloud project, enable the Google Sheets API in that project
-   as well. A default Apps Script Cloud project normally enables it when the
-   advanced service is added.
+4. No service needs to be added under **Services**, and no Google Cloud API
+   activation is needed. If you previously added an advanced Sheets service,
+   the updated manifest removes that dependency.
 5. Open **Project Settings → Script Properties → Add script property**. Add:
 
    | Property | Value |
