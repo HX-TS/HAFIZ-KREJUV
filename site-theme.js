@@ -82,14 +82,21 @@
         sessionStorage.setItem('krejuv-fec-visit-session', visitor);
       }
     } catch { visitor = crypto.randomUUID().replace(/-/g, ''); }
-    try {
-      const count = await PublicData.visitCount(visitor);
-      output.textContent = count.toLocaleString('en-GB');
-      output.closest('.footer-visits').title = 'Approximate visits; repeat page loads in the same tab are grouped for 30 minutes';
-    } catch {
-      output.textContent = '—';
-      output.closest('.footer-visits').title = 'Visit count is temporarily unavailable';
+    // Reuse the same marker so a slow response or retry does not count twice.
+    const delays = [0, 1000, 3000];
+    for (let attempt = 0; attempt < delays.length; attempt += 1) {
+      if (delays[attempt]) await new Promise(resolve => setTimeout(resolve, delays[attempt]));
+      try {
+        const count = await PublicData.visitCount(visitor);
+        output.textContent = count.toLocaleString('en-GB');
+        output.closest('.footer-visits').title = 'Approximate visits; repeat page loads in the same tab are grouped for 30 minutes';
+        return;
+      } catch {
+        output.closest('.footer-visits').title = attempt < delays.length - 1
+          ? 'Retrying visit count…' : 'Visit count is temporarily unavailable';
+      }
     }
+    output.textContent = '—';
   }
   function initialise() {
     updateVisitCounter();
