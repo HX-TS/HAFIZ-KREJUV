@@ -6,6 +6,7 @@ const ids = { MAIN_SHEET_ID:'private-main-id', SWABBING_SHEET_ID:'private-swabbi
 let calls = [];
 let fail = false;
 let empty = false;
+let setupLog = '';
 const date = new Date('2026-08-10T04:00:00Z');
 function sheet(name) {
   return {
@@ -23,6 +24,7 @@ function sheet(name) {
 }
 const output = { text:'', mime:'', setMimeType(type) { this.mime=type; return this; } };
 const context = {
+  Logger:{log:text=>{setupLog=text;}},
   PropertiesService:{getScriptProperties:()=>({getProperties:()=>ids})},
   Utilities:{DigestAlgorithm:{SHA_256:'sha256'}, computeDigest:()=>[1], base64EncodeWebSafe:()=> 'test-signature',
     formatDate(value,timeZone,format) {
@@ -74,4 +76,8 @@ const failed=context.doGet({parameter:{dataset:'main'}});
 assert.equal(JSON.parse(failed.text).ok,false);
 assert.ok(!failed.text.includes('private-main-id'));
 assert.ok(!failed.text.includes('cannot be read'));
+fail=false;
+const setup=context.checkSetup();
+assert.ok(setup.every(item=>item.status==='ready'));
+for(const id of Object.values(ids))assert.ok(!setupLog.includes(id),'Diagnostics omit source IDs');
 console.log('PASS native backend: fixed datasets, read-only endpoint, source-ID redaction, dates, empty sheets, callback validation, and private error handling');

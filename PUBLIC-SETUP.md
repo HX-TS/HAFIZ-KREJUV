@@ -109,6 +109,14 @@ write operation. Backend exceptions are replaced with a generic error message.
 
 ## Maintenance and limits
 
+If a dataset returns `"ok":false`, first check its Script Property name/value,
+the deploying account's permission to read the workbook, and the expected tab
+names or numeric tab ID. For a detailed owner-only check, select `checkSetup`
+from the function dropdown in the Apps Script editor and click **Run**. Read
+the **Execution log**. It lists each dataset's setup status and tab names/IDs;
+it does not print source spreadsheet IDs or record values. This diagnostic
+function is not exposed through the public Web app URL.
+
 After editing inline page JavaScript, regenerate CSP hashes with
 `python3 update_security_policy.py`. The policy permits the Apps Script JSONP
 transport and blocks the former Google sign-in and direct Sheets API hosts.

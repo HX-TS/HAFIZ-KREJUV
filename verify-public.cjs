@@ -78,6 +78,7 @@ function dataFor(dataset){
       await context.close();
     }
     const page=await browser.newPage();
+    await page.route('**/public-config.js',route=>route.fulfill({contentType:'application/javascript',body:'window.PUBLIC_REFERENCE_CONFIG={endpoint:""};'}));
     await page.goto(BASE);
     await page.locator('#public-data-status').waitFor({state:'visible'});
     assert.equal(await page.locator('#security-signin').count(),0);

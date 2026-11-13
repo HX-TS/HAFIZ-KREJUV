@@ -9,6 +9,32 @@ const PUBLIC_DATASETS = Object.freeze({
   summary: { property: 'SUMMARY_SHEET_ID', gid: 0 },
 });
 
+// Run this manually in the Apps Script editor to diagnose owner-side setup.
+// It is not an HTTP endpoint and never prints source IDs or spreadsheet records.
+function checkSetup() {
+  const properties = PropertiesService.getScriptProperties().getProperties();
+  const result = Object.keys(PUBLIC_DATASETS).map(dataset => {
+    const configuration = PUBLIC_DATASETS[dataset];
+    const id = properties[configuration.property];
+    if (!id || !/^[a-zA-Z0-9_-]+$/.test(id)) {
+      return { dataset: dataset, property: configuration.property, status: 'missing_or_invalid_property' };
+    }
+    try {
+      const workbook = SpreadsheetApp.openById(id);
+      const tabs = workbook.getSheets().map(sheet => ({ name: sheet.getName(), gid: sheet.getSheetId() }));
+      if (configuration.tabs) {
+        const missing = configuration.tabs.filter(name => !workbook.getSheetByName(name));
+        return { dataset: dataset, status: missing.length ? 'required_tabs_missing' : 'ready', missingTabs: missing, availableTabs: tabs };
+      }
+      return { dataset: dataset, status: tabs.some(tab => tab.gid === configuration.gid) ? 'ready' : 'tab_id_missing', expectedGid: configuration.gid, availableTabs: tabs };
+    } catch (ignored) {
+      return { dataset: dataset, property: configuration.property, status: 'workbook_unavailable_check_id_and_owner_access' };
+    }
+  });
+  Logger.log(JSON.stringify(result));
+  return result;
+}
+
 function doGet(event) {
   const parameters = event && event.parameter || {};
   const callback = parameters.callback || '';
