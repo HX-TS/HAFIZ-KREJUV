@@ -135,6 +135,7 @@ const googleMock = `window.google = {accounts:{oauth2:{
     }
 
     const page = await browser.newPage();
+    await page.route('**/security-config.js', route => route.fulfill({ contentType: 'application/javascript', body: 'window.PRIVATE_SITE_CONFIG={googleClientId:""};' }));
     const requests = [];
     page.on('request', request => { if (request.url().includes('sheets.googleapis.com')) requests.push(request); });
     await page.goto(BASE);
