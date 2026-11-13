@@ -3,7 +3,7 @@
 
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-X+Fcyp4tGLknQSuge6B+6JpRHX8fmRHfaYY9aVa7YZg='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-X+Fcyp4tGLknQSuge6B+6JpRHX8fmRHfaYY9aVa7YZg='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta charset="UTF-8">
 
 <meta
@@ -1958,6 +1958,8 @@ and
 <script src="public-data.js"></script>
 <link rel="stylesheet" href="site-theme.css">
 <script src="site-theme.js"></script>
+<link rel="stylesheet" href="analytics.css">
+<script src="analytics.js" defer></script>
 </head>
 
 
