@@ -3,9 +3,9 @@
  * are returned to visitors. Uses the built-in SpreadsheetApp service.
  */
 const PUBLIC_DATASETS = Object.freeze({
-  main: { property: 'MAIN_SHEET_ID', tabs: ['DATA', 'EQUIPMENT', 'BOOKMARKS'] },
+  main: { property: 'MAIN_SHEET_ID', tabs: { DATA: 'DATA', EQUIPMENT: 'EQUIPMENT', BOOKMARKS: 'BOOKMARK' } },
   swabbing: { property: 'SWABBING_SHEET_ID', gid: 0 },
-  dew: { property: 'DEW_SHEET_ID', gid: 0 },
+  dew: { property: 'DEW_SHEET_ID', gid: 403978998 }, // Form responses 1
   summary: { property: 'SUMMARY_SHEET_ID', gid: 0 },
 });
 
@@ -23,7 +23,7 @@ function checkSetup() {
       const workbook = SpreadsheetApp.openById(id);
       const tabs = workbook.getSheets().map(sheet => ({ name: sheet.getName(), gid: sheet.getSheetId() }));
       if (configuration.tabs) {
-        const missing = configuration.tabs.filter(name => !workbook.getSheetByName(name));
+        const missing = Object.keys(configuration.tabs).map(key => configuration.tabs[key]).filter(name => !workbook.getSheetByName(name));
         return { dataset: dataset, status: missing.length ? 'required_tabs_missing' : 'ready', missingTabs: missing, availableTabs: tabs };
       }
       return { dataset: dataset, status: tabs.some(tab => tab.gid === configuration.gid) ? 'ready' : 'tab_id_missing', expectedGid: configuration.gid, availableTabs: tabs };
@@ -51,22 +51,23 @@ function doGet(event) {
     const sourceId = properties[configuration.property];
     if (!sourceId || !/^[a-zA-Z0-9_-]+$/.test(sourceId)) throw new Error('Source configuration required.');
     const sourceIds = Object.keys(PUBLIC_DATASETS).map(key => properties[PUBLIC_DATASETS[key].property]).filter(Boolean);
-    const signature = Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify(sourceIds)));
-    const cacheKey = 'public-v2-' + dataset + '-' + signature;
+    const signature = Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify({ sourceIds: sourceIds, configuration: configuration })));
+    const cacheKey = 'public-v3-' + dataset + '-' + signature;
     const cache = CacheService.getScriptCache();
     const cached = cache.get(cacheKey);
     if (cached) return output_(JSON.parse(cached), callback);
 
     const workbook = SpreadsheetApp.openById(sourceId);
     const sheets = configuration.tabs
-      ? configuration.tabs.map(name => workbook.getSheetByName(name))
+      ? Object.keys(configuration.tabs).map(key => workbook.getSheetByName(configuration.tabs[key]))
       : [workbook.getSheets().find(sheet => sheet.getSheetId() === configuration.gid)];
     if (sheets.some(sheet => !sheet)) throw new Error('Configured tab unavailable.');
     const timeZone = workbook.getSpreadsheetTimeZone();
-    const tabs = sheets.map(sheet => sheet.getName());
+    const tabs = configuration.tabs ? Object.keys(configuration.tabs) : sheets.map(sheet => sheet.getName());
     const tables = {};
     const displayRows = {};
-    sheets.forEach(sheet => {
+    sheets.forEach((sheet, sheetIndex) => {
+      const tableName = tabs[sheetIndex];
       const lastRow = sheet.getLastRow();
       const lastColumn = Math.min(sheet.getLastColumn(), 26);
       let rows = [];
@@ -79,11 +80,11 @@ function doGet(event) {
       }
       const headers = rows[0] || [];
       const width = rows.reduce((size, row) => Math.max(size, row.length), headers.length);
-      tables[sheet.getName()] = { table: {
+      tables[tableName] = { table: {
         cols: Array.from({ length: width }, (_, index) => ({ label: headers[index] ? headers[index].f : '' })),
         rows: rows.slice(1).map(row => ({ c: Array.from({ length: width }, (_, index) => row[index] || { v: '', f: '' }) })),
       } };
-      displayRows[sheet.getName()] = rows.map(row => row.map(cell => cell.f));
+      displayRows[tableName] = rows.map(row => row.map(cell => cell.f));
     });
     if (tabs.some(name => !tables[name])) throw new Error('Configured table unavailable.');
     const data = dataset === 'main' ? { tables: tables }

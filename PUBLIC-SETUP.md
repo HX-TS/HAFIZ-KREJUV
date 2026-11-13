@@ -57,10 +57,12 @@ does not erase that history; Restricted permissions protect the actual workbook.
    Save these properties privately in Apps Script, not in GitHub or website JS.
    These IDs are identifiers, not passwords, but keeping them out of the public
    files satisfies the separation between the workbook and website.
-6. The main workbook must have the `DATA`, `EQUIPMENT`, and `BOOKMARKS` tabs used
-   by the existing site. The other workbooks use tab ID `0`, as before. If the
-   tabs have different numeric IDs, update the corresponding `gid` values in
-   `PUBLIC_DATASETS` in the private Apps Script project.
+6. The main workbook uses the `DATA`, `EQUIPMENT`, and `BOOKMARK` tabs. The
+   service maps physical tab `BOOKMARK` to the website's `BOOKMARKS` dataset;
+   there is no need to rename the workbook tab. Dew Point uses **Form responses
+   1**, tab ID `403978998`, as selected by the owner. Swabbing and Summary use
+   their `Sheet1` tabs with ID `0`. These names/IDs are configured privately in
+   `PUBLIC_DATASETS` at the top of `Code.gs`.
 
 ## 3. Deploy the service under your account
 

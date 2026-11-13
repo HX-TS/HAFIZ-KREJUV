@@ -7,12 +7,14 @@ let calls = [];
 let fail = false;
 let empty = false;
 let setupLog = '';
+let tabsRead = [];
 const date = new Date('2026-08-10T04:00:00Z');
-function sheet(name) {
+function sheet(name,gid=0) {
   return {
-    getName:()=>name, getSheetId:()=>0,
+    getName:()=>name, getSheetId:()=>gid,
     getLastRow:()=>empty?0:5, getLastColumn:()=>30,
     getRange(row,column,height,width) {
+      tabsRead.push({name,gid});
       assert.equal(row,1); assert.equal(column,1);
       assert.equal(height,5); assert.equal(width,26,'Only existing A:Z columns returned');
       return {
@@ -36,7 +38,10 @@ const context = {
   SpreadsheetApp:{openById(id){
     calls.push({id});
     if(fail)throw new Error('Private source '+ids.MAIN_SHEET_ID+' cannot be read');
-    return {getSheetByName:sheet, getSheets:()=>[sheet('Records')], getSpreadsheetTimeZone:()=> 'Asia/Kuala_Lumpur'};
+    const definitions = id===ids.MAIN_SHEET_ID ? [['DATA',0],['EQUIPMENT',1427488436],['BOOKMARK',2120430435]]
+      : id===ids.DEW_SHEET_ID ? [['Form responses 1',403978998],['Sheet1',1298516507]] : [['Sheet1',0]];
+    const sheets=definitions.map(([name,gid])=>sheet(name,gid));
+    return {getSheetByName:name=>sheets.find(item=>item.getName()===name)||null, getSheets:()=>sheets, getSpreadsheetTimeZone:()=> 'Asia/Kuala_Lumpur'};
   }},
 };
 vm.createContext(context);
@@ -44,6 +49,7 @@ vm.runInContext(source,context);
 assert.equal(typeof context.doPost,'undefined','No write endpoint');
 for(const dataset of ['main','swabbing','dew','summary']){
   calls=[];
+  tabsRead=[];
   const result=context.doGet({parameter:{dataset,spreadsheetId:'attacker-controlled-id',range:'PRIVATE!A:Z',action:'delete'}});
   assert.equal(result.mime,'json');
   const payload=JSON.parse(result.text);
@@ -53,6 +59,12 @@ for(const dataset of ['main','swabbing','dew','summary']){
   assert.ok(calls.every(call=>Object.values(ids).includes(call.id)),'Only configured sources read');
   assert.equal(calls.length,1,'Only the configured workbook is opened');
   if(dataset!=='summary')assert.ok(result.text.includes('Date(2026,7,10,12,0,0)'),'Native dates preserve spreadsheet local time');
+  if(dataset==='main'){
+    assert.ok(payload.data.tables.BOOKMARKS,'Physical BOOKMARK tab uses the public BOOKMARKS key');
+    assert.equal(payload.data.tables.BOOKMARK,undefined);
+    assert.deepEqual(tabsRead.map(tab=>tab.name),['DATA','EQUIPMENT','BOOKMARK']);
+  }
+  if(dataset==='dew')assert.deepEqual(tabsRead,[{name:'Form responses 1',gid:403978998}],'Owner-selected Dew Point tab is used');
 }
 empty=true;
 const emptyResult=JSON.parse(context.doGet({parameter:{dataset:'swabbing'}}).text);
