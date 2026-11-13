@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/ 'sha256-2BFZLlbAYfhX5yKZ8yuaF4uPeJWOLh1K9SdCU4d0p20='; connect-src https://sheets.googleapis.com https://accounts.google.com/gsi/ https://oauth2.googleapis.com; frame-src https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/; img-src 'self' data: https://i.ibb.co https://*.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#071b1a" />
@@ -894,8 +896,25 @@
       }
     }
   </style>
+<link rel="stylesheet" href="../security.css">
+<script src="../security-config.js"></script>
+<script src="../security.js"></script>
 </head>
 <body>
+<section id="security-gate" aria-labelledby="security-heading">
+  <div class="security-card">
+    <h1 id="security-heading">Private reference data</h1>
+    <p>Sign in with a Google account that has permission to view the source sheets.</p>
+    <p id="security-status" role="status" aria-live="polite">Preparing Google sign-in…</p>
+    <button id="security-signin" class="security-button" type="button" disabled>Continue with Google</button>
+    <noscript><p>Enable JavaScript to sign in. No reference data is loaded while signed out.</p></noscript>
+  </div>
+</section>
+<div id="private-app" hidden>
+  <div class="security-bar">
+    <span>Google Sheets access authorised</span>
+    <button id="security-signout" class="security-button" type="button">Sign out</button>
+  </div>
   <main class="app-shell">
     <header class="topbar">
       <div class="title-wrap">
@@ -1348,36 +1367,9 @@
     }
 
     async function fetchSheetCSV() {
-      const cacheBust = Date.now();
-      const urls = [
-        `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&gid=${encodeURIComponent(CONFIG.SHEET_GID)}&_=${cacheBust}`,
-        `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/export?format=csv&gid=${encodeURIComponent(CONFIG.SHEET_GID)}&_=${cacheBust}`
-      ];
-
-      let lastError = null;
-
-      for (const url of urls) {
-        try {
-          const response = await fetch(url, {
-            method: "GET",
-            cache: "no-store",
-            credentials: "omit",
-            redirect: "follow"
-          });
-
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const text = await response.text();
-          if (!text || text.trim().startsWith("<!DOCTYPE html") || text.trim().startsWith("<html")) {
-            throw new Error("Google returned an HTML sign-in/share page instead of CSV data.");
-          }
-          return text;
-        } catch (error) {
-          lastError = error;
-        }
-      }
-
-      throw lastError || new Error("Unable to connect to Google Sheets.");
+      return SecureSheets.readCSV(CONFIG.SHEET_ID, { gid: CONFIG.SHEET_GID });
     }
+
 
     /* =========================================================
        TIMELINE MODEL
@@ -1718,6 +1710,7 @@
     }
 
     async function loadSheet({ showCover = true } = {}) {
+      if (!SecureSheets.isAuthenticated()) return false;
       if (state.isLoading) return;
       state.isLoading = true;
       setSyncUI("loading");
@@ -1725,6 +1718,7 @@
 
       try {
         const csv = await fetchSheetCSV();
+        if (!SecureSheets.isAuthenticated()) return false;
         const parsed = parseCSV(csv);
         const mapped = mapSheetRows(parsed);
 
@@ -1733,19 +1727,21 @@
         els.errorState.classList.remove("show");
         renderAll();
         setSyncUI("ok");
+        return true;
       } catch (error) {
         console.error(error);
-        setSyncUI("error", "Check Sheet sharing / GID");
+        setSyncUI("error", "Check your connection and Google account access");
 
         if (state.allRows.length === 0) {
           els.ganttHeader.replaceChildren();
           els.ganttRows.replaceChildren();
           els.emptyState.classList.remove("show");
           els.errorCopy.textContent =
-            "The page could not download CSV from the configured Google Sheet. For a public GitHub Pages dashboard, the source sheet must be readable without sign-in (Viewer access is enough). Also confirm that SHEET_GID points to the tab containing the table headers. No Google API key is required.";
+            "The private Google Sheet could not be read. Sign in with an account that has Viewer access, check your connection, and confirm that the configured tab contains the expected headers.";
           els.errorState.classList.add("show");
           els.activityCount.textContent = "0";
         }
+        return false;
       } finally {
         state.isLoading = false;
         els.loadingCover.classList.remove("show");
@@ -1761,8 +1757,21 @@
     window.addEventListener("resize", hideTooltip, { passive: true });
 
     // Initial load + automatic polling. Changes in the Google Sheet appear on the next poll.
-    loadSheet({ showCover: true });
+    SecureSheets.start(async () => {
+      if (!await loadSheet({ showCover: true })) throw new Error("Unable to load private data.");
+    }, () => {
+      state.allRows = [];
+      state.filteredRows = [];
+      state.lastSync = null;
+      els.ganttHeader.replaceChildren();
+      els.ganttRows.replaceChildren();
+      els.tooltip.replaceChildren();
+      hideTooltip();
+      els.searchInput.value = "";
+      els.activityCount.textContent = "0";
+    });
     window.setInterval(() => loadSheet({ showCover: false }), CONFIG.REFRESH_MS);
   </script>
+</div><!-- private-app -->
 </body>
 </html>
