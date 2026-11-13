@@ -3,7 +3,7 @@
 
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-kGmF5kUOfAYapnIHgjn/jJWR0AH2YiotQ7nygNWfwck='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-X+Fcyp4tGLknQSuge6B+6JpRHX8fmRHfaYY9aVa7YZg='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta charset="UTF-8">
 
 <meta
@@ -11,7 +11,7 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#080808">
 
 <title>KREJUV FEC BOOKMARK</title>
 
@@ -1956,118 +1956,47 @@ and
 <link rel="stylesheet" href="public-data.css">
 <script src="public-config.js"></script>
 <script src="public-data.js"></script>
+<link rel="stylesheet" href="site-theme.css">
+<script src="site-theme.js"></script>
 </head>
 
 
-<body>
+<body class="page-overview" data-page="overview">
 <div id="public-data-status" role="status" aria-live="polite" hidden></div>
 <div id="public-app">
+<a class="site-skip" href="#eptw-control">Skip to records</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="./" aria-label="KREJUV FEC home">KREJUV / FEC</a>
+    <button id="site-menu-toggle" class="site-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+    <nav id="site-navigation" class="site-nav" aria-label="Reference navigation">
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="main-site-links">MAIN SITE</button>
+        <div id="main-site-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="historical-event-links">HISTORICAL EVENT</button>
+        <div id="historical-event-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <a class="site-nav__link" href="./SUMMARY/">SUMMARY</a>
+    </nav>
+  </div>
+</header>
 
 
 <div class="page">
 
 
-<section class="hero">
-
-    <div class="hero-inner">
-
-        <h1 class="hero-title">
-
-            <span class="krejuv-title">
-                KREJUV FEC
-            </span>
-
-            <br>
-
-            <span class="bookmark-title">
-                BOOKMARK
-            </span>
-
-        </h1>
-
-        <div class="hero-subtitle">
-            TechSmith
-        </div>
-
-    </div>
-
+<section class="site-hero" aria-labelledby="site-hero-heading">
+  <img class="site-hero__image" src="assets/hero-yard.webp" width="1672" height="941" alt="Aerial pipeline worksite with white pipework and a yellow crane" fetchpriority="high">
+  <div class="site-hero__content">
+    <h1 id="site-hero-heading" class="site-hero__title">KREJUV FEC</h1>
+    <p class="site-hero__subtitle">PROJECT REFERENCE HUB</p>
+    <a class="site-hero__action" href="#eptw-control">VIEW RECORDS</a>
+  </div>
 </section>
 
-
-<div class="section-divider"></div>
-
-
-<div class="top-section-header">
-
-    <div>
-        MAIN SITE
-    </div>
-
-    <div>
-        ACTIVE PTW
-    </div>
-
-</div>
-
-
-<section class="top-columns">
-
-
-<div
-    id="mainSiteColumn"
-    class="top-column main-site-column"
->
-
-    <div class="site-loading">
-        LOADING GOOGLE SHEETS...
-    </div>
-
-</div>
-
-
-<div class="top-column">
-
-    <div class="active-summary-box">
-
-        <div class="active-summary-head">
-
-            <div class="active-summary-title">
-                ACTIVE PTW
-            </div>
-
-            <div
-                id="activePtwCount"
-                class="active-summary-count"
-            >
-                0
-            </div>
-
-        </div>
-
-
-        <div
-            id="activePtwList"
-            class="active-summary-list"
-        >
-
-            <div class="active-summary-empty">
-                CHECKING ACTIVE PTW...
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-</section>
-
-
-<div class="section-divider"></div>
-
-
-<section class="eptw-section">
+<main class="eptw-section" id="eptw-control" tabindex="-1">
 
 
 <div class="eptw-section-head">
@@ -2114,6 +2043,37 @@ and
     </div>
 
 </div>
+
+<div class="active-summary-box">
+
+        <div class="active-summary-head">
+
+            <div class="active-summary-title">
+                ACTIVE PTW
+            </div>
+
+            <div
+                id="activePtwCount"
+                class="active-summary-count"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div
+            id="activePtwList"
+            class="active-summary-list"
+        >
+
+            <div class="active-summary-empty">
+                CHECKING ACTIVE PTW...
+            </div>
+
+        </div>
+
+    </div>
 
 
 <div class="shift-guide">
@@ -2181,7 +2141,8 @@ and
 </div>
 
 
-<div class="eptw-table-container">
+<div class="eptw-table-container" tabindex="0" role="region" aria-label="Permit records, scroll sideways to view every column">
+<span class="site-scroll-hint">Scroll sideways for all permit details ↔</span>
 
 <table class="eptw-table">
 
@@ -2296,7 +2257,7 @@ and
 </div>
 
 
-</section>
+</main>
 
 
 <footer class="footer">
@@ -3838,179 +3799,13 @@ function formatRemaining(
 ========================================================= */
 
 function renderBookmarks() {
-
-    const container =
-        document.getElementById(
-            "mainSiteColumn"
-        );
-
-
-    const rows =
-        CURRENT_BOOKMARKS.map(
-            row => ({
-
-                section:
-                    getFirstField(
-                        row,
-                        [
-                            "SECTION"
-                        ]
-                    ),
-
-                name:
-                    getFirstField(
-                        row,
-                        [
-                            "NAME"
-                        ]
-                    ),
-
-                url:
-                    safeUrl(
-                        getFirstField(
-                            row,
-                            [
-                                "URL"
-                            ]
-                        )
-                    ),
-
-                order:
-                    Number(
-                        getFirstField(
-                            row,
-                            [
-                                "ORDER"
-                            ]
-                        ) ||
-                        9999
-                    )
-
-            })
-        );
-
-
-    const main =
-        rows
-            .filter(
-                row =>
-                    row.section.toUpperCase() ===
-                    "MAIN SITE"
-            )
-            .sort(
-                (
-                    a,
-                    b
-                ) =>
-                    a.order -
-                    b.order
-            );
-
-
-    const major =
-        rows
-            .filter(
-                row =>
-                    row.section.toUpperCase() ===
-                    "MAJOR ACTIVITIES"
-            )
-            .sort(
-                (
-                    a,
-                    b
-                ) =>
-                    a.order -
-                    b.order
-            );
-
-
-    let html =
-        "";
-
-
-    main.forEach(
-        row => {
-
-            html +=
-                row.url
-                ?
-                `
-                <a
-                    class="site-item"
-                    href="${escapeHtml(row.url)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    ${escapeHtml(row.name)}
-                </a>
-                `
-                :
-                `
-                <span class="site-item site-item-static">
-                    ${escapeHtml(row.name)}
-                </span>
-                `;
-
-        }
-    );
-
-
-    if (
-        major.length
-    ) {
-
-        html += `
-
-            <div class="main-site-separator"></div>
-
-            <div class="major-activities-label">
-                MAJOR ACTIVITIES
-            </div>
-
-        `;
-
-
-        major.forEach(
-            row => {
-
-                html +=
-                    row.url
-                    ?
-                    `
-                    <a
-                        class="site-item"
-                        href="${escapeHtml(row.url)}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        ${escapeHtml(row.name)}
-                    </a>
-                    `
-                    :
-                    `
-                    <span class="site-item site-item-static">
-                        ${escapeHtml(row.name)}
-                    </span>
-                    `;
-
-            }
-        );
-
-    }
-
-
-    container.innerHTML =
-        html ||
-        `
-
-        <div class="site-loading">
-            NO BOOKMARK DATA FOUND
-        </div>
-
-        `;
-
+    SiteTheme.setBookmarks(CURRENT_BOOKMARKS.map(row => ({
+        section: getFirstField(row, ["SECTION"]),
+        name: getFirstField(row, ["NAME"]),
+        url: safeUrl(getFirstField(row, ["URL"])),
+        order: Number(getFirstField(row, ["ORDER"]) || 9999)
+    })));
 }
-
 
 /* =========================================================
    EQUIPMENT

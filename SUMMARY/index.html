@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo 'sha256-ZfXRpx07m5bmaO+0NvDXA8QPA6QCxbT29yolFacOkbs='; connect-src 'none'; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#071b1a" />
+  <meta name="theme-color" content="#080808" />
   <title>FEC Activity Timeline</title>
 
   <style>
@@ -899,15 +899,43 @@
 <link rel="stylesheet" href="../public-data.css">
 <script src="../public-config.js"></script>
 <script src="../public-data.js"></script>
+<link rel="stylesheet" href="../site-theme.css">
+<script src="../site-theme.js"></script>
 </head>
-<body>
+<body class="page-summary" data-page="summary">
 <div id="public-data-status" role="status" aria-live="polite" hidden></div>
 <div id="public-app">
-  <main class="app-shell">
+<a class="site-skip" href="#timeline">Skip to records</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="../" aria-label="KREJUV FEC home">KREJUV / FEC</a>
+    <button id="site-menu-toggle" class="site-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+    <nav id="site-navigation" class="site-nav" aria-label="Reference navigation">
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="main-site-links">MAIN SITE</button>
+        <div id="main-site-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false" aria-controls="historical-event-links">HISTORICAL EVENT</button>
+        <div id="historical-event-links" class="site-dropdown__panel" hidden><span class="site-menu-empty">Loading reference links…</span></div>
+      </div>
+      <a class="site-nav__link" href="../SUMMARY/" aria-current="page">SUMMARY</a>
+    </nav>
+  </div>
+</header>
+<section class="site-hero site-hero--compact" aria-labelledby="site-hero-heading">
+  <img class="site-hero__image" src="../assets/hero-yard.webp" width="1672" height="941" alt="Aerial pipeline worksite with white pipework and a yellow crane" fetchpriority="high">
+  <div class="site-hero__content">
+    <h1 id="site-hero-heading" class="site-hero__title">PROJECT SUMMARY</h1>
+    <p class="site-hero__subtitle">KREJUV FEC · ACTIVITY TIMELINE</p>
+    <a class="site-hero__action" href="#timeline">VIEW RECORDS</a>
+  </div>
+</section>
+  <main class="app-shell" id="timeline" tabindex="-1">
     <header class="topbar">
       <div class="title-wrap">
         <div class="eyebrow"><span class="eyebrow-dot"></span>KREJUV · FEC</div>
-        <h1>Activity Timeline</h1>
+        <h2>Activity Timeline</h2>
       </div>
 
       <div class="live-panel" aria-live="polite">

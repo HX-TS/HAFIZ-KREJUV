@@ -44,7 +44,7 @@ function dataFor(dataset){
       });
       await page.goto(BASE+path);
       try {
-        await page.waitForFunction(()=>document.getElementById('public-app').innerText.includes('PUBLIC RECORD'),null,{timeout:10000});
+        await page.waitForFunction(()=>document.getElementById('public-app').textContent.includes('PUBLIC RECORD'),null,{timeout:10000});
       } catch(error) {
         console.error({path,errors,violations,serviceCalls:serviceCalls.map(url=>url.href),status:await page.locator('#public-data-status').textContent()});
         throw error;
@@ -57,7 +57,8 @@ function dataFor(dataset){
       assert.deepEqual(violations,[]);
       assert.deepEqual(unexpected,[]);
       assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
-      assert.equal(serviceCalls.length,path==='/SWABBING/'?2:1,'Concurrent requests coalesced by dataset');
+      const expectedRequests=path==='/SWABBING/'?3:path==='/SUMMARY/'?2:1;
+      assert.equal(serviceCalls.length,expectedRequests,'Concurrent requests coalesced by dataset, including shared navigation');
       assert.ok(serviceCalls.every(url=>Array.from(url.searchParams.keys()).sort().join(',')==='callback,dataset'));
       // Check the Google ContentService response host separately: Playwright
       // routes only the first URL of a browser redirect chain.
@@ -73,7 +74,7 @@ function dataFor(dataset){
       failure=true;
       await page.reload();
       await page.locator('#public-data-status').waitFor({state:'visible'});
-      assert.ok(!(await page.locator('#public-app').innerText()).includes('PUBLIC RECORD'));
+      assert.ok(!(await page.locator('#public-app').textContent()).includes('PUBLIC RECORD'));
       console.log(`PASS ${path}: anonymous records, JSONP/CSP hosts, read-only links, empty/error state, no Google login or direct workbook requests`);
       await context.close();
     }
