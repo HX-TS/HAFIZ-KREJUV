@@ -3,7 +3,7 @@
 
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-X+Fcyp4tGLknQSuge6B+6JpRHX8fmRHfaYY9aVa7YZg='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-M7AUjPLgRQUmpfDkRRTZy83w7zBz9p2bHsZUChq5Ey0='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta charset="UTF-8">
 
 <meta
@@ -2087,7 +2087,7 @@ and
         </span>
 
         <span class="shift-guide-value">
-            07:00 - 18:59
+            08:00 - 19:59
         </span>
 
     </div>
@@ -2100,7 +2100,7 @@ and
         </span>
 
         <span class="shift-guide-value">
-            19:00 - 06:59
+            20:00 - 07:59
         </span>
 
     </div>
@@ -3445,8 +3445,8 @@ function getShift(
 
 
     if (
-        p.hour >= 7 &&
-        p.hour < 19
+        p.hour >= 8 &&
+        p.hour < 20
     ) {
 
         type =
@@ -3458,7 +3458,7 @@ function getShift(
                 p.year,
                 p.month,
                 p.day,
-                7,
+                8,
                 0
             );
 
@@ -3468,14 +3468,14 @@ function getShift(
                 p.year,
                 p.month,
                 p.day,
-                18,
+                19,
                 59
             );
 
     }
 
     else if (
-        p.hour >= 19
+        p.hour >= 20
     ) {
 
         type =
@@ -3497,7 +3497,7 @@ function getShift(
                 p.year,
                 p.month,
                 p.day,
-                19,
+                20,
                 0
             );
 
@@ -3507,7 +3507,7 @@ function getShift(
                 tomorrow.getUTCFullYear(),
                 tomorrow.getUTCMonth() + 1,
                 tomorrow.getUTCDate(),
-                6,
+                7,
                 59
             );
 
@@ -3534,7 +3534,7 @@ function getShift(
                 yesterday.getUTCFullYear(),
                 yesterday.getUTCMonth() + 1,
                 yesterday.getUTCDate(),
-                19,
+                20,
                 0
             );
 
@@ -3544,7 +3544,7 @@ function getShift(
                 p.year,
                 p.month,
                 p.day,
-                6,
+                7,
                 59
             );
 
@@ -3657,7 +3657,7 @@ function formatShiftLabel(
             formatDateOnly(
                 shift.start
             ) +
-            " · 07:00 - 18:59"
+            " · 08:00 - 19:59"
         );
 
     }
@@ -3668,11 +3668,11 @@ function formatShiftLabel(
         formatDateOnly(
             shift.start
         ) +
-        " 19:00 - " +
+        " 20:00 - " +
         formatDateOnly(
             shift.end
         ) +
-        " 06:59"
+        " 07:59"
     );
 
 }
@@ -5189,9 +5189,9 @@ function updateClock() {
     ).textContent =
         shift.type === "DAY SHIFT"
         ?
-        "CURRENT SHIFT: DAY · 07:00 - 18:59"
+        "CURRENT SHIFT: DAY · 08:00 - 19:59"
         :
-        "CURRENT SHIFT: NIGHT · 19:00 - 06:59";
+        "CURRENT SHIFT: NIGHT · 20:00 - 07:59";
 
 }
 
