@@ -125,4 +125,11 @@ document.getElementById('refresh').onclick=sync;
 setInterval(()=>{if(!document.hidden)sync();},60000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync();});
 renderTables();sync();
-</script></body></html>
+</script><!-- Start through Widget API after setting volume to avoid a full-volume autoplay burst. -->
+<iframe id="background-music" title="Background music: Nadai Agi - The Crew" aria-hidden="true" tabindex="-1" width="1" height="1" scrolling="no" frameborder="0" allow="autoplay; encrypted-media" style="position:fixed;left:-10000px;top:0;width:1px;height:1px;border:0;pointer-events:none" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A117521688&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+<script src="https://w.soundcloud.com/player/api.js"></script><script>(()=>{const frame=document.getElementById('background-music');if(!window.SC)return;const player=SC.Widget(frame);let ready=false,started=false;
+function start(){if(!ready||started)return;player.setVolume(10);player.play();}
+player.bind(SC.Widget.Events.READY,()=>{ready=true;player.setVolume(10);player.getVolume(()=>start());});
+player.bind(SC.Widget.Events.PLAY,()=>{started=true;player.setVolume(10);document.removeEventListener('pointerdown',start);document.removeEventListener('keydown',start);});
+document.addEventListener('pointerdown',start,{passive:true});document.addEventListener('keydown',start);
+})();</script></body></html>
