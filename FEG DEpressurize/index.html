@@ -1,12 +1,38 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FEG depressurization update</title><meta name="description" content="KREJUV FEC pressure logs and recorded depressurization trends at GPP4 and GPS, 17 November 2026."><link rel="stylesheet" href="../site-theme.css"><style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;font:14px/1.55 Arial,sans-serif;background:#080808;color:#f5f3ee}a{color:inherit}html{scroll-behavior:smooth;scroll-padding-top:100px}header{position:sticky;top:0;z-index:10;background:#080808;border-bottom:1px solid #303030}nav{max-width:1480px;min-height:80px;margin:auto;padding:0 40px;display:flex;align-items:center;gap:36px}nav a{text-decoration:none;font:700 21px/1 var(--heading);text-transform:uppercase;min-height:80px;display:flex;align-items:center}nav a:hover{box-shadow:inset 0 -4px #e3262e}nav .brand{font-size:36px;margin-right:auto;white-space:nowrap}main{max-width:1480px;margin:auto;padding:26px 40px}h2{font:700 36px/1 var(--heading);text-transform:uppercase;margin:5px 0 12px}h3{font:700 25px var(--heading);text-transform:uppercase}p{color:#b8b5b0;margin:5px 0}.eyebrow{font:700 10px Arial;letter-spacing:.17em;color:#b8b5b0}.red{color:#f34850}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}.card{background:#171717;border:1px solid #3a3a3a;border-top:3px solid var(--accent);padding:22px}.card h2{font-size:24px;margin-top:12px}.value{font:700 52px/1.2 var(--heading);margin:10px 0}.value small{font:14px Arial;color:#b8b5b0}.panel{background:#171717;border:1px solid #3a3a3a;padding:24px;margin-bottom:26px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}button,select{font:700 17px var(--heading);letter-spacing:.05em;text-transform:uppercase;color:#f5f3ee;background:#232323;border:1px solid #626262;border-radius:0;padding:11px 18px;cursor:pointer}button:hover{background:#343434}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid white;outline-offset:4px}.controls{display:flex;flex-wrap:wrap;gap:22px;margin:20px 0}.controls label{cursor:pointer}input{accent-color:#e3262e;margin-right:7px}.chart-scroll,.table-scroll{overflow:auto;scrollbar-color:#666 #171717}svg{display:block;width:100%;min-width:680px}svg text{fill:#b8b5b0;font:12px Arial}svg circle:focus{stroke:white;stroke-width:3}.note{font-size:12px;margin-top:12px}table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{padding:15px 14px;text-align:right;border-bottom:1px solid #3a3a3a}thead th{background:#343434;font:700 19px/1.15 var(--heading);text-transform:uppercase;min-width:110px;max-width:240px}th:first-child{text-align:left}tbody th{font-weight:400;color:#b8b5b0}tbody tr:hover{background:#232323}.events{display:grid;grid-template-columns:1fr 1fr;gap:20px}.events ul{padding-left:18px;color:#b8b5b0}.events li{padding:5px 0}.events b{color:#f5f3ee;margin-right:10px}footer{border-top:1px solid #3a3a3a;padding:24px 0;color:#b8b5b0;font-size:12px}.credit{font-size:11px;font-weight:700;letter-spacing:.14em;text-align:center;margin-top:20px}.site-hero__title{max-width:28ch}.site-hero__content{padding-bottom:80px}.site-hero__subtitle{color:#fff}
 @media(max-width:700px){nav{padding:10px 20px;gap:20px;flex-wrap:wrap}nav .brand{width:100%;font-size:30px}nav a{min-height:32px;font-size:18px}main{padding:24px 20px}.cards,.events{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.panel{padding:18px}.site-hero__content{padding:50px 20px 72px}.site-hero__title{font-size:44px}.site-hero{min-height:310px}}
-@media print{header,.site-hero,button,.controls{display:none}body,main,.card,.panel{background:white;color:black}main{padding:0}.cards{grid-template-columns:repeat(3,1fr)}.panel{break-inside:avoid}th,td,p{color:black!important}thead th{background:#eee}svg text{fill:#444}.table-scroll{overflow:visible}}</style></head><body><header><nav aria-label="Main navigation"><a class="brand" href="../">KREJUV / FEC</a><a href="#trend">Pressure graph</a><a href="#gpp">GPP4 log</a><a href="#gps">GPS log</a></nav></header><section class="site-hero" aria-labelledby="site-hero-heading"><img class="site-hero__image" src="../assets/hero-yard.webp" width="1672" height="941" alt="Aerial pipeline worksite with white pipework and a yellow crane" fetchpriority="high"><div class="site-hero__content"><h1 id="site-hero-heading" class="site-hero__title">FEG depressurization update</h1><p class="site-hero__subtitle">17 November 2026 · Day shift · GPP4 → GPS</p><a class="site-hero__action" href="#trend">VIEW PRESSURE TRENDS</a></div></section><main><div class="section-head"><p id="syncStatus" role="status" aria-live="polite">Loading Google Sheets…</p><div><button id="refresh">Refresh</button></div></div><div class="cards"><article class="card" style="--accent:#ff6969"><span class="eyebrow">GPP4 / LAUNCHER</span><h2>Digital pressure gauge</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article><article class="card" style="--accent:#55c6ff"><span class="eyebrow">GPS / RECEIVER</span><h2>Pressure gauge</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article><article class="card" style="--accent:#f5c661"><span class="eyebrow">GPS / UPV</span><h2>UPV pressure</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article></div>
+
+#print-dashboard{display:none}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+ html,body{margin:0!important;padding:0!important;min-height:0!important;background:white!important;color:#18202a!important;color-scheme:light;overflow:visible!important}
+ body>*{display:none!important}
+ body>#print-dashboard{display:block!important;width:100%;font:9pt/1.3 Arial,sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ #print-dashboard h1{font:700 24pt/1.1 Arial;margin:0 0 2mm}
+ #print-dashboard h2{font:700 11pt Arial;margin:0 0 2mm}
+ #print-dashboard p{margin:0;color:#435161!important}
+ .print-title{border-top:2mm solid #ac2531;border-bottom:.3mm solid #cbd2db;padding:4mm 0}
+ .print-kpis,.print-logs{display:grid;gap:3mm;margin:4mm 0}
+ .print-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .print-logs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .print-card,.print-panel{border:.25mm solid #cbd2db;padding:3mm;break-inside:avoid}
+ .print-card{background:#f2f5f8}.print-card strong{display:block;font-size:21pt;margin:1mm 0}
+ #print-dashboard svg{min-width:0;width:100%;height:63mm;display:block}
+ #print-dashboard svg text{font-size:20px;fill:#344252}
+ .print-legend{display:flex;gap:5mm;font-size:8pt}
+ #print-dashboard table{width:100%;border-collapse:collapse;font-size:8pt;table-layout:fixed}
+ #print-dashboard th,#print-dashboard td{padding:1.4mm 1mm;border-bottom:.2mm solid #e0e5eb;text-align:right;min-width:0}
+ #print-dashboard th{background:#eef2f6;color:#18202a;font:700 7.5pt Arial}
+ #print-dashboard th:first-child,#print-dashboard td:first-child{text-align:left}
+ #print-dashboard .print-activity th:last-child,#print-dashboard .print-activity td:last-child{text-align:left}
+ #print-dashboard .print-activity td span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+ .print-activity th:first-child{width:19mm}
+}</style></head><body><header><nav aria-label="Main navigation"><a class="brand" href="../">KREJUV / FEC</a><a href="#trend">Pressure graph</a><a href="#gpp">GPP4 log</a><a href="#gps">GPS log</a></nav></header><section class="site-hero" aria-labelledby="site-hero-heading"><img class="site-hero__image" src="../assets/hero-yard.webp" width="1672" height="941" alt="Aerial pipeline worksite with white pipework and a yellow crane" fetchpriority="high"><div class="site-hero__content"><h1 id="site-hero-heading" class="site-hero__title">FEG depressurization update</h1><p class="site-hero__subtitle">17 November 2026 · Day shift · GPP4 → GPS</p><a class="site-hero__action" href="#trend">VIEW PRESSURE TRENDS</a></div></section><main><div class="section-head"><p id="syncStatus" role="status" aria-live="polite">Loading Google Sheets…</p><div><button id="refresh">Refresh</button></div></div><div class="cards"><article class="card" style="--accent:#ff6969"><span class="eyebrow">GPP4 / LAUNCHER</span><h2>Digital pressure gauge</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article><article class="card" style="--accent:#55c6ff"><span class="eyebrow">GPS / RECEIVER</span><h2>Pressure gauge</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article><article class="card" style="--accent:#f5c661"><span class="eyebrow">GPS / UPV</span><h2>UPV pressure</h2><div class="value">— <small>bar</small></div><p>Loading sheet data…</p></article></div>
 <section class="panel" id="trend"><div class="section-head"><div><span class="eyebrow">RECORDED TREND</span><h2>Pressure comparison</h2><p>GPP4 digital gauge · GPS receiver gauge · GPS UPV</p></div><label>Time range <select id="range" class="chart-control"><option value="all">All readings</option><option value="overlap">Common time range</option></select></label></div><div class="controls"><label style="color:#ff6969"><input class="chart-control" id="s0" type="checkbox" checked>GPP4 digital gauge</label><label style="color:#55c6ff"><input class="chart-control" id="s1" type="checkbox" checked>GPS receiver gauge</label><label style="color:#f5c661"><input class="chart-control" id="s2" type="checkbox" checked>GPS UPV</label></div><div class="chart-scroll"><svg id="chart" viewBox="0 0 1100 420" role="img" aria-label="Pressure comparison chart"></svg></div><p class="note">All series use the same pressure scale (bar). Hover over or focus on a point for its reading. Lines connect recorded samples; they do not represent continuous measurements. No readings are extrapolated.</p></section>
 <section class="panel" id="gpp"><div class="section-head"><div><span class="eyebrow">PRESSURE LOG</span><h2>Log at GPP4</h2><p>Loading sheet data…</p></div><button disabled data-download="gpp">Download CSV ↓</button></div><div class="table-scroll"><table id="gppTable"></table></div></section>
 <section class="panel" id="gps"><div class="section-head"><div><span class="eyebrow">PRESSURE LOG</span><h2>Log at GPS</h2><p>Loading sheet data…</p></div><button disabled data-download="gps">Download CSV ↓</button></div><div class="table-scroll"><table id="gpsTable"></table></div></section>
 <section class="panel" id="activity"><span class="eyebrow">FIELD REMARKS</span><h2>Activity log</h2><p id="activityStatus" role="status">Loading activity log…</p><div class="table-scroll"><table><thead><tr><th scope="col">Time (hrs)</th><th scope="col" style="text-align:left">Activity</th></tr></thead><tbody id="activityRows"></tbody></table></div></section>
-<footer><p><button id="print">Print / Save PDF</button></p><p class="credit">FLY TECHSMITH · KREJUV / FEC</p></footer></main><script>
+<footer><p><button id="print">Print / Save PDF</button></p><p class="credit">FLY TECHSMITH · KREJUV / FEC</p></footer></main><section id="print-dashboard" aria-label="Printable pressure dashboard"></section><script>
 let gpp=[],gps=[];
 const headers={gpp:['Time (hrs)','New PL (-1)','New PL (-2)','Existing Launcher Pressure Gauge Digital','Existing Launcher Pressure Recorder'],gps:['Time (hrs)','UPV','Existing Receiver Pressure Gauge','Existing Receiver Pressure Recorder']};
 let data={gpp,gps};
@@ -22,27 +48,54 @@ function download(key){
 document.querySelectorAll('[data-download]').forEach(b=>b.onclick=()=>download(b.dataset.download));
 function getSeries(){return [{name:'GPP4 digital gauge',color:'#ff6969',data:gpp.map(r=>[r[0],r[3]])},{name:'GPS receiver gauge',color:'#55c6ff',data:gps.map(r=>[r[0],r[2]])},{name:'GPS UPV',color:'#f5c661',data:gps.map(r=>[r[0],r[1]])}];}
 const minutes=t=>Number(t.slice(0,2))*60+Number(t.slice(2));
-function draw(){
- const series=getSeries();const times=[...gpp,...gps].map(r=>minutes(r[0]));if(!times.length){document.getElementById('chart').innerHTML='<text x="65" y="60">Waiting for Google Sheets data…</text>';return;}
+function draw(printTarget){
+ const printing=Boolean(printTarget);const target=printTarget||document.getElementById("chart");
+ const series=getSeries();if(printing)series.forEach((line,i)=>line.color=['#ad2339','#006a9a','#815b00'][i]);const times=[...gpp,...gps].map(r=>minutes(r[0]));if(!times.length){target.innerHTML='<text x="65" y="60">Waiting for Google Sheets data…</text>';return;}
  const first=Math.min(...times),last=Math.max(...times);
- const start=document.getElementById('range').value==='overlap'&&gpp.length&&gps.length?Math.max(minutes(gpp[0][0]),minutes(gps[0][0])):first,end=Math.max(start+30,last);
+ const start=!printing&&document.getElementById('range').value==='overlap'&&gpp.length&&gps.length?Math.max(minutes(gpp[0][0]),minutes(gps[0][0])):first,end=Math.max(start+30,last);
  const maxPressure=Math.max(80,...series.flatMap(s=>s.data.map(r=>r[1]??0)));const ceiling=Math.ceil(maxPressure/10)*10;
  const x=t=>65+(minutes(t)-start)/(end-start)*970,y=v=>335-v/ceiling*290;
  let s='<title>Recorded pressure trends on 17 November 2026</title><desc>Pressure in bar against Malaysia time. Three selectable series. Exact readings are in the logs below.</desc>';
- for(let p=0;p<=ceiling;p+=10)s+='<line x1="65" x2="1035" y1="'+y(p)+'" y2="'+y(p)+'" stroke="#30343c"/><text x="49" y="'+(y(p)+4)+'" text-anchor="end">'+p+'</text>';
+ for(let p=0;p<=ceiling;p+=10)s+='<line x1="65" x2="1035" y1="'+y(p)+'" y2="'+y(p)+'" stroke="'+(printing?'#dce2e9':'#30343c')+'"/><text x="49" y="'+(y(p)+4)+'" text-anchor="end">'+p+'</text>';
  for(let t=start;t<=end;t+=30){let label=String(Math.floor(t/60)).padStart(2,'0')+String(t%60).padStart(2,'0');if((t-start)%60===0||t===end)s+='<text x="'+x(label)+'" y="365" text-anchor="middle">'+fmt(label)+'</text>';}
  s+='<text x="65" y="22">Pressure (bar)</text><text x="550" y="397" text-anchor="middle">Time (MYT / UTC+8)</text>';
  series.forEach((line,i)=>{
- if(!document.getElementById('s'+i).checked)return;
+ if(!printing&&!document.getElementById('s'+i).checked)return;
  const pts=line.data.filter(r=>minutes(r[0])>=start);
  const segments=[];let segment=[];for(const r of pts){if(r[1]===null){if(segment.length)segments.push(segment);segment=[];}else segment.push(r);}if(segment.length)segments.push(segment);
  segments.forEach(points=>{s+='<polyline fill="none" stroke="'+line.color+'" stroke-width="3" points="'+points.map(r=>x(r[0])+','+y(r[1])).join(' ')+'"/>';});
  pts.filter(r=>r[1]!==null).forEach(r=>{const label=line.name+' · '+fmt(r[0])+' · '+r[1].toFixed(2)+' bar';s+='<circle tabindex="0" aria-label="'+label+'" cx="'+x(r[0])+'" cy="'+y(r[1])+'" r="4" fill="'+line.color+'"><title>'+label+'</title></circle>';});
  });
- document.getElementById('chart').innerHTML=s;
+ target.innerHTML=s;
 }
-document.querySelectorAll('.chart-control').forEach(el=>el.addEventListener('change',draw));draw();
-document.getElementById('print').onclick=()=>window.print();
+document.querySelectorAll('.chart-control').forEach(el=>el.addEventListener('change',()=>draw()));draw();
+
+function buildPrintDashboard(){
+ const root=document.getElementById('print-dashboard');
+ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+ const cards=[['GPP4 launcher digital gauge',gpp,3],['GPS receiver gauge',gps,2],['GPS UPV',gps,1]];
+ const summary=cards.map(([name,rows,column])=>{
+  const row=rows.findLast(r=>r[column]!==null);
+  return '<div class="print-card">'+escape(name)+'<strong>'+(row?row[column].toFixed(2)+' bar':'—')+'</strong><p>'+(row?'Recorded '+fmt(row[0])+' MYT':'No reading recorded')+'</p></div>';
+ }).join('');
+ function table(labels,rows){
+  return '<table><thead><tr>'+labels.map(label=>'<th scope="col">'+escape(label)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(value=>'<td><span>'+escape(value)+'</span></td>').join('')+'</tr>').join('')+'</tbody></table>';
+ }
+ function log(title,labels,rows){
+  return '<section class="print-panel"><h2>'+title+'</h2>'+table(labels,rows.slice(-5).map(row=>[fmt(row[0]),...row.slice(1).map(value=>value===null?'—':value.toFixed(2))]))+'</section>';
+ }
+ const activities=[...document.querySelectorAll('#activityRows tr')].slice(-5).map(row=>[...row.cells].map(cell=>cell.textContent));
+ const sourceStatus=document.getElementById('syncStatus').textContent;
+ root.innerHTML='<div class="print-title"><h1>FEG Depressurization Update</h1><p>KREJUV / FEC · '+escape(document.querySelector('.site-hero__subtitle').textContent)+'</p><p>'+escape(sourceStatus.replace(' · Auto-refresh every 60 seconds',''))+'</p></div>'
+ +'<div class="print-kpis">'+summary+'</div>'
+ +'<section class="print-panel"><h2>Pressure trend</h2><div class="print-legend"><span style="color:#ad2339">● GPP4 digital gauge</span><span style="color:#006a9a">● GPS receiver gauge</span><span style="color:#815b00">● GPS UPV</span></div><svg viewBox="0 0 1100 420" role="img" aria-label="Pressure trend"></svg></section>'
+ +'<div class="print-logs">'+log('GPP4 · Latest 5 readings',['MYT','New PL (-1)','New PL (-2)','Digital','Recorder'],gpp)+log('GPS · Latest 5 readings',['MYT','UPV','Gauge','Recorder'],gps)+'</div>'
+ +'<section class="print-panel print-activity"><h2>Latest activity entries</h2>'+table(['MYT','Activity'],activities)+'<p>Up to five entries shown. Full logs and CSV downloads are available on the dashboard.</p></section>';
+ draw(root.querySelector('svg'));
+}
+window.addEventListener('beforeprint',buildPrintDashboard);
+document.getElementById('print').onclick=()=>{buildPrintDashboard();window.print();};
+
 
 const SHEET_ID='1Q4faRIxFYEfqnoIILWgWrquX1sUzWu1r51BVE4mSBcM';
 function parseTime(cell){
