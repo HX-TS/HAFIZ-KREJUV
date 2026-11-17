@@ -5,7 +5,7 @@
 <section class="panel" id="trend"><div class="section-head"><div><span class="eyebrow">RECORDED TREND</span><h2>Pressure comparison</h2><p>GPP4 digital gauge · GPS receiver gauge · GPS UPV</p></div><label>Time range <select id="range" class="chart-control"><option value="all">All readings</option><option value="overlap">Common time range</option></select></label></div><div class="controls"><label style="color:#ff6969"><input class="chart-control" id="s0" type="checkbox" checked>GPP4 digital gauge</label><label style="color:#55c6ff"><input class="chart-control" id="s1" type="checkbox" checked>GPS receiver gauge</label><label style="color:#f5c661"><input class="chart-control" id="s2" type="checkbox" checked>GPS UPV</label></div><div class="chart-scroll"><svg id="chart" viewBox="0 0 1100 420" role="img" aria-label="Pressure comparison chart"></svg></div><p class="note">All series use the same pressure scale (bar). Hover over or focus on a point for its reading. Lines connect recorded samples; they do not represent continuous measurements. No readings are extrapolated.</p></section>
 <section class="panel" id="gpp"><div class="section-head"><div><span class="eyebrow">PRESSURE LOG</span><h2>Log at GPP4</h2><p>Loading sheet data…</p></div><button disabled data-download="gpp">Download CSV ↓</button></div><div class="table-scroll"><table id="gppTable"></table></div></section>
 <section class="panel" id="gps"><div class="section-head"><div><span class="eyebrow">PRESSURE LOG</span><h2>Log at GPS</h2><p>Loading sheet data…</p></div><button disabled data-download="gps">Download CSV ↓</button></div><div class="table-scroll"><table id="gpsTable"></table></div></section>
-<section class="panel"><span class="eyebrow">FIELD REMARKS</span><h2>Activity log</h2><div class="events"><div><h3>GPP4</h3><ul><li><b>0606</b>Close kicker valve</li><li><b>0608</b>Close FEG-V1</li><li><b>0610</b>Close FEG-V2</li></ul></div><div><h3>GPS</h3><ul><li><b>1042</b>Start blowdown to UPV</li><li><b>1115</b>Pig arrival at barrel</li></ul></div></div></section>
+<section class="panel" id="activity"><span class="eyebrow">FIELD REMARKS</span><h2>Activity log</h2><p id="activityStatus" role="status">Loading activity log…</p><div class="table-scroll"><table><thead><tr><th scope="col">Time (hrs)</th><th scope="col" style="text-align:left">Activity</th></tr></thead><tbody id="activityRows"></tbody></table></div></section>
 <footer><p><button id="print">Print / Save PDF</button></p><p class="credit">FLY TECHSMITH · KREJUV / FEC</p></footer></main><script>
 let gpp=[],gps=[];
 const headers={gpp:['Time (hrs)','New PL (-1)','New PL (-2)','Existing Launcher Pressure Gauge Digital','Existing Launcher Pressure Recorder'],gps:['Time (hrs)','UPV','Existing Receiver Pressure Gauge','Existing Receiver Pressure Recorder']};
@@ -71,13 +71,39 @@ function parseRows(table,key){
 }
 async function readSheet(key,gid){
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);
- try{const url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?gid='+gid+'&headers=1&tqx=out:json&_='+Date.now();
+ try{const url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?gid='+gid+(key==='activity'?'&headers=0&range=B%3AC':'&headers=1')+'&tqx=out:json&_='+Date.now();
  const response=await fetch(url,{signal:controller.signal,credentials:'omit',cache:'no-store'});if(!response.ok)throw new Error('Google Sheets returned '+response.status);
  const text=await response.text();const match=text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?\s*$/);
  if(!match)throw new Error('Sheet is unavailable for public reading');const result=JSON.parse(match[1]);
- if(result.status==='error'||!result.table)throw new Error('Unable to read sheet');return parseRows(result.table,key);
+ if(result.status==='error'||!result.table)throw new Error('Unable to read sheet');return key==='activity'?parseActivities(result.table):parseRows(result.table,key);
  }finally{clearTimeout(timer);}
 }
+
+function parseActivities(table){
+ const rows=[];
+ for(const row of table.rows){
+ const cells=row.c||[];const description=String(cells[1]?.v??'').trim();
+ if(!description&&!cells[0]?.v)continue;
+ const time=parseTime(cells[0]);
+ if(!time&&/^(time|time \(hrs\))$/i.test(String(cells[0]?.v??'').trim()))continue;
+ if(!time||!description)throw new Error('Each activity needs a valid time in column B and a description in column C');
+ rows.push([time,description]);
+ }
+ return rows;
+}
+let activityBusy=false,activityLastSync='';
+async function syncActivities(){
+ if(activityBusy)return;activityBusy=true;const status=document.getElementById('activityStatus');
+ status.textContent='Refreshing activity log…';
+ try{
+ const rows=await readSheet('activity','1412362558');const body=document.getElementById('activityRows');const fragment=document.createDocumentFragment();
+ for(const [time,description] of rows){const tr=document.createElement('tr');const th=document.createElement('th');th.scope='row';th.textContent=fmt(time);const td=document.createElement('td');td.style.textAlign='left';td.style.whiteSpace='pre-wrap';td.textContent=description;tr.append(th,td);fragment.append(tr);}
+ body.replaceChildren(fragment);activityLastSync=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kuala_Lumpur'});
+ status.textContent=rows.length?rows.length+' activities · Synced '+activityLastSync+' MYT':'No activities recorded';
+ }catch(error){status.textContent='Activity update failed: '+error.message+(activityLastSync?' · Showing last successful data from '+activityLastSync+' MYT':'')+'. Retrying automatically.';}
+ finally{activityBusy=false;}
+}
+
 let syncing=false,lastSync='';
 function updateCard(index,rows,column){
  const card=document.querySelectorAll('.card')[index];const latest=[...rows].reverse().find(r=>r[column]!==null);
@@ -85,7 +111,7 @@ function updateCard(index,rows,column){
  card.querySelector('p').textContent=latest?'Latest recorded · '+latest[0]+' hrs':'No reading recorded';
 }
 async function sync(){
- if(syncing)return;syncing=true;document.getElementById('refresh').disabled=true;
+ if(syncing)return;syncing=true;syncActivities();document.getElementById('refresh').disabled=true;
  const status=document.getElementById('syncStatus');status.textContent='Refreshing Google Sheets…';
  try{const result=await Promise.all([readSheet('gpp','1332319862'),readSheet('gps','0')]);
  [gpp,gps]=result;data={gpp,gps};renderTables();draw();updateCard(0,gpp,3);updateCard(1,gps,2);updateCard(2,gps,1);
