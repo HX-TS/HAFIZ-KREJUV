@@ -17,6 +17,17 @@
       if (!container) continue;
       const rows = currentBookmarks.filter(row => group.sections.includes(normalize(row.section)))
         .sort((a, b) => (Number(a.order) || 9999) - (Number(b.order) || 9999));
+      // Keep the project event available alongside the sheet-managed bookmarks.
+      if (group.id === 'historical-event-links') {
+        const event = {
+          name: 'FEG DEPRESSURIZE',
+          url: 'https://hx-ts.github.io/HAFIZ-KREJUV/FEG%20DEpressurize/',
+        };
+        const existing = rows.findIndex(row =>
+          normalize(row.name) === event.name || safeLink(row.url).split('#')[0] === event.url);
+        if (existing < 0) rows.push(event);
+        else rows[existing] = { ...rows[existing], ...event };
+      }
       container.replaceChildren();
       for (const row of rows) {
         const href = safeLink(row.url);
@@ -100,6 +111,7 @@
   }
   function initialise() {
     updateVisitCounter();
+    renderLinks();
     const header = document.querySelector('.site-header');
     const mobileButton = document.getElementById('site-menu-toggle');
     mobileButton.addEventListener('click', () => {
