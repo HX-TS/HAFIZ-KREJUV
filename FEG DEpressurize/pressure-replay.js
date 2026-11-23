@@ -3,22 +3,26 @@
   'use strict';
   const DURATION = 5200;
   const states = new Map();
-  const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const replayButton = document.getElementById('pressure-replay');
   const soundButton = document.getElementById('pressure-sound');
   let frame = 0;
-  let soundEnabled = false;
+  let soundEnabled = true;
+  let audioAttempted = false;
+  let audioUnavailable = false;
+  let lastEntry = -Infinity;
   let audio;
   let master;
   let clickNoise;
   let lastClick = -Infinity;
 
   function updateControls() {
-    replayButton.disabled = motion.matches || ![...states.values()].some(state => state.history.length > 1);
-    replayButton.title = motion.matches ? 'Animation is disabled by your reduced-motion setting' : 'Replay the recorded pressure history';
-    soundButton.setAttribute('aria-pressed', String(soundEnabled));
-    soundButton.textContent = soundEnabled ? 'Sound on' : 'Sound off';
-    soundButton.title = soundEnabled ? 'Mute picker clicks' : 'Enable picker clicks and replay the log';
+    replayButton.disabled = ![...states.values()].some(state => state.history.length > 1);
+    replayButton.title = 'Replay the recorded pressure history';
+    const needsUnlock = soundEnabled && audioAttempted && audio?.state !== 'running';
+    soundButton.disabled = audioUnavailable;
+    soundButton.setAttribute('aria-pressed', String(soundEnabled && !needsUnlock && !audioUnavailable));
+    soundButton.textContent = audioUnavailable ? 'Sound unavailable' : needsUnlock ? 'Enable sound' : soundEnabled ? 'Sound on' : 'Sound off';
+    soundButton.title = needsUnlock ? 'Your browser paused autoplay; tap to enable picker clicks' : soundEnabled ? 'Mute picker clicks' : 'Enable picker clicks and replay the log';
   }
 
   function show(state, number) {
@@ -30,7 +34,6 @@
 
   function finish(state) {
     state.active = false;
-    state.pending = false;
     show(state, state.latest.value);
     state.card.classList.remove('is-replaying');
     state.card.setAttribute('aria-busy', 'false');
@@ -90,14 +93,15 @@
       changed = show(state, value) || changed;
       state.nextStep = now + 24 + 176 * Math.pow(progress, 3);
     }
-    if (changed) tick(now);
+    if (changed) {
+      try { tick(now); }
+      catch { soundEnabled = false; updateControls(); }
+    }
     if ([...states.values()].some(state => state.active)) frame = requestAnimationFrame(advance);
   }
 
   function start(state) {
-    if (motion.matches || document.hidden || state.path.length < 2) { finish(state); return; }
-    if (!state.visible) { state.pending = true; return; }
-    state.pending = false;
+    if (document.hidden || state.path.length < 2) { finish(state); return; }
     state.active = true;
     state.start = performance.now();
     state.nextStep = state.start;
@@ -110,6 +114,7 @@
 
   function replay() {
     for (const state of states.values()) {
+      state.seenThisEntry = state.visible;
       state.path = state.history.map(point => point.value);
       start(state);
     }
@@ -120,8 +125,14 @@
       const state = [...states.values()].find(item => item.card === entry.target);
       if (!state) continue;
       state.visible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
-      if (state.visible && state.pending) start(state);
-      else if (!state.visible && state.active) finish(state);
+      // Replay once when a card is first seen if the entry animation was missed.
+      if (state.visible && !state.seenThisEntry) {
+        state.seenThisEntry = true;
+        if (!state.active || performance.now() - state.start > 600) {
+          state.path = state.history.map(point => point.value);
+          start(state);
+        }
+      }
     }
   }, { threshold: 0.2 }) : null;
 
@@ -145,7 +156,7 @@
       const value = card.querySelector('.value');
       value.innerHTML = '<span class="pressure-number" aria-hidden="true"></span> <small aria-hidden="true">bar</small>';
       value.setAttribute('role', 'img');
-      state = { card, number: value.querySelector('.pressure-number'), note: card.querySelector('p'), visible: !observer, active: false, pending: false };
+      state = { card, number: value.querySelector('.pressure-number'), note: card.querySelector('p'), visible: !observer, active: false, seenThisEntry: false };
       states.set(index, state);
       observer?.observe(card);
     }
@@ -157,6 +168,7 @@
     }
     state.history = history;
     state.latest = latest;
+    if (!audioAttempted) requestSound();
     state.card.querySelector('.value').setAttribute('aria-label', latest.value.toFixed(2) + ' bar, latest recorded at ' + latest.time + ' hours');
     updateControls();
     if (previous && previous.time === latest.time && previous.value === latest.value) return;
@@ -164,25 +176,16 @@
     // Initial/manual replay follows the log; new data animates from the prior value.
     state.path = previous ? [previous.value, ...history.filter(point => point.time > previous.time).map(point => point.value)] : history.map(point => point.value);
     if (state.path.at(-1) !== latest.value) state.path.push(latest.value);
-    if (!state.visible) {
-      show(state, latest.value);
-      state.note.textContent = 'Latest recorded · ' + latest.time + ' hrs';
-    }
     start(state);
   }
 
-  replayButton.addEventListener('click', replay);
-  soundButton.addEventListener('click', async () => {
-    if (soundEnabled) {
-      soundEnabled = false;
-      if (master) master.gain.setValueAtTime(0, audio.currentTime);
-      updateControls();
-      return;
-    }
+  function requestSound(replayAfterUnlock = false) {
+    if (!soundEnabled || audioUnavailable || document.hidden) return;
+    audioAttempted = true;
     const Audio = window.AudioContext || window.webkitAudioContext;
-    if (!Audio) { soundButton.disabled = true; soundButton.textContent = 'Sound unavailable'; return; }
+    if (!Audio) { audioUnavailable = true; updateControls(); return; }
     try {
-      if (!audio || audio.state === 'closed') {
+      if (!audio || audio.state === 'closed' || !master || !clickNoise) {
         audio = new Audio();
         master = audio.createGain();
         master.gain.value = 0.35;
@@ -190,22 +193,50 @@
         clickNoise = audio.createBuffer(1, Math.ceil(audio.sampleRate * 0.016), audio.sampleRate);
         const samples = clickNoise.getChannelData(0);
         for (let i = 0; i < samples.length; i++) samples[i] = (Math.random() * 2 - 1) * Math.exp(-i / (samples.length / 4));
+        audio.onstatechange = updateControls;
       }
-      await audio.resume();
-      if (audio.state !== 'running') throw new Error('Audio is not ready');
-      master.gain.setValueAtTime(0.35, audio.currentTime);
-      soundEnabled = true;
-      updateControls();
-      replay();
-    } catch {
+      // Never wait for resume: blocked autoplay must not hold up the numbers.
+      audio.resume().then(() => {
+        if (!soundEnabled) return;
+        master.gain.setValueAtTime(0.35, audio.currentTime);
+        updateControls();
+        if (replayAfterUnlock && audio.state === 'running' && ![...states.values()].some(state => state.active)) replay();
+      }).catch(updateControls);
+    } catch { /* A later user gesture can retry audio without affecting the readouts. */ }
+    updateControls();
+  }
+
+  function enterPage() {
+    const now = performance.now();
+    if (now - lastEntry < 300 || document.hidden) return;
+    lastEntry = now;
+    requestSound();
+    replay();
+  }
+
+  replayButton.addEventListener('click', () => { requestSound(); replay(); });
+  soundButton.addEventListener('click', () => {
+    if (soundEnabled && audio?.state === 'running') {
       soundEnabled = false;
+      if (master) master.gain.setValueAtTime(0, audio.currentTime);
       updateControls();
-      soundButton.title = 'Tap again to enable sound';
+      return;
     }
+    soundEnabled = true;
+    requestSound();
+    replay();
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) finishAll(); });
+  document.addEventListener('pointerdown', event => {
+    if (!event.target?.closest?.('#pressure-sound') && soundEnabled && audio?.state !== 'running') requestSound(true);
+  }, { passive: true });
+  document.addEventListener('keydown', event => {
+    if (!event.target?.closest?.('#pressure-sound') && soundEnabled && audio?.state !== 'running') requestSound(true);
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) finishAll(); else enterPage(); });
+  window.addEventListener('pagehide', finishAll);
+  window.addEventListener('pageshow', event => { if (event.persisted) enterPage(); });
   window.addEventListener('beforeprint', finishAll);
-  motion.addEventListener?.('change', () => { if (motion.matches) finishAll(); updateControls(); });
   window.PressureReplay = Object.freeze({ updateCard });
   updateControls();
 })();
+
