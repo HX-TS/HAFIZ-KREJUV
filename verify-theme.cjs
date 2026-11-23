@@ -3,7 +3,7 @@ const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const BASE=process.env.TEST_SITE_URL||'http://127.0.0.1:8765';
 const mainNames=['XPRESS PETRONAS','ACE PETRONAS','EPTW','LOCATION'];
-const historyNames=['CLEANING','WATER FILLING CALC','HYDROTEST','DEWATERING','SWABBING','FEG DEPRESSURIZE'];
+const historyNames=['CLEANING','WATER FILLING CALC','HYDROTEST','DEWATERING','SWABBING','FEG DEPRESSURIZE','BLOWDOWN TIE-IN'];
 const ready={
   '/':()=>document.getElementById('syncText').textContent.includes('SYNCED'),
   '/SWABBING/':()=>document.querySelector('#swabbingContainer table')&&document.querySelector('#dewPointContainer table'),
@@ -29,7 +29,7 @@ const ready={
         if (await page.locator('.visitor-count').count()) {
           await page.waitForFunction(()=>/^\d[\d,]*$/.test(document.querySelector('.visitor-count').textContent),null,{timeout:30000});
         }
-        await page.waitForFunction(()=>document.querySelectorAll('#historical-event-links .site-menu-link').length===6,null,{timeout:30000});
+        await page.waitForFunction(()=>document.querySelectorAll('#historical-event-links .site-menu-link').length===7,null,{timeout:30000});
         await page.evaluate(()=>document.fonts.ready);
         assert.deepEqual(await page.locator('#main-site-links .site-menu-link').allTextContents(),mainNames);
         assert.deepEqual(await page.locator('#historical-event-links .site-menu-link').allTextContents(),historyNames);
