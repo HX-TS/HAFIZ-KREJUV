@@ -4,7 +4,6 @@
   const DURATION = 5200;
   const states = new Map();
   const replayButton = document.getElementById('pressure-replay');
-  const soundButton = document.getElementById('pressure-sound');
   let frame = 0;
   let soundEnabled = true;
   let audioAttempted = false;
@@ -18,11 +17,6 @@
   function updateControls() {
     replayButton.disabled = ![...states.values()].some(state => state.history.length > 1);
     replayButton.title = 'Replay the recorded pressure history';
-    const needsUnlock = soundEnabled && audioAttempted && audio?.state !== 'running';
-    soundButton.disabled = audioUnavailable;
-    soundButton.setAttribute('aria-pressed', String(soundEnabled && !needsUnlock && !audioUnavailable));
-    soundButton.textContent = audioUnavailable ? 'Sound unavailable' : needsUnlock ? 'Enable sound' : soundEnabled ? 'Sound on' : 'Sound off';
-    soundButton.title = needsUnlock ? 'Your browser paused autoplay; tap to enable picker clicks' : soundEnabled ? 'Mute picker clicks' : 'Enable picker clicks and replay the log';
   }
 
   function show(state, number) {
@@ -215,22 +209,11 @@
   }
 
   replayButton.addEventListener('click', () => { requestSound(); replay(); });
-  soundButton.addEventListener('click', () => {
-    if (soundEnabled && audio?.state === 'running') {
-      soundEnabled = false;
-      if (master) master.gain.setValueAtTime(0, audio.currentTime);
-      updateControls();
-      return;
-    }
-    soundEnabled = true;
-    requestSound();
-    replay();
-  });
   document.addEventListener('pointerdown', event => {
-    if (!event.target?.closest?.('#pressure-sound') && soundEnabled && audio?.state !== 'running') requestSound(true);
+    if (soundEnabled && audio?.state !== 'running') requestSound(true);
   }, { passive: true });
   document.addEventListener('keydown', event => {
-    if (!event.target?.closest?.('#pressure-sound') && soundEnabled && audio?.state !== 'running') requestSound(true);
+    if (soundEnabled && audio?.state !== 'running') requestSound(true);
   });
   document.addEventListener('visibilitychange', () => { if (document.hidden) finishAll(); else enterPage(); });
   window.addEventListener('pagehide', finishAll);
@@ -239,4 +222,5 @@
   window.PressureReplay = Object.freeze({ updateCard });
   updateControls();
 })();
+
 
