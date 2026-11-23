@@ -49,6 +49,9 @@ a.site-menu-link:hover,a.site-menu-link:focus-visible { background:#292929; colo
 #public-data-status { margin:0; border:0; border-bottom:1px solid #76501c; border-radius:0; background:#30240f; color:#ffe1a7; }
 /* Permit control retains the existing data and validity calculations. */
 .page-overview { --bg:#080808; --black:#f5f3ee; --border:#3a3a3a; --soft-border:#343434; --green:#8ade68; --red:#f34850; --red-dark:#a82730; --red-soft:#32191c; }
+/* Keep the panoramic overview composite framed above the lightning edge. */
+.page-overview .site-hero { min-height:clamp(390px,28vw,540px); }
+.page-overview .site-hero__image { object-position:50% 10%; }
 .page-overview .page { width:100%; min-height:100vh; margin:0; overflow:visible; background:#080808; }
 .page-overview .eptw-section { width:min(100%,1480px); margin:0 auto; padding:26px 40px 0; border:0; }
 .page-overview .eptw-section-head { padding:0 0 24px; gap:22px; border-bottom:0; align-items:flex-start; }
@@ -176,6 +179,8 @@ a.site-menu-link:hover,a.site-menu-link:focus-visible { background:#292929; colo
   .site-dropdown__panel { position:static; min-width:0; padding:0 0 0 12px; border:0; background:#191919; box-shadow:none; }
   .site-menu-link { min-height:46px; padding:13px 12px; font-size:21px; }
   .site-hero { min-height:310px; }
+  .page-overview .site-hero { min-height:310px; }
+  .page-overview .site-hero__image { object-position:56% 40%; }
   .site-hero::after { height:110px; }
   .site-hero--compact::after { height:85px; }
   .site-hero__image { object-position:56% 48%; }
