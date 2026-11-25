@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-QP1qiIIQbHodgo56ZnnYBevHCWe2vwW+LsusMP2LFYw='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-+ye7FkcCK7+mffo27kMujkMnXkAPedBAPso5BYBhw1s='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080808" />
@@ -454,7 +454,8 @@
       font-weight: 650;
     }
 
-    .step-jump {
+    .step-jump,
+    .date-jump {
       width: 100%;
       padding: 0;
       border: 0;
@@ -470,8 +471,9 @@
       text-underline-offset: 3px;
     }
 
-    .step-jump:hover { color: #ff7880; }
-    .step-jump:disabled { cursor: default; text-decoration: none; }
+    .date-jump { white-space: normal; }
+    .step-jump:hover,.date-jump:hover { color: #ff7880; }
+    .step-jump:disabled,.date-jump:disabled { cursor: default; text-decoration: none; }
     .gantt-row.is-selected > .timeline-cell { background-color: #302323; }
     .gantt-row.is-selected .bar { outline: 2px solid #f5f3ee; outline-offset: 2px; }
 
@@ -1465,6 +1467,7 @@
           cell.className = "head-cell";
           cell.textContent = label;
           if (label === "STEPS") cell.title = "Click a step to show its activity date on the timeline";
+          if (label === "START/LAUNCH" || label === "END/ARRIVAL") cell.title = "Click a recorded date to show it on the timeline";
           grid.appendChild(cell);
         });
         return grid;
@@ -1490,6 +1493,19 @@
           jump.title = date ? `Show activity date: ${formatDate(date)}` : "No recorded activity date";
           jump.setAttribute("aria-label", date ? `${value || "Activity"}: show ${formatDate(date)} on timeline` : `${value || "Activity"}: no recorded date`);
           jump.addEventListener("click", () => focusActivity(row, cell.closest(".gantt-row")));
+          cell.appendChild(jump);
+        } else if (index === 4 || index === 5) {
+          const date = index === 4 ? row.start : row.end;
+          const kind = index === 4 ? "start" : "end";
+          const jump = document.createElement("button");
+          jump.type = "button";
+          jump.className = "date-jump";
+          jump.dataset.dateKind = kind;
+          jump.textContent = value || "—";
+          jump.disabled = !date;
+          jump.title = date ? `Show ${kind} date: ${formatDate(date)}` : `No recorded ${kind} date`;
+          jump.setAttribute("aria-label", date ? `${row.steps || row.activity || "Activity"}: show ${kind} date ${formatDate(date)} on timeline` : `No recorded ${kind} date`);
+          jump.addEventListener("click", () => focusActivity(row, cell.closest(".gantt-row"), date));
           cell.appendChild(jump);
         } else if (index === 2 && allowActivityMerge && row.activityMergeStart) {
           cell.classList.add("merge-start");
@@ -1738,8 +1754,7 @@
       els.ganttScroll.scrollTo({ left: target, behavior });
     }
 
-    function focusActivity(row, wrapper) {
-      const date = row.start || row.end;
+    function focusActivity(row, wrapper, date = row.start || row.end) {
       if (!date) return;
       state.selectedSourceRow = row.sourceRow;
       els.ganttRows.querySelectorAll(".is-selected").forEach((item) => item.classList.remove("is-selected"));
@@ -1842,5 +1857,6 @@
 </div><!-- public-app -->
 </body>
 </html>
+
 
 
