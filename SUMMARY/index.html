@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-k4oG0GPC24eCWbFBgla/iI2i1OrqlyZWqGk4rEuCHUg='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-QP1qiIIQbHodgo56ZnnYBevHCWe2vwW+LsusMP2LFYw='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080808" />
@@ -30,7 +30,7 @@
       --paper: #f1efe8;
       --paper-2: #e7e4db;
       --ink: #070908;
-      --meta-width: 640px;
+      --meta-width: 755px;
       --day-width: 46px;
       --row-min-h: 64px;
       --header-h: 80px;
@@ -382,7 +382,7 @@
 
     .meta-grid {
       display: grid;
-      grid-template-columns: 40px 105px 165px 90px 120px 120px;
+      grid-template-columns: 40px 220px 165px 90px 120px 120px;
       width: var(--meta-width);
       min-width: var(--meta-width);
     }
@@ -462,7 +462,9 @@
       color: inherit;
       font: inherit;
       text-align: left;
-      overflow-wrap: anywhere;
+      white-space: pre;
+      overflow-wrap: normal;
+      word-break: normal;
       cursor: pointer;
       text-decoration: underline dotted #888;
       text-underline-offset: 3px;
@@ -823,11 +825,11 @@
 
     @media (max-width: 1100px) {
       :root {
-        --meta-width: 570px;
+        --meta-width: 700px;
       }
 
       .meta-grid {
-        grid-template-columns: 36px 90px 145px 79px 110px 110px;
+        grid-template-columns: 36px 220px 145px 79px 110px 110px;
       }
 
       .app-shell {
@@ -837,7 +839,7 @@
 
     @media (max-width: 760px) {
       :root {
-        --meta-width: 540px;
+        --meta-width: 674px;
         --row-min-h: 60px;
         --header-h: 76px;
       }
@@ -891,7 +893,7 @@
       }
 
       .meta-grid {
-        grid-template-columns: 34px 86px 140px 76px 102px 102px;
+        grid-template-columns: 34px 220px 140px 76px 102px 102px;
       }
 
       .head-cell {
@@ -1482,7 +1484,7 @@
           const jump = document.createElement("button");
           jump.type = "button";
           jump.className = "step-jump";
-          jump.textContent = value || "—";
+          jump.textContent = String(value || "—").replace(/\s*\/\s*/g, " /\n");
           const date = row.start || row.end;
           jump.disabled = !date;
           jump.title = date ? `Show activity date: ${formatDate(date)}` : "No recorded activity date";
@@ -1840,4 +1842,5 @@
 </div><!-- public-app -->
 </body>
 </html>
+
 
