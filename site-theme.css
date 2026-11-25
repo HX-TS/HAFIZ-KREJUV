@@ -132,7 +132,7 @@ a.site-menu-link:hover,a.site-menu-link:focus-visible { background:#292929; colo
 .page-swabbing .footer { border-color:var(--theme-line); color:var(--theme-muted); background:#080808; min-height:56px; }
 /* Timeline: neutral surfaces, original data and colored progress bars. */
 .page-summary { --bg:#080808; --bg-2:#141414; --panel:#171717; --panel-2:#202020; --panel-3:#292929; --line:#ffffff18; --line-strong:#ffffff30; --text:#f5f3ee; --muted:#b8b5b0; --brand:#f34850; --brand-2:#ff7880; --paper:#171717; --paper-2:#202020; --ink:#f5f3ee; background:#080808; }
-.page-summary .app-shell { max-width:1560px; padding:28px 40px 0; }
+.page-summary .app-shell { max-width:2200px; padding:28px 40px 0; }
 .page-summary .topbar { border-radius:0; border-color:var(--theme-line); background:#171717; box-shadow:none; }
 .page-summary .title-wrap { padding:18px 22px; }
 .page-summary .title-wrap h2 { margin:0; color:var(--theme-text); font:700 37px/1 var(--heading); text-transform:uppercase; }
@@ -236,3 +236,4 @@ a.site-menu-link:hover,a.site-menu-link:focus-visible { background:#292929; colo
   .page-summary .gantt-scroll { min-height:430px; max-height:65vh; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none !important; transition:none !important; } }
+
