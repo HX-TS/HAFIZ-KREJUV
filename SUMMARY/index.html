@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-ZfXRpx07m5bmaO+0NvDXA8QPA6QCxbT29yolFacOkbs='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://script.google.com/macros/s/ https://script.googleusercontent.com/macros/echo https://www.googletagmanager.com/gtag/ 'sha256-k4oG0GPC24eCWbFBgla/iI2i1OrqlyZWqGk4rEuCHUg='; connect-src https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ibb.co https://*.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080808" />
@@ -30,9 +30,9 @@
       --paper: #f1efe8;
       --paper-2: #e7e4db;
       --ink: #070908;
-      --meta-width: 1045px;
+      --meta-width: 640px;
       --day-width: 46px;
-      --row-min-h: 52px;
+      --row-min-h: 64px;
       --header-h: 80px;
       --radius: 18px;
       --shadow: 0 18px 60px rgba(0, 0, 0, 0.30);
@@ -382,7 +382,7 @@
 
     .meta-grid {
       display: grid;
-      grid-template-columns: 60px 190px 255px 180px 180px 180px;
+      grid-template-columns: 40px 105px 165px 90px 120px 120px;
       width: var(--meta-width);
       min-width: var(--meta-width);
     }
@@ -436,6 +436,9 @@
 
     .data-cell.no-cell {
       justify-content: center;
+      padding-left: 4px;
+      padding-right: 4px;
+      white-space: nowrap;
       color: var(--brand-2);
       font-weight: 850;
       font-size: 13.5px;
@@ -451,6 +454,25 @@
       font-weight: 650;
     }
 
+    .step-jump {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+      text-decoration: underline dotted #888;
+      text-underline-offset: 3px;
+    }
+
+    .step-jump:hover { color: #ff7880; }
+    .step-jump:disabled { cursor: default; text-decoration: none; }
+    .gantt-row.is-selected > .timeline-cell { background-color: #302323; }
+    .gantt-row.is-selected .bar { outline: 2px solid #f5f3ee; outline-offset: 2px; }
+
     .data-cell.pig-cell {
       color: #b9d7ce;
     }
@@ -459,7 +481,7 @@
       color: #c9ded7;
       font-variant-numeric: tabular-nums;
       font-size: 11.5px;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .data-cell.activity-cell.merge-start {
@@ -801,11 +823,11 @@
 
     @media (max-width: 1100px) {
       :root {
-        --meta-width: 930px;
+        --meta-width: 570px;
       }
 
       .meta-grid {
-        grid-template-columns: 56px 170px 225px 160px 159px 160px;
+        grid-template-columns: 36px 90px 145px 79px 110px 110px;
       }
 
       .app-shell {
@@ -815,8 +837,8 @@
 
     @media (max-width: 760px) {
       :root {
-        --meta-width: 870px;
-        --row-min-h: 50px;
+        --meta-width: 540px;
+        --row-min-h: 60px;
         --header-h: 76px;
       }
 
@@ -869,7 +891,7 @@
       }
 
       .meta-grid {
-        grid-template-columns: 52px 155px 210px 145px 154px 154px;
+        grid-template-columns: 34px 86px 140px 76px 102px 102px;
       }
 
       .head-cell {
@@ -1046,7 +1068,8 @@
       timelineEnd: null,
       isLoading: false,
       lastSync: null,
-      lastStep: ""
+      lastStep: "",
+      selectedSourceRow: null
     };
 
     const els = {
@@ -1439,6 +1462,7 @@
           const cell = document.createElement("div");
           cell.className = "head-cell";
           cell.textContent = label;
+          if (label === "STEPS") cell.title = "Click a step to show its activity date on the timeline";
           grid.appendChild(cell);
         });
         return grid;
@@ -1454,7 +1478,18 @@
         cell.className = `data-cell ${classes[index]}`;
         if (index === 1 && row.stepCarried) cell.classList.add("carried");
 
-        if (index === 2 && allowActivityMerge && row.activityMergeStart) {
+        if (index === 1) {
+          const jump = document.createElement("button");
+          jump.type = "button";
+          jump.className = "step-jump";
+          jump.textContent = value || "—";
+          const date = row.start || row.end;
+          jump.disabled = !date;
+          jump.title = date ? `Show activity date: ${formatDate(date)}` : "No recorded activity date";
+          jump.setAttribute("aria-label", date ? `${value || "Activity"}: show ${formatDate(date)} on timeline` : `${value || "Activity"}: no recorded date`);
+          jump.addEventListener("click", () => focusActivity(row, cell.closest(".gantt-row")));
+          cell.appendChild(jump);
+        } else if (index === 2 && allowActivityMerge && row.activityMergeStart) {
           cell.classList.add("merge-start");
           cell.dataset.mergeLabel = row.activityDisplay || row.activity || "";
           cell.style.setProperty("--merge-span", String(row.activityMergeSpan));
@@ -1583,6 +1618,7 @@
       state.filteredRows.forEach((row, index) => {
         const wrapper = document.createElement("div");
         wrapper.className = "gantt-row";
+        if (row.sourceRow === state.selectedSourceRow) wrapper.classList.add("is-selected");
         if (allowActivityMerge && row.activityMergeStart) wrapper.classList.add("has-activity-merge");
 
         const meta = createMetaGrid(false, row, index, allowActivityMerge);
@@ -1688,9 +1724,30 @@
       els.tooltip.classList.remove("show");
     }
 
+    function scrollToDate(date) {
+      const meta = els.ganttHeader.querySelector(".meta-grid");
+      if (!meta) return;
+      const metaWidth = meta.getBoundingClientRect().width;
+      const pinnedWidth = getComputedStyle(meta).position === "sticky" ? metaWidth : 0;
+      const visibleWidth = Math.max(0, els.ganttScroll.clientWidth - pinnedWidth);
+      const dateX = Math.max(0, Math.min(timelineWidth() - 1, dateToX(date)));
+      const target = Math.max(0, metaWidth + dateX - pinnedWidth - Math.min(48, visibleWidth * 0.15));
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth";
+      els.ganttScroll.scrollTo({ left: target, behavior });
+    }
+
+    function focusActivity(row, wrapper) {
+      const date = row.start || row.end;
+      if (!date) return;
+      state.selectedSourceRow = row.sourceRow;
+      els.ganttRows.querySelectorAll(".is-selected").forEach((item) => item.classList.remove("is-selected"));
+      wrapper.classList.add("is-selected");
+      hideTooltip();
+      scrollToDate(date);
+    }
+
     function scrollToToday() {
-      const target = Math.max(0, dateToX(new Date()) - els.ganttScroll.clientWidth * 0.65 + parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--meta-width")));
-      els.ganttScroll.scrollTo({ left: target, behavior: "smooth" });
+      scrollToDate(new Date());
     }
 
     function changeZoom(delta) {
@@ -1783,3 +1840,4 @@
 </div><!-- public-app -->
 </body>
 </html>
+
